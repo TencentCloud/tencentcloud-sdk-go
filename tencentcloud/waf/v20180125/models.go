@@ -5911,14 +5911,14 @@ func (r *DeleteDomainWhiteRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteExportRequestParams struct {
-	// 日志导出ID
+	// <p>日志导出ID，可以通过DescribeExports接口获取</p>
 	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 }
 
 type DeleteExportRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志导出ID
+	// <p>日志导出ID，可以通过DescribeExports接口获取</p>
 	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 }
 
@@ -6263,7 +6263,7 @@ func (r *DeleteOwaspRuleStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteOwaspWhiteRuleRequestParams struct {
-	// 规则白名单ID列表
+	// 规则白名单ID列表，可通过 [DescribeOwaspWhiteRule](https://cloud.tencent.com/document/product/627/122155) 接口获取
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 
 	// 域名
@@ -6273,7 +6273,7 @@ type DeleteOwaspWhiteRuleRequestParams struct {
 type DeleteOwaspWhiteRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则白名单ID列表
+	// 规则白名单ID列表，可通过 [DescribeOwaspWhiteRule](https://cloud.tencent.com/document/product/627/122155) 接口获取
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 
 	// 域名
@@ -12477,14 +12477,14 @@ func (r *DescribePostCKafkaFlowsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePostCLSFlowsRequestParams struct {
-	// 1-访问日志，2-攻击日志，默认为访问日志。
+	// <p>1-访问日志，2-攻击日志，默认为访问日志。</p>
 	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
 }
 
 type DescribePostCLSFlowsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 1-访问日志，2-攻击日志，默认为访问日志。
+	// <p>1-访问日志，2-攻击日志，默认为访问日志。</p>
 	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
 }
 
@@ -12509,7 +12509,7 @@ func (r *DescribePostCLSFlowsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePostCLSFlowsResponseParams struct {
-	// 客户的投递流列表
+	// <p>客户的投递流列表</p>
 	PostCLSFlows []*PostCLSFlowInfo `json:"PostCLSFlows,omitnil,omitempty" name:"PostCLSFlows"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14353,20 +14353,20 @@ func (r *DescribeWebshellStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DestroyPostCKafkaFlowRequestParams struct {
-	// 投递流的流ID
+	// <p>投递流的流ID，可以通过DescribePostCKafkaFlows接口获取</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 1-访问日志，2-攻击日志，默认为访问日志。
+	// <p>1-访问日志，2-攻击日志，默认为访问日志。</p>
 	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
 }
 
 type DestroyPostCKafkaFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 投递流的流ID
+	// <p>投递流的流ID，可以通过DescribePostCKafkaFlows接口获取</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 1-访问日志，2-攻击日志，默认为访问日志。
+	// <p>1-访问日志，2-攻击日志，默认为访问日志。</p>
 	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
 }
 
@@ -15896,13 +15896,13 @@ type HistogramInfo struct {
 }
 
 type HostDel struct {
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名ID
+	// <p>域名ID，使用DescribeDomains接口可以查询获取</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 实例类型
+	// <p>实例类型</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 

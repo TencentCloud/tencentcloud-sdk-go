@@ -21884,6 +21884,7 @@ func NewLockCcnBandwidthsResponse() (response *LockCcnBandwidthsResponse) {
 // 如有需要, 可以封禁任意限速实例, 可接入到内部运营系统。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -21900,6 +21901,7 @@ func (c *Client) LockCcnBandwidths(request *LockCcnBandwidthsRequest) (response 
 // 如有需要, 可以封禁任意限速实例, 可接入到内部运营系统。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -21952,6 +21954,7 @@ func NewLockCcnsResponse() (response *LockCcnsResponse) {
 // 如有需要, 可以封禁任意限速实例, 可接入到内部运营系统
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -21972,6 +21975,7 @@ func (c *Client) LockCcns(request *LockCcnsRequest) (response *LockCcnsResponse,
 // 如有需要, 可以封禁任意限速实例, 可接入到内部运营系统
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -23046,7 +23050,12 @@ func NewModifyCcnPolicyBasedRoutingNextHopAttributeResponse() (response *ModifyC
 // 更新云联网策略路由下一跳参数
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_FILTERMISSPARAMETER = "InvalidParameter.FilterMissParameter"
 //  INVALIDPARAMETERVALUE_MUSTHASONE = "InvalidParameterValue.MustHasOne"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYBASEDROUTINGFLAG = "UnsupportedOperation.CcnNotEnablePolicyBasedRoutingFlag"
+//  UNSUPPORTEDOPERATION_CCNROUTEBASEDROUTEINGNOVPCTYPENOTSUPPORTCONFIGNEXTHOPRESOURCE = "UnsupportedOperation.CcnRouteBasedRouteingNoVpcTypeNotSupportConfigNextHopResource"
+//  UNSUPPORTEDOPERATION_GWLBCLUSTERTYPENOTDPDKNOTSUPPORTCREATE = "UnsupportedOperation.GwlbClusterTypeNotDpdkNotSupportCreate"
 func (c *Client) ModifyCcnPolicyBasedRoutingNextHopAttribute(request *ModifyCcnPolicyBasedRoutingNextHopAttributeRequest) (response *ModifyCcnPolicyBasedRoutingNextHopAttributeResponse, err error) {
     return c.ModifyCcnPolicyBasedRoutingNextHopAttributeWithContext(context.Background(), request)
 }
@@ -23055,7 +23064,12 @@ func (c *Client) ModifyCcnPolicyBasedRoutingNextHopAttribute(request *ModifyCcnP
 // 更新云联网策略路由下一跳参数
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_FILTERMISSPARAMETER = "InvalidParameter.FilterMissParameter"
 //  INVALIDPARAMETERVALUE_MUSTHASONE = "InvalidParameterValue.MustHasOne"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYBASEDROUTINGFLAG = "UnsupportedOperation.CcnNotEnablePolicyBasedRoutingFlag"
+//  UNSUPPORTEDOPERATION_CCNROUTEBASEDROUTEINGNOVPCTYPENOTSUPPORTCONFIGNEXTHOPRESOURCE = "UnsupportedOperation.CcnRouteBasedRouteingNoVpcTypeNotSupportConfigNextHopResource"
+//  UNSUPPORTEDOPERATION_GWLBCLUSTERTYPENOTDPDKNOTSUPPORTCREATE = "UnsupportedOperation.GwlbClusterTypeNotDpdkNotSupportCreate"
 func (c *Client) ModifyCcnPolicyBasedRoutingNextHopAttributeWithContext(ctx context.Context, request *ModifyCcnPolicyBasedRoutingNextHopAttributeRequest) (response *ModifyCcnPolicyBasedRoutingNextHopAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCcnPolicyBasedRoutingNextHopAttributeRequest()
@@ -23096,7 +23110,12 @@ func NewModifyCcnPolicyBasedRoutingRuleAttributeResponse() (response *ModifyCcnP
 // 更新云联网策略路由匹配规则参数
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_FILTERMISSPARAMETER = "InvalidParameter.FilterMissParameter"
 //  INVALIDPARAMETERVALUE_MUSTHASONE = "InvalidParameterValue.MustHasOne"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYBASEDROUTINGFLAG = "UnsupportedOperation.CcnNotEnablePolicyBasedRoutingFlag"
+//  UNSUPPORTEDOPERATION_CCNROUTEBASEDROUTEINGNOVPCTYPENOTSUPPORTCONFIGNEXTHOPRESOURCE = "UnsupportedOperation.CcnRouteBasedRouteingNoVpcTypeNotSupportConfigNextHopResource"
+//  UNSUPPORTEDOPERATION_GWLBCLUSTERTYPENOTDPDKNOTSUPPORTCREATE = "UnsupportedOperation.GwlbClusterTypeNotDpdkNotSupportCreate"
 func (c *Client) ModifyCcnPolicyBasedRoutingRuleAttribute(request *ModifyCcnPolicyBasedRoutingRuleAttributeRequest) (response *ModifyCcnPolicyBasedRoutingRuleAttributeResponse, err error) {
     return c.ModifyCcnPolicyBasedRoutingRuleAttributeWithContext(context.Background(), request)
 }
@@ -23105,7 +23124,12 @@ func (c *Client) ModifyCcnPolicyBasedRoutingRuleAttribute(request *ModifyCcnPoli
 // 更新云联网策略路由匹配规则参数
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_FILTERMISSPARAMETER = "InvalidParameter.FilterMissParameter"
 //  INVALIDPARAMETERVALUE_MUSTHASONE = "InvalidParameterValue.MustHasOne"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYBASEDROUTINGFLAG = "UnsupportedOperation.CcnNotEnablePolicyBasedRoutingFlag"
+//  UNSUPPORTEDOPERATION_CCNROUTEBASEDROUTEINGNOVPCTYPENOTSUPPORTCONFIGNEXTHOPRESOURCE = "UnsupportedOperation.CcnRouteBasedRouteingNoVpcTypeNotSupportConfigNextHopResource"
+//  UNSUPPORTEDOPERATION_GWLBCLUSTERTYPENOTDPDKNOTSUPPORTCREATE = "UnsupportedOperation.GwlbClusterTypeNotDpdkNotSupportCreate"
 func (c *Client) ModifyCcnPolicyBasedRoutingRuleAttributeWithContext(ctx context.Context, request *ModifyCcnPolicyBasedRoutingRuleAttributeRequest) (response *ModifyCcnPolicyBasedRoutingRuleAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCcnPolicyBasedRoutingRuleAttributeRequest()
@@ -25650,6 +25674,7 @@ func NewModifyRouteTableSelectionPoliciesResponse() (response *ModifyRouteTableS
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_CANNOTASSIGNDEFAULTROUTETABLE = "UnsupportedOperation.CanNotAssignDefaultRouteTable"
 //  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_CDCCCNNOTSUPPORTROUTETABLESELECTIONPOLICIES = "UnsupportedOperation.CdcCcnNotSupportRouteTableSelectionPolicies"
 //  UNSUPPORTEDOPERATION_INSTANCENOTEXIST = "UnsupportedOperation.InstanceNotExist"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTSAMECCNINSTANCEANDSOURCEADDRESS = "UnsupportedOperation.NotSupportSameCcnInstanceAndSourceAddress"
@@ -25672,6 +25697,7 @@ func (c *Client) ModifyRouteTableSelectionPolicies(request *ModifyRouteTableSele
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_CANNOTASSIGNDEFAULTROUTETABLE = "UnsupportedOperation.CanNotAssignDefaultRouteTable"
 //  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+//  UNSUPPORTEDOPERATION_CDCCCNNOTSUPPORTROUTETABLESELECTIONPOLICIES = "UnsupportedOperation.CdcCcnNotSupportRouteTableSelectionPolicies"
 //  UNSUPPORTEDOPERATION_INSTANCENOTEXIST = "UnsupportedOperation.InstanceNotExist"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTSAMECCNINSTANCEANDSOURCEADDRESS = "UnsupportedOperation.NotSupportSameCcnInstanceAndSourceAddress"
@@ -27821,9 +27847,16 @@ func NewReplaceCcnRouteTableBroadcastPolicysResponse() (response *ReplaceCcnRout
 //  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
 //  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICY = "LimitExceeded.CcnRouteBroadcastPolicy"
 //  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICYCOND = "LimitExceeded.CcnRouteBroadcastPolicyCond"
+//  UNSUPPORTEDOPERATION_BROADCASTCONDITIONMUSTBEVPGINSTANCE = "UnsupportedOperation.BroadcastConditionMustBeVpgInstance"
 //  UNSUPPORTEDOPERATION_BROADCASTCONDITIONMUSTBEVPGTYPEORVPGINSTANCE = "UnsupportedOperation.BroadcastConditionMustBeVpgTypeOrVpgInstance"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTANDINPUTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastAndInputPolicy"
 //  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastPolicy"
 //  UNSUPPORTEDOPERATION_CCNNOTENABLECOMMUNITY = "UnsupportedOperation.CcnNotEnableCommunity"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYASPATHANDCOMMUNITYFLAG = "UnsupportedOperation.CcnNotEnablePolicyAsPathAndCommunityFlag"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYASPATHFLAG = "UnsupportedOperation.CcnNotEnablePolicyAsPathFlag"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYCOMMUNITYFLAG = "UnsupportedOperation.CcnNotEnablePolicyCommunityFlag"
+//  UNSUPPORTEDOPERATION_CCNPOLICYDROPACTIONNOTSUPPORTOPERATEPARAM = "UnsupportedOperation.CcnPolicyDropActionNotSupportOperateParam"
+//  UNSUPPORTEDOPERATION_CCNPOLICYOPERATESETANDMODEMUSTHAVEBOTH = "UnsupportedOperation.CcnPolicyOperateSetAndModeMustHaveBoth"
 func (c *Client) ReplaceCcnRouteTableBroadcastPolicys(request *ReplaceCcnRouteTableBroadcastPolicysRequest) (response *ReplaceCcnRouteTableBroadcastPolicysResponse, err error) {
     return c.ReplaceCcnRouteTableBroadcastPolicysWithContext(context.Background(), request)
 }
@@ -27881,9 +27914,16 @@ func (c *Client) ReplaceCcnRouteTableBroadcastPolicys(request *ReplaceCcnRouteTa
 //  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
 //  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICY = "LimitExceeded.CcnRouteBroadcastPolicy"
 //  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICYCOND = "LimitExceeded.CcnRouteBroadcastPolicyCond"
+//  UNSUPPORTEDOPERATION_BROADCASTCONDITIONMUSTBEVPGINSTANCE = "UnsupportedOperation.BroadcastConditionMustBeVpgInstance"
 //  UNSUPPORTEDOPERATION_BROADCASTCONDITIONMUSTBEVPGTYPEORVPGINSTANCE = "UnsupportedOperation.BroadcastConditionMustBeVpgTypeOrVpgInstance"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTANDINPUTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastAndInputPolicy"
 //  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastPolicy"
 //  UNSUPPORTEDOPERATION_CCNNOTENABLECOMMUNITY = "UnsupportedOperation.CcnNotEnableCommunity"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYASPATHANDCOMMUNITYFLAG = "UnsupportedOperation.CcnNotEnablePolicyAsPathAndCommunityFlag"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYASPATHFLAG = "UnsupportedOperation.CcnNotEnablePolicyAsPathFlag"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYCOMMUNITYFLAG = "UnsupportedOperation.CcnNotEnablePolicyCommunityFlag"
+//  UNSUPPORTEDOPERATION_CCNPOLICYDROPACTIONNOTSUPPORTOPERATEPARAM = "UnsupportedOperation.CcnPolicyDropActionNotSupportOperateParam"
+//  UNSUPPORTEDOPERATION_CCNPOLICYOPERATESETANDMODEMUSTHAVEBOTH = "UnsupportedOperation.CcnPolicyOperateSetAndModeMustHaveBoth"
 func (c *Client) ReplaceCcnRouteTableBroadcastPolicysWithContext(ctx context.Context, request *ReplaceCcnRouteTableBroadcastPolicysRequest) (response *ReplaceCcnRouteTableBroadcastPolicysResponse, err error) {
     if request == nil {
         request = NewReplaceCcnRouteTableBroadcastPolicysRequest()
@@ -27959,8 +27999,12 @@ func NewReplaceCcnRouteTableInputPolicysResponse() (response *ReplaceCcnRouteTab
 //  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
 //  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICY = "LimitExceeded.CcnRouteBroadcastPolicy"
 //  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICYCOND = "LimitExceeded.CcnRouteBroadcastPolicyCond"
+//  UNSUPPORTEDOPERATION_CCNDEFAULTRTBROUTE = "UnsupportedOperation.CcnDefaultRTBRoute"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTANDINPUTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastAndInputPolicy"
 //  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastPolicy"
 //  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYASPATHFLAG = "UnsupportedOperation.CcnNotEnablePolicyAsPathFlag"
+//  UNSUPPORTEDOPERATION_CCNPOLICYDROPACTIONNOTSUPPORTOPERATEPARAM = "UnsupportedOperation.CcnPolicyDropActionNotSupportOperateParam"
+//  UNSUPPORTEDOPERATION_CCNPOLICYOPERATESETANDMODEMUSTHAVEBOTH = "UnsupportedOperation.CcnPolicyOperateSetAndModeMustHaveBoth"
 func (c *Client) ReplaceCcnRouteTableInputPolicys(request *ReplaceCcnRouteTableInputPolicysRequest) (response *ReplaceCcnRouteTableInputPolicysResponse, err error) {
     return c.ReplaceCcnRouteTableInputPolicysWithContext(context.Background(), request)
 }
@@ -28004,8 +28048,12 @@ func (c *Client) ReplaceCcnRouteTableInputPolicys(request *ReplaceCcnRouteTableI
 //  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
 //  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICY = "LimitExceeded.CcnRouteBroadcastPolicy"
 //  LIMITEXCEEDED_CCNROUTEBROADCASTPOLICYCOND = "LimitExceeded.CcnRouteBroadcastPolicyCond"
+//  UNSUPPORTEDOPERATION_CCNDEFAULTRTBROUTE = "UnsupportedOperation.CcnDefaultRTBRoute"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTANDINPUTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastAndInputPolicy"
 //  UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastPolicy"
 //  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYASPATHFLAG = "UnsupportedOperation.CcnNotEnablePolicyAsPathFlag"
+//  UNSUPPORTEDOPERATION_CCNPOLICYDROPACTIONNOTSUPPORTOPERATEPARAM = "UnsupportedOperation.CcnPolicyDropActionNotSupportOperateParam"
+//  UNSUPPORTEDOPERATION_CCNPOLICYOPERATESETANDMODEMUSTHAVEBOTH = "UnsupportedOperation.CcnPolicyOperateSetAndModeMustHaveBoth"
 func (c *Client) ReplaceCcnRouteTableInputPolicysWithContext(ctx context.Context, request *ReplaceCcnRouteTableInputPolicysRequest) (response *ReplaceCcnRouteTableInputPolicysResponse, err error) {
     if request == nil {
         request = NewReplaceCcnRouteTableInputPolicysRequest()
@@ -29558,8 +29606,13 @@ func NewSetCcnRegionBandwidthLimitsResponse() (response *SetCcnRegionBandwidthLi
 // 本接口（SetCcnRegionBandwidthLimits）用于设置云联网（CCN）各地域出带宽上限，或者地域间带宽上限。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BANDWIDTHREGIONINFOCONFLICT = "UnsupportedOperation.BandwidthRegionInfoConflict"
+//  UNSUPPORTEDOPERATION_EXISTFIXEDBANDWIDTHLIMITS = "UnsupportedOperation.ExistFixedBandwidthLimits"
+//  UNSUPPORTEDOPERATION_NEEDTORETAINONEDEFAULTBANDWIDTH = "UnsupportedOperation.NeedToRetainOneDefaultBandwidth"
 //  UNSUPPORTEDOPERATION_NOTPOSTPAIDCCNOPERATION = "UnsupportedOperation.NotPostpaidCcnOperation"
 func (c *Client) SetCcnRegionBandwidthLimits(request *SetCcnRegionBandwidthLimitsRequest) (response *SetCcnRegionBandwidthLimitsResponse, err error) {
     return c.SetCcnRegionBandwidthLimitsWithContext(context.Background(), request)
@@ -29569,8 +29622,13 @@ func (c *Client) SetCcnRegionBandwidthLimits(request *SetCcnRegionBandwidthLimit
 // 本接口（SetCcnRegionBandwidthLimits）用于设置云联网（CCN）各地域出带宽上限，或者地域间带宽上限。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BANDWIDTHREGIONINFOCONFLICT = "UnsupportedOperation.BandwidthRegionInfoConflict"
+//  UNSUPPORTEDOPERATION_EXISTFIXEDBANDWIDTHLIMITS = "UnsupportedOperation.ExistFixedBandwidthLimits"
+//  UNSUPPORTEDOPERATION_NEEDTORETAINONEDEFAULTBANDWIDTH = "UnsupportedOperation.NeedToRetainOneDefaultBandwidth"
 //  UNSUPPORTEDOPERATION_NOTPOSTPAIDCCNOPERATION = "UnsupportedOperation.NotPostpaidCcnOperation"
 func (c *Client) SetCcnRegionBandwidthLimitsWithContext(ctx context.Context, request *SetCcnRegionBandwidthLimitsRequest) (response *SetCcnRegionBandwidthLimitsResponse, err error) {
     if request == nil {
@@ -30130,6 +30188,7 @@ func NewUnlockCcnBandwidthsResponse() (response *UnlockCcnBandwidthsResponse) {
 // 如有需要, 可以封禁任意限速实例, 可接入到内部运营系统。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -30147,6 +30206,7 @@ func (c *Client) UnlockCcnBandwidths(request *UnlockCcnBandwidthsRequest) (respo
 // 如有需要, 可以封禁任意限速实例, 可接入到内部运营系统。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -30200,6 +30260,7 @@ func NewUnlockCcnsResponse() (response *UnlockCcnsResponse) {
 // 如有需要, 可以封禁任意限速实例, 可接入到内部运营系统
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -30220,6 +30281,7 @@ func (c *Client) UnlockCcns(request *UnlockCcnsRequest) (response *UnlockCcnsRes
 // 如有需要, 可以封禁任意限速实例, 可接入到内部运营系统
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"

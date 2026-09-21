@@ -15403,6 +15403,66 @@ func (r *DescribeZoneConfigImportResultResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeZoneCustomVariablesRequestParams struct {
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+type DescribeZoneCustomVariablesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+func (r *DescribeZoneCustomVariablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeZoneCustomVariablesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeZoneCustomVariablesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeZoneCustomVariablesResponseParams struct {
+	// <p>站点级自定义变量列表。</p>
+	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+
+	// <p>站点级自定义变量运算规则。</p>
+	CustomVariableOperations []*CustomVariableOperation `json:"CustomVariableOperations,omitnil,omitempty" name:"CustomVariableOperations"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeZoneCustomVariablesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeZoneCustomVariablesResponseParams `json:"Response"`
+}
+
+func (r *DescribeZoneCustomVariablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeZoneCustomVariablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeZoneSettingRequestParams struct {
 	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -22692,6 +22752,74 @@ func (r *ModifyWebSecurityTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyZoneCustomVariablesRequestParams struct {
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>站点级自定义变量列表。CustomVariable.Name 需要使用 user.zone. 作为前缀。变量按照数组顺序依次初始化，InitialValue 仅支持引用位于当前变量之前的变量，不支持引用当前变量自身或位于当前变量之后的变量。</p>
+	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+
+	// <p>站点级自定义变量运算规则。运算中支持引用已定义的站点级自定义变量。此列表当前只支持填写一项规则，多填无效。</p>
+	CustomVariableOperations []*CustomVariableOperation `json:"CustomVariableOperations,omitnil,omitempty" name:"CustomVariableOperations"`
+}
+
+type ModifyZoneCustomVariablesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>站点级自定义变量列表。CustomVariable.Name 需要使用 user.zone. 作为前缀。变量按照数组顺序依次初始化，InitialValue 仅支持引用位于当前变量之前的变量，不支持引用当前变量自身或位于当前变量之后的变量。</p>
+	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+
+	// <p>站点级自定义变量运算规则。运算中支持引用已定义的站点级自定义变量。此列表当前只支持填写一项规则，多填无效。</p>
+	CustomVariableOperations []*CustomVariableOperation `json:"CustomVariableOperations,omitnil,omitempty" name:"CustomVariableOperations"`
+}
+
+func (r *ModifyZoneCustomVariablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyZoneCustomVariablesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "CustomVariables")
+	delete(f, "CustomVariableOperations")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyZoneCustomVariablesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyZoneCustomVariablesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyZoneCustomVariablesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyZoneCustomVariablesResponseParams `json:"Response"`
+}
+
+func (r *ModifyZoneCustomVariablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyZoneCustomVariablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyZoneRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -25467,24 +25595,22 @@ type SetParameters struct {
 }
 
 type SharedCNAMEInfo struct {
-	// 共享CNAME类型：取值范围如下：
-	// <li>custom：由用户创建的自定义共享CNAME</li>
-	// <li>ip-ssl：IP SSL类型的共享CNAME</li>
+	// <p>共享CNAME类型：取值范围如下：</p><li>custom：由用户创建的自定义共享CNAME</li><li>ip-ssl：IP SSL类型的共享CNAME</li><li>zero-rating：免流类型的共享CNAME</li><li>preset：预置资源类型的共享CNAME</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 共享CNAME名称。
+	// <p>共享CNAME名称。</p>
 	SharedCNAME *string `json:"SharedCNAME,omitnil,omitempty" name:"SharedCNAME"`
 
-	// 描述。
+	// <p>描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 当type为ip-ssl时，展示该共享CNAME关联的 IP SSL 配置信息。
+	// <p>当type为ip-ssl时，展示该共享CNAME关联的 IP SSL 配置信息。</p>
 	IPSSLConfig *IPSSLConfig `json:"IPSSLConfig,omitnil,omitempty" name:"IPSSLConfig"`
 
-	// 共享CNAME绑定的加速域名数量。
+	// <p>共享CNAME绑定的加速域名数量。</p>
 	BindDomainCount *int64 `json:"BindDomainCount,omitnil,omitempty" name:"BindDomainCount"`
 
-	// 加入该共享CNAME的加速域名列表。当加入的域名数量超过100个时，只返回前100个加速域名。
+	// <p>加入该共享CNAME的加速域名列表。当加入的域名数量超过100个时，只返回前100个加速域名。</p>
 	AccelerationDomains []*ReferenceHolder `json:"AccelerationDomains,omitnil,omitempty" name:"AccelerationDomains"`
 }
 

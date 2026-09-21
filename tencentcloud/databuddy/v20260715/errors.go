@@ -128,6 +128,12 @@ const (
 	// 任务名超过128字符限制
 	INVALIDPARAMETERVALUE_TASKNAMEEXCEEDSLIMITERROR = "InvalidParameterValue.TaskNameExceedsLimitError"
 
+	// 请移除该任务类型的资源组配置
+	INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTRESOURCEGROUP = "InvalidParameterValue.TaskTypeNotSupportResourceGroup"
+
+	// 任务类型属性值在入参时为必填，但是并没有传递
+	INVALIDPARAMETERVALUE_TASKTYPEPROPERTYKEYVALUEREQUESTREQUIREDERROR = "InvalidParameterValue.TaskTypePropertyKeyValueRequestRequiredError"
+
 	// 结束时间不能早于开始时间
 	INVALIDPARAMETERVALUE_WORKFLOWENDTIMELESSSTARTTIME = "InvalidParameterValue.WorkflowEndTimeLessStartTime"
 
@@ -142,6 +148,9 @@ const (
 
 	// 工作流调度开始时间不能晚于结束时间
 	INVALIDPARAMETERVALUE_WORKFLOWSTARTTIMEAFTERENDTIMEERROR = "InvalidParameterValue.WorkflowStartTimeAfterEndTimeError"
+
+	// 请检查工作流触发器高级配置，修正非法的 JSON 内容
+	INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"

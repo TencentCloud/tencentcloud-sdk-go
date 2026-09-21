@@ -980,6 +980,9 @@ type CreateModelServiceRequestParams struct {
 
 	// <p>推理模板 ID</p>
 	InferTemplateId *string `json:"InferTemplateId,omitnil,omitempty" name:"InferTemplateId"`
+
+	// <p>服务的优先级</p><p>取值范围：[0, 9]</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 type CreateModelServiceRequest struct {
@@ -1128,6 +1131,9 @@ type CreateModelServiceRequest struct {
 
 	// <p>推理模板 ID</p>
 	InferTemplateId *string `json:"InferTemplateId,omitnil,omitempty" name:"InferTemplateId"`
+
+	// <p>服务的优先级</p><p>取值范围：[0, 9]</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1190,6 +1196,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "GatewayConfig")
 	delete(f, "ResourceSupplyAttribute")
 	delete(f, "InferTemplateId")
+	delete(f, "Priority")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -3382,66 +3389,50 @@ func (r *DescribeBillingResourceGroupAttachedWorkspacesResponse) FromJsonString(
 
 // Predefined struct for user
 type DescribeBillingResourceGroupRequestParams struct {
-	// 资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId
+	// <p>资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
 	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
-	// 过滤条件
-	// 注意: 
-	// 1. Filter.Name 只支持以下枚举值:
-	//     InstanceId (资源组节点id)
-	//     InstanceStatus (资源组节点状态)
-	// 2. Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
-	// 3. Filter.Negative: 是否取反，默认为false
-	// 4. Filter.Fuzzy: 是否模糊查询，默认为false
-	// 5. 每次请求的Filters的上限为10，Filter.Values的上限为100
+	// <p>过滤条件<br>注意: </p><ol><li>Filter.Name 只支持以下枚举值:<br> InstanceId (资源组节点id)<br> InstanceStatus (资源组节点状态)</li><li>Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询</li><li>Filter.Negative: 是否取反，默认为false</li><li>Filter.Fuzzy: 是否模糊查询，默认为false</li><li>每次请求的Filters的上限为10，Filter.Values的上限为100</li></ol>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0
+	// <p>分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询每页大小，默认20
+	// <p>分页查询每页大小，默认20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方向; 枚举值: ASC | DESC；默认DESC
+	// <p>排序方向; 枚举值: ASC | DESC；默认DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段; 枚举值: CreateTime (创建时间) ｜ ExpireTime (到期时间)；默认CreateTime
+	// <p>排序字段; 枚举值: CreateTime (创建时间) ｜ ExpireTime (到期时间)；默认CreateTime</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
 type DescribeBillingResourceGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId
+	// <p>资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
 	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
-	// 过滤条件
-	// 注意: 
-	// 1. Filter.Name 只支持以下枚举值:
-	//     InstanceId (资源组节点id)
-	//     InstanceStatus (资源组节点状态)
-	// 2. Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
-	// 3. Filter.Negative: 是否取反，默认为false
-	// 4. Filter.Fuzzy: 是否模糊查询，默认为false
-	// 5. 每次请求的Filters的上限为10，Filter.Values的上限为100
+	// <p>过滤条件<br>注意: </p><ol><li>Filter.Name 只支持以下枚举值:<br> InstanceId (资源组节点id)<br> InstanceStatus (资源组节点状态)</li><li>Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询</li><li>Filter.Negative: 是否取反，默认为false</li><li>Filter.Fuzzy: 是否模糊查询，默认为false</li><li>每次请求的Filters的上限为10，Filter.Values的上限为100</li></ol>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0
+	// <p>分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询每页大小，默认20
+	// <p>分页查询每页大小，默认20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方向; 枚举值: ASC | DESC；默认DESC
+	// <p>排序方向; 枚举值: ASC | DESC；默认DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段; 枚举值: CreateTime (创建时间) ｜ ExpireTime (到期时间)；默认CreateTime
+	// <p>排序字段; 枚举值: CreateTime (创建时间) ｜ ExpireTime (到期时间)；默认CreateTime</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
@@ -3472,15 +3463,15 @@ func (r *DescribeBillingResourceGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillingResourceGroupResponseParams struct {
-	// 资源组节点总数； 注意接口是分页拉取的，total是指资源组节点总数，不是本次返回中InstanceSet数组的大小
+	// <p>资源组节点总数； 注意接口是分页拉取的，total是指资源组节点总数，不是本次返回中InstanceSet数组的大小</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 资源组节点信息
+	// <p>资源组节点信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceSet []*Instance `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
 
-	// 资源组纳管类型
+	// <p>资源组纳管类型</p>
 	ResourceGroupSWType *string `json:"ResourceGroupSWType,omitnil,omitempty" name:"ResourceGroupSWType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6549,11 +6540,11 @@ type EncodedStartCmdInfo struct {
 }
 
 type EnvVar struct {
-	// 环境变量key
+	// <p>环境变量key</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 环境变量value
+	// <p>环境变量value</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
@@ -7702,6 +7693,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// <p>推理模板 ID，在内置大模型场景下使用</p>
 	InferTemplateId *string `json:"InferTemplateId,omitnil,omitempty" name:"InferTemplateId"`
+
+	// <p>服务的优先级</p><p>取值范围：[0, 9]</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -7820,6 +7814,9 @@ type ModifyModelServiceRequest struct {
 
 	// <p>推理模板 ID，在内置大模型场景下使用</p>
 	InferTemplateId *string `json:"InferTemplateId,omitnil,omitempty" name:"InferTemplateId"`
+
+	// <p>服务的优先级</p><p>取值范围：[0, 9]</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -7872,6 +7869,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "SchedulingStrategy")
 	delete(f, "TargetProjectId")
 	delete(f, "InferTemplateId")
+	delete(f, "Priority")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -9304,42 +9302,43 @@ type ResourceGroupInfo struct {
 }
 
 type ResourceInfo struct {
-	// 处理器资源, 单位为1/1000核
+	// <p>处理器资源, 单位为1/1000核</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存资源, 单位为1M
+	// <p>内存资源, 单位为1M</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// Gpu卡个数资源, 单位为0.01单位的GpuType.
-	// Gpu=100表示使用了“一张”gpu卡, 但此处的“一张”卡有可能是虚拟化后的1/4卡, 也有可能是整张卡. 取决于实例的机型
-	// 例1 实例的机型带有1张虚拟gpu卡, 每张虚拟gpu卡对应1/4张实际T4卡, 则此时 GpuType=T4, Gpu=100, RealGpu=25.
-	// 例2 实例的机型带有4张gpu整卡, 每张卡对应1张实际T4卡, 则 此时 GpuType=T4, Gpu=400, RealGpu=400.
+	// <p>Gpu卡个数资源, 单位为0.01单位的GpuType.<br>Gpu=100表示使用了“一张”gpu卡, 但此处的“一张”卡有可能是虚拟化后的1/4卡, 也有可能是整张卡. 取决于实例的机型<br>例1 实例的机型带有1张虚拟gpu卡, 每张虚拟gpu卡对应1/4张实际T4卡, 则此时 GpuType=T4, Gpu=100, RealGpu=25.<br>例2 实例的机型带有4张gpu整卡, 每张卡对应1张实际T4卡, 则 此时 GpuType=T4, Gpu=400, RealGpu=400.</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Gpu *uint64 `json:"Gpu,omitnil,omitempty" name:"Gpu"`
 
-	// Gpu卡型号 T4或者V100。仅展示当前 GPU 卡型号，若存在多类型同时使用，则参考 RealGpuDetailSet 的值。
+	// <p>Gpu卡型号 T4或者V100。仅展示当前 GPU 卡型号，若存在多类型同时使用，则参考 RealGpuDetailSet 的值。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GpuType *string `json:"GpuType,omitnil,omitempty" name:"GpuType"`
 
-	// 创建或更新时无需填写，仅展示需要关注
-	// 后付费非整卡实例对应的实际的Gpu卡资源, 表示gpu资源对应实际的gpu卡个数.
-	// RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有可能代表带有1/4卡的实例4个, 或者带有1/2卡的实例2个, 或者带有1卡的实力1个.
+	// <p>创建或更新时无需填写，仅展示需要关注<br>后付费非整卡实例对应的实际的Gpu卡资源, 表示gpu资源对应实际的gpu卡个数.<br>RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有可能代表带有1/4卡的实例4个, 或者带有1/2卡的实例2个, 或者带有1卡的实力1个.</p>
 	RealGpu *uint64 `json:"RealGpu,omitnil,omitempty" name:"RealGpu"`
 
-	// 创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。
+	// <p>创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。</p>
 	RealGpuDetailSet []*GpuDetail `json:"RealGpuDetailSet,omitnil,omitempty" name:"RealGpuDetailSet"`
 
-	// 是否开启rdma
+	// <p>是否开启rdma</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableRDMA *bool `json:"EnableRDMA,omitnil,omitempty" name:"EnableRDMA"`
 
-	// root disk size(GB)
+	// <p>rdma number</p>
+	RdmaNumber *uint64 `json:"RdmaNumber,omitnil,omitempty" name:"RdmaNumber"`
+
+	// <p>root disk size(GB)</p>
 	RootDisk *uint64 `json:"RootDisk,omitnil,omitempty" name:"RootDisk"`
 
-	// data disk size(GB)
+	// <p>data disk size(GB)</p>
 	DataDisk *uint64 `json:"DataDisk,omitnil,omitempty" name:"DataDisk"`
+
+	// <p>rdma</p><p>取值范围：[0, 99]</p>
+	Rdma *uint64 `json:"Rdma,omitnil,omitempty" name:"Rdma"`
 }
 
 type ResourceInstanceRunningJobInfo struct {
@@ -9399,27 +9398,27 @@ type RuntimeLib struct {
 }
 
 type SSHConfig struct {
-	// 是否开启ssh
+	// <p>是否开启ssh</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 公钥信息
+	// <p>公钥信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicKey *string `json:"PublicKey,omitnil,omitempty" name:"PublicKey"`
 
-	// 端口号
+	// <p>端口号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 登录命令
+	// <p>登录命令</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoginCommand *string `json:"LoginCommand,omitnil,omitempty" name:"LoginCommand"`
 
-	// 登录地址是否改变
+	// <p>登录地址是否改变</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAddressChanged *bool `json:"IsAddressChanged,omitnil,omitempty" name:"IsAddressChanged"`
 
-	// POD访问信息
+	// <p>POD访问信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodSSHInfo *PodSSHInfo `json:"PodSSHInfo,omitnil,omitempty" name:"PodSSHInfo"`
 }

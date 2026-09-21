@@ -1103,41 +1103,26 @@ type ChecklistPoint struct {
 }
 
 type ComparisonDetail struct {
-	// 合同对比差异点唯一ID。
+	// <p>合同对比差异点唯一ID。</p>
 	ComparisonPointId *string `json:"ComparisonPointId,omitnil,omitempty" name:"ComparisonPointId"`
 
-	// 对比前后差异类型，具体如下：
-	// <ul><li> **add**：新增</li>
-	// <li> **change**：变更</li>
-	// <li> **delete**：删除</li>
-	// </ul>
+	// <p>对比前后差异类型，具体如下：</p><ul><li> **add**：新增</li><li> **change**：变更</li><li> **delete**：删除</li></ul>
 	ComparisonType *string `json:"ComparisonType,omitnil,omitempty" name:"ComparisonType"`
 
-	// 对比内容类型，具体如下：
-	// <ul><li> **text**：文本</li>
-	// <li> **table**：表格</li>
-	// <li> **picture**：图片</li>
-	// </ul>
+	// <p>对比内容类型，具体如下：</p><ul><li> **text**：文本</li><li> **table**：表格</li><li> **picture**：图片</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// 原文文本。
+	// <p>原文文本。</p>
 	OriginText *string `json:"OriginText,omitnil,omitempty" name:"OriginText"`
 
-	// 对比文本。
+	// <p>对比文本。</p>
 	DiffText *string `json:"DiffText,omitnil,omitempty" name:"DiffText"`
 
-	// 合同文本的格式类型。
-	// 类型如下：
-	// <ul><li> **0**：段落（正文）</li>
-	// <li> **1**：标点符号</li>
-	// <li> **2**：页眉页脚</li>
-	// <li> **3**：目录</li>
-	// <li> **4**：印章</li>
-	// <li> **5**：序号</li>
-	// <li> **6**：水印</li>
-	// <li> **7**：下划线内容（填写区）</li>
-	// </ul>
+	// <p>合同文本的格式类型。<br>类型如下：</p><ul><li> **0**：段落（正文）</li><li> **1**：标点符号</li><li> **2**：页眉页脚</li><li> **3**：目录</li><li> **4**：印章</li><li> **5**：序号</li><li> **6**：水印</li><li> **7**：下划线内容（填写区）</li></ul>
 	FormatType *int64 `json:"FormatType,omitnil,omitempty" name:"FormatType"`
+
+	// <p>页码：对比点所在页码。</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 }
 
 type Component struct {
@@ -17861,52 +17846,50 @@ type OutputRisk struct {
 }
 
 type PdfVerifyResult struct {
-	// 验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。
+	// <p>验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。</p>
 	VerifyResult *int64 `json:"VerifyResult,omitnil,omitempty" name:"VerifyResult"`
 
-	// 签署平台
-	// 如果文件是在腾讯电子签平台签署，则为**腾讯电子签**，
-	// 如果文件不在腾讯电子签平台签署，则为**其他平台**。
+	// <p>签署平台<br>如果文件是在腾讯电子签平台签署，则为<strong>腾讯电子签</strong>，<br>如果文件不在腾讯电子签平台签署，则为<strong>其他平台</strong>。</p>
 	SignPlatform *string `json:"SignPlatform,omitnil,omitempty" name:"SignPlatform"`
 
-	// 申请证书的主体的名字
-	// 
-	// 如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下
-	// **企业**:  ESS@企业名称@编码
-	// **个人**: ESS@个人姓名@证件号@808854
-	// 
-	// 如果在其他平台签署的, 主体的名字参考其他平台的说明
+	// <p>申请证书的主体的名字</p><p>如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下<br><strong>企业</strong>:  ESS@企业名称@编码<br><strong>个人</strong>: ESS@个人姓名@证件号@808854</p><p>如果在其他平台签署的, 主体的名字参考其他平台的说明</p>
 	SignerName *string `json:"SignerName,omitnil,omitempty" name:"SignerName"`
 
-	// 签署时间的Unix时间戳，单位毫秒
+	// <p>签署时间的Unix时间戳，单位毫秒</p>
 	SignTime *int64 `json:"SignTime,omitnil,omitempty" name:"SignTime"`
 
-	// 证书签名算法,  如SHA1withRSA等算法
+	// <p>证书签名算法,  如SHA1withRSA等算法</p>
 	SignAlgorithm *string `json:"SignAlgorithm,omitnil,omitempty" name:"SignAlgorithm"`
 
-	// 在数字证书申请过程中，系统会自动生成一个独一无二的序列号。
+	// <p>在数字证书申请过程中，系统会自动生成一个独一无二的序列号。</p>
 	CertSn *string `json:"CertSn,omitnil,omitempty" name:"CertSn"`
 
-	// 证书起始时间的Unix时间戳，单位毫秒
+	// <p>证书起始时间的Unix时间戳，单位毫秒</p>
 	CertNotBefore *int64 `json:"CertNotBefore,omitnil,omitempty" name:"CertNotBefore"`
 
-	// 证书过期时间的时间戳，单位毫秒
+	// <p>证书过期时间的时间戳，单位毫秒</p>
 	CertNotAfter *int64 `json:"CertNotAfter,omitnil,omitempty" name:"CertNotAfter"`
 
-	// 签名域横坐标，单位px
+	// <p>签名域横坐标，单位px</p>
 	ComponentPosX *float64 `json:"ComponentPosX,omitnil,omitempty" name:"ComponentPosX"`
 
-	// 签名域纵坐标，单位px
+	// <p>签名域纵坐标，单位px</p>
 	ComponentPosY *float64 `json:"ComponentPosY,omitnil,omitempty" name:"ComponentPosY"`
 
-	// 签名域宽度，单位px
+	// <p>签名域宽度，单位px</p>
 	ComponentWidth *float64 `json:"ComponentWidth,omitnil,omitempty" name:"ComponentWidth"`
 
-	// 签名域高度，单位px
+	// <p>签名域高度，单位px</p>
 	ComponentHeight *float64 `json:"ComponentHeight,omitnil,omitempty" name:"ComponentHeight"`
 
-	// 签名域所在页码，1～N
+	// <p>签名域所在页码，1～N</p>
 	ComponentPage *int64 `json:"ComponentPage,omitnil,omitempty" name:"ComponentPage"`
+
+	// <p>证书颁发机构</p>
+	CertProvider *string `json:"CertProvider,omitnil,omitempty" name:"CertProvider"`
+
+	// <p>是否有可信时间戳</p>
+	IsTimestampTrust *bool `json:"IsTimestampTrust,omitnil,omitempty" name:"IsTimestampTrust"`
 }
 
 type Permission struct {

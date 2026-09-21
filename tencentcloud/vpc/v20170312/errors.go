@@ -902,6 +902,9 @@ const (
 	// 该带宽包不支持此操作。
 	UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 
+	// 创建带宽地域信息冲突。
+	UNSUPPORTEDOPERATION_BANDWIDTHREGIONINFOCONFLICT = "UnsupportedOperation.BandwidthRegionInfoConflict"
+
 	// 抱歉，您的操作暂时无法完成，请稍后重试或联系客服。
 	UNSUPPORTEDOPERATION_BILLINGFAILED = "UnsupportedOperation.BillingFailed"
 
@@ -913,6 +916,9 @@ const (
 
 	// 资源在BPAAS审批中。
 	UNSUPPORTEDOPERATION_BPAASRESOURCES = "UnsupportedOperation.BpaasResources"
+
+	// 添加 community 时，传播条件只支持 vpg 实例
+	UNSUPPORTEDOPERATION_BROADCASTCONDITIONMUSTBEVPGINSTANCE = "UnsupportedOperation.BroadcastConditionMustBeVpgInstance"
 
 	// 添加 community 时，传播条件只支持 vpg 类型或 vpg 实例
 	UNSUPPORTEDOPERATION_BROADCASTCONDITIONMUSTBEVPGTYPEORVPGINSTANCE = "UnsupportedOperation.BroadcastConditionMustBeVpgTypeOrVpgInstance"
@@ -928,6 +934,9 @@ const (
 
 	// 云联网实例不支持跨账号关联。
 	UNSUPPORTEDOPERATION_CCNCROSSACCOUNT = "UnsupportedOperation.CcnCrossAccount"
+
+	// 云联网默认路由表不支持设置路由接收策略
+	UNSUPPORTEDOPERATION_CCNDEFAULTRTBROUTE = "UnsupportedOperation.CcnDefaultRTBRoute"
 
 	// 当前云联网有流日志，不支持删除。
 	UNSUPPORTEDOPERATION_CCNHASFLOWLOG = "UnsupportedOperation.CcnHasFlowLog"
@@ -947,11 +956,17 @@ const (
 	// 实例未关联CCN。
 	UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
 
+	// 当前云联网未开启路由传播和接收策略。
+	UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTANDINPUTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastAndInputPolicy"
+
 	// 当前云联网未开启路由传播策略。
 	UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = "UnsupportedOperation.CcnNotEnableBroadcastPolicy"
 
 	// 添加 community 时，vpg 需要开通传播 community 白名单
 	UNSUPPORTEDOPERATION_CCNNOTENABLECOMMUNITY = "UnsupportedOperation.CcnNotEnableCommunity"
+
+	// 未开启CCN AsPathAndCommunityFlag
+	UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYASPATHANDCOMMUNITYFLAG = "UnsupportedOperation.CcnNotEnablePolicyAsPathAndCommunityFlag"
 
 	// 未开启云联网AsPath策略值功能
 	UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYASPATHFLAG = "UnsupportedOperation.CcnNotEnablePolicyAsPathFlag"
@@ -959,8 +974,17 @@ const (
 	// 云联网未开启策略路由开关
 	UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYBASEDROUTINGFLAG = "UnsupportedOperation.CcnNotEnablePolicyBasedRoutingFlag"
 
+	// 未开启云联网Community策略值功能
+	UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYCOMMUNITYFLAG = "UnsupportedOperation.CcnNotEnablePolicyCommunityFlag"
+
 	// 跨账号场景下不支持自驾云账号实例 关联普通账号云联网。
 	UNSUPPORTEDOPERATION_CCNORDINARYACCOUNTREFUSEATTACH = "UnsupportedOperation.CcnOrdinaryAccountRefuseAttach"
+
+	// 拒绝行为不支持传递策略值参数
+	UNSUPPORTEDOPERATION_CCNPOLICYDROPACTIONNOTSUPPORTOPERATEPARAM = "UnsupportedOperation.CcnPolicyDropActionNotSupportOperateParam"
+
+	// OperateSet和OperateMode必须同时传递
+	UNSUPPORTEDOPERATION_CCNPOLICYOPERATESETANDMODEMUSTHAVEBOTH = "UnsupportedOperation.CcnPolicyOperateSetAndModeMustHaveBoth"
 
 	// 云联网策略路由非VPC实例类型不支持配置下一跳资源
 	UNSUPPORTEDOPERATION_CCNROUTEBASEDROUTEINGNOVPCTYPENOTSUPPORTCONFIGNEXTHOPRESOURCE = "UnsupportedOperation.CcnRouteBasedRouteingNoVpcTypeNotSupportConfigNextHopResource"
@@ -976,6 +1000,9 @@ const (
 
 	// 流量计量类型云联网暂不支持跨境
 	UNSUPPORTEDOPERATION_CCNTRAFFICMETERINGUNABLECROSSBORDER = "UnsupportedOperation.CcnTrafficMeteringUnableCrossBorder"
+
+	// CDC CCN不支持路由选择策略。
+	UNSUPPORTEDOPERATION_CDCCCNNOTSUPPORTROUTETABLESELECTIONPOLICIES = "UnsupportedOperation.CdcCcnNotSupportRouteTableSelectionPolicies"
 
 	// 配置Cdc子网发布前需要先设置VPC属性CdcId。
 	UNSUPPORTEDOPERATION_CDCPUBLISHNEEDCDCID = "UnsupportedOperation.CdcPublishNeedCdcId"
@@ -1090,6 +1117,9 @@ const (
 
 	// 存在路由匹配规则，不支持关闭流量调度策略功能。
 	UNSUPPORTEDOPERATION_EXISTCCNROUTEMATCHRULE = "UnsupportedOperation.ExistCcnRouteMatchRule"
+
+	// 已配置固定带宽不允许操作。
+	UNSUPPORTEDOPERATION_EXISTFIXEDBANDWIDTHLIMITS = "UnsupportedOperation.ExistFixedBandwidthLimits"
 
 	// 存在非默认流量调度策略，不支持关闭流量调度策略功能。
 	UNSUPPORTEDOPERATION_EXISTTRAFFICQOSPOLICY = "UnsupportedOperation.ExistTrafficQosPolicy"
@@ -1273,6 +1303,9 @@ const (
 
 	// NAT网关近30天的最大用量超过标准型NAT规格，不支持该操作。
 	UNSUPPORTEDOPERATION_NATUSAGEEXCEEDED = "UnsupportedOperation.NatUsageExceeded"
+
+	// 需要保留一份默认带宽。
+	UNSUPPORTEDOPERATION_NEEDTORETAINONEDEFAULTBANDWIDTH = "UnsupportedOperation.NeedToRetainOneDefaultBandwidth"
 
 	// 没有CDC专线网关。
 	UNSUPPORTEDOPERATION_NOCDCDCGW = "UnsupportedOperation.NoCdcDcGw"

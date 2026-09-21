@@ -3634,6 +3634,7 @@ func NewCreatePartitionResponse() (response *CreatePartitionResponse) {
 //  INVALIDPARAMETERVALUE_POSTPAYPARTITIONDESCRIPTION = "InvalidParameterValue.PostpayPartitionDescription"
 //  INVALIDPARAMETERVALUE_POSTPAYPARTITIONNAME = "InvalidParameterValue.PostpayPartitionName"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) CreatePartition(request *CreatePartitionRequest) (response *CreatePartitionResponse, err error) {
     return c.CreatePartitionWithContext(context.Background(), request)
@@ -3649,6 +3650,7 @@ func (c *Client) CreatePartition(request *CreatePartitionRequest) (response *Cre
 //  INVALIDPARAMETERVALUE_POSTPAYPARTITIONDESCRIPTION = "InvalidParameterValue.PostpayPartitionDescription"
 //  INVALIDPARAMETERVALUE_POSTPAYPARTITIONNAME = "InvalidParameterValue.PostpayPartitionName"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) CreatePartitionWithContext(ctx context.Context, request *CreatePartitionRequest) (response *CreatePartitionResponse, err error) {
     if request == nil {

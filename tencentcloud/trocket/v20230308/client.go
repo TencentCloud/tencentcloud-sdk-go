@@ -211,6 +211,56 @@ func (c *Client) CreateConsumerLabelWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateConsumerLabelsRequest() (request *CreateConsumerLabelsRequest) {
+    request = &CreateConsumerLabelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "CreateConsumerLabels")
+    
+    
+    return
+}
+
+func NewCreateConsumerLabelsResponse() (response *CreateConsumerLabelsResponse) {
+    response = &CreateConsumerLabelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateConsumerLabels
+// 批量创建消费组灰度标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateConsumerLabels(request *CreateConsumerLabelsRequest) (response *CreateConsumerLabelsResponse, err error) {
+    return c.CreateConsumerLabelsWithContext(context.Background(), request)
+}
+
+// CreateConsumerLabels
+// 批量创建消费组灰度标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateConsumerLabelsWithContext(ctx context.Context, request *CreateConsumerLabelsRequest) (response *CreateConsumerLabelsResponse, err error) {
+    if request == nil {
+        request = NewCreateConsumerLabelsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "CreateConsumerLabels")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConsumerLabels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConsumerLabelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
     request = &CreateInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -551,6 +601,56 @@ func (c *Client) DeleteConsumerLabelWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDeleteConsumerLabelsRequest() (request *DeleteConsumerLabelsRequest) {
+    request = &DeleteConsumerLabelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DeleteConsumerLabels")
+    
+    
+    return
+}
+
+func NewDeleteConsumerLabelsResponse() (response *DeleteConsumerLabelsResponse) {
+    response = &DeleteConsumerLabelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteConsumerLabels
+// 批量删除消费组灰度标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteConsumerLabels(request *DeleteConsumerLabelsRequest) (response *DeleteConsumerLabelsResponse, err error) {
+    return c.DeleteConsumerLabelsWithContext(context.Background(), request)
+}
+
+// DeleteConsumerLabels
+// 批量删除消费组灰度标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteConsumerLabelsWithContext(ctx context.Context, request *DeleteConsumerLabelsRequest) (response *DeleteConsumerLabelsResponse, err error) {
+    if request == nil {
+        request = NewDeleteConsumerLabelsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DeleteConsumerLabels")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConsumerLabels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteConsumerLabelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteConsumerRouteConfigRequest() (request *DeleteConsumerRouteConfigRequest) {
     request = &DeleteConsumerRouteConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -575,7 +675,6 @@ func NewDeleteConsumerRouteConfigResponse() (response *DeleteConsumerRouteConfig
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  RESOURCENOTFOUND_GROUP = "ResourceNotFound.Group"
 func (c *Client) DeleteConsumerRouteConfig(request *DeleteConsumerRouteConfigRequest) (response *DeleteConsumerRouteConfigResponse, err error) {
     return c.DeleteConsumerRouteConfigWithContext(context.Background(), request)
 }
@@ -585,7 +684,6 @@ func (c *Client) DeleteConsumerRouteConfig(request *DeleteConsumerRouteConfigReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  RESOURCENOTFOUND_GROUP = "ResourceNotFound.Group"
 func (c *Client) DeleteConsumerRouteConfigWithContext(ctx context.Context, request *DeleteConsumerRouteConfigRequest) (response *DeleteConsumerRouteConfigResponse, err error) {
     if request == nil {
         request = NewDeleteConsumerRouteConfigRequest()
@@ -599,6 +697,56 @@ func (c *Client) DeleteConsumerRouteConfigWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDeleteConsumerRouteConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteConsumerRouteConfigsRequest() (request *DeleteConsumerRouteConfigsRequest) {
+    request = &DeleteConsumerRouteConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DeleteConsumerRouteConfigs")
+    
+    
+    return
+}
+
+func NewDeleteConsumerRouteConfigsResponse() (response *DeleteConsumerRouteConfigsResponse) {
+    response = &DeleteConsumerRouteConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteConsumerRouteConfigs
+// 批量删除消费组灰度路由配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteConsumerRouteConfigs(request *DeleteConsumerRouteConfigsRequest) (response *DeleteConsumerRouteConfigsResponse, err error) {
+    return c.DeleteConsumerRouteConfigsWithContext(context.Background(), request)
+}
+
+// DeleteConsumerRouteConfigs
+// 批量删除消费组灰度路由配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteConsumerRouteConfigsWithContext(ctx context.Context, request *DeleteConsumerRouteConfigsRequest) (response *DeleteConsumerRouteConfigsResponse, err error) {
+    if request == nil {
+        request = NewDeleteConsumerRouteConfigsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DeleteConsumerRouteConfigs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConsumerRouteConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteConsumerRouteConfigsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1191,6 +1339,106 @@ func (c *Client) DescribeConsumerLabelListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeConsumerLabelListsRequest() (request *DescribeConsumerLabelListsRequest) {
+    request = &DescribeConsumerLabelListsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeConsumerLabelLists")
+    
+    
+    return
+}
+
+func NewDescribeConsumerLabelListsResponse() (response *DescribeConsumerLabelListsResponse) {
+    response = &DescribeConsumerLabelListsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsumerLabelLists
+// 批量查询多个消费组的灰度标签列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeConsumerLabelLists(request *DescribeConsumerLabelListsRequest) (response *DescribeConsumerLabelListsResponse, err error) {
+    return c.DescribeConsumerLabelListsWithContext(context.Background(), request)
+}
+
+// DescribeConsumerLabelLists
+// 批量查询多个消费组的灰度标签列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeConsumerLabelListsWithContext(ctx context.Context, request *DescribeConsumerLabelListsRequest) (response *DescribeConsumerLabelListsResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumerLabelListsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeConsumerLabelLists")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsumerLabelLists require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsumerLabelListsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConsumerLabelRoutesRequest() (request *DescribeConsumerLabelRoutesRequest) {
+    request = &DescribeConsumerLabelRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeConsumerLabelRoutes")
+    
+    
+    return
+}
+
+func NewDescribeConsumerLabelRoutesResponse() (response *DescribeConsumerLabelRoutesResponse) {
+    response = &DescribeConsumerLabelRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsumerLabelRoutes
+// 批量查询消费组灰度标签命中的 Topic 路由
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeConsumerLabelRoutes(request *DescribeConsumerLabelRoutesRequest) (response *DescribeConsumerLabelRoutesResponse, err error) {
+    return c.DescribeConsumerLabelRoutesWithContext(context.Background(), request)
+}
+
+// DescribeConsumerLabelRoutes
+// 批量查询消费组灰度标签命中的 Topic 路由
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeConsumerLabelRoutesWithContext(ctx context.Context, request *DescribeConsumerLabelRoutesRequest) (response *DescribeConsumerLabelRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumerLabelRoutesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeConsumerLabelRoutes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsumerLabelRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsumerLabelRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConsumerLagRequest() (request *DescribeConsumerLagRequest) {
     request = &DescribeConsumerLagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1295,6 +1543,56 @@ func (c *Client) DescribeConsumerRouteConfigWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeConsumerRouteConfigsRequest() (request *DescribeConsumerRouteConfigsRequest) {
+    request = &DescribeConsumerRouteConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeConsumerRouteConfigs")
+    
+    
+    return
+}
+
+func NewDescribeConsumerRouteConfigsResponse() (response *DescribeConsumerRouteConfigsResponse) {
+    response = &DescribeConsumerRouteConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsumerRouteConfigs
+// 批量查询消费组灰度路由配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeConsumerRouteConfigs(request *DescribeConsumerRouteConfigsRequest) (response *DescribeConsumerRouteConfigsResponse, err error) {
+    return c.DescribeConsumerRouteConfigsWithContext(context.Background(), request)
+}
+
+// DescribeConsumerRouteConfigs
+// 批量查询消费组灰度路由配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeConsumerRouteConfigsWithContext(ctx context.Context, request *DescribeConsumerRouteConfigsRequest) (response *DescribeConsumerRouteConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumerRouteConfigsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeConsumerRouteConfigs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsumerRouteConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsumerRouteConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConsumerRouteVersionListRequest() (request *DescribeConsumerRouteVersionListRequest) {
     request = &DescribeConsumerRouteVersionListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1318,7 +1616,7 @@ func NewDescribeConsumerRouteVersionListResponse() (response *DescribeConsumerRo
 // 查询消费组灰度路由配置版本列表
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeConsumerRouteVersionList(request *DescribeConsumerRouteVersionListRequest) (response *DescribeConsumerRouteVersionListResponse, err error) {
     return c.DescribeConsumerRouteVersionListWithContext(context.Background(), request)
 }
@@ -1327,7 +1625,7 @@ func (c *Client) DescribeConsumerRouteVersionList(request *DescribeConsumerRoute
 // 查询消费组灰度路由配置版本列表
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeConsumerRouteVersionListWithContext(ctx context.Context, request *DescribeConsumerRouteVersionListRequest) (response *DescribeConsumerRouteVersionListResponse, err error) {
     if request == nil {
         request = NewDescribeConsumerRouteVersionListRequest()
@@ -3253,6 +3551,56 @@ func (c *Client) PutConsumerRouteConfigWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewPutConsumerRouteConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPutConsumerRouteConfigsRequest() (request *PutConsumerRouteConfigsRequest) {
+    request = &PutConsumerRouteConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "PutConsumerRouteConfigs")
+    
+    
+    return
+}
+
+func NewPutConsumerRouteConfigsResponse() (response *PutConsumerRouteConfigsResponse) {
+    response = &PutConsumerRouteConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PutConsumerRouteConfigs
+// 批量写入消费组灰度路由配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) PutConsumerRouteConfigs(request *PutConsumerRouteConfigsRequest) (response *PutConsumerRouteConfigsResponse, err error) {
+    return c.PutConsumerRouteConfigsWithContext(context.Background(), request)
+}
+
+// PutConsumerRouteConfigs
+// 批量写入消费组灰度路由配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) PutConsumerRouteConfigsWithContext(ctx context.Context, request *PutConsumerRouteConfigsRequest) (response *PutConsumerRouteConfigsResponse, err error) {
+    if request == nil {
+        request = NewPutConsumerRouteConfigsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "PutConsumerRouteConfigs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PutConsumerRouteConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPutConsumerRouteConfigsResponse()
     err = c.Send(request, response)
     return
 }

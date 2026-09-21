@@ -21,58 +21,58 @@ import (
 )
 
 type AddDeviceData struct {
-	// 设备iD
+	// <p>设备iD</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
+	// <p>设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）</p>
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 设备接入协议，1:RTMP,2:GB,3:GW 
+	// <p>设备接入协议，1:RTMP,2:GB</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li><li>6： ISUP</li></ul>
 	AccessProtocol *int64 `json:"AccessProtocol,omitnil,omitempty" name:"AccessProtocol"`
 
-	// 设备类型，1:IPC,2:NVR
+	// <p>设备类型，1:IPC,2:NVR</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 设备接入服务节点ID
+	// <p>设备接入服务节点ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 设备接入服务节点名称
+	// <p>设备接入服务节点名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 设备流传输协议，1:UDP,2:TCP 
+	// <p>设备流传输协议，1:UDP,2:TCP</p>
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
-	// 设备密码
+	// <p>设备密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 设备描述
+	// <p>设备描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 设备状态，0:未注册,1:在线,2:离线,3:禁用
+	// <p>设备状态，0:未注册,1:在线,2:离线,3:禁用</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 设备所属组织ID
+	// <p>设备所属组织ID</p>
 	OrganizationId *int64 `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
-	// 设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
+	// <p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+	// <p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
 	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
-	// 设备接入IP（仅网关接入需要）
+	// <p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 设备Port（仅网关接入需要）
+	// <p>设备Port（已不再使用，保留用于兼容，可忽略）</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 设备用户名（仅网关接入需要）
+	// <p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 用户ID
+	// <p>用户ID</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
@@ -823,104 +823,104 @@ func (r *AddStreamAuthResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddUserDeviceRequestParams struct {
-	// 设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）
+	// <p>设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 设备接入协议（1:RTMP,2:GB,3:GW,6:ISUP）
+	// <p>设备接入协议（1:RTMP,2:GB,6:ISUP）</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li><li>6： ISUP</li></ul><p>默认值：2</p>
 	AccessProtocol *int64 `json:"AccessProtocol,omitnil,omitempty" name:"AccessProtocol"`
 
-	// 设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP,IVCP，则设备类型只能选择IPC）
+	// <p>设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP，则设备类型只能选择IPC）</p><p>枚举值：</p><ul><li>1： IPC</li><li>2： NVR</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 设备所属组织ID，从查询组织接口DescribeOrganization中获取
+	// <p>设备所属组织ID，从查询组织接口DescribeOrganization中获取</p>
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
-	// 设备接入服务节点ID（从查询设备可用服务节点接口DescribeDeviceRegion中获取的Value字段）
+	// <p>设备接入服务节点ID（从查询设备可用服务节点接口DescribeRegionDomain中获取的Value字段）</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 设备流传输协议，1:UDP,2:TCP；(国标设备有效，不填写则默认UDP协议)
+	// <p>设备流传输协议，1:UDP,2:TCP；(国标设备有效，不填写则默认UDP协议)</p>
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
-	// 设备密码（国标，网关设备必填，长度为1-64个字符）
+	// <p>设备密码（国标设备必填，长度为1-64个字符）</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 设备描述，长度不超过128个字符
+	// <p>设备描述，长度不超过128个字符</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 设备接入网关ID，从查询网关列表接口中ListGateways获取（仅网关接入需要）
+	// <p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 网关接入协议类型（从查询网关接入协议接口DescribeGatewayProtocol中获取）1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+	// <p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
 	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
-	// 设备接入IP（仅网关接入需要）
+	// <p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 设备端口（仅网关接入需要）
+	// <p>设备端口（已不再使用，保留用于兼容，可忽略）</p><p>取值范围：[1, 65535]</p><p>单位： 端口</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 设备用户名（仅网关接入需要）
+	// <p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 设备 SN，仅IVCP 协议设备需要
+	// <p>设备 SN（已不再使用，保留用于兼容，可忽略）</p>
 	SNCode *string `json:"SNCode,omitnil,omitempty" name:"SNCode"`
 
-	// RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
+	// <p>RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
+	// <p>RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）</p>
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 }
 
 type AddUserDeviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）
+	// <p>设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 设备接入协议（1:RTMP,2:GB,3:GW,6:ISUP）
+	// <p>设备接入协议（1:RTMP,2:GB,6:ISUP）</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li><li>6： ISUP</li></ul><p>默认值：2</p>
 	AccessProtocol *int64 `json:"AccessProtocol,omitnil,omitempty" name:"AccessProtocol"`
 
-	// 设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP,IVCP，则设备类型只能选择IPC）
+	// <p>设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP，则设备类型只能选择IPC）</p><p>枚举值：</p><ul><li>1： IPC</li><li>2： NVR</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 设备所属组织ID，从查询组织接口DescribeOrganization中获取
+	// <p>设备所属组织ID，从查询组织接口DescribeOrganization中获取</p>
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
-	// 设备接入服务节点ID（从查询设备可用服务节点接口DescribeDeviceRegion中获取的Value字段）
+	// <p>设备接入服务节点ID（从查询设备可用服务节点接口DescribeRegionDomain中获取的Value字段）</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 设备流传输协议，1:UDP,2:TCP；(国标设备有效，不填写则默认UDP协议)
+	// <p>设备流传输协议，1:UDP,2:TCP；(国标设备有效，不填写则默认UDP协议)</p>
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
-	// 设备密码（国标，网关设备必填，长度为1-64个字符）
+	// <p>设备密码（国标设备必填，长度为1-64个字符）</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 设备描述，长度不超过128个字符
+	// <p>设备描述，长度不超过128个字符</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 设备接入网关ID，从查询网关列表接口中ListGateways获取（仅网关接入需要）
+	// <p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 网关接入协议类型（从查询网关接入协议接口DescribeGatewayProtocol中获取）1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+	// <p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
 	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
-	// 设备接入IP（仅网关接入需要）
+	// <p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 设备端口（仅网关接入需要）
+	// <p>设备端口（已不再使用，保留用于兼容，可忽略）</p><p>取值范围：[1, 65535]</p><p>单位： 端口</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 设备用户名（仅网关接入需要）
+	// <p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 设备 SN，仅IVCP 协议设备需要
+	// <p>设备 SN（已不再使用，保留用于兼容，可忽略）</p>
 	SNCode *string `json:"SNCode,omitnil,omitempty" name:"SNCode"`
 
-	// RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
+	// <p>RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
+	// <p>RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）</p>
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 }
 
@@ -960,7 +960,7 @@ func (r *AddUserDeviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddUserDeviceResponseParams struct {
-	// 增加设备返回数据
+	// <p>增加设备返回数据</p>
 	Data *AddDeviceData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1044,20 +1044,20 @@ type BatchOperateDeviceData struct {
 
 // Predefined struct for user
 type BatchOperateDeviceRequestParams struct {
-	// 设备 ID 数组（从获取设备列表接口ListDevices中获取）
+	// <p>设备 ID 数组（从获取设备列表接口ListDevices中获取）</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1344/95871">ListDevices</a></p>
 	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
 
-	// 操作命令（enable：启用；disable：禁用；delete：删除；sync：同步设备通道；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
+	// <p>操作命令</p><p>枚举值：</p><ul><li>enable： 启用</li><li>disable： 禁用</li><li>delete： 删除</li><li>sync： 同步设备通道</li></ul>
 	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 }
 
 type BatchOperateDeviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备 ID 数组（从获取设备列表接口ListDevices中获取）
+	// <p>设备 ID 数组（从获取设备列表接口ListDevices中获取）</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1344/95871">ListDevices</a></p>
 	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
 
-	// 操作命令（enable：启用；disable：禁用；delete：删除；sync：同步设备通道；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
+	// <p>操作命令</p><p>枚举值：</p><ul><li>enable： 启用</li><li>disable： 禁用</li><li>delete： 删除</li><li>sync： 同步设备通道</li></ul>
 	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 }
 
@@ -1083,7 +1083,7 @@ func (r *BatchOperateDeviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BatchOperateDeviceResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Data *BatchOperateDeviceData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2440,7 +2440,7 @@ type DescribeDeviceData struct {
 	// <p>设备名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>设备接入协议，1:RTMP,2:GB,3:GW</p>
+	// <p>设备接入协议，1:RTMP,2:GB</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li></ul>
 	AccessProtocol *int64 `json:"AccessProtocol,omitnil,omitempty" name:"AccessProtocol"`
 
 	// <p>设备类型，1:IPC,2:NVR</p>
@@ -2482,25 +2482,25 @@ type DescribeDeviceData struct {
 	// <p>设备所属组织ID</p>
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
-	// <p>设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）</p>
+	// <p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// <p>设备所属网关名称</p>
+	// <p>设备所属网关名称（已不再使用，保留用于兼容，可忽略）</p>
 	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
 
-	// <p>设备网关协议名称</p>
+	// <p>设备网关协议名称（已不再使用，保留用于兼容，可忽略）</p>
 	ProtocolTypeName *string `json:"ProtocolTypeName,omitnil,omitempty" name:"ProtocolTypeName"`
 
-	// <p>网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）</p>
+	// <p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
 	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
-	// <p>设备接入IP</p>
+	// <p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// <p>设备Port</p>
+	// <p>设备Port（已不再使用，保留用于兼容，可忽略）</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// <p>设备用户名</p>
+	// <p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// <p>设备地域</p>
@@ -2526,6 +2526,15 @@ type DescribeDeviceData struct {
 
 	// <p>Rtmp设备安全认证推流地址(仅rtmp设备有效)</p>
 	PushStreamSecureUrl *string `json:"PushStreamSecureUrl,omitnil,omitempty" name:"PushStreamSecureUrl"`
+
+	// <p>国标SIP域名</p>
+	SipFQDN *string `json:"SipFQDN,omitnil,omitempty" name:"SipFQDN"`
+
+	// <p>国标SIP三网IP地址</p>
+	SipCarrierEndpoints *SipCarrierEndpoints `json:"SipCarrierEndpoints,omitnil,omitempty" name:"SipCarrierEndpoints"`
+
+	// <p>国标校时开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值： 1</p>
+	TimeSyncSwitch *int64 `json:"TimeSyncSwitch,omitnil,omitempty" name:"TimeSyncSwitch"`
 }
 
 type DescribeDeviceListData struct {
@@ -5922,6 +5931,23 @@ type SetForbidplayChannelParam struct {
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
+type SipCarrierEndpoints struct {
+	// <p>电信IP</p>
+	CT *string `json:"CT,omitnil,omitempty" name:"CT"`
+
+	// <p>联通IP</p>
+	CU *string `json:"CU,omitnil,omitempty" name:"CU"`
+
+	// <p>移动IP</p>
+	CMCC *string `json:"CMCC,omitnil,omitempty" name:"CMCC"`
+
+	// <p>腾讯网络IP</p>
+	BGP *string `json:"BGP,omitnil,omitempty" name:"BGP"`
+
+	// <p>中小运营商IP</p>
+	CAP *string `json:"CAP,omitnil,omitempty" name:"CAP"`
+}
+
 type SubTaskData struct {
 	// 子任务ID
 	SubTaskId *string `json:"SubTaskId,omitnil,omitempty" name:"SubTaskId"`
@@ -6040,58 +6066,58 @@ type Timeline struct {
 }
 
 type UpdateDeviceData struct {
-	// 设备ID
+	// <p>设备ID</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
+	// <p>设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）</p>
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 设备接入协议，1:RTMP,2:GB,3:GW 
+	// <p>设备接入协议，1:RTMP,2:GB</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li></ul>
 	AccessProtocol *int64 `json:"AccessProtocol,omitnil,omitempty" name:"AccessProtocol"`
 
-	// 设备类型，1:IPC,2:NVR
+	// <p>设备类型，1:IPC,2:NVR</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 设备接入服务节点ID
+	// <p>设备接入服务节点ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 设备接入服务节点名称
+	// <p>设备接入服务节点名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 设备流传输协议，1:UDP,2:TCP 
+	// <p>设备流传输协议，1:UDP,2:TCP</p>
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
-	// 设备密码
+	// <p>设备密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 设备描述
+	// <p>设备描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 设备状态，0:未注册,1:在线,2:离线,3:禁用
+	// <p>设备状态，0:未注册,1:在线,2:离线,3:禁用</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 设备所属组织ID
+	// <p>设备所属组织ID</p>
 	OrganizationId *int64 `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
-	// 设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
+	// <p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+	// <p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
 	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
-	// 设备接入IP
+	// <p>设备接入IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 设备Port
+	// <p>设备Port</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 设备用户名
+	// <p>设备用户名</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 用户Id
+	// <p>用户Id</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
@@ -6694,81 +6720,87 @@ func (r *UpdateRecordTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateUserDeviceRequestParams struct {
-	// 设备ID（从获取设备列表接口ListDevices中获取）
+	// <p>设备ID（从获取设备列表接口ListDevices中获取）</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1344/95871">ListDevices</a></p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 设备名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位）
+	// <p>设备名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位）</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 设备流传输协议，仅国标设备有效，填0则不做更改（1:UDP,2:TCP）
+	// <p>设备流传输协议，仅国标设备有效，填0则不做更改（1:UDP,2:TCP）</p>
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
-	// 设备密码（仅国标，网关设备支持，长度不超过 64 位）
+	// <p>设备密码（仅国标设备支持，长度不超过 64 位）</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 设备描述（长度不超过128位）
+	// <p>设备描述（长度不超过128位）</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 设备接入Ip（仅网关接入支持）
+	// <p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 设备Port（仅网关接入支持）
+	// <p>设备Port（已不再使用，保留用于兼容，可忽略）</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 设备用户名（仅网关接入支持）
+	// <p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 网关设备接入协议（仅网关接入支持）
+	// <p>网关设备接入协议（已不再使用，保留用于兼容，可忽略）</p>
 	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
-	// 音频关开（0：关闭；1：开启）默认开启，关闭时丢弃音频
+	// <p>音频关开（0：关闭；1：开启）默认开启，关闭时丢弃音频</p>
 	AudioSwitch *int64 `json:"AudioSwitch,omitnil,omitempty" name:"AudioSwitch"`
 
-	// 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效
+	// <p>订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效</p>
 	SubscribeSwitch *int64 `json:"SubscribeSwitch,omitnil,omitempty" name:"SubscribeSwitch"`
 
-	// 是否开启静音帧（0：关闭；1 开启）
+	// <p>是否开启静音帧（0：关闭；1 开启）</p>
 	SilentFrameSwitch *int64 `json:"SilentFrameSwitch,omitnil,omitempty" name:"SilentFrameSwitch"`
+
+	// <p>时钟同步开关（仅国标设备生效）</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值： 1</p>
+	TimeSyncSwitch *int64 `json:"TimeSyncSwitch,omitnil,omitempty" name:"TimeSyncSwitch"`
 }
 
 type UpdateUserDeviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备ID（从获取设备列表接口ListDevices中获取）
+	// <p>设备ID（从获取设备列表接口ListDevices中获取）</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1344/95871">ListDevices</a></p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 设备名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位）
+	// <p>设备名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位）</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 设备流传输协议，仅国标设备有效，填0则不做更改（1:UDP,2:TCP）
+	// <p>设备流传输协议，仅国标设备有效，填0则不做更改（1:UDP,2:TCP）</p>
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
-	// 设备密码（仅国标，网关设备支持，长度不超过 64 位）
+	// <p>设备密码（仅国标设备支持，长度不超过 64 位）</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 设备描述（长度不超过128位）
+	// <p>设备描述（长度不超过128位）</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 设备接入Ip（仅网关接入支持）
+	// <p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 设备Port（仅网关接入支持）
+	// <p>设备Port（已不再使用，保留用于兼容，可忽略）</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 设备用户名（仅网关接入支持）
+	// <p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 网关设备接入协议（仅网关接入支持）
+	// <p>网关设备接入协议（已不再使用，保留用于兼容，可忽略）</p>
 	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
-	// 音频关开（0：关闭；1：开启）默认开启，关闭时丢弃音频
+	// <p>音频关开（0：关闭；1：开启）默认开启，关闭时丢弃音频</p>
 	AudioSwitch *int64 `json:"AudioSwitch,omitnil,omitempty" name:"AudioSwitch"`
 
-	// 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效
+	// <p>订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效</p>
 	SubscribeSwitch *int64 `json:"SubscribeSwitch,omitnil,omitempty" name:"SubscribeSwitch"`
 
-	// 是否开启静音帧（0：关闭；1 开启）
+	// <p>是否开启静音帧（0：关闭；1 开启）</p>
 	SilentFrameSwitch *int64 `json:"SilentFrameSwitch,omitnil,omitempty" name:"SilentFrameSwitch"`
+
+	// <p>时钟同步开关（仅国标设备生效）</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值： 1</p>
+	TimeSyncSwitch *int64 `json:"TimeSyncSwitch,omitnil,omitempty" name:"TimeSyncSwitch"`
 }
 
 func (r *UpdateUserDeviceRequest) ToJsonString() string {
@@ -6795,6 +6827,7 @@ func (r *UpdateUserDeviceRequest) FromJsonString(s string) error {
 	delete(f, "AudioSwitch")
 	delete(f, "SubscribeSwitch")
 	delete(f, "SilentFrameSwitch")
+	delete(f, "TimeSyncSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserDeviceRequest has unknown keys!", "")
 	}
@@ -6803,7 +6836,7 @@ func (r *UpdateUserDeviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateUserDeviceResponseParams struct {
-	// 返回数据
+	// <p>返回数据</p>
 	Data *UpdateDeviceData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

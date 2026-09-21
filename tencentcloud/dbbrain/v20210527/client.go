@@ -6027,6 +6027,118 @@ func (c *Client) DescribeTopSpaceTablesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeTopSpaceTablesV2Request() (request *DescribeTopSpaceTablesV2Request) {
+    request = &DescribeTopSpaceTablesV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeTopSpaceTablesV2")
+    
+    
+    return
+}
+
+func NewDescribeTopSpaceTablesV2Response() (response *DescribeTopSpaceTablesV2Response) {
+    response = &DescribeTopSpaceTablesV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTopSpaceTablesV2
+// 表级空间 Top 对象查询（融合接口，多产品统一入口），按 SortBy 指定的排序字段返回实例内空间占用 Top N 的表/集合。支持产品：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）、dcdb（TDSQL MySQL 版）、tdsql（TDSQL）、mariadb（云数据库 MariaDB）。返回值根据产品类型返回对应字段：MySQL 系列返回 MysqlObjects，PostgreSQL 返回 PostgresObjects（PG 的 relation/bloat 字段与 MySQL 语义不同），MongoDB 返回 MongodbObjects。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+//  FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
+func (c *Client) DescribeTopSpaceTablesV2(request *DescribeTopSpaceTablesV2Request) (response *DescribeTopSpaceTablesV2Response, err error) {
+    return c.DescribeTopSpaceTablesV2WithContext(context.Background(), request)
+}
+
+// DescribeTopSpaceTablesV2
+// 表级空间 Top 对象查询（融合接口，多产品统一入口），按 SortBy 指定的排序字段返回实例内空间占用 Top N 的表/集合。支持产品：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）、dcdb（TDSQL MySQL 版）、tdsql（TDSQL）、mariadb（云数据库 MariaDB）。返回值根据产品类型返回对应字段：MySQL 系列返回 MysqlObjects，PostgreSQL 返回 PostgresObjects（PG 的 relation/bloat 字段与 MySQL 语义不同），MongoDB 返回 MongodbObjects。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+//  FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
+func (c *Client) DescribeTopSpaceTablesV2WithContext(ctx context.Context, request *DescribeTopSpaceTablesV2Request) (response *DescribeTopSpaceTablesV2Response, err error) {
+    if request == nil {
+        request = NewDescribeTopSpaceTablesV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeTopSpaceTablesV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopSpaceTablesV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopSpaceTablesV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserAutonomyProfileRequest() (request *DescribeUserAutonomyProfileRequest) {
     request = &DescribeUserAutonomyProfileRequest{
         BaseRequest: &tchttp.BaseRequest{},

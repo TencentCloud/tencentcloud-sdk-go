@@ -1725,6 +1725,45 @@ type Coefficient struct {
 
 	// <p>输出积分系数。</p><p>取值范围：[1, 5000]</p><p>默认值：100</p>
 	OutputCoefficient *float64 `json:"OutputCoefficient,omitnil,omitempty" name:"OutputCoefficient"`
+
+	// <p>输入图片系数</p>
+	InputImageCoefficient *float64 `json:"InputImageCoefficient,omitnil,omitempty" name:"InputImageCoefficient"`
+
+	// <p>输入视频每秒系数</p>
+	InputVideoSecondCoefficient *float64 `json:"InputVideoSecondCoefficient,omitnil,omitempty" name:"InputVideoSecondCoefficient"`
+
+	// <p>输出视频每秒系数</p>
+	OutputVideoSecondCoefficient *float64 `json:"OutputVideoSecondCoefficient,omitnil,omitempty" name:"OutputVideoSecondCoefficient"`
+}
+
+type CoefficientScheduleRule struct {
+	// <p>1～7，表示周一至周日</p>
+	Weekdays []*uint64 `json:"Weekdays,omitnil,omitempty" name:"Weekdays"`
+
+	// <p>00:00～23:59，固定 UTC+8，窗口左闭</p><p>参数格式：HH:mm</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>大于 StartTime，最大 24:00，窗口右开；跨午夜拆分并调整星期</p><p>参数格式：HH:mm</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>有限非负数，建议最多 6 位小数；0 免费、0.5 半价、1 原价，可大于 1；倍率计算后的价格须在服务支持的数值范围内</p>
+	Multiplier *float64 `json:"Multiplier,omitnil,omitempty" name:"Multiplier"`
+}
+
+type CoefficientTier struct {
+	// <p>积分分级条件</p>
+	Condition *CoefficientTierCondition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// <p>积分系数</p>
+	Coefficient *Coefficient `json:"Coefficient,omitnil,omitempty" name:"Coefficient"`
+}
+
+type CoefficientTierCondition struct {
+	// <p>仅 chat；单位 K Token（1K=1000 Token）；非负整数，最大 2147483647；非空数组首条必须为 0，数组内严格递增、无重复；输入总 Token 严格超过阈值×1000，取满足条件的最大阈值，整单选价</p>
+	InputTokensAbove *uint64 `json:"InputTokensAbove,omitnil,omitempty" name:"InputTokensAbove"`
+
+	// <p>video 仅 480p／720p／768p／1024p／1080p／2k／4k，统一小写；只校验全局枚举，不校验模型支持子集；列表内不重复</p>
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 }
 
 type ConfigListItem struct {
@@ -7295,7 +7334,7 @@ func (r *DescribeLoadBalancersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModelAliasesRequestParams struct {
-	// <p>过滤条件</p><p>支持的过滤键：</p><ul><li>ModelAliasName：按模型别名过滤。</li></ul>
+	// <p>过滤条件</p><p></p>- ModelAliasName：模型别名<p></p><p></p>- Capability：输出模态<p></p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>每页数量，取值范围：[1, 100]，默认值：20。</p>
@@ -7304,14 +7343,14 @@ type DescribeModelAliasesRequestParams struct {
 	// <p>分页偏移量，默认值：0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>排序条件。支持按 InputCoefficient、InputCachedCoefficient 或 OutputCoefficient 排序，Order 支持 ASC、DESC。不传或传空数组时，默认按 OutputCoefficient 降序排列。最多支持 3 个排序条件，排序字段不可重复。</p>
+	// <p>排序条件。支持按 InputCoefficient 或 OutputCoefficient 排序，Order 支持 ASC、DESC。不传或传空数组时，默认按 OutputCoefficient 降序排列。最多支持 2 个排序条件，排序字段不可重复。</p>
 	Sort []*Sort `json:"Sort,omitnil,omitempty" name:"Sort"`
 }
 
 type DescribeModelAliasesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>过滤条件</p><p>支持的过滤键：</p><ul><li>ModelAliasName：按模型别名过滤。</li></ul>
+	// <p>过滤条件</p><p></p>- ModelAliasName：模型别名<p></p><p></p>- Capability：输出模态<p></p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>每页数量，取值范围：[1, 100]，默认值：20。</p>
@@ -7320,7 +7359,7 @@ type DescribeModelAliasesRequest struct {
 	// <p>分页偏移量，默认值：0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>排序条件。支持按 InputCoefficient、InputCachedCoefficient 或 OutputCoefficient 排序，Order 支持 ASC、DESC。不传或传空数组时，默认按 OutputCoefficient 降序排列。最多支持 3 个排序条件，排序字段不可重复。</p>
+	// <p>排序条件。支持按 InputCoefficient 或 OutputCoefficient 排序，Order 支持 ASC、DESC。不传或传空数组时，默认按 OutputCoefficient 降序排列。最多支持 2 个排序条件，排序字段不可重复。</p>
 	Sort []*Sort `json:"Sort,omitnil,omitempty" name:"Sort"`
 }
 
@@ -11271,8 +11310,14 @@ type ModelAlias struct {
 	// <p>状态</p><p>枚举值：</p><ul><li>Active： 正常可用</li><li>Configuring： 变配中</li><li>ConfigureFailed： 变配失败</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// <p>模型能力</p>
+	// <p>模型输出模态</p><p>枚举值：</p><ul><li>chat ： 文本</li><li>embedding： 向量</li><li>rerank： 重排序</li><li>video： 视频</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
+
+	// <p>分级积分系数配置</p>
+	CoefficientTiers []*CoefficientTier `json:"CoefficientTiers,omitnil,omitempty" name:"CoefficientTiers"`
+
+	// <p>峰谷积分系数配置</p>
+	CoefficientSchedule []*CoefficientScheduleRule `json:"CoefficientSchedule,omitnil,omitempty" name:"CoefficientSchedule"`
 }
 
 type ModelAssociation struct {
@@ -13069,33 +13114,45 @@ func (r *ModifyLoadBalancersProjectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyModelAliasAttributesRequestParams struct {
-	// <p>模型积分系数配置。</p><p>必填，包含 <code>InputCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p><code>InputCoefficient</code> 为输入积分系数。</p><p><code>OutputCoefficient</code> 为输出积分系数。</p><p>取值范围：[1, 200]，最多支持 1 位小数。</p>
-	Coefficient *Coefficient `json:"Coefficient,omitnil,omitempty" name:"Coefficient"`
-
 	// <p>模型别名</p>
 	ModelAliasNames []*string `json:"ModelAliasNames,omitnil,omitempty" name:"ModelAliasNames"`
+
+	// <p>基础积分系数配置，选填。不传时保留原配置。各系数字段均为选填，取值范围为 [0, 5000]，最多支持 6 位小数，0 表示零价。传入本参数时，至少填写一项有效系数，不能传空对象。</p>
+	Coefficient *Coefficient `json:"Coefficient,omitnil,omitempty" name:"Coefficient"`
 
 	// <p>BYOK 实例（ServiceProvider）ID 列表。</p><p>可选，数组。传入时按 ServiceProvider 维度修改：把同一份 Coefficient 批量应用到数组内每一个实例（覆盖配置，仅作用于这些实例），此时 <code>ModelAliasNames</code> 只能传 1 个别名（即 1 别名 × N ServiceProvider）；数组需去重、非空、上限 100，任一实例不归属/不存在/该实例下无该别名将整批返回错误。不传时按 ModelAlias（账号）维度修改，作用于该别名下未单独配置覆盖的全部实例。</p>
 	ServiceProviderIds []*string `json:"ServiceProviderIds,omitnil,omitempty" name:"ServiceProviderIds"`
 
-	// <p>模型能力</p>
+	// <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
+
+	// <p>积分梯度设置</p>
+	CoefficientTiers []*CoefficientTier `json:"CoefficientTiers,omitnil,omitempty" name:"CoefficientTiers"`
+
+	// <p>积分峰谷设置</p>
+	CoefficientSchedule []*CoefficientScheduleRule `json:"CoefficientSchedule,omitnil,omitempty" name:"CoefficientSchedule"`
 }
 
 type ModifyModelAliasAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>模型积分系数配置。</p><p>必填，包含 <code>InputCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p><code>InputCoefficient</code> 为输入积分系数。</p><p><code>OutputCoefficient</code> 为输出积分系数。</p><p>取值范围：[1, 200]，最多支持 1 位小数。</p>
-	Coefficient *Coefficient `json:"Coefficient,omitnil,omitempty" name:"Coefficient"`
-
 	// <p>模型别名</p>
 	ModelAliasNames []*string `json:"ModelAliasNames,omitnil,omitempty" name:"ModelAliasNames"`
+
+	// <p>基础积分系数配置，选填。不传时保留原配置。各系数字段均为选填，取值范围为 [0, 5000]，最多支持 6 位小数，0 表示零价。传入本参数时，至少填写一项有效系数，不能传空对象。</p>
+	Coefficient *Coefficient `json:"Coefficient,omitnil,omitempty" name:"Coefficient"`
 
 	// <p>BYOK 实例（ServiceProvider）ID 列表。</p><p>可选，数组。传入时按 ServiceProvider 维度修改：把同一份 Coefficient 批量应用到数组内每一个实例（覆盖配置，仅作用于这些实例），此时 <code>ModelAliasNames</code> 只能传 1 个别名（即 1 别名 × N ServiceProvider）；数组需去重、非空、上限 100，任一实例不归属/不存在/该实例下无该别名将整批返回错误。不传时按 ModelAlias（账号）维度修改，作用于该别名下未单独配置覆盖的全部实例。</p>
 	ServiceProviderIds []*string `json:"ServiceProviderIds,omitnil,omitempty" name:"ServiceProviderIds"`
 
-	// <p>模型能力</p>
+	// <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
+
+	// <p>积分梯度设置</p>
+	CoefficientTiers []*CoefficientTier `json:"CoefficientTiers,omitnil,omitempty" name:"CoefficientTiers"`
+
+	// <p>积分峰谷设置</p>
+	CoefficientSchedule []*CoefficientScheduleRule `json:"CoefficientSchedule,omitnil,omitempty" name:"CoefficientSchedule"`
 }
 
 func (r *ModifyModelAliasAttributesRequest) ToJsonString() string {
@@ -13110,10 +13167,12 @@ func (r *ModifyModelAliasAttributesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Coefficient")
 	delete(f, "ModelAliasNames")
+	delete(f, "Coefficient")
 	delete(f, "ServiceProviderIds")
 	delete(f, "Capability")
+	delete(f, "CoefficientTiers")
+	delete(f, "CoefficientSchedule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelAliasAttributesRequest has unknown keys!", "")
 	}
@@ -15414,6 +15473,12 @@ type ServiceProviderCoefficient struct {
 
 	// <p>BYOK 实例（ServiceProvider）名称。</p>
 	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+
+	// <p>分级积分系数设置</p>
+	CoefficientTiers []*CoefficientTier `json:"CoefficientTiers,omitnil,omitempty" name:"CoefficientTiers"`
+
+	// <p>峰谷积分系数设置</p>
+	CoefficientSchedule []*CoefficientScheduleRule `json:"CoefficientSchedule,omitnil,omitempty" name:"CoefficientSchedule"`
 }
 
 type ServiceProviderHealthCheckConfigInput struct {

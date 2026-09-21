@@ -7412,6 +7412,103 @@ func (r *DescribeTopSpaceTablesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTopSpaceTablesV2RequestParams struct {
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型，支持值包括：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）、dcdb（TDSQL MySQL 版）、tdsql（TDSQL）、mariadb（云数据库 MariaDB）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>查询日期，格式：yyyy-MM-dd。默认当天。</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>排序字段。MySQL/PG/TDSQL 系列支持：PhysicalFileSize/DataLength/IndexLength/TotalLength/DataFree/FragRatio/TableRows，默认 PhysicalFileSize。MongoDB 支持：Collection.CollectionSize/Collection.StorageSize/Collection.Size/Collection.AvgObjSize/Collection.Count/Collection.TotalIndexSize，默认 Collection.CollectionSize。</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>返回数量，默认20，最大100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeTopSpaceTablesV2Request struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型，支持值包括：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）、dcdb（TDSQL MySQL 版）、tdsql（TDSQL）、mariadb（云数据库 MariaDB）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>查询日期，格式：yyyy-MM-dd。默认当天。</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>排序字段。MySQL/PG/TDSQL 系列支持：PhysicalFileSize/DataLength/IndexLength/TotalLength/DataFree/FragRatio/TableRows，默认 PhysicalFileSize。MongoDB 支持：Collection.CollectionSize/Collection.StorageSize/Collection.Size/Collection.AvgObjSize/Collection.Count/Collection.TotalIndexSize，默认 Collection.CollectionSize。</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>返回数量，默认20，最大100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTopSpaceTablesV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopSpaceTablesV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "Date")
+	delete(f, "SortBy")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopSpaceTablesV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopSpaceTablesV2ResponseParams struct {
+	// <p>MySQL/PG/TDSQL 系列产品表级空间对象列表。当产品为 mysql/cynosdb/tdsql/dcdb/mariadb/postgres 时返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MysqlObjects []*MysqlSpaceObjectItem `json:"MysqlObjects,omitnil,omitempty" name:"MysqlObjects"`
+
+	// <p>PostgreSQL 产品表级空间对象列表。当产品为 postgres 时返回。字段语义与 MySQL 不同：使用 RelationSize / TableSize / IndexSize / TotalRelationSize / TableBloat 等 PG 特有指标。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostgresObjects []*PostgresSpaceObjectItem `json:"PostgresObjects,omitnil,omitempty" name:"PostgresObjects"`
+
+	// <p>MongoDB 产品表级（集合级）空间对象列表。当产品为 mongodb 时返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MongodbObjects []*MongoDBTableSpaceItem `json:"MongodbObjects,omitnil,omitempty" name:"MongodbObjects"`
+
+	// <p>数据采集时间戳（秒）。</p>
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTopSpaceTablesV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeTopSpaceTablesV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeTopSpaceTablesV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopSpaceTablesV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserAutonomyProfileRequestParams struct {
 	// 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）。
 	ProfileType *string `json:"ProfileType,omitnil,omitempty" name:"ProfileType"`
@@ -8612,6 +8709,56 @@ func (r *ModifyUserAutonomyProfileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MongoCollectionDetail struct {
+	// <p>集合命名空间，格式为 db.collection。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollStats *string `json:"CollStats,omitnil,omitempty" name:"CollStats"`
+
+	// <p>集合逻辑大小（字节，未压缩）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectionSize *int64 `json:"CollectionSize,omitnil,omitempty" name:"CollectionSize"`
+
+	// <p>集合已分配但未使用的空间（字节）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataFree *int64 `json:"DataFree,omitnil,omitempty" name:"DataFree"`
+
+	// <p>空间利用率（百分比字符串）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpaceRatio *string `json:"SpaceRatio,omitnil,omitempty" name:"SpaceRatio"`
+
+	// <p>碎片率（百分比字符串）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FragRatio *string `json:"FragRatio,omitnil,omitempty" name:"FragRatio"`
+
+	// <p>集合数据大小（字节）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// <p>所有索引占用大小（字节）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalIndexSize *int64 `json:"TotalIndexSize,omitnil,omitempty" name:"TotalIndexSize"`
+
+	// <p>平均文档大小（字节）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvgObjSize *int64 `json:"AvgObjSize,omitnil,omitempty" name:"AvgObjSize"`
+
+	// <p>集合实际占用存储大小（字节，压缩后）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
+
+	// <p>文档数量。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// <p>压缩率（百分比字符串）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompressionRatio *string `json:"CompressionRatio,omitnil,omitempty" name:"CompressionRatio"`
+
+	// <p>可复用文件空间（字节）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileReuseBytes *int64 `json:"FileReuseBytes,omitnil,omitempty" name:"FileReuseBytes"`
+}
+
 type MongoDBIndex struct {
 	// 实例id。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -8688,6 +8835,32 @@ type MongoDBProcessList struct {
 	Data []*MongoDBProcessItem `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
+type MongoDBTableSpaceItem struct {
+	// <p>应用 Id（AppId）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>实例 Id。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>数据库名。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
+
+	// <p>数据采集时间戳（毫秒）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// <p>磁盘占用大小（字节）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SizeOnDisk *int64 `json:"SizeOnDisk,omitnil,omitempty" name:"SizeOnDisk"`
+
+	// <p>集合级空间使用明细。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Collection *MongoCollectionDetail `json:"Collection,omitnil,omitempty" name:"Collection"`
+}
+
 type MonitorFloatMetric struct {
 	// 指标名称。
 	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
@@ -8754,6 +8927,48 @@ type MySqlProcess struct {
 	// sql类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SqlType *string `json:"SqlType,omitnil,omitempty" name:"SqlType"`
+}
+
+type MysqlSpaceObjectItem struct {
+	// <p>数据库名。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableSchema *string `json:"TableSchema,omitnil,omitempty" name:"TableSchema"`
+
+	// <p>表名（Level=TABLE时返回）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>存储引擎（Level=TABLE时返回）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// <p>行数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableRows *int64 `json:"TableRows,omitnil,omitempty" name:"TableRows"`
+
+	// <p>总使用空间（MB）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalLength *float64 `json:"TotalLength,omitnil,omitempty" name:"TotalLength"`
+
+	// <p>数据空间（MB）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataLength *float64 `json:"DataLength,omitnil,omitempty" name:"DataLength"`
+
+	// <p>索引空间（MB）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexLength *float64 `json:"IndexLength,omitnil,omitempty" name:"IndexLength"`
+
+	// <p>碎片空间（MB）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataFree *float64 `json:"DataFree,omitnil,omitempty" name:"DataFree"`
+
+	// <p>碎片率（%）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FragRatio *float64 `json:"FragRatio,omitnil,omitempty" name:"FragRatio"`
+
+	// <p>物理文件大小（MB）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhysicalFileSize *float64 `json:"PhysicalFileSize,omitnil,omitempty" name:"PhysicalFileSize"`
 }
 
 // Predefined struct for user
@@ -8839,6 +9054,44 @@ func (r *OpenAuditServiceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *OpenAuditServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PostgresSpaceObjectItem struct {
+	// <p>数据库名（PostgreSQL 顶层 catalog）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableCatalog *string `json:"TableCatalog,omitnil,omitempty" name:"TableCatalog"`
+
+	// <p>Schema 名（Level=TABLE 时返回）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableSchema *string `json:"TableSchema,omitnil,omitempty" name:"TableSchema"`
+
+	// <p>表名（Level=TABLE 时返回）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>表本身大小（MB），对应 pg_relation_size。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelationSize *float64 `json:"RelationSize,omitnil,omitempty" name:"RelationSize"`
+
+	// <p>表数据大小（MB），含 TOAST 但不含索引，对应 pg_table_size。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableSize *float64 `json:"TableSize,omitnil,omitempty" name:"TableSize"`
+
+	// <p>索引大小（MB），对应 pg_indexes_size。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexSize *float64 `json:"IndexSize,omitnil,omitempty" name:"IndexSize"`
+
+	// <p>总大小（MB），含数据、索引、TOAST，对应 pg_total_relation_size。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalRelationSize *float64 `json:"TotalRelationSize,omitnil,omitempty" name:"TotalRelationSize"`
+
+	// <p>表膨胀率（PostgreSQL 特有指标）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableBloat *float64 `json:"TableBloat,omitnil,omitempty" name:"TableBloat"`
+
+	// <p>表行数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableRows *int64 `json:"TableRows,omitnil,omitempty" name:"TableRows"`
 }
 
 type Process struct {
@@ -9274,6 +9527,9 @@ type SlowLogInfoItem struct {
 
 	// 返回行数
 	RowsSent *int64 `json:"RowsSent,omitnil,omitempty" name:"RowsSent"`
+
+
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type SlowLogTopSqlItem struct {
@@ -9351,6 +9607,12 @@ type SlowLogTopSqlItem struct {
 
 	// SQL模板的MD5值
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
+
+
+	SqlType *string `json:"SqlType,omitnil,omitempty" name:"SqlType"`
+
+
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type SlowLogUser struct {

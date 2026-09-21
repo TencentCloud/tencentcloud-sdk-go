@@ -3064,44 +3064,53 @@ type AutoTagRuleItem struct {
 }
 
 type BackupLog struct {
-	// 索引
+	// <p>索引</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 索引开始时间
+	// <p>索引开始时间</p>
 	IndexStartTime *int64 `json:"IndexStartTime,omitnil,omitempty" name:"IndexStartTime"`
 
-	// 索引结束时间
+	// <p>索引结束时间</p>
 	IndexEndTime *int64 `json:"IndexEndTime,omitnil,omitempty" name:"IndexEndTime"`
 
-	// 备份后压缩的大小，单位M
+	// <p>备份后压缩的大小，单位M</p>
 	BackupSize *int64 `json:"BackupSize,omitnil,omitempty" name:"BackupSize"`
 
-	// 日志状态 0备份未完成， 1备份文件，2恢复中，3已恢复，4.已删除
+	// <p>日志状态 0备份未完成， 1备份文件，2恢复中，3已恢复，4.已删除</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 恢复剩余的分钟数，分钟，需要前端转换
+	// <p>恢复剩余的分钟数，分钟，需要前端转换</p>
 	RestoreProcessRemindTime *int64 `json:"RestoreProcessRemindTime,omitnil,omitempty" name:"RestoreProcessRemindTime"`
 
-	// 恢复日志保留的时间
+	// <p>恢复日志保留的时间</p>
 	RestoreRemindTime *int64 `json:"RestoreRemindTime,omitnil,omitempty" name:"RestoreRemindTime"`
 
-	// 恢复索引大小
+	// <p>恢复索引大小</p>
 	RestoreIndexSize *int64 `json:"RestoreIndexSize,omitnil,omitempty" name:"RestoreIndexSize"`
 
-	// 恢复日志执行结束时间
+	// <p>恢复日志执行结束时间</p>
 	RestoreEndTime *int64 `json:"RestoreEndTime,omitnil,omitempty" name:"RestoreEndTime"`
 
-	// 备份所属的appId
+	// <p>备份所属的appId</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 备份所属的资产ID
+	// <p>备份所属的资产ID</p>
 	AssetId *uint64 `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 账号昵称
+	// <p>账号昵称</p>
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
-	// 资产所属账号uin
+	// <p>资产所属账号uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例名称</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>实例类型</p><p>枚举值：</p><ul><li>cdb：  cdb</li><li>mariadb： mariadb</li></ul>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type BaselineAggregatedCategory struct {

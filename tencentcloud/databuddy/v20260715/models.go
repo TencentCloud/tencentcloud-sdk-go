@@ -189,6 +189,61 @@ type CommonFailItem struct {
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 }
 
+type ConsoleGroupInfo struct {
+	// 用户组 ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 用户组名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 角色列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Roles []*RoleBasicInfo `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 用户组下用户数量
+	UserCount *int64 `json:"UserCount,omitnil,omitempty" name:"UserCount"`
+
+	// 用户组类型。取值为枚举数值的字符串形式："0"=控制台系统类型（包含全部user）、"1"=控制台自定义类型、"2"=工作空间系统类型、"3"=工作空间自定义类型
+	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+}
+
+type ConsoleGroupUserInfo struct {
+	// 用户 UIN
+	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 昵称
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type ConsoleRoleInfo struct {
+	// 角色基本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BasicInfo *RoleBasicInfo `json:"BasicInfo,omitnil,omitempty" name:"BasicInfo"`
+
+	// 角色元信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaData *RoleMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
+
+	// 角色权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Permissions []*RolePermission `json:"Permissions,omitnil,omitempty" name:"Permissions"`
+}
+
 type ConsoleUserInfo struct {
 	// 用户 UIN
 	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
@@ -220,6 +275,82 @@ type ConsoleUserInfo struct {
 
 	// 是否具有 admin 权限的子账号
 	IsAdmin *bool `json:"IsAdmin,omitnil,omitempty" name:"IsAdmin"`
+}
+
+// Predefined struct for user
+type CreateConsoleGroupRequestParams struct {
+	// <p>用户组名称</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>用户组别名</p>
+	GroupNickname *string `json:"GroupNickname,omitnil,omitempty" name:"GroupNickname"`
+
+	// <p>用户组描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type CreateConsoleGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>用户组名称</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>用户组别名</p>
+	GroupNickname *string `json:"GroupNickname,omitnil,omitempty" name:"GroupNickname"`
+
+	// <p>用户组描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *CreateConsoleGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsoleGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupName")
+	delete(f, "GroupNickname")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsoleGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConsoleGroupResponseParams struct {
+	// <p>返回结果</p>
+	Data *CreateConsoleGroupRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateConsoleGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateConsoleGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateConsoleGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsoleGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateConsoleGroupRsp struct {
+	// 创建成功的用户组 ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 // Predefined struct for user
@@ -482,6 +613,68 @@ type CreateWorkflowRsp struct {
 	// 工作流ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+}
+
+// Predefined struct for user
+type DeleteConsoleGroupsRequestParams struct {
+	// <p>要删除的用户组 ID 列表</p>
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+}
+
+type DeleteConsoleGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>要删除的用户组 ID 列表</p>
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+}
+
+func (r *DeleteConsoleGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsoleGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteConsoleGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteConsoleGroupsResponseParams struct {
+	// <p>返回结果</p>
+	Data *DeleteConsoleGroupsRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteConsoleGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteConsoleGroupsResponseParams `json:"Response"`
+}
+
+func (r *DeleteConsoleGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsoleGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteConsoleGroupsRsp struct {
+	// 操作是否成功
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 // Predefined struct for user
@@ -1177,7 +1370,7 @@ type GetWorkflowTaskRunRsp struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// <p>任务类型名称</p>
+	// 任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeName *string `json:"TaskTypeName,omitnil,omitempty" name:"TaskTypeName"`
 
@@ -1249,7 +1442,7 @@ type GetWorkflowTaskRunRsp struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// <p>依赖上游任务ID列表</p>
+	// <p>依赖上游任务ID列表。保留字段，暂时返回为[]</p><p>保留字段，暂时返回为[]</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependOnList []*string `json:"DependOnList,omitnil,omitempty" name:"DependOnList"`
 
@@ -1315,7 +1508,7 @@ type InnerWorkflowTaskBrief struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 任务类型名称
+	// 任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeName *string `json:"TaskTypeName,omitnil,omitempty" name:"TaskTypeName"`
 }
@@ -1554,6 +1747,308 @@ type LabelBrief struct {
 	// 标签值ID，可通过标签相关接口获取
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelValueId *string `json:"LabelValueId,omitnil,omitempty" name:"LabelValueId"`
+}
+
+// Predefined struct for user
+type ListConsoleGroupUsersRequestParams struct {
+	// <p>用户组 ID</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>用户名称或 UIN 模糊匹配</p>
+	UserKeyword *string `json:"UserKeyword,omitnil,omitempty" name:"UserKeyword"`
+
+	// <p>通过 UIN 批量查询用户信息</p>
+	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
+
+	// <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;DESC&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;ASC&#39;}]，默认按创建时间降序</p>
+	OrderBys []*OrderBy `json:"OrderBys,omitnil,omitempty" name:"OrderBys"`
+
+	// <p>页码，从1开始，默认1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小，默认10，最小10，最大200</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListConsoleGroupUsersRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>用户组 ID</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>用户名称或 UIN 模糊匹配</p>
+	UserKeyword *string `json:"UserKeyword,omitnil,omitempty" name:"UserKeyword"`
+
+	// <p>通过 UIN 批量查询用户信息</p>
+	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
+
+	// <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;DESC&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;ASC&#39;}]，默认按创建时间降序</p>
+	OrderBys []*OrderBy `json:"OrderBys,omitnil,omitempty" name:"OrderBys"`
+
+	// <p>页码，从1开始，默认1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小，默认10，最小10，最大200</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListConsoleGroupUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListConsoleGroupUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "UserKeyword")
+	delete(f, "UserUins")
+	delete(f, "OrderBys")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListConsoleGroupUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListConsoleGroupUsersResponseParams struct {
+	// <p>返回结果</p>
+	Data *ListConsoleGroupUsersRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListConsoleGroupUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *ListConsoleGroupUsersResponseParams `json:"Response"`
+}
+
+func (r *ListConsoleGroupUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListConsoleGroupUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListConsoleGroupUsersRsp struct {
+	// 用户组成员列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ConsoleGroupUserInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 总页数
+	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+}
+
+// Predefined struct for user
+type ListConsoleGroupsRequestParams struct {
+	// <p>页码，从1开始，默认1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小，默认10，最小10，最大200</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>通过用户组 ID 批量查询</p>
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// <p>用户组名称模糊匹配</p>
+	GroupKeyword *string `json:"GroupKeyword,omitnil,omitempty" name:"GroupKeyword"`
+
+	// <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;Desc&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;Asc&#39;}]，默认按创建时间降序</p>
+	OrderBys []*OrderBy `json:"OrderBys,omitnil,omitempty" name:"OrderBys"`
+}
+
+type ListConsoleGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>页码，从1开始，默认1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小，默认10，最小10，最大200</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>通过用户组 ID 批量查询</p>
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// <p>用户组名称模糊匹配</p>
+	GroupKeyword *string `json:"GroupKeyword,omitnil,omitempty" name:"GroupKeyword"`
+
+	// <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;Desc&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;Asc&#39;}]，默认按创建时间降序</p>
+	OrderBys []*OrderBy `json:"OrderBys,omitnil,omitempty" name:"OrderBys"`
+}
+
+func (r *ListConsoleGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListConsoleGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "GroupIds")
+	delete(f, "GroupKeyword")
+	delete(f, "OrderBys")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListConsoleGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListConsoleGroupsResponseParams struct {
+	// <p>返回结果</p>
+	Data *ListConsoleGroupsRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListConsoleGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListConsoleGroupsResponseParams `json:"Response"`
+}
+
+func (r *ListConsoleGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListConsoleGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListConsoleGroupsRsp struct {
+	// 用户组列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ConsoleGroupInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 总页数
+	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+}
+
+// Predefined struct for user
+type ListConsoleRolesRequestParams struct {
+	// <p>页码，从1开始，默认1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小，默认10，最小10，最大200</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>角色名称或描述模糊匹配</p>
+	RoleKeyword *string `json:"RoleKeyword,omitnil,omitempty" name:"RoleKeyword"`
+}
+
+type ListConsoleRolesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>页码，从1开始，默认1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小，默认10，最小10，最大200</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>角色名称或描述模糊匹配</p>
+	RoleKeyword *string `json:"RoleKeyword,omitnil,omitempty" name:"RoleKeyword"`
+}
+
+func (r *ListConsoleRolesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListConsoleRolesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "RoleKeyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListConsoleRolesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListConsoleRolesResponseParams struct {
+	// <p>返回结果</p>
+	Data *ListConsoleRolesRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListConsoleRolesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListConsoleRolesResponseParams `json:"Response"`
+}
+
+func (r *ListConsoleRolesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListConsoleRolesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListConsoleRolesRsp struct {
+	// 角色列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ConsoleRoleInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 总页数
+	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
 }
 
 // Predefined struct for user
@@ -2310,26 +2805,15 @@ func (r *RerunWorkflowRunResponse) FromJsonString(s string) error {
 }
 
 type ResourceGroupInfo struct {
-	// 资源组ID
+	// <p>资源组ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 资源组名称
+	// <p>资源组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 
-	// 资源组状态
-	// COMPUTE_RESOURCE_STATUS_UNSPECIFIED 未指定
-	// COMPUTE_RESOURCE_STATUS_PENDING_CREATE 待创建
-	// COMPUTE_RESOURCE_STATUS_CREATING 创建中
-	// COMPUTE_RESOURCE_STATUS_RUNNING 运行中
-	// COMPUTE_RESOURCE_STATUS_STOPPED 已停止
-	// COMPUTE_RESOURCE_STATUS_STOPPING 停止中
-	// COMPUTE_RESOURCE_STATUS_STARTING 启动中
-	// COMPUTE_RESOURCE_STATUS_UPDATING 更新中
-	// COMPUTE_RESOURCE_STATUS_DELETING 删除中
-	// COMPUTE_RESOURCE_STATUS_DELETED 已删除
-	// COMPUTE_RESOURCE_STATUS_FAILED  失败
+	// <p>资源组状态</p><p>参数格式：0 // 未指定 1 // 待创建 2 // 创建中 3 // 运行中 4 // 已停止 5 // 停止中 6 // 启动中 7 // 更新中 8 // 删除中 9 // 已删除 10 // 用户主动启动 / 自动启动（有任务提交且自动启停开启） 11 // 可用: 仅存在于数据计算型 12 // 不可用: 仅存在于数据计算型 13 // 失败</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupStatus *string `json:"ResourceGroupStatus,omitnil,omitempty" name:"ResourceGroupStatus"`
 }
@@ -2355,6 +2839,28 @@ type RoleBasicInfo struct {
 
 	// <p>继承来源的用户组名称列表，Source=1 时为空</p>
 	GroupNames []*string `json:"GroupNames,omitnil,omitempty" name:"GroupNames"`
+}
+
+type RoleMetaData struct {
+	// 创建者
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新者
+	Updater *string `json:"Updater,omitnil,omitempty" name:"Updater"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type RolePermission struct {
+	// 模块ID
+	ModuleId *string `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
+
+	// 权限点
+	Permissions *string `json:"Permissions,omitnil,omitempty" name:"Permissions"`
 }
 
 type RunActionBrief struct {
@@ -2543,16 +3049,15 @@ type TaskRetryStrategy struct {
 }
 
 type TaskRunConditionRule struct {
-	// 上游任务ID
+	// <p>上游任务ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamTaskId *string `json:"UpstreamTaskId,omitnil,omitempty" name:"UpstreamTaskId"`
 
-	// 上游任务名称
+	// <p>上游任务名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamTaskName *string `json:"UpstreamTaskName,omitnil,omitempty" name:"UpstreamTaskName"`
 
-	// 任务可运行条件
-	// 支持的状态值： - SUCCESS: 成功 - FAILED: 失败 - UPSTREAM_FAILED: 上游失败 - EXCLUDED: 排除运行
+	// <p>任务可运行条件<br>支持的状态值： - SUCCESS: 成功 - FAILED: 失败 - UPSTREAM_FAILED: 上游失败 - EXCLUDED: 排除运行</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowedStates []*string `json:"AllowedStates,omitnil,omitempty" name:"AllowedStates"`
 }
@@ -2683,6 +3188,103 @@ func (r *UnbindWorkflowBundleResponse) FromJsonString(s string) error {
 type UnbindWorkflowBundleRsp struct {
 	// 操作状态，true 表示成功
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
+type UpdateConsoleGroupRequestParams struct {
+	// <p>用户组 ID</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>修改标识：USER_GROUP_OPER_TYPE_ADD_USER(1)=添加成员、USER_GROUP_OPER_TYPE_DELETE_USER(2)=删除成员、USER_GROUP_OPER_TYPE_BASIC_INFO(3)=基础信息（别名和描述）</p>
+	OperType *int64 `json:"OperType,omitnil,omitempty" name:"OperType"`
+
+	// <p>用户组名称</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>用户组别名</p>
+	GroupNickname *string `json:"GroupNickname,omitnil,omitempty" name:"GroupNickname"`
+
+	// <p>用户组描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>成员 UIN 列表（OperType 为添加/删除成员时使用）</p>
+	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
+}
+
+type UpdateConsoleGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>用户组 ID</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>修改标识：USER_GROUP_OPER_TYPE_ADD_USER(1)=添加成员、USER_GROUP_OPER_TYPE_DELETE_USER(2)=删除成员、USER_GROUP_OPER_TYPE_BASIC_INFO(3)=基础信息（别名和描述）</p>
+	OperType *int64 `json:"OperType,omitnil,omitempty" name:"OperType"`
+
+	// <p>用户组名称</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>用户组别名</p>
+	GroupNickname *string `json:"GroupNickname,omitnil,omitempty" name:"GroupNickname"`
+
+	// <p>用户组描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>成员 UIN 列表（OperType 为添加/删除成员时使用）</p>
+	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
+}
+
+func (r *UpdateConsoleGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateConsoleGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "OperType")
+	delete(f, "GroupName")
+	delete(f, "GroupNickname")
+	delete(f, "Description")
+	delete(f, "UserUins")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateConsoleGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateConsoleGroupResponseParams struct {
+	// <p>返回结果</p>
+	Data *UpdateConsoleGroupRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateConsoleGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateConsoleGroupResponseParams `json:"Response"`
+}
+
+func (r *UpdateConsoleGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateConsoleGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateConsoleGroupRsp struct {
+	// 操作是否成功
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -3169,7 +3771,7 @@ type WorkflowBrief struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupInfoList []*ResourceGroupInfo `json:"ResourceGroupInfoList,omitnil,omitempty" name:"ResourceGroupInfoList"`
 
-	// <p>工作流权限信息</p>
+	// <p>授权权限类型<br>PERMISSION_TYPE_UNSPECIFIED：未指定权限<br>MANAGE : 管理权限：包含所有操作权限<br>RUN : 运行权限：可执行实体<br>VIEW : 查看权限：可查看实体内容</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
 
@@ -3247,7 +3849,7 @@ type WorkflowRun struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PendingCostTime *string `json:"PendingCostTime,omitnil,omitempty" name:"PendingCostTime"`
 
-	// <p>运行状态。取值参考工作流运行状态枚举，如 Pending / Running / Succeeded / Failed / Killed</p>
+	// <p>运行状态。CREATE(&quot;初始化&quot;),     QUEUED(&quot;等待中&quot;),     PENDING(&quot;准备中&quot;),     RUNNING(&quot;运行中&quot;),     SKIPPED(&quot;跳过运行&quot;),     SUCCESS(&quot;成功&quot;),     FAILED(&quot;失败&quot;),     TERMINATING(&quot;终止中&quot;),     TERMINATED(&quot;终止&quot;),     CANCELLED(&quot;被手动终止&quot;)等</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunState *string `json:"RunState,omitnil,omitempty" name:"RunState"`
 
@@ -3420,55 +4022,55 @@ type WorkflowTask struct {
 }
 
 type WorkflowTaskNodeBrief struct {
-	// 工作流ID
+	// <p>工作流ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 任务ID
+	// <p>任务ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 任务类型名称
+	// <p>任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeName *string `json:"TaskTypeName,omitnil,omitempty" name:"TaskTypeName"`
 
-	// 任务依赖列表
+	// <p>任务依赖列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependOnList []*DependOnBrief `json:"DependOnList,omitnil,omitempty" name:"DependOnList"`
 
-	// 任务资源组ID
+	// <p>任务资源组ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 任务资源组名称
+	// <p>任务资源组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 
-	// 任务X坐标
+	// <p>任务X坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LeftCoordinate *float64 `json:"LeftCoordinate,omitnil,omitempty" name:"LeftCoordinate"`
 
-	// 任务Y坐标
+	// <p>任务Y坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopCoordinate *float64 `json:"TopCoordinate,omitnil,omitempty" name:"TopCoordinate"`
 
-	// 任务重试策略
+	// <p>任务重试策略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskRetryStrategy *TaskRetryStrategy `json:"TaskRetryStrategy,omitnil,omitempty" name:"TaskRetryStrategy"`
 
-	// 依赖运行条件
+	// <p>任依赖运行条件</p><ul><li>ALL_SUCCESS: 全部成功：所有上游依赖任务均已执行并成功</li><li>ONE_SUCCESS: 至少一个成功：至少有一个上游依赖任务成功</li><li>NONE_FAILED: 目前没有失败：没有依赖任务失败，并且至少有一个依赖任务在运行中</li><li>ALL_DONE: 全部完成：所有上游依赖任务均已执行并完成（无论成功或失败</li><li>ONE_FAILED: 至少一个失败：至少有一个上游依赖任务失败</li><li>ALL_FAILED: 全部失败：所有上游依赖任务都失败</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li><li>ADVANCED:运行条件为高级模式时配置</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependOnRunCondition *string `json:"DependOnRunCondition,omitnil,omitempty" name:"DependOnRunCondition"`
 
-	// 高级依赖配置
+	// <p>高级依赖配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedDependencyConfig *AdvancedDependencyConfig `json:"AdvancedDependencyConfig,omitnil,omitempty" name:"AdvancedDependencyConfig"`
 
-	// 内嵌工作流任务节点
+	// <p>内嵌工作流任务节点</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InnerTask *WorkflowTaskNodeBrief `json:"InnerTask,omitnil,omitempty" name:"InnerTask"`
 }
@@ -3502,7 +4104,7 @@ type WorkflowTaskRun struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// <p>任务类型名称</p>
+	// 任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeName *string `json:"TaskTypeName,omitnil,omitempty" name:"TaskTypeName"`
 
@@ -3574,7 +4176,7 @@ type WorkflowTaskRun struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// <p>依赖上游任务ID列表</p>
+	// <p>依赖上游任务ID列表。保留字段，暂时返回为[]</p><p>保留字段，暂时返回为[]</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependOnList []*string `json:"DependOnList,omitnil,omitempty" name:"DependOnList"`
 
@@ -3618,7 +4220,7 @@ type WorkflowTaskRun struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunResult *string `json:"RunResult,omitnil,omitempty" name:"RunResult"`
 
-	// <p>依赖运行条件</p>
+	// <p>任务依赖运行条件</p><p>ALL_SUCCESS: 全部成功：所有上游依赖任务均已执行并成功<br>ONE_SUCCESS: 至少一个成功：至少有一个上游依赖任务成功<br>NONE_FAILED: 目前没有失败：没有依赖任务失败，并且至少有一个依赖任务在运行中<br>ALL_DONE: 全部完成：所有上游依赖任务均已执行并完成（无论成功或失败<br>ONE_FAILED: 至少一个失败：至少有一个上游依赖任务失败<br>ALL_FAILED: 全部失败：所有上游依赖任务都失败<br>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行<br>ALL_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行<br>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游<br>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行<br>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行<br>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行<br>ADVANCED:运行条件为高级模式时配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependOnRunCondition *string `json:"DependOnRunCondition,omitnil,omitempty" name:"DependOnRunCondition"`
 
@@ -3642,54 +4244,47 @@ type WorkflowTriggerAdvancedConfiguration struct {
 }
 
 type WorkflowTriggerConfiguration struct {
-	// 调度配置ID，创建时无需传入，由服务端生成
+	// <p>调度配置ID，创建时无需传入，由服务端生成</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
 
-	// 调度状态 启动：START，暂停：PAUSE
+	// <p>调度状态 启动：START，暂停：PAUSE</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchedulerStatus *string `json:"SchedulerStatus,omitnil,omitempty" name:"SchedulerStatus"`
 
-	// 触发方式，
-	// - 定时触发：TIME_TRIGGER
-	// - 持续运行：CONTINUE_RUN
-	// 
-	// 注意：
-	// - TIME_TRIGGER 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；
-	// - CONTINUE_RUN 模式下，AdvancedConfig必填；
+	// <p>触发方式，</p><ul><li>定时触发：TIME_TRIGGER</li><li>持续运行：CONTINUE_RUN</li></ul><p>注意：</p><ul><li>TIME_TRIGGER 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；</li><li>CONTINUE_RUN 模式下，AdvancedConfig必填；</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
 
-	// 调度时区
+	// <p>调度时区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchedulerTimeZone *string `json:"SchedulerTimeZone,omitnil,omitempty" name:"SchedulerTimeZone"`
 
-	// 调度生效时间，单位：毫秒时间戳。必须小于 EndTime
+	// <p>调度生效时间，单位：毫秒时间戳。必须小于 EndTime</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 调度结束时间，单位：毫秒时间戳。必须大于 StartTime
+	// <p>调度结束时间，单位：毫秒时间戳。必须大于 StartTime</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION
+	// <p>配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigMode *string `json:"ConfigMode,omitnil,omitempty" name:"ConfigMode"`
 
-	// 周期类型：支持的类型为 ONEOFF_CYCLE: 一次性 YEAR_CYCLE: 年 MONTH_CYCLE: 月 WEEK_CYCLE: 周 DAY_CYCLE: 天
-	// HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
+	// <p>周期类型：支持的类型为 ONEOFF_CYCLE: 一次性 YEAR_CYCLE: 年 MONTH_CYCLE: 月 WEEK_CYCLE: 周 DAY_CYCLE: 天<br>HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// cron表达式
+	// <p>cron表达式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
 
-	// Json格式，对账使用
+	// <p>Json格式，对账使用</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
-	// 高级配置
+	// <p>高级配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedConfig *WorkflowTriggerAdvancedConfiguration `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }

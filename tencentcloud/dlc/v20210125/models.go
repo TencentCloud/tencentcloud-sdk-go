@@ -34318,149 +34318,155 @@ type SortOrder struct {
 }
 
 type SparkJobInfo struct {
-	// spark作业ID
+	// <p>spark作业ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// spark作业名
+	// <p>spark作业名</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// spark作业类型，可去1或者2，1表示batch作业， 2表示streaming作业
+	// <p>spark作业类型，可去1或者2，1表示batch作业， 2表示streaming作业</p>
 	JobType *int64 `json:"JobType,omitnil,omitempty" name:"JobType"`
 
-	// 引擎名
+	// <p>引擎名</p>
 	DataEngine *string `json:"DataEngine,omitnil,omitempty" name:"DataEngine"`
 
-	// 该字段已下线，请使用字段Datasource
+	// <p>该字段已下线，请使用字段Datasource</p>
 	Eni *string `json:"Eni,omitnil,omitempty" name:"Eni"`
 
-	// 程序包是否本地上传，cos或者lakefs
+	// <p>程序包是否本地上传，cos或者lakefs</p>
 	IsLocal *string `json:"IsLocal,omitnil,omitempty" name:"IsLocal"`
 
-	// 程序包路径
+	// <p>程序包路径</p>
 	JobFile *string `json:"JobFile,omitnil,omitempty" name:"JobFile"`
 
-	// 角色ID
+	// <p>角色ID</p>
 	RoleArn *int64 `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 
-	// spark作业运行主类
+	// <p>spark作业运行主类</p>
 	MainClass *string `json:"MainClass,omitnil,omitempty" name:"MainClass"`
 
-	// 命令行参数，spark作业命令行参数，空格分隔
+	// <p>命令行参数，spark作业命令行参数，空格分隔</p>
 	CmdArgs *string `json:"CmdArgs,omitnil,omitempty" name:"CmdArgs"`
 
-	// spark原生配置，换行符分隔
+	// <p>spark原生配置，换行符分隔</p>
 	JobConf *string `json:"JobConf,omitnil,omitempty" name:"JobConf"`
 
-	// 依赖jars是否本地上传，cos或者lakefs
+	// <p>依赖jars是否本地上传，cos或者lakefs</p>
 	IsLocalJars *string `json:"IsLocalJars,omitnil,omitempty" name:"IsLocalJars"`
 
-	// spark作业依赖jars，逗号分隔
+	// <p>spark作业依赖jars，逗号分隔</p>
 	JobJars *string `json:"JobJars,omitnil,omitempty" name:"JobJars"`
 
-	// 依赖文件是否本地上传，cos或者lakefs
+	// <p>依赖文件是否本地上传，cos或者lakefs</p>
 	IsLocalFiles *string `json:"IsLocalFiles,omitnil,omitempty" name:"IsLocalFiles"`
 
-	// spark作业依赖文件，逗号分隔
+	// <p>spark作业依赖文件，逗号分隔</p>
 	JobFiles *string `json:"JobFiles,omitnil,omitempty" name:"JobFiles"`
 
-	// spark作业driver资源大小
+	// <p>spark作业driver资源大小</p>
 	JobDriverSize *string `json:"JobDriverSize,omitnil,omitempty" name:"JobDriverSize"`
 
-	// spark作业executor资源大小
+	// <p>spark作业executor资源大小</p>
 	JobExecutorSize *string `json:"JobExecutorSize,omitnil,omitempty" name:"JobExecutorSize"`
 
-	// spark作业executor个数
+	// <p>spark作业executor个数</p>
 	JobExecutorNums *int64 `json:"JobExecutorNums,omitnil,omitempty" name:"JobExecutorNums"`
 
-	// spark流任务最大重试次数
+	// <p>spark流任务最大重试次数</p>
 	JobMaxAttempts *int64 `json:"JobMaxAttempts,omitnil,omitempty" name:"JobMaxAttempts"`
 
-	// spark作业创建者
+	// <p>spark作业创建者</p>
 	JobCreator *string `json:"JobCreator,omitnil,omitempty" name:"JobCreator"`
 
-	// spark作业创建时间
+	// <p>spark作业创建时间</p>
 	JobCreateTime *int64 `json:"JobCreateTime,omitnil,omitempty" name:"JobCreateTime"`
 
-	// spark作业更新时间
+	// <p>spark作业更新时间</p>
 	JobUpdateTime *uint64 `json:"JobUpdateTime,omitnil,omitempty" name:"JobUpdateTime"`
 
-	// spark作业最近任务ID
+	// <p>spark作业最近任务ID</p>
 	CurrentTaskId *string `json:"CurrentTaskId,omitnil,omitempty" name:"CurrentTaskId"`
 
-	// spark作业最近运行状态，初始化：0，运行中：1，成功：2，数据写入中： 3， 排队中： 4， 失败： -1， 已删除： -3，已过期： -5
+	// <p>spark作业最近运行状态，初始化：0，运行中：1，成功：2，数据写入中： 3， 排队中： 4， 失败： -1， 已删除： -3，已过期： -5</p>
 	JobStatus *int64 `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
 
-	// spark流作业统计
+	// <p>spark流作业统计</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamingStat *StreamingStatistics `json:"StreamingStat,omitnil,omitempty" name:"StreamingStat"`
 
-	// 数据源名
+	// <p>数据源名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSource *string `json:"DataSource,omitnil,omitempty" name:"DataSource"`
 
-	// pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// <p>pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsLocalPythonFiles *string `json:"IsLocalPythonFiles,omitnil,omitempty" name:"IsLocalPythonFiles"`
 
-	// 注：该返回值已废弃
+	// <p>注：该返回值已废弃</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppPythonFiles *string `json:"AppPythonFiles,omitnil,omitempty" name:"AppPythonFiles"`
 
-	// archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// <p>archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsLocalArchives *string `json:"IsLocalArchives,omitnil,omitempty" name:"IsLocalArchives"`
 
-	// archives：依赖资源
+	// <p>archives：依赖资源</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobArchives *string `json:"JobArchives,omitnil,omitempty" name:"JobArchives"`
 
-	// Spark Image 版本
+	// <p>Spark Image 版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparkImage *string `json:"SparkImage,omitnil,omitempty" name:"SparkImage"`
 
-	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+	// <p>pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobPythonFiles *string `json:"JobPythonFiles,omitnil,omitempty" name:"JobPythonFiles"`
 
-	// 当前job正在运行或准备运行的任务个数
+	// <p>当前job正在运行或准备运行的任务个数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskNum *int64 `json:"TaskNum,omitnil,omitempty" name:"TaskNum"`
 
-	// 引擎状态：-100（默认：未知状态），-2~11：引擎正常状态；
+	// <p>引擎状态：-100（默认：未知状态），-2~11：引擎正常状态；</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngineStatus *int64 `json:"DataEngineStatus,omitnil,omitempty" name:"DataEngineStatus"`
 
-	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于JobExecutorNums
+	// <p>指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于JobExecutorNums</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobExecutorMaxNumbers *int64 `json:"JobExecutorMaxNumbers,omitnil,omitempty" name:"JobExecutorMaxNumbers"`
 
-	// 镜像版本
+	// <p>镜像版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparkImageVersion *string `json:"SparkImageVersion,omitnil,omitempty" name:"SparkImageVersion"`
 
-	// 查询脚本关联id
+	// <p>查询脚本关联id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// spark_emr_livy
+	// <p>spark_emr_livy</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngineClusterType *string `json:"DataEngineClusterType,omitnil,omitempty" name:"DataEngineClusterType"`
 
-	// Spark 3.2-EMR
+	// <p>Spark 3.2-EMR</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngineImageVersion *string `json:"DataEngineImageVersion,omitnil,omitempty" name:"DataEngineImageVersion"`
 
-	// 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+	// <p>任务资源配置是否继承集群模板，0（默认）不继承，1：继承</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsInherit *uint64 `json:"IsInherit,omitnil,omitempty" name:"IsInherit"`
 
-	// 是否使用session脚本的sql运行任务：false：否，true：是
+	// <p>是否使用session脚本的sql运行任务：false：否，true：是</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSessionStarted *bool `json:"IsSessionStarted,omitnil,omitempty" name:"IsSessionStarted"`
 
-	// 引擎详细类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto
+	// <p>引擎详细类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineTypeDetail *string `json:"EngineTypeDetail,omitnil,omitempty" name:"EngineTypeDetail"`
+
+	// <p>标准引擎依赖包</p>
+	DependencyPackages []*DependencyPackage `json:"DependencyPackages,omitnil,omitempty" name:"DependencyPackages"`
+
+	// <p>作业运行鉴权身份</p>
+	RunAsIdentity *string `json:"RunAsIdentity,omitnil,omitempty" name:"RunAsIdentity"`
 }
 
 type SparkMonitorMetrics struct {

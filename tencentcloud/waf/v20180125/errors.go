@@ -296,13 +296,13 @@ const (
 	// OperationDenied.ACLFailed
 	OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
 
-	// OperationDenied.AccountDestroy
+	// 账户已销毁
 	OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
 
-	// OperationDenied.AccountIsolate
+	// 账户欠费
 	OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
 
-	// OperationDenied.AccountNotExists
+	// 账户不存在
 	OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 
 	// OperationDenied.AnalysisSwitchClose
@@ -329,7 +329,7 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
-	// ResourceNotFound.ExportNotExist
+	// 导出任务不存在
 	RESOURCENOTFOUND_EXPORTNOTEXIST = "ResourceNotFound.ExportNotExist"
 
 	// ResourceNotFound.LogsetNotExist

@@ -6415,12 +6415,6 @@ type PassInvoiceInfo struct {
 
 	// <p>税收分类编码</p>
 	TaxClassifyCode *string `json:"TaxClassifyCode,omitnil,omitempty" name:"TaxClassifyCode"`
-
-	// <p>通行费车牌号</p>
-	CarType *string `json:"CarType,omitnil,omitempty" name:"CarType"`
-
-	// <p>通行费车辆类型</p>
-	PlateNumber *string `json:"PlateNumber,omitnil,omitempty" name:"PlateNumber"`
 }
 
 // Predefined struct for user

@@ -963,6 +963,70 @@ func (c *Client) DescribeServicesCallInfoWithContext(ctx context.Context, reques
     return
 }
 
+func NewGetServicePodLogsRequest() (request *GetServicePodLogsRequest) {
+    request = &GetServicePodLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "GetServicePodLogs")
+    
+    
+    return
+}
+
+func NewGetServicePodLogsResponse() (response *GetServicePodLogsResponse) {
+    response = &GetServicePodLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetServicePodLogs
+// 本接口(GetServicePodLogs)用于查询推理服务Pod日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_LIMITBYTESINVALID = "InvalidParameterValue.LimitBytesInvalid"
+//  INVALIDPARAMETERVALUE_PODNAMEINVALID = "InvalidParameterValue.PodNameInvalid"
+//  INVALIDPARAMETERVALUE_PODNOTFOUND = "InvalidParameterValue.PodNotFound"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+//  INVALIDPARAMETERVALUE_TAILLINESINVALID = "InvalidParameterValue.TailLinesInvalid"
+//  UNSUPPORTEDOPERATION_MULTIDEPLOYMENTNOTSUPPORTED = "UnsupportedOperation.MultiDeploymentNotSupported"
+func (c *Client) GetServicePodLogs(request *GetServicePodLogsRequest) (response *GetServicePodLogsResponse, err error) {
+    return c.GetServicePodLogsWithContext(context.Background(), request)
+}
+
+// GetServicePodLogs
+// 本接口(GetServicePodLogs)用于查询推理服务Pod日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_LIMITBYTESINVALID = "InvalidParameterValue.LimitBytesInvalid"
+//  INVALIDPARAMETERVALUE_PODNAMEINVALID = "InvalidParameterValue.PodNameInvalid"
+//  INVALIDPARAMETERVALUE_PODNOTFOUND = "InvalidParameterValue.PodNotFound"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+//  INVALIDPARAMETERVALUE_TAILLINESINVALID = "InvalidParameterValue.TailLinesInvalid"
+//  UNSUPPORTEDOPERATION_MULTIDEPLOYMENTNOTSUPPORTED = "UnsupportedOperation.MultiDeploymentNotSupported"
+func (c *Client) GetServicePodLogsWithContext(ctx context.Context, request *GetServicePodLogsRequest) (response *GetServicePodLogsResponse, err error) {
+    if request == nil {
+        request = NewGetServicePodLogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "GetServicePodLogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetServicePodLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetServicePodLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceRunInstancesRequest() (request *InquirePriceRunInstancesRequest) {
     request = &InquirePriceRunInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
