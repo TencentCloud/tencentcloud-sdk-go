@@ -1209,6 +1209,128 @@ func (c *Client) CreateAuditKeywordsWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateAuditRuleRequest() (request *CreateAuditRuleRequest) {
+    request = &CreateAuditRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateAuditRule")
+    
+    
+    return
+}
+
+func NewCreateAuditRuleResponse() (response *CreateAuditRuleResponse) {
+    response = &CreateAuditRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAuditRule
+// 创建审核规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINNOTEXISTS = "InvalidParameter.DomainNotExists"
+//  INVALIDPARAMETER_TEMPLATENOTFOUND = "InvalidParameter.TemplateNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CreateAuditRule(request *CreateAuditRuleRequest) (response *CreateAuditRuleResponse, err error) {
+    return c.CreateAuditRuleWithContext(context.Background(), request)
+}
+
+// CreateAuditRule
+// 创建审核规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINNOTEXISTS = "InvalidParameter.DomainNotExists"
+//  INVALIDPARAMETER_TEMPLATENOTFOUND = "InvalidParameter.TemplateNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CreateAuditRuleWithContext(ctx context.Context, request *CreateAuditRuleRequest) (response *CreateAuditRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateAuditRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CreateAuditRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAuditRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAuditRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAuditTemplateRequest() (request *CreateAuditTemplateRequest) {
+    request = &CreateAuditTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateAuditTemplate")
+    
+    
+    return
+}
+
+func NewCreateAuditTemplateResponse() (response *CreateAuditTemplateResponse) {
+    response = &CreateAuditTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAuditTemplate
+// 创建单个审核模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAuditTemplate(request *CreateAuditTemplateRequest) (response *CreateAuditTemplateResponse, err error) {
+    return c.CreateAuditTemplateWithContext(context.Background(), request)
+}
+
+// CreateAuditTemplate
+// 创建单个审核模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAuditTemplateWithContext(ctx context.Context, request *CreateAuditTemplateRequest) (response *CreateAuditTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateAuditTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CreateAuditTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAuditTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAuditTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCasterRequest() (request *CreateCasterRequest) {
     request = &CreateCasterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2863,6 +2985,86 @@ func (c *Client) CreateLiveRecordTemplateWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateLiveSmartEraseTemplateRequest() (request *CreateLiveSmartEraseTemplateRequest) {
+    request = &CreateLiveSmartEraseTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateLiveSmartEraseTemplate")
+    
+    
+    return
+}
+
+func NewCreateLiveSmartEraseTemplateResponse() (response *CreateLiveSmartEraseTemplateResponse) {
+    response = &CreateLiveSmartEraseTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLiveSmartEraseTemplate
+// 创建直播智能擦除模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) CreateLiveSmartEraseTemplate(request *CreateLiveSmartEraseTemplateRequest) (response *CreateLiveSmartEraseTemplateResponse, err error) {
+    return c.CreateLiveSmartEraseTemplateWithContext(context.Background(), request)
+}
+
+// CreateLiveSmartEraseTemplate
+// 创建直播智能擦除模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) CreateLiveSmartEraseTemplateWithContext(ctx context.Context, request *CreateLiveSmartEraseTemplateRequest) (response *CreateLiveSmartEraseTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveSmartEraseTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CreateLiveSmartEraseTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveSmartEraseTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveSmartEraseTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLiveSnapshotRuleRequest() (request *CreateLiveSnapshotRuleRequest) {
     request = &CreateLiveSnapshotRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4155,6 +4357,124 @@ func (c *Client) DeleteAuditKeywordsWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteAuditKeywordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAuditRuleRequest() (request *DeleteAuditRuleRequest) {
+    request = &DeleteAuditRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteAuditRule")
+    
+    
+    return
+}
+
+func NewDeleteAuditRuleResponse() (response *DeleteAuditRuleResponse) {
+    response = &DeleteAuditRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAuditRule
+// 删除审核规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSTREAMNAME = "InvalidParameter.InvalidStreamName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DeleteAuditRule(request *DeleteAuditRuleRequest) (response *DeleteAuditRuleResponse, err error) {
+    return c.DeleteAuditRuleWithContext(context.Background(), request)
+}
+
+// DeleteAuditRule
+// 删除审核规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSTREAMNAME = "InvalidParameter.InvalidStreamName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DeleteAuditRuleWithContext(ctx context.Context, request *DeleteAuditRuleRequest) (response *DeleteAuditRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteAuditRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DeleteAuditRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAuditRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAuditRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAuditTemplateRequest() (request *DeleteAuditTemplateRequest) {
+    request = &DeleteAuditTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteAuditTemplate")
+    
+    
+    return
+}
+
+func NewDeleteAuditTemplateResponse() (response *DeleteAuditTemplateResponse) {
+    response = &DeleteAuditTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAuditTemplate
+// 删除审核模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteAuditTemplate(request *DeleteAuditTemplateRequest) (response *DeleteAuditTemplateResponse, err error) {
+    return c.DeleteAuditTemplateWithContext(context.Background(), request)
+}
+
+// DeleteAuditTemplate
+// 删除审核模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteAuditTemplateWithContext(ctx context.Context, request *DeleteAuditTemplateRequest) (response *DeleteAuditTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteAuditTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DeleteAuditTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAuditTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAuditTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -6911,6 +7231,176 @@ func (c *Client) DescribeAuditKeywordsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeAuditKeywordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuditRulesRequest() (request *DescribeAuditRulesRequest) {
+    request = &DescribeAuditRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeAuditRules")
+    
+    
+    return
+}
+
+func NewDescribeAuditRulesResponse() (response *DescribeAuditRulesResponse) {
+    response = &DescribeAuditRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuditRules
+// 获取审核规则列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeAuditRules(request *DescribeAuditRulesRequest) (response *DescribeAuditRulesResponse, err error) {
+    return c.DescribeAuditRulesWithContext(context.Background(), request)
+}
+
+// DescribeAuditRules
+// 获取审核规则列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeAuditRulesWithContext(ctx context.Context, request *DescribeAuditRulesRequest) (response *DescribeAuditRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeAuditRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuditTemplateRequest() (request *DescribeAuditTemplateRequest) {
+    request = &DescribeAuditTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeAuditTemplate")
+    
+    
+    return
+}
+
+func NewDescribeAuditTemplateResponse() (response *DescribeAuditTemplateResponse) {
+    response = &DescribeAuditTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuditTemplate
+// 获取单个审核模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TEMPLATENOTEXISTS = "ResourceNotFound.TemplateNotExists"
+func (c *Client) DescribeAuditTemplate(request *DescribeAuditTemplateRequest) (response *DescribeAuditTemplateResponse, err error) {
+    return c.DescribeAuditTemplateWithContext(context.Background(), request)
+}
+
+// DescribeAuditTemplate
+// 获取单个审核模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TEMPLATENOTEXISTS = "ResourceNotFound.TemplateNotExists"
+func (c *Client) DescribeAuditTemplateWithContext(ctx context.Context, request *DescribeAuditTemplateRequest) (response *DescribeAuditTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeAuditTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuditTemplatesRequest() (request *DescribeAuditTemplatesRequest) {
+    request = &DescribeAuditTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeAuditTemplates")
+    
+    
+    return
+}
+
+func NewDescribeAuditTemplatesResponse() (response *DescribeAuditTemplatesResponse) {
+    response = &DescribeAuditTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuditTemplates
+// 返回当前用户的审核模板列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAuditTemplates(request *DescribeAuditTemplatesRequest) (response *DescribeAuditTemplatesResponse, err error) {
+    return c.DescribeAuditTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeAuditTemplates
+// 返回当前用户的审核模板列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAuditTemplatesWithContext(ctx context.Context, request *DescribeAuditTemplatesRequest) (response *DescribeAuditTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditTemplatesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeAuditTemplates")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -14847,6 +15337,60 @@ func (c *Client) ModifyAuditKeywordLibWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyAuditKeywordLibResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAuditTemplateRequest() (request *ModifyAuditTemplateRequest) {
+    request = &ModifyAuditTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "ModifyAuditTemplate")
+    
+    
+    return
+}
+
+func NewModifyAuditTemplateResponse() (response *ModifyAuditTemplateResponse) {
+    response = &ModifyAuditTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAuditTemplate
+// 修改审核模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TEMPLATENOTEXISTS = "ResourceNotFound.TemplateNotExists"
+func (c *Client) ModifyAuditTemplate(request *ModifyAuditTemplateRequest) (response *ModifyAuditTemplateResponse, err error) {
+    return c.ModifyAuditTemplateWithContext(context.Background(), request)
+}
+
+// ModifyAuditTemplate
+// 修改审核模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TEMPLATENOTEXISTS = "ResourceNotFound.TemplateNotExists"
+func (c *Client) ModifyAuditTemplateWithContext(ctx context.Context, request *ModifyAuditTemplateRequest) (response *ModifyAuditTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyAuditTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "ModifyAuditTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAuditTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAuditTemplateResponse()
     err = c.Send(request, response)
     return
 }

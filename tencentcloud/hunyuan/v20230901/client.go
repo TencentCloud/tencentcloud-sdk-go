@@ -121,6 +121,10 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 }
 
 // ChatCompletions
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 //
 // 
@@ -156,6 +160,10 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 }
 
 // ChatCompletions
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 //
 // 
@@ -221,6 +229,10 @@ func NewChatTranslationsResponse() (response *ChatTranslationsResponse) {
 }
 
 // ChatTranslations
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 //
 // 
@@ -252,6 +264,10 @@ func (c *Client) ChatTranslations(request *ChatTranslationsRequest) (response *C
 }
 
 // ChatTranslations
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 //
 // 
@@ -315,6 +331,10 @@ func NewCreateGlossaryResponse() (response *CreateGlossaryResponse) {
 }
 
 // CreateGlossary
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 创建自定义术语库，在翻译时自动将源语言术语替换为指定的目标语言译文，确保专业术语翻译的一致性和准确性。
 //
 // 可能返回的错误码:
@@ -324,6 +344,10 @@ func (c *Client) CreateGlossary(request *CreateGlossaryRequest) (response *Creat
 }
 
 // CreateGlossary
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 创建自定义术语库，在翻译时自动将源语言术语替换为指定的目标语言译文，确保专业术语翻译的一致性和准确性。
 //
 // 可能返回的错误码:
@@ -365,6 +389,10 @@ func NewCreateGlossaryEntryResponse() (response *CreateGlossaryEntryResponse) {
 }
 
 // CreateGlossaryEntry
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 添加术语条目。
 //
 // 可能返回的错误码:
@@ -375,6 +403,10 @@ func (c *Client) CreateGlossaryEntry(request *CreateGlossaryEntryRequest) (respo
 }
 
 // CreateGlossaryEntry
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 添加术语条目。
 //
 // 可能返回的错误码:
@@ -415,6 +447,10 @@ func NewCreateThreadResponse() (response *CreateThreadResponse) {
 }
 
 // CreateThread
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 //
 // 
@@ -443,6 +479,10 @@ func (c *Client) CreateThread(request *CreateThreadRequest) (response *CreateThr
 }
 
 // CreateThread
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 //
 // 
@@ -503,6 +543,10 @@ func NewDeleteGlossaryResponse() (response *DeleteGlossaryResponse) {
 }
 
 // DeleteGlossary
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 删除术语库。
 //
 // 可能返回的错误码:
@@ -512,6 +556,10 @@ func (c *Client) DeleteGlossary(request *DeleteGlossaryRequest) (response *Delet
 }
 
 // DeleteGlossary
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 删除术语库。
 //
 // 可能返回的错误码:
@@ -553,6 +601,10 @@ func NewDeleteGlossaryEntryResponse() (response *DeleteGlossaryEntryResponse) {
 }
 
 // DeleteGlossaryEntry
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 删除术语条目。
 //
 // 可能返回的错误码:
@@ -562,6 +614,10 @@ func (c *Client) DeleteGlossaryEntry(request *DeleteGlossaryEntryRequest) (respo
 }
 
 // DeleteGlossaryEntry
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 删除术语条目。
 //
 // 可能返回的错误码:
@@ -601,6 +657,10 @@ func NewFilesDeletionsResponse() (response *FilesDeletionsResponse) {
 }
 
 // FilesDeletions
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 删除文件。
 //
 // 可能返回的错误码:
@@ -619,6 +679,10 @@ func (c *Client) FilesDeletions(request *FilesDeletionsRequest) (response *Files
 }
 
 // FilesDeletions
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 删除文件。
 //
 // 可能返回的错误码:
@@ -667,6 +731,10 @@ func NewFilesListResponse() (response *FilesListResponse) {
 }
 
 // FilesList
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 文件列表。
 //
 // 可能返回的错误码:
@@ -685,6 +753,10 @@ func (c *Client) FilesList(request *FilesListRequest) (response *FilesListRespon
 }
 
 // FilesList
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 文件列表。
 //
 // 可能返回的错误码:
@@ -733,6 +805,10 @@ func NewFilesUploadsResponse() (response *FilesUploadsResponse) {
 }
 
 // FilesUploads
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 上传用于不同用途的文件。
 //
 // 当前用途仅支持 hunyuan 等模型的文档理解。
@@ -753,6 +829,10 @@ func (c *Client) FilesUploads(request *FilesUploadsRequest) (response *FilesUplo
 }
 
 // FilesUploads
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 上传用于不同用途的文件。
 //
 // 当前用途仅支持 hunyuan 等模型的文档理解。
@@ -805,6 +885,10 @@ func NewGetEmbeddingResponse() (response *GetEmbeddingResponse) {
 }
 
 // GetEmbedding
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。向量维度为1024维。
 //
 // 可能返回的错误码:
@@ -816,6 +900,10 @@ func (c *Client) GetEmbedding(request *GetEmbeddingRequest) (response *GetEmbedd
 }
 
 // GetEmbedding
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。向量维度为1024维。
 //
 // 可能返回的错误码:
@@ -857,6 +945,10 @@ func NewGetThreadResponse() (response *GetThreadResponse) {
 }
 
 // GetThread
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 //
 // 
@@ -885,6 +977,10 @@ func (c *Client) GetThread(request *GetThreadRequest) (response *GetThreadRespon
 }
 
 // GetThread
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 //
 // 
@@ -943,6 +1039,10 @@ func NewGetThreadMessageResponse() (response *GetThreadMessageResponse) {
 }
 
 // GetThreadMessage
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 //
 // 
@@ -971,6 +1071,10 @@ func (c *Client) GetThreadMessage(request *GetThreadMessageRequest) (response *G
 }
 
 // GetThreadMessage
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 //
 // 
@@ -1029,6 +1133,10 @@ func NewGetThreadMessageListResponse() (response *GetThreadMessageListResponse) 
 }
 
 // GetThreadMessageList
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 //
 // 
@@ -1057,6 +1165,10 @@ func (c *Client) GetThreadMessageList(request *GetThreadMessageListRequest) (res
 }
 
 // GetThreadMessageList
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 //
 // 
@@ -1117,6 +1229,10 @@ func NewGetTokenCountResponse() (response *GetTokenCountResponse) {
 }
 
 // GetTokenCount
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 该接口用于计算文本对应Token数、字符数。
 //
 // 可能返回的错误码:
@@ -1126,6 +1242,10 @@ func (c *Client) GetTokenCount(request *GetTokenCountRequest) (response *GetToke
 }
 
 // GetTokenCount
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 该接口用于计算文本对应Token数、字符数。
 //
 // 可能返回的错误码:
@@ -1165,6 +1285,10 @@ func NewGroupChatCompletionsResponse() (response *GroupChatCompletionsResponse) 
 }
 
 // GroupChatCompletions
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 //
 // 
@@ -1197,6 +1321,10 @@ func (c *Client) GroupChatCompletions(request *GroupChatCompletionsRequest) (res
 }
 
 // GroupChatCompletions
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 //
 // 
@@ -1259,6 +1387,10 @@ func NewImageQuestionResponse() (response *ImageQuestionResponse) {
 }
 
 // ImageQuestion
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 //
 // 
@@ -1291,6 +1423,10 @@ func (c *Client) ImageQuestion(request *ImageQuestionRequest) (response *ImageQu
 }
 
 // ImageQuestion
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 //
 // 
@@ -1355,6 +1491,10 @@ func NewListGlossaryResponse() (response *ListGlossaryResponse) {
 }
 
 // ListGlossary
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 查询术语库。
 //
 // 可能返回的错误码:
@@ -1365,6 +1505,10 @@ func (c *Client) ListGlossary(request *ListGlossaryRequest) (response *ListGloss
 }
 
 // ListGlossary
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 查询术语库。
 //
 // 可能返回的错误码:
@@ -1407,6 +1551,10 @@ func NewListGlossaryEntryResponse() (response *ListGlossaryEntryResponse) {
 }
 
 // ListGlossaryEntry
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 查询术语条目。
 //
 // 可能返回的错误码:
@@ -1417,6 +1565,10 @@ func (c *Client) ListGlossaryEntry(request *ListGlossaryEntryRequest) (response 
 }
 
 // ListGlossaryEntry
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 查询术语条目。
 //
 // 可能返回的错误码:
@@ -1585,6 +1737,10 @@ func NewRunThreadResponse() (response *RunThreadResponse) {
 }
 
 // RunThread
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 //
 // 
@@ -1613,6 +1769,10 @@ func (c *Client) RunThread(request *RunThreadRequest) (response *RunThreadRespon
 }
 
 // RunThread
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 //
 // 
@@ -1933,6 +2093,10 @@ func NewUpdateGlossaryEntryResponse() (response *UpdateGlossaryEntryResponse) {
 }
 
 // UpdateGlossaryEntry
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 更新术语条目。
 //
 // 可能返回的错误码:
@@ -1942,6 +2106,10 @@ func (c *Client) UpdateGlossaryEntry(request *UpdateGlossaryEntryRequest) (respo
 }
 
 // UpdateGlossaryEntry
+// 混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+//
+// 
+//
 // 更新术语条目。
 //
 // 可能返回的错误码:

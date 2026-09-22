@@ -15034,50 +15034,49 @@ type ExportAccessInfo struct {
 }
 
 type ExportInfo struct {
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 日志导出任务ID
+	// <p>日志导出任务ID</p>
 	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 
-	// 日志导出查询语句
+	// <p>日志导出查询语句</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 日志导出文件名
+	// <p>日志导出文件名</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 日志文件大小
+	// <p>日志文件大小</p><p>单位：字节</p>
 	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 日志导出时间排序
+	// <p>日志导出时间排序</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 日志导出格式
+	// <p>日志导出格式</p>
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
-	// 日志导出数量
+	// <p>日志导出数量</p>
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
+	// <p>日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 日志导出起始时间
+	// <p>日志导出起始时间</p>
 	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
-	// 日志导出结束时间
+	// <p>日志导出结束时间</p>
 	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
-	// 日志导出路径,有效期一个小时，请尽快使用该路径下载。
+	// <p>日志导出路径,有效期一个小时，请尽快使用该路径下载。</p>
 	CosPath *string `json:"CosPath,omitnil,omitempty" name:"CosPath"`
 
-	// 日志导出创建时间
+	// <p>日志导出创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 语法规则。 默认值为0。
-	// 0：Lucene语法，1：CQL语法。
+	// <p>语法规则。 默认值为0。<br>0：Lucene语法，1：CQL语法。</p>
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 
-	// 导出字段
+	// <p>导出字段</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DerivedFields []*string `json:"DerivedFields,omitnil,omitempty" name:"DerivedFields"`
 }

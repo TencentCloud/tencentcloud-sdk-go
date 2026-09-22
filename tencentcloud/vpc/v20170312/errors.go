@@ -692,6 +692,9 @@ const (
 	// 默认VPC数量已达到上限。
 	LIMITEXCEEDED_DEFAULTVPCLIMITEXCEEDED = "LimitExceeded.DefaultVpcLimitExceeded"
 
+	// 弹性网卡的辅助内网IP数量超过上限。
+	LIMITEXCEEDED_ENIPRIVATEIPLIMIT = "LimitExceeded.EniPrivateIpLimit"
+
 	// 实例绑定的弹性IP超过配额。
 	LIMITEXCEEDED_INSTANCEADDRESSQUOTA = "LimitExceeded.InstanceAddressQuota"
 

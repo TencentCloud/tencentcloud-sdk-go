@@ -2071,6 +2071,56 @@ func (c *Client) ModifyGeneralApmApplicationConfigWithContext(ctx context.Contex
     return
 }
 
+func NewOpenApmPaidVersionRequest() (request *OpenApmPaidVersionRequest) {
+    request = &OpenApmPaidVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "OpenApmPaidVersion")
+    
+    
+    return
+}
+
+func NewOpenApmPaidVersionResponse() (response *OpenApmPaidVersionResponse) {
+    response = &OpenApmPaidVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OpenApmPaidVersion
+// 开通付费版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) OpenApmPaidVersion(request *OpenApmPaidVersionRequest) (response *OpenApmPaidVersionResponse, err error) {
+    return c.OpenApmPaidVersionWithContext(context.Background(), request)
+}
+
+// OpenApmPaidVersion
+// 开通付费版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) OpenApmPaidVersionWithContext(ctx context.Context, request *OpenApmPaidVersionRequest) (response *OpenApmPaidVersionResponse, err error) {
+    if request == nil {
+        request = NewOpenApmPaidVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "OpenApmPaidVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenApmPaidVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenApmPaidVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTerminateApmInstanceRequest() (request *TerminateApmInstanceRequest) {
     request = &TerminateApmInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

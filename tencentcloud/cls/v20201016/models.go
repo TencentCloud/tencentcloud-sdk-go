@@ -6000,6 +6000,9 @@ func (r *CreateResourceGraphRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateResourceGraphResponseParams struct {
+	// <p>资源图谱id</p>
+	ResourceGraphId *string `json:"ResourceGraphId,omitnil,omitempty" name:"ResourceGraphId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -9961,6 +9964,14 @@ type Delta struct {
 
 	// <p>模型生成的工具调用。仅支持输出参数返回。<br>对于每一次的输出值应该以Id为标识对Type、Name、Arguments字段进行合并。</p>
 	ToolCalls []*ToolCall `json:"ToolCalls,omitnil,omitempty" name:"ToolCalls"`
+}
+
+type DependencyTopology struct {
+	// 节点列表
+	Nodes []*TopologyNode `json:"Nodes,omitnil,omitempty" name:"Nodes"`
+
+	// 边列表
+	Edges []*TopologyEdge `json:"Edges,omitnil,omitempty" name:"Edges"`
 }
 
 // Predefined struct for user
@@ -14931,6 +14942,12 @@ func (r *DescribeResourceGraphEntitiesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourceGraphEntitiesResponseParams struct {
+	// <p>实体列表</p>
+	EntityInfos []*EntityInfo `json:"EntityInfos,omitnil,omitempty" name:"EntityInfos"`
+
+	// <p>是否还有下一页</p><p>枚举值：</p><ul><li>0： 没有下一页</li><li>1： 还有下一页</li></ul>
+	HasMore *uint64 `json:"HasMore,omitnil,omitempty" name:"HasMore"`
+
 	// <p>分页的游标，有值则下次分页请求原样带上，无值则表示无下一页</p>
 	NextCursor *string `json:"NextCursor,omitnil,omitempty" name:"NextCursor"`
 
@@ -15023,6 +15040,9 @@ func (r *DescribeResourceGraphEntityDependencyRequest) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeResourceGraphEntityDependencyResponseParams struct {
+	// <p>拓扑图（节点 + 边）</p>
+	Topology *DependencyTopology `json:"Topology,omitnil,omitempty" name:"Topology"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -15098,6 +15118,9 @@ func (r *DescribeResourceGraphEntityDetailRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeResourceGraphEntityDetailResponseParams struct {
+	// <p>实体信息</p>
+	EntityInfo *EntityInfo `json:"EntityInfo,omitnil,omitempty" name:"EntityInfo"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -15470,12 +15493,27 @@ func (r *DescribeResourceGraphTkeClusterStatusResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type DescribeResourceGraphsRequestParams struct {
+	// <ul><li>ResourceGraphId 按【资源图谱 ID】精确匹配。类型：String。必选：否</li><li>Name 按【资源图谱名称】模糊匹配。类型：String。必选：否</li><li>Status 按【状态】模糊匹配。类型：int。必选：否；0：初始化中；1：就绪；2：创建失败；3：删除中；5：删除失败</li><li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li><li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li></ul>注意：每次请求的 Filters 上限 10，Filter.Values 上限 100。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
+	// <p>分页偏移量</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页数量</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeResourceGraphsRequest struct {
 	*tchttp.BaseRequest
 	
+	// <ul><li>ResourceGraphId 按【资源图谱 ID】精确匹配。类型：String。必选：否</li><li>Name 按【资源图谱名称】模糊匹配。类型：String。必选：否</li><li>Status 按【状态】模糊匹配。类型：int。必选：否；0：初始化中；1：就绪；2：创建失败；3：删除中；5：删除失败</li><li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li><li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li></ul>注意：每次请求的 Filters 上限 10，Filter.Values 上限 100。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页偏移量</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页数量</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeResourceGraphsRequest) ToJsonString() string {
@@ -15490,7 +15528,9 @@ func (r *DescribeResourceGraphsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceGraphsRequest has unknown keys!", "")
 	}
@@ -15499,6 +15539,12 @@ func (r *DescribeResourceGraphsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourceGraphsResponseParams struct {
+	// <p>资源图谱信息</p>
+	ResourceGraphInfos []*ResourceGraphInfo `json:"ResourceGraphInfos,omitnil,omitempty" name:"ResourceGraphInfos"`
+
+	// <p>总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -16692,6 +16738,43 @@ type EBPFProcessNameFilter struct {
 
 	// <p>进程名列表</p>
 	ProcessNames []*string `json:"ProcessNames,omitnil,omitempty" name:"ProcessNames"`
+}
+
+type EntityAttribute struct {
+	// 属性 key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 属性 value
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type EntityInfo struct {
+	// <p>实体 ID</p>
+	EntityId *string `json:"EntityId,omitnil,omitempty" name:"EntityId"`
+
+	// <p>实体所属域</p><p>默认值：实体所在域，如TC，App</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>实体所属产品</p><p>参数格式：实体归属的产品，如CDB, Application</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>实体名称</p>
+	EntityName *string `json:"EntityName,omitnil,omitempty" name:"EntityName"`
+
+	// <p>实体类名称</p><p>参数格式：TC.CDB.Instance</p>
+	EntityClassName *string `json:"EntityClassName,omitnil,omitempty" name:"EntityClassName"`
+
+	// <p>动态属性（base 在前 + 字典序）</p>
+	Attributes []*EntityAttribute `json:"Attributes,omitnil,omitempty" name:"Attributes"`
+
+	// <p>标签列表</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>关联日志主题</p>
+	RelatedLogTopics []*RelatedTopicItem `json:"RelatedLogTopics,omitnil,omitempty" name:"RelatedLogTopics"`
+
+	// <p> 实体资源ID </p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type EnvInfo struct {
@@ -24454,6 +24537,20 @@ type Relabeling struct {
 	Modulus *uint64 `json:"Modulus,omitnil,omitempty" name:"Modulus"`
 }
 
+type RelatedTopicItem struct {
+	// <p>主题 ID</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>主题地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>日志类型</p><p>枚举值：</p><ul><li>Auditlog： 审计日志</li><li>Eventlog： 事件日志</li><li>ComponentLog： 组件日志</li></ul>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>日志类型， 0: 日志主题 ; 1: 指标主题</p><p>枚举值：</p><ul><li>0： 日志主题</li><li>1： 指标主题</li></ul>
+	BizType *int64 `json:"BizType,omitnil,omitempty" name:"BizType"`
+}
+
 type RelationLogset struct {
 	// <p>日志集id</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
@@ -24604,6 +24701,35 @@ type ResourceGraphEntityRelatedTopic struct {
 
 	// <p>日志类型</p><p>枚举值：</p><ul><li>0： 日志主题</li><li>1： 指标主题</li></ul>
 	BizType *int64 `json:"BizType,omitnil,omitempty" name:"BizType"`
+}
+
+type ResourceGraphInfo struct {
+	// <p>资源图谱id</p>
+	ResourceGraphId *string `json:"ResourceGraphId,omitnil,omitempty" name:"ResourceGraphId"`
+
+	// <p>工作区名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>工作区描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>工作区状态</p><p>枚举值：</p><ul><li>0： 初始化中</li><li>1： 成功</li><li>2： 失败</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 删除失败</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>创建时间</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>关联的日志集</p>
+	RelationLogset *RelationLogset `json:"RelationLogset,omitnil,omitempty" name:"RelationLogset"`
+
+	// <p>关联的topic</p>
+	RelationTopics []*RelationTopic `json:"RelationTopics,omitnil,omitempty" name:"RelationTopics"`
+
+	// <p>工作区绑定的标签信息</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ResourceGraphTkeClusterInfo struct {
@@ -26121,6 +26247,37 @@ type TopicPartitionOffsetInfo struct {
 	// 分区点位信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PartitionOffsets []*PartitionOffsetInfo `json:"PartitionOffsets,omitnil,omitempty" name:"PartitionOffsets"`
+}
+
+type TopologyEdge struct {
+	// <p>源实体 ID</p>
+	SrcEntityId *string `json:"SrcEntityId,omitnil,omitempty" name:"SrcEntityId"`
+
+	// <p>目的实体 ID</p>
+	DstEntityId *string `json:"DstEntityId,omitnil,omitempty" name:"DstEntityId"`
+
+	// <p>关系类型：contains / same_as / calls</p><p>枚举值：</p><ul><li>contains： 包含关系，A 包含 B</li><li>same_as： 等价关系，A 等价 B</li><li>calls： 调用关系， A 调用 B</li></ul><p>默认值：-</p>
+	RelationType *string `json:"RelationType,omitnil,omitempty" name:"RelationType"`
+}
+
+type TopologyNode struct {
+	// <p>实体 ID</p>
+	EntityId *string `json:"EntityId,omitnil,omitempty" name:"EntityId"`
+
+	// <p>实体名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>实体所属域</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>实体所在产品</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>实体类型</p>
+	EntityClassName *string `json:"EntityClassName,omitnil,omitempty" name:"EntityClassName"`
+
+	// <p>距离中心节点深度</p>
+	Depth *int64 `json:"Depth,omitnil,omitempty" name:"Depth"`
 }
 
 // Predefined struct for user

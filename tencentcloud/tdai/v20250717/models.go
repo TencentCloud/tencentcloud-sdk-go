@@ -344,6 +344,12 @@ type CreateAgentInstanceRequestParams struct {
 
 	// <p>企业版是否使用平台大账号模式发货</p>
 	UsePlatformAccount *bool `json:"UsePlatformAccount,omitnil,omitempty" name:"UsePlatformAccount"`
+
+	// <p>是否是免部署实例</p>
+	DeploymentFree *bool `json:"DeploymentFree,omitnil,omitempty" name:"DeploymentFree"`
+
+	// <p>是否支持记忆</p>
+	EnableMemory *bool `json:"EnableMemory,omitnil,omitempty" name:"EnableMemory"`
 }
 
 type CreateAgentInstanceRequest struct {
@@ -381,6 +387,12 @@ type CreateAgentInstanceRequest struct {
 
 	// <p>企业版是否使用平台大账号模式发货</p>
 	UsePlatformAccount *bool `json:"UsePlatformAccount,omitnil,omitempty" name:"UsePlatformAccount"`
+
+	// <p>是否是免部署实例</p>
+	DeploymentFree *bool `json:"DeploymentFree,omitnil,omitempty" name:"DeploymentFree"`
+
+	// <p>是否支持记忆</p>
+	EnableMemory *bool `json:"EnableMemory,omitnil,omitempty" name:"EnableMemory"`
 }
 
 func (r *CreateAgentInstanceRequest) ToJsonString() string {
@@ -406,6 +418,8 @@ func (r *CreateAgentInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SoulId")
 	delete(f, "Description")
 	delete(f, "UsePlatformAccount")
+	delete(f, "DeploymentFree")
+	delete(f, "EnableMemory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAgentInstanceRequest has unknown keys!", "")
 	}

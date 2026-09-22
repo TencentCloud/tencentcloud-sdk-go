@@ -4814,6 +4814,57 @@ func (r *ModifyGeneralApmApplicationConfigResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type OpenApmPaidVersionRequestParams struct {
+
+}
+
+type OpenApmPaidVersionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *OpenApmPaidVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenApmPaidVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenApmPaidVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenApmPaidVersionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OpenApmPaidVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenApmPaidVersionResponseParams `json:"Response"`
+}
+
+func (r *OpenApmPaidVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenApmPaidVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type OrderBy struct {
 	// 需要排序的字段，现支持 startTIme, endTime, duration
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`

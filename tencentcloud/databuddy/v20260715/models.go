@@ -136,23 +136,23 @@ type AlarmBrief struct {
 }
 
 type AlarmGroup struct {
-	// 通知渠道ID，可通过基础平台通知渠道相关接口获取
+	// <p>通知渠道ID，可通过基础平台通知渠道相关接口获取</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 通知渠道名称，可以是用户组名称或邮箱地址
+	// <p>通知渠道名称，可以是用户组名称或邮箱地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
-	// 是否启用邮件渠道，默认值：false
+	// <p>是否启用邮件渠道，默认值：false</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsEmailChannel *bool `json:"IsEmailChannel,omitnil,omitempty" name:"IsEmailChannel"`
 
-	// 一组告警条件，有 启动，成功，失败和任务超时告警
+	// <p>告警条件列表。取值：<br>START：启动<br>SUCCESS：成功<br>FAILURE：失败<br>MONITOR_INDICATOR_ALARM：监控指标告警</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmConditions []*string `json:"AlarmConditions,omitnil,omitempty" name:"AlarmConditions"`
 
-	// 通知渠道类型。取值：0 未指定，1 Email，2 Webhook，3 Teams，4 Slack
+	// <p>通知渠道类型。取值：0 未指定，1 Email，2 Webhook，3 Teams，4 Slack</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelType *int64 `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
 }
@@ -1157,11 +1157,11 @@ type GetWorkflowRsp struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Trigger []*WorkflowTriggerConfiguration `json:"Trigger,omitnil,omitempty" name:"Trigger"`
 
-	// <p>工作流参数列表</p>
+	// <p>工作流参数列表 参数名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamList []*ParamInfo `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 
-	// <p>标签列表</p>
+	// <p>标签 标签名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelList []*LabelBrief `json:"LabelList,omitnil,omitempty" name:"LabelList"`
 
@@ -1370,7 +1370,7 @@ type GetWorkflowTaskRunRsp struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
+	// <p>任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeName *string `json:"TaskTypeName,omitnil,omitempty" name:"TaskTypeName"`
 
@@ -1378,7 +1378,7 @@ type GetWorkflowTaskRunRsp struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskVersionId *string `json:"TaskVersionId,omitnil,omitempty" name:"TaskVersionId"`
 
-	// <p>触发类型 (参考SchedulerTriggerType枚举)</p>
+	// <p>触发类型</p><p>枚举值：</p><ul><li>Scheduler： 调度触发</li><li>Manual： 手动触发</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
@@ -2177,7 +2177,7 @@ type ListWorkflowRunsRequestParams struct {
 	// <p>运行创建时间上界，范围匹配（CreateTime &lt;= 本值），单位：毫秒时间戳。<br>非必填，单值，对应出参 WorkflowRun.CreateTime</p>
 	CreateEndTime *string `json:"CreateEndTime,omitnil,omitempty" name:"CreateEndTime"`
 
-	// <p>运行状态，精确匹配。非必填，多选（多个值之间为 OR 关系）。</p><p>可填 SUCCESS / FAILED 等，具体参考本接口出参 WorkflowRun.RunState 字段返回值。</p>
+	// <p>运行状态，精确匹配。非必填，多选（多个值之间为 OR 关系）。运行状态。CREATE(&quot;初始化&quot;), QUEUED(&quot;等待中&quot;), PENDING(&quot;准备中&quot;), RUNNING(&quot;运行中&quot;), SKIPPED(&quot;跳过运行&quot;), SUCCESS(&quot;成功&quot;), FAILED(&quot;失败&quot;), TERMINATING(&quot;终止中&quot;), TERMINATED(&quot;终止&quot;), CANCELLED(&quot;被手动终止&quot;)等</p>
 	RunStates []*string `json:"RunStates,omitnil,omitempty" name:"RunStates"`
 
 	// <p>错误码，精确匹配。非必填，多选（多个值之间为 OR 关系）</p>
@@ -2220,7 +2220,7 @@ type ListWorkflowRunsRequest struct {
 	// <p>运行创建时间上界，范围匹配（CreateTime &lt;= 本值），单位：毫秒时间戳。<br>非必填，单值，对应出参 WorkflowRun.CreateTime</p>
 	CreateEndTime *string `json:"CreateEndTime,omitnil,omitempty" name:"CreateEndTime"`
 
-	// <p>运行状态，精确匹配。非必填，多选（多个值之间为 OR 关系）。</p><p>可填 SUCCESS / FAILED 等，具体参考本接口出参 WorkflowRun.RunState 字段返回值。</p>
+	// <p>运行状态，精确匹配。非必填，多选（多个值之间为 OR 关系）。运行状态。CREATE(&quot;初始化&quot;), QUEUED(&quot;等待中&quot;), PENDING(&quot;准备中&quot;), RUNNING(&quot;运行中&quot;), SKIPPED(&quot;跳过运行&quot;), SUCCESS(&quot;成功&quot;), FAILED(&quot;失败&quot;), TERMINATING(&quot;终止中&quot;), TERMINATED(&quot;终止&quot;), CANCELLED(&quot;被手动终止&quot;)等</p>
 	RunStates []*string `json:"RunStates,omitnil,omitempty" name:"RunStates"`
 
 	// <p>错误码，精确匹配。非必填，多选（多个值之间为 OR 关系）</p>
@@ -3081,7 +3081,7 @@ type TaskType struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Notebook *TaskTypeNotebookExt `json:"Notebook,omitnil,omitempty" name:"Notebook"`
 
-	// <p>任务扩展属性列表，具体填写参考 ListWorkflowTaskTypeProperties 接口</p>
+	// <p>任务类型属性列表，不同任务类型所需的 PropertyKey 不同，具体取值请参考 ListWorkflowTaskTypeProperties 接口返回</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypePropertyList []*TaskTypeProperty `json:"TaskTypePropertyList,omitnil,omitempty" name:"TaskTypePropertyList"`
 
@@ -3091,21 +3091,19 @@ type TaskType struct {
 }
 
 type TaskTypeNotebookExt struct {
-	// 脚本来源。取值：SCRIPT_SOURCE_LOCAL（本地）/ SCRIPT_SOURCE_GIT（Git 仓库）/
-	// SCRIPT_SOURCE_CFS（CFS 文件系统）/ SCRIPT_SOURCE_COS（COS 对象存储）/
-	// SCRIPT_SOURCE_WORKSPACE（工作空间）
+	// <p>脚本来源。取值：SCRIPT_SOURCE_LOCAL（本地）/ SCRIPT_SOURCE_GIT（Git 仓库）/<br>SCRIPT_SOURCE_CFS（CFS 文件系统）/ SCRIPT_SOURCE_COS（COS 对象存储）/<br>SCRIPT_SOURCE_WORKSPACE（工作空间）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 前端显示使用，对执行平台无意义
+	// <p>前端显示使用，对执行平台无意义</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisplayPath *string `json:"DisplayPath,omitnil,omitempty" name:"DisplayPath"`
 
-	// Notebook 相对路径
+	// <p>Notebook 相对路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotebookPath *string `json:"NotebookPath,omitnil,omitempty" name:"NotebookPath"`
 
-	// Notebook 绝对路径
+	// <p>Notebook 绝对路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotebookAbsolutePath *string `json:"NotebookAbsolutePath,omitnil,omitempty" name:"NotebookAbsolutePath"`
 }
@@ -3583,11 +3581,11 @@ type Workflow struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Trigger []*WorkflowTriggerConfiguration `json:"Trigger,omitnil,omitempty" name:"Trigger"`
 
-	// <p>工作流参数列表 参数名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;<!--'，最长128个字符--></p>
+	// <p>工作流参数列表 参数名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt; 最长128个字符</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamList []*ParamInfo `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 
-	// <p>标签 标签名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;<!--'，最长128个字符--></p>
+	// <p>标签 标签名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;'，最长128个字符</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelList []*LabelBrief `json:"LabelList,omitnil,omitempty" name:"LabelList"`
 
@@ -3615,7 +3613,7 @@ type Workflow struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
 
-	// <p>GIT配置ID，对应GetWorkspaceConfig接口中的ConfigKey</p>
+	// <p>GIT配置ID，对应GetWorkspaceConfig接口中的ConfigKey</p>    -
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GitConfigId *string `json:"GitConfigId,omitnil,omitempty" name:"GitConfigId"`
 
@@ -3935,7 +3933,7 @@ type WorkflowRunBrief struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunStartTime *string `json:"RunStartTime,omitnil,omitempty" name:"RunStartTime"`
 
-	// 运行状态
+	// <p>运行状态。CREATE(&quot;初始化&quot;),     QUEUED(&quot;等待中&quot;),     PENDING(&quot;准备中&quot;),     RUNNING(&quot;运行中&quot;),     SKIPPED(&quot;跳过运行&quot;),     SUCCESS(&quot;成功&quot;),     FAILED(&quot;失败&quot;),     TERMINATING(&quot;终止中&quot;),     TERMINATED(&quot;终止&quot;),     CANCELLED(&quot;被手动终止&quot;)等</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunState *string `json:"RunState,omitnil,omitempty" name:"RunState"`
 
@@ -4062,7 +4060,7 @@ type WorkflowTaskNodeBrief struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskRetryStrategy *TaskRetryStrategy `json:"TaskRetryStrategy,omitnil,omitempty" name:"TaskRetryStrategy"`
 
-	// <p>任依赖运行条件</p><ul><li>ALL_SUCCESS: 全部成功：所有上游依赖任务均已执行并成功</li><li>ONE_SUCCESS: 至少一个成功：至少有一个上游依赖任务成功</li><li>NONE_FAILED: 目前没有失败：没有依赖任务失败，并且至少有一个依赖任务在运行中</li><li>ALL_DONE: 全部完成：所有上游依赖任务均已执行并完成（无论成功或失败</li><li>ONE_FAILED: 至少一个失败：至少有一个上游依赖任务失败</li><li>ALL_FAILED: 全部失败：所有上游依赖任务都失败</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li><li>ADVANCED:运行条件为高级模式时配置</li></ul>
+	// <p>任务依赖运行条件</p><p>ALL_SUCCESS: 全部成功：所有上游依赖任务均已执行并成功<br>ONE_SUCCESS: 至少一个成功：至少有一个上游依赖任务成功<br>NONE_FAILED: 目前没有失败：没有依赖任务失败，并且至少有一个依赖任务在运行中<br>ALL_DONE: 全部完成：所有上游依赖任务均已执行并完成（无论成功或失败<br>ONE_FAILED: 至少一个失败：至少有一个上游依赖任务失败<br>ALL_FAILED: 全部失败：所有上游依赖任务都失败<br>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行<br>ALL_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行<br>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游<br>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行<br>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行<br>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行<br>ADVANCED:运行条件为高级模式时配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependOnRunCondition *string `json:"DependOnRunCondition,omitnil,omitempty" name:"DependOnRunCondition"`
 
@@ -4084,7 +4082,7 @@ type WorkflowTaskRun struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowTaskRunId *string `json:"WorkflowTaskRunId,omitnil,omitempty" name:"WorkflowTaskRunId"`
 
-	// <p>运行状态。取值参考工作流任务运行状态枚举，如 Pending / Running / Succeeded / Failed / Killed</p>
+	// <p>运行状态。如CREATE("初始化"), QUEUED("等待中"), PENDING("准备中"), RUNNING("运行中"), SKIPPED("跳过运行"), SUCCESS("成功"), FAILED("失败"), TERMINATING("终止中"), TERMINATED("终止"), CANCELLED("被手动终止")等</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunState *string `json:"RunState,omitnil,omitempty" name:"RunState"`
 
@@ -4104,7 +4102,7 @@ type WorkflowTaskRun struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
+	// <p>任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeName *string `json:"TaskTypeName,omitnil,omitempty" name:"TaskTypeName"`
 
@@ -4112,7 +4110,7 @@ type WorkflowTaskRun struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskVersionId *string `json:"TaskVersionId,omitnil,omitempty" name:"TaskVersionId"`
 
-	// <p>触发类型 (参考SchedulerTriggerType枚举)</p>
+	// <p>触发类型</p><p>枚举值：</p><ul><li>Manual： 手动触发</li><li>Scheduler： 调度触发</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
@@ -4238,7 +4236,7 @@ type WorkflowTaskRun struct {
 }
 
 type WorkflowTriggerAdvancedConfiguration struct {
-	// 任务重试模式
+	// <p>&lt;p&gt;该工作流下的所有任务重试模式，仅当TriggerMode为CONTINUE_RUN时有效。</p><p>枚举值：</p><ul><li>onFailure： 失败时自动重试</li><li>never： 从不重试</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskRetryMode *string `json:"TaskRetryMode,omitnil,omitempty" name:"TaskRetryMode"`
 }

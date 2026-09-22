@@ -5067,6 +5067,58 @@ func (c *Client) DescribeTablesWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribeTaskResultRequest() (request *DescribeTaskResultRequest) {
+    request = &DescribeTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeTaskResult")
+    
+    
+    return
+}
+
+func NewDescribeTaskResultResponse() (response *DescribeTaskResultResponse) {
+    response = &DescribeTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTaskResult
+// 本接口（DescribeTaskResult）用于查询任务结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
+    return c.DescribeTaskResultWithContext(context.Background(), request)
+}
+
+// DescribeTaskResult
+// 本接口（DescribeTaskResult）用于查询任务结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) DescribeTaskResultWithContext(ctx context.Context, request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeTaskResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserListRequest() (request *DescribeUserListRequest) {
     request = &DescribeUserListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7097,6 +7149,66 @@ func (c *Client) RepairPGUserMigrationHistoryWithContext(ctx context.Context, re
     return
 }
 
+func NewResetPGAccountPasswordRequest() (request *ResetPGAccountPasswordRequest) {
+    request = &ResetPGAccountPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ResetPGAccountPassword")
+    
+    
+    return
+}
+
+func NewResetPGAccountPasswordResponse() (response *ResetPGAccountPasswordResponse) {
+    response = &ResetPGAccountPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetPGAccountPassword
+// 修改 PG 实例用户角色密码。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) ResetPGAccountPassword(request *ResetPGAccountPasswordRequest) (response *ResetPGAccountPasswordResponse, err error) {
+    return c.ResetPGAccountPasswordWithContext(context.Background(), request)
+}
+
+// ResetPGAccountPassword
+// 修改 PG 实例用户角色密码。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) ResetPGAccountPasswordWithContext(ctx context.Context, request *ResetPGAccountPasswordRequest) (response *ResetPGAccountPasswordResponse, err error) {
+    if request == nil {
+        request = NewResetPGAccountPasswordRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ResetPGAccountPassword")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetPGAccountPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetPGAccountPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunCommandsRequest() (request *RunCommandsRequest) {
     request = &RunCommandsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7711,6 +7823,58 @@ func (c *Client) UpdateTableWithContext(ctx context.Context, request *UpdateTabl
     request.SetContext(ctx)
     
     response = NewUpdateTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradePGInstanceToDedicatedRequest() (request *UpgradePGInstanceToDedicatedRequest) {
+    request = &UpgradePGInstanceToDedicatedRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "UpgradePGInstanceToDedicated")
+    
+    
+    return
+}
+
+func NewUpgradePGInstanceToDedicatedResponse() (response *UpgradePGInstanceToDedicatedResponse) {
+    response = &UpgradePGInstanceToDedicatedResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpgradePGInstanceToDedicated
+// 本接口（UpgradePGInstanceToDedicated）用于共享PG升级独享PG。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) UpgradePGInstanceToDedicated(request *UpgradePGInstanceToDedicatedRequest) (response *UpgradePGInstanceToDedicatedResponse, err error) {
+    return c.UpgradePGInstanceToDedicatedWithContext(context.Background(), request)
+}
+
+// UpgradePGInstanceToDedicated
+// 本接口（UpgradePGInstanceToDedicated）用于共享PG升级独享PG。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) UpgradePGInstanceToDedicatedWithContext(ctx context.Context, request *UpgradePGInstanceToDedicatedRequest) (response *UpgradePGInstanceToDedicatedResponse, err error) {
+    if request == nil {
+        request = NewUpgradePGInstanceToDedicatedRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "UpgradePGInstanceToDedicated")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradePGInstanceToDedicated require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradePGInstanceToDedicatedResponse()
     err = c.Send(request, response)
     return
 }

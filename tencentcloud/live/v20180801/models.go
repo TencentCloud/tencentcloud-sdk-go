@@ -798,6 +798,54 @@ type AuditLabelGroupInfo struct {
 	GroupMsg *string `json:"GroupMsg,omitnil,omitempty" name:"GroupMsg"`
 }
 
+type AuditTemplate struct {
+	// <p>模板 ID 。<br>CreateAuditTemplate 时，此参数不传或传 0 。</p><p>ModifyAuditTemplate 时，此参数必传。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>模板名称。<br>CreateAuditTemplate 必填。</p>
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// <p>描述信息。<br>CreateAuditTemplate 必填。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Cos Bucket名称。<br>CreateAuditTemplate 必填。</p>
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// <p>Cos 地域。<br>CreateAuditTemplate 必填。</p>
+	CosRegion *string `json:"CosRegion,omitnil,omitempty" name:"CosRegion"`
+
+	// <p>Cos 完整文件名（包括前缀）。CreateAuditTemplate 必填。</p>
+	CosFilePath *string `json:"CosFilePath,omitnil,omitempty" name:"CosFilePath"`
+
+	// <p>是否启用图片审核。<br>CreateAuditTemplate 必填。</p>
+	AuditImage *bool `json:"AuditImage,omitnil,omitempty" name:"AuditImage"`
+
+	// <p>是否启用音频审核。<br>CreateAuditTemplate 必填。</p>
+	AuditAudio *bool `json:"AuditAudio,omitnil,omitempty" name:"AuditAudio"`
+
+	// <p>截图间隔，1-60秒。<br>CreateAuditTemplate 必填。</p>
+	SnapshotInterval *int64 `json:"SnapshotInterval,omitnil,omitempty" name:"SnapshotInterval"`
+
+	// <p>音频间隔，1-60秒。<br>CreateAuditTemplate 必填。</p>
+	AudioInterval *int64 `json:"AudioInterval,omitnil,omitempty" name:"AudioInterval"`
+
+	// <p>是否开启 Cos 容灾。<br>CreateAuditTemplate 必填。</p>
+	EnableFailoverCos *bool `json:"EnableFailoverCos,omitnil,omitempty" name:"EnableFailoverCos"`
+
+	// <p>容灾 Cos Bucket 。<br>CreateAuditTemplate 必填。</p>
+	FailoverCosBucket *string `json:"FailoverCosBucket,omitnil,omitempty" name:"FailoverCosBucket"`
+
+	// <p>容灾 Cos 地域。<br>CreateAuditTemplate 必填。</p>
+	FailoverCosRegion *string `json:"FailoverCosRegion,omitnil,omitempty" name:"FailoverCosRegion"`
+
+	// <p>场景策略配置信息。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneInfos []*CMSSceneDetail `json:"SceneInfos,omitnil,omitempty" name:"SceneInfos"`
+
+	// <p>1：表示启用音频文本识别。0 ：不启用。默认 0 。</p>
+	AuditText *int64 `json:"AuditText,omitnil,omitempty" name:"AuditText"`
+}
+
 // Predefined struct for user
 type AuthenticateDomainOwnerRequestParams struct {
 	// 要验证的域名。
@@ -1154,6 +1202,32 @@ type BillDataInfo struct {
 	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 原始数据为5分钟粒度，如果查询小时和天粒度数据，则返回对应粒度内的带宽峰值时间点。
 	PeakTime *string `json:"PeakTime,omitnil,omitempty" name:"PeakTime"`
+}
+
+type CMSBizInfo struct {
+	// <p>策略类型，可选值：<br>Text：文本ShortAudio：音频<br>Image:<br>图片。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
+
+	// <p>策略标识（自动生成）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
+
+	// <p>策略开通状态。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>策略配置。<br>json字符串。</p><p>具体取值方式如下：举例：色情：&quot;{"ability":{"asr_text":true,"audio":true},"asr_text_labels":{"porn":["OVR","Pornography","PornographyObscene"]},"audio_labels":{},"user_text_libs":["320fb40e-9305-4b00-a191-945c219b5cc0"]}&quot;    可选项： {     value: &#39;OVR&#39;,     text: t(&#39;低俗语音识别&#39;),     msg: t(&#39;示例：呻吟、娇喘、娇喘等性暗示相关的语音&#39;),   },   {     value: &#39;Pornography&#39;,     text: t(&#39;严重色情&#39;),     msg: t(&#39;性行为、性器官等相关描述&#39;),   },   {     value: &#39;PornographyObscene&#39;,     text: t(&#39;色情低俗&#39;),     msg: t(&#39;低俗行为、性暗示等相关描述&#39;),   }</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyConfig *string `json:"StrategyConfig,omitnil,omitempty" name:"StrategyConfig"`
+}
+
+type CMSSceneDetail struct {
+	// <p>策略信息</p>
+	BizInfos []*CMSBizInfo `json:"BizInfos,omitnil,omitempty" name:"BizInfos"`
+
+	// <p>SceneID 。</p>
+	SceneID *string `json:"SceneID,omitnil,omitempty" name:"SceneID"`
 }
 
 type CallBackRuleInfo struct {
@@ -2358,6 +2432,138 @@ func (r *CreateAuditKeywordsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAuditKeywordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAuditRuleRequestParams struct {
+	// <p>推流域名。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>推流路径，与推流和播放地址中的AppName 保持一致。</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// <p>审核模板 ID。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>流名称。 不传默认为空。</p>
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+}
+
+type CreateAuditRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>推流域名。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>推流路径，与推流和播放地址中的AppName 保持一致。</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// <p>审核模板 ID。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>流名称。 不传默认为空。</p>
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+}
+
+func (r *CreateAuditRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	delete(f, "AppName")
+	delete(f, "TemplateId")
+	delete(f, "StreamName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAuditRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAuditRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAuditRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateAuditRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAuditTemplateRequestParams struct {
+	// <p>审核模板。</p>
+	AuditTemplate *AuditTemplate `json:"AuditTemplate,omitnil,omitempty" name:"AuditTemplate"`
+}
+
+type CreateAuditTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>审核模板。</p>
+	AuditTemplate *AuditTemplate `json:"AuditTemplate,omitnil,omitempty" name:"AuditTemplate"`
+}
+
+func (r *CreateAuditTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AuditTemplate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAuditTemplateResponseParams struct {
+	// <p>模板 ID 。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAuditTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAuditTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateAuditTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4422,6 +4628,133 @@ func (r *CreateLiveRecordTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateLiveSmartEraseTemplateRequestParams struct {
+	// <p>模板名称。长度上限：100字节。</p>
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// <p>擦除类型，如&quot;illegal audio|illegal image|logo|privacy protection 。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>关联的审核模板id, 表audio_conf 。</p>
+	AuditConfId *uint64 `json:"AuditConfId,omitnil,omitempty" name:"AuditConfId"`
+
+	// <p>天御图片审核策略BizType  Image 。</p>
+	ImageBizType *string `json:"ImageBizType,omitnil,omitempty" name:"ImageBizType"`
+
+	// <p>天御音频审核策略BizType  ShortAudio 。</p>
+	AudioBizType *string `json:"AudioBizType,omitnil,omitempty" name:"AudioBizType"`
+
+	// <p>天御音频文本审核策略BizType  ShortAudio 。</p>
+	AudioTextBizType *string `json:"AudioTextBizType,omitnil,omitempty" name:"AudioTextBizType"`
+
+	// <p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
+	DisplayMode *int64 `json:"DisplayMode,omitnil,omitempty" name:"DisplayMode"`
+
+	// <p>字幕延迟展示时间,单位毫秒。默认10000。</p>
+	DisplayDelayTime *int64 `json:"DisplayDelayTime,omitnil,omitempty" name:"DisplayDelayTime"`
+
+	// <p>隐私保护可选的类型名，包括人脸模糊、车牌模糊</p><p>枚举值：</p><ul><li>blur face： 人脸模糊</li><li>blur license plate： 车牌模糊</li><li>blur face|blur license plate： 复选</li></ul>
+	PrivacyProtection *string `json:"PrivacyProtection,omitnil,omitempty" name:"PrivacyProtection"`
+
+	// <p>音频处理可选项：静音擦除、哔音擦除，默认选择静音擦除</p><p>枚举值：</p><ul><li>0： 静音</li><li>1： 哔音</li></ul><p>默认值：0</p>
+	AudioErasureMode *uint64 `json:"AudioErasureMode,omitnil,omitempty" name:"AudioErasureMode"`
+}
+
+type CreateLiveSmartEraseTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模板名称。长度上限：100字节。</p>
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// <p>擦除类型，如&quot;illegal audio|illegal image|logo|privacy protection 。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>关联的审核模板id, 表audio_conf 。</p>
+	AuditConfId *uint64 `json:"AuditConfId,omitnil,omitempty" name:"AuditConfId"`
+
+	// <p>天御图片审核策略BizType  Image 。</p>
+	ImageBizType *string `json:"ImageBizType,omitnil,omitempty" name:"ImageBizType"`
+
+	// <p>天御音频审核策略BizType  ShortAudio 。</p>
+	AudioBizType *string `json:"AudioBizType,omitnil,omitempty" name:"AudioBizType"`
+
+	// <p>天御音频文本审核策略BizType  ShortAudio 。</p>
+	AudioTextBizType *string `json:"AudioTextBizType,omitnil,omitempty" name:"AudioTextBizType"`
+
+	// <p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
+	DisplayMode *int64 `json:"DisplayMode,omitnil,omitempty" name:"DisplayMode"`
+
+	// <p>字幕延迟展示时间,单位毫秒。默认10000。</p>
+	DisplayDelayTime *int64 `json:"DisplayDelayTime,omitnil,omitempty" name:"DisplayDelayTime"`
+
+	// <p>隐私保护可选的类型名，包括人脸模糊、车牌模糊</p><p>枚举值：</p><ul><li>blur face： 人脸模糊</li><li>blur license plate： 车牌模糊</li><li>blur face|blur license plate： 复选</li></ul>
+	PrivacyProtection *string `json:"PrivacyProtection,omitnil,omitempty" name:"PrivacyProtection"`
+
+	// <p>音频处理可选项：静音擦除、哔音擦除，默认选择静音擦除</p><p>枚举值：</p><ul><li>0： 静音</li><li>1： 哔音</li></ul><p>默认值：0</p>
+	AudioErasureMode *uint64 `json:"AudioErasureMode,omitnil,omitempty" name:"AudioErasureMode"`
+}
+
+func (r *CreateLiveSmartEraseTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveSmartEraseTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateName")
+	delete(f, "Type")
+	delete(f, "Description")
+	delete(f, "AuditConfId")
+	delete(f, "ImageBizType")
+	delete(f, "AudioBizType")
+	delete(f, "AudioTextBizType")
+	delete(f, "DisplayMode")
+	delete(f, "DisplayDelayTime")
+	delete(f, "PrivacyProtection")
+	delete(f, "AudioErasureMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveSmartEraseTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveSmartEraseTemplateResponseParams struct {
+	// <p>模板Id。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLiveSmartEraseTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLiveSmartEraseTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateLiveSmartEraseTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveSmartEraseTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateLiveSnapshotRuleRequestParams struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
@@ -6191,6 +6524,128 @@ func (r *DeleteAuditKeywordsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAuditKeywordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAuditRuleRequestParams struct {
+	// <p>推流域名。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>推流路径，与推流和播放地址中的AppName保持一致。</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// <p>流名称 。 不传默认为空。</p>
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+}
+
+type DeleteAuditRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>推流域名。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>推流路径，与推流和播放地址中的AppName保持一致。</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// <p>流名称 。 不传默认为空。</p>
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+}
+
+func (r *DeleteAuditRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	delete(f, "AppName")
+	delete(f, "StreamName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAuditRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAuditRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAuditRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAuditRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteAuditRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAuditTemplateRequestParams struct {
+	// <p>审核模板 ID 。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+type DeleteAuditTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>审核模板 ID 。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+func (r *DeleteAuditTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAuditTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAuditTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAuditTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAuditTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteAuditTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8547,6 +9002,212 @@ func (r *DescribeAuditKeywordsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAuditKeywordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditRulesRequestParams struct {
+	// <p>域名。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>审核模板 ID 。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>AppName 。</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// <p>流 ID 。</p>
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+}
+
+type DescribeAuditRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>域名。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>审核模板 ID 。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>AppName 。</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// <p>流 ID 。</p>
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+}
+
+func (r *DescribeAuditRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	delete(f, "TemplateId")
+	delete(f, "AppName")
+	delete(f, "StreamName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditRulesResponseParams struct {
+	// <p>规则信息列表。</p>
+	Rules []*RuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditTemplateRequestParams struct {
+	// <p>模板 ID 。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+type DescribeAuditTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模板 ID 。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribeAuditTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditTemplateResponseParams struct {
+	// <p>审核模板。</p>
+	AuditTemplate *AuditTemplate `json:"AuditTemplate,omitnil,omitempty" name:"AuditTemplate"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditTemplateResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditTemplatesRequestParams struct {
+	// <p>是否过滤出文本审核，false不过滤，true过滤。</p>
+	WithTextAudit *bool `json:"WithTextAudit,omitnil,omitempty" name:"WithTextAudit"`
+
+	// <p>页码。</p>
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// <p>每页数量。</p><p>取值范围：[5, 100]</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeAuditTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>是否过滤出文本审核，false不过滤，true过滤。</p>
+	WithTextAudit *bool `json:"WithTextAudit,omitnil,omitempty" name:"WithTextAudit"`
+
+	// <p>页码。</p>
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// <p>每页数量。</p><p>取值范围：[5, 100]</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeAuditTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WithTextAudit")
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditTemplatesResponseParams struct {
+	// <p>审核模板列表。</p>
+	AuditTemplates []*AuditTemplate `json:"AuditTemplates,omitnil,omitempty" name:"AuditTemplates"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -17900,6 +18561,63 @@ func (r *ModifyAuditKeywordLibResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAuditKeywordLibResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAuditTemplateRequestParams struct {
+	// <p>审核模板。</p>
+	AuditTemplate *AuditTemplate `json:"AuditTemplate,omitnil,omitempty" name:"AuditTemplate"`
+}
+
+type ModifyAuditTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>审核模板。</p>
+	AuditTemplate *AuditTemplate `json:"AuditTemplate,omitnil,omitempty" name:"AuditTemplate"`
+}
+
+func (r *ModifyAuditTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuditTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AuditTemplate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAuditTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAuditTemplateResponseParams struct {
+	// <p>模板 ID 。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAuditTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAuditTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyAuditTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuditTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

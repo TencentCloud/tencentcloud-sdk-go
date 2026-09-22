@@ -519,38 +519,38 @@ type AssociationItem struct {
 
 // Predefined struct for user
 type AutoRewriteRequestParams struct {
-	// 负载均衡实例ID。
+	// <p>负载均衡实例ID。</p>
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// HTTPS:443监听器的ID。
+	// <p>HTTPS:443监听器的ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// HTTPS:443监听器下需要重定向的域名，若不填，则对HTTPS:443监听器下的所有域名都设置重定向。
+	// <p>HTTPS:443监听器下需要重定向的域名，若不填，则对HTTPS:443监听器下的所有域名都设置重定向。</p>
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 重定向状态码，可取值301,302,307。
+	// <p>重定向状态码，可取值301,302,307。</p><p>默认值：302</p>
 	RewriteCodes []*int64 `json:"RewriteCodes,omitnil,omitempty" name:"RewriteCodes"`
 
-	// 重定向是否携带匹配的URL。
+	// <p>重定向是否携带匹配的URL。</p>
 	TakeUrls []*bool `json:"TakeUrls,omitnil,omitempty" name:"TakeUrls"`
 }
 
 type AutoRewriteRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例ID。
+	// <p>负载均衡实例ID。</p>
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// HTTPS:443监听器的ID。
+	// <p>HTTPS:443监听器的ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// HTTPS:443监听器下需要重定向的域名，若不填，则对HTTPS:443监听器下的所有域名都设置重定向。
+	// <p>HTTPS:443监听器下需要重定向的域名，若不填，则对HTTPS:443监听器下的所有域名都设置重定向。</p>
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 重定向状态码，可取值301,302,307。
+	// <p>重定向状态码，可取值301,302,307。</p><p>默认值：302</p>
 	RewriteCodes []*int64 `json:"RewriteCodes,omitnil,omitempty" name:"RewriteCodes"`
 
-	// 重定向是否携带匹配的URL。
+	// <p>重定向是否携带匹配的URL。</p>
 	TakeUrls []*bool `json:"TakeUrls,omitnil,omitempty" name:"TakeUrls"`
 }
 
@@ -15501,6 +15501,12 @@ type ServiceProviderHealthCheckConfigItemInput struct {
 
 	// <p>健康检查协议</p><p>枚举值：</p><ul><li>chat： 表示/chat/completion协议</li><li>messages： 表示/v1/messages协议</li><li>responses： 表示/v1/messages协议</li></ul>
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitnil,omitempty" name:"HealthCheckProtocol"`
+
+	// <p>健康检查路径。仅HealthCheckMethod为Service时生效。</p>
+	HealthCheckPath *string `json:"HealthCheckPath,omitnil,omitempty" name:"HealthCheckPath"`
+
+	// <p>健康检查方式。</p><p>枚举值：</p><ul><li>Service： 探测服务可用性</li><li>Model： 探测模型可用性</li></ul>
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitnil,omitempty" name:"HealthCheckMethod"`
 }
 
 type ServiceProviderHealthCheckConfigItemOutput struct {
@@ -15514,11 +15520,18 @@ type ServiceProviderHealthCheckConfigItemOutput struct {
 	HealthCheckUnhealthyThreshold *uint64 `json:"HealthCheckUnhealthyThreshold,omitnil,omitempty" name:"HealthCheckUnhealthyThreshold"`
 
 	// <p>健康检查使用的最大Token数量。部分模型如gpt系列可能仅支持大于等于16。</p><p>默认值：1</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheckMaxTokens *uint64 `json:"HealthCheckMaxTokens,omitnil,omitempty" name:"HealthCheckMaxTokens"`
 
 	// <p>健康检查协议</p><p>枚举值：</p><ul><li>chat： 表示/chat/completion协议</li><li>messages： 表示/v1/messages协议</li><li>responses： 表示/v1/messages协议</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitnil,omitempty" name:"HealthCheckProtocol"`
+
+	// <p>健康检查路径。仅HealthCheckMethod为Service时生效。</p>
+	HealthCheckPath *string `json:"HealthCheckPath,omitnil,omitempty" name:"HealthCheckPath"`
+
+	// <p>健康检查方式。</p>
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitnil,omitempty" name:"HealthCheckMethod"`
 }
 
 type ServiceProviderHealthCheckConfigOutput struct {

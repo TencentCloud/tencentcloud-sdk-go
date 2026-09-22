@@ -518,6 +518,9 @@ const (
 	// 域名受限，请提交工单，申请解除限制。
 	INVALIDPARAMETER_DOMAINISLIMITED = "InvalidParameter.DomainIsLimited"
 
+	// 域名不存在。
+	INVALIDPARAMETER_DOMAINNOTEXISTS = "InvalidParameter.DomainNotExists"
+
 	// 域名长度超过限制。
 	INVALIDPARAMETER_DOMAINTOOLONG = "InvalidParameter.DomainTooLong"
 
@@ -569,6 +572,9 @@ const (
 	// 源地址不规范。
 	INVALIDPARAMETER_INVALIDSOURCEURL = "InvalidParameter.InvalidSourceUrl"
 
+	// 错误的流名称。
+	INVALIDPARAMETER_INVALIDSTREAMNAME = "InvalidParameter.InvalidStreamName"
+
 	// TaskId非法
 	INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 
@@ -616,6 +622,9 @@ const (
 
 	// 任务数超过限制。
 	INVALIDPARAMETER_TASKNUMMORETHANLIMIT = "InvalidParameter.TaskNumMoreThanLimit"
+
+	// 模板不存在。
+	INVALIDPARAMETER_TEMPLATENOTFOUND = "InvalidParameter.TemplateNotFound"
 
 	// 模板与输入流条数不匹配。
 	INVALIDPARAMETER_TEMPLATENOTMATCHINPUTNUM = "InvalidParameter.TemplateNotMatchInputNum"
@@ -706,6 +715,9 @@ const (
 
 	// 任务不存在
 	RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+
+	// 模板不存在。
+	RESOURCENOTFOUND_TEMPLATENOTEXISTS = "ResourceNotFound.TemplateNotExists"
 
 	// 用户主动停服。
 	RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"

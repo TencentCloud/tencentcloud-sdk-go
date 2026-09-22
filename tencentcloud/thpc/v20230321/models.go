@@ -4642,7 +4642,7 @@ type QueueConfigOverview struct {
 }
 
 type QueueOverview struct {
-	// 队列名称。
+	// <p>队列名称。</p>
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 }
 

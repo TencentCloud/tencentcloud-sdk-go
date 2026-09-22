@@ -327,7 +327,7 @@ type CommonFilter struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// 操作类型：1-精确匹配 9-模糊匹配
+	// 操作类型：1=精确匹配，7=in，9=模糊匹配
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorType *int64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
 }
@@ -2867,19 +2867,19 @@ func (r *IgnorePolicyRiskResponse) FromJsonString(s string) error {
 }
 
 type MemberInfo struct {
-	// <p>成员AppId</p>
+	// 成员 AppId
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// <p>成员Uin</p>
+	// 成员 Uin
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// <p>成员昵称</p>
+	// 成员昵称
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
-	// <p>成员Id</p>
+	// 成员 ID（个人场景为空）
 	MemberId *string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// <p>所属部门</p>
+	// 所属部门
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 }
 

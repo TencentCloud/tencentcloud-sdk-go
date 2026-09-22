@@ -1353,12 +1353,27 @@ type Filter struct {
 
 // Predefined struct for user
 type GetServicePodLogsRequestParams struct {
+	// <p>服务Id</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
+	// <p>Pod名称</p>
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// <p>日志行数</p>
+	TailLines *string `json:"TailLines,omitnil,omitempty" name:"TailLines"`
 }
 
 type GetServicePodLogsRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>服务Id</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>Pod名称</p>
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// <p>日志行数</p>
+	TailLines *string `json:"TailLines,omitnil,omitempty" name:"TailLines"`
 }
 
 func (r *GetServicePodLogsRequest) ToJsonString() string {
@@ -1373,7 +1388,9 @@ func (r *GetServicePodLogsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ServiceId")
+	delete(f, "PodName")
+	delete(f, "TailLines")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetServicePodLogsRequest has unknown keys!", "")
 	}
@@ -1382,6 +1399,9 @@ func (r *GetServicePodLogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetServicePodLogsResponseParams struct {
+	// <p>日志内容</p>
+	LogLines []*string `json:"LogLines,omitnil,omitempty" name:"LogLines"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

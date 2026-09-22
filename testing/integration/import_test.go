@@ -313,6 +313,7 @@ import (
 	wedatav20250806 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wedata/v20250806"
 	weilingwithv20230427 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/weilingwith/v20230427"
 	wimgsv20251106 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wimgs/v20251106"
+	workbuddyenterprisev20260709 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/workbuddyenterprise/v20260709"
 	wsav20250508 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wsa/v20250508"
 	wssv20180426 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wss/v20180426"
 	yinsudav20220527 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yinsuda/v20220527"
@@ -4127,6 +4128,19 @@ func TestWimgsv20251106Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init wimgs_v20251106 client: %v", err)
+    }
+}
+
+func TestWorkbuddyenterprisev20260709Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := workbuddyenterprisev20260709.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init workbuddyenterprise_v20260709 client: %v", err)
     }
 }
 

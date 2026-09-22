@@ -26,7 +26,7 @@ const (
 	// 调用 <serviceName> 服务的接口 <apiName> 失败：<message>。
 	FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
 
-	// FailedOperation.CreateWorkflowFailed
+	// 创建工作流失败
 	FAILEDOPERATION_CREATEWORKFLOWFAILED = "FailedOperation.CreateWorkflowFailed"
 
 	// 存在活跃的工作流运行，无法操作
@@ -38,19 +38,19 @@ const (
 	// 无需操作的工作流运行
 	FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
 
-	// FailedOperation.RerunWorkflowFail
+	// 重跑工作流失败
 	FAILEDOPERATION_RERUNWORKFLOWFAIL = "FailedOperation.RerunWorkflowFail"
 
-	// FailedOperation.RunWorkflowFail
+	// 运行工作流失败
 	FAILEDOPERATION_RUNWORKFLOWFAIL = "FailedOperation.RunWorkflowFail"
 
 	// 运行工作流返回的执行ID为空
 	FAILEDOPERATION_RUNWORKFLOWFAILEXECUTIONIDEMPTY = "FailedOperation.RunWorkflowFailExecutionIdEmpty"
 
-	// FailedOperation.UpdateWorkflowFailed
+	// 更新工作流失败
 	FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
 
-	// FailedOperation.WorkflowBundleNoPermission
+	// 该工作流为通过bundle包部署的内容，请勿编辑此工作流
 	FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
 
 	// 工作流数量超过10000上限
@@ -68,13 +68,13 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
-	// InternalError.UnknownError
+	// 未知错误
 	INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
-	// InvalidParameter.InvalidParamsError
+	// 无效参数
 	INVALIDPARAMETER_INVALIDPARAMSERROR = "InvalidParameter.InvalidParamsError"
 
 	// 参数取值错误。
@@ -86,28 +86,28 @@ const (
 	// 参数错误
 	INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
 
-	// InvalidParameterValue.ListWorkflowFilterParamError
+	// 工作流列表筛选字段Key值错误
 	INVALIDPARAMETERVALUE_LISTWORKFLOWFILTERPARAMERROR = "InvalidParameterValue.ListWorkflowFilterParamError"
 
-	// InvalidParameterValue.LoopDataArrayElementCountLimit
+	// LoopDataArray 数组元素数量超过了最大允许值
 	INVALIDPARAMETERVALUE_LOOPDATAARRAYELEMENTCOUNTLIMIT = "InvalidParameterValue.LoopDataArrayElementCountLimit"
 
-	// InvalidParameterValue.LoopDataArrayJsonInvalid
+	// LoopDataArray 值既不是 JSON 数组字面量，也不是 {{var}} 占位符表达式
 	INVALIDPARAMETERVALUE_LOOPDATAARRAYJSONINVALID = "InvalidParameterValue.LoopDataArrayJsonInvalid"
 
-	// InvalidParameterValue.LoopDataArrayNotJsonArray
+	// LoopDataArray 值解析成功但顶层节点不是 JSON 数组
 	INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAY = "InvalidParameterValue.LoopDataArrayNotJsonArray"
 
-	// InvalidParameterValue.LoopDataArrayNotJsonArrayLiteral
+	// LoopDataArray 值既不是 JSON 数组字面量，也不是 {{var}} 占位符表达式
 	INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAYLITERAL = "InvalidParameterValue.LoopDataArrayNotJsonArrayLiteral"
 
-	// InvalidParameterValue.LoopDataArrayValueBlank
+	// FOR_EACH 任务的 LoopDataArray 字段为空或仅含空白字符
 	INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUEBLANK = "InvalidParameterValue.LoopDataArrayValueBlank"
 
-	// InvalidParameterValue.LoopDataArrayValueLengthLimit
+	// FOR_EACH 任务的 LoopDataArray 字段字符串长度超过了最大允许值
 	INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUELENGTHLIMIT = "InvalidParameterValue.LoopDataArrayValueLengthLimit"
 
-	// InvalidParameterValue.LoopDataArrayVariableExpressionInvalid
+	// LoopDataArray 变量表达式不满足占位符语法（大括号需成对配对且不嵌套）
 	INVALIDPARAMETERVALUE_LOOPDATAARRAYVARIABLEEXPRESSIONINVALID = "InvalidParameterValue.LoopDataArrayVariableExpressionInvalid"
 
 	// 参数 <parameter> 不能为空。
@@ -137,10 +137,10 @@ const (
 	// 结束时间不能早于开始时间
 	INVALIDPARAMETERVALUE_WORKFLOWENDTIMELESSSTARTTIME = "InvalidParameterValue.WorkflowEndTimeLessStartTime"
 
-	// InvalidParameterValue.WorkflowNameExists
+	// 工作流名称重复
 	INVALIDPARAMETERVALUE_WORKFLOWNAMEEXISTS = "InvalidParameterValue.WorkflowNameExists"
 
-	// InvalidParameterValue.WorkflowNameInvalid
+	// 工作流名称不合法
 	INVALIDPARAMETERVALUE_WORKFLOWNAMEINVALID = "InvalidParameterValue.WorkflowNameInvalid"
 
 	// 查询时间范围超过60天限制
@@ -176,13 +176,13 @@ const (
 	// 工作流运行不存在
 	RESOURCENOTFOUND_WORKFLOWEXECUTIONNOTEXIST = "ResourceNotFound.WorkflowExecutionNotExist"
 
-	// ResourceNotFound.WorkflowNotExist
+	// 工作流不存在
 	RESOURCENOTFOUND_WORKFLOWNOTEXIST = "ResourceNotFound.WorkflowNotExist"
 
-	// ResourceNotFound.WorkflowNotFound
+	// 根据传入的工作流ID未找到工作流
 	RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
 
-	// ResourceNotFound.WorkflowTaskNotExist
+	// 工作流下面的任务不存在
 	RESOURCENOTFOUND_WORKFLOWTASKNOTEXIST = "ResourceNotFound.WorkflowTaskNotExist"
 
 	// 工作流的调度配置未找到

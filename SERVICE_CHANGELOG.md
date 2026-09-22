@@ -1,35 +1,26 @@
-# Release v1.3.184
+# Release v1.3.185
 
-## 腾讯混元生图(aiart) 版本：2022-12-29
+## 应用性能监控(apm) 版本：2021-06-22
 
-### 第 31 次发布
+### 第 69 次发布
 
-发布时间：2026-09-22 01:09:53
+发布时间：2026-09-23 01:10:50
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+新增接口：
 
-* ImageToImage
-* QueryTextToImageJob
-* SubmitTextToImageJob
-* TextToImageLite
-* TextToImageRapid
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* Image
-* ResultConfig
+* [OpenApmPaidVersion](https://cloud.tencent.com/document/api/1463/138606)
 
 
 
-## 负载均衡(clb) 版本：2018-03-17
+## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 166 次发布
+### 第 116 次发布
 
-发布时间：2026-09-22 01:19:26
+发布时间：2026-09-23 01:30:25
 
 本次发布包含了以下内容：
 
@@ -37,41 +28,88 @@
 
 修改接口：
 
-* [ModifyModelAliasAttributes](https://cloud.tencent.com/document/api/214/133671)
+* [ModifyStorageSetting](https://cloud.tencent.com/document/api/1132/86751)
 
-	* 新增入参：CoefficientTiers, CoefficientSchedule
+	* 新增出参：Status
 
-	* <font color="#dd0000">**修改入参**：</font>Coefficient
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 167 次发布
+
+发布时间：2026-09-23 01:35:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ServiceProviderHealthCheckConfigItemInput](https://cloud.tencent.com/document/api/214/30694#ServiceProviderHealthCheckConfigItemInput)
+
+	* 新增成员：HealthCheckPath, HealthCheckMethod
+
+* [ServiceProviderHealthCheckConfigItemOutput](https://cloud.tencent.com/document/api/214/30694#ServiceProviderHealthCheckConfigItemOutput)
+
+	* 新增成员：HealthCheckPath, HealthCheckMethod
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 181 次发布
+
+发布时间：2026-09-23 01:38:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateResourceGraph](https://cloud.tencent.com/document/api/614/137648)
+
+	* 新增出参：ResourceGraphId
+
+* [DescribeResourceGraphEntities](https://cloud.tencent.com/document/api/614/137653)
+
+	* 新增出参：EntityInfos, HasMore
+
+* [DescribeResourceGraphEntityDependency](https://cloud.tencent.com/document/api/614/137652)
+
+	* 新增出参：Topology
+
+* [DescribeResourceGraphEntityDetail](https://cloud.tencent.com/document/api/614/137651)
+
+	* 新增出参：EntityInfo
+
+* [DescribeResourceGraphs](https://cloud.tencent.com/document/api/614/137644)
+
+	* 新增入参：Filters, Offset, Limit
+
+	* 新增出参：ResourceGraphInfos, TotalCount
 
 
 新增数据结构：
 
-* [CoefficientScheduleRule](https://cloud.tencent.com/document/api/214/30694#CoefficientScheduleRule)
-* [CoefficientTier](https://cloud.tencent.com/document/api/214/30694#CoefficientTier)
-* [CoefficientTierCondition](https://cloud.tencent.com/document/api/214/30694#CoefficientTierCondition)
-
-修改数据结构：
-
-* [Coefficient](https://cloud.tencent.com/document/api/214/30694#Coefficient)
-
-	* 新增成员：InputImageCoefficient, InputVideoSecondCoefficient, OutputVideoSecondCoefficient
-
-* [ModelAlias](https://cloud.tencent.com/document/api/214/30694#ModelAlias)
-
-	* 新增成员：CoefficientTiers, CoefficientSchedule
-
-* [ServiceProviderCoefficient](https://cloud.tencent.com/document/api/214/30694#ServiceProviderCoefficient)
-
-	* 新增成员：CoefficientTiers, CoefficientSchedule
+* [DependencyTopology](https://cloud.tencent.com/document/api/614/56471#DependencyTopology)
+* [EntityAttribute](https://cloud.tencent.com/document/api/614/56471#EntityAttribute)
+* [EntityInfo](https://cloud.tencent.com/document/api/614/56471#EntityInfo)
+* [RelatedTopicItem](https://cloud.tencent.com/document/api/614/56471#RelatedTopicItem)
+* [ResourceGraphInfo](https://cloud.tencent.com/document/api/614/56471#ResourceGraphInfo)
+* [TopologyEdge](https://cloud.tencent.com/document/api/614/56471#TopologyEdge)
+* [TopologyNode](https://cloud.tencent.com/document/api/614/56471#TopologyNode)
 
 
 
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-## 云安全一体化平台(csip) 版本：2022-11-21
+### 第 196 次发布
 
-### 第 105 次发布
-
-发布时间：2026-09-22 01:22:32
+发布时间：2026-09-23 02:02:27
 
 本次发布包含了以下内容：
 
@@ -79,149 +117,18 @@
 
 修改数据结构：
 
-* [BackupLog](https://cloud.tencent.com/document/api/664/90825#BackupLog)
+* [CynosdbInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceDetail)
 
-	* 新增成员：InstanceId, InstanceName, AssetType
-
-
-
-
-## 大数据智能体工作台DataBuddy(databuddy) 版本：2026-07-15
-
-### 第 4 次发布
-
-发布时间：2026-09-22 01:29:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateConsoleGroup](https://cloud.tencent.com/document/api/1835/138543)
-* [DeleteConsoleGroups](https://cloud.tencent.com/document/api/1835/138542)
-* [ListConsoleGroupUsers](https://cloud.tencent.com/document/api/1835/138541)
-* [ListConsoleGroups](https://cloud.tencent.com/document/api/1835/138540)
-* [ListConsoleRoles](https://cloud.tencent.com/document/api/1835/138539)
-* [UpdateConsoleGroup](https://cloud.tencent.com/document/api/1835/138538)
-
-新增数据结构：
-
-* [ConsoleGroupInfo](https://cloud.tencent.com/document/api/1835/138006#ConsoleGroupInfo)
-* [ConsoleGroupUserInfo](https://cloud.tencent.com/document/api/1835/138006#ConsoleGroupUserInfo)
-* [ConsoleRoleInfo](https://cloud.tencent.com/document/api/1835/138006#ConsoleRoleInfo)
-* [CreateConsoleGroupRsp](https://cloud.tencent.com/document/api/1835/138006#CreateConsoleGroupRsp)
-* [DeleteConsoleGroupsRsp](https://cloud.tencent.com/document/api/1835/138006#DeleteConsoleGroupsRsp)
-* [ListConsoleGroupUsersRsp](https://cloud.tencent.com/document/api/1835/138006#ListConsoleGroupUsersRsp)
-* [ListConsoleGroupsRsp](https://cloud.tencent.com/document/api/1835/138006#ListConsoleGroupsRsp)
-* [ListConsoleRolesRsp](https://cloud.tencent.com/document/api/1835/138006#ListConsoleRolesRsp)
-* [RoleMetaData](https://cloud.tencent.com/document/api/1835/138006#RoleMetaData)
-* [RolePermission](https://cloud.tencent.com/document/api/1835/138006#RolePermission)
-* [UpdateConsoleGroupRsp](https://cloud.tencent.com/document/api/1835/138006#UpdateConsoleGroupRsp)
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
-
-### 第 63 次发布
-
-发布时间：2026-09-22 01:30:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeTopSpaceTablesV2](https://cloud.tencent.com/document/api/1130/138545)
-
-新增数据结构：
-
-* [MongoCollectionDetail](https://cloud.tencent.com/document/api/1130/57812#MongoCollectionDetail)
-* [MongoDBTableSpaceItem](https://cloud.tencent.com/document/api/1130/57812#MongoDBTableSpaceItem)
-* [MysqlSpaceObjectItem](https://cloud.tencent.com/document/api/1130/57812#MysqlSpaceObjectItem)
-* [PostgresSpaceObjectItem](https://cloud.tencent.com/document/api/1130/57812#PostgresSpaceObjectItem)
-
-修改数据结构：
-
-* [SlowLogInfoItem](https://cloud.tencent.com/document/api/1130/57812#SlowLogInfoItem)
-
-	* 新增成员：InstanceId
-
-* [SlowLogTopSqlItem](https://cloud.tencent.com/document/api/1130/57812#SlowLogTopSqlItem)
-
-	* 新增成员：SqlType, InstanceId
-
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
-
-
-
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
-
-### 第 182 次发布
-
-发布时间：2026-09-22 01:31:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
-
-	* 新增成员：DependencyPackages, RunAsIdentity
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 322 次发布
-
-发布时间：2026-09-22 01:37:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ComparisonDetail](https://cloud.tencent.com/document/api/1323/70369#ComparisonDetail)
-
-	* 新增成员：PageNumber
-
-* [PdfVerifyResult](https://cloud.tencent.com/document/api/1323/70369#PdfVerifyResult)
-
-	* 新增成员：CertProvider, IsTimestampTrust
+	* 新增成员：RealZone, SlaveZones, StorageVersion
 
 
 
 
 ## 高性能应用服务(hai) 版本：2023-08-12
 
-### 第 29 次发布
+### 第 30 次发布
 
-发布时间：2026-09-22 01:40:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetServicePodLogs](https://cloud.tencent.com/document/api/1721/138547)
-
-
-
-## 智能视图计算平台(iss) 版本：2023-05-17
-
-### 第 34 次发布
-
-发布时间：2026-09-22 01:44:12
+发布时间：2026-09-23 02:38:46
 
 本次发布包含了以下内容：
 
@@ -229,71 +136,56 @@
 
 修改接口：
 
-* [UpdateUserDevice](https://cloud.tencent.com/document/api/1344/95867)
+* [GetServicePodLogs](https://cloud.tencent.com/document/api/1721/138547)
 
-	* 新增入参：TimeSyncSwitch
+	* 新增入参：ServiceId, PodName, TailLines
 
-
-新增数据结构：
-
-* [SipCarrierEndpoints](https://cloud.tencent.com/document/api/1344/95952#SipCarrierEndpoints)
-
-修改数据结构：
-
-* [DescribeDeviceData](https://cloud.tencent.com/document/api/1344/95952#DescribeDeviceData)
-
-	* 新增成员：SipFQDN, SipCarrierEndpoints, TimeSyncSwitch
+	* 新增出参：LogLines
 
 
 
 
-## 媒体处理(mps) 版本：2019-06-12
+## 腾讯混元大模型(hunyuan) 版本：2023-09-01
 
-### 第 250 次发布
+### 第 53 次发布
 
-发布时间：2026-09-22 01:49:28
+发布时间：2026-09-23 02:39:19
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+<font color="#dd0000">**预下线接口**：</font>
 
-* [BeautyConfig](https://cloud.tencent.com/document/api/862/37615#BeautyConfig)
-
-	* 新增成员：Type
-
-* [ImageEraseLogoConfig](https://cloud.tencent.com/document/api/862/37615#ImageEraseLogoConfig)
-
-	* 新增成员：EraseStrength, WatermarkType
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 268 次发布
-
-发布时间：2026-09-22 01:51:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PassInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#PassInvoiceInfo)
-
-	* <font color="#dd0000">**删除成员**：</font>CarType, PlateNumber
+* ChatCompletions
+* ChatTranslations
+* CreateGlossary
+* CreateGlossaryEntry
+* CreateThread
+* DeleteGlossary
+* DeleteGlossaryEntry
+* FilesDeletions
+* FilesList
+* FilesUploads
+* GetEmbedding
+* GetThread
+* GetThreadMessage
+* GetThreadMessageList
+* GetTokenCount
+* GroupChatCompletions
+* ImageQuestion
+* ListGlossary
+* ListGlossaryEntry
+* RunThread
+* UpdateGlossaryEntry
 
 
 
+## 云直播CSS(live) 版本：2018-08-01
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
+### 第 188 次发布
 
-### 第 164 次发布
-
-发布时间：2026-09-22 02:01:52
+发布时间：2026-09-23 02:55:56
 
 本次发布包含了以下内容：
 
@@ -301,8 +193,110 @@
 
 新增接口：
 
-* [DescribeZoneCustomVariables](https://cloud.tencent.com/document/api/1552/138549)
-* [ModifyZoneCustomVariables](https://cloud.tencent.com/document/api/1552/138548)
+* [CreateAuditRule](https://cloud.tencent.com/document/api/267/138616)
+* [CreateAuditTemplate](https://cloud.tencent.com/document/api/267/138615)
+* [CreateLiveSmartEraseTemplate](https://cloud.tencent.com/document/api/267/138608)
+* [DeleteAuditRule](https://cloud.tencent.com/document/api/267/138614)
+* [DeleteAuditTemplate](https://cloud.tencent.com/document/api/267/138613)
+* [DescribeAuditRules](https://cloud.tencent.com/document/api/267/138612)
+* [DescribeAuditTemplate](https://cloud.tencent.com/document/api/267/138611)
+* [DescribeAuditTemplates](https://cloud.tencent.com/document/api/267/138610)
+* [ModifyAuditTemplate](https://cloud.tencent.com/document/api/267/138609)
+
+新增数据结构：
+
+* [AuditTemplate](https://cloud.tencent.com/document/api/267/20474#AuditTemplate)
+* [CMSBizInfo](https://cloud.tencent.com/document/api/267/20474#CMSBizInfo)
+* [CMSSceneDetail](https://cloud.tencent.com/document/api/267/20474#CMSSceneDetail)
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 251 次发布
+
+发布时间：2026-09-23 03:06:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AigcAudioExtraParam](https://cloud.tencent.com/document/api/862/37615#AigcAudioExtraParam)
+
+	* 新增成员：OutputAudioFormat
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 169 次发布
+
+发布时间：2026-09-23 03:33:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTaskResult](https://cloud.tencent.com/document/api/876/138619)
+* [ResetPGAccountPassword](https://cloud.tencent.com/document/api/876/138618)
+* [UpgradePGInstanceToDedicated](https://cloud.tencent.com/document/api/876/138617)
+
+新增数据结构：
+
+* [ObjectKV](https://cloud.tencent.com/document/api/876/34822#ObjectKV)
+
+
+
+## 腾讯云数据库 AI 服务(tdai) 版本：2025-07-17
+
+### 第 19 次发布
+
+发布时间：2026-09-23 03:41:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAgentInstance](https://cloud.tencent.com/document/api/1813/123274)
+
+	* 新增入参：DeploymentFree, EnableMemory
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 165 次发布
+
+发布时间：2026-09-23 03:44:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AccountProtectionSettings](https://cloud.tencent.com/document/api/1552/80721#AccountProtectionSettings)
+* [SecurityHeadersToOrigin](https://cloud.tencent.com/document/api/1552/80721#SecurityHeadersToOrigin)
+* [UserRiskProfile](https://cloud.tencent.com/document/api/1552/80721#UserRiskProfile)
+
+修改数据结构：
+
+* [ClientAttestationRule](https://cloud.tencent.com/document/api/1552/80721#ClientAttestationRule)
+
+	* 新增成员：AccountProtectionSettings
+
+* [SecurityPolicy](https://cloud.tencent.com/document/api/1552/80721#SecurityPolicy)
+
+	* 新增成员：SecurityHeadersToOrigin
+
 
 
 
@@ -310,45 +304,11 @@
 
 
 
-## TI-ONE 训练平台(tione) 版本：2021-11-11
+## WorkBuddy Enterprise(workbuddyenterprise) 版本：2026-07-09
 
-### 第 136 次发布
+### 第 2 次发布
 
-发布时间：2026-09-22 02:03:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
-
-	* 新增入参：Priority
-
-* [ModifyModelService](https://cloud.tencent.com/document/api/851/83228)
-
-	* 新增入参：Priority
-
-
-修改数据结构：
-
-* [ResourceInfo](https://cloud.tencent.com/document/api/851/75051#ResourceInfo)
-
-	* 新增成员：RdmaNumber, Rdma
-
-
-
-
-## TI-ONE 训练平台(tione) 版本：2019-10-22
-
-
-
-## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
-
-### 第 58 次发布
-
-发布时间：2026-09-22 02:05:59
+发布时间：2026-09-23 04:24:50
 
 本次发布包含了以下内容：
 
@@ -356,93 +316,80 @@
 
 新增接口：
 
-* [CreateConsumerLabels](https://cloud.tencent.com/document/api/1493/138556)
-* [DeleteConsumerLabels](https://cloud.tencent.com/document/api/1493/138555)
-* [DeleteConsumerRouteConfigs](https://cloud.tencent.com/document/api/1493/138554)
-* [DescribeConsumerLabelLists](https://cloud.tencent.com/document/api/1493/138553)
-* [DescribeConsumerLabelRoutes](https://cloud.tencent.com/document/api/1493/138552)
-* [DescribeConsumerRouteConfigs](https://cloud.tencent.com/document/api/1493/138551)
-* [PutConsumerRouteConfigs](https://cloud.tencent.com/document/api/1493/138550)
+* [BindExternalAgent](https://cloud.tencent.com/document/api/1831/138635)
+* [CreateAgentSession](https://cloud.tencent.com/document/api/1831/138630)
+* [DescribeAgentSession](https://cloud.tencent.com/document/api/1831/138629)
+* [DescribeAgentSessionList](https://cloud.tencent.com/document/api/1831/138628)
+* [DescribeBuiltinModelList](https://cloud.tencent.com/document/api/1831/138624)
+* [DescribeConnectorList](https://cloud.tencent.com/document/api/1831/138621)
+* [DescribeExpertList](https://cloud.tencent.com/document/api/1831/138639)
+* [DescribeExternalAgent](https://cloud.tencent.com/document/api/1831/138634)
+* [DescribeExternalAgentList](https://cloud.tencent.com/document/api/1831/138633)
+* [DescribeMessageEventList](https://cloud.tencent.com/document/api/1831/138627)
+* [DescribeSkillList](https://cloud.tencent.com/document/api/1831/138637)
+* [MigrateAgentSession](https://cloud.tencent.com/document/api/1831/138626)
+* [ModifyAgentVersion](https://cloud.tencent.com/document/api/1831/138622)
+* [UnbindExternalAgent](https://cloud.tencent.com/document/api/1831/138632)
+
+修改接口：
+
+* [CreateAgentVersion](https://cloud.tencent.com/document/api/1831/138571)
+
+	* <font color="#dd0000">**删除入参**：</font>IsTest
+
+* [CreateAgentVersionFromSource](https://cloud.tencent.com/document/api/1831/138570)
+
+	* <font color="#dd0000">**删除入参**：</font>IsTest
+
 
 新增数据结构：
 
-* [ConsumerLabelFailure](https://cloud.tencent.com/document/api/1493/96031#ConsumerLabelFailure)
-* [ConsumerLabelItem](https://cloud.tencent.com/document/api/1493/96031#ConsumerLabelItem)
-* [ConsumerLabelKey](https://cloud.tencent.com/document/api/1493/96031#ConsumerLabelKey)
-* [ConsumerLabelList](https://cloud.tencent.com/document/api/1493/96031#ConsumerLabelList)
-* [ConsumerLabelRoute](https://cloud.tencent.com/document/api/1493/96031#ConsumerLabelRoute)
-* [ConsumerLabelRouteItem](https://cloud.tencent.com/document/api/1493/96031#ConsumerLabelRouteItem)
-* [ConsumerRouteKey](https://cloud.tencent.com/document/api/1493/96031#ConsumerRouteKey)
-* [ConsumerRouteLabelKey](https://cloud.tencent.com/document/api/1493/96031#ConsumerRouteLabelKey)
-* [DeleteConsumerRouteConfigFailure](https://cloud.tencent.com/document/api/1493/96031#DeleteConsumerRouteConfigFailure)
-* [DescribeConsumerRouteConfigItem](https://cloud.tencent.com/document/api/1493/96031#DescribeConsumerRouteConfigItem)
-* [ErrorInfo](https://cloud.tencent.com/document/api/1493/96031#ErrorInfo)
-* [PutConsumerRouteConfigFailure](https://cloud.tencent.com/document/api/1493/96031#PutConsumerRouteConfigFailure)
-* [PutConsumerRouteConfigItem](https://cloud.tencent.com/document/api/1493/96031#PutConsumerRouteConfigItem)
+* [A2ASkillItem](https://cloud.tencent.com/document/api/1831/138580#A2ASkillItem)
+* [BuiltinModel](https://cloud.tencent.com/document/api/1831/138580#BuiltinModel)
+* [ChatEndpoint](https://cloud.tencent.com/document/api/1831/138580#ChatEndpoint)
+* [ConnectorInfo](https://cloud.tencent.com/document/api/1831/138580#ConnectorInfo)
+* [ExpertCounts](https://cloud.tencent.com/document/api/1831/138580#ExpertCounts)
+* [ExpertItem](https://cloud.tencent.com/document/api/1831/138580#ExpertItem)
+* [ExternalAgentInfo](https://cloud.tencent.com/document/api/1831/138580#ExternalAgentInfo)
+* [MessageEvent](https://cloud.tencent.com/document/api/1831/138580#MessageEvent)
+* [MessageEventMessage](https://cloud.tencent.com/document/api/1831/138580#MessageEventMessage)
+* [MessageEventToolCall](https://cloud.tencent.com/document/api/1831/138580#MessageEventToolCall)
+* [SessionItem](https://cloud.tencent.com/document/api/1831/138580#SessionItem)
+* [SkillCounts](https://cloud.tencent.com/document/api/1831/138580#SkillCounts)
+* [SkillItem](https://cloud.tencent.com/document/api/1831/138580#SkillItem)
+* [TokenUsage](https://cloud.tencent.com/document/api/1831/138580#TokenUsage)
 
+### 第 1 次发布
 
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 312 次发布
-
-发布时间：2026-09-22 02:10:22
+发布时间：2026-09-22 11:14:11
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateAndAttachNetworkInterface](https://cloud.tencent.com/document/api/215/43370)
+* [CreateAgent](https://cloud.tencent.com/document/api/1831/138579)
+* [CreateAgentVersion](https://cloud.tencent.com/document/api/1831/138571)
+* [CreateAgentVersionFromSource](https://cloud.tencent.com/document/api/1831/138570)
+* [DeleteAgent](https://cloud.tencent.com/document/api/1831/138578)
+* [DescribeAgent](https://cloud.tencent.com/document/api/1831/138577)
+* [DescribeAgentList](https://cloud.tencent.com/document/api/1831/138576)
+* [DescribeAgentVersion](https://cloud.tencent.com/document/api/1831/138569)
+* [DescribeAgentVersionList](https://cloud.tencent.com/document/api/1831/138592)
+* [ModifyAgent](https://cloud.tencent.com/document/api/1831/138575)
+* [ModifyAgentA2AConfig](https://cloud.tencent.com/document/api/1831/138574)
+* [ModifyAgentRouting](https://cloud.tencent.com/document/api/1831/138573)
 
-	* 新增入参：Ipv6Addresses, Ipv6AddressCount, TerminationProtection, TrafficProtection
+新增数据结构：
 
-* [CreateNetworkInterface](https://cloud.tencent.com/document/api/215/15818)
-
-	* 新增入参：Ipv6Addresses, Ipv6AddressCount, TerminationProtection, TrafficProtection
-
-* [CreateSubnet](https://cloud.tencent.com/document/api/215/15782)
-
-	* 新增入参：StackType, Ipv6CidrBlock
-
-	* <font color="#dd0000">**修改入参**：</font>CidrBlock
-
-* [CreateVpc](https://cloud.tencent.com/document/api/215/15774)
-
-	* 新增入参：StackType, Ipv6CidrBlock, AddressType
-
-	* <font color="#dd0000">**修改入参**：</font>CidrBlock
-
-* [SetCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/19194)
-
-	* 新增入参：SetQosDefaultLimitFlag
-
-
-修改数据结构：
-
-* [CrossBorderCompliance](https://cloud.tencent.com/document/api/215/15824#CrossBorderCompliance)
-
-	* 新增成员：WhiteListFlag
-
-* [NetworkInterface](https://cloud.tencent.com/document/api/215/15824#NetworkInterface)
-
-	* 新增成员：Ipv6Addresses, Ipv6AddressCount
-
-* [Subnet](https://cloud.tencent.com/document/api/215/15824#Subnet)
-
-	* 新增成员：StackType
-
-* [SubnetInput](https://cloud.tencent.com/document/api/215/15824#SubnetInput)
-
-	* 新增成员：StackType, Ipv6CidrBlock
-
-	* <font color="#dd0000">**修改成员**：</font>CidrBlock
-
-* [Vpc](https://cloud.tencent.com/document/api/215/15824#Vpc)
-
-	* 新增成员：StackType
-
+* [A2AConfig](https://cloud.tencent.com/document/api/1831/138580#A2AConfig)
+* [A2ASkillInput](https://cloud.tencent.com/document/api/1831/138580#A2ASkillInput)
+* [AgentItem](https://cloud.tencent.com/document/api/1831/138580#AgentItem)
+* [AgentVersionItem](https://cloud.tencent.com/document/api/1831/138580#AgentVersionItem)
+* [ConnectorRefInput](https://cloud.tencent.com/document/api/1831/138580#ConnectorRefInput)
+* [Filter](https://cloud.tencent.com/document/api/1831/138580#Filter)
+* [RoutingItem](https://cloud.tencent.com/document/api/1831/138580#RoutingItem)
 
 
 
