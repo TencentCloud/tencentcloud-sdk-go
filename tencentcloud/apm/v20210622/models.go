@@ -678,6 +678,9 @@ type ApmInstanceDetail struct {
 
 	// <p>跨账号关联ID</p>
 	CrossAccountPeerId *string `json:"CrossAccountPeerId,omitnil,omitempty" name:"CrossAccountPeerId"`
+
+	// <p>开启Token展示安全保护</p><p>单位：是、否</p>
+	TokenDisplayProtection *int64 `json:"TokenDisplayProtection,omitnil,omitempty" name:"TokenDisplayProtection"`
 }
 
 type ApmMetricRecord struct {
@@ -4218,6 +4221,9 @@ type ModifyApmInstanceRequestParams struct {
 
 	// <p>跨账号关联ID</p>
 	CrossAccountPeerId *string `json:"CrossAccountPeerId,omitnil,omitempty" name:"CrossAccountPeerId"`
+
+	// <p>是否开启Token 展示安全保护</p><p>单位：0：不开启，1：开启</p><p>默认值：0</p>
+	TokenDisplayProtection *int64 `json:"TokenDisplayProtection,omitnil,omitempty" name:"TokenDisplayProtection"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -4369,6 +4375,9 @@ type ModifyApmInstanceRequest struct {
 
 	// <p>跨账号关联ID</p>
 	CrossAccountPeerId *string `json:"CrossAccountPeerId,omitnil,omitempty" name:"CrossAccountPeerId"`
+
+	// <p>是否开启Token 展示安全保护</p><p>单位：0：不开启，1：开启</p><p>默认值：0</p>
+	TokenDisplayProtection *int64 `json:"TokenDisplayProtection,omitnil,omitempty" name:"TokenDisplayProtection"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -4432,6 +4441,7 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DisableAiAbility")
 	delete(f, "CrossAccountStatus")
 	delete(f, "CrossAccountPeerId")
+	delete(f, "TokenDisplayProtection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}

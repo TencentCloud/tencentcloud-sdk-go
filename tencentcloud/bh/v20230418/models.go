@@ -10679,68 +10679,62 @@ func (r *SearchSubtaskResultByIdResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchTaskResultRequestParams struct {
-	// 搜索区间的开始时间
+	// <p>搜索区间的开始时间，缺省时取结束时间前7天（含结束时间当日）</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 搜索区间的结束时间
+	// <p>搜索区间的结束时间。未指定时，默认取当前时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 运维任务ID
+	// <p>运维任务ID</p>
 	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
 
-	// 运维任务名称
+	// <p>运维任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户名，长度不超过20
+	// <p>用户名，长度不超过20</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 姓名，长度不超过20
+	// <p>姓名，长度不超过20</p>
 	RealName *string `json:"RealName,omitnil,omitempty" name:"RealName"`
 
-	// 任务类型
-	// 1 手工运维任务
-	// 2 定时任务
-	// 3 账号推送任务
+	// <p>任务类型<br>1 手工运维任务<br>2 定时任务<br>3 账号推送任务</p>
 	TaskType []*uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 查询偏移
+	// <p>查询偏移</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页的页内记录数，默认为20，最大200
+	// <p>分页的页内记录数，默认为20，最大200</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type SearchTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 搜索区间的开始时间
+	// <p>搜索区间的开始时间，缺省时取结束时间前7天（含结束时间当日）</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 搜索区间的结束时间
+	// <p>搜索区间的结束时间。未指定时，默认取当前时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 运维任务ID
+	// <p>运维任务ID</p>
 	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
 
-	// 运维任务名称
+	// <p>运维任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户名，长度不超过20
+	// <p>用户名，长度不超过20</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 姓名，长度不超过20
+	// <p>姓名，长度不超过20</p>
 	RealName *string `json:"RealName,omitnil,omitempty" name:"RealName"`
 
-	// 任务类型
-	// 1 手工运维任务
-	// 2 定时任务
-	// 3 账号推送任务
+	// <p>任务类型<br>1 手工运维任务<br>2 定时任务<br>3 账号推送任务</p>
 	TaskType []*uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 查询偏移
+	// <p>查询偏移</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页的页内记录数，默认为20，最大200
+	// <p>分页的页内记录数，默认为20，最大200</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -10773,10 +10767,10 @@ func (r *SearchTaskResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchTaskResultResponseParams struct {
-	// 记录数
+	// <p>记录数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 运维任务执行结果
+	// <p>运维任务执行结果</p>
 	TaskResult []*TaskResult `json:"TaskResult,omitnil,omitempty" name:"TaskResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

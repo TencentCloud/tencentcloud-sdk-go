@@ -419,6 +419,9 @@ const (
 	// 设备激活码数量超限
 	LIMITEXCEEDED_DEVICELICENSELIMITEXCEEDED = "LimitExceeded.DeviceLicenseLimitExceeded"
 
+	// 设备数量超出限制
+	LIMITEXCEEDED_DEVICELIMITEXCEEDED = "LimitExceeded.DeviceLimitExceeded"
+
 	// 固件数量超出限制。
 	LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = "LimitExceeded.FirmwareExceedLimit"
 
@@ -590,6 +593,9 @@ const (
 	// APP对产品没有权限。
 	UNAUTHORIZEDOPERATION_APPNOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.APPNoPermissionToStudioProduct"
 
+	// 账号被限制调用该接口
+	UNAUTHORIZEDOPERATION_ACCOUNTRESTRICTED = "UnauthorizedOperation.AccountRestricted"
+
 	// 该账号未在白名单内，不能通过 API 创建 AI 任务
 	UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
 
@@ -643,6 +649,9 @@ const (
 
 	// 没有权限。
 	UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+
+	// 无该产品操作权限。
+	UNAUTHORIZEDOPERATION_PRODUCTACLDENIED = "UnauthorizedOperation.ProductACLDenied"
 
 	// 产品不支持密钥认证。
 	UNAUTHORIZEDOPERATION_PRODUCTNOTSUPPORTPSK = "UnauthorizedOperation.ProductNotSupportPSK"

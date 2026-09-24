@@ -74,6 +74,12 @@ const (
 	// 扣费失败。
 	FAILEDOPERATION_FEEDEDUCTIONFAILED = "FailedOperation.FeeDeductionFailed"
 
+	// 工作流执行Id已存在
+	FAILEDOPERATION_FLOWEXECUTIONCONFLICT = "FailedOperation.FlowExecutionConflict"
+
+	// 工作流不存在
+	FAILEDOPERATION_FLOWIDNOTEXISTS = "FailedOperation.FlowIdNotExists"
+
 	// 获取鉴权策略失败。
 	FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
 
@@ -617,6 +623,9 @@ const (
 	// 机型步长不规范，cpu需要为32倍数
 	INVALIDPARAMETERVALUE_BILLINGITEMSTEP = "InvalidParameterValue.BillingItemStep"
 
+	// 日志类型参数无效
+	INVALIDPARAMETERVALUE_LOGTYPE = "InvalidParameterValue.LogType"
+
 	// 付费模式不合法
 	INVALIDPARAMETERVALUE_PAYMODE = "InvalidParameterValue.PayMode"
 
@@ -634,6 +643,9 @@ const (
 
 	// 申请资源配额超过分区可用额度
 	INVALIDPARAMETERVALUE_QUOTAEXCEEDED = "InvalidParameterValue.QuotaExceeded"
+
+	// SQL语句Index参数错误
+	INVALIDPARAMETERVALUE_STATEMENTINDEX = "InvalidParameterValue.StatementIndex"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
@@ -731,6 +743,9 @@ const (
 	// 指定集群镜像版本已存在
 	RESOURCENOTFOUND_IMAGEVERSIONNOTUNIQUE = "ResourceNotFound.ImageVersionNotUnique"
 
+	// 作业不存在。
+	RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+
 	// 该网络连接不存在
 	RESOURCENOTFOUND_NETWORKCONNECTIONNOTFOUND = "ResourceNotFound.NetworkConnectionNotFound"
 
@@ -739,6 +754,9 @@ const (
 
 	// 资源组不存在
 	RESOURCENOTFOUND_PARTITIONQUEUE = "ResourceNotFound.PartitionQueue"
+
+	// 资源队列不存在
+	RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
 
 	// 网关不存在
 	RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
@@ -791,6 +809,9 @@ const (
 	// 用户不存在
 	RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 
+	// 计算引擎不存在
+	RESOURCENOTFOUND_WAREHOUSE = "ResourceNotFound.Warehouse"
+
 	// 找不到Warehouse存储路径，请到控制台->数据探索页面->存储配置中设置
 	RESOURCENOTFOUND_WAREHOUSEDIRNOTFOUND = "ResourceNotFound.WarehouseDirNotFound"
 
@@ -803,8 +824,14 @@ const (
 	// 网关不处于运行中
 	RESOURCEUNAVAILABLE_GATEWAYNOTRUNNING = "ResourceUnavailable.GatewayNotRunning"
 
+	// 资源包partition不可用。
+	RESOURCEUNAVAILABLE_PARTITION = "ResourceUnavailable.Partition"
+
 	// 网关未运行
 	RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+
+	// 计算引擎不可用
+	RESOURCEUNAVAILABLE_WAREHOUSE = "ResourceUnavailable.Warehouse"
 
 	// 当前为白名单功能，请联系我们开通
 	RESOURCEUNAVAILABLE_WHITELISTFUNCTION = "ResourceUnavailable.WhiteListFunction"
@@ -916,6 +943,9 @@ const (
 
 	// 无法修改主账号。
 	UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+
+	// 当前账号绑定的是独享（单租户）TCCatalog 实例，暂不支持提交 Spark 作业。
+	UNSUPPORTEDOPERATION_SINGLETENANTTCCCATALOG = "UnsupportedOperation.SingleTenantTccCatalog"
 
 	// 不支持当前数据连接类型，当前仅支持: DataLakeCatalog/Mysql/HiveCos/HiveHdfs/HiveCHdfs/PostgreSql/SqlServer/ClickHouse
 	UNSUPPORTEDOPERATION_UNSUPPORTEDDATASOURCECONNECTIONTYPE = "UnsupportedOperation.UnsupportedDatasourceConnectionType"

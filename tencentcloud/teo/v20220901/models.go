@@ -3638,6 +3638,81 @@ func (r *CreateInferenceAPITokenResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateInferenceDomainRequestParams struct {
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>推理服务ID。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>推理服务域名。</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>推理任务请求鉴权开关。</p><p>枚举值：</p><ul><li>Off： 关闭鉴权；</li><li>On： 开启鉴权。</li></ul><p>默认值：On。</p>
+	AuthSwitch *string `json:"AuthSwitch,omitnil,omitempty" name:"AuthSwitch"`
+}
+
+type CreateInferenceDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>推理服务ID。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>推理服务域名。</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>推理任务请求鉴权开关。</p><p>枚举值：</p><ul><li>Off： 关闭鉴权；</li><li>On： 开启鉴权。</li></ul><p>默认值：On。</p>
+	AuthSwitch *string `json:"AuthSwitch,omitnil,omitempty" name:"AuthSwitch"`
+}
+
+func (r *CreateInferenceDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInferenceDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ServiceId")
+	delete(f, "Domain")
+	delete(f, "AuthSwitch")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInferenceDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInferenceDomainResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateInferenceDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateInferenceDomainResponseParams `json:"Response"`
+}
+
+func (r *CreateInferenceDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInferenceDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateInferenceServiceRequestParams struct {
 	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -8319,74 +8394,50 @@ type DeployRecord struct {
 
 // Predefined struct for user
 type DescribeAccelerationDomainsRequestParams struct {
-	// 加速域名所属站点 ID。
+	// <p>加速域名所属站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 分页查询偏移量，默认为 0。
+	// <p>分页查询偏移量，默认为 0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询限制数目，默认值：20，上限：200。
+	// <p>分页查询限制数目，默认值：20，上限：200。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有域名信息。详细的过滤条件如下：
-	// <li>domain-name：按照加速域名进行过滤；</li>
-	// <li>origin-type：按照源站类型进行过滤；</li>
-	// <li>origin：按照主源站地址进行过滤；</li>
-	// <li>backup-origin： 按照备用源站地址进行过滤；</li>
-	// <li>domain-cname：按照 CNAME 进行过滤；</li>
-	// <li>share-cname：按照共享 CNAME 进行过滤；</li>
+	// <p>过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有域名信息。详细的过滤条件如下：</p><li>domain-name：按照加速域名进行过滤；</li><li>origin-type：按照源站类型进行过滤；</li><li>origin：按照主源站地址进行过滤；</li><li>backup-origin： 按照备用源站地址进行过滤；</li><li>domain-cname：按照 CNAME 进行过滤；</li><li>share-cname：按照共享 CNAME 进行过滤；</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 可根据该字段对返回结果进行排序，取值有：
-	// <li>created_on：加速域名创建时间；</li>
-	// <li>domain-name：加速域名。</li>不填写时，默认对返回结果按照 domain-name 排序。
+	// <p>可根据该字段对返回结果进行排序，取值有：</p><li>created_on：加速域名创建时间；</li><li>domain-name：加速域名。</li>不填写时，默认对返回结果按照 domain-name 排序。
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ascill 码的大小排序。取值有：
-	// <li>asc：升序排列；</li>
-	// <li>desc：降序排列。</li>不填写使用默认值 asc。
+	// <p>排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ASCII 码的大小排序。取值有：</p><li>asc：升序排列；</li><li>desc：降序排列。</li>不填写使用默认值 asc。
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 匹配方式，取值有：
-	// <li>all：返回匹配所有查询条件的加速域名；</li>
-	// <li>any：返回匹配任意一个查询条件的加速域名。</li>不填写时默认值为 all。
+	// <p>匹配方式，取值有：</p><li>all：返回匹配所有查询条件的加速域名；</li><li>any：返回匹配任意一个查询条件的加速域名。</li>不填写时默认值为 all。
 	Match *string `json:"Match,omitnil,omitempty" name:"Match"`
 }
 
 type DescribeAccelerationDomainsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 加速域名所属站点 ID。
+	// <p>加速域名所属站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 分页查询偏移量，默认为 0。
+	// <p>分页查询偏移量，默认为 0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询限制数目，默认值：20，上限：200。
+	// <p>分页查询限制数目，默认值：20，上限：200。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有域名信息。详细的过滤条件如下：
-	// <li>domain-name：按照加速域名进行过滤；</li>
-	// <li>origin-type：按照源站类型进行过滤；</li>
-	// <li>origin：按照主源站地址进行过滤；</li>
-	// <li>backup-origin： 按照备用源站地址进行过滤；</li>
-	// <li>domain-cname：按照 CNAME 进行过滤；</li>
-	// <li>share-cname：按照共享 CNAME 进行过滤；</li>
+	// <p>过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有域名信息。详细的过滤条件如下：</p><li>domain-name：按照加速域名进行过滤；</li><li>origin-type：按照源站类型进行过滤；</li><li>origin：按照主源站地址进行过滤；</li><li>backup-origin： 按照备用源站地址进行过滤；</li><li>domain-cname：按照 CNAME 进行过滤；</li><li>share-cname：按照共享 CNAME 进行过滤；</li>
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 可根据该字段对返回结果进行排序，取值有：
-	// <li>created_on：加速域名创建时间；</li>
-	// <li>domain-name：加速域名。</li>不填写时，默认对返回结果按照 domain-name 排序。
+	// <p>可根据该字段对返回结果进行排序，取值有：</p><li>created_on：加速域名创建时间；</li><li>domain-name：加速域名。</li>不填写时，默认对返回结果按照 domain-name 排序。
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ascill 码的大小排序。取值有：
-	// <li>asc：升序排列；</li>
-	// <li>desc：降序排列。</li>不填写使用默认值 asc。
+	// <p>排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ASCII 码的大小排序。取值有：</p><li>asc：升序排列；</li><li>desc：降序排列。</li>不填写使用默认值 asc。
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 匹配方式，取值有：
-	// <li>all：返回匹配所有查询条件的加速域名；</li>
-	// <li>any：返回匹配任意一个查询条件的加速域名。</li>不填写时默认值为 all。
+	// <p>匹配方式，取值有：</p><li>all：返回匹配所有查询条件的加速域名；</li><li>any：返回匹配任意一个查询条件的加速域名。</li>不填写时默认值为 all。
 	Match *string `json:"Match,omitnil,omitempty" name:"Match"`
 }
 
@@ -8417,10 +8468,10 @@ func (r *DescribeAccelerationDomainsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccelerationDomainsResponseParams struct {
-	// 符合查询条件的加速域名个数。
+	// <p>符合查询条件的加速域名个数。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 符合查询条件的所有加速域名的信息。
+	// <p>符合查询条件的所有加速域名的信息。</p>
 	AccelerationDomains []*AccelerationDomain `json:"AccelerationDomains,omitnil,omitempty" name:"AccelerationDomains"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11009,6 +11060,101 @@ func (r *DescribeInferenceAPITokensResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInferenceAPITokensResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInferenceDomainsRequestParams struct {
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>推理服务 ID。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>排序字段。</p><p>枚举值：</p><ul><li>CreateTime： 域名创建时间；</li><li>UpdateTime： 域名修改时间。</li></ul><p>默认值：CreateTime。</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>排序方式。</p><p>枚举值：</p><ul><li>Asc： 升序方式；</li><li>Desc： 降序方式。</li></ul><p>默认值：Desc。</p>
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+
+	// <p>分页查询偏移量。</p><p>默认值：0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页查询限制数目。</p><p>默认值：20。</p><p>最大值：200。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeInferenceDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>推理服务 ID。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>排序字段。</p><p>枚举值：</p><ul><li>CreateTime： 域名创建时间；</li><li>UpdateTime： 域名修改时间。</li></ul><p>默认值：CreateTime。</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>排序方式。</p><p>枚举值：</p><ul><li>Asc： 升序方式；</li><li>Desc： 降序方式。</li></ul><p>默认值：Desc。</p>
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+
+	// <p>分页查询偏移量。</p><p>默认值：0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页查询限制数目。</p><p>默认值：20。</p><p>最大值：200。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeInferenceDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInferenceDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ServiceId")
+	delete(f, "SortBy")
+	delete(f, "SortOrder")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInferenceDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInferenceDomainsResponseParams struct {
+	// <p>推理服务域名总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>推理服务域名列表。</p>
+	Domains []*InferenceDomain `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInferenceDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInferenceDomainsResponseParams `json:"Response"`
+}
+
+func (r *DescribeInferenceDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInferenceDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -17277,7 +17423,7 @@ type HTTPResponseParameters struct {
 }
 
 type HTTPUpstreamTimeoutParameters struct {
-	// HTTP 应答超时时间，单位为秒，取值：5～600。
+	// <p>HTTP 应答超时时间。</p><p>取值范围：[5, 600]</p><p>单位：秒</p><p>默认值：15</p>
 	ResponseTimeout *int64 `json:"ResponseTimeout,omitnil,omitempty" name:"ResponseTimeout"`
 }
 
@@ -17430,6 +17576,44 @@ type HealthChecker struct {
 	ProbeCluster *string `json:"ProbeCluster,omitnil,omitempty" name:"ProbeCluster"`
 }
 
+type HostCertInfo struct {
+	// 服务器证书 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// 证书备注名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 证书类型，取值有：
+	// <li>default：默认证书；</lil>
+	// <li>upload：用户上传；</li>
+	// <li>managed：腾讯云托管。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 证书过期时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 证书部署时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployTime *string `json:"DeployTime,omitnil,omitempty" name:"DeployTime"`
+
+	// 签名算法。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
+
+	// 证书状态，取值有：
+	// <li>deployed：已部署；</li>
+	// <li>processing：部署中；</li>
+	// <li>applying：申请中；</li>
+	// <li>failed：申请失败；</li>
+	// <li>issued：绑定失败。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 type HostHeaderParameters struct {
 	// 执行动作，取值有：
 	// <li>followOrigin：跟随源站域名；</li>
@@ -17462,6 +17646,30 @@ type HostPolicy struct {
 
 	// <p>可选。当 PolicyType 为 Template 时，该字段用于指定当前域名所使用的策略模板的 Id。</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+type HostsCertificate struct {
+	// 域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 配置证书的模式，取值有：
+	// <li>disable：不配置证书；</li>
+	// <li>eofreecert：配置 EdgeOne 免费证书；</li> 
+	// <li>sslcert：配置 SSL 证书；</li> 
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 服务端证书配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostCertInfo []*HostCertInfo `json:"HostCertInfo,omitnil,omitempty" name:"HostCertInfo"`
+
+	// 申请类型，取值有：
+	// <li>apply：托管EdgeOne；</li>
+	// <li>none：不托管EdgeOne。</li>不填，默认取值为none。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ApplyType is deprecated.
+	ApplyType *string `json:"ApplyType,omitnil,omitempty" name:"ApplyType"`
 }
 
 type Hsts struct {
@@ -17940,6 +18148,32 @@ type InferenceContainerConfigForModify struct {
 
 	// <p>容器运行时的环境变量。最多支持 10 个变量。</p>
 	EnvironmentVariables []*InferenceEnvironmentVariable `json:"EnvironmentVariables,omitnil,omitempty" name:"EnvironmentVariables"`
+}
+
+type InferenceDomain struct {
+	// <p>域名名称。</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>域名状态。</p><p>枚举值：</p><ul><li>Online： 已生效；</li><li>Process： 部署中；</li><li>Offline： 已停用；</li><li>Init： 未生效，待激活站点。</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>推理任务请求鉴权开关。</p><p>枚举值：</p><ul><li>Off： 关闭鉴权；</li><li>On： 开启鉴权。</li></ul><p>默认值：On。</p>
+	AuthSwitch *string `json:"AuthSwitch,omitnil,omitempty" name:"AuthSwitch"`
+
+	// <p>CNAME 地址。</p><p>校验域名 CNAME 配置状态，请参考<a href="https://cloud.tencent.com/document/api/1552/94491"> CheckCnameStatus </a>接口。</p>
+	Cname *string `json:"Cname,omitnil,omitempty" name:"Cname"`
+
+	// <p>域名需进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。</p><p>验证归属权，请参考<a href="https://cloud.tencent.com/document/api/1552/98879"> VerifyOwnership </a>接口。</p>
+	OwnershipVerification *OwnershipVerification `json:"OwnershipVerification,omitnil,omitempty" name:"OwnershipVerification"`
+
+	// <p>域名证书信息。</p><p>申请免费证书，请参考 <a href="https://cloud.tencent.com/document/api/1552/124807">ApplyFreeCertificate</a> 接口；<br>检查免费证书申请结果，请参考 <a href="https://cloud.tencent.com/document/api/1552/124806">CheckFreeCertificateVerification</a> 接口；<br>配置域名证书，请参考 <a href="https://cloud.tencent.com/document/api/1552/80764">ModifyHostsCertificate</a> 接口。</p>
+	Certificate *HostsCertificate `json:"Certificate,omitnil,omitempty" name:"Certificate"`
+
+	// <p>创建时间。</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>修改时间。</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type InferenceEnvironmentVariable struct {
@@ -23520,6 +23754,81 @@ type OfflineCacheParameters struct {
 }
 
 // Predefined struct for user
+type OperateInferenceDomainRequestParams struct {
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>推理服务 ID。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>推理服务域名。</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>操作类型。</p><p>枚举值：</p><ul><li>Resume： 启用域名；</li><li>Stop： 停用域名；</li><li>Delete： 删除域名。</li></ul>
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+}
+
+type OperateInferenceDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>站点 ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>推理服务 ID。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>推理服务域名。</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>操作类型。</p><p>枚举值：</p><ul><li>Resume： 启用域名；</li><li>Stop： 停用域名；</li><li>Delete： 删除域名。</li></ul>
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+}
+
+func (r *OperateInferenceDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateInferenceDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ServiceId")
+	delete(f, "Domain")
+	delete(f, "Operation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OperateInferenceDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OperateInferenceDomainResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OperateInferenceDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *OperateInferenceDomainResponseParams `json:"Response"`
+}
+
+func (r *OperateInferenceDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateInferenceDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type OperateInferenceServiceRequestParams struct {
 	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -26692,12 +27001,23 @@ type ZoneConfigParameters struct {
 	ZoneConfig *ZoneConfig `json:"ZoneConfig,omitnil,omitempty" name:"ZoneConfig"`
 }
 
+type ZoneCustomVariables struct {
+	// <p>站点级自定义变量列表。CustomVariable.Name 需要使用 user.zone. 作为前缀。变量按照数组顺序依次初始化，InitialValue 仅支持引用位于当前变量之前的变量，不支持引用当前变量自身或位于当前变量之后的变量。</p>
+	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+
+	// <p>站点级自定义变量运算规则。运算中支持引用已定义的站点级自定义变量。此列表当前只支持填写一项规则，多填无效。</p>
+	CustomVariableOperations []*CustomVariableOperation `json:"CustomVariableOperations,omitnil,omitempty" name:"CustomVariableOperations"`
+}
+
 type ZoneFullConfig struct {
 	// <p>语法版本，当前默认为 1.0，输入其他值将会报错。</p>
 	FormatVersion *string `json:"FormatVersion,omitnil,omitempty" name:"FormatVersion"`
 
 	// <p>站点级配置，包含「站点加速」中所有配置项，且所有项均为必选，否则配置无效。</p>
 	ZoneConfig *ZoneConfig `json:"ZoneConfig,omitnil,omitempty" name:"ZoneConfig"`
+
+	// <p>站点级自定义变量配置，包括变量定义和变量运算。</p>
+	ZoneCustomVariables *ZoneCustomVariables `json:"ZoneCustomVariables,omitnil,omitempty" name:"ZoneCustomVariables"`
 
 	// <p>规则级配置，包含「规则引擎」中所有规则，且数组可为空，表示不启用任何规则。</p>
 	Rules []*ConfigGroupRuleEngineItem `json:"Rules,omitnil,omitempty" name:"Rules"`

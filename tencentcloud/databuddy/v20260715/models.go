@@ -617,14 +617,14 @@ type CreateWorkflowRsp struct {
 
 // Predefined struct for user
 type DeleteConsoleGroupsRequestParams struct {
-	// <p>要删除的用户组 ID 列表</p>
+	// <p>要删除的用户组 ID 列表，单次最多100个</p>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 }
 
 type DeleteConsoleGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>要删除的用户组 ID 列表</p>
+	// <p>要删除的用户组 ID 列表，单次最多100个</p>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 }
 
@@ -1760,13 +1760,13 @@ type ListConsoleGroupUsersRequestParams struct {
 	// <p>通过 UIN 批量查询用户信息</p>
 	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
 
-	// <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;DESC&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;ASC&#39;}]，默认按创建时间降序</p>
+	// <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;Desc&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;Asc&#39;}]，默认按创建时间降序</p>
 	OrderBys []*OrderBy `json:"OrderBys,omitnil,omitempty" name:"OrderBys"`
 
 	// <p>页码，从1开始，默认1</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// <p>每页大小，默认10，最小10，最大200</p>
+	// <p>每页大小，默认10，最小10，最大100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
@@ -1782,13 +1782,13 @@ type ListConsoleGroupUsersRequest struct {
 	// <p>通过 UIN 批量查询用户信息</p>
 	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
 
-	// <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;DESC&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;ASC&#39;}]，默认按创建时间降序</p>
+	// <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;Desc&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;Asc&#39;}]，默认按创建时间降序</p>
 	OrderBys []*OrderBy `json:"OrderBys,omitnil,omitempty" name:"OrderBys"`
 
 	// <p>页码，从1开始，默认1</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// <p>每页大小，默认10，最小10，最大200</p>
+	// <p>每页大小，默认10，最小10，最大100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
@@ -1864,7 +1864,7 @@ type ListConsoleGroupsRequestParams struct {
 	// <p>页码，从1开始，默认1</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// <p>每页大小，默认10，最小10，最大200</p>
+	// <p>每页大小，默认10，最小10，最大100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// <p>通过用户组 ID 批量查询</p>
@@ -1883,7 +1883,7 @@ type ListConsoleGroupsRequest struct {
 	// <p>页码，从1开始，默认1</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// <p>每页大小，默认10，最小10，最大200</p>
+	// <p>每页大小，默认10，最小10，最大100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// <p>通过用户组 ID 批量查询</p>
@@ -1967,7 +1967,7 @@ type ListConsoleRolesRequestParams struct {
 	// <p>页码，从1开始，默认1</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// <p>每页大小，默认10，最小10，最大200</p>
+	// <p>每页大小，默认10，最小10，最大100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// <p>角色名称或描述模糊匹配</p>
@@ -1980,7 +1980,7 @@ type ListConsoleRolesRequest struct {
 	// <p>页码，从1开始，默认1</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// <p>每页大小，默认10，最小10，最大200</p>
+	// <p>每页大小，默认10，最小10，最大100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// <p>角色名称或描述模糊匹配</p>
@@ -2056,7 +2056,7 @@ type ListConsoleUsersRequestParams struct {
 	// <p>页码，从1开始，默认1</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// <p>每页大小，默认10，最小10，最大200</p>
+	// <p>每页大小，默认10，最小10，最大100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// <p>用户名称与 UIN 模糊匹配</p>
@@ -2075,7 +2075,7 @@ type ListConsoleUsersRequest struct {
 	// <p>页码，从1开始，默认1</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// <p>每页大小，默认10，最小10，最大200</p>
+	// <p>每页大小，默认10，最小10，最大100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// <p>用户名称与 UIN 模糊匹配</p>
@@ -3206,7 +3206,7 @@ type UpdateConsoleGroupRequestParams struct {
 	// <p>用户组描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>成员 UIN 列表（OperType 为添加/删除成员时使用）</p>
+	// <p>成员 UIN 列表（OperType 为添加/删除成员时使用），单次最多100个</p>
 	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
 }
 
@@ -3228,7 +3228,7 @@ type UpdateConsoleGroupRequest struct {
 	// <p>用户组描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>成员 UIN 列表（OperType 为添加/删除成员时使用）</p>
+	// <p>成员 UIN 列表（OperType 为添加/删除成员时使用），单次最多100个</p>
 	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
 }
 

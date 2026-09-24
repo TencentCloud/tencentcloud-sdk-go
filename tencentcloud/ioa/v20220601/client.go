@@ -105,6 +105,58 @@ func (c *Client) BindBusinessResourceConnectorGroupWithContext(ctx context.Conte
     return
 }
 
+func NewBindVirtualAccountsRequest() (request *BindVirtualAccountsRequest) {
+    request = &BindVirtualAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "BindVirtualAccounts")
+    
+    
+    return
+}
+
+func NewBindVirtualAccountsResponse() (response *BindVirtualAccountsResponse) {
+    response = &BindVirtualAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindVirtualAccounts
+// 关联账户到虚拟组上，支持批量，私有化调用path为：capi/Assets/BindVirtualAccount，从7.x版本开始支持
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) BindVirtualAccounts(request *BindVirtualAccountsRequest) (response *BindVirtualAccountsResponse, err error) {
+    return c.BindVirtualAccountsWithContext(context.Background(), request)
+}
+
+// BindVirtualAccounts
+// 关联账户到虚拟组上，支持批量，私有化调用path为：capi/Assets/BindVirtualAccount，从7.x版本开始支持
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) BindVirtualAccountsWithContext(ctx context.Context, request *BindVirtualAccountsRequest) (response *BindVirtualAccountsResponse, err error) {
+    if request == nil {
+        request = NewBindVirtualAccountsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "BindVirtualAccounts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindVirtualAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindVirtualAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBusinessResourceRequest() (request *CreateBusinessResourceRequest) {
     request = &CreateBusinessResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1557,6 +1609,62 @@ func (c *Client) DescribeDeviceInfoWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeDeviceSecurityInfoRequest() (request *DescribeDeviceSecurityInfoRequest) {
+    request = &DescribeDeviceSecurityInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDeviceSecurityInfo")
+    
+    
+    return
+}
+
+func NewDescribeDeviceSecurityInfoResponse() (response *DescribeDeviceSecurityInfoResponse) {
+    response = &DescribeDeviceSecurityInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceSecurityInfo
+// 查询指定终端的病毒库版本、漏洞库版本、系统修复引擎版本、防火墙状态和实时防护状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDeviceSecurityInfo(request *DescribeDeviceSecurityInfoRequest) (response *DescribeDeviceSecurityInfoResponse, err error) {
+    return c.DescribeDeviceSecurityInfoWithContext(context.Background(), request)
+}
+
+// DescribeDeviceSecurityInfo
+// 查询指定终端的病毒库版本、漏洞库版本、系统修复引擎版本、防火墙状态和实时防护状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDeviceSecurityInfoWithContext(ctx context.Context, request *DescribeDeviceSecurityInfoRequest) (response *DescribeDeviceSecurityInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceSecurityInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDeviceSecurityInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceSecurityInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceSecurityInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceVirtualGroupsRequest() (request *DescribeDeviceVirtualGroupsRequest) {
     request = &DescribeDeviceVirtualGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1787,6 +1895,68 @@ func (c *Client) DescribeLocalAccountsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeLocalAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProfileFieldsMenuRequest() (request *DescribeProfileFieldsMenuRequest) {
+    request = &DescribeProfileFieldsMenuRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeProfileFieldsMenu")
+    
+    
+    return
+}
+
+func NewDescribeProfileFieldsMenuResponse() (response *DescribeProfileFieldsMenuResponse) {
+    response = &DescribeProfileFieldsMenuResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProfileFieldsMenu
+// 查询终端描述字段数据,私有化调用path为：capi/Assets/Device/DescribeProfileFieldsMenu
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_DUPLICATERESOURCESEXIST = "InvalidParameter.DuplicateResourcesExist"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  RESOURCENOTFOUND_NOMODULEDATA = "ResourceNotFound.NoModuleData"
+//  RESOURCENOTFOUND_NORESOURCEDATA = "ResourceNotFound.NoResourceData"
+//  UNAUTHORIZEDOPERATION_NOMODULEPERMISSIONS = "UnauthorizedOperation.NoModulePermissions"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONSD = "UnauthorizedOperation.NoResourcePermissionsd"
+func (c *Client) DescribeProfileFieldsMenu(request *DescribeProfileFieldsMenuRequest) (response *DescribeProfileFieldsMenuResponse, err error) {
+    return c.DescribeProfileFieldsMenuWithContext(context.Background(), request)
+}
+
+// DescribeProfileFieldsMenu
+// 查询终端描述字段数据,私有化调用path为：capi/Assets/Device/DescribeProfileFieldsMenu
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_DUPLICATERESOURCESEXIST = "InvalidParameter.DuplicateResourcesExist"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  RESOURCENOTFOUND_NOMODULEDATA = "ResourceNotFound.NoModuleData"
+//  RESOURCENOTFOUND_NORESOURCEDATA = "ResourceNotFound.NoResourceData"
+//  UNAUTHORIZEDOPERATION_NOMODULEPERMISSIONS = "UnauthorizedOperation.NoModulePermissions"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONSD = "UnauthorizedOperation.NoResourcePermissionsd"
+func (c *Client) DescribeProfileFieldsMenuWithContext(ctx context.Context, request *DescribeProfileFieldsMenuRequest) (response *DescribeProfileFieldsMenuResponse, err error) {
+    if request == nil {
+        request = NewDescribeProfileFieldsMenuRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeProfileFieldsMenu")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProfileFieldsMenu require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProfileFieldsMenuResponse()
     err = c.Send(request, response)
     return
 }
@@ -2107,6 +2277,58 @@ func (c *Client) DescribeSoftwareInformationWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeSoftwareInformationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVirtualAccountsRequest() (request *DescribeVirtualAccountsRequest) {
+    request = &DescribeVirtualAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeVirtualAccounts")
+    
+    
+    return
+}
+
+func NewDescribeVirtualAccountsResponse() (response *DescribeVirtualAccountsResponse) {
+    response = &DescribeVirtualAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVirtualAccounts
+// 列表虚拟组的账户，私有化调用path为：/capi/Assets/AccountVirtualGroup/DescribeVirtualAccounts，从7.x版本开始支持
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeVirtualAccounts(request *DescribeVirtualAccountsRequest) (response *DescribeVirtualAccountsResponse, err error) {
+    return c.DescribeVirtualAccountsWithContext(context.Background(), request)
+}
+
+// DescribeVirtualAccounts
+// 列表虚拟组的账户，私有化调用path为：/capi/Assets/AccountVirtualGroup/DescribeVirtualAccounts，从7.x版本开始支持
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeVirtualAccountsWithContext(ctx context.Context, request *DescribeVirtualAccountsRequest) (response *DescribeVirtualAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirtualAccountsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeVirtualAccounts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirtualAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVirtualAccountsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2703,6 +2925,58 @@ func (c *Client) ModifyVirtualDeviceGroupsWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyVirtualDeviceGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindVirtualAccountsRequest() (request *UnbindVirtualAccountsRequest) {
+    request = &UnbindVirtualAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "UnbindVirtualAccounts")
+    
+    
+    return
+}
+
+func NewUnbindVirtualAccountsResponse() (response *UnbindVirtualAccountsResponse) {
+    response = &UnbindVirtualAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UnbindVirtualAccounts
+// 取消关联账户到虚拟组上，支持批量，私有化调用path为：capi/Assets/UnbindVirtualAccount，从7.x版本开始支持
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) UnbindVirtualAccounts(request *UnbindVirtualAccountsRequest) (response *UnbindVirtualAccountsResponse, err error) {
+    return c.UnbindVirtualAccountsWithContext(context.Background(), request)
+}
+
+// UnbindVirtualAccounts
+// 取消关联账户到虚拟组上，支持批量，私有化调用path为：capi/Assets/UnbindVirtualAccount，从7.x版本开始支持
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) UnbindVirtualAccountsWithContext(ctx context.Context, request *UnbindVirtualAccountsRequest) (response *UnbindVirtualAccountsResponse, err error) {
+    if request == nil {
+        request = NewUnbindVirtualAccountsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "UnbindVirtualAccounts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindVirtualAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnbindVirtualAccountsResponse()
     err = c.Send(request, response)
     return
 }

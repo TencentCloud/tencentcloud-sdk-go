@@ -20,6 +20,14 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AccountUserIdItem struct {
+	// <p>Comment: 账号所在目录ID(MenuId)，与accounts表menu_id一致，用于同一登录账号在不同目录下去重;Required:true</p>
+	MenuId *uint64 `json:"MenuId,omitnil,omitempty" name:"MenuId"`
+
+	// <p>Comment: 登录账号(UserId)，对应DescribeLocalAccount -&gt; UserId;Required:true</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
 type AggrCategorySoftDetailRow struct {
 	// ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -210,6 +218,106 @@ func (r *BindBusinessResourceConnectorGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BindBusinessResourceConnectorGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindVirtualAccountData struct {
+	// <p>绑定失败明细（含失败原因）</p>
+	FailItems []*BindVirtualAccountResultData `json:"FailItems,omitnil,omitempty" name:"FailItems"`
+
+	// <p>绑定成功明细（含幂等场景：已存在绑定的账号也归入成功）</p>
+	SuccessItems []*BindVirtualAccountResultData `json:"SuccessItems,omitnil,omitempty" name:"SuccessItems"`
+}
+
+type BindVirtualAccountResultData struct {
+	// <p>账号Id（通过AccountIdList传入时回显）</p>
+	AccountId *int64 `json:"AccountId,omitnil,omitempty" name:"AccountId"`
+
+	// <p>目录ID（通过AccountUserList传入时回显，否则为0）</p>
+	MenuId *uint64 `json:"MenuId,omitnil,omitempty" name:"MenuId"`
+
+	// <p>失败原因，仅失败项有值：ACCOUNT_NOT_FOUND / ACCOUNT_NOT_IN_GROUP / DB_ERROR</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// <p>登录账号（通过AccountUserList传入时回显，否则为空）</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+// Predefined struct for user
+type BindVirtualAccountsRequestParams struct {
+	// <p>Comment: 虚拟组id;Required:true</p>
+	VirtualGroupId *int64 `json:"VirtualGroupId,omitnil,omitempty" name:"VirtualGroupId"`
+
+	// <p>Comment: 要绑定的账户Id集合，这里的Id指的是DescribeLocalAccountsData结构体里返回的Id;Required:true</p>
+	AccountIdList []*int64 `json:"AccountIdList,omitnil,omitempty" name:"AccountIdList"`
+
+	// <p>Comment: 要绑定的账户(目录MenuId+登录账号UserId)集合，与AccountIdList二选一或并用，查不到的账号会被跳过;Required:false</p>
+	AccountUserList []*AccountUserIdItem `json:"AccountUserList,omitnil,omitempty" name:"AccountUserList"`
+
+	// Comment: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+}
+
+type BindVirtualAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Comment: 虚拟组id;Required:true</p>
+	VirtualGroupId *int64 `json:"VirtualGroupId,omitnil,omitempty" name:"VirtualGroupId"`
+
+	// <p>Comment: 要绑定的账户Id集合，这里的Id指的是DescribeLocalAccountsData结构体里返回的Id;Required:true</p>
+	AccountIdList []*int64 `json:"AccountIdList,omitnil,omitempty" name:"AccountIdList"`
+
+	// <p>Comment: 要绑定的账户(目录MenuId+登录账号UserId)集合，与AccountIdList二选一或并用，查不到的账号会被跳过;Required:false</p>
+	AccountUserList []*AccountUserIdItem `json:"AccountUserList,omitnil,omitempty" name:"AccountUserList"`
+
+	// Comment: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+}
+
+func (r *BindVirtualAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindVirtualAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VirtualGroupId")
+	delete(f, "AccountIdList")
+	delete(f, "AccountUserList")
+	delete(f, "DomainInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindVirtualAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindVirtualAccountsResponseParams struct {
+	// <p>业务响应数据</p>
+	Data *BindVirtualAccountData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BindVirtualAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *BindVirtualAccountsResponseParams `json:"Response"`
+}
+
+func (r *BindVirtualAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindVirtualAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1124,6 +1232,28 @@ type DeleteResourceData struct {
 	// 资源或资源组Id(只支持32位)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type DescribeAccountAccountGroupsData struct {
+	// <p>组Id(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// <p>组名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupName *string `json:"AccountGroupName,omitnil,omitempty" name:"AccountGroupName"`
+
+	// <p>主组标识(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterFlag *int64 `json:"MasterFlag,omitnil,omitempty" name:"MasterFlag"`
+
+	// <p>组路径</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupNamePaths []*string `json:"AccountGroupNamePaths,omitnil,omitempty" name:"AccountGroupNamePaths"`
+
+	// <p>组路径Id(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupPathIds []*int64 `json:"AccountGroupPathIds,omitnil,omitempty" name:"AccountGroupPathIds"`
 }
 
 type DescribeAccountGroupsData struct {
@@ -2941,6 +3071,80 @@ type DescribeDeviceInfoRspData struct {
 	ServiceList []*DeviceServiceInfo `json:"ServiceList,omitnil,omitempty" name:"ServiceList"`
 }
 
+type DescribeDeviceSecurityInfoData struct {
+	// <p>防火墙状态</p><p>枚举值：</p><ul><li>0：未开启</li><li>1：已开启</li></ul>
+	FirewallStatus *int64 `json:"FirewallStatus,omitnil,omitempty" name:"FirewallStatus"`
+
+	// <p>实时防护状态</p><p>枚举值：</p><ul><li>0：未开启</li><li>1：部分开启</li><li>2：已开启</li><li>-1：未知</li></ul>
+	RealTimeProtectionStatus *int64 `json:"RealTimeProtectionStatus,omitnil,omitempty" name:"RealTimeProtectionStatus"`
+
+	// <p>系统修复引擎版本</p>
+	SysRepVersion *string `json:"SysRepVersion,omitnil,omitempty" name:"SysRepVersion"`
+
+	// <p>病毒库版本</p>
+	VirusVer *string `json:"VirusVer,omitnil,omitempty" name:"VirusVer"`
+
+	// <p>漏洞库版本</p>
+	VulVersion *string `json:"VulVersion,omitnil,omitempty" name:"VulVersion"`
+}
+
+// Predefined struct for user
+type DescribeDeviceSecurityInfoRequestParams struct {
+	// <p>设备唯一标识符</p>
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+}
+
+type DescribeDeviceSecurityInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>设备唯一标识符</p>
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+}
+
+func (r *DescribeDeviceSecurityInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceSecurityInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceSecurityInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceSecurityInfoResponseParams struct {
+	// <p>终端安全信息</p>
+	Data *DescribeDeviceSecurityInfoData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceSecurityInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceSecurityInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceSecurityInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceSecurityInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDeviceVirtualGroupsPageRsp struct {
 	// 分页公共对象
 	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
@@ -3403,6 +3607,78 @@ func (r *DescribeLocalAccountsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeLocalAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProfileFieldsMenuRequestParams struct {
+	// <p>查找自动填写字段</p>
+	OnlyRule *bool `json:"OnlyRule,omitnil,omitempty" name:"OnlyRule"`
+
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+}
+
+type DescribeProfileFieldsMenuRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>查找自动填写字段</p>
+	OnlyRule *bool `json:"OnlyRule,omitnil,omitempty" name:"OnlyRule"`
+
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+}
+
+func (r *DescribeProfileFieldsMenuRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProfileFieldsMenuRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OnlyRule")
+	delete(f, "DomainInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProfileFieldsMenuRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProfileFieldsMenuResponseParams struct {
+	// <p>描述字段数据</p>
+	Data *DescribeProfileFieldsRspData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProfileFieldsMenuResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProfileFieldsMenuResponseParams `json:"Response"`
+}
+
+func (r *DescribeProfileFieldsMenuResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProfileFieldsMenuResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProfileFieldsRspData struct {
+	// <p>详情item</p>
+	Item []*ProfileFieldItem `json:"Item,omitnil,omitempty" name:"Item"`
+
+	// <p>profile开关配置</p>
+	ProfileTips *ProfileTips `json:"ProfileTips,omitnil,omitempty" name:"ProfileTips"`
 }
 
 type DescribeResourceGrantedAccountGroupsData struct {
@@ -3883,6 +4159,150 @@ func (r *DescribeSoftwareInformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVirtualAccountsData struct {
+	// <p>Id(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>用户账号</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>用户名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>账户分组Id(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupId *uint64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// <p>账户组名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>关联服务器名称(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountId *uint64 `json:"AccountId,omitnil,omitempty" name:"AccountId"`
+
+	// <p>账户源(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>状态(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>账户namepath</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
+
+	// <p>账户扩展信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
+
+	// <p>创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
+
+	// <p>更新时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
+
+	// <p>多OU组信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroups []*DescribeAccountAccountGroupsData `json:"AccountGroups,omitnil,omitempty" name:"AccountGroups"`
+
+	// <p>绑定PC端数量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PcBindNum *int64 `json:"PcBindNum,omitnil,omitempty" name:"PcBindNum"`
+
+	// <p>绑定移动端数量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MobileBindNum *int64 `json:"MobileBindNum,omitnil,omitempty" name:"MobileBindNum"`
+}
+
+type DescribeVirtualAccountsPageData struct {
+	// <p>分页公共对象</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>列表虚拟组的账户分页数据集合</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DescribeVirtualAccountsData `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
+type DescribeVirtualAccountsRequestParams struct {
+	// <p>账户虚拟组Id(只支持32位)</p>
+	VirtualGroupId *uint64 `json:"VirtualGroupId,omitnil,omitempty" name:"VirtualGroupId"`
+
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// <p>滤条件、分页参数</p><li>UserName - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按用户名称过滤。</li><li>UserId - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按用户账号过滤。</li><li>Phone - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按电话过滤。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+type DescribeVirtualAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>账户虚拟组Id(只支持32位)</p>
+	VirtualGroupId *uint64 `json:"VirtualGroupId,omitnil,omitempty" name:"VirtualGroupId"`
+
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// <p>滤条件、分页参数</p><li>UserName - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按用户名称过滤。</li><li>UserId - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按用户账号过滤。</li><li>Phone - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按电话过滤。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+func (r *DescribeVirtualAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVirtualAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VirtualGroupId")
+	delete(f, "DomainInstanceId")
+	delete(f, "Condition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVirtualAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVirtualAccountsResponseParams struct {
+	// <p>业务响应数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeVirtualAccountsPageData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVirtualAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVirtualAccountsResponseParams `json:"Response"`
+}
+
+func (r *DescribeVirtualAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVirtualAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVirtualDevicesPageRsp struct {
 	// 数据分页信息
 	Paging *Paging `json:"Paging,omitnil,omitempty" name:"Paging"`
@@ -4100,6 +4520,9 @@ type DeviceDetail struct {
 	// <p>宿主机名称（需要宿主机也安装iOA才能显示）</p>
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
+	// <p>信息登记数据</p>
+	Profiles []*DeviceProfile `json:"Profiles,omitnil,omitempty" name:"Profiles"`
+
 	// <p>主板序列号</p>
 	BaseBoardSn *string `json:"BaseBoardSn,omitnil,omitempty" name:"BaseBoardSn"`
 
@@ -4126,6 +4549,9 @@ type DeviceDetail struct {
 
 	// <p>是否开启磁盘访问权限，仅macOS， 0： 未开启、 1： 开启</p>
 	DiskAccessPermission *int64 `json:"DiskAccessPermission,omitnil,omitempty" name:"DiskAccessPermission"`
+
+	// <p>安装状态（私有化：0: 已安装 1: 已卸载 ）（SaaS及一体化：0: 未知 1: 已安装 2: 已卸载）</p>
+	InstallationStatus *int64 `json:"InstallationStatus,omitnil,omitempty" name:"InstallationStatus"`
 
 	// <p>终端备注名</p>
 	RemarkName *string `json:"RemarkName,omitnil,omitempty" name:"RemarkName"`
@@ -4276,6 +4702,32 @@ type DeviceProcessInfo struct {
 	// 启动用户
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
+}
+
+type DeviceProfile struct {
+	// <p>值</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// <p>属性ID(只支持32位)</p>
+	FieldId *int64 `json:"FieldId,omitnil,omitempty" name:"FieldId"`
+
+	// <p>设备唯一标识码</p>
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
+	// <p>名称</p>
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// <p>类型(只支持32位)</p>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>可选数据</p>
+	Options *string `json:"Options,omitnil,omitempty" name:"Options"`
+
+	// <p>必填数据</p>
+	IsMust *string `json:"IsMust,omitnil,omitempty" name:"IsMust"`
+
+	// <p>必填数据</p>
+	IsCustom *string `json:"IsCustom,omitnil,omitempty" name:"IsCustom"`
 }
 
 type DeviceServiceInfo struct {
@@ -5358,6 +5810,17 @@ func (r *ModifyVirtualDeviceGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type OptionsItem struct {
+	// <p>中文值</p>
+	ValueCh *string `json:"ValueCh,omitnil,omitempty" name:"ValueCh"`
+
+	// <p>英文值</p>
+	ValueEn *string `json:"ValueEn,omitnil,omitempty" name:"ValueEn"`
+
+	// <p>每一项的Key值</p>
+	OptionKey *int64 `json:"OptionKey,omitnil,omitempty" name:"OptionKey"`
+}
+
 type Paging struct {
 	// 每页条数
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
@@ -5370,6 +5833,64 @@ type Paging struct {
 
 	// 记录总数
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+}
+
+type ProfileFieldItem struct {
+	// <p>键值id</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>排序key(只支持32位)</p>
+	Key *int64 `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>名称</p>
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// <p>输入类型(只支持32位)</p>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>是否必选(只支持32位)</p>
+	IsMust *int64 `json:"IsMust,omitnil,omitempty" name:"IsMust"`
+
+	// <p>是否显示(只支持32位)</p>
+	IsShow *int64 `json:"IsShow,omitnil,omitempty" name:"IsShow"`
+
+	// <p>是否自定义(只支持32位)</p>
+	IsCustom *int64 `json:"IsCustom,omitnil,omitempty" name:"IsCustom"`
+
+	// <p>下一个选项key(只支持32位)</p>
+	NextOptionKey *int64 `json:"NextOptionKey,omitnil,omitempty" name:"NextOptionKey"`
+
+	// <p>选项数据</p>
+	Options *string `json:"Options,omitnil,omitempty" name:"Options"`
+
+	// <p>是否覆盖(只支持32位)</p>
+	IsReplace *int64 `json:"IsReplace,omitnil,omitempty" name:"IsReplace"`
+
+	// <p>是否可以修改分组</p>
+	GroupEditable *bool `json:"GroupEditable,omitnil,omitempty" name:"GroupEditable"`
+
+	// <p>是否有规则</p>
+	HasRules *bool `json:"HasRules,omitnil,omitempty" name:"HasRules"`
+
+	// <p>规则id</p>
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>名称-英文</p>
+	TitleEn *string `json:"TitleEn,omitnil,omitempty" name:"TitleEn"`
+
+	// <p>选项数据-英文</p>
+	OptionsEn *string `json:"OptionsEn,omitnil,omitempty" name:"OptionsEn"`
+
+	// <p>选项数据(包含中英文)</p>
+	OptionsItem []*OptionsItem `json:"OptionsItem,omitnil,omitempty" name:"OptionsItem"`
+}
+
+type ProfileTips struct {
+	// 配置id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 各开关值(json)
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type RuleExpression struct {
@@ -5486,4 +6007,90 @@ type Sort struct {
 
 	// 排序方式
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+type UnbindVirtualAccountData struct {
+	// <p>解绑失败明细（含失败原因）</p>
+	FailItems []*BindVirtualAccountResultData `json:"FailItems,omitnil,omitempty" name:"FailItems"`
+
+	// <p>解绑成功明细（含幂等场景：本就未绑定的账号也归入成功）</p>
+	SuccessItems []*BindVirtualAccountResultData `json:"SuccessItems,omitnil,omitempty" name:"SuccessItems"`
+}
+
+// Predefined struct for user
+type UnbindVirtualAccountsRequestParams struct {
+	// <p>Comment: 虚拟组id;Required:true</p>
+	VirtualGroupId *int64 `json:"VirtualGroupId,omitnil,omitempty" name:"VirtualGroupId"`
+
+	// <p>Comment: 要取消绑定的账户Id集合，这里的Id指的是DescribeLocalAccountsData结构体里返回的Id;Required:true</p>
+	AccountIdList []*int64 `json:"AccountIdList,omitnil,omitempty" name:"AccountIdList"`
+
+	// <p>Comment: 要取消绑定的账户(目录MenuId+登录账号UserId)集合，与AccountIdList二选一或并用，查不到的账号会被跳过;Required:false</p>
+	AccountUserList []*AccountUserIdItem `json:"AccountUserList,omitnil,omitempty" name:"AccountUserList"`
+
+	// Comment: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+}
+
+type UnbindVirtualAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Comment: 虚拟组id;Required:true</p>
+	VirtualGroupId *int64 `json:"VirtualGroupId,omitnil,omitempty" name:"VirtualGroupId"`
+
+	// <p>Comment: 要取消绑定的账户Id集合，这里的Id指的是DescribeLocalAccountsData结构体里返回的Id;Required:true</p>
+	AccountIdList []*int64 `json:"AccountIdList,omitnil,omitempty" name:"AccountIdList"`
+
+	// <p>Comment: 要取消绑定的账户(目录MenuId+登录账号UserId)集合，与AccountIdList二选一或并用，查不到的账号会被跳过;Required:false</p>
+	AccountUserList []*AccountUserIdItem `json:"AccountUserList,omitnil,omitempty" name:"AccountUserList"`
+
+	// Comment: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+}
+
+func (r *UnbindVirtualAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindVirtualAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VirtualGroupId")
+	delete(f, "AccountIdList")
+	delete(f, "AccountUserList")
+	delete(f, "DomainInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindVirtualAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindVirtualAccountsResponseParams struct {
+	// <p>业务响应数据</p>
+	Data *UnbindVirtualAccountData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UnbindVirtualAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *UnbindVirtualAccountsResponseParams `json:"Response"`
+}
+
+func (r *UnbindVirtualAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindVirtualAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }

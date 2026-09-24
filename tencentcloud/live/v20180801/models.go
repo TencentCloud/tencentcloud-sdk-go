@@ -4638,16 +4638,16 @@ type CreateLiveSmartEraseTemplateRequestParams struct {
 	// <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>关联的审核模板id, 表audio_conf 。</p>
+	// <p>关联的审核模板id, 表audio_conf 。</p><p>取值为DescribeAuditTemplates接口返回的AuditTemplates里面的TemplateId字段</p>
 	AuditConfId *uint64 `json:"AuditConfId,omitnil,omitempty" name:"AuditConfId"`
 
-	// <p>天御图片审核策略BizType  Image 。</p>
+	// <p>天御图片审核策略BizType  Image 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Image&quot;的BizType值</p>
 	ImageBizType *string `json:"ImageBizType,omitnil,omitempty" name:"ImageBizType"`
 
-	// <p>天御音频审核策略BizType  ShortAudio 。</p>
+	// <p>天御音频审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;ShortAudio&quot;的BizType值</p>
 	AudioBizType *string `json:"AudioBizType,omitnil,omitempty" name:"AudioBizType"`
 
-	// <p>天御音频文本审核策略BizType  ShortAudio 。</p>
+	// <p>天御音频文本审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Text&quot;的BizType值</p>
 	AudioTextBizType *string `json:"AudioTextBizType,omitnil,omitempty" name:"AudioTextBizType"`
 
 	// <p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
@@ -4675,16 +4675,16 @@ type CreateLiveSmartEraseTemplateRequest struct {
 	// <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>关联的审核模板id, 表audio_conf 。</p>
+	// <p>关联的审核模板id, 表audio_conf 。</p><p>取值为DescribeAuditTemplates接口返回的AuditTemplates里面的TemplateId字段</p>
 	AuditConfId *uint64 `json:"AuditConfId,omitnil,omitempty" name:"AuditConfId"`
 
-	// <p>天御图片审核策略BizType  Image 。</p>
+	// <p>天御图片审核策略BizType  Image 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Image&quot;的BizType值</p>
 	ImageBizType *string `json:"ImageBizType,omitnil,omitempty" name:"ImageBizType"`
 
-	// <p>天御音频审核策略BizType  ShortAudio 。</p>
+	// <p>天御音频审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;ShortAudio&quot;的BizType值</p>
 	AudioBizType *string `json:"AudioBizType,omitnil,omitempty" name:"AudioBizType"`
 
-	// <p>天御音频文本审核策略BizType  ShortAudio 。</p>
+	// <p>天御音频文本审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Text&quot;的BizType值</p>
 	AudioTextBizType *string `json:"AudioTextBizType,omitnil,omitempty" name:"AudioTextBizType"`
 
 	// <p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>

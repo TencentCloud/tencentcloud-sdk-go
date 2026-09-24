@@ -3021,6 +3021,226 @@ func (c *Client) CreateInternalTableWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateJobRequest() (request *CreateJobRequest) {
+    request = &CreateJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateJob")
+    
+    
+    return
+}
+
+func NewCreateJobResponse() (response *CreateJobResponse) {
+    response = &CreateJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateJob
+// 创建并提交作业 Action。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  FAILEDOPERATION_FLOWEXECUTIONCONFLICT = "FailedOperation.FlowExecutionConflict"
+//  FAILEDOPERATION_FLOWIDNOTEXISTS = "FailedOperation.FlowIdNotExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_PARTITION = "ResourceNotFound.Partition"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
+//  RESOURCENOTFOUND_WAREHOUSE = "ResourceNotFound.Warehouse"
+//  RESOURCEUNAVAILABLE_PARTITION = "ResourceUnavailable.Partition"
+//  RESOURCEUNAVAILABLE_WAREHOUSE = "ResourceUnavailable.Warehouse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SINGLETENANTTCCCATALOG = "UnsupportedOperation.SingleTenantTccCatalog"
+func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobResponse, err error) {
+    return c.CreateJobWithContext(context.Background(), request)
+}
+
+// CreateJob
+// 创建并提交作业 Action。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  FAILEDOPERATION_FLOWEXECUTIONCONFLICT = "FailedOperation.FlowExecutionConflict"
+//  FAILEDOPERATION_FLOWIDNOTEXISTS = "FailedOperation.FlowIdNotExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_PARTITION = "ResourceNotFound.Partition"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
+//  RESOURCENOTFOUND_WAREHOUSE = "ResourceNotFound.Warehouse"
+//  RESOURCEUNAVAILABLE_PARTITION = "ResourceUnavailable.Partition"
+//  RESOURCEUNAVAILABLE_WAREHOUSE = "ResourceUnavailable.Warehouse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SINGLETENANTTCCCATALOG = "UnsupportedOperation.SingleTenantTccCatalog"
+func (c *Client) CreateJobWithContext(ctx context.Context, request *CreateJobRequest) (response *CreateJobResponse, err error) {
+    if request == nil {
+        request = NewCreateJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateJobDefinitionRequest() (request *CreateJobDefinitionRequest) {
+    request = &CreateJobDefinitionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateJobDefinition")
+    
+    
+    return
+}
+
+func NewCreateJobDefinitionResponse() (response *CreateJobDefinitionResponse) {
+    response = &CreateJobDefinitionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateJobDefinition
+// 创建作业定义。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateJobDefinition(request *CreateJobDefinitionRequest) (response *CreateJobDefinitionResponse, err error) {
+    return c.CreateJobDefinitionWithContext(context.Background(), request)
+}
+
+// CreateJobDefinition
+// 创建作业定义。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateJobDefinitionWithContext(ctx context.Context, request *CreateJobDefinitionRequest) (response *CreateJobDefinitionResponse, err error) {
+    if request == nil {
+        request = NewCreateJobDefinitionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateJobDefinition")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateJobDefinition require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateJobDefinitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateJobFromDefinitionRequest() (request *CreateJobFromDefinitionRequest) {
+    request = &CreateJobFromDefinitionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateJobFromDefinition")
+    
+    
+    return
+}
+
+func NewCreateJobFromDefinitionResponse() (response *CreateJobFromDefinitionResponse) {
+    response = &CreateJobFromDefinitionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateJobFromDefinition
+// 按作业定义创建作业。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PARTITION = "ResourceNotFound.Partition"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
+//  RESOURCENOTFOUND_WAREHOUSE = "ResourceNotFound.Warehouse"
+//  RESOURCEUNAVAILABLE_PARTITION = "ResourceUnavailable.Partition"
+//  RESOURCEUNAVAILABLE_WAREHOUSE = "ResourceUnavailable.Warehouse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SINGLETENANTTCCCATALOG = "UnsupportedOperation.SingleTenantTccCatalog"
+func (c *Client) CreateJobFromDefinition(request *CreateJobFromDefinitionRequest) (response *CreateJobFromDefinitionResponse, err error) {
+    return c.CreateJobFromDefinitionWithContext(context.Background(), request)
+}
+
+// CreateJobFromDefinition
+// 按作业定义创建作业。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PARTITION = "ResourceNotFound.Partition"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
+//  RESOURCENOTFOUND_WAREHOUSE = "ResourceNotFound.Warehouse"
+//  RESOURCEUNAVAILABLE_PARTITION = "ResourceUnavailable.Partition"
+//  RESOURCEUNAVAILABLE_WAREHOUSE = "ResourceUnavailable.Warehouse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SINGLETENANTTCCCATALOG = "UnsupportedOperation.SingleTenantTccCatalog"
+func (c *Client) CreateJobFromDefinitionWithContext(ctx context.Context, request *CreateJobFromDefinitionRequest) (response *CreateJobFromDefinitionResponse, err error) {
+    if request == nil {
+        request = NewCreateJobFromDefinitionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateJobFromDefinition")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateJobFromDefinition require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateJobFromDefinitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateJobSpecRequest() (request *CreateJobSpecRequest) {
     request = &CreateJobSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7297,6 +7517,206 @@ func (c *Client) DescribeBindablePrometheusWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeCatalogTableInfoRequest() (request *DescribeCatalogTableInfoRequest) {
+    request = &DescribeCatalogTableInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeCatalogTableInfo")
+    
+    
+    return
+}
+
+func NewDescribeCatalogTableInfoResponse() (response *DescribeCatalogTableInfoResponse) {
+    response = &DescribeCatalogTableInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCatalogTableInfo
+// 获取 Table 详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeCatalogTableInfo(request *DescribeCatalogTableInfoRequest) (response *DescribeCatalogTableInfoResponse, err error) {
+    return c.DescribeCatalogTableInfoWithContext(context.Background(), request)
+}
+
+// DescribeCatalogTableInfo
+// 获取 Table 详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeCatalogTableInfoWithContext(ctx context.Context, request *DescribeCatalogTableInfoRequest) (response *DescribeCatalogTableInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeCatalogTableInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeCatalogTableInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCatalogTableInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCatalogTableInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCatalogTableNamesRequest() (request *DescribeCatalogTableNamesRequest) {
+    request = &DescribeCatalogTableNamesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeCatalogTableNames")
+    
+    
+    return
+}
+
+func NewDescribeCatalogTableNamesResponse() (response *DescribeCatalogTableNamesResponse) {
+    response = &DescribeCatalogTableNamesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCatalogTableNames
+// 获取 Schema 下所有 Table
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeCatalogTableNames(request *DescribeCatalogTableNamesRequest) (response *DescribeCatalogTableNamesResponse, err error) {
+    return c.DescribeCatalogTableNamesWithContext(context.Background(), request)
+}
+
+// DescribeCatalogTableNames
+// 获取 Schema 下所有 Table
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeCatalogTableNamesWithContext(ctx context.Context, request *DescribeCatalogTableNamesRequest) (response *DescribeCatalogTableNamesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCatalogTableNamesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeCatalogTableNames")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCatalogTableNames require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCatalogTableNamesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCatalogTableNamesPageRequest() (request *DescribeCatalogTableNamesPageRequest) {
+    request = &DescribeCatalogTableNamesPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeCatalogTableNamesPage")
+    
+    
+    return
+}
+
+func NewDescribeCatalogTableNamesPageResponse() (response *DescribeCatalogTableNamesPageResponse) {
+    response = &DescribeCatalogTableNamesPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCatalogTableNamesPage
+// 分页查询表名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeCatalogTableNamesPage(request *DescribeCatalogTableNamesPageRequest) (response *DescribeCatalogTableNamesPageResponse, err error) {
+    return c.DescribeCatalogTableNamesPageWithContext(context.Background(), request)
+}
+
+// DescribeCatalogTableNamesPage
+// 分页查询表名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeCatalogTableNamesPageWithContext(ctx context.Context, request *DescribeCatalogTableNamesPageRequest) (response *DescribeCatalogTableNamesPageResponse, err error) {
+    if request == nil {
+        request = NewDescribeCatalogTableNamesPageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeCatalogTableNamesPage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCatalogTableNamesPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCatalogTableNamesPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCatalogsRequest() (request *DescribeCatalogsRequest) {
+    request = &DescribeCatalogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeCatalogs")
+    
+    
+    return
+}
+
+func NewDescribeCatalogsResponse() (response *DescribeCatalogsResponse) {
+    response = &DescribeCatalogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCatalogs
+// 查询数据目录列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeCatalogs(request *DescribeCatalogsRequest) (response *DescribeCatalogsResponse, err error) {
+    return c.DescribeCatalogsWithContext(context.Background(), request)
+}
+
+// DescribeCatalogs
+// 查询数据目录列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeCatalogsWithContext(ctx context.Context, request *DescribeCatalogsRequest) (response *DescribeCatalogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCatalogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeCatalogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCatalogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCatalogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClsTopicsRequest() (request *DescribeClsTopicsRequest) {
     request = &DescribeClsTopicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8941,6 +9361,396 @@ func (c *Client) DescribeForbiddenTableProWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeForbiddenTableProResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJobDefinitionDetailRequest() (request *DescribeJobDefinitionDetailRequest) {
+    request = &DescribeJobDefinitionDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeJobDefinitionDetail")
+    
+    
+    return
+}
+
+func NewDescribeJobDefinitionDetailResponse() (response *DescribeJobDefinitionDetailResponse) {
+    response = &DescribeJobDefinitionDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobDefinitionDetail
+// 查询作业定义详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeJobDefinitionDetail(request *DescribeJobDefinitionDetailRequest) (response *DescribeJobDefinitionDetailResponse, err error) {
+    return c.DescribeJobDefinitionDetailWithContext(context.Background(), request)
+}
+
+// DescribeJobDefinitionDetail
+// 查询作业定义详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeJobDefinitionDetailWithContext(ctx context.Context, request *DescribeJobDefinitionDetailRequest) (response *DescribeJobDefinitionDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobDefinitionDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeJobDefinitionDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobDefinitionDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobDefinitionDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJobDefinitionsRequest() (request *DescribeJobDefinitionsRequest) {
+    request = &DescribeJobDefinitionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeJobDefinitions")
+    
+    
+    return
+}
+
+func NewDescribeJobDefinitionsResponse() (response *DescribeJobDefinitionsResponse) {
+    response = &DescribeJobDefinitionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobDefinitions
+// 查询作业定义列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeJobDefinitions(request *DescribeJobDefinitionsRequest) (response *DescribeJobDefinitionsResponse, err error) {
+    return c.DescribeJobDefinitionsWithContext(context.Background(), request)
+}
+
+// DescribeJobDefinitions
+// 查询作业定义列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeJobDefinitionsWithContext(ctx context.Context, request *DescribeJobDefinitionsRequest) (response *DescribeJobDefinitionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobDefinitionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeJobDefinitions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobDefinitions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobDefinitionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJobDetailRequest() (request *DescribeJobDetailRequest) {
+    request = &DescribeJobDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeJobDetail")
+    
+    
+    return
+}
+
+func NewDescribeJobDetailResponse() (response *DescribeJobDetailResponse) {
+    response = &DescribeJobDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobDetail
+// 查询作业完整详情 Action。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WAREHOUSE = "ResourceNotFound.Warehouse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeJobDetail(request *DescribeJobDetailRequest) (response *DescribeJobDetailResponse, err error) {
+    return c.DescribeJobDetailWithContext(context.Background(), request)
+}
+
+// DescribeJobDetail
+// 查询作业完整详情 Action。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WAREHOUSE = "ResourceNotFound.Warehouse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeJobDetailWithContext(ctx context.Context, request *DescribeJobDetailRequest) (response *DescribeJobDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeJobDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJobListRequest() (request *DescribeJobListRequest) {
+    request = &DescribeJobListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeJobList")
+    
+    
+    return
+}
+
+func NewDescribeJobListResponse() (response *DescribeJobListResponse) {
+    response = &DescribeJobListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobList
+// 分页查询作业列表 Action. PageSize 上限 200；QueueName 必须配合 PartitionCode。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeJobList(request *DescribeJobListRequest) (response *DescribeJobListResponse, err error) {
+    return c.DescribeJobListWithContext(context.Background(), request)
+}
+
+// DescribeJobList
+// 分页查询作业列表 Action. PageSize 上限 200；QueueName 必须配合 PartitionCode。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeJobListWithContext(ctx context.Context, request *DescribeJobListRequest) (response *DescribeJobListResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeJobList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJobLogRequest() (request *DescribeJobLogRequest) {
+    request = &DescribeJobLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeJobLog")
+    
+    
+    return
+}
+
+func NewDescribeJobLogResponse() (response *DescribeJobLogResponse) {
+    response = &DescribeJobLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobLog
+// 统一作业日志查询 Action。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LOGTYPE = "InvalidParameterValue.LogType"
+//  INVALIDPARAMETERVALUE_STATEMENTINDEX = "InvalidParameterValue.StatementIndex"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  RESOURCENOTFOUND_WAREHOUSE = "ResourceNotFound.Warehouse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeJobLog(request *DescribeJobLogRequest) (response *DescribeJobLogResponse, err error) {
+    return c.DescribeJobLogWithContext(context.Background(), request)
+}
+
+// DescribeJobLog
+// 统一作业日志查询 Action。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LOGTYPE = "InvalidParameterValue.LogType"
+//  INVALIDPARAMETERVALUE_STATEMENTINDEX = "InvalidParameterValue.StatementIndex"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  RESOURCENOTFOUND_WAREHOUSE = "ResourceNotFound.Warehouse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeJobLogWithContext(ctx context.Context, request *DescribeJobLogRequest) (response *DescribeJobLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeJobLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJobResultRequest() (request *DescribeJobResultRequest) {
+    request = &DescribeJobResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeJobResult")
+    
+    
+    return
+}
+
+func NewDescribeJobResultResponse() (response *DescribeJobResultResponse) {
+    response = &DescribeJobResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobResult
+// 获取 SQL 作业结果集 Action. 仅 MinorType=SPARK_SQL 有效（Batch 固定返回 State=NOT_SUPPORTED）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeJobResult(request *DescribeJobResultRequest) (response *DescribeJobResultResponse, err error) {
+    return c.DescribeJobResultWithContext(context.Background(), request)
+}
+
+// DescribeJobResult
+// 获取 SQL 作业结果集 Action. 仅 MinorType=SPARK_SQL 有效（Batch 固定返回 State=NOT_SUPPORTED）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeJobResultWithContext(ctx context.Context, request *DescribeJobResultRequest) (response *DescribeJobResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeJobResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobResultResponse()
     err = c.Send(request, response)
     return
 }
@@ -10693,6 +11503,56 @@ func (c *Client) DescribeSaleResourceInfoWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeSaleResourceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSchemaNamesPageRequest() (request *DescribeSchemaNamesPageRequest) {
+    request = &DescribeSchemaNamesPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeSchemaNamesPage")
+    
+    
+    return
+}
+
+func NewDescribeSchemaNamesPageResponse() (response *DescribeSchemaNamesPageResponse) {
+    response = &DescribeSchemaNamesPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSchemaNamesPage
+// 分页查询 Catalog 下 Schema 列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeSchemaNamesPage(request *DescribeSchemaNamesPageRequest) (response *DescribeSchemaNamesPageResponse, err error) {
+    return c.DescribeSchemaNamesPageWithContext(context.Background(), request)
+}
+
+// DescribeSchemaNamesPage
+// 分页查询 Catalog 下 Schema 列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeSchemaNamesPageWithContext(ctx context.Context, request *DescribeSchemaNamesPageRequest) (response *DescribeSchemaNamesPageResponse, err error) {
+    if request == nil {
+        request = NewDescribeSchemaNamesPageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeSchemaNamesPage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSchemaNamesPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSchemaNamesPageResponse()
     err = c.Send(request, response)
     return
 }
@@ -13329,6 +14189,68 @@ func (c *Client) DescribeViewsWithContext(ctx context.Context, request *Describe
     request.SetContext(ctx)
     
     response = NewDescribeViewsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWarehousesRequest() (request *DescribeWarehousesRequest) {
+    request = &DescribeWarehousesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeWarehouses")
+    
+    
+    return
+}
+
+func NewDescribeWarehousesResponse() (response *DescribeWarehousesResponse) {
+    response = &DescribeWarehousesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWarehouses
+// 查询计算仓库列表 Action。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeWarehouses(request *DescribeWarehousesRequest) (response *DescribeWarehousesResponse, err error) {
+    return c.DescribeWarehousesWithContext(context.Background(), request)
+}
+
+// DescribeWarehouses
+// 查询计算仓库列表 Action。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeWarehousesWithContext(ctx context.Context, request *DescribeWarehousesRequest) (response *DescribeWarehousesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWarehousesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeWarehouses")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWarehouses require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWarehousesResponse()
     err = c.Send(request, response)
     return
 }
@@ -17521,6 +18443,74 @@ func (c *Client) ModifyGovernEventRuleWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyGovernEventRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyJobDefinitionRequest() (request *ModifyJobDefinitionRequest) {
+    request = &ModifyJobDefinitionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ModifyJobDefinition")
+    
+    
+    return
+}
+
+func NewModifyJobDefinitionResponse() (response *ModifyJobDefinitionResponse) {
+    response = &ModifyJobDefinitionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyJobDefinition
+// 修改作业定义。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WAREHOUSE = "ResourceNotFound.Warehouse"
+//  RESOURCEUNAVAILABLE_WAREHOUSE = "ResourceUnavailable.Warehouse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyJobDefinition(request *ModifyJobDefinitionRequest) (response *ModifyJobDefinitionResponse, err error) {
+    return c.ModifyJobDefinitionWithContext(context.Background(), request)
+}
+
+// ModifyJobDefinition
+// 修改作业定义。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WAREHOUSE = "ResourceNotFound.Warehouse"
+//  RESOURCEUNAVAILABLE_WAREHOUSE = "ResourceUnavailable.Warehouse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyJobDefinitionWithContext(ctx context.Context, request *ModifyJobDefinitionRequest) (response *ModifyJobDefinitionResponse, err error) {
+    if request == nil {
+        request = NewModifyJobDefinitionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ModifyJobDefinition")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyJobDefinition require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyJobDefinitionResponse()
     err = c.Send(request, response)
     return
 }

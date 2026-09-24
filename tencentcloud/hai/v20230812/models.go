@@ -642,6 +642,9 @@ func (r *DescribeApplicationsResponse) FromJsonString(s string) error {
 type DescribeDeployTemplatesRequestParams struct {
 	// 模型ID
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// 可选。传入当前推理服务 ID 时，仅返回与该服务占用兼容的模板：同一 Scene、卡型家族兼容、机数相等、非机密计算。
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 }
 
 type DescribeDeployTemplatesRequest struct {
@@ -649,6 +652,9 @@ type DescribeDeployTemplatesRequest struct {
 	
 	// 模型ID
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// 可选。传入当前推理服务 ID 时，仅返回与该服务占用兼容的模板：同一 Scene、卡型家族兼容、机数相等、非机密计算。
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 }
 
 func (r *DescribeDeployTemplatesRequest) ToJsonString() string {
@@ -664,6 +670,7 @@ func (r *DescribeDeployTemplatesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ModelId")
+	delete(f, "ServiceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeployTemplatesRequest has unknown keys!", "")
 	}
@@ -852,6 +859,9 @@ type DescribeModelsRequestParams struct {
 
 	// 返回量，不得大于100，默认为20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 可选。传入当前推理服务 ID 时，仅返回与该服务同一 Scene、且至少有一条兼容重装模板的模型。自定义部署、机密计算、具身智能服务返回空列表。
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 }
 
 type DescribeModelsRequest struct {
@@ -868,6 +878,9 @@ type DescribeModelsRequest struct {
 
 	// 返回量，不得大于100，默认为20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 可选。传入当前推理服务 ID 时，仅返回与该服务同一 Scene、且至少有一条兼容重装模板的模型。自定义部署、机密计算、具身智能服务返回空列表。
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 }
 
 func (r *DescribeModelsRequest) ToJsonString() string {
@@ -886,6 +899,7 @@ func (r *DescribeModelsRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "ServiceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelsRequest has unknown keys!", "")
 	}

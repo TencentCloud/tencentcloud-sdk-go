@@ -12227,6 +12227,10 @@ func NewModifyInstanceElasticModeResponse() (response *ModifyInstanceElasticMode
 }
 
 // ModifyInstanceElasticMode
+// 接口无用，没有人调用
+//
+// 
+//
 // 修改实例的QPS弹性计费开关
 //
 // 可能返回的错误码:
@@ -12255,6 +12259,10 @@ func (c *Client) ModifyInstanceElasticMode(request *ModifyInstanceElasticModeReq
 }
 
 // ModifyInstanceElasticMode
+// 接口无用，没有人调用
+//
+// 
+//
 // 修改实例的QPS弹性计费开关
 //
 // 可能返回的错误码:

@@ -156,6 +156,23 @@ type AgentInstance struct {
 
 	// <p>是否是免部署实例</p>
 	DeploymentFree *bool `json:"DeploymentFree,omitnil,omitempty" name:"DeploymentFree"`
+
+	// <p>agent memory 服务详情</p>
+	AgentMem *AgentMemInfo `json:"AgentMem,omitnil,omitempty" name:"AgentMem"`
+}
+
+type AgentMemInfo struct {
+	// <p>Memory实例ID</p>
+	MemInstanceId *string `json:"MemInstanceId,omitnil,omitempty" name:"MemInstanceId"`
+
+	// <p>1=active, 0=disabled（软删/关闭/下线历史行）</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>0=待安装,1=成功,2=失败待重试,3=开启中,4=关闭中/已关闭</p>
+	InstallStatus *int64 `json:"InstallStatus,omitnil,omitempty" name:"InstallStatus"`
+
+	// <p>creating/online/isolated/error/</p>
+	MemStatus *string `json:"MemStatus,omitnil,omitempty" name:"MemStatus"`
 }
 
 type Attachments struct {

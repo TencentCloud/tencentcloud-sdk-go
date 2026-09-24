@@ -3223,7 +3223,7 @@ func NewDescribeCloudNativeAPIGatewayLLMTokenUsageListResponse() (response *Desc
 }
 
 // DescribeCloudNativeAPIGatewayLLMTokenUsageList
-// 查询 AI 网关Token 消耗统计
+// 查询 AI 网关Token 消耗统计（消费者消费金额数据）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3240,7 +3240,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayLLMTokenUsageList(request *Describ
 }
 
 // DescribeCloudNativeAPIGatewayLLMTokenUsageList
-// 查询 AI 网关Token 消耗统计
+// 查询 AI 网关Token 消耗统计（消费者消费金额数据）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3289,7 +3289,7 @@ func NewDescribeCloudNativeAPIGatewayLLMTokenUsageStatisticsResponse() (response
 }
 
 // DescribeCloudNativeAPIGatewayLLMTokenUsageStatistics
-// 查询 AI 网关Token 消耗统计汇总
+// 查询 AI 网关Token 消耗统计汇总含（消费者消费金额数据）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3306,7 +3306,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayLLMTokenUsageStatistics(request *D
 }
 
 // DescribeCloudNativeAPIGatewayLLMTokenUsageStatistics
-// 查询 AI 网关Token 消耗统计汇总
+// 查询 AI 网关Token 消耗统计汇总含（消费者消费金额数据）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"

@@ -415,6 +415,68 @@ func (c *Client) BatchInvokeTWeSeeRecognitionTaskWithContext(ctx context.Context
     return
 }
 
+func NewBatchPublishMessageRequest() (request *BatchPublishMessageRequest) {
+    request = &BatchPublishMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "BatchPublishMessage")
+    
+    
+    return
+}
+
+func NewBatchPublishMessageResponse() (response *BatchPublishMessageResponse) {
+    response = &BatchPublishMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchPublishMessage
+// 批量设备透传指令控制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_DEVICELIMITEXCEEDED = "LimitExceeded.DeviceLimitExceeded"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_ACCOUNTRESTRICTED = "UnauthorizedOperation.AccountRestricted"
+//  UNAUTHORIZEDOPERATION_PRODUCTACLDENIED = "UnauthorizedOperation.ProductACLDenied"
+func (c *Client) BatchPublishMessage(request *BatchPublishMessageRequest) (response *BatchPublishMessageResponse, err error) {
+    return c.BatchPublishMessageWithContext(context.Background(), request)
+}
+
+// BatchPublishMessage
+// 批量设备透传指令控制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_DEVICELIMITEXCEEDED = "LimitExceeded.DeviceLimitExceeded"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_ACCOUNTRESTRICTED = "UnauthorizedOperation.AccountRestricted"
+//  UNAUTHORIZEDOPERATION_PRODUCTACLDENIED = "UnauthorizedOperation.ProductACLDenied"
+func (c *Client) BatchPublishMessageWithContext(ctx context.Context, request *BatchPublishMessageRequest) (response *BatchPublishMessageResponse, err error) {
+    if request == nil {
+        request = NewBatchPublishMessageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "BatchPublishMessage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchPublishMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchPublishMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchRenewTWeSeeSubscriptionRequest() (request *BatchRenewTWeSeeSubscriptionRequest) {
     request = &BatchRenewTWeSeeSubscriptionRequest{
         BaseRequest: &tchttp.BaseRequest{},

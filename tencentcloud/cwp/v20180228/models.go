@@ -37985,78 +37985,98 @@ type HostInfo struct {
 }
 
 type HostLoginList struct {
-	// 记录Id
+	// <p>记录Id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 主机Uuid
+	// <p>主机Uuid</p>
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 主机ip
+	// <p>主机ip</p>
 	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
-	// 主机名
+	// <p>主机名</p>
 	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 来源ip
+	// <p>来源ip</p>
 	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
-	// 1:正常登录；2异地登录； 5已加白； 14：已处理；15：已忽略。
+	// <p>1:正常登录；2异地登录； 5已加白； 14：已处理；15：已忽略。</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 国家id
+	// <p>国家id</p>
 	Country *uint64 `json:"Country,omitnil,omitempty" name:"Country"`
 
-	// 城市id
+	// <p>城市id</p>
 	City *uint64 `json:"City,omitnil,omitempty" name:"City"`
 
-	// 省份id
+	// <p>省份id</p>
 	Province *uint64 `json:"Province,omitnil,omitempty" name:"Province"`
 
-	// 登录时间
+	// <p>登录时间</p>
 	LoginTime *string `json:"LoginTime,omitnil,omitempty" name:"LoginTime"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 是否命中异地登录异常  1表示命中此类异常, 0表示未命中
+	// <p>是否命中异地登录异常  1表示命中此类异常, 0表示未命中</p>
 	IsRiskArea *uint64 `json:"IsRiskArea,omitnil,omitempty" name:"IsRiskArea"`
 
-	// 是否命中异常用户异常 1表示命中此类异常, 0表示未命中
+	// <p>是否命中异常用户异常 1表示命中此类异常, 0表示未命中</p>
 	IsRiskUser *uint64 `json:"IsRiskUser,omitnil,omitempty" name:"IsRiskUser"`
 
-	// 是否命中异常时间异常 1表示命中此类异常, 0表示未命中
+	// <p>是否命中异常时间异常 1表示命中此类异常, 0表示未命中</p>
 	IsRiskTime *uint64 `json:"IsRiskTime,omitnil,omitempty" name:"IsRiskTime"`
 
-	// 是否命中异常IP异常 1表示命中此类异常, 0表示未命中
+	// <p>是否命中异常IP异常 1表示命中此类异常, 0表示未命中</p>
 	IsRiskSrcIp *uint64 `json:"IsRiskSrcIp,omitnil,omitempty" name:"IsRiskSrcIp"`
 
-	// 危险等级：
-	// 0 高危
-	// 1 可疑
+	// <p>危险等级：<br>0 高危<br>1 可疑</p>
 	RiskLevel *uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 位置名称
+	// <p>位置名称</p>
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 
-	// 主机quuid
+	// <p>主机quuid</p>
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
-	// 高危信息说明：
-	// ABROAD - 境外IP；
-	// XTI - 威胁情报
+	// <p>高危信息说明：<br>ABROAD - 境外IP；<br>XTI - 威胁情报</p>
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
-	// 附加信息
+	// <p>附加信息</p>
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
 
-	// 请求目的端口
+	// <p>请求目的端口</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// ip分析
+	// <p>ip分析</p>
 	IPAnalyse *IPAnalyse `json:"IPAnalyse,omitnil,omitempty" name:"IPAnalyse"`
+
+	// <p>命中策略ID</p><p>枚举值：</p><ul><li>risk_login_1： 威胁情报</li><li>risk_login_2： 密码破解成功后登录</li><li>risk_login_3： 弱口令账户登录</li><li>risk_login_4： 非法账户登录</li><li>risk_login_5： 登录后存在入侵行为</li><li>risk_login_101： 海外IP登录</li><li>risk_login_102： 非常用登录地登录</li><li>risk_login_103： 非工作时间登录</li></ul>
+	HitRule *string `json:"HitRule,omitnil,omitempty" name:"HitRule"`
+
+	// <p>命中策略名</p>
+	HitRuleName *string `json:"HitRuleName,omitnil,omitempty" name:"HitRuleName"`
+
+	// <p>告警数量</p>
+	AlertCount *int64 `json:"AlertCount,omitnil,omitempty" name:"AlertCount"`
+
+	// <p>首次发现时间</p><p>参数格式：YYYY-MM-DD HH:MM:SS</p>
+	FirstDiscoverTime *string `json:"FirstDiscoverTime,omitnil,omitempty" name:"FirstDiscoverTime"`
+
+	// <p>最近发现时间</p><p>参数格式：YYYY-MM-DD HH:MM:SS</p>
+	LastDiscoverTime *string `json:"LastDiscoverTime,omitnil,omitempty" name:"LastDiscoverTime"`
+
+	// <p>危害描述</p>
+	HarmDescribe *string `json:"HarmDescribe,omitnil,omitempty" name:"HarmDescribe"`
+
+	// <p>修复建议</p>
+	SuggestScheme *string `json:"SuggestScheme,omitnil,omitempty" name:"SuggestScheme"`
+
+	// <p>最近登录历史</p>
+	RecentLoginList []*RecentLoginItem `json:"RecentLoginList,omitnil,omitempty" name:"RecentLoginList"`
 }
 
 type HostLoginWhiteObj struct {
@@ -45856,6 +45876,17 @@ type RaspRuleVul struct {
 
 	// 漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
 	SupportDefense *uint64 `json:"SupportDefense,omitnil,omitempty" name:"SupportDefense"`
+}
+
+type RecentLoginItem struct {
+	// <p>登录时间</p><p>参数格式：YYYY-MM-DD HH:MM:SS</p>
+	LoginTime *string `json:"LoginTime,omitnil,omitempty" name:"LoginTime"`
+
+	// <p>登录方式</p><p>枚举值：</p><ul><li>0： 无效用户</li><li>1： 密码错误</li><li>2： 密码登录</li><li>3： 密钥登录</li><li>4： PAM 认证失败（sshd）</li><li>5： PAM 认证失败（tty）</li><li>6： 键盘交互登录</li><li>7： 键盘交互认证失败</li><li>8： PAM 认证失败</li></ul>
+	LoginType *int64 `json:"LoginType,omitnil,omitempty" name:"LoginType"`
+
+	// <p>登录方式描述</p>
+	LoginTypeDesc *string `json:"LoginTypeDesc,omitnil,omitempty" name:"LoginTypeDesc"`
 }
 
 type RecordInfo struct {

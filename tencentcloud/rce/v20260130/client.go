@@ -65,37 +65,65 @@ func NewAssessDeviceRiskPremiumProResponse() (response *AssessDeviceRiskPremiumP
 }
 
 // AssessDeviceRiskPremiumPro
-// 设备风险评估-高级版
+// 基于设备端SDK 采集设备指纹 token和IP进行风险识别，提供设备、环境、行为等维度给出的综合风险评估（包含决策结果、风险评分、风险标签）和设备以及 IP 的基础信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
+//  INTERNALERROR_TURINGFIELDMISSED = "InternalError.TuringFieldMissed"
+//  INTERNALERROR_TURINGINTERNALERROR = "InternalError.TuringInternalError"
+//  INTERNALERROR_TURINGINVALIDTIMESTAMP = "InternalError.TuringInvalidTimestamp"
+//  INTERNALERROR_TURINGLIMITEXCEEDED = "InternalError.TuringLimitExceeded"
+//  INTERNALERROR_TURINGREQUESTLIMITEXCEEDED = "InternalError.TuringRequestLimitExceeded"
+//  INTERNALERROR_TURINGSERVICEFAILED = "InternalError.TuringServiceFailed"
+//  INTERNALERROR_TURINGSUBSERVICETIMEOUT = "InternalError.TuringSubServiceTimeout"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
 //  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
 //  INVALIDPARAMETERVALUE_EVENTNOTEXIST = "InvalidParameterValue.EventNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDTURINGTOKEN = "InvalidParameterValue.InvalidTuringToken"
 //  INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_FIELDMISSED = "MissingParameter.FieldMissed"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CHANNELIDMISMATCH = "UnauthorizedOperation.ChannelIdMismatch"
+//  UNAUTHORIZEDOPERATION_INVALIDTURINGSIGNATURE = "UnauthorizedOperation.InvalidTuringSignature"
+//  UNAUTHORIZEDOPERATION_RESOURCENOTFOUND = "UnauthorizedOperation.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_TURINGREPLAYREQUEST = "UnauthorizedOperation.TuringReplayRequest"
+//  UNAUTHORIZEDOPERATION_TURINGSERVICEUNAUTHORIZED = "UnauthorizedOperation.TuringServiceUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNKNOWNTURINGAPPID = "UnauthorizedOperation.UnknownTuringAppid"
 func (c *Client) AssessDeviceRiskPremiumPro(request *AssessDeviceRiskPremiumProRequest) (response *AssessDeviceRiskPremiumProResponse, err error) {
     return c.AssessDeviceRiskPremiumProWithContext(context.Background(), request)
 }
 
 // AssessDeviceRiskPremiumPro
-// 设备风险评估-高级版
+// 基于设备端SDK 采集设备指纹 token和IP进行风险识别，提供设备、环境、行为等维度给出的综合风险评估（包含决策结果、风险评分、风险标签）和设备以及 IP 的基础信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
+//  INTERNALERROR_TURINGFIELDMISSED = "InternalError.TuringFieldMissed"
+//  INTERNALERROR_TURINGINTERNALERROR = "InternalError.TuringInternalError"
+//  INTERNALERROR_TURINGINVALIDTIMESTAMP = "InternalError.TuringInvalidTimestamp"
+//  INTERNALERROR_TURINGLIMITEXCEEDED = "InternalError.TuringLimitExceeded"
+//  INTERNALERROR_TURINGREQUESTLIMITEXCEEDED = "InternalError.TuringRequestLimitExceeded"
+//  INTERNALERROR_TURINGSERVICEFAILED = "InternalError.TuringServiceFailed"
+//  INTERNALERROR_TURINGSUBSERVICETIMEOUT = "InternalError.TuringSubServiceTimeout"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
 //  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
 //  INVALIDPARAMETERVALUE_EVENTNOTEXIST = "InvalidParameterValue.EventNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDTURINGTOKEN = "InvalidParameterValue.InvalidTuringToken"
 //  INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_FIELDMISSED = "MissingParameter.FieldMissed"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CHANNELIDMISMATCH = "UnauthorizedOperation.ChannelIdMismatch"
+//  UNAUTHORIZEDOPERATION_INVALIDTURINGSIGNATURE = "UnauthorizedOperation.InvalidTuringSignature"
+//  UNAUTHORIZEDOPERATION_RESOURCENOTFOUND = "UnauthorizedOperation.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_TURINGREPLAYREQUEST = "UnauthorizedOperation.TuringReplayRequest"
+//  UNAUTHORIZEDOPERATION_TURINGSERVICEUNAUTHORIZED = "UnauthorizedOperation.TuringServiceUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNKNOWNTURINGAPPID = "UnauthorizedOperation.UnknownTuringAppid"
 func (c *Client) AssessDeviceRiskPremiumProWithContext(ctx context.Context, request *AssessDeviceRiskPremiumProRequest) (response *AssessDeviceRiskPremiumProResponse, err error) {
     if request == nil {
         request = NewAssessDeviceRiskPremiumProRequest()
@@ -133,37 +161,63 @@ func NewAssessDeviceRiskProResponse() (response *AssessDeviceRiskProResponse) {
 }
 
 // AssessDeviceRiskPro
-// 设备风险评估-基础版
+// 基于设备端SDK 采集设备指纹 token和IP进行风险识别，提供设备维度的风险标签和设备基础信息，以及 IP 的地理位置和网络信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
+//  INTERNALERROR_TURINGFIELDMISSED = "InternalError.TuringFieldMissed"
+//  INTERNALERROR_TURINGINTERNALERROR = "InternalError.TuringInternalError"
+//  INTERNALERROR_TURINGINVALIDTIMESTAMP = "InternalError.TuringInvalidTimestamp"
+//  INTERNALERROR_TURINGLIMITEXCEEDED = "InternalError.TuringLimitExceeded"
+//  INTERNALERROR_TURINGREQUESTLIMITEXCEEDED = "InternalError.TuringRequestLimitExceeded"
+//  INTERNALERROR_TURINGSERVICEFAILED = "InternalError.TuringServiceFailed"
+//  INTERNALERROR_TURINGSUBSERVICETIMEOUT = "InternalError.TuringSubServiceTimeout"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
 //  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
 //  INVALIDPARAMETERVALUE_EVENTNOTEXIST = "InvalidParameterValue.EventNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDTURINGTOKEN = "InvalidParameterValue.InvalidTuringToken"
 //  INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_FIELDMISSED = "MissingParameter.FieldMissed"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_INVALIDTURINGSIGNATURE = "UnauthorizedOperation.InvalidTuringSignature"
+//  UNAUTHORIZEDOPERATION_RESOURCENOTFOUND = "UnauthorizedOperation.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_TURINGREPLAYREQUEST = "UnauthorizedOperation.TuringReplayRequest"
+//  UNAUTHORIZEDOPERATION_TURINGSERVICEUNAUTHORIZED = "UnauthorizedOperation.TuringServiceUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNKNOWNTURINGAPPID = "UnauthorizedOperation.UnknownTuringAppid"
 func (c *Client) AssessDeviceRiskPro(request *AssessDeviceRiskProRequest) (response *AssessDeviceRiskProResponse, err error) {
     return c.AssessDeviceRiskProWithContext(context.Background(), request)
 }
 
 // AssessDeviceRiskPro
-// 设备风险评估-基础版
+// 基于设备端SDK 采集设备指纹 token和IP进行风险识别，提供设备维度的风险标签和设备基础信息，以及 IP 的地理位置和网络信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
+//  INTERNALERROR_TURINGFIELDMISSED = "InternalError.TuringFieldMissed"
+//  INTERNALERROR_TURINGINTERNALERROR = "InternalError.TuringInternalError"
+//  INTERNALERROR_TURINGINVALIDTIMESTAMP = "InternalError.TuringInvalidTimestamp"
+//  INTERNALERROR_TURINGLIMITEXCEEDED = "InternalError.TuringLimitExceeded"
+//  INTERNALERROR_TURINGREQUESTLIMITEXCEEDED = "InternalError.TuringRequestLimitExceeded"
+//  INTERNALERROR_TURINGSERVICEFAILED = "InternalError.TuringServiceFailed"
+//  INTERNALERROR_TURINGSUBSERVICETIMEOUT = "InternalError.TuringSubServiceTimeout"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
 //  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
 //  INVALIDPARAMETERVALUE_EVENTNOTEXIST = "InvalidParameterValue.EventNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDTURINGTOKEN = "InvalidParameterValue.InvalidTuringToken"
 //  INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_FIELDMISSED = "MissingParameter.FieldMissed"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_INVALIDTURINGSIGNATURE = "UnauthorizedOperation.InvalidTuringSignature"
+//  UNAUTHORIZEDOPERATION_RESOURCENOTFOUND = "UnauthorizedOperation.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_TURINGREPLAYREQUEST = "UnauthorizedOperation.TuringReplayRequest"
+//  UNAUTHORIZEDOPERATION_TURINGSERVICEUNAUTHORIZED = "UnauthorizedOperation.TuringServiceUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNKNOWNTURINGAPPID = "UnauthorizedOperation.UnknownTuringAppid"
 func (c *Client) AssessDeviceRiskProWithContext(ctx context.Context, request *AssessDeviceRiskProRequest) (response *AssessDeviceRiskProResponse, err error) {
     if request == nil {
         request = NewAssessDeviceRiskProRequest()
@@ -201,7 +255,7 @@ func NewAssessEnvironmentRiskResponse() (response *AssessEnvironmentRiskResponse
 }
 
 // AssessEnvironmentRisk
-// 环境风险评估
+// 基于传入的客户端IP进行风险识别，提供环境的风险评估（包含风险等级、风险标签）以及IP的地理位置和网络信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
@@ -219,7 +273,7 @@ func (c *Client) AssessEnvironmentRisk(request *AssessEnvironmentRiskRequest) (r
 }
 
 // AssessEnvironmentRisk
-// 环境风险评估
+// 基于传入的客户端IP进行风险识别，提供环境的风险评估（包含风险等级、风险标签）以及IP的地理位置和网络信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"

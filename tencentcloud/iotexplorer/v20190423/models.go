@@ -547,6 +547,104 @@ type BatchProductionInfo struct {
 }
 
 // Predefined struct for user
+type BatchPublishMessageRequestParams struct {
+	// <p>产品名称</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名称</p>
+	DeviceNames []*string `json:"DeviceNames,omitnil,omitempty" name:"DeviceNames"`
+
+	// <p>主题</p>
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// <p>消息体</p>
+	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+
+	// <p>服务质量</p>
+	Qos *int64 `json:"Qos,omitnil,omitempty" name:"Qos"`
+
+	// <p>消息体编码</p>
+	PayloadEncoding *string `json:"PayloadEncoding,omitnil,omitempty" name:"PayloadEncoding"`
+}
+
+type BatchPublishMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品名称</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名称</p>
+	DeviceNames []*string `json:"DeviceNames,omitnil,omitempty" name:"DeviceNames"`
+
+	// <p>主题</p>
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// <p>消息体</p>
+	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+
+	// <p>服务质量</p>
+	Qos *int64 `json:"Qos,omitnil,omitempty" name:"Qos"`
+
+	// <p>消息体编码</p>
+	PayloadEncoding *string `json:"PayloadEncoding,omitnil,omitempty" name:"PayloadEncoding"`
+}
+
+func (r *BatchPublishMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchPublishMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceNames")
+	delete(f, "Topic")
+	delete(f, "Payload")
+	delete(f, "Qos")
+	delete(f, "PayloadEncoding")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchPublishMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchPublishMessageResponseParams struct {
+	// <p>批量推送总数</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>成功数量</p>
+	SuccessCount *int64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// <p>失败明细</p>
+	Failures []*DeviceResult `json:"Failures,omitnil,omitempty" name:"Failures"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchPublishMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchPublishMessageResponseParams `json:"Response"`
+}
+
+func (r *BatchPublishMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchPublishMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BatchRenewTWeSeeSubscriptionRequestParams struct {
 	// 待续费的订阅列表
 	Entries []*SeeRenewSubscriptionEntry `json:"Entries,omitnil,omitempty" name:"Entries"`
@@ -605,111 +703,123 @@ func (r *BatchRenewTWeSeeSubscriptionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BatchUpdateFirmwareRequestParams struct {
-	// 产品ID
+	// <p>产品ID</p>
 	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
 
-	// 固件新版本号
+	// <p>固件新版本号</p>
 	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
 
-	// 固件原版本号
+	// <p>固件原版本号</p>
 	FirmwareOriVersion *string `json:"FirmwareOriVersion,omitnil,omitempty" name:"FirmwareOriVersion"`
 
-	// 升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式
+	// <p>升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式</p>
 	UpgradeMethod *uint64 `json:"UpgradeMethod,omitnil,omitempty" name:"UpgradeMethod"`
 
-	// 设备列表文件名称，根据文件列表升级固件需要填写此参数
+	// <p>设备列表文件名称，根据文件列表升级固件需要填写此参数</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 设备列表的文件md5值
+	// <p>设备列表的文件md5值</p>
 	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
 
-	// 设备列表的文件大小值
+	// <p>设备列表的文件大小值</p>
 	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 需要升级的设备名称列表
+	// <p>需要升级的设备名称列表</p>
 	DeviceNames []*string `json:"DeviceNames,omitnil,omitempty" name:"DeviceNames"`
 
-	// 固件升级任务，默认超时时间。 最小取值120秒，最大为900秒
+	// <p>固件升级任务，默认超时时间。 最小取值120秒，最大为900秒</p>
 	TimeoutInterval *uint64 `json:"TimeoutInterval,omitnil,omitempty" name:"TimeoutInterval"`
 
-	// 固件升级任务类型，默认静态升级值为空或1，动态升级值为7
+	// <p>固件升级任务类型，默认静态升级值为空或1，动态升级值为7</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 任务延迟时间
+	// <p>任务延迟时间</p>
 	DelayTime *int64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 是否覆盖，0不覆盖，1覆盖
+	// <p>是否覆盖，0不覆盖，1覆盖</p>
 	OverrideMode *uint64 `json:"OverrideMode,omitnil,omitempty" name:"OverrideMode"`
 
-	// 失败重试次数
+	// <p>失败重试次数</p>
 	MaxRetryNum *uint64 `json:"MaxRetryNum,omitnil,omitempty" name:"MaxRetryNum"`
 
-	// 重试间隔min
+	// <p>重试间隔min</p>
 	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
-	// 固件模块
+	// <p>固件模块</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
-	// 用户自定义信息
+	// <p>用户自定义信息</p>
 	TaskUserDefine *string `json:"TaskUserDefine,omitnil,omitempty" name:"TaskUserDefine"`
 
-	// 每分钟下发设备量
+	// <p>每分钟下发设备量</p>
 	RateLimit *int64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
+
+	// <p>任务截止时间，Unix 时间戳（单位：秒）。传入 0 或不传表示不设截止，任务按原重试/超时策略执行完毕。</p><p>单位：秒</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>任务开始调度时间，Unix 时间戳（单位：秒）。传入 0 或不传时任务立即创建执行，与 DelayTime 同时传入时，本参数优先生效。</p><p>单位：秒</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 }
 
 type BatchUpdateFirmwareRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品ID
+	// <p>产品ID</p>
 	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
 
-	// 固件新版本号
+	// <p>固件新版本号</p>
 	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
 
-	// 固件原版本号
+	// <p>固件原版本号</p>
 	FirmwareOriVersion *string `json:"FirmwareOriVersion,omitnil,omitempty" name:"FirmwareOriVersion"`
 
-	// 升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式
+	// <p>升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式</p>
 	UpgradeMethod *uint64 `json:"UpgradeMethod,omitnil,omitempty" name:"UpgradeMethod"`
 
-	// 设备列表文件名称，根据文件列表升级固件需要填写此参数
+	// <p>设备列表文件名称，根据文件列表升级固件需要填写此参数</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 设备列表的文件md5值
+	// <p>设备列表的文件md5值</p>
 	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
 
-	// 设备列表的文件大小值
+	// <p>设备列表的文件大小值</p>
 	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 需要升级的设备名称列表
+	// <p>需要升级的设备名称列表</p>
 	DeviceNames []*string `json:"DeviceNames,omitnil,omitempty" name:"DeviceNames"`
 
-	// 固件升级任务，默认超时时间。 最小取值120秒，最大为900秒
+	// <p>固件升级任务，默认超时时间。 最小取值120秒，最大为900秒</p>
 	TimeoutInterval *uint64 `json:"TimeoutInterval,omitnil,omitempty" name:"TimeoutInterval"`
 
-	// 固件升级任务类型，默认静态升级值为空或1，动态升级值为7
+	// <p>固件升级任务类型，默认静态升级值为空或1，动态升级值为7</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 任务延迟时间
+	// <p>任务延迟时间</p>
 	DelayTime *int64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 是否覆盖，0不覆盖，1覆盖
+	// <p>是否覆盖，0不覆盖，1覆盖</p>
 	OverrideMode *uint64 `json:"OverrideMode,omitnil,omitempty" name:"OverrideMode"`
 
-	// 失败重试次数
+	// <p>失败重试次数</p>
 	MaxRetryNum *uint64 `json:"MaxRetryNum,omitnil,omitempty" name:"MaxRetryNum"`
 
-	// 重试间隔min
+	// <p>重试间隔min</p>
 	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
-	// 固件模块
+	// <p>固件模块</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
-	// 用户自定义信息
+	// <p>用户自定义信息</p>
 	TaskUserDefine *string `json:"TaskUserDefine,omitnil,omitempty" name:"TaskUserDefine"`
 
-	// 每分钟下发设备量
+	// <p>每分钟下发设备量</p>
 	RateLimit *int64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
+
+	// <p>任务截止时间，Unix 时间戳（单位：秒）。传入 0 或不传表示不设截止，任务按原重试/超时策略执行完毕。</p><p>单位：秒</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>任务开始调度时间，Unix 时间戳（单位：秒）。传入 0 或不传时任务立即创建执行，与 DelayTime 同时传入时，本参数优先生效。</p><p>单位：秒</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 }
 
 func (r *BatchUpdateFirmwareRequest) ToJsonString() string {
@@ -741,6 +851,8 @@ func (r *BatchUpdateFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "FwType")
 	delete(f, "TaskUserDefine")
 	delete(f, "RateLimit")
+	delete(f, "EndTime")
+	delete(f, "StartTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchUpdateFirmwareRequest has unknown keys!", "")
 	}
@@ -749,7 +861,7 @@ func (r *BatchUpdateFirmwareRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BatchUpdateFirmwareResponseParams struct {
-	// 任务Id
+	// <p>任务Id</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7602,6 +7714,12 @@ type DescribeCloudStorageEventsByTWeSeePersonRequestParams struct {
 	// <p>分页拉取偏移</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
+	// <p>起始时间（Unix 时间戳）</p><p>单位：秒</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间（Unix 时间戳）</p><p>单位：秒</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
 	// <p>通道 ID，非 NVR 设备不填，NVR 设备必填</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 }
@@ -7624,6 +7742,12 @@ type DescribeCloudStorageEventsByTWeSeePersonRequest struct {
 	// <p>分页拉取偏移</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
+	// <p>起始时间（Unix 时间戳）</p><p>单位：秒</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间（Unix 时间戳）</p><p>单位：秒</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
 	// <p>通道 ID，非 NVR 设备不填，NVR 设备必填</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 }
@@ -7645,6 +7769,8 @@ func (r *DescribeCloudStorageEventsByTWeSeePersonRequest) FromJsonString(s strin
 	delete(f, "PersonId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageEventsByTWeSeePersonRequest has unknown keys!", "")
@@ -7659,6 +7785,9 @@ type DescribeCloudStorageEventsByTWeSeePersonResponseParams struct {
 
 	// <p>人员关联的云存事件总数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>视频播放URL</p>
+	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -9794,26 +9923,26 @@ func (r *DescribeFirmwareTaskDevicesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFirmwareTaskRequestParams struct {
-	// 产品ID
+	// <p>产品ID</p>
 	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
 
-	// 固件版本号
+	// <p>固件版本号</p>
 	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
 
-	// 固件任务ID
+	// <p>固件任务ID</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribeFirmwareTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品ID
+	// <p>产品ID</p>
 	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
 
-	// 固件版本号
+	// <p>固件版本号</p>
 	FirmwareVersion *string `json:"FirmwareVersion,omitnil,omitempty" name:"FirmwareVersion"`
 
-	// 固件任务ID
+	// <p>固件任务ID</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -9840,62 +9969,68 @@ func (r *DescribeFirmwareTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFirmwareTaskResponseParams struct {
-	// 固件任务ID
+	// <p>固件任务ID</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 固件任务状态
+	// <p>固件任务状态</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 固件任务创建时间，单位：秒
+	// <p>固件任务创建时间，单位：秒</p>
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 固件任务升级类型
+	// <p>固件任务升级类型</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 产品名称
+	// <p>产品名称</p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）
+	// <p>固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）</p>
 	UpgradeMode *string `json:"UpgradeMode,omitnil,omitempty" name:"UpgradeMode"`
 
-	// 产品ID
+	// <p>产品ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回
+	// <p>原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回</p>
 	OriginalVersion *string `json:"OriginalVersion,omitnil,omitempty" name:"OriginalVersion"`
 
-	// 创建账号ID
+	// <p>创建账号ID</p>
 	CreateUserId *uint64 `json:"CreateUserId,omitnil,omitempty" name:"CreateUserId"`
 
-	// 创建账号ID昵称
+	// <p>创建账号ID昵称</p>
 	CreatorNickName *string `json:"CreatorNickName,omitnil,omitempty" name:"CreatorNickName"`
 
-	// 延迟时间
+	// <p>延迟时间</p>
 	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 超时时间
+	// <p>超时时间</p>
 	TimeoutInterval *uint64 `json:"TimeoutInterval,omitnil,omitempty" name:"TimeoutInterval"`
 
-	// 静默升级or用户确认升级
+	// <p>静默升级or用户确认升级</p>
 	UpgradeMethod *uint64 `json:"UpgradeMethod,omitnil,omitempty" name:"UpgradeMethod"`
 
-	// 最大重试次数
+	// <p>最大重试次数</p>
 	MaxRetryNum *uint64 `json:"MaxRetryNum,omitnil,omitempty" name:"MaxRetryNum"`
 
-	// 固件类型
+	// <p>固件类型</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
-	// 重试间隔时间单位min
+	// <p>重试间隔时间单位min</p>
 	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
-	// 是否覆盖任务
+	// <p>是否覆盖任务</p>
 	OverrideMode *uint64 `json:"OverrideMode,omitnil,omitempty" name:"OverrideMode"`
 
-	// 用户自定义消息
+	// <p>用户自定义消息</p>
 	TaskUserDefine *string `json:"TaskUserDefine,omitnil,omitempty" name:"TaskUserDefine"`
 
-	// 每分钟发送设备量
+	// <p>每分钟发送设备量</p>
 	RateLimit *int64 `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
+
+	// <p>任务截止时间，Unix 时间戳（单位：秒）。传入 0 或不传表示不设截止，任务按原重试/超时策略执行完毕。 </p><p>单位：秒</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>任务开始调度时间，Unix 时间戳（单位：秒）。传入 0 或不传时任务立即创建执行，与 DelayTime 同时传入时，本参数优先生效。 </p><p>单位：秒</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -13170,6 +13305,20 @@ type DevicePositionItem struct {
 
 	// 设备纬度信息
 	Latitude *float64 `json:"Latitude,omitnil,omitempty" name:"Latitude"`
+}
+
+type DeviceResult struct {
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>设备状态</p><p>枚举值：</p><ul><li>SUCCESS： 下发成功    </li><li>PENDING： 存入离线存储</li><li>OFFLINE： 设备离线</li><li>FAILED： 下发失败</li><li>TIMEOUT： 下发超时</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>错误码</p>
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// <p>错误信息</p>
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
 type DeviceSignatureInfo struct {
@@ -22307,6 +22456,12 @@ type SeeComprehensionConfig struct {
 
 	// <p>画面旋转角度</p><p>枚举值：</p><ul><li>0： 不旋转</li><li>90： 顺时针旋转90度</li><li>-90： 逆时针旋转90度</li><li>180： 旋转180度</li></ul><p>默认值：0</p>
 	InputRotateDegree *int64 `json:"InputRotateDegree,omitnil,omitempty" name:"InputRotateDegree"`
+
+	// <p>开启扩展字段输出</p><p>枚举值：</p><ul><li>true： 开启</li><li>false： 关闭</li></ul><p>默认值：false</p>
+	EnableExtendedOutput *bool `json:"EnableExtendedOutput,omitnil,omitempty" name:"EnableExtendedOutput"`
+
+	// <p>自定义扩展输出的提示词（目前仅支持覆盖 custom）</p>
+	ExtendedOutputPrompts []*SeeExtendedOutputPrompt `json:"ExtendedOutputPrompts,omitnil,omitempty" name:"ExtendedOutputPrompts"`
 }
 
 type SeeComprehensionResult struct {
@@ -22327,6 +22482,9 @@ type SeeComprehensionResult struct {
 
 	// <p>生成的关键词列表</p><p>当配置 <code>EnableKeywords</code> 为 true 时返回</p>
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// <p>模型输出的扩展字段文本</p>
+	ExtendedOutput []*SeeExtendedOutput `json:"ExtendedOutput,omitnil,omitempty" name:"ExtendedOutput"`
 }
 
 type SeeCreateSubscriptionEntry struct {
@@ -22405,11 +22563,30 @@ type SeeDetectContinuousResult struct {
 }
 
 type SeeEventIdFilterConfig struct {
-	// 包含的云存事件 ID 集合
+	// <p>包含的云存事件 ID 集合</p>
 	IncludeOnly []*string `json:"IncludeOnly,omitnil,omitempty" name:"IncludeOnly"`
 
-	// 排除的云存事件 ID 集合
+	// <p>排除的云存事件 ID 集合</p>
 	Exclude []*string `json:"Exclude,omitnil,omitempty" name:"Exclude"`
+
+	// <p>触发分析的时机</p><p>枚举值：</p><ul><li>end： 在云存事件结束时触发视频理解</li><li>start： 在云存事件开始时触发视频理解</li><li>image_and_video： 上传云存事件缩略图后触发图片理解，并且在云存事件结束时触发视频理解</li></ul><p>默认值：end</p>
+	TriggerAt *string `json:"TriggerAt,omitnil,omitempty" name:"TriggerAt"`
+}
+
+type SeeExtendedOutput struct {
+	// <p>提示词标识符</p><p>枚举值：</p><ul><li>overview： 内容概述</li><li>scene： 场景关键词</li><li>events： 事件关键词</li><li>objects： 物品关键词</li></ul>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>模型输出的扩展内容文本</p>
+	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
+}
+
+type SeeExtendedOutputPrompt struct {
+	// <p>提示词标识符</p><p>枚举值：</p><ul><li>custom： 自定义</li></ul>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>提示词内容</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 }
 
 type SeeFaceInfo struct {

@@ -276,12 +276,33 @@ func (r *AppendEventResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ApproveRegistryRecordRequestParams struct {
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version ID。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>动作留言；非空。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
 type ApproveRegistryRecordRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version ID。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>动作留言；非空。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
 func (r *ApproveRegistryRecordRequest) ToJsonString() string {
@@ -296,7 +317,10 @@ func (r *ApproveRegistryRecordRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "RecordId")
+	delete(f, "VersionId")
+	delete(f, "Comment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApproveRegistryRecordRequest has unknown keys!", "")
 	}
@@ -305,6 +329,9 @@ func (r *ApproveRegistryRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ApproveRegistryRecordResponseParams struct {
+	// <p>更新后的 Version。</p>
+	Version *CloudRecordVersion `json:"Version,omitnil,omitempty" name:"Version"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -332,12 +359,33 @@ type CLSConfig struct {
 
 // Predefined struct for user
 type CancelRegistryRecordRequestParams struct {
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version ID。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>动作留言；非空。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
 type CancelRegistryRecordRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version ID。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>动作留言；非空。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
 func (r *CancelRegistryRecordRequest) ToJsonString() string {
@@ -352,7 +400,10 @@ func (r *CancelRegistryRecordRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "RecordId")
+	delete(f, "VersionId")
+	delete(f, "Comment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelRegistryRecordRequest has unknown keys!", "")
 	}
@@ -361,6 +412,9 @@ func (r *CancelRegistryRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CancelRegistryRecordResponseParams struct {
+	// <p>更新后的 Version。</p>
+	Version *CloudRecordVersion `json:"Version,omitnil,omitempty" name:"Version"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -387,6 +441,351 @@ type CfsStorageSource struct {
 
 	// CFS挂载路径
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
+type CloudAgentSourceInput struct {
+	// <p>来源类型。MANUAL：直接提交 Agent Descriptors JSON 文本；URL_IMPORT：从远端 Agent Card / AGUI 端点导入。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>Type=MANUAL 时必填；值为通用 JSON object 文本；A2A 标准校验或 AGUI/CUSTOM 规则由后端执行。（JSON 字符串形式）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Descriptors *string `json:"Descriptors,omitnil,omitempty" name:"Descriptors"`
+
+	// <p>A2A：Agent Card URL；AGUI：Runtime Endpoint URL。Type=URL_IMPORT 时必填，HTTPS。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndpointURL *string `json:"EndpointURL,omitnil,omitempty" name:"EndpointURL"`
+}
+
+type CloudAuditLog struct {
+	// <p>审计日志 ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditLogId *string `json:"AuditLogId,omitnil,omitempty" name:"AuditLogId"`
+
+	// <p>所属 Registry ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>动作发起者（主账号 UIN 或子账号 UIN）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Actor *string `json:"Actor,omitnil,omitempty" name:"Actor"`
+
+	// <p>Action 名称，等同 X-TC-Action。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// <p>动作脱敏摘要对象；使用云 API 字段命名，字段随 Action 而变；不包含凭据、预签名 URL 或完整 Descriptor。（JSON 字符串形式）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Details *string `json:"Details,omitnil,omitempty" name:"Details"`
+
+	// <p>动作发生时间。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>关联 Record ID；仅 Record / Version 相关动作。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>关联 Version ID；仅 Version 相关动作。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+}
+
+type CloudFilter struct {
+	// <p>过滤字段名。DescribeRegistryList 支持 <code>name</code> / <code>search</code>（模糊搜索）与 <code>archived</code> / <code>status</code>（true / false / all）；DescribeRegistryRecordList 支持 <code>name</code> / <code>search</code>（模糊）、<code>descriptor-type</code>、<code>lifecycle-status</code>（精确）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>过滤字段候选值列表；至少 1 项。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type CloudMCPSourceInput struct {
+	// <p>来源类型。MANUAL：直接提交 MCP Descriptors JSON 文本；URL_IMPORT：从远端 MCP server.json URL 导入。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>Type=MANUAL 时必填；值为完整 MCP server.json 对象的 JSON 文本；完整 MCP 2025-12-11 标准校验由后端执行。（JSON 字符串形式）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Descriptors *string `json:"Descriptors,omitnil,omitempty" name:"Descriptors"`
+
+	// <p>远端 MCP server.json URL；HTTPS。Type=URL_IMPORT 时必填。Version 从远端 initialize.serverInfo.version 观测获得，无需请求参数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndpointURL *string `json:"EndpointURL,omitnil,omitempty" name:"EndpointURL"`
+}
+
+type CloudRecord struct {
+	// <p>Record ID；格式 <code>rec-</code> + 8 位小写字母/数字。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>所属 Registry ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record 名称；同一 Registry 内可重复。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>协议描述符类型；创建后不可变。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DescriptorType *string `json:"DescriptorType,omitnil,omitempty" name:"DescriptorType"`
+
+	// <p>生命周期状态。ACTIVE：可用；DELETED：软删除墓碑，不再参与常规查询、下发或版本配额。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifecycleStatus *string `json:"LifecycleStatus,omitnil,omitempty" name:"LifecycleStatus"`
+
+	// <p>所属租户 AppId。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>创建者主账号 UIN。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
+
+	// <p>创建者子账号 UIN；主账号直接创建时为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorSubAccountUin *string `json:"CreatorSubAccountUin,omitnil,omitempty" name:"CreatorSubAccountUin"`
+
+	// <p>创建时间，ISO 8601 UTC。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>最近一次更新时间。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>Record 下未删除 Version 数量。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionCount *int64 `json:"VersionCount,omitnil,omitempty" name:"VersionCount"`
+
+	// <p>Record 下所有 Label Name（含未绑定 Label），包括系统 Label（stable / latest）和自定义 Label。仅名称，不含 VersionId、更新时间或操作者。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelSet []*string `json:"LabelSet,omitnil,omitempty" name:"LabelSet"`
+}
+
+type CloudRecordLabelMutation struct {
+	// <p>操作类型。SET：创建或移动 Label；DELETE：删除自定义 Label（stable/latest 保留 Label 禁止删除）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// <p>Label 名称，长度 1..63，格式 ^[a-z][a-z0-9._-]{0,62}$，按小写规范化。stable、latest 为系统保留 Label。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>目标 Version ID。SET 时可选：省略表示未绑定（自定义 Label 允许，stable 禁止）；DELETE 时禁止携带。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>变更原因，最大 1024 字符，可选。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+type CloudRecordVersion struct {
+	// <p>Version ID；格式 <code>rv-</code> + 8 位小写字母/数字。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>所属 Record ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version 递增序号（1 起）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Revision *int64 `json:"Revision,omitnil,omitempty" name:"Revision"`
+
+	// <p>Version 状态。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>审批模式；创建时锁定，后续变更 Registry 审批模式不影响本 Version。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApprovalMode *string `json:"ApprovalMode,omitnil,omitempty" name:"ApprovalMode"`
+
+	// <p>所属租户 AppId。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>创建者主账号 UIN。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
+
+	// <p>创建时间。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>最近一次更新时间。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>Version 别名（可选）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// <p>协议描述符对象。（JSON 字符串形式）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Descriptors *string `json:"Descriptors,omitnil,omitempty" name:"Descriptors"`
+
+	// <p>内容来源。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// <p>规范化来源配置对象。（JSON 字符串形式）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceConfig *string `json:"SourceConfig,omitnil,omitempty" name:"SourceConfig"`
+
+	// <p>内容状态。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContentStatus *string `json:"ContentStatus,omitnil,omitempty" name:"ContentStatus"`
+
+	// <p>READY 内容 SHA-256。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContentSHA256 *string `json:"ContentSHA256,omitnil,omitempty" name:"ContentSHA256"`
+
+	// <p>READY 内容字节数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContentSizeBytes *int64 `json:"ContentSizeBytes,omitnil,omitempty" name:"ContentSizeBytes"`
+
+	// <p>配置内容规范化后的 SHA-256（用于幂等去重）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigSHA256 *string `json:"ConfigSHA256,omitnil,omitempty" name:"ConfigSHA256"`
+
+	// <p>创建者子账号 UIN。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorSubAccountUin *string `json:"CreatorSubAccountUin,omitnil,omitempty" name:"CreatorSubAccountUin"`
+
+	// <p>Version 历次审批动作。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApprovalActions []*CloudVersionApprovalAction `json:"ApprovalActions,omitnil,omitempty" name:"ApprovalActions"`
+
+	// <p>TAR 内容成功校验、完成物化并进入 READY 的时间；MANUAL / URL_IMPORT 或尚未 READY 的 TAR_PACKAGE 均为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContentReadyTime *string `json:"ContentReadyTime,omitnil,omitempty" name:"ContentReadyTime"`
+
+	// <p>本次 Version 的变更原因，最大 4096 字符；不可修改。Revision 1 或未填写时返回空字符串。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChangeLog *string `json:"ChangeLog,omitnil,omitempty" name:"ChangeLog"`
+
+	// <p>当前绑定该 Version 的 Label Name 列表（例如 stable / latest 或自定义 Label 名称）。未绑定 Label 不在此返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelSet []*string `json:"LabelSet,omitnil,omitempty" name:"LabelSet"`
+}
+
+type CloudRegistry struct {
+	// <p>Registry ID；格式 <code>reg-</code> + 8 位小写字母/数字。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Registry 同一 AppId + Region 唯一名称。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>审批模式；AUTO 自动通过，MANUAL 需人工审批；创建时确定，不可修改。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApprovalMode *string `json:"ApprovalMode,omitnil,omitempty" name:"ApprovalMode"`
+
+	// <p>Registry 所在腾讯云地域，如 <code>ap-guangzhou</code>。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>Registry 状态。ACTIVE / ARCHIVED。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>创建时间，ISO 8601 UTC，如 <code>2026-08-11T10:00:00Z</code>。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>最近一次更新时间，ISO 8601 UTC。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>Registry 下 Record 总数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordCount *int64 `json:"RecordCount,omitnil,omitempty" name:"RecordCount"`
+
+	// <p>权威读取的腾讯云自定义标签，按 Key、Value 稳定排序；无标签时固定返回空数组，不返回 null。</p>
+	Tags []*CloudTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>Stable Label 已绑定的 Record 数量。Approved Version 数量和可对外消费的 Record 数量已不再等价。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublishedRecordCount *int64 `json:"PublishedRecordCount,omitnil,omitempty" name:"PublishedRecordCount"`
+
+	// <p>所属租户 AppId。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>创建者主账号 UIN。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
+
+	// <p>创建者子账号 UIN；主账号直接创建时为空字符串。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorSubAccountUin *string `json:"CreatorSubAccountUin,omitnil,omitempty" name:"CreatorSubAccountUin"`
+}
+
+type CloudSkillSourceInput struct {
+	// <p>来源类型。MANUAL：直接提交 SKILL.md 文本；TAR_PACKAGE：由服务端签发 COS PUT 预签名 URL，客户端上传后由服务端异步校验。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>SKILL.md 原文；Type=MANUAL 时必填非空；Type=TAR_PACKAGE 时不得提供。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkillMd *string `json:"SkillMd,omitnil,omitempty" name:"SkillMd"`
+}
+
+type CloudTag struct {
+	// <p>自定义标签键；不可使用 qcs:、project 或项目预留前缀，且不可包含首尾空格。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>自定义标签值，不可包含首尾空格。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type CloudVersionApprovalAction struct {
+	// <p>动作 ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionId *string `json:"ActionId,omitnil,omitempty" name:"ActionId"`
+
+	// <p>动作类型。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// <p>动作发起者类型。USER 用户；SYSTEM 系统自动通过。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActorType *string `json:"ActorType,omitnil,omitempty" name:"ActorType"`
+
+	// <p>发起者主账号 UIN。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActorUin *string `json:"ActorUin,omitnil,omitempty" name:"ActorUin"`
+
+	// <p>发起者子账号 UIN。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActorSubAccountUin *string `json:"ActorSubAccountUin,omitnil,omitempty" name:"ActorSubAccountUin"`
+
+	// <p>动作留言。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>发生时间。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>对应云 API 请求的 RequestId。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
 type ComputerConfiguration struct {
@@ -635,12 +1034,63 @@ func (r *CreatePreCacheImageTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRegistryRecordRequestParams struct {
+	// <p>所属 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record 名称，长度 1..255，同一租户、Registry 内按规范化 Name 唯一（大小写不敏感）；软删除后允许复用。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>协议描述符类型。MCP / A2A / AGUI / CUSTOM / AGENT_SKILLS。Record 创建后不可修改。</p>
+	DescriptorType *string `json:"DescriptorType,omitnil,omitempty" name:"DescriptorType"`
+
+	// <p>Record 描述，最大 4096 字符，可选，默认空。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Revision 1 的展示名称，可选。</p>
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// <p>DescriptorType=MCP 时必填，其他类型禁止。</p>
+	MCPSource *CloudMCPSourceInput `json:"MCPSource,omitnil,omitempty" name:"MCPSource"`
+
+	// <p>DescriptorType=A2A 或 AGUI 时必填，其他类型禁止。</p>
+	AgentSource *CloudAgentSourceInput `json:"AgentSource,omitnil,omitempty" name:"AgentSource"`
+
+	// <p>DescriptorType=AGENT_SKILLS 时必填，其他类型禁止。</p>
+	SkillSource *CloudSkillSourceInput `json:"SkillSource,omitnil,omitempty" name:"SkillSource"`
+
+	// <p>DescriptorType=CUSTOM 时必填，其他类型禁止。内容必须是 JSON object 字符串；服务端解析后写入 CloudRecordVersion.Descriptors，Version 的 SourceType 固定为 MANUAL、SourceConfig 固定为空对象。</p>
+	CustomDescriptors *string `json:"CustomDescriptors,omitnil,omitempty" name:"CustomDescriptors"`
 }
 
 type CreateRegistryRecordRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>所属 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record 名称，长度 1..255，同一租户、Registry 内按规范化 Name 唯一（大小写不敏感）；软删除后允许复用。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>协议描述符类型。MCP / A2A / AGUI / CUSTOM / AGENT_SKILLS。Record 创建后不可修改。</p>
+	DescriptorType *string `json:"DescriptorType,omitnil,omitempty" name:"DescriptorType"`
+
+	// <p>Record 描述，最大 4096 字符，可选，默认空。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Revision 1 的展示名称，可选。</p>
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// <p>DescriptorType=MCP 时必填，其他类型禁止。</p>
+	MCPSource *CloudMCPSourceInput `json:"MCPSource,omitnil,omitempty" name:"MCPSource"`
+
+	// <p>DescriptorType=A2A 或 AGUI 时必填，其他类型禁止。</p>
+	AgentSource *CloudAgentSourceInput `json:"AgentSource,omitnil,omitempty" name:"AgentSource"`
+
+	// <p>DescriptorType=AGENT_SKILLS 时必填，其他类型禁止。</p>
+	SkillSource *CloudSkillSourceInput `json:"SkillSource,omitnil,omitempty" name:"SkillSource"`
+
+	// <p>DescriptorType=CUSTOM 时必填，其他类型禁止。内容必须是 JSON object 字符串；服务端解析后写入 CloudRecordVersion.Descriptors，Version 的 SourceType 固定为 MANUAL、SourceConfig 固定为空对象。</p>
+	CustomDescriptors *string `json:"CustomDescriptors,omitnil,omitempty" name:"CustomDescriptors"`
 }
 
 func (r *CreateRegistryRecordRequest) ToJsonString() string {
@@ -655,7 +1105,15 @@ func (r *CreateRegistryRecordRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "Name")
+	delete(f, "DescriptorType")
+	delete(f, "Description")
+	delete(f, "VersionName")
+	delete(f, "MCPSource")
+	delete(f, "AgentSource")
+	delete(f, "SkillSource")
+	delete(f, "CustomDescriptors")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRegistryRecordRequest has unknown keys!", "")
 	}
@@ -664,6 +1122,28 @@ func (r *CreateRegistryRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRegistryRecordResponseParams struct {
+	// <p>新 Record ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>新建的 Record 详情。</p>
+	Record *CloudRecord `json:"Record,omitnil,omitempty" name:"Record"`
+
+	// <p>本次创建的 Revision 1 Version 详情。</p>
+	Version *CloudRecordVersion `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>SkillSource.Type=TAR_PACKAGE 时返回：TAR 包上传预签名 URL。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UploadURL *string `json:"UploadURL,omitnil,omitempty" name:"UploadURL"`
+
+	// <p>SkillSource.Type=TAR_PACKAGE 时返回：UploadURL 过期时间，ISO 8601 UTC。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>SkillSource.Type=TAR_PACKAGE 时返回：Version 内容当前状态（UPLOADING 等）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContentStatus *string `json:"ContentStatus,omitnil,omitempty" name:"ContentStatus"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -686,12 +1166,33 @@ func (r *CreateRegistryRecordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRegistryRequestParams struct {
+	// <p>同一 AppId + Region 唯一、长度 1–255</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
+	// <p>描述文本；最长 4096。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>审批模式；创建时确定，创建后不可修改；省略时默认为 AUTO，枚举值区分大小写。</p>
+	ApprovalMode *string `json:"ApprovalMode,omitnil,omitempty" name:"ApprovalMode"`
+
+	// <p>创建时绑定的腾讯云自定义标签；Key 不可重复；最多 10 个。</p>
+	Tags []*CloudTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateRegistryRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>同一 AppId + Region 唯一、长度 1–255</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述文本；最长 4096。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>审批模式；创建时确定，创建后不可修改；省略时默认为 AUTO，枚举值区分大小写。</p>
+	ApprovalMode *string `json:"ApprovalMode,omitnil,omitempty" name:"ApprovalMode"`
+
+	// <p>创建时绑定的腾讯云自定义标签；Key 不可重复；最多 10 个。</p>
+	Tags []*CloudTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateRegistryRequest) ToJsonString() string {
@@ -706,7 +1207,10 @@ func (r *CreateRegistryRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "ApprovalMode")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRegistryRequest has unknown keys!", "")
 	}
@@ -715,6 +1219,12 @@ func (r *CreateRegistryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRegistryResponseParams struct {
+	// <p>创建成功的 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Registry 详细信息。</p>
+	Registry *CloudRegistry `json:"Registry,omitnil,omitempty" name:"Registry"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1230,12 +1740,33 @@ func (r *DeleteDeploymentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRegistryRecordRequestParams struct {
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>可选。传入时只删除 Record 下指定 Version（软删除）；省略时删除整个 Record。显式传入空字符串或 null 返回 InvalidParameter.VersionId，不得回退为删除整个 Record。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>删除原因，最大 1024 字符。删除单个 Version 时必填；删除整个 Record 时可选。</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 type DeleteRegistryRecordRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>可选。传入时只删除 Record 下指定 Version（软删除）；省略时删除整个 Record。显式传入空字符串或 null 返回 InvalidParameter.VersionId，不得回退为删除整个 Record。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>删除原因，最大 1024 字符。删除单个 Version 时必填；删除整个 Record 时可选。</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 func (r *DeleteRegistryRecordRequest) ToJsonString() string {
@@ -1250,7 +1781,10 @@ func (r *DeleteRegistryRecordRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "RecordId")
+	delete(f, "VersionId")
+	delete(f, "Reason")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRegistryRecordRequest has unknown keys!", "")
 	}
@@ -1281,12 +1815,15 @@ func (r *DeleteRegistryRecordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRegistryRequestParams struct {
-
+	// <p>Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 }
 
 type DeleteRegistryRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 }
 
 func (r *DeleteRegistryRequest) ToJsonString() string {
@@ -1301,7 +1838,7 @@ func (r *DeleteRegistryRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRegistryRequest has unknown keys!", "")
 	}
@@ -2014,12 +2551,63 @@ func (r *DescribeQuotaOverviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegistryAuditLogListRequestParams struct {
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version ID；仅过滤 Version 维度动作，可选。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>Action 精确过滤（如 <code>record.version.create</code>），可选。</p>
+	ActionFilter *string `json:"ActionFilter,omitnil,omitempty" name:"ActionFilter"`
+
+	// <p>发起者过滤（主账号 UIN 或子账号 UIN），可选。</p>
+	Actor *string `json:"Actor,omitnil,omitempty" name:"Actor"`
+
+	// <p>起始时间；ISO 8601，可选。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间；ISO 8601，可选。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>分页起始偏移，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页条数，默认 20，最大 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeRegistryAuditLogListRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version ID；仅过滤 Version 维度动作，可选。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>Action 精确过滤（如 <code>record.version.create</code>），可选。</p>
+	ActionFilter *string `json:"ActionFilter,omitnil,omitempty" name:"ActionFilter"`
+
+	// <p>发起者过滤（主账号 UIN 或子账号 UIN），可选。</p>
+	Actor *string `json:"Actor,omitnil,omitempty" name:"Actor"`
+
+	// <p>起始时间；ISO 8601，可选。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间；ISO 8601，可选。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>分页起始偏移，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页条数，默认 20，最大 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeRegistryAuditLogListRequest) ToJsonString() string {
@@ -2034,7 +2622,15 @@ func (r *DescribeRegistryAuditLogListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "RecordId")
+	delete(f, "VersionId")
+	delete(f, "ActionFilter")
+	delete(f, "Actor")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegistryAuditLogListRequest has unknown keys!", "")
 	}
@@ -2043,6 +2639,12 @@ func (r *DescribeRegistryAuditLogListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegistryAuditLogListResponseParams struct {
+	// <p>Record 维度的审计日志。</p>
+	AuditLogSet []*CloudAuditLog `json:"AuditLogSet,omitnil,omitempty" name:"AuditLogSet"`
+
+	// <p>符合条件的总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2065,12 +2667,27 @@ func (r *DescribeRegistryAuditLogListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegistryListRequestParams struct {
+	// <p>分页起始偏移，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
+	// <p>分页条数，默认 20，最大 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。Name 支持：<code>name</code>/<code>search</code>（模糊）、<code>archived</code>/<code>status</code>（true/false/all）、<code>tag-key</code> 和 <code>tag:&lt;key&gt;</code>；最多 6 个标签过滤组，每个标签过滤组最多 10 个 Values，同 Key 多值为 OR，不同 Key 为 AND。</p>
+	Filters []*CloudFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeRegistryListRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>分页起始偏移，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页条数，默认 20，最大 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。Name 支持：<code>name</code>/<code>search</code>（模糊）、<code>archived</code>/<code>status</code>（true/false/all）、<code>tag-key</code> 和 <code>tag:&lt;key&gt;</code>；最多 6 个标签过滤组，每个标签过滤组最多 10 个 Values，同 Key 多值为 OR，不同 Key 为 AND。</p>
+	Filters []*CloudFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeRegistryListRequest) ToJsonString() string {
@@ -2085,7 +2702,9 @@ func (r *DescribeRegistryListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegistryListRequest has unknown keys!", "")
 	}
@@ -2094,6 +2713,12 @@ func (r *DescribeRegistryListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegistryListResponseParams struct {
+	// <p>Registry 对象数组。</p>
+	RegistrySet []*CloudRegistry `json:"RegistrySet,omitnil,omitempty" name:"RegistrySet"`
+
+	// <p>符合条件的总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2116,12 +2741,33 @@ func (r *DescribeRegistryListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegistryRecordListRequestParams struct {
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>分页起始偏移，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页条数，默认 20，最大 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。支持 Filter.Name：<code>name</code>/<code>search</code>（按 Record Name 模糊搜索）；其他名称返回 <code>InvalidParameter.Filters.Name</code>。</p>
+	Filters []*CloudFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeRegistryRecordListRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>分页起始偏移，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页条数，默认 20，最大 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。支持 Filter.Name：<code>name</code>/<code>search</code>（按 Record Name 模糊搜索）；其他名称返回 <code>InvalidParameter.Filters.Name</code>。</p>
+	Filters []*CloudFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeRegistryRecordListRequest) ToJsonString() string {
@@ -2136,7 +2782,10 @@ func (r *DescribeRegistryRecordListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegistryRecordListRequest has unknown keys!", "")
 	}
@@ -2145,6 +2794,12 @@ func (r *DescribeRegistryRecordListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegistryRecordListResponseParams struct {
+	// <p>Record 对象数组。</p>
+	RecordSet []*CloudRecord `json:"RecordSet,omitnil,omitempty" name:"RecordSet"`
+
+	// <p>符合条件的总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2167,12 +2822,33 @@ func (r *DescribeRegistryRecordListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegistryRecordRequestParams struct {
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version ID，与 Label 互斥。指定时返回该 Version；均省略时等价于 Label=stable。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>Label 名称，与 VersionId 互斥。指定时返回 Label 当前指向的 Version；均省略时等价于 stable。</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
 type DescribeRegistryRecordRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version ID，与 Label 互斥。指定时返回该 Version；均省略时等价于 Label=stable。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>Label 名称，与 VersionId 互斥。指定时返回 Label 当前指向的 Version；均省略时等价于 stable。</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
 func (r *DescribeRegistryRecordRequest) ToJsonString() string {
@@ -2187,7 +2863,10 @@ func (r *DescribeRegistryRecordRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "RecordId")
+	delete(f, "VersionId")
+	delete(f, "Label")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegistryRecordRequest has unknown keys!", "")
 	}
@@ -2196,6 +2875,21 @@ func (r *DescribeRegistryRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegistryRecordResponseParams struct {
+	// <p>Record 元数据和全部 Label。</p>
+	Record *CloudRecord `json:"Record,omitnil,omitempty" name:"Record"`
+
+	// <p>根据 VersionId / Label 解析得到的完整 Version。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *CloudRecordVersion `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>解析方式：DEFAULT_STABLE / LABEL / VERSION_ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResolvedBy *string `json:"ResolvedBy,omitnil,omitempty" name:"ResolvedBy"`
+
+	// <p>通过 Label 解析（ResolvedBy=LABEL 或 DEFAULT_STABLE）时返回该 Label 名称，例如 stable。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResolvedLabel *string `json:"ResolvedLabel,omitnil,omitempty" name:"ResolvedLabel"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2218,12 +2912,39 @@ func (r *DescribeRegistryRecordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegistryRecordVersionListRequestParams struct {
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>分页起始偏移，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页条数，默认 20，最大 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。支持：status（按 Version 状态：PREPARING/PENDING_APPROVAL/APPROVED/REJECTED/CANCELED，多值 OR）、source_type（按内容来源：MANUAL/URL_IMPORT/TAR_PACKAGE，多值 OR）。</p>
+	Filters []*CloudFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeRegistryRecordVersionListRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>分页起始偏移，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页条数，默认 20，最大 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。支持：status（按 Version 状态：PREPARING/PENDING_APPROVAL/APPROVED/REJECTED/CANCELED，多值 OR）、source_type（按内容来源：MANUAL/URL_IMPORT/TAR_PACKAGE，多值 OR）。</p>
+	Filters []*CloudFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeRegistryRecordVersionListRequest) ToJsonString() string {
@@ -2238,7 +2959,11 @@ func (r *DescribeRegistryRecordVersionListRequest) FromJsonString(s string) erro
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "RecordId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegistryRecordVersionListRequest has unknown keys!", "")
 	}
@@ -2247,6 +2972,12 @@ func (r *DescribeRegistryRecordVersionListRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeRegistryRecordVersionListResponseParams struct {
+	// <p>Version 对象数组。</p>
+	VersionSet []*CloudRecordVersion `json:"VersionSet,omitnil,omitempty" name:"VersionSet"`
+
+	// <p>符合条件的总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2269,12 +3000,15 @@ func (r *DescribeRegistryRecordVersionListResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeRegistryRequestParams struct {
-
+	// <p>Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 }
 
 type DescribeRegistryRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 }
 
 func (r *DescribeRegistryRequest) ToJsonString() string {
@@ -2289,7 +3023,7 @@ func (r *DescribeRegistryRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegistryRequest has unknown keys!", "")
 	}
@@ -2298,6 +3032,9 @@ func (r *DescribeRegistryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegistryResponseParams struct {
+	// <p>Registry 详情。</p>
+	Registry *CloudRegistry `json:"Registry,omitnil,omitempty" name:"Registry"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2937,12 +3674,33 @@ type Filter struct {
 
 // Predefined struct for user
 type GetSkillPackageDownloadURLRequestParams struct {
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record ID；必须 AGENT_SKILLS 且 ContentStatus=READY。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>可选。指定要下载的 Version；与 Label 互斥；均省略时使用 Stable。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>可选。指定要下载的 Label 目标；与 VersionId 互斥；均省略时使用 Stable。</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
 type GetSkillPackageDownloadURLRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record ID；必须 AGENT_SKILLS 且 ContentStatus=READY。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>可选。指定要下载的 Version；与 Label 互斥；均省略时使用 Stable。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>可选。指定要下载的 Label 目标；与 VersionId 互斥；均省略时使用 Stable。</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
 func (r *GetSkillPackageDownloadURLRequest) ToJsonString() string {
@@ -2957,7 +3715,10 @@ func (r *GetSkillPackageDownloadURLRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "RecordId")
+	delete(f, "VersionId")
+	delete(f, "Label")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSkillPackageDownloadURLRequest has unknown keys!", "")
 	}
@@ -2966,6 +3727,18 @@ func (r *GetSkillPackageDownloadURLRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetSkillPackageDownloadURLResponseParams struct {
+	// <p>COS GET 预签名 URL；带 response-content-disposition；默认 TTL 5 分钟；bearer 凭证禁止持久化。</p>
+	DownloadURL *string `json:"DownloadURL,omitnil,omitempty" name:"DownloadURL"`
+
+	// <p>URL 过期时间。</p>
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>服务端记录的 SHA-256；下载后应本地自检。</p>
+	SHA256 *string `json:"SHA256,omitnil,omitempty" name:"SHA256"`
+
+	// <p>解析出的 Version ID（Stable Version）。</p>
+	ResolvedVersionId *string `json:"ResolvedVersionId,omitnil,omitempty" name:"ResolvedVersionId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2988,12 +3761,27 @@ func (r *GetSkillPackageDownloadURLResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetSkillPackageUploadURLRequestParams struct {
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version ID；格式 <code>rv-</code> + 8 位小写字母/数字。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 }
 
 type GetSkillPackageUploadURLRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version ID；格式 <code>rv-</code> + 8 位小写字母/数字。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 }
 
 func (r *GetSkillPackageUploadURLRequest) ToJsonString() string {
@@ -3008,7 +3796,9 @@ func (r *GetSkillPackageUploadURLRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "RecordId")
+	delete(f, "VersionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSkillPackageUploadURLRequest has unknown keys!", "")
 	}
@@ -3017,6 +3807,18 @@ func (r *GetSkillPackageUploadURLRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetSkillPackageUploadURLResponseParams struct {
+	// <p>Version 详情（Revision 不变）。</p>
+	Version *CloudRecordVersion `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>新的 COS PUT 预签名 URL。</p>
+	UploadURL *string `json:"UploadURL,omitnil,omitempty" name:"UploadURL"`
+
+	// <p>重试后的内容状态。</p>
+	ContentStatus *string `json:"ContentStatus,omitnil,omitempty" name:"ContentStatus"`
+
+	// <p>UploadURL 过期时间。</p>
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3440,12 +4242,33 @@ type PortConfiguration struct {
 
 // Predefined struct for user
 type PreviewRegistryRecordRequestParams struct {
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>可选。指定要预览的目标 Version；与 Label 互斥；均省略时使用 Stable。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>可选。指定要预览的目标 Label；与 VersionId 互斥；均省略时使用 Stable。</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
 type PreviewRegistryRecordRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>可选。指定要预览的目标 Version；与 Label 互斥；均省略时使用 Stable。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>可选。指定要预览的目标 Label；与 VersionId 互斥；均省略时使用 Stable。</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
 func (r *PreviewRegistryRecordRequest) ToJsonString() string {
@@ -3460,7 +4283,10 @@ func (r *PreviewRegistryRecordRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "RecordId")
+	delete(f, "VersionId")
+	delete(f, "Label")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PreviewRegistryRecordRequest has unknown keys!", "")
 	}
@@ -3469,6 +4295,12 @@ func (r *PreviewRegistryRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PreviewRegistryRecordResponseParams struct {
+	// <p>只读元数据预览结果对象（JSON 字符串形式）。字段：StatusCode（远端 HTTP 状态码，必返）、Body（远端响应体截断字符串，必返）、HasUpdate（Boolean，必返；远端内容按 Sync 相同的规范化规则处理后是否与请求 Version 配置不同；Error 非空时固定返回 false，此时不表示远端没有变化）、Error（调用错误信息，可选）。</p>
+	PreviewResult *string `json:"PreviewResult,omitnil,omitempty" name:"PreviewResult"`
+
+	// <p>实际预览的 Version ID（由 VersionId / Label 解析得到）。</p>
+	ResolvedVersionId *string `json:"ResolvedVersionId,omitnil,omitempty" name:"ResolvedVersionId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3548,12 +4380,33 @@ type QuotaResourceInfo struct {
 
 // Predefined struct for user
 type RejectRegistryRecordRequestParams struct {
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version ID。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>动作留言；非空。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
 type RejectRegistryRecordRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Version ID。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>动作留言；非空。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
 func (r *RejectRegistryRecordRequest) ToJsonString() string {
@@ -3568,7 +4421,10 @@ func (r *RejectRegistryRecordRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "RecordId")
+	delete(f, "VersionId")
+	delete(f, "Comment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RejectRegistryRecordRequest has unknown keys!", "")
 	}
@@ -3577,6 +4433,9 @@ func (r *RejectRegistryRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RejectRegistryRecordResponseParams struct {
+	// <p>更新后的 Version。</p>
+	Version *CloudRecordVersion `json:"Version,omitnil,omitempty" name:"Version"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4037,12 +4896,39 @@ type StorageSource struct {
 
 // Predefined struct for user
 type SyncRegistryRecordRequestParams struct {
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>可选。指定要同步的目标 Version；与 Label 互斥；均省略时使用 Stable。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>可选。指定要同步的目标 Label；与 VersionId 互斥；均省略时使用 Stable。Label 在请求开始时只解析一次。</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>可选，最大 4096 字符。若同步创建新 Version，将写入新 Version 的 ChangeLog；省略时保存为空。</p>
+	ChangeLog *string `json:"ChangeLog,omitnil,omitempty" name:"ChangeLog"`
 }
 
 type SyncRegistryRecordRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>父 Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>可选。指定要同步的目标 Version；与 Label 互斥；均省略时使用 Stable。</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>可选。指定要同步的目标 Label；与 VersionId 互斥；均省略时使用 Stable。Label 在请求开始时只解析一次。</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>可选，最大 4096 字符。若同步创建新 Version，将写入新 Version 的 ChangeLog；省略时保存为空。</p>
+	ChangeLog *string `json:"ChangeLog,omitnil,omitempty" name:"ChangeLog"`
 }
 
 func (r *SyncRegistryRecordRequest) ToJsonString() string {
@@ -4057,7 +4943,11 @@ func (r *SyncRegistryRecordRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "RecordId")
+	delete(f, "VersionId")
+	delete(f, "Label")
+	delete(f, "ChangeLog")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncRegistryRecordRequest has unknown keys!", "")
 	}
@@ -4066,6 +4956,32 @@ func (r *SyncRegistryRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SyncRegistryRecordResponseParams struct {
+	// <p>同步结果：UNCHANGED（远端无变化）/ VERSION_CREATED（远端有变化，已生成新 Version）/ FAILED（同步失败）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncStatus *string `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+
+	// <p>作为同步来源解析出的 Version ID（可能由 Label 解析而来）；不为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResolvedVersionId *string `json:"ResolvedVersionId,omitnil,omitempty" name:"ResolvedVersionId"`
+
+	// <p>SyncStatus=VERSION_CREATED 时返回：本次新建的 Version。</p>
+	CreatedVersion *CloudRecordVersion `json:"CreatedVersion,omitnil,omitempty" name:"CreatedVersion"`
+
+	// <p>SyncStatus=VERSION_CREATED 时返回：同步后的最新 Record。</p>
+	Record *CloudRecord `json:"Record,omitnil,omitempty" name:"Record"`
+
+	// <p>最后一次同步时间，ISO 8601 UTC。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastSyncTime *string `json:"LastSyncTime,omitnil,omitempty" name:"LastSyncTime"`
+
+	// <p>失败错误码；SyncStatus=FAILED 时返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>失败错误信息；SyncStatus=FAILED 时返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4096,12 +5012,69 @@ type Tag struct {
 
 // Predefined struct for user
 type UpdateRegistryRecordRequestParams struct {
+	// <p>Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Record 描述，可选。Record 更新模式下允许，允许空字符串清空；Version 创建模式禁止。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>新 Version 的展示名，可选。仅 Version 创建模式允许。</p>
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// <p>新 Version 的变更原因，最大 4096 字符，可选。仅 Version 创建模式允许。</p>
+	ChangeLog *string `json:"ChangeLog,omitnil,omitempty" name:"ChangeLog"`
+
+	// <p>Version 创建模式：现有 Record 的 DescriptorType=MCP 时可提交。</p>
+	MCPSource *CloudMCPSourceInput `json:"MCPSource,omitnil,omitempty" name:"MCPSource"`
+
+	// <p>Version 创建模式：现有 Record 的 DescriptorType=A2A 或 AGUI 时可提交。</p>
+	AgentSource *CloudAgentSourceInput `json:"AgentSource,omitnil,omitempty" name:"AgentSource"`
+
+	// <p>Version 创建模式：现有 Record 的 DescriptorType=AGENT_SKILLS 时可提交。</p>
+	SkillSource *CloudSkillSourceInput `json:"SkillSource,omitnil,omitempty" name:"SkillSource"`
+
+	// <p>Version 创建模式：现有 Record 的 DescriptorType=CUSTOM 时可提交，必须是 JSON object 字符串。</p>
+	CustomDescriptors *string `json:"CustomDescriptors,omitnil,omitempty" name:"CustomDescriptors"`
+
+	// <p>Record 更新模式：Label 变更列表，最多 32 条，同一次请求中 Label Name 不可重复。</p>
+	LabelMutations []*CloudRecordLabelMutation `json:"LabelMutations,omitnil,omitempty" name:"LabelMutations"`
 }
 
 type UpdateRegistryRecordRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>Record ID。</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>Record 描述，可选。Record 更新模式下允许，允许空字符串清空；Version 创建模式禁止。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>新 Version 的展示名，可选。仅 Version 创建模式允许。</p>
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// <p>新 Version 的变更原因，最大 4096 字符，可选。仅 Version 创建模式允许。</p>
+	ChangeLog *string `json:"ChangeLog,omitnil,omitempty" name:"ChangeLog"`
+
+	// <p>Version 创建模式：现有 Record 的 DescriptorType=MCP 时可提交。</p>
+	MCPSource *CloudMCPSourceInput `json:"MCPSource,omitnil,omitempty" name:"MCPSource"`
+
+	// <p>Version 创建模式：现有 Record 的 DescriptorType=A2A 或 AGUI 时可提交。</p>
+	AgentSource *CloudAgentSourceInput `json:"AgentSource,omitnil,omitempty" name:"AgentSource"`
+
+	// <p>Version 创建模式：现有 Record 的 DescriptorType=AGENT_SKILLS 时可提交。</p>
+	SkillSource *CloudSkillSourceInput `json:"SkillSource,omitnil,omitempty" name:"SkillSource"`
+
+	// <p>Version 创建模式：现有 Record 的 DescriptorType=CUSTOM 时可提交，必须是 JSON object 字符串。</p>
+	CustomDescriptors *string `json:"CustomDescriptors,omitnil,omitempty" name:"CustomDescriptors"`
+
+	// <p>Record 更新模式：Label 变更列表，最多 32 条，同一次请求中 Label Name 不可重复。</p>
+	LabelMutations []*CloudRecordLabelMutation `json:"LabelMutations,omitnil,omitempty" name:"LabelMutations"`
 }
 
 func (r *UpdateRegistryRecordRequest) ToJsonString() string {
@@ -4116,7 +5089,16 @@ func (r *UpdateRegistryRecordRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "RecordId")
+	delete(f, "Description")
+	delete(f, "VersionName")
+	delete(f, "ChangeLog")
+	delete(f, "MCPSource")
+	delete(f, "AgentSource")
+	delete(f, "SkillSource")
+	delete(f, "CustomDescriptors")
+	delete(f, "LabelMutations")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRegistryRecordRequest has unknown keys!", "")
 	}
@@ -4125,6 +5107,24 @@ func (r *UpdateRegistryRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateRegistryRecordResponseParams struct {
+	// <p>更新后的 Record。</p>
+	Record *CloudRecord `json:"Record,omitnil,omitempty" name:"Record"`
+
+	// <p>Version 创建模式返回：本次创建的新 Version。</p>
+	Version *CloudRecordVersion `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>Version 创建模式且 SkillSource.Type=TAR_PACKAGE 时返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UploadURL *string `json:"UploadURL,omitnil,omitempty" name:"UploadURL"`
+
+	// <p>Version 创建模式且 SkillSource.Type=TAR_PACKAGE 时返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>Version 创建模式且 SkillSource.Type=TAR_PACKAGE 时返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContentStatus *string `json:"ContentStatus,omitnil,omitempty" name:"ContentStatus"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4147,12 +5147,21 @@ func (r *UpdateRegistryRecordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateRegistryRequestParams struct {
+	// <p>Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
+	// <p>新的描述；必填；最长 4096。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type UpdateRegistryRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>Registry ID。</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>新的描述；必填；最长 4096。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *UpdateRegistryRequest) ToJsonString() string {
@@ -4167,7 +5176,8 @@ func (r *UpdateRegistryRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegistryId")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRegistryRequest has unknown keys!", "")
 	}
@@ -4176,6 +5186,9 @@ func (r *UpdateRegistryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateRegistryResponseParams struct {
+	// <p>更新后的 Registry 详情。</p>
+	Registry *CloudRegistry `json:"Registry,omitnil,omitempty" name:"Registry"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

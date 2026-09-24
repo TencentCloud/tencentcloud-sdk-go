@@ -445,19 +445,25 @@ func NewDescribeDeployTemplatesResponse() (response *DescribeDeployTemplatesResp
 }
 
 // DescribeDeployTemplates
-// 本接口(DescribeDeployTemplates)用于查询模型支持的部署模板
+// 本接口(DescribeDeployTemplates)用于查询模型支持的部署模板。传入 ServiceId 时按当前服务占用过滤重装候选模板。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_INVALIDMODELIDMALFORMED = "InvalidParameterValue.InvalidModelIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
 func (c *Client) DescribeDeployTemplates(request *DescribeDeployTemplatesRequest) (response *DescribeDeployTemplatesResponse, err error) {
     return c.DescribeDeployTemplatesWithContext(context.Background(), request)
 }
 
 // DescribeDeployTemplates
-// 本接口(DescribeDeployTemplates)用于查询模型支持的部署模板
+// 本接口(DescribeDeployTemplates)用于查询模型支持的部署模板。传入 ServiceId 时按当前服务占用过滤重装候选模板。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_INVALIDMODELIDMALFORMED = "InvalidParameterValue.InvalidModelIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
 func (c *Client) DescribeDeployTemplatesWithContext(ctx context.Context, request *DescribeDeployTemplatesRequest) (response *DescribeDeployTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeDeployTemplatesRequest()
@@ -609,23 +615,27 @@ func NewDescribeModelsResponse() (response *DescribeModelsResponse) {
 }
 
 // DescribeModels
-// 本接口(DescribeModels)用于查询模型
+// 本接口(DescribeModels)用于查询模型。传入 ServiceId 时按当前服务占用过滤重装候选模型。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDMODELIDMALFORMED = "InvalidParameterValue.InvalidModelIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
 func (c *Client) DescribeModels(request *DescribeModelsRequest) (response *DescribeModelsResponse, err error) {
     return c.DescribeModelsWithContext(context.Background(), request)
 }
 
 // DescribeModels
-// 本接口(DescribeModels)用于查询模型
+// 本接口(DescribeModels)用于查询模型。传入 ServiceId 时按当前服务占用过滤重装候选模型。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDMODELIDMALFORMED = "InvalidParameterValue.InvalidModelIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
 func (c *Client) DescribeModelsWithContext(ctx context.Context, request *DescribeModelsRequest) (response *DescribeModelsResponse, err error) {
     if request == nil {
         request = NewDescribeModelsRequest()

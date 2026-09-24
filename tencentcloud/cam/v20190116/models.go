@@ -55,62 +55,62 @@ type AccessKeyDetail struct {
 
 // Predefined struct for user
 type AddUserRequestParams struct {
-	// 子用户用户名
+	// <p>子用户用户名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 子用户备注
+	// <p>子用户备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
+	// <p>子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。</p>
 	ConsoleLogin *uint64 `json:"ConsoleLogin,omitnil,omitempty" name:"ConsoleLogin"`
 
-	// 是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。
+	// <p>是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。</p>
 	UseApi *uint64 `json:"UseApi,omitnil,omitempty" name:"UseApi"`
 
-	// 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。
+	// <p>子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
+	// <p>子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。</p>
 	NeedResetPassword *uint64 `json:"NeedResetPassword,omitnil,omitempty" name:"NeedResetPassword"`
 
-	// 手机号
+	// <p>手机号</p>
 	PhoneNum *string `json:"PhoneNum,omitnil,omitempty" name:"PhoneNum"`
 
-	// 区号
+	// <p>区号</p>
 	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
 
-	// 邮箱
+	// <p>邮箱</p>
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 }
 
 type AddUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 子用户用户名
+	// <p>子用户用户名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 子用户备注
+	// <p>子用户备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
+	// <p>子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。</p>
 	ConsoleLogin *uint64 `json:"ConsoleLogin,omitnil,omitempty" name:"ConsoleLogin"`
 
-	// 是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。
+	// <p>是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。</p>
 	UseApi *uint64 `json:"UseApi,omitnil,omitempty" name:"UseApi"`
 
-	// 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。
+	// <p>子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
+	// <p>子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。</p>
 	NeedResetPassword *uint64 `json:"NeedResetPassword,omitnil,omitempty" name:"NeedResetPassword"`
 
-	// 手机号
+	// <p>手机号</p>
 	PhoneNum *string `json:"PhoneNum,omitnil,omitempty" name:"PhoneNum"`
 
-	// 区号
+	// <p>区号</p>
 	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
 
-	// 邮箱
+	// <p>邮箱</p>
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 }
 
@@ -143,23 +143,26 @@ func (r *AddUserRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddUserResponseParams struct {
-	// 子用户 UIN
+	// <p>子用户 UIN</p>
 	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 子用户用户名
+	// <p>子用户用户名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 如果输入参数组合为自动生成随机密码，则返回生成的密码
+	// <p>如果输入参数组合为自动生成随机密码，则返回生成的密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 子用户密钥 ID
+	// <p>子用户密钥 ID</p>
 	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
 
-	// 子用户密钥 Key
+	// <p>子用户密钥 Key</p>
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 
-	// 子用户 UID
+	// <p>子用户 UID</p>
 	Uid *uint64 `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// <p>手机号验证地址。</p>
+	PhoneNumVerifyLink *string `json:"PhoneNumVerifyLink,omitnil,omitempty" name:"PhoneNumVerifyLink"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -834,38 +837,38 @@ func (r *CreateGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMessageReceiverRequestParams struct {
-	// 消息接收人的用户名
+	// <p>消息接收人的用户名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号国际区号，国内为86
+	// <p>手机号国际区号，国内为86</p>
 	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
 
-	// 手机号码, 例如：132****2492
-	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
-
-	// 邮箱，例如：57*****@qq.com
+	// <p>邮箱，例如：57<strong>*</strong>@qq.com</p>
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 消息接收人的备注，选填
+	// <p>手机号码, 例如：132****2492</p>
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// <p>消息接收人的备注，选填</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type CreateMessageReceiverRequest struct {
 	*tchttp.BaseRequest
 	
-	// 消息接收人的用户名
+	// <p>消息接收人的用户名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号国际区号，国内为86
+	// <p>手机号国际区号，国内为86</p>
 	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
 
-	// 手机号码, 例如：132****2492
-	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
-
-	// 邮箱，例如：57*****@qq.com
+	// <p>邮箱，例如：57<strong>*</strong>@qq.com</p>
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 消息接收人的备注，选填
+	// <p>手机号码, 例如：132****2492</p>
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// <p>消息接收人的备注，选填</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -883,8 +886,8 @@ func (r *CreateMessageReceiverRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Name")
 	delete(f, "CountryCode")
-	delete(f, "PhoneNumber")
 	delete(f, "Email")
+	delete(f, "PhoneNumber")
 	delete(f, "Remark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMessageReceiverRequest has unknown keys!", "")
@@ -894,6 +897,9 @@ func (r *CreateMessageReceiverRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMessageReceiverResponseParams struct {
+	// <p>手机号验证地址。</p>
+	PhoneNumVerifyLink *string `json:"PhoneNumVerifyLink,omitnil,omitempty" name:"PhoneNumVerifyLink"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

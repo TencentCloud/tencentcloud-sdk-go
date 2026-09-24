@@ -20,6 +20,27 @@ const (
 	// 系统异常。
 	INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
 
+	// 请求字段缺失
+	INTERNALERROR_TURINGFIELDMISSED = "InternalError.TuringFieldMissed"
+
+	// 内部错误
+	INTERNALERROR_TURINGINTERNALERROR = "InternalError.TuringInternalError"
+
+	// 时间戳字段不合法
+	INTERNALERROR_TURINGINVALIDTIMESTAMP = "InternalError.TuringInvalidTimestamp"
+
+	// 已购配额已用完
+	INTERNALERROR_TURINGLIMITEXCEEDED = "InternalError.TuringLimitExceeded"
+
+	// QPS超过频率限制
+	INTERNALERROR_TURINGREQUESTLIMITEXCEEDED = "InternalError.TuringRequestLimitExceeded"
+
+	// 服务调用失败
+	INTERNALERROR_TURINGSERVICEFAILED = "InternalError.TuringServiceFailed"
+
+	// 子服务超时
+	INTERNALERROR_TURINGSUBSERVICETIMEOUT = "InternalError.TuringSubServiceTimeout"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
@@ -47,6 +68,9 @@ const (
 	// EventTime与当前系统时间相差过大
 	INVALIDPARAMETERVALUE_INVALIDEVENTTIME = "InvalidParameterValue.InvalidEventTime"
 
+	// 服务参数错误
+	INVALIDPARAMETERVALUE_INVALIDTURINGTOKEN = "InvalidParameterValue.InvalidTuringToken"
+
 	// 租户不存在。
 	INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
 
@@ -58,4 +82,22 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// 渠道号不匹配。
+	UNAUTHORIZEDOPERATION_CHANNELIDMISMATCH = "UnauthorizedOperation.ChannelIdMismatch"
+
+	// 签名检验失败
+	UNAUTHORIZEDOPERATION_INVALIDTURINGSIGNATURE = "UnauthorizedOperation.InvalidTuringSignature"
+
+	// 服务未找到
+	UNAUTHORIZEDOPERATION_RESOURCENOTFOUND = "UnauthorizedOperation.ResourceNotFound"
+
+	// 重放请求
+	UNAUTHORIZEDOPERATION_TURINGREPLAYREQUEST = "UnauthorizedOperation.TuringReplayRequest"
+
+	// 服务访问未授权
+	UNAUTHORIZEDOPERATION_TURINGSERVICEUNAUTHORIZED = "UnauthorizedOperation.TuringServiceUnauthorized"
+
+	// appid未配置
+	UNAUTHORIZEDOPERATION_UNKNOWNTURINGAPPID = "UnauthorizedOperation.UnknownTuringAppid"
 )

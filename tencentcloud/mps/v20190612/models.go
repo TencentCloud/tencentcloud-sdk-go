@@ -27142,36 +27142,34 @@ type QualityControlStrategy struct {
 }
 
 type QualityControlTemplate struct {
-	// 媒体质检模板唯一标识。
+	// <p>媒体质检模板唯一标识。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 媒体质检模板名称。
+	// <p>媒体质检模板名称。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述信息。
+	// <p>模板描述信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 模板类型，取值：
-	// <li>Preset：系统预置模板；</li>
-	// <li>Custom：用户自定义模板。</li>
+	// <p>模板类型，取值：</p><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 媒体质检配置参数。
+	// <p>媒体质检配置参数。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityControlItemSet []*QualityControlItemConfig `json:"QualityControlItemSet,omitnil,omitempty" name:"QualityControlItemSet"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// <p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// <p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 媒体质检的抽检策略。
+	// <p>媒体质检的抽检策略。</p>
 	Strategy *QualityControlStrategy `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 }
 

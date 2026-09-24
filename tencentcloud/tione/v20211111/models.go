@@ -6547,6 +6547,9 @@ type EnvVar struct {
 	// <p>环境变量value</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// <p>是否对外不可见,true 表示该环境变量的 Value 为敏感值.</p>
+	IsPrivate *bool `json:"IsPrivate,omitnil,omitempty" name:"IsPrivate"`
 }
 
 type Event struct {
@@ -8635,10 +8638,10 @@ type OperatorInfo struct {
 }
 
 type Option struct {
-	// 指标名
+	// <p>指标名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 指标值
+	// <p>指标值</p>
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

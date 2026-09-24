@@ -1182,6 +1182,24 @@ type ModelList struct {
 
 	// <p>模型厂商</p>
 	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+
+	// <p>展示名称</p>
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// <p>模型描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>上下文窗口大小，单位 token</p>
+	ContextWindow *int64 `json:"ContextWindow,omitnil,omitempty" name:"ContextWindow"`
+
+	// <p>模型图标 URL</p>
+	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
+
+	// <p>计费倍率</p>
+	CreditMultiplier *float64 `json:"CreditMultiplier,omitnil,omitempty" name:"CreditMultiplier"`
+
+	// <p>思考配置</p>
+	Thinking *Thinking `json:"Thinking,omitnil,omitempty" name:"Thinking"`
 }
 
 type ModelUserAuthority struct {
@@ -1956,6 +1974,20 @@ func (r *StopChatAIResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopChatAIResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Thinking struct {
+	// <p>模式</p><p>枚举值：</p><ul><li>toggle： 可开关</li><li>always_on： 固定开启</li><li>always_off： 固定关闭</li><li>unconfigured： 未配置</li></ul>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>默认是否开启思考</p>
+	DefaultEnabled *bool `json:"DefaultEnabled,omitnil,omitempty" name:"DefaultEnabled"`
+
+	// <p>思考强度可选项，如 [&quot;high&quot;,&quot;max&quot;]</p>
+	EffortOptions []*string `json:"EffortOptions,omitnil,omitempty" name:"EffortOptions"`
+
+	// <p>默认思考强度</p>
+	DefaultEffort *string `json:"DefaultEffort,omitnil,omitempty" name:"DefaultEffort"`
 }
 
 // Predefined struct for user

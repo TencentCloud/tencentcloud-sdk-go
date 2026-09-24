@@ -1785,6 +1785,62 @@ func (c *Client) DescribeSkillListWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeUserAccessTokenRequest() (request *DescribeUserAccessTokenRequest) {
+    request = &DescribeUserAccessTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("workbuddyenterprise", APIVersion, "DescribeUserAccessToken")
+    
+    
+    return
+}
+
+func NewDescribeUserAccessTokenResponse() (response *DescribeUserAccessTokenResponse) {
+    response = &DescribeUserAccessTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserAccessToken
+// 根据调用者的 Uin / SubAccountUin 调用 OneID 换取用户级 access_token。换取到的 token 是 OneID 用户身份的短期凭证，供调用方以用户身份访问 OneID 开平接口。默认开启 JIT，SubAccountUin 不存在时自动在目标企业下创建影子用户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_USERACCESSTOKENEXCHANGEFAILED = "InternalError.UserAccessTokenExchangeFailed"
+//  INTERNALERROR_USERACCESSTOKENNOTCONFIGURED = "InternalError.UserAccessTokenNotConfigured"
+//  MISSINGPARAMETER_SUBACCOUNTUINREQUIRED = "MissingParameter.SubAccountUinRequired"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeUserAccessToken(request *DescribeUserAccessTokenRequest) (response *DescribeUserAccessTokenResponse, err error) {
+    return c.DescribeUserAccessTokenWithContext(context.Background(), request)
+}
+
+// DescribeUserAccessToken
+// 根据调用者的 Uin / SubAccountUin 调用 OneID 换取用户级 access_token。换取到的 token 是 OneID 用户身份的短期凭证，供调用方以用户身份访问 OneID 开平接口。默认开启 JIT，SubAccountUin 不存在时自动在目标企业下创建影子用户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_USERACCESSTOKENEXCHANGEFAILED = "InternalError.UserAccessTokenExchangeFailed"
+//  INTERNALERROR_USERACCESSTOKENNOTCONFIGURED = "InternalError.UserAccessTokenNotConfigured"
+//  MISSINGPARAMETER_SUBACCOUNTUINREQUIRED = "MissingParameter.SubAccountUinRequired"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeUserAccessTokenWithContext(ctx context.Context, request *DescribeUserAccessTokenRequest) (response *DescribeUserAccessTokenResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserAccessTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "workbuddyenterprise", APIVersion, "DescribeUserAccessToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserAccessToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserAccessTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewMigrateAgentSessionRequest() (request *MigrateAgentSessionRequest) {
     request = &MigrateAgentSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},

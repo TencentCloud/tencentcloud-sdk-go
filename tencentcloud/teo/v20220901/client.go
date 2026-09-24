@@ -1701,6 +1701,78 @@ func (c *Client) CreateInferenceAPITokenWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateInferenceDomainRequest() (request *CreateInferenceDomainRequest) {
+    request = &CreateInferenceDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateInferenceDomain")
+    
+    
+    return
+}
+
+func NewCreateInferenceDomainResponse() (response *CreateInferenceDomainResponse) {
+    response = &CreateInferenceDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateInferenceDomain
+// 创建推理服务域名，用于通过自定义域名访问推理服务，一个推理服务下最多支持创建 5 个自定义域名。
+//
+// 创建成功后，还需完成以下步骤，域名才能正常对外提供访问：
+//
+// 1. 校验域名 CNAME 配置状态，请参考 [CheckCnameStatus](https://cloud.tencent.com/document/api/1552/94491) 接口；
+//
+// 2. 验证归属权，请参考 [VerifyOwnership](https://cloud.tencent.com/document/api/1552/98879) 接口；
+//
+// 3. 配置域名证书，请参考 [ModifyHostsCertificate](https://cloud.tencent.com/document/api/1552/80764) 接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  RESOURCENOTFOUND_INFERENCEDOMAIN = "ResourceNotFound.InferenceDomain"
+//  RESOURCENOTFOUND_INFERENCESERVICE = "ResourceNotFound.InferenceService"
+func (c *Client) CreateInferenceDomain(request *CreateInferenceDomainRequest) (response *CreateInferenceDomainResponse, err error) {
+    return c.CreateInferenceDomainWithContext(context.Background(), request)
+}
+
+// CreateInferenceDomain
+// 创建推理服务域名，用于通过自定义域名访问推理服务，一个推理服务下最多支持创建 5 个自定义域名。
+//
+// 创建成功后，还需完成以下步骤，域名才能正常对外提供访问：
+//
+// 1. 校验域名 CNAME 配置状态，请参考 [CheckCnameStatus](https://cloud.tencent.com/document/api/1552/94491) 接口；
+//
+// 2. 验证归属权，请参考 [VerifyOwnership](https://cloud.tencent.com/document/api/1552/98879) 接口；
+//
+// 3. 配置域名证书，请参考 [ModifyHostsCertificate](https://cloud.tencent.com/document/api/1552/80764) 接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  RESOURCENOTFOUND_INFERENCEDOMAIN = "ResourceNotFound.InferenceDomain"
+//  RESOURCENOTFOUND_INFERENCESERVICE = "ResourceNotFound.InferenceService"
+func (c *Client) CreateInferenceDomainWithContext(ctx context.Context, request *CreateInferenceDomainRequest) (response *CreateInferenceDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateInferenceDomainRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateInferenceDomain")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInferenceDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInferenceDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateInferenceServiceRequest() (request *CreateInferenceServiceRequest) {
     request = &CreateInferenceServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4349,8 +4421,12 @@ func NewDeleteAccelerationDomainsResponse() (response *DeleteAccelerationDomains
 //  INVALIDPARAMETER_ZONEISGRAYPUBLISHING = "InvalidParameter.ZoneIsGrayPublishing"
 //  INVALIDPARAMETER_ZONENOTFOUND = "InvalidParameter.ZoneNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
+//  INVALIDPARAMETERVALUE_RECORDNEEDDEFAULTLOCATION = "InvalidParameterValue.RecordNeedDefaultLocation"
+//  INVALIDPARAMETERVALUE_UNSUPPORTDELETEWEIGHTRECORD = "InvalidParameterValue.UnSupportDeleteWeightRecord"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = "OperationDenied.ResourceLockedTemporary"
+//  OPERATIONDENIED_UNSUPPORTDELETELOCATIONRECORD = "OperationDenied.UnSupportDeleteLocationRecord"
+//  OPERATIONDENIED_UNSUPPORTDELETEWEIGHTRECORD = "OperationDenied.UnSupportDeleteWeightRecord"
 //  OPERATIONDENIED_VERSIONCONTROLISGRAYING = "OperationDenied.VersionControlIsGraying"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEUNAVAILABLE_DOMAINNOTFOUND = "ResourceUnavailable.DomainNotFound"
@@ -4366,8 +4442,12 @@ func (c *Client) DeleteAccelerationDomains(request *DeleteAccelerationDomainsReq
 //  INVALIDPARAMETER_ZONEISGRAYPUBLISHING = "InvalidParameter.ZoneIsGrayPublishing"
 //  INVALIDPARAMETER_ZONENOTFOUND = "InvalidParameter.ZoneNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
+//  INVALIDPARAMETERVALUE_RECORDNEEDDEFAULTLOCATION = "InvalidParameterValue.RecordNeedDefaultLocation"
+//  INVALIDPARAMETERVALUE_UNSUPPORTDELETEWEIGHTRECORD = "InvalidParameterValue.UnSupportDeleteWeightRecord"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = "OperationDenied.ResourceLockedTemporary"
+//  OPERATIONDENIED_UNSUPPORTDELETELOCATIONRECORD = "OperationDenied.UnSupportDeleteLocationRecord"
+//  OPERATIONDENIED_UNSUPPORTDELETEWEIGHTRECORD = "OperationDenied.UnSupportDeleteWeightRecord"
 //  OPERATIONDENIED_VERSIONCONTROLISGRAYING = "OperationDenied.VersionControlIsGraying"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEUNAVAILABLE_DOMAINNOTFOUND = "ResourceUnavailable.DomainNotFound"
@@ -6132,6 +6212,7 @@ func NewDeleteZoneResponse() (response *DeleteZoneResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_COMPLIANCEFORBIDDEN = "OperationDenied.ComplianceForbidden"
 //  OPERATIONDENIED_DELETEZONEPRECHECKFAILED = "OperationDenied.DeleteZonePreCheckFailed"
 //  OPERATIONDENIED_DISABLEZONENOTCOMPLETED = "OperationDenied.DisableZoneNotCompleted"
 //  OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = "OperationDenied.ZoneIsBindingSharedCNAME"
@@ -6148,6 +6229,7 @@ func (c *Client) DeleteZone(request *DeleteZoneRequest) (response *DeleteZoneRes
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_COMPLIANCEFORBIDDEN = "OperationDenied.ComplianceForbidden"
 //  OPERATIONDENIED_DELETEZONEPRECHECKFAILED = "OperationDenied.DeleteZonePreCheckFailed"
 //  OPERATIONDENIED_DISABLEZONENOTCOMPLETED = "OperationDenied.DisableZoneNotCompleted"
 //  OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = "OperationDenied.ZoneIsBindingSharedCNAME"
@@ -8073,6 +8155,60 @@ func (c *Client) DescribeInferenceAPITokensWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeInferenceAPITokensResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInferenceDomainsRequest() (request *DescribeInferenceDomainsRequest) {
+    request = &DescribeInferenceDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeInferenceDomains")
+    
+    
+    return
+}
+
+func NewDescribeInferenceDomainsResponse() (response *DescribeInferenceDomainsResponse) {
+    response = &DescribeInferenceDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInferenceDomains
+// 查询推理服务域名列表，返回域名的Cname地址、归属权验证和证书等相关信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  RESOURCENOTFOUND_INFERENCESERVICE = "ResourceNotFound.InferenceService"
+func (c *Client) DescribeInferenceDomains(request *DescribeInferenceDomainsRequest) (response *DescribeInferenceDomainsResponse, err error) {
+    return c.DescribeInferenceDomainsWithContext(context.Background(), request)
+}
+
+// DescribeInferenceDomains
+// 查询推理服务域名列表，返回域名的Cname地址、归属权验证和证书等相关信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  RESOURCENOTFOUND_INFERENCESERVICE = "ResourceNotFound.InferenceService"
+func (c *Client) DescribeInferenceDomainsWithContext(ctx context.Context, request *DescribeInferenceDomainsRequest) (response *DescribeInferenceDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInferenceDomainsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeInferenceDomains")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInferenceDomains require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInferenceDomainsResponse()
     err = c.Send(request, response)
     return
 }
@@ -16771,6 +16907,62 @@ func (c *Client) ModifyZoneWorkModeWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyZoneWorkModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOperateInferenceDomainRequest() (request *OperateInferenceDomainRequest) {
+    request = &OperateInferenceDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "OperateInferenceDomain")
+    
+    
+    return
+}
+
+func NewOperateInferenceDomainResponse() (response *OperateInferenceDomainResponse) {
+    response = &OperateInferenceDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OperateInferenceDomain
+// 操作推理服务域名，支持停止、启用和删除推理服务域名，删除后的资源不可恢复。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  RESOURCENOTFOUND_INFERENCEDOMAIN = "ResourceNotFound.InferenceDomain"
+//  RESOURCENOTFOUND_INFERENCESERVICE = "ResourceNotFound.InferenceService"
+func (c *Client) OperateInferenceDomain(request *OperateInferenceDomainRequest) (response *OperateInferenceDomainResponse, err error) {
+    return c.OperateInferenceDomainWithContext(context.Background(), request)
+}
+
+// OperateInferenceDomain
+// 操作推理服务域名，支持停止、启用和删除推理服务域名，删除后的资源不可恢复。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  RESOURCENOTFOUND_INFERENCEDOMAIN = "ResourceNotFound.InferenceDomain"
+//  RESOURCENOTFOUND_INFERENCESERVICE = "ResourceNotFound.InferenceService"
+func (c *Client) OperateInferenceDomainWithContext(ctx context.Context, request *OperateInferenceDomainRequest) (response *OperateInferenceDomainResponse, err error) {
+    if request == nil {
+        request = NewOperateInferenceDomainRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "OperateInferenceDomain")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OperateInferenceDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOperateInferenceDomainResponse()
     err = c.Send(request, response)
     return
 }

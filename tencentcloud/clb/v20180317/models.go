@@ -2939,7 +2939,7 @@ type CreateModelRequestParams struct {
 	// <p>健康检查配置</p>
 	HealthCheckConfigs []*ServiceProviderHealthCheckConfigItemInput `json:"HealthCheckConfigs,omitnil,omitempty" name:"HealthCheckConfigs"`
 
-	// <p>模型输出模态</p>
+	// <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
 
 	// <p>请求后缀</p>
@@ -3000,7 +3000,7 @@ type CreateModelRequest struct {
 	// <p>健康检查配置</p>
 	HealthCheckConfigs []*ServiceProviderHealthCheckConfigItemInput `json:"HealthCheckConfigs,omitnil,omitempty" name:"HealthCheckConfigs"`
 
-	// <p>模型输出模态</p>
+	// <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
 
 	// <p>请求后缀</p>
@@ -3125,8 +3125,17 @@ type CreateModelRouterRequestParams struct {
 	// <p>单位</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// <p>Embedding 配置</p>
+	// <p>Embedding 调度配置</p>
 	EmbeddingConfig *EmbeddingConfig `json:"EmbeddingConfig,omitnil,omitempty" name:"EmbeddingConfig"`
+
+	// <p>Video 配置</p>
+	VideoConfig *VideoConfig `json:"VideoConfig,omitnil,omitempty" name:"VideoConfig"`
+
+	// <p>Rerank 调度配置</p>
+	RerankConfig *RerankConfig `json:"RerankConfig,omitnil,omitempty" name:"RerankConfig"`
+
+	// <p>Decisions 调度配置</p>
+	DecisionsConfig *DecisionsConfig `json:"DecisionsConfig,omitnil,omitempty" name:"DecisionsConfig"`
 }
 
 type CreateModelRouterRequest struct {
@@ -3183,8 +3192,17 @@ type CreateModelRouterRequest struct {
 	// <p>单位</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// <p>Embedding 配置</p>
+	// <p>Embedding 调度配置</p>
 	EmbeddingConfig *EmbeddingConfig `json:"EmbeddingConfig,omitnil,omitempty" name:"EmbeddingConfig"`
+
+	// <p>Video 配置</p>
+	VideoConfig *VideoConfig `json:"VideoConfig,omitnil,omitempty" name:"VideoConfig"`
+
+	// <p>Rerank 调度配置</p>
+	RerankConfig *RerankConfig `json:"RerankConfig,omitnil,omitempty" name:"RerankConfig"`
+
+	// <p>Decisions 调度配置</p>
+	DecisionsConfig *DecisionsConfig `json:"DecisionsConfig,omitnil,omitempty" name:"DecisionsConfig"`
 }
 
 func (r *CreateModelRouterRequest) ToJsonString() string {
@@ -3217,6 +3235,9 @@ func (r *CreateModelRouterRequest) FromJsonString(s string) error {
 	delete(f, "EipAddressId")
 	delete(f, "Bandwidth")
 	delete(f, "EmbeddingConfig")
+	delete(f, "VideoConfig")
+	delete(f, "RerankConfig")
+	delete(f, "DecisionsConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRouterRequest has unknown keys!", "")
 	}
@@ -3791,6 +3812,20 @@ type CrossTargets struct {
 
 	// 子机或者网卡所属的地域。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+type DecisionsConfig struct {
+	// <p>模型内路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoutingStrategy *string `json:"RoutingStrategy,omitnil,omitempty" name:"RoutingStrategy"`
+
+	// <p>路由参数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoutingStrategyArgs *RoutingStrategyArgs `json:"RoutingStrategyArgs,omitnil,omitempty" name:"RoutingStrategyArgs"`
+
+	// <p>CMR实例级别模型组内请求重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumRetries *uint64 `json:"NumRetries,omitnil,omitempty" name:"NumRetries"`
 }
 
 // Predefined struct for user
@@ -7424,8 +7459,11 @@ type DescribeModelAssociationsRequestParams struct {
 	// <p>翻页偏移量</p><p>默认值：0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>模型输出模态</p>
+	// <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
+
+	// <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>rerank： 重排序</li><li>video： 视频</li></ul>
+	Capabilities []*string `json:"Capabilities,omitnil,omitempty" name:"Capabilities"`
 }
 
 type DescribeModelAssociationsRequest struct {
@@ -7440,8 +7478,11 @@ type DescribeModelAssociationsRequest struct {
 	// <p>翻页偏移量</p><p>默认值：0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>模型输出模态</p>
+	// <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
+
+	// <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>rerank： 重排序</li><li>video： 视频</li></ul>
+	Capabilities []*string `json:"Capabilities,omitnil,omitempty" name:"Capabilities"`
 }
 
 func (r *DescribeModelAssociationsRequest) ToJsonString() string {
@@ -7460,6 +7501,7 @@ func (r *DescribeModelAssociationsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Capability")
+	delete(f, "Capabilities")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelAssociationsRequest has unknown keys!", "")
 	}
@@ -9710,7 +9752,7 @@ func (r *DisassociateTargetGroupsResponse) FromJsonString(s string) error {
 }
 
 type EmbeddingConfig struct {
-	// <p>模型内路由策略</p>
+	// <p>模型内路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoutingStrategy *string `json:"RoutingStrategy,omitnil,omitempty" name:"RoutingStrategy"`
 
@@ -9718,7 +9760,7 @@ type EmbeddingConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoutingStrategyArgs *RoutingStrategyArgs `json:"RoutingStrategyArgs,omitnil,omitempty" name:"RoutingStrategyArgs"`
 
-	// <p>同一模型请求重试次数</p>
+	// <p>CMR实例级别模型组内请求重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumRetries *uint64 `json:"NumRetries,omitnil,omitempty" name:"NumRetries"`
 }
@@ -11333,7 +11375,7 @@ type ModelAssociation struct {
 	// <p>模型类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// <p>输出模态</p>
+	// <p>输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
 }
 
@@ -11446,7 +11488,7 @@ type ModelKeyInfoItem struct {
 	// <p>健康检查配置</p>
 	HealthCheckConfigs []*ServiceProviderHealthCheckConfigItemOutput `json:"HealthCheckConfigs,omitnil,omitempty" name:"HealthCheckConfigs"`
 
-	// <p>模型输出模态</p>
+	// <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
 
@@ -11571,8 +11613,22 @@ type ModelRouterDetail struct {
 	// <p>计费信息</p>
 	BillingConfig *ModelRouterBillingConfigOutput `json:"BillingConfig,omitnil,omitempty" name:"BillingConfig"`
 
-	// <p>Embedding配置</p>
+	// <p>Embedding调度配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmbeddingConfig *EmbeddingConfig `json:"EmbeddingConfig,omitnil,omitempty" name:"EmbeddingConfig"`
+
+	// <p>CMR关联的负载均衡实例id</p>
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
+
+	// <p>视频模型设置</p>
+	VideoConfig *VideoConfig `json:"VideoConfig,omitnil,omitempty" name:"VideoConfig"`
+
+	// <p>Rerank调度配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RerankConfig *RerankConfig `json:"RerankConfig,omitnil,omitempty" name:"RerankConfig"`
+
+	// <p>决策模型设置</p>
+	DecisionsConfig *DecisionsConfig `json:"DecisionsConfig,omitnil,omitempty" name:"DecisionsConfig"`
 }
 
 type ModelRouterLog struct {
@@ -13303,11 +13359,20 @@ type ModifyModelRouterAttributesRequestParams struct {
 	// <p>带宽</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// <p>模型输出模态</p>
+	// <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
 
-	// <p>embedding 模态配置</p>
+	// <p>Embedding 调度配置</p><p>传入该参数时，必须传Capability为embedding</p>
 	EmbeddingConfig *EmbeddingConfig `json:"EmbeddingConfig,omitnil,omitempty" name:"EmbeddingConfig"`
+
+	// <p>Video 调度配置</p>
+	VideoConfig *VideoConfig `json:"VideoConfig,omitnil,omitempty" name:"VideoConfig"`
+
+	// <p>Rerank 调度配置</p><p>传入该参数时，必须传Capability为rerank</p>
+	RerankConfig *RerankConfig `json:"RerankConfig,omitnil,omitempty" name:"RerankConfig"`
+
+	// <p>Decisions 调度配置</p>
+	DecisionsConfig *DecisionsConfig `json:"DecisionsConfig,omitnil,omitempty" name:"DecisionsConfig"`
 }
 
 type ModifyModelRouterAttributesRequest struct {
@@ -13331,11 +13396,20 @@ type ModifyModelRouterAttributesRequest struct {
 	// <p>带宽</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// <p>模型输出模态</p>
+	// <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
 
-	// <p>embedding 模态配置</p>
+	// <p>Embedding 调度配置</p><p>传入该参数时，必须传Capability为embedding</p>
 	EmbeddingConfig *EmbeddingConfig `json:"EmbeddingConfig,omitnil,omitempty" name:"EmbeddingConfig"`
+
+	// <p>Video 调度配置</p>
+	VideoConfig *VideoConfig `json:"VideoConfig,omitnil,omitempty" name:"VideoConfig"`
+
+	// <p>Rerank 调度配置</p><p>传入该参数时，必须传Capability为rerank</p>
+	RerankConfig *RerankConfig `json:"RerankConfig,omitnil,omitempty" name:"RerankConfig"`
+
+	// <p>Decisions 调度配置</p>
+	DecisionsConfig *DecisionsConfig `json:"DecisionsConfig,omitnil,omitempty" name:"DecisionsConfig"`
 }
 
 func (r *ModifyModelRouterAttributesRequest) ToJsonString() string {
@@ -13358,6 +13432,9 @@ func (r *ModifyModelRouterAttributesRequest) FromJsonString(s string) error {
 	delete(f, "Bandwidth")
 	delete(f, "Capability")
 	delete(f, "EmbeddingConfig")
+	delete(f, "VideoConfig")
+	delete(f, "RerankConfig")
+	delete(f, "DecisionsConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelRouterAttributesRequest has unknown keys!", "")
 	}
@@ -15082,6 +15159,20 @@ func (r *ReplaceCertForLoadBalancersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RerankConfig struct {
+	// <p>L2路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoutingStrategy *string `json:"RoutingStrategy,omitnil,omitempty" name:"RoutingStrategy"`
+
+	// <p>L2路由算法参数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoutingStrategyArgs *RoutingStrategyArgs `json:"RoutingStrategyArgs,omitnil,omitempty" name:"RoutingStrategyArgs"`
+
+	// <p>CMR实例级别模型组内请求重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumRetries *uint64 `json:"NumRetries,omitnil,omitempty" name:"NumRetries"`
+}
+
 type Resource struct {
 	// 运营商内具体资源信息，如"CMCC", "CUCC", "CTCC", "BGP", "INTERNAL"。
 	Type []*string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -16498,7 +16589,7 @@ type TestServiceProviderConnectionRequestParams struct {
 	// <p>    CMR 私网管道ID </p>
 	CMRPrivateNetworkTunnelId *string `json:"CMRPrivateNetworkTunnelId,omitnil,omitempty" name:"CMRPrivateNetworkTunnelId"`
 
-	// <p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li></ul>
+	// <p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li><li>rerank： 重排序能力</li><li>video： 生视频能力</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
 
 	// <p>端点路径</p>
@@ -16550,7 +16641,7 @@ type TestServiceProviderConnectionRequest struct {
 	// <p>    CMR 私网管道ID </p>
 	CMRPrivateNetworkTunnelId *string `json:"CMRPrivateNetworkTunnelId,omitnil,omitempty" name:"CMRPrivateNetworkTunnelId"`
 
-	// <p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li></ul>
+	// <p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li><li>rerank： 重排序能力</li><li>video： 生视频能力</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
 
 	// <p>端点路径</p>
@@ -16688,6 +16779,20 @@ type UserGroupInfo struct {
 
 	// <p>修改时间。「未分组」虚拟分组不返回此字段。</p>
 	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+}
+
+type VideoConfig struct {
+	// <p>模型内路由策略</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoutingStrategy *string `json:"RoutingStrategy,omitnil,omitempty" name:"RoutingStrategy"`
+
+	// <p>路由参数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoutingStrategyArgs *RoutingStrategyArgs `json:"RoutingStrategyArgs,omitnil,omitempty" name:"RoutingStrategyArgs"`
+
+	// <p>同一模型请求重试次数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumRetries *uint64 `json:"NumRetries,omitnil,omitempty" name:"NumRetries"`
 }
 
 type ZoneInfo struct {

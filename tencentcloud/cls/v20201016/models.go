@@ -13111,6 +13111,12 @@ type DescribeKafkaConsumerResponseParams struct {
 	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 
+	// <p>外网消费开关。</p>
+	EnableInternetConsume *bool `json:"EnableInternetConsume,omitnil,omitempty" name:"EnableInternetConsume"`
+
+	// <p>内网消费开关。</p>
+	EnableIntranetConsume *bool `json:"EnableIntranetConsume,omitnil,omitempty" name:"EnableIntranetConsume"`
+
 	// <p>消费范围类型，0:最新，1:历史+最新</p>
 	ScopeType *uint64 `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
 
@@ -20869,6 +20875,12 @@ type ModifyKafkaConsumerRequestParams struct {
 	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 
+	// <p>外网消费开关。</p>
+	EnableInternetConsume *bool `json:"EnableInternetConsume,omitnil,omitempty" name:"EnableInternetConsume"`
+
+	// <p>内网消费开关。</p>
+	EnableIntranetConsume *bool `json:"EnableIntranetConsume,omitnil,omitempty" name:"EnableIntranetConsume"`
+
 	// <p>消费范围类型，0:最新，1:历史+最新</p>
 	ScopeType *uint64 `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
 }
@@ -20887,6 +20899,12 @@ type ModifyKafkaConsumerRequest struct {
 
 	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>外网消费开关。</p>
+	EnableInternetConsume *bool `json:"EnableInternetConsume,omitnil,omitempty" name:"EnableInternetConsume"`
+
+	// <p>内网消费开关。</p>
+	EnableIntranetConsume *bool `json:"EnableIntranetConsume,omitnil,omitempty" name:"EnableIntranetConsume"`
 
 	// <p>消费范围类型，0:最新，1:历史+最新</p>
 	ScopeType *uint64 `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
@@ -20908,6 +20926,8 @@ func (r *ModifyKafkaConsumerRequest) FromJsonString(s string) error {
 	delete(f, "Compression")
 	delete(f, "ConsumerContent")
 	delete(f, "HasServicesLog")
+	delete(f, "EnableInternetConsume")
+	delete(f, "EnableIntranetConsume")
 	delete(f, "ScopeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKafkaConsumerRequest has unknown keys!", "")
@@ -23853,6 +23873,12 @@ type OpenKafkaConsumerRequestParams struct {
 	// <p>是否开启投递服务日志。1：关闭，2：开启。 默认值：2</p>
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 
+	// <p>外网消费开关，默认开启</p>
+	EnableInternetConsume *bool `json:"EnableInternetConsume,omitnil,omitempty" name:"EnableInternetConsume"`
+
+	// <p>内网消费开关，默认开启</p>
+	EnableIntranetConsume *bool `json:"EnableIntranetConsume,omitnil,omitempty" name:"EnableIntranetConsume"`
+
 	// <p>消费范围类型，0:最新；1:历史+最新；默认值:0</p>
 	ScopeType *uint64 `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
 }
@@ -23871,6 +23897,12 @@ type OpenKafkaConsumerRequest struct {
 
 	// <p>是否开启投递服务日志。1：关闭，2：开启。 默认值：2</p>
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>外网消费开关，默认开启</p>
+	EnableInternetConsume *bool `json:"EnableInternetConsume,omitnil,omitempty" name:"EnableInternetConsume"`
+
+	// <p>内网消费开关，默认开启</p>
+	EnableIntranetConsume *bool `json:"EnableIntranetConsume,omitnil,omitempty" name:"EnableIntranetConsume"`
 
 	// <p>消费范围类型，0:最新；1:历史+最新；默认值:0</p>
 	ScopeType *uint64 `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
@@ -23892,6 +23924,8 @@ func (r *OpenKafkaConsumerRequest) FromJsonString(s string) error {
 	delete(f, "Compression")
 	delete(f, "ConsumerContent")
 	delete(f, "HasServicesLog")
+	delete(f, "EnableInternetConsume")
+	delete(f, "EnableIntranetConsume")
 	delete(f, "ScopeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenKafkaConsumerRequest has unknown keys!", "")

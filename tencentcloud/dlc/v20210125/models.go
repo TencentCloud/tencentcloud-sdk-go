@@ -1376,6 +1376,26 @@ func (r *AttachWorkGroupPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Audit struct {
+	// <p>创建者</p>
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// <p>最后修改者</p>
+	LastModifier *string `json:"LastModifier,omitnil,omitempty" name:"LastModifier"`
+
+	// <p>创建时间戳</p>
+	CreatedAt *uint64 `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>最后修改时间戳</p>
+	LastModifiedAt *uint64 `json:"LastModifiedAt,omitnil,omitempty" name:"LastModifiedAt"`
+
+	// <p>最后修改时间（已废弃）</p><p>参数格式：2024-11-01 11:01:01</p>
+	LastModifiedTime *string `json:"LastModifiedTime,omitnil,omitempty" name:"LastModifiedTime"`
+
+	// <p>创建时间（已废弃）</p><p>参数格式：2024-11-01 11:01:01</p>
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+}
+
 type BatchSQLCostInfo struct {
 	// 任务id
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
@@ -1772,6 +1792,14 @@ func (r *BindWorkGroupsToUserResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *BindWorkGroupsToUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type BucketPartitioning struct {
+	// <p>分桶字段</p>
+	FieldNames []*string `json:"FieldNames,omitnil,omitempty" name:"FieldNames"`
+
+	// <p>分桶数</p>
+	NumBuckets *uint64 `json:"NumBuckets,omitnil,omitempty" name:"NumBuckets"`
 }
 
 type CHDFSProductVpcInfo struct {
@@ -2223,6 +2251,85 @@ func (r *CancelTrainingJobInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CancelTrainingJobInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CatalogConfig struct {
+	// <p>数据目录唯一 ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>数据目录名字</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>数据目录类型</p><p>枚举值：</p><ul><li>LAKEHOUSE： LAKEHOUSE类型</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>数据目录描述信息</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>2： 连接成功</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>数据目录属性</p>
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// <p>连接信息</p>
+	Connection *ConnectionConfig `json:"Connection,omitnil,omitempty" name:"Connection"`
+
+	// <p>操作人 uin</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>连接日志</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>审计信息</p>
+	Audit *Audit `json:"Audit,omitnil,omitempty" name:"Audit"`
+
+	// <p>创建时间（已废弃）</p><p>参数格式：2024-01-01 12:00:00</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间（已废弃）</p><p>参数格式：2024-01-01 12:00:00</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type CatalogTaleInfo struct {
+	// <p>表名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>字段信息</p>
+	Columns []*ColumnInfo `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// <p>属性值</p>
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// <p>分区</p>
+	Partitioning []*Partitioning `json:"Partitioning,omitnil,omitempty" name:"Partitioning"`
+
+	// <p>索引</p>
+	Indexes []*IndexInfo `json:"Indexes,omitnil,omitempty" name:"Indexes"`
+
+	// <p>编辑者/审计信息</p>
+	Audit *Audit `json:"Audit,omitnil,omitempty" name:"Audit"`
+
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>表格式</p>
+	TableFormat *string `json:"TableFormat,omitnil,omitempty" name:"TableFormat"`
+
+	// <p>表格式类型</p><p>枚举值：</p><ul><li>v2： TcIceberg v2版本</li></ul>
+	FormatType *string `json:"FormatType,omitnil,omitempty" name:"FormatType"`
+
+	// <p>表类型</p><p>枚举值：</p><ul><li>Managed： 内部表</li></ul>
+	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
+
+	// <p>场景类型</p><p>枚举值：</p><ul><li>REALTIME： 实时类型</li></ul>
+	TableMode *string `json:"TableMode,omitnil,omitempty" name:"TableMode"`
 }
 
 // Predefined struct for user
@@ -3006,6 +3113,14 @@ type CloudTag struct {
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
+type ClsLogEntry struct {
+	// <p>Unix 毫秒时间戳。</p>
+	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// <p>日志 JSON 字符串。</p>
+	LogJson *string `json:"LogJson,omitnil,omitempty" name:"LogJson"`
+}
+
 type ClsTopicItem struct {
 	// <p>日志主题 ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
@@ -3150,6 +3265,26 @@ type Column struct {
 	TypeText *string `json:"TypeText,omitnil,omitempty" name:"TypeText"`
 }
 
+type ColumnInfo struct {
+	// <p>字段名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>字段类型</p><p>枚举值：</p><ul><li>integer： 数值类型</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>字段描述</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>字段设置（已废弃）</p>
+	FieldSetting *string `json:"FieldSetting,omitnil,omitempty" name:"FieldSetting"`
+
+	// <p>是否为主键（已废弃）</p><p>枚举值：</p><ul><li>true： 是主键</li></ul>
+	IsPrimaryKey *bool `json:"IsPrimaryKey,omitnil,omitempty" name:"IsPrimaryKey"`
+
+	// <p>字段类型 sqlType 格式</p>
+	TypeText *string `json:"TypeText,omitnil,omitempty" name:"TypeText"`
+}
+
 type CommonMetrics struct {
 	// 创建任务时长，单位：ms
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3194,6 +3329,29 @@ type CommonMetrics struct {
 	// 	扫描行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessedRows *int64 `json:"ProcessedRows,omitnil,omitempty" name:"ProcessedRows"`
+}
+
+type ConnectionConfig struct {
+	// <p>mysql数据源连接信息</p>
+	MysqlConnection *MysqlConnection `json:"MysqlConnection,omitnil,omitempty" name:"MysqlConnection"`
+
+	// <p>hive数据源连接信息</p>
+	EmrHiveConnection *HiveConnection `json:"EmrHiveConnection,omitnil,omitempty" name:"EmrHiveConnection"`
+
+	// <p>doris数据源连接信息</p>
+	TCHouseDConnection *DorisConnection `json:"TCHouseDConnection,omitnil,omitempty" name:"TCHouseDConnection"`
+
+	// <p>数据卷连接信息</p>
+	VolumeConnection *VolumeConnection `json:"VolumeConnection,omitnil,omitempty" name:"VolumeConnection"`
+
+	// <p>lakehouse连接信息</p>
+	LakeHouseConnection *LakeHouseConnection `json:"LakeHouseConnection,omitnil,omitempty" name:"LakeHouseConnection"`
+
+	// <p>PostgreSQL数据源连接信息</p>
+	PostgreSQLConnection *PostgreSQLConnection `json:"PostgreSQLConnection,omitnil,omitempty" name:"PostgreSQLConnection"`
+
+	// <p>dlc数据源连接信息</p>
+	DlcConnection *DlcConnection `json:"DlcConnection,omitnil,omitempty" name:"DlcConnection"`
 }
 
 // Predefined struct for user
@@ -5406,6 +5564,352 @@ func (r *CreateInternalTableResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateInternalTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateJobDefinitionRequestParams struct {
+	// <p>作业定义名称。必填，trim 后非空。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>作业定义描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>引擎大类，非必传，缺省 SPARK；当前仅支持 SPARK。</p>
+	MajorType *string `json:"MajorType,omitnil,omitempty" name:"MajorType"`
+
+	// <p>作业子类型，SPARK_SQL / SPARK_BATCH / SPARK_STREAM，必填；决定 Entrypoint 字段的校验规则。</p>
+	MinorType *string `json:"MinorType,omitnil,omitempty" name:"MinorType"`
+
+	// <p>流作业 checkpoint 路径（如 cosn://bucket/path/checkpoint）。MinorType=SPARK_STREAM 时必填；同一作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+	CheckpointLocation *string `json:"CheckpointLocation,omitnil,omitempty" name:"CheckpointLocation"`
+
+	// <p>资源分区代码，仅 RunMode=JOB 可传（QueueName 非空时必填）；RunMode=WAREHOUSE 时禁止传（被仓库反查值覆盖）。</p>
+	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
+
+	// <p>队列名称，仅 RunMode=JOB 可传且须与 PartitionCode 成对；RunMode=WAREHOUSE 时禁止传。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>运行时/镜像编码（可选值见 DescribeSparkRuntimes）。RunMode=JOB 新建时必填（无基座继承语义）；克隆场景可省略（继承源定义快照）；RunMode=WAREHOUSE 时忽略。</p>
+	RuntimeCode *string `json:"RuntimeCode,omitnil,omitempty" name:"RuntimeCode"`
+
+	// <p>内置 Catalog 版本码（取值为 DescribeSysCatalogList 返回的目录子类型）。RunMode=JOB 新建时条件必填：未传时若可用（enabled）SysCatalog 唯一则自动选中，多个/零个报错；克隆场景可省略（继承源定义快照）；RunMode=WAREHOUSE 时禁止传。</p>
+	SysCatalogVersion *string `json:"SysCatalogVersion,omitnil,omitempty" name:"SysCatalogVersion"`
+
+	// <p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），作为 SPARK_CUSTOM 配置通道落库，两种运行模式均生效。</p>
+	CustomProperties *string `json:"CustomProperties,omitnil,omitempty" name:"CustomProperties"`
+
+	// <p>环境变量（KEY=VALUE）列表。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
+	EnvVars []*KVPair `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+
+	// <p>运行模式，必填。可选值：WAREHOUSE（提交到计算仓库执行）/ JOB（按 Spec 独享资源）。两种模式的参数集严格隔离，详见各字段说明。</p>
+	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
+
+	// <p>计算仓库 ID。RunMode=WAREHOUSE 时必填（仓库需可启动）；RunMode=JOB 时禁止传。</p>
+	WarehouseId *string `json:"WarehouseId,omitnil,omitempty" name:"WarehouseId"`
+}
+
+type CreateJobDefinitionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>作业定义名称。必填，trim 后非空。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>作业定义描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>引擎大类，非必传，缺省 SPARK；当前仅支持 SPARK。</p>
+	MajorType *string `json:"MajorType,omitnil,omitempty" name:"MajorType"`
+
+	// <p>作业子类型，SPARK_SQL / SPARK_BATCH / SPARK_STREAM，必填；决定 Entrypoint 字段的校验规则。</p>
+	MinorType *string `json:"MinorType,omitnil,omitempty" name:"MinorType"`
+
+	// <p>流作业 checkpoint 路径（如 cosn://bucket/path/checkpoint）。MinorType=SPARK_STREAM 时必填；同一作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+	CheckpointLocation *string `json:"CheckpointLocation,omitnil,omitempty" name:"CheckpointLocation"`
+
+	// <p>资源分区代码，仅 RunMode=JOB 可传（QueueName 非空时必填）；RunMode=WAREHOUSE 时禁止传（被仓库反查值覆盖）。</p>
+	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
+
+	// <p>队列名称，仅 RunMode=JOB 可传且须与 PartitionCode 成对；RunMode=WAREHOUSE 时禁止传。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>运行时/镜像编码（可选值见 DescribeSparkRuntimes）。RunMode=JOB 新建时必填（无基座继承语义）；克隆场景可省略（继承源定义快照）；RunMode=WAREHOUSE 时忽略。</p>
+	RuntimeCode *string `json:"RuntimeCode,omitnil,omitempty" name:"RuntimeCode"`
+
+	// <p>内置 Catalog 版本码（取值为 DescribeSysCatalogList 返回的目录子类型）。RunMode=JOB 新建时条件必填：未传时若可用（enabled）SysCatalog 唯一则自动选中，多个/零个报错；克隆场景可省略（继承源定义快照）；RunMode=WAREHOUSE 时禁止传。</p>
+	SysCatalogVersion *string `json:"SysCatalogVersion,omitnil,omitempty" name:"SysCatalogVersion"`
+
+	// <p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），作为 SPARK_CUSTOM 配置通道落库，两种运行模式均生效。</p>
+	CustomProperties *string `json:"CustomProperties,omitnil,omitempty" name:"CustomProperties"`
+
+	// <p>环境变量（KEY=VALUE）列表。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
+	EnvVars []*KVPair `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+
+	// <p>运行模式，必填。可选值：WAREHOUSE（提交到计算仓库执行）/ JOB（按 Spec 独享资源）。两种模式的参数集严格隔离，详见各字段说明。</p>
+	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
+
+	// <p>计算仓库 ID。RunMode=WAREHOUSE 时必填（仓库需可启动）；RunMode=JOB 时禁止传。</p>
+	WarehouseId *string `json:"WarehouseId,omitnil,omitempty" name:"WarehouseId"`
+}
+
+func (r *CreateJobDefinitionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateJobDefinitionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "MajorType")
+	delete(f, "MinorType")
+	delete(f, "CheckpointLocation")
+	delete(f, "PartitionCode")
+	delete(f, "QueueName")
+	delete(f, "RuntimeCode")
+	delete(f, "SysCatalogVersion")
+	delete(f, "CustomProperties")
+	delete(f, "EnvVars")
+	delete(f, "RunMode")
+	delete(f, "WarehouseId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobDefinitionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateJobDefinitionResponseParams struct {
+	// <p>作业定义唯一标识符（ID）。</p>
+	JobDefinitionId *string `json:"JobDefinitionId,omitnil,omitempty" name:"JobDefinitionId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateJobDefinitionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateJobDefinitionResponseParams `json:"Response"`
+}
+
+func (r *CreateJobDefinitionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateJobDefinitionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateJobFromDefinitionRequestParams struct {
+	// <p>作业定义 ID（由 CreateJobDefinition 返回）。必填。</p>
+	JobDefinitionId *string `json:"JobDefinitionId,omitnil,omitempty" name:"JobDefinitionId"`
+}
+
+type CreateJobFromDefinitionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>作业定义 ID（由 CreateJobDefinition 返回）。必填。</p>
+	JobDefinitionId *string `json:"JobDefinitionId,omitnil,omitempty" name:"JobDefinitionId"`
+}
+
+func (r *CreateJobFromDefinitionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateJobFromDefinitionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobDefinitionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobFromDefinitionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateJobFromDefinitionResponseParams struct {
+	// <p>作业唯一标识符（ID）。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateJobFromDefinitionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateJobFromDefinitionResponseParams `json:"Response"`
+}
+
+func (r *CreateJobFromDefinitionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateJobFromDefinitionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateJobRequestParams struct {
+	// <p>作业名称，长度 ≤256；可省略，省略时服务端回退为 JobId。</p>
+	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
+
+	// <p>流作业 checkpoint 路径（如 cosn://bucket/path/checkpoint）。MinorType=SPARK_STREAM 时必填；同一作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+	CheckpointLocation *string `json:"CheckpointLocation,omitnil,omitempty" name:"CheckpointLocation"`
+
+	// <p>引擎大类，非必传，缺省 SPARK；当前仅支持 SPARK。</p>
+	MajorType *string `json:"MajorType,omitnil,omitempty" name:"MajorType"`
+
+	// <p>作业子类型，决定入口形态：SPARK_SQL（SQL 作业，Entrypoint.Statement 必填）/ SPARK_BATCH（批处理作业，Entrypoint.EntryFile 必填）/ SPARK_STREAM（流作业，EntryFile 与 CheckpointLocation 必填）。</p>
+	MinorType *string `json:"MinorType,omitnil,omitempty" name:"MinorType"`
+
+	// <p>工作流实例关联 ID（长度 ≤64）：同一工作流/会话的多条 SQL 作业传相同 FlowId，可共享同一 Spark 会话、复用已就绪引擎。MinorType=SPARK_SQL 时必填；FlowId 非空时必须同时传 ExecutionId。WAREHOUSE 模式下 FlowId 即会话句柄（一个 FlowId 只对应一个会话）：会话过期或已销毁后须换新 FlowId，否则返回 FailedOperation.FlowIdNotExists。</p>
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// <p>工作流内部执行标识（长度 ≤64），同一 FlowId 下每次提交须唯一（如自增序号/UUID）。用于重复提交防重：同一账号下命中未删除的同 (FlowId, ExecutionId) 作业时返回 FailedOperation.FlowExecutionConflict。FlowId 非空时必填（SPARK_SQL 因 FlowId 必填而必填）。</p>
+	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+
+	// <p>运行模式，必填。WAREHOUSE / JOB.</p>
+	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
+
+	// <p>计算仓库 ID。RunMode=WAREHOUSE 时必填（仓库需处于 RUNNING，或 STOPPED 且 AutoStart 开启（提交后冷启动拉起））；RunMode=JOB 时必须为空。</p>
+	WarehouseId *string `json:"WarehouseId,omitnil,omitempty" name:"WarehouseId"`
+
+	// <p>运行时/镜像编码（可选值见 DescribeSparkRuntimes）。RunMode=JOB 时必填；RunMode=WAREHOUSE 时忽略。</p>
+	RuntimeCode *string `json:"RuntimeCode,omitnil,omitempty" name:"RuntimeCode"`
+
+	// <p>内置 Catalog 版本码（取值为 DescribeSysCatalogList 返回的目录子类型）。RunMode=JOB 时条件必填：未传时若可用（enabled）SysCatalog 唯一则自动选中，多个/零个报错；RunMode=WAREHOUSE 时禁止传。</p>
+	SysCatalogVersion *string `json:"SysCatalogVersion,omitnil,omitempty" name:"SysCatalogVersion"`
+
+	// <p>资源分区代码，仅 RunMode=JOB 可传（QueueName 非空时必填）；RunMode=WAREHOUSE 时禁止传。</p>
+	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
+
+	// <p>队列名称，必须与 PartitionCode 成对使用（RunMode=JOB 下可选）；RunMode=WAREHOUSE 下被仓库反查值覆盖，无需传。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），作为 SPARK_CUSTOM 配置通道落库，两种运行模式均生效。</p>
+	CustomProperties *string `json:"CustomProperties,omitnil,omitempty" name:"CustomProperties"`
+
+	// <p>环境变量（KEY=VALUE）列表。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
+	EnvVars []*KVPair `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+}
+
+type CreateJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>作业名称，长度 ≤256；可省略，省略时服务端回退为 JobId。</p>
+	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
+
+	// <p>流作业 checkpoint 路径（如 cosn://bucket/path/checkpoint）。MinorType=SPARK_STREAM 时必填；同一作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+	CheckpointLocation *string `json:"CheckpointLocation,omitnil,omitempty" name:"CheckpointLocation"`
+
+	// <p>引擎大类，非必传，缺省 SPARK；当前仅支持 SPARK。</p>
+	MajorType *string `json:"MajorType,omitnil,omitempty" name:"MajorType"`
+
+	// <p>作业子类型，决定入口形态：SPARK_SQL（SQL 作业，Entrypoint.Statement 必填）/ SPARK_BATCH（批处理作业，Entrypoint.EntryFile 必填）/ SPARK_STREAM（流作业，EntryFile 与 CheckpointLocation 必填）。</p>
+	MinorType *string `json:"MinorType,omitnil,omitempty" name:"MinorType"`
+
+	// <p>工作流实例关联 ID（长度 ≤64）：同一工作流/会话的多条 SQL 作业传相同 FlowId，可共享同一 Spark 会话、复用已就绪引擎。MinorType=SPARK_SQL 时必填；FlowId 非空时必须同时传 ExecutionId。WAREHOUSE 模式下 FlowId 即会话句柄（一个 FlowId 只对应一个会话）：会话过期或已销毁后须换新 FlowId，否则返回 FailedOperation.FlowIdNotExists。</p>
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// <p>工作流内部执行标识（长度 ≤64），同一 FlowId 下每次提交须唯一（如自增序号/UUID）。用于重复提交防重：同一账号下命中未删除的同 (FlowId, ExecutionId) 作业时返回 FailedOperation.FlowExecutionConflict。FlowId 非空时必填（SPARK_SQL 因 FlowId 必填而必填）。</p>
+	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+
+	// <p>运行模式，必填。WAREHOUSE / JOB.</p>
+	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
+
+	// <p>计算仓库 ID。RunMode=WAREHOUSE 时必填（仓库需处于 RUNNING，或 STOPPED 且 AutoStart 开启（提交后冷启动拉起））；RunMode=JOB 时必须为空。</p>
+	WarehouseId *string `json:"WarehouseId,omitnil,omitempty" name:"WarehouseId"`
+
+	// <p>运行时/镜像编码（可选值见 DescribeSparkRuntimes）。RunMode=JOB 时必填；RunMode=WAREHOUSE 时忽略。</p>
+	RuntimeCode *string `json:"RuntimeCode,omitnil,omitempty" name:"RuntimeCode"`
+
+	// <p>内置 Catalog 版本码（取值为 DescribeSysCatalogList 返回的目录子类型）。RunMode=JOB 时条件必填：未传时若可用（enabled）SysCatalog 唯一则自动选中，多个/零个报错；RunMode=WAREHOUSE 时禁止传。</p>
+	SysCatalogVersion *string `json:"SysCatalogVersion,omitnil,omitempty" name:"SysCatalogVersion"`
+
+	// <p>资源分区代码，仅 RunMode=JOB 可传（QueueName 非空时必填）；RunMode=WAREHOUSE 时禁止传。</p>
+	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
+
+	// <p>队列名称，必须与 PartitionCode 成对使用（RunMode=JOB 下可选）；RunMode=WAREHOUSE 下被仓库反查值覆盖，无需传。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），作为 SPARK_CUSTOM 配置通道落库，两种运行模式均生效。</p>
+	CustomProperties *string `json:"CustomProperties,omitnil,omitempty" name:"CustomProperties"`
+
+	// <p>环境变量（KEY=VALUE）列表。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
+	EnvVars []*KVPair `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+}
+
+func (r *CreateJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobName")
+	delete(f, "CheckpointLocation")
+	delete(f, "MajorType")
+	delete(f, "MinorType")
+	delete(f, "FlowId")
+	delete(f, "ExecutionId")
+	delete(f, "RunMode")
+	delete(f, "WarehouseId")
+	delete(f, "RuntimeCode")
+	delete(f, "SysCatalogVersion")
+	delete(f, "PartitionCode")
+	delete(f, "QueueName")
+	delete(f, "CustomProperties")
+	delete(f, "EnvVars")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateJobResponseParams struct {
+	// <p>作业唯一标识符（ID）。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateJobResponseParams `json:"Response"`
+}
+
+func (r *CreateJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12598,6 +13102,376 @@ func (r *DescribeBindablePrometheusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCatalogTableInfoRequestParams struct {
+	// <p>Catalog名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>Schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>Table名称</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+}
+
+type DescribeCatalogTableInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Catalog名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>Schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>Table名称</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+}
+
+func (r *DescribeCatalogTableInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCatalogTableInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "TableName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCatalogTableInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCatalogTableInfoResponseParams struct {
+	// <p>Table详细信息</p>
+	Table *CatalogTaleInfo `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCatalogTableInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCatalogTableInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeCatalogTableInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCatalogTableInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCatalogTableNamesPageRequestParams struct {
+	// <p>catalog名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>Schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>每页大小</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>页数</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>是否基于快照</p>
+	SnapshotBased *bool `json:"SnapshotBased,omitnil,omitempty" name:"SnapshotBased"`
+
+	// <p>快照id</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
+	// <p>table匹配规则</p>
+	TableNamePattern *string `json:"TableNamePattern,omitnil,omitempty" name:"TableNamePattern"`
+}
+
+type DescribeCatalogTableNamesPageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>catalog名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>Schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>每页大小</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>页数</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>是否基于快照</p>
+	SnapshotBased *bool `json:"SnapshotBased,omitnil,omitempty" name:"SnapshotBased"`
+
+	// <p>快照id</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
+	// <p>table匹配规则</p>
+	TableNamePattern *string `json:"TableNamePattern,omitnil,omitempty" name:"TableNamePattern"`
+}
+
+func (r *DescribeCatalogTableNamesPageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCatalogTableNamesPageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "SnapshotBased")
+	delete(f, "SnapshotId")
+	delete(f, "TableNamePattern")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCatalogTableNamesPageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCatalogTableNamesPageResponseParams struct {
+	// <p>table名字列表</p>
+	TableNames []*NameIdentifier `json:"TableNames,omitnil,omitempty" name:"TableNames"`
+
+	// <p>table总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>快照id</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCatalogTableNamesPageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCatalogTableNamesPageResponseParams `json:"Response"`
+}
+
+func (r *DescribeCatalogTableNamesPageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCatalogTableNamesPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCatalogTableNamesRequestParams struct {
+	// <p>Catalog名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>Schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+}
+
+type DescribeCatalogTableNamesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Catalog名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>Schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+}
+
+func (r *DescribeCatalogTableNamesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCatalogTableNamesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCatalogTableNamesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCatalogTableNamesResponseParams struct {
+	// <p>Table名称列表</p>
+	TableNames []*NameIdentifier `json:"TableNames,omitnil,omitempty" name:"TableNames"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCatalogTableNamesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCatalogTableNamesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCatalogTableNamesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCatalogTableNamesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCatalogsRequestParams struct {
+	// <p>数据目录 ID</p>
+	CatalogId *string `json:"CatalogId,omitnil,omitempty" name:"CatalogId"`
+
+	// <p>数据目录名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>操作人 uin</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>排序字段，支持 CreateTime / UpdateTime（默认 UpdateTime）</p>
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// <p>true:升序（默认）/ false:降序</p>
+	Asc *string `json:"Asc,omitnil,omitempty" name:"Asc"`
+
+	// <p>分页大小</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>状态：0 注册中 / 1 待测试 / 2 连接成功 / 3 连接失败 / 4 删除中 / 5 已删除</p><p>枚举值：</p><ul><li>0： 注册中</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>数据目录类型</p><p>枚举值：</p><ul><li>LAKEHOUSE： lakehouse类型</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>在这个时间之后创建（时间戳）</p>
+	CreatedAfter *uint64 `json:"CreatedAfter,omitnil,omitempty" name:"CreatedAfter"`
+
+	// <p>在这个时间之前创建（时间戳）</p>
+	CreatedBefore *uint64 `json:"CreatedBefore,omitnil,omitempty" name:"CreatedBefore"`
+}
+
+type DescribeCatalogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录 ID</p>
+	CatalogId *string `json:"CatalogId,omitnil,omitempty" name:"CatalogId"`
+
+	// <p>数据目录名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>操作人 uin</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>排序字段，支持 CreateTime / UpdateTime（默认 UpdateTime）</p>
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// <p>true:升序（默认）/ false:降序</p>
+	Asc *string `json:"Asc,omitnil,omitempty" name:"Asc"`
+
+	// <p>分页大小</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>状态：0 注册中 / 1 待测试 / 2 连接成功 / 3 连接失败 / 4 删除中 / 5 已删除</p><p>枚举值：</p><ul><li>0： 注册中</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>数据目录类型</p><p>枚举值：</p><ul><li>LAKEHOUSE： lakehouse类型</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>在这个时间之后创建（时间戳）</p>
+	CreatedAfter *uint64 `json:"CreatedAfter,omitnil,omitempty" name:"CreatedAfter"`
+
+	// <p>在这个时间之前创建（时间戳）</p>
+	CreatedBefore *uint64 `json:"CreatedBefore,omitnil,omitempty" name:"CreatedBefore"`
+}
+
+func (r *DescribeCatalogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCatalogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogId")
+	delete(f, "Name")
+	delete(f, "Operator")
+	delete(f, "Sort")
+	delete(f, "Asc")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Status")
+	delete(f, "Type")
+	delete(f, "CreatedAfter")
+	delete(f, "CreatedBefore")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCatalogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCatalogsResponseParams struct {
+	// <p>Catalog详细信息列表</p>
+	Catalogs []*CatalogConfig `json:"Catalogs,omitnil,omitempty" name:"Catalogs"`
+
+	// <p>Catalog总数</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCatalogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCatalogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeCatalogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCatalogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClsTopicsRequestParams struct {
 	// <p>日志主题名称（模糊匹配），可为空</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
@@ -15052,6 +15926,539 @@ func (r *DescribeForbiddenTableProResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeJobDefinitionDetailRequestParams struct {
+	// <p>作业定义 ID。必填。</p>
+	JobDefinitionId *string `json:"JobDefinitionId,omitnil,omitempty" name:"JobDefinitionId"`
+}
+
+type DescribeJobDefinitionDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>作业定义 ID。必填。</p>
+	JobDefinitionId *string `json:"JobDefinitionId,omitnil,omitempty" name:"JobDefinitionId"`
+}
+
+func (r *DescribeJobDefinitionDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobDefinitionDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobDefinitionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobDefinitionDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobDefinitionDetailResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeJobDefinitionDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobDefinitionDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobDefinitionDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobDefinitionDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobDefinitionsRequestParams struct {
+	// <p>页码，从1开始，默认为1.</p>
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页返回数量，默认为10.</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>高级过滤条件列表，元素 Name 为过滤字段名（PascalCase，可用字段与操作符约束见各接口 Filters 说明），Values 为过滤值列表；未列入白名单或非 PascalCase 的 Name 报 InvalidParameter。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段列表，元素 Field 为排序字段名（PascalCase，与响应字段命名对齐，可用字段见各接口 SortFields 说明），Order 为排序方向（ASC/DESC，不传默认 DESC）；未列入白名单或非 PascalCase 的 Field 报 InvalidParameter。</p>
+	SortFields []*SortField `json:"SortFields,omitnil,omitempty" name:"SortFields"`
+
+	// <p>创建时间下限（Unix 毫秒时间戳）。</p>
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitnil,omitempty" name:"CreateTimeStart"`
+
+	// <p>创建时间上限（Unix 毫秒时间戳）。</p>
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitnil,omitempty" name:"CreateTimeEnd"`
+
+	// <p>作业实例计数时间窗口（毫秒时长）。不传时默认 7 天。</p>
+	InstanceTimeRange *int64 `json:"InstanceTimeRange,omitnil,omitempty" name:"InstanceTimeRange"`
+}
+
+type DescribeJobDefinitionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>页码，从1开始，默认为1.</p>
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页返回数量，默认为10.</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>高级过滤条件列表，元素 Name 为过滤字段名（PascalCase，可用字段与操作符约束见各接口 Filters 说明），Values 为过滤值列表；未列入白名单或非 PascalCase 的 Name 报 InvalidParameter。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段列表，元素 Field 为排序字段名（PascalCase，与响应字段命名对齐，可用字段见各接口 SortFields 说明），Order 为排序方向（ASC/DESC，不传默认 DESC）；未列入白名单或非 PascalCase 的 Field 报 InvalidParameter。</p>
+	SortFields []*SortField `json:"SortFields,omitnil,omitempty" name:"SortFields"`
+
+	// <p>创建时间下限（Unix 毫秒时间戳）。</p>
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitnil,omitempty" name:"CreateTimeStart"`
+
+	// <p>创建时间上限（Unix 毫秒时间戳）。</p>
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitnil,omitempty" name:"CreateTimeEnd"`
+
+	// <p>作业实例计数时间窗口（毫秒时长）。不传时默认 7 天。</p>
+	InstanceTimeRange *int64 `json:"InstanceTimeRange,omitnil,omitempty" name:"InstanceTimeRange"`
+}
+
+func (r *DescribeJobDefinitionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobDefinitionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Page")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "SortFields")
+	delete(f, "CreateTimeStart")
+	delete(f, "CreateTimeEnd")
+	delete(f, "InstanceTimeRange")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobDefinitionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobDefinitionsResponseParams struct {
+	// <p>总记录数.</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>作业定义列表项。</p>
+	Items []*JobDefinitionItemInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeJobDefinitionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobDefinitionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobDefinitionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobDefinitionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobDetailRequestParams struct {
+	// <p>作业唯一标识符（ID）。必填。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeJobDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>作业唯一标识符（ID）。必填。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeJobDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobDetailResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeJobDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobListRequestParams struct {
+	// <p>页码，从1开始，默认为1.</p>
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页返回数量，默认为10.</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>高级过滤条件列表，元素 Name 为过滤字段名（PascalCase，可用字段与操作符约束见各接口 Filters 说明），Values 为过滤值列表；未列入白名单或非 PascalCase 的 Name 报 InvalidParameter。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段列表，元素 Field 为排序字段名（PascalCase，与响应字段命名对齐，可用字段见各接口 SortFields 说明），Order 为排序方向（ASC/DESC，不传默认 DESC）；未列入白名单或非 PascalCase 的 Field 报 InvalidParameter。</p>
+	SortFields []*SortField `json:"SortFields,omitnil,omitempty" name:"SortFields"`
+
+	// <p>创建时间下限（Unix 毫秒时间戳）。</p>
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitnil,omitempty" name:"CreateTimeStart"`
+
+	// <p>创建时间上限（Unix 毫秒时间戳）。</p>
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitnil,omitempty" name:"CreateTimeEnd"`
+}
+
+type DescribeJobListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>页码，从1开始，默认为1.</p>
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页返回数量，默认为10.</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>高级过滤条件列表，元素 Name 为过滤字段名（PascalCase，可用字段与操作符约束见各接口 Filters 说明），Values 为过滤值列表；未列入白名单或非 PascalCase 的 Name 报 InvalidParameter。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段列表，元素 Field 为排序字段名（PascalCase，与响应字段命名对齐，可用字段见各接口 SortFields 说明），Order 为排序方向（ASC/DESC，不传默认 DESC）；未列入白名单或非 PascalCase 的 Field 报 InvalidParameter。</p>
+	SortFields []*SortField `json:"SortFields,omitnil,omitempty" name:"SortFields"`
+
+	// <p>创建时间下限（Unix 毫秒时间戳）。</p>
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitnil,omitempty" name:"CreateTimeStart"`
+
+	// <p>创建时间上限（Unix 毫秒时间戳）。</p>
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitnil,omitempty" name:"CreateTimeEnd"`
+}
+
+func (r *DescribeJobListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Page")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "SortFields")
+	delete(f, "CreateTimeStart")
+	delete(f, "CreateTimeEnd")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobListResponseParams struct {
+	// <p>总记录数.</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>作业摘要列表。</p>
+	Items []*JobBriefInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeJobListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobListResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobLogRequestParams struct {
+	// <p>作业 ID（必填）。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>日志类型（必填）。可选值：SPARK_SQL_OPERATION / SPARK_BATCH_OPERATION / SPARK_LAUNCH / SPARK_DRIVER_STDOUT / SPARK_DRIVER_LOG4J / SPARK_EXECUTOR_STDOUT / SPARK_EXECUTOR_LOG4J。</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>Statement 序号（1-based，仅 LogType=SPARK_SQL_OPERATION 时可传），定位多语句作业中的具体语句。</p>
+	StatementIndex *int64 `json:"StatementIndex,omitnil,omitempty" name:"StatementIndex"`
+
+	// <p>分页游标（首页不传，后续页原样透传上一响应的 Cursor；不透明，无需解析）。无法续读时以 HasMore=false 终止分页。</p>
+	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
+
+	// <p>返回上限（行数），范围 [1, 1000]。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>关键词过滤。</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>Pod 名称过滤。</p>
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// <p>日志级别过滤。取值：ERROR / WARN / INFO / DEBUG / TRACE，非法值拒绝。</p>
+	LogLevel *string `json:"LogLevel,omitnil,omitempty" name:"LogLevel"`
+
+	// <p>起始时间，Unix 毫秒。</p>
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// <p>结束时间，Unix 毫秒。</p>
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
+}
+
+type DescribeJobLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>作业 ID（必填）。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>日志类型（必填）。可选值：SPARK_SQL_OPERATION / SPARK_BATCH_OPERATION / SPARK_LAUNCH / SPARK_DRIVER_STDOUT / SPARK_DRIVER_LOG4J / SPARK_EXECUTOR_STDOUT / SPARK_EXECUTOR_LOG4J。</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>Statement 序号（1-based，仅 LogType=SPARK_SQL_OPERATION 时可传），定位多语句作业中的具体语句。</p>
+	StatementIndex *int64 `json:"StatementIndex,omitnil,omitempty" name:"StatementIndex"`
+
+	// <p>分页游标（首页不传，后续页原样透传上一响应的 Cursor；不透明，无需解析）。无法续读时以 HasMore=false 终止分页。</p>
+	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
+
+	// <p>返回上限（行数），范围 [1, 1000]。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>关键词过滤。</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>Pod 名称过滤。</p>
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// <p>日志级别过滤。取值：ERROR / WARN / INFO / DEBUG / TRACE，非法值拒绝。</p>
+	LogLevel *string `json:"LogLevel,omitnil,omitempty" name:"LogLevel"`
+
+	// <p>起始时间，Unix 毫秒。</p>
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// <p>结束时间，Unix 毫秒。</p>
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
+}
+
+func (r *DescribeJobLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "LogType")
+	delete(f, "StatementIndex")
+	delete(f, "Cursor")
+	delete(f, "Limit")
+	delete(f, "Keyword")
+	delete(f, "PodName")
+	delete(f, "LogLevel")
+	delete(f, "From")
+	delete(f, "To")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobLogResponseParams struct {
+	// <p>日志行数据。</p>
+	Lines []*string `json:"Lines,omitnil,omitempty" name:"Lines"`
+
+	// <p>下一页游标（不透明令牌，原样透传回请求即可；无更多日志时不返回）。</p>
+	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
+
+	// <p>是否还有更多日志。</p>
+	HasMore *bool `json:"HasMore,omitnil,omitempty" name:"HasMore"`
+
+	// <p>日志条目列表。</p>
+	Results []*ClsLogEntry `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeJobLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobResultRequestParams struct {
+	// <p>作业唯一标识符（ID）。必填。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>页码，从1开始，默认为1.</p>
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页返回数量，默认为10.</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>Statement 序号（1-based），多语句作业时指定；缺省为 0，取整作业第一个结果集.</p>
+	StatementIndex *int64 `json:"StatementIndex,omitnil,omitempty" name:"StatementIndex"`
+}
+
+type DescribeJobResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>作业唯一标识符（ID）。必填。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>页码，从1开始，默认为1.</p>
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页返回数量，默认为10.</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>Statement 序号（1-based），多语句作业时指定；缺省为 0，取整作业第一个结果集.</p>
+	StatementIndex *int64 `json:"StatementIndex,omitnil,omitempty" name:"StatementIndex"`
+}
+
+func (r *DescribeJobResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	delete(f, "StatementIndex")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobResultResponseParams struct {
+	// <p>总记录数.</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>作业 ID。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>结果状态（对客）：SUCCEEDED（结果集可用，含 0 行——DDL/DML 等无结果集语句亦归入此类，message 说明）/ UNAVAILABLE（终态无结果：statement 已失败或取消）/ ERROR（结果集拉取出错）/ NOT_READY（结果未就绪）/ NOT_SUPPORTED（作业形态不产出结果集）。</p>
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>状态描述（SUCCEEDED 0 行时为无结果集说明；ERROR 为错误信息；UNAVAILABLE 为 statement 失败/取消原因）。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>列定义列表（按结果集列顺序；State=SUCCEEDED 才有）。</p>
+	Columns []*ResultColumn `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// <p>结果集全量行数（未按在线展示上限封顶）。Total 为在线可见行数，二者不等说明仅部分行可内联查看，完整结果通过 Download 获取。</p>
+	TotalRows *int64 `json:"TotalRows,omitnil,omitempty" name:"TotalRows"`
+
+	// <p>行数据（State=SUCCEEDED 才有），每行为 {"Values": [单元格值...]} 数组。</p>
+	Rows []*ResultRow `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// <p>本页内容是否因响应大小限制被截断（单元格/行超限，结果集仅 1 行时也可能触发）。行数超过在线展示上限不由本标记表达，以 TotalRows > Total 判断，完整结果通过 Download 获取.</p>
+	Truncated *bool `json:"Truncated,omitnil,omitempty" name:"Truncated"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeJobResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLakeFsDirSummaryRequestParams struct {
 
 }
@@ -17148,6 +18555,104 @@ func (r *DescribeSaleResourceInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSaleResourceInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSchemaNamesPageRequestParams struct {
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>分页大小</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>是否快照分页</p>
+	SnapshotBased *bool `json:"SnapshotBased,omitnil,omitempty" name:"SnapshotBased"`
+
+	// <p>快照 ID</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
+	// <p>SQL查询格式匹配</p>
+	SchemaNamePattern *string `json:"SchemaNamePattern,omitnil,omitempty" name:"SchemaNamePattern"`
+}
+
+type DescribeSchemaNamesPageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>分页大小</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>是否快照分页</p>
+	SnapshotBased *bool `json:"SnapshotBased,omitnil,omitempty" name:"SnapshotBased"`
+
+	// <p>快照 ID</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
+	// <p>SQL查询格式匹配</p>
+	SchemaNamePattern *string `json:"SchemaNamePattern,omitnil,omitempty" name:"SchemaNamePattern"`
+}
+
+func (r *DescribeSchemaNamesPageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSchemaNamesPageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "SnapshotBased")
+	delete(f, "SnapshotId")
+	delete(f, "SchemaNamePattern")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSchemaNamesPageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSchemaNamesPageResponseParams struct {
+	// <p>数据库名称列表</p>
+	SchemaNames []*NameIdentifier `json:"SchemaNames,omitnil,omitempty" name:"SchemaNames"`
+
+	// <p>总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>快照 ID</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSchemaNamesPageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSchemaNamesPageResponseParams `json:"Response"`
+}
+
+func (r *DescribeSchemaNamesPageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSchemaNamesPageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -20727,6 +22232,87 @@ func (r *DescribeViewsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeWarehousesRequestParams struct {
+	// <p>页码，从1开始，默认为1.</p>
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页返回数量，默认为10.</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>高级过滤条件列表，元素 Name 为过滤字段名（PascalCase，可用字段与操作符约束见各接口 Filters 说明），Values 为过滤值列表；未列入白名单或非 PascalCase 的 Name 报 InvalidParameter。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段列表，元素 Field 为排序字段名（PascalCase，与响应字段命名对齐，可用字段见各接口 SortFields 说明），Order 为排序方向（ASC/DESC，不传默认 DESC）；未列入白名单或非 PascalCase 的 Field 报 InvalidParameter。</p>
+	SortFields []*SortField `json:"SortFields,omitnil,omitempty" name:"SortFields"`
+}
+
+type DescribeWarehousesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>页码，从1开始，默认为1.</p>
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页返回数量，默认为10.</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>高级过滤条件列表，元素 Name 为过滤字段名（PascalCase，可用字段与操作符约束见各接口 Filters 说明），Values 为过滤值列表；未列入白名单或非 PascalCase 的 Name 报 InvalidParameter。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段列表，元素 Field 为排序字段名（PascalCase，与响应字段命名对齐，可用字段见各接口 SortFields 说明），Order 为排序方向（ASC/DESC，不传默认 DESC）；未列入白名单或非 PascalCase 的 Field 报 InvalidParameter。</p>
+	SortFields []*SortField `json:"SortFields,omitnil,omitempty" name:"SortFields"`
+}
+
+func (r *DescribeWarehousesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWarehousesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Page")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "SortFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWarehousesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWarehousesResponseParams struct {
+	// <p>总记录数.</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>计算仓库列表。</p>
+	WarehouseList []*WarehouseInfo `json:"WarehouseList,omitnil,omitempty" name:"WarehouseList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWarehousesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWarehousesResponseParams `json:"Response"`
+}
+
+func (r *DescribeWarehousesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWarehousesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeWorkGroupInfoRequestParams struct {
 	// <p>工作组Id</p>
 	WorkGroupId *int64 `json:"WorkGroupId,omitnil,omitempty" name:"WorkGroupId"`
@@ -21069,6 +22655,34 @@ func (r *DetachWorkGroupPolicyResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DetachWorkGroupPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DlcConnection struct {
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例名称</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+}
+
+type DorisConnection struct {
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例名称</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>JDBC连接地址</p>
+	JDBCUrl *string `json:"JDBCUrl,omitnil,omitempty" name:"JDBCUrl"`
+
+	// <p>账号</p>
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// <p>密码</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>网络信息</p>
+	NetWork *NetWork `json:"NetWork,omitnil,omitempty" name:"NetWork"`
 }
 
 // Predefined struct for user
@@ -24784,6 +26398,23 @@ type HeadSpecDTO struct {
 	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 }
 
+type HiveConnection struct {
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例名称</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>元数据url</p>
+	MetaStoreUrl *string `json:"MetaStoreUrl,omitnil,omitempty" name:"MetaStoreUrl"`
+
+	// <p>网络信息</p>
+	NetWork *NetWork `json:"NetWork,omitnil,omitempty" name:"NetWork"`
+
+	// <p>hive版本</p>
+	HiveVersion *string `json:"HiveVersion,omitnil,omitempty" name:"HiveVersion"`
+}
+
 type HiveInfo struct {
 	// hive metastore的地址
 	MetaStoreUrl *string `json:"MetaStoreUrl,omitnil,omitempty" name:"MetaStoreUrl"`
@@ -25154,6 +26785,17 @@ func (r *ImportTkeClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type IndexInfo struct {
+	// <p>索引名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>索引类型</p><p>枚举值：</p><ul><li>primary_key： 主键</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>索引字段</p>
+	FieldNames []*string `json:"FieldNames,omitnil,omitempty" name:"FieldNames"`
+}
+
 type InferenceEngineInfo struct {
 	// <p>引擎标识符</p>
 	EngineId *string `json:"EngineId,omitnil,omitempty" name:"EngineId"`
@@ -25447,6 +27089,115 @@ type IpPortPair struct {
 	// 端口信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+}
+
+type JobBriefInfo struct {
+	// <p>作业唯一标识.</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>作业名称.</p>
+	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
+
+	// <p>创建/提交者子账号 UIN。</p>
+	CreatorSubUin *string `json:"CreatorSubUin,omitnil,omitempty" name:"CreatorSubUin"`
+
+	// <p>作业状态.</p>
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>引擎大类.</p>
+	MajorType *string `json:"MajorType,omitnil,omitempty" name:"MajorType"`
+
+	// <p>引擎子类型.</p>
+	MinorType *string `json:"MinorType,omitnil,omitempty" name:"MinorType"`
+
+	// <p>运行模式（WAREHOUSE / JOB）.</p>
+	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
+
+	// <p>计算仓库 ID，RunMode=WAREHOUSE 时非空.</p>
+	WarehouseId *string `json:"WarehouseId,omitnil,omitempty" name:"WarehouseId"`
+
+	// <p>资源分区编码.</p>
+	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
+
+	// <p>资源分区展示名（解析不到时为空）.</p>
+	PartitionName *string `json:"PartitionName,omitnil,omitempty" name:"PartitionName"`
+
+	// <p>队列名称.</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>流作业 checkpoint 路径（MinorType=SPARK_STREAM 时非空）。同一流作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+	CheckpointLocation *string `json:"CheckpointLocation,omitnil,omitempty" name:"CheckpointLocation"`
+
+	// <p>创建时间（Unix 毫秒时间戳）.</p>
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>提交时间（Unix 毫秒时间戳）.</p>
+	SubmitTime *int64 `json:"SubmitTime,omitnil,omitempty" name:"SubmitTime"`
+
+	// <p>完成时间（Unix 毫秒时间戳）.</p>
+	FinishTime *int64 `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// <p>运行时长（毫秒）.</p>
+	RunningTimeMs *int64 `json:"RunningTimeMs,omitnil,omitempty" name:"RunningTimeMs"`
+
+	// <p>计算仓库名称（列表整页批量反查填充；warehouse 模式下非空）.</p>
+	WarehouseName *string `json:"WarehouseName,omitnil,omitempty" name:"WarehouseName"`
+}
+
+type JobDefinitionItemInfo struct {
+	// <p>作业定义唯一标识符（ID）。</p>
+	JobDefinitionId *string `json:"JobDefinitionId,omitnil,omitempty" name:"JobDefinitionId"`
+
+	// <p>作业定义名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>作业定义描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>作业主类型。</p>
+	MajorType *string `json:"MajorType,omitnil,omitempty" name:"MajorType"`
+
+	// <p>作业子类型。</p>
+	MinorType *string `json:"MinorType,omitnil,omitempty" name:"MinorType"`
+
+	// <p>流作业 checkpoint 路径（MinorType=SPARK_STREAM 时非空）。同一流作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+	CheckpointLocation *string `json:"CheckpointLocation,omitnil,omitempty" name:"CheckpointLocation"`
+
+	// <p>创建者（子账号 UIN）。</p>
+	CreatorSubUin *string `json:"CreatorSubUin,omitnil,omitempty" name:"CreatorSubUin"`
+
+	// <p>创建时间（Unix 毫秒时间戳）。</p>
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间（Unix 毫秒时间戳）。</p>
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>分区编码。</p>
+	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
+
+	// <p>分区展示名（解析不到时为空）。</p>
+	PartitionName *string `json:"PartitionName,omitnil,omitempty" name:"PartitionName"`
+
+	// <p>队列名称。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>运行模式: JOB | WAREHOUSE.</p>
+	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
+
+	// <p>计算仓库 ID, RunMode=WAREHOUSE 时非空.</p>
+	WarehouseId *string `json:"WarehouseId,omitnil,omitempty" name:"WarehouseId"`
+
+	// <p>请求时间窗口（InstanceTimeRange，默认 7 天）内的作业实例数。</p>
+	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
+	// <p>运行时/镜像编码（可选值见 DescribeSparkRuntimes）。JOB 模式取定义自身配置，WAREHOUSE 模式取所属计算仓库运行时；解析不到时为空。</p>
+	RuntimeCode *string `json:"RuntimeCode,omitnil,omitempty" name:"RuntimeCode"`
+
+	// <p>运行时展示名（如 Spark 3.5.5），与 RuntimeCode 配套；解析不到时为空。</p>
+	RuntimeName *string `json:"RuntimeName,omitnil,omitempty" name:"RuntimeName"`
+
+	// <p>计算仓库名称（列表整页按去重后的仓库反查填充；warehouse 模式下非空，仓库已销毁时仍回填历史名称）。</p>
+	WarehouseName *string `json:"WarehouseName,omitnil,omitempty" name:"WarehouseName"`
 }
 
 type JobLogResult struct {
@@ -25871,6 +27622,29 @@ type LakeFsInfo struct {
 
 	// <p>存储桶配置信息</p>
 	Configuration []*KVPair `json:"Configuration,omitnil,omitempty" name:"Configuration"`
+}
+
+type LakeHouseConnection struct {
+	// <p>元数据服务id</p>
+	MetastoreEndpointServiceId *string `json:"MetastoreEndpointServiceId,omitnil,omitempty" name:"MetastoreEndpointServiceId"`
+
+	// <p>endpoint服务id</p>
+	EndpointServiceId *string `json:"EndpointServiceId,omitnil,omitempty" name:"EndpointServiceId"`
+
+	// <p>元数据url</p>
+	MetaStoreUrl *string `json:"MetaStoreUrl,omitnil,omitempty" name:"MetaStoreUrl"`
+
+	// <p>ranger信息</p>
+	RangerConnection *RangerConnection `json:"RangerConnection,omitnil,omitempty" name:"RangerConnection"`
+
+	// <p>hive版本</p>
+	HiveVersion *string `json:"HiveVersion,omitnil,omitempty" name:"HiveVersion"`
+
+	// <p>存储位置</p>
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// <p>网络信息</p>
+	NetWork *NetWork `json:"NetWork,omitnil,omitempty" name:"NetWork"`
 }
 
 // Predefined struct for user
@@ -28084,6 +29858,25 @@ func (r *ListModelVersionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListPartition struct {
+	// <p>分区名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>分区列表</p>
+	Lists []*Literal `json:"Lists,omitnil,omitempty" name:"Lists"`
+
+	// <p>属性</p>
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+}
+
+type ListPartitioning struct {
+	// <p>分区字段</p>
+	FieldNames []*string `json:"FieldNames,omitnil,omitempty" name:"FieldNames"`
+
+	// <p>分区列表信息</p>
+	Assignments []*ListPartition `json:"Assignments,omitnil,omitempty" name:"Assignments"`
+}
+
 // Predefined struct for user
 type ListRayClusterJobsRequestParams struct {
 	// 集群ID（必填）
@@ -29166,6 +30959,14 @@ func (r *ListTrainingJobSpecResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Literal struct {
+	// <p>数值</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// <p>类型</p><p>枚举值：</p><ul><li>integer： 整数类型</li></ul>
+	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
+}
+
 type LocationInfo struct {
 	// 桶名称
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
@@ -29908,6 +31709,151 @@ func (r *ModifyGovernEventRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyGovernEventRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyJobDefinitionRequestParams struct {
+	// <p>作业定义 ID。必填。</p>
+	JobDefinitionId *string `json:"JobDefinitionId,omitnil,omitempty" name:"JobDefinitionId"`
+
+	// <p>作业定义名称。创建后不可修改：仅接受与当前名称相同的值（回显），传不同值报错；不传表示不修改。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>修改后的作业定义描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>引擎大类（当前仅支持 SPARK）。</p>
+	MajorType *string `json:"MajorType,omitnil,omitempty" name:"MajorType"`
+
+	// <p>作业子类型，SPARK_SQL / SPARK_BATCH / SPARK_STREAM；非必填。</p>
+	MinorType *string `json:"MinorType,omitnil,omitempty" name:"MinorType"`
+
+	// <p>流作业 checkpoint 路径（如 cosn://bucket/path/checkpoint），非必填，传了即覆盖。SPARK_STREAM 定义必须非空；变更等于重置消费进度。</p>
+	CheckpointLocation *string `json:"CheckpointLocation,omitnil,omitempty" name:"CheckpointLocation"`
+
+	// <p>资源分区代码，仅目标 RunMode=JOB 可传（QueueName 非空时必填）；目标 RunMode=WAREHOUSE 时禁止传。</p>
+	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
+
+	// <p>队列名称，仅目标 RunMode=JOB 可传且须与 PartitionCode 成对；目标 RunMode=WAREHOUSE 时禁止传。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>运行时/镜像编码，可选（null=沿用当前值）。仅对 JOB 模式定义生效；目标 RunMode=WAREHOUSE 时禁止传。</p>
+	RuntimeCode *string `json:"RuntimeCode,omitnil,omitempty" name:"RuntimeCode"`
+
+	// <p>内置 Catalog 版本码（取值为 DescribeSysCatalogList 返回的目录子类型），可选（null=沿用当前值）。</p>
+	SysCatalogVersion *string `json:"SysCatalogVersion,omitnil,omitempty" name:"SysCatalogVersion"`
+
+	// <p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），非必填，传了即整串覆盖。</p>
+	CustomProperties *string `json:"CustomProperties,omitnil,omitempty" name:"CustomProperties"`
+
+	// <p>环境变量（KEY=VALUE）列表，非必填，传了即整体覆盖。仅对 JOB 模式定义生效；目标 RunMode=WAREHOUSE 时禁止传。</p>
+	EnvVars []*KVPair `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+
+	// <p>目标运行模式：WAREHOUSE / JOB；未传=保持不变。切换模式时两种模式的参数集严格隔离（切换 WAREHOUSE 须提供 WarehouseId 且禁传 JOB 模式专属字段，反之亦然）。</p>
+	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
+
+	// <p>计算仓库 ID。仅目标 RunMode=WAREHOUSE 时可传（必填）；未传 RunMode 或目标为 JOB 时禁止传。</p>
+	WarehouseId *string `json:"WarehouseId,omitnil,omitempty" name:"WarehouseId"`
+}
+
+type ModifyJobDefinitionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>作业定义 ID。必填。</p>
+	JobDefinitionId *string `json:"JobDefinitionId,omitnil,omitempty" name:"JobDefinitionId"`
+
+	// <p>作业定义名称。创建后不可修改：仅接受与当前名称相同的值（回显），传不同值报错；不传表示不修改。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>修改后的作业定义描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>引擎大类（当前仅支持 SPARK）。</p>
+	MajorType *string `json:"MajorType,omitnil,omitempty" name:"MajorType"`
+
+	// <p>作业子类型，SPARK_SQL / SPARK_BATCH / SPARK_STREAM；非必填。</p>
+	MinorType *string `json:"MinorType,omitnil,omitempty" name:"MinorType"`
+
+	// <p>流作业 checkpoint 路径（如 cosn://bucket/path/checkpoint），非必填，传了即覆盖。SPARK_STREAM 定义必须非空；变更等于重置消费进度。</p>
+	CheckpointLocation *string `json:"CheckpointLocation,omitnil,omitempty" name:"CheckpointLocation"`
+
+	// <p>资源分区代码，仅目标 RunMode=JOB 可传（QueueName 非空时必填）；目标 RunMode=WAREHOUSE 时禁止传。</p>
+	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
+
+	// <p>队列名称，仅目标 RunMode=JOB 可传且须与 PartitionCode 成对；目标 RunMode=WAREHOUSE 时禁止传。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>运行时/镜像编码，可选（null=沿用当前值）。仅对 JOB 模式定义生效；目标 RunMode=WAREHOUSE 时禁止传。</p>
+	RuntimeCode *string `json:"RuntimeCode,omitnil,omitempty" name:"RuntimeCode"`
+
+	// <p>内置 Catalog 版本码（取值为 DescribeSysCatalogList 返回的目录子类型），可选（null=沿用当前值）。</p>
+	SysCatalogVersion *string `json:"SysCatalogVersion,omitnil,omitempty" name:"SysCatalogVersion"`
+
+	// <p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），非必填，传了即整串覆盖。</p>
+	CustomProperties *string `json:"CustomProperties,omitnil,omitempty" name:"CustomProperties"`
+
+	// <p>环境变量（KEY=VALUE）列表，非必填，传了即整体覆盖。仅对 JOB 模式定义生效；目标 RunMode=WAREHOUSE 时禁止传。</p>
+	EnvVars []*KVPair `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+
+	// <p>目标运行模式：WAREHOUSE / JOB；未传=保持不变。切换模式时两种模式的参数集严格隔离（切换 WAREHOUSE 须提供 WarehouseId 且禁传 JOB 模式专属字段，反之亦然）。</p>
+	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
+
+	// <p>计算仓库 ID。仅目标 RunMode=WAREHOUSE 时可传（必填）；未传 RunMode 或目标为 JOB 时禁止传。</p>
+	WarehouseId *string `json:"WarehouseId,omitnil,omitempty" name:"WarehouseId"`
+}
+
+func (r *ModifyJobDefinitionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyJobDefinitionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobDefinitionId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "MajorType")
+	delete(f, "MinorType")
+	delete(f, "CheckpointLocation")
+	delete(f, "PartitionCode")
+	delete(f, "QueueName")
+	delete(f, "RuntimeCode")
+	delete(f, "SysCatalogVersion")
+	delete(f, "CustomProperties")
+	delete(f, "EnvVars")
+	delete(f, "RunMode")
+	delete(f, "WarehouseId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyJobDefinitionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyJobDefinitionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyJobDefinitionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyJobDefinitionResponseParams `json:"Response"`
+}
+
+func (r *ModifyJobDefinitionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyJobDefinitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -31297,6 +33243,26 @@ type MountPointAssociates struct {
 	AccessRuleId *int64 `json:"AccessRuleId,omitnil,omitempty" name:"AccessRuleId"`
 }
 
+type MysqlConnection struct {
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例名称</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>JDBC连接地址</p>
+	JDBCUrl *string `json:"JDBCUrl,omitnil,omitempty" name:"JDBCUrl"`
+
+	// <p>账号</p>
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// <p>密码</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>网络信息</p>
+	NetWork *NetWork `json:"NetWork,omitnil,omitempty" name:"NetWork"`
+}
+
 type MysqlInfo struct {
 	// 连接mysql的jdbc url
 	JdbcUrl *string `json:"JdbcUrl,omitnil,omitempty" name:"JdbcUrl"`
@@ -31320,6 +33286,14 @@ type MysqlInfo struct {
 	// 数据库实例名称，和数据库侧保持一致
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+}
+
+type NameIdentifier struct {
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>命名空间</p>
+	Namespace []*string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 }
 
 type NetWork struct {
@@ -31823,6 +33797,38 @@ type PartitionInfo struct {
 	Tags []*CloudTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+type Partitioning struct {
+	// <p>转换策略</p>
+	Strategy *string `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// <p>按年分区策略</p>
+	YearPartitioning *SingleFieldPartitioning `json:"YearPartitioning,omitnil,omitempty" name:"YearPartitioning"`
+
+	// <p>按月分区策略</p>
+	MonthPartitioning *SingleFieldPartitioning `json:"MonthPartitioning,omitnil,omitempty" name:"MonthPartitioning"`
+
+	// <p>按天分区策略</p>
+	DayPartitioning *SingleFieldPartitioning `json:"DayPartitioning,omitnil,omitempty" name:"DayPartitioning"`
+
+	// <p>按小时分区策略</p>
+	HourPartitioning *SingleFieldPartitioning `json:"HourPartitioning,omitnil,omitempty" name:"HourPartitioning"`
+
+	// <p>按字段分区策略</p>
+	IdentityPartitioning *SingleFieldPartitioning `json:"IdentityPartitioning,omitnil,omitempty" name:"IdentityPartitioning"`
+
+	// <p>列表分区策略</p>
+	ListPartitioning *ListPartitioning `json:"ListPartitioning,omitnil,omitempty" name:"ListPartitioning"`
+
+	// <p>范围分区策略</p>
+	RangePartitioning *RangePartitioning `json:"RangePartitioning,omitnil,omitempty" name:"RangePartitioning"`
+
+	// <p>分桶分区策略</p>
+	BucketPartitioning *BucketPartitioning `json:"BucketPartitioning,omitnil,omitempty" name:"BucketPartitioning"`
+
+	// <p>截断分区策略</p>
+	TruncatePartitioning *TruncatePartitioning `json:"TruncatePartitioning,omitnil,omitempty" name:"TruncatePartitioning"`
+}
+
 // Predefined struct for user
 type PauseStandardEngineResourceGroupsRequestParams struct {
 	// 标准引擎资源组名称
@@ -32031,6 +34037,32 @@ type PostTrainingResources struct {
 
 	// <p>Worker 节点资源规格</p>
 	Worker []*WorkerSpecDTO `json:"Worker,omitnil,omitempty" name:"Worker"`
+}
+
+type PostgreSQLConnection struct {
+	// <p>IP地址</p>
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// <p>端口</p>
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// <p>用户名</p>
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// <p>密码</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例名字</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>网络信息</p>
+	NetWork *NetWork `json:"NetWork,omitnil,omitempty" name:"NetWork"`
+
+	// <p>数据库</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 }
 
 type PrestoMonitorMetrics struct {
@@ -32606,6 +34638,42 @@ type QueueResourceQuota struct {
 
 	// <p>可用量（总量 - 已使用量，截断至 0）。当 used 超出 total 时（例如配额尚未生效或数据短暂不一致），返回 0 而非负数</p>
 	Available *float64 `json:"Available,omitnil,omitempty" name:"Available"`
+}
+
+type RangePartition struct {
+	// <p>分区名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>下界</p>
+	Lower *Literal `json:"Lower,omitnil,omitempty" name:"Lower"`
+
+	// <p>上界</p>
+	Upper *Literal `json:"Upper,omitnil,omitempty" name:"Upper"`
+
+	// <p>属性</p>
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+}
+
+type RangePartitioning struct {
+	// <p>字段名</p>
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+
+	// <p>分区信息</p>
+	Assignments []*RangePartition `json:"Assignments,omitnil,omitempty" name:"Assignments"`
+}
+
+type RangerConnection struct {
+	// <p>服务名称</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>服务url</p>
+	ServiceUrl *string `json:"ServiceUrl,omitnil,omitempty" name:"ServiceUrl"`
+
+	// <p>用户名</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>密码</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
 type RayClusterEntity struct {
@@ -33699,6 +35767,25 @@ func (r *RestartInferenceServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ResultColumn struct {
+	// <p>列名。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>列数据类型（如 int / string）。</p>
+	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
+
+	// <p>列注释。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>是否可为 NULL。</p>
+	Nullable *bool `json:"Nullable,omitnil,omitempty" name:"Nullable"`
+}
+
+type ResultRow struct {
+	// <p>本行的单元格值列表，与 SchemaJson 列定义顺序一一对应；NULL 值以 null 表示.</p>
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
 // Predefined struct for user
 type ResumeTrainingJobInstanceRequestParams struct {
 	// <p>训练实例ID</p>
@@ -34192,6 +36279,11 @@ type SharedMountFileItem struct {
 
 	// <p>Checkpoint 训练指标（仅 checkpoint 目录且 snapshot 存在时有值）</p>
 	Metrics *CheckpointMetrics `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+}
+
+type SingleFieldPartitioning struct {
+	// <p>分区字段</p>
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
 }
 
 type SmartOptimizerChangeTablePolicy struct {
@@ -37452,6 +39544,14 @@ type TrainingTuningParams struct {
 
 	// <p>vLLM GPU memory utilization，默认 0.5</p>
 	GpuMemoryUtilization *float64 `json:"GpuMemoryUtilization,omitnil,omitempty" name:"GpuMemoryUtilization"`
+}
+
+type TruncatePartitioning struct {
+	// <p>截取长度</p>
+	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// <p>字段名</p>
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
 }
 
 type TypeKVPair struct {
@@ -40759,6 +42859,11 @@ type ViewResponseInfo struct {
 	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
 }
 
+type VolumeConnection struct {
+	// <p>存储路径</p>
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+}
+
 type VpcCidrBlock struct {
 	// 子网Id
 	CidrId *string `json:"CidrId,omitnil,omitempty" name:"CidrId"`
@@ -40779,6 +42884,65 @@ type VpcInfo struct {
 
 	// 权限组Id
 	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
+}
+
+type WarehouseInfo struct {
+	// <p>仓库 id（格式 "dlc-wh-xxxxxxxx"）.</p>
+	WarehouseId *string `json:"WarehouseId,omitnil,omitempty" name:"WarehouseId"`
+
+	// <p>仓库名称，租户内唯一。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>创建者子账号 UIN。</p>
+	CreatorSubUin *string `json:"CreatorSubUin,omitnil,omitempty" name:"CreatorSubUin"`
+
+	// <p>仓库描述信息。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>fermion 合并后的单一状态。取值：STARTING / RUNNING / STOPPING / STOPPED / UPDATING / UNAVAILABLE / DESTROYING（销毁中，只读：不接受任何生命周期操作）。</p>
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>资源池编码.</p>
+	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
+
+	// <p>资源池展示名（解析不到时为空）.</p>
+	PartitionName *string `json:"PartitionName,omitnil,omitempty" name:"PartitionName"`
+
+	// <p>资源组/队列名。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>创建时间（毫秒时间戳）。</p>
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>最后更新时间（毫秒时间戳）。</p>
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>活跃集群数（describe 与 list 均返回）。集群明细等完整快照仅 DescribeWarehouseDetail 的 Observability 返回。</p>
+	ActiveClusters *int64 `json:"ActiveClusters,omitnil,omitempty" name:"ActiveClusters"`
+
+	// <p>最小集群数（即最小实例数下限；describe 与 list 均返回）.</p>
+	MinClusters *int64 `json:"MinClusters,omitnil,omitempty" name:"MinClusters"`
+
+	// <p>最大集群数（即最大实例数上限；describe 与 list 均返回）.</p>
+	MaxClusters *int64 `json:"MaxClusters,omitnil,omitempty" name:"MaxClusters"`
+
+	// <p>运行时/镜像.</p>
+	RuntimeCode *string `json:"RuntimeCode,omitnil,omitempty" name:"RuntimeCode"`
+
+	// <p>运行时展示名（如 Spark 3.5.5），与 RuntimeCode 配套；解析不到时为空.</p>
+	RuntimeName *string `json:"RuntimeName,omitnil,omitempty" name:"RuntimeName"`
+
+	// <p>Catalog 版本码.</p>
+	SysCatalogVersion *string `json:"SysCatalogVersion,omitnil,omitempty" name:"SysCatalogVersion"`
+
+	// <p>环境变量.</p>
+	EnvVars []*KVPair `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+
+	// <p>静态运行参数（RuntimeConf）：spark.* KV 的 JSON 字符串（如 "{\"spark.sql.shuffle.partitions\":\"400\"}"），spark-submit 时生效。</p>
+	RuntimeConf *string `json:"RuntimeConf,omitnil,omitempty" name:"RuntimeConf"`
+
+	// <p>动态参数（DynamicProperties）：spark.* KV 的 JSON 字符串，运行期生效（会话级，openSession 弱注入，即改即生效）。</p>
+	DynamicProperties *string `json:"DynamicProperties,omitnil,omitempty" name:"DynamicProperties"`
 }
 
 type WorkGroupDetailInfo struct {
