@@ -2027,6 +2027,9 @@ type CreateIntentRouterRequestParams struct {
 
 	// <p>意图路由描述。</p>
 	RouterDescribe *string `json:"RouterDescribe,omitnil,omitempty" name:"RouterDescribe"`
+
+	// <p>意图路由使用决策模型配置</p>
+	DecisionModelConfig *IntentRouterDecisionModelConfig `json:"DecisionModelConfig,omitnil,omitempty" name:"DecisionModelConfig"`
 }
 
 type CreateIntentRouterRequest struct {
@@ -2043,6 +2046,9 @@ type CreateIntentRouterRequest struct {
 
 	// <p>意图路由描述。</p>
 	RouterDescribe *string `json:"RouterDescribe,omitnil,omitempty" name:"RouterDescribe"`
+
+	// <p>意图路由使用决策模型配置</p>
+	DecisionModelConfig *IntentRouterDecisionModelConfig `json:"DecisionModelConfig,omitnil,omitempty" name:"DecisionModelConfig"`
 }
 
 func (r *CreateIntentRouterRequest) ToJsonString() string {
@@ -2061,6 +2067,7 @@ func (r *CreateIntentRouterRequest) FromJsonString(s string) error {
 	delete(f, "RouteName")
 	delete(f, "Tiers")
 	delete(f, "RouterDescribe")
+	delete(f, "DecisionModelConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIntentRouterRequest has unknown keys!", "")
 	}
@@ -10360,6 +10367,11 @@ func (r *InquiryPriceRenewLoadBalancerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type IntentRouterDecisionModelConfig struct {
+	// <p>是否开启使用决策模型</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
 type IntentRouterItem struct {
 	// <p>创建时间（ISO 8601格式）。</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
@@ -10378,6 +10390,9 @@ type IntentRouterItem struct {
 
 	// <p>分层配置列表。</p>
 	Tiers []*IntentRouterTierItem `json:"Tiers,omitnil,omitempty" name:"Tiers"`
+
+	// <p>意图路由使用决策模型配置</p>
+	DecisionModelConfig *IntentRouterDecisionModelConfig `json:"DecisionModelConfig,omitnil,omitempty" name:"DecisionModelConfig"`
 
 	// <p>更新时间（ISO 8601格式）。</p>
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
@@ -12363,8 +12378,11 @@ type ModifyIntentRouterAttributeRequestParams struct {
 	// <p>意图路由描述。</p>
 	RouterDescribe *string `json:"RouterDescribe,omitnil,omitempty" name:"RouterDescribe"`
 
-	// <p>新的分层配置列表（全量替换）。</p><p>选填；不传则不修改。传入时必须为完整分层集合：复杂度分层须包含全部 4 个分层 SIMPLE/MEDIUM/COMPLEX/REASONING；语义分层须包含 default 及各语义 Tier（取决于实例所用协议，且不可跨协议变更）。每个分层至少包含一个模型，模型名称必须是已关联到该实例的模型。</p>
+	// <p>新的分层配置列表（全量替换）。</p><p>选填；传入时必须包含全部4个分层：SIMPLE、MEDIUM、COMPLEX、REASONING。每个分层至少包含一个模型，模型名称必须是已关联到该实例的模型。不传则不修改。</p>
 	Tiers []*TierItem `json:"Tiers,omitnil,omitempty" name:"Tiers"`
+
+	// <p>意图路由使用决策模型配置</p>
+	DecisionModelConfig *IntentRouterDecisionModelConfig `json:"DecisionModelConfig,omitnil,omitempty" name:"DecisionModelConfig"`
 }
 
 type ModifyIntentRouterAttributeRequest struct {
@@ -12382,8 +12400,11 @@ type ModifyIntentRouterAttributeRequest struct {
 	// <p>意图路由描述。</p>
 	RouterDescribe *string `json:"RouterDescribe,omitnil,omitempty" name:"RouterDescribe"`
 
-	// <p>新的分层配置列表（全量替换）。</p><p>选填；不传则不修改。传入时必须为完整分层集合：复杂度分层须包含全部 4 个分层 SIMPLE/MEDIUM/COMPLEX/REASONING；语义分层须包含 default 及各语义 Tier（取决于实例所用协议，且不可跨协议变更）。每个分层至少包含一个模型，模型名称必须是已关联到该实例的模型。</p>
+	// <p>新的分层配置列表（全量替换）。</p><p>选填；传入时必须包含全部4个分层：SIMPLE、MEDIUM、COMPLEX、REASONING。每个分层至少包含一个模型，模型名称必须是已关联到该实例的模型。不传则不修改。</p>
 	Tiers []*TierItem `json:"Tiers,omitnil,omitempty" name:"Tiers"`
+
+	// <p>意图路由使用决策模型配置</p>
+	DecisionModelConfig *IntentRouterDecisionModelConfig `json:"DecisionModelConfig,omitnil,omitempty" name:"DecisionModelConfig"`
 }
 
 func (r *ModifyIntentRouterAttributeRequest) ToJsonString() string {
@@ -12403,6 +12424,7 @@ func (r *ModifyIntentRouterAttributeRequest) FromJsonString(s string) error {
 	delete(f, "RouteName")
 	delete(f, "RouterDescribe")
 	delete(f, "Tiers")
+	delete(f, "DecisionModelConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIntentRouterAttributeRequest has unknown keys!", "")
 	}
