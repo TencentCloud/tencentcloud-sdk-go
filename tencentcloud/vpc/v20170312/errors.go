@@ -128,6 +128,9 @@ const (
 	// 指定参数值不是预期的字典格式。
 	INVALIDPARAMETER_INVALIDKEY = "InvalidParameter.InvalidKey"
 
+	// 子机与弹性网卡所属的CDC集群不一致。
+	INVALIDPARAMETER_MISMATCHINSTANCEENICDC = "InvalidParameter.MismatchInstanceEniCdc"
+
 	// 下一跳类型与下一跳网关不匹配。
 	INVALIDPARAMETER_NEXTHOPMISMATCH = "InvalidParameter.NextHopMismatch"
 

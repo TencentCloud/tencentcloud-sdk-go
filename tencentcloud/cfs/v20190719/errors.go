@@ -47,6 +47,9 @@ const (
 	// 检索任务正在运行中
 	FAILEDOPERATION_DATARETRIEVALTASKRUNNING = "FailedOperation.DataRetrievalTaskRunning"
 
+	// 该文件系统存在S3结点，需要删除后再删除文件系统
+	FAILEDOPERATION_FILESYSTEMHASS3ENDPOINT = "FailedOperation.FileSystemHasS3Endpoint"
+
 	// 文件系统存在挂载点。
 	FAILEDOPERATION_MOUNTTARGETEXISTS = "FailedOperation.MountTargetExists"
 

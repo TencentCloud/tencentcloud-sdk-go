@@ -284,6 +284,47 @@ func (r *AddUsersForUserManagerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AirflowCfsSource struct {
+	// <p>cfs实例id</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>cfs实例挂载目录</p>
+	Directory *string `json:"Directory,omitnil,omitempty" name:"Directory"`
+}
+
+type AirflowDagSourceInput struct {
+	// <p>是否支持dag共享源</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>dag源类型</p><p>枚举值：</p><ul><li>CFS： CFS</li><li>GIT： Git</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>cfs实例DAG源配置</p>
+	Cfs *AirflowCfsSource `json:"Cfs,omitnil,omitempty" name:"Cfs"`
+
+	// <p>Git型DAG源配置</p>
+	Git *AirflowGitSource `json:"Git,omitnil,omitempty" name:"Git"`
+}
+
+type AirflowGitCredentialInput struct {
+	// <p>用户名</p>
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// <p>用户凭证</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+}
+
+type AirflowGitSource struct {
+	// <p>git仓库URL</p>
+	RepositoryUrl *string `json:"RepositoryUrl,omitnil,omitempty" name:"RepositoryUrl"`
+
+	// <p>DAG跟踪分支/TAG</p>
+	Ref *string `json:"Ref,omitnil,omitempty" name:"Ref"`
+
+	// <p>DAG挂载目录</p>
+	Directory *string `json:"Directory,omitnil,omitempty" name:"Directory"`
+}
+
 type AllNodeResourceSpec struct {
 	// 描述Master节点资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1440,6 +1481,12 @@ type CreateCloudInstanceRequestParams struct {
 
 	// <p>日志存储服务实例id</p>
 	LogStoreID *string `json:"LogStoreID,omitnil,omitempty" name:"LogStoreID"`
+
+	// <p>airflow目录源</p>
+	AirflowDagSource *AirflowDagSourceInput `json:"AirflowDagSource,omitnil,omitempty" name:"AirflowDagSource"`
+
+	// <p>airflow源凭证</p>
+	AirflowGitCredential *AirflowGitCredentialInput `json:"AirflowGitCredential,omitnil,omitempty" name:"AirflowGitCredential"`
 }
 
 type CreateCloudInstanceRequest struct {
@@ -1519,6 +1566,12 @@ type CreateCloudInstanceRequest struct {
 
 	// <p>日志存储服务实例id</p>
 	LogStoreID *string `json:"LogStoreID,omitnil,omitempty" name:"LogStoreID"`
+
+	// <p>airflow目录源</p>
+	AirflowDagSource *AirflowDagSourceInput `json:"AirflowDagSource,omitnil,omitempty" name:"AirflowDagSource"`
+
+	// <p>airflow源凭证</p>
+	AirflowGitCredential *AirflowGitCredentialInput `json:"AirflowGitCredential,omitnil,omitempty" name:"AirflowGitCredential"`
 }
 
 func (r *CreateCloudInstanceRequest) ToJsonString() string {
@@ -1558,6 +1611,8 @@ func (r *CreateCloudInstanceRequest) FromJsonString(s string) error {
 	delete(f, "TerminateProtection")
 	delete(f, "EnableEmrProxy")
 	delete(f, "LogStoreID")
+	delete(f, "AirflowDagSource")
+	delete(f, "AirflowGitCredential")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudInstanceRequest has unknown keys!", "")
 	}

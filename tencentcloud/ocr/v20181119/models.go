@@ -8462,6 +8462,12 @@ type RecognizeThaiIDCardOCRResponseParams struct {
 	// <p>卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）</p>
 	CardCount *int64 `json:"CardCount,omitnil,omitempty" name:"CardCount"`
 
+	// <p>泰文姓名</p>
+	ThaiFirstName *string `json:"ThaiFirstName,omitnil,omitempty" name:"ThaiFirstName"`
+
+	// <p>泰文姓名</p>
+	ThaiLastName *string `json:"ThaiLastName,omitnil,omitempty" name:"ThaiLastName"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

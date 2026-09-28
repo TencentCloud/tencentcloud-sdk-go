@@ -1403,6 +1403,80 @@ func (c *Client) CreatePlatformEnvWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreatePlatformHTTPServiceRouteRequest() (request *CreatePlatformHTTPServiceRouteRequest) {
+    request = &CreatePlatformHTTPServiceRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreatePlatformHTTPServiceRoute")
+    
+    
+    return
+}
+
+func NewCreatePlatformHTTPServiceRouteResponse() (response *CreatePlatformHTTPServiceRouteResponse) {
+    response = &CreatePlatformHTTPServiceRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePlatformHTTPServiceRoute
+// 本接口CreateHTTPServiceRoute用于创建平台版HTTP访问服务路由。如果不传Domain.Routes，仅创建域名信息。首次创建域名后需要调用DescribeHTTPServiceRoute查询域名状态，如果状态是PROCESSING，需要轮询查询域名状态直到SUCCESS或者FAIL。如果状态是FAIL，可以删除后重新创建。创建成功后域名可能无法访问，原因是异步下发的路由，可通过http或者https探测路由是否下发，如果http访问返回404或者https访问握手失败，可等待一会再试，直到访问正常。此外HTTP访问服务提供了默认域名，通过DescribeHTTPServiceRoute接口可直接获取默认域名。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  INVALIDPARAMETER_HTTPSERVICEDOMAINNOTICP = "InvalidParameter.HTTPServiceDomainNotICP"
+//  INVALIDPARAMETER_HTTPSERVICEDOMAINVERIFYFAILED = "InvalidParameter.HTTPServiceDomainVerifyFailed"
+//  LIMITEXCEEDED_HTTPSERVICEDOMAIN = "LimitExceeded.HTTPServiceDomain"
+//  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+//  OPERATIONDENIED_HTTPSERVICEDOMAINEOFROZEN = "OperationDenied.HTTPServiceDomainEOFrozen"
+//  OPERATIONDENIED_HTTPSERVICEDOMAININBLACKLIST = "OperationDenied.HTTPServiceDomainInBlacklist"
+//  OPERATIONDENIED_NONINTERNALACCOUNT = "OperationDenied.NonInternalAccount"
+//  RESOURCEINUSE_HTTPSERVICEDOMAIN = "ResourceInUse.HTTPServiceDomain"
+//  RESOURCEINUSE_HTTPSERVICEROUTE = "ResourceInUse.HTTPServiceRoute"
+//  RESOURCENOTFOUND_HTTPSERVICEDOMAIN = "ResourceNotFound.HTTPServiceDomain"
+func (c *Client) CreatePlatformHTTPServiceRoute(request *CreatePlatformHTTPServiceRouteRequest) (response *CreatePlatformHTTPServiceRouteResponse, err error) {
+    return c.CreatePlatformHTTPServiceRouteWithContext(context.Background(), request)
+}
+
+// CreatePlatformHTTPServiceRoute
+// 本接口CreateHTTPServiceRoute用于创建平台版HTTP访问服务路由。如果不传Domain.Routes，仅创建域名信息。首次创建域名后需要调用DescribeHTTPServiceRoute查询域名状态，如果状态是PROCESSING，需要轮询查询域名状态直到SUCCESS或者FAIL。如果状态是FAIL，可以删除后重新创建。创建成功后域名可能无法访问，原因是异步下发的路由，可通过http或者https探测路由是否下发，如果http访问返回404或者https访问握手失败，可等待一会再试，直到访问正常。此外HTTP访问服务提供了默认域名，通过DescribeHTTPServiceRoute接口可直接获取默认域名。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  INVALIDPARAMETER_HTTPSERVICEDOMAINNOTICP = "InvalidParameter.HTTPServiceDomainNotICP"
+//  INVALIDPARAMETER_HTTPSERVICEDOMAINVERIFYFAILED = "InvalidParameter.HTTPServiceDomainVerifyFailed"
+//  LIMITEXCEEDED_HTTPSERVICEDOMAIN = "LimitExceeded.HTTPServiceDomain"
+//  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+//  OPERATIONDENIED_HTTPSERVICEDOMAINEOFROZEN = "OperationDenied.HTTPServiceDomainEOFrozen"
+//  OPERATIONDENIED_HTTPSERVICEDOMAININBLACKLIST = "OperationDenied.HTTPServiceDomainInBlacklist"
+//  OPERATIONDENIED_NONINTERNALACCOUNT = "OperationDenied.NonInternalAccount"
+//  RESOURCEINUSE_HTTPSERVICEDOMAIN = "ResourceInUse.HTTPServiceDomain"
+//  RESOURCEINUSE_HTTPSERVICEROUTE = "ResourceInUse.HTTPServiceRoute"
+//  RESOURCENOTFOUND_HTTPSERVICEDOMAIN = "ResourceNotFound.HTTPServiceDomain"
+func (c *Client) CreatePlatformHTTPServiceRouteWithContext(ctx context.Context, request *CreatePlatformHTTPServiceRouteRequest) (response *CreatePlatformHTTPServiceRouteResponse, err error) {
+    if request == nil {
+        request = NewCreatePlatformHTTPServiceRouteRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreatePlatformHTTPServiceRoute")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePlatformHTTPServiceRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePlatformHTTPServiceRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateStaticStoreRequest() (request *CreateStaticStoreRequest) {
     request = &CreateStaticStoreRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2041,6 +2115,58 @@ func (c *Client) DeleteHTTPServiceRouteWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDeleteHTTPServiceRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePlatformHTTPServiceRouteRequest() (request *DeletePlatformHTTPServiceRouteRequest) {
+    request = &DeletePlatformHTTPServiceRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeletePlatformHTTPServiceRoute")
+    
+    
+    return
+}
+
+func NewDeletePlatformHTTPServiceRouteResponse() (response *DeletePlatformHTTPServiceRouteResponse) {
+    response = &DeletePlatformHTTPServiceRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeletePlatformHTTPServiceRoute
+// 本接口DeleteHTTPServiceRoute用于删除平台版HTTP访问服务域名或者路由。可批量删除多条path路由、删除域名及所有path路由，如果Paths字段为空则删除域名及所有path路由，如果Paths不为空则仅删除path路由。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+func (c *Client) DeletePlatformHTTPServiceRoute(request *DeletePlatformHTTPServiceRouteRequest) (response *DeletePlatformHTTPServiceRouteResponse, err error) {
+    return c.DeletePlatformHTTPServiceRouteWithContext(context.Background(), request)
+}
+
+// DeletePlatformHTTPServiceRoute
+// 本接口DeleteHTTPServiceRoute用于删除平台版HTTP访问服务域名或者路由。可批量删除多条path路由、删除域名及所有path路由，如果Paths字段为空则删除域名及所有path路由，如果Paths不为空则仅删除path路由。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+func (c *Client) DeletePlatformHTTPServiceRouteWithContext(ctx context.Context, request *DeletePlatformHTTPServiceRouteRequest) (response *DeletePlatformHTTPServiceRouteResponse, err error) {
+    if request == nil {
+        request = NewDeletePlatformHTTPServiceRouteRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeletePlatformHTTPServiceRoute")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePlatformHTTPServiceRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePlatformHTTPServiceRouteResponse()
     err = c.Send(request, response)
     return
 }
@@ -4565,6 +4691,66 @@ func (c *Client) DescribePlatformEnvUsageWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribePlatformHTTPServiceRouteRequest() (request *DescribePlatformHTTPServiceRouteRequest) {
+    request = &DescribePlatformHTTPServiceRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribePlatformHTTPServiceRoute")
+    
+    
+    return
+}
+
+func NewDescribePlatformHTTPServiceRouteResponse() (response *DescribePlatformHTTPServiceRouteResponse) {
+    response = &DescribePlatformHTTPServiceRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePlatformHTTPServiceRoute
+// 本接口DescribeHTTPServiceRoute用于查询平台版下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。HTTP访问服务提供了默认域名，通过本接口可直接获取默认域名。前置需已开通 HTTP 访问服务；调用CreateHTTPServiceRoute或者ModifyHTTPServiceRoute后可使用本接口查询创建或者修改结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+func (c *Client) DescribePlatformHTTPServiceRoute(request *DescribePlatformHTTPServiceRouteRequest) (response *DescribePlatformHTTPServiceRouteResponse, err error) {
+    return c.DescribePlatformHTTPServiceRouteWithContext(context.Background(), request)
+}
+
+// DescribePlatformHTTPServiceRoute
+// 本接口DescribeHTTPServiceRoute用于查询平台版下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。HTTP访问服务提供了默认域名，通过本接口可直接获取默认域名。前置需已开通 HTTP 访问服务；调用CreateHTTPServiceRoute或者ModifyHTTPServiceRoute后可使用本接口查询创建或者修改结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+func (c *Client) DescribePlatformHTTPServiceRouteWithContext(ctx context.Context, request *DescribePlatformHTTPServiceRouteRequest) (response *DescribePlatformHTTPServiceRouteResponse, err error) {
+    if request == nil {
+        request = NewDescribePlatformHTTPServiceRouteRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribePlatformHTTPServiceRoute")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlatformHTTPServiceRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePlatformHTTPServiceRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePlatformsRequest() (request *DescribePlatformsRequest) {
     request = &DescribePlatformsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4606,11 +4792,12 @@ func NewDescribePlatformsResponse() (response *DescribePlatformsResponse) {
 // 使用场景：控制台展示平台版套餐信息/查平台版资源详情/资源状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 func (c *Client) DescribePlatforms(request *DescribePlatformsRequest) (response *DescribePlatformsResponse, err error) {
     return c.DescribePlatformsWithContext(context.Background(), request)
 }
@@ -4637,11 +4824,12 @@ func (c *Client) DescribePlatforms(request *DescribePlatformsRequest) (response 
 // 使用场景：控制台展示平台版套餐信息/查平台版资源详情/资源状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 func (c *Client) DescribePlatformsWithContext(ctx context.Context, request *DescribePlatformsRequest) (response *DescribePlatformsResponse, err error) {
     if request == nil {
         request = NewDescribePlatformsRequest()
@@ -6483,6 +6671,66 @@ func (c *Client) ModifyPlatformEnvWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyPlatformHTTPServiceRouteRequest() (request *ModifyPlatformHTTPServiceRouteRequest) {
+    request = &ModifyPlatformHTTPServiceRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyPlatformHTTPServiceRoute")
+    
+    
+    return
+}
+
+func NewModifyPlatformHTTPServiceRouteResponse() (response *ModifyPlatformHTTPServiceRouteResponse) {
+    response = &ModifyPlatformHTTPServiceRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPlatformHTTPServiceRoute
+// 本接口ModifyHTTPServiceRoute用于修改平台版HTTP访问服务路由。支持增量修改，对应字段不传参数则不修改
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+//  OPERATIONDENIED_HTTPSERVICEDOMAINEOFROZEN = "OperationDenied.HTTPServiceDomainEOFrozen"
+//  OPERATIONDENIED_HTTPSERVICEDOMAINPROCESSING = "OperationDenied.HTTPServiceDomainProcessing"
+func (c *Client) ModifyPlatformHTTPServiceRoute(request *ModifyPlatformHTTPServiceRouteRequest) (response *ModifyPlatformHTTPServiceRouteResponse, err error) {
+    return c.ModifyPlatformHTTPServiceRouteWithContext(context.Background(), request)
+}
+
+// ModifyPlatformHTTPServiceRoute
+// 本接口ModifyHTTPServiceRoute用于修改平台版HTTP访问服务路由。支持增量修改，对应字段不传参数则不修改
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+//  OPERATIONDENIED_HTTPSERVICEDOMAINEOFROZEN = "OperationDenied.HTTPServiceDomainEOFrozen"
+//  OPERATIONDENIED_HTTPSERVICEDOMAINPROCESSING = "OperationDenied.HTTPServiceDomainProcessing"
+func (c *Client) ModifyPlatformHTTPServiceRouteWithContext(ctx context.Context, request *ModifyPlatformHTTPServiceRouteRequest) (response *ModifyPlatformHTTPServiceRouteResponse, err error) {
+    if request == nil {
+        request = NewModifyPlatformHTTPServiceRouteRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyPlatformHTTPServiceRoute")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPlatformHTTPServiceRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPlatformHTTPServiceRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyProviderRequest() (request *ModifyProviderRequest) {
     request = &ModifyProviderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7985,6 +8233,116 @@ func (c *Client) VerifyHTTPServiceRouteWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewVerifyHTTPServiceRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyPlatformHTTPServiceRouteRequest() (request *VerifyPlatformHTTPServiceRouteRequest) {
+    request = &VerifyPlatformHTTPServiceRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "VerifyPlatformHTTPServiceRoute")
+    
+    
+    return
+}
+
+func NewVerifyPlatformHTTPServiceRouteResponse() (response *VerifyPlatformHTTPServiceRouteResponse) {
+    response = &VerifyPlatformHTTPServiceRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VerifyPlatformHTTPServiceRoute
+// 本接口VerifyPlatformHTTPServiceRoute用于前置校验平台版HTTP访问服务域名或者路由。覆盖的校验项包括：
+//
+// 1. Ownership：域名所有权（TXT/CNAME 记录）；
+//
+// 2. Cert：证书与域名匹配（CertId 为空时跳过）；
+//
+// 3. Quota：环境下域名/路径数量配额；
+//
+// 4. RouteConflict：同域名下路由路径冲突；
+//
+// 5. DomainConflict：域名被其他环境占用；
+//
+// 6. InternalAccount：内部域名且非内部账号；
+//
+// 7. Blacklist：域名黑名单；
+//
+// 8. CDNResource：AccessType=CDN 时 CDN 资源存在性 / 状态（含 ICP 未备案提示）；
+//
+// 9. EO：AccessType=EO 时 EdgeOne 侧域名冲突 / 备案 / 归属权预检。
+//
+// 
+//
+// 使用方式：
+//
+// - 调用本接口前置校验，若 Passed=true 表示所有启用检查项均通过，可继续调用 CreateHTTPServiceRoute 正式创建；
+//
+// - 若 Passed=false，前端应根据各 CheckItem 的 Code 精确渲染对应的错误提示与用户操作指引（如 DNS 归属权配置、ICP 备案指引等），用户修正参数后可重复调用本接口，直到通过后再进行创建。
+//
+// 
+//
+// 注意：本接口为只读 dry-run 操作，不落库、不创建任何资源，仅返回各项检查的详细结果。本接口通过不代表 CreateHTTPServiceRoute 必然成功（例如证书运行时状态、并发抢占等仍需创建时最终判定），但本接口不通过则 CreateHTTPServiceRoute 必然不通过。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) VerifyPlatformHTTPServiceRoute(request *VerifyPlatformHTTPServiceRouteRequest) (response *VerifyPlatformHTTPServiceRouteResponse, err error) {
+    return c.VerifyPlatformHTTPServiceRouteWithContext(context.Background(), request)
+}
+
+// VerifyPlatformHTTPServiceRoute
+// 本接口VerifyPlatformHTTPServiceRoute用于前置校验平台版HTTP访问服务域名或者路由。覆盖的校验项包括：
+//
+// 1. Ownership：域名所有权（TXT/CNAME 记录）；
+//
+// 2. Cert：证书与域名匹配（CertId 为空时跳过）；
+//
+// 3. Quota：环境下域名/路径数量配额；
+//
+// 4. RouteConflict：同域名下路由路径冲突；
+//
+// 5. DomainConflict：域名被其他环境占用；
+//
+// 6. InternalAccount：内部域名且非内部账号；
+//
+// 7. Blacklist：域名黑名单；
+//
+// 8. CDNResource：AccessType=CDN 时 CDN 资源存在性 / 状态（含 ICP 未备案提示）；
+//
+// 9. EO：AccessType=EO 时 EdgeOne 侧域名冲突 / 备案 / 归属权预检。
+//
+// 
+//
+// 使用方式：
+//
+// - 调用本接口前置校验，若 Passed=true 表示所有启用检查项均通过，可继续调用 CreateHTTPServiceRoute 正式创建；
+//
+// - 若 Passed=false，前端应根据各 CheckItem 的 Code 精确渲染对应的错误提示与用户操作指引（如 DNS 归属权配置、ICP 备案指引等），用户修正参数后可重复调用本接口，直到通过后再进行创建。
+//
+// 
+//
+// 注意：本接口为只读 dry-run 操作，不落库、不创建任何资源，仅返回各项检查的详细结果。本接口通过不代表 CreateHTTPServiceRoute 必然成功（例如证书运行时状态、并发抢占等仍需创建时最终判定），但本接口不通过则 CreateHTTPServiceRoute 必然不通过。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) VerifyPlatformHTTPServiceRouteWithContext(ctx context.Context, request *VerifyPlatformHTTPServiceRouteRequest) (response *VerifyPlatformHTTPServiceRouteResponse, err error) {
+    if request == nil {
+        request = NewVerifyPlatformHTTPServiceRouteRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "VerifyPlatformHTTPServiceRoute")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyPlatformHTTPServiceRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyPlatformHTTPServiceRouteResponse()
     err = c.Send(request, response)
     return
 }

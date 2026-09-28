@@ -2237,6 +2237,10 @@ func (r *CreateExportTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateExportTaskResponseParams struct {
+	// <p>下载文件名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -9941,6 +9945,18 @@ type ExportFile struct {
 	// <p>req</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+
+	// <p>日志开始时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogStartTime *string `json:"LogStartTime,omitnil,omitempty" name:"LogStartTime"`
+
+	// <p>日志结束时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogEndTime *string `json:"LogEndTime,omitnil,omitempty" name:"LogEndTime"`
+
+	// <p>日志过滤条件</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogFilter *string `json:"LogFilter,omitnil,omitempty" name:"LogFilter"`
 }
 
 type FileAction struct {
@@ -10527,141 +10543,145 @@ type LogInstance struct {
 }
 
 type LogResult struct {
-	// 时间戳
+	// <p>时间戳</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
-	// 错误类别
+	// <p>错误类别</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 
-	// 客户端应用程序名称
+	// <p>客户端应用程序名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientAppName *string `json:"ClientAppName,omitnil,omitempty" name:"ClientAppName"`
 
-	// 客户端主机名
+	// <p>客户端主机名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientHostName *string `json:"ClientHostName,omitnil,omitempty" name:"ClientHostName"`
 
-	// CPU 时间
+	// <p>CPU 时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuTime *int64 `json:"CpuTime,omitnil,omitempty" name:"CpuTime"`
 
-	// 数据库 ID
+	// <p>数据库 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseId *int64 `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 执行时间
+	// <p>执行时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 错误编号
+	// <p>错误编号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorNumber *int64 `json:"ErrorNumber,omitnil,omitempty" name:"ErrorNumber"`
 
-	// 是否被拦截
+	// <p>是否被拦截</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsIntercepted *string `json:"IsIntercepted,omitnil,omitempty" name:"IsIntercepted"`
 
-	// 最后行计数
+	// <p>最后行计数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastRowCount *int64 `json:"LastRowCount,omitnil,omitempty" name:"LastRowCount"`
 
-	// 逻辑读取
+	// <p>逻辑读取</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogicalReads *int64 `json:"LogicalReads,omitnil,omitempty" name:"LogicalReads"`
 
-	// 消息
+	// <p>消息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 对象 ID
+	// <p>对象 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectId *int64 `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
 
-	// 对象名称
+	// <p>对象名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectName *string `json:"ObjectName,omitnil,omitempty" name:"ObjectName"`
 
-	// 对象类型
+	// <p>对象类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
 
-	// 输出参数
+	// <p>输出参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputParameters *string `json:"OutputParameters,omitnil,omitempty" name:"OutputParameters"`
 
-	// 参数化计划句柄
+	// <p>参数化计划句柄</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterizedPlanHandle *string `json:"ParameterizedPlanHandle,omitnil,omitempty" name:"ParameterizedPlanHandle"`
 
-	// 物理读取
+	// <p>物理读取</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhysicalReads *int64 `json:"PhysicalReads,omitnil,omitempty" name:"PhysicalReads"`
 
-	// 结果
+	// <p>结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 行计数
+	// <p>行计数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RowCount *int64 `json:"RowCount,omitnil,omitempty" name:"RowCount"`
 
-	// 服务器主体名称
+	// <p>服务器主体名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerPrincipalName *string `json:"ServerPrincipalName,omitnil,omitempty" name:"ServerPrincipalName"`
 
-	// 会话服务器主体名称
+	// <p>会话服务器主体名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionServerPrincipalName *string `json:"SessionServerPrincipalName,omitnil,omitempty" name:"SessionServerPrincipalName"`
 
-	// 严重性
+	// <p>严重性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Severity *int64 `json:"Severity,omitnil,omitempty" name:"Severity"`
 
-	// 源数据库 ID
+	// <p>源数据库 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceDatabaseId *int64 `json:"SourceDatabaseId,omitnil,omitempty" name:"SourceDatabaseId"`
 
-	// SQL 文本
+	// <p>SQL 文本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
 
-	// 状态
+	// <p>状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
-	// 语句
+	// <p>语句</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Statement *string `json:"Statement,omitnil,omitempty" name:"Statement"`
 
-	// 系统线程 ID
+	// <p>系统线程 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SystemThreadId *int64 `json:"SystemThreadId,omitnil,omitempty" name:"SystemThreadId"`
 
-	// 事务 ID
+	// <p>事务 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransactionId *int64 `json:"TransactionId,omitnil,omitempty" name:"TransactionId"`
 
-	// 用户定义
+	// <p>用户定义</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefined *string `json:"UserDefined,omitnil,omitempty" name:"UserDefined"`
 
-	// 用户名
+	// <p>用户名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 写入
+	// <p>写入</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Writes *int64 `json:"Writes,omitnil,omitempty" name:"Writes"`
 
-	// 目标
+	// <p>目标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
+
+	// <p>事件名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
 }
 
 type MigrateDB struct {

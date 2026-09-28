@@ -532,8 +532,23 @@ func NewCreatePreCacheImageTaskResponse() (response *CreatePreCacheImageTaskResp
 // 创建镜像预热任务
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_REGISTRY = "AuthFailure.Registry"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
+//  FAILEDOPERATION_PRECACHEFAILED = "FailedOperation.PrecacheFailed"
+//  FAILEDOPERATION_REQUESTINPROGRESS = "FailedOperation.RequestInProgress"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE_IMAGE = "InvalidParameterValue.Image"
+//  INVALIDPARAMETERVALUE_IMAGEREGISTRY = "InvalidParameterValue.ImageRegistry"
+//  INVALIDPARAMETERVALUE_SCOPE = "InvalidParameterValue.Scope"
 //  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_IMAGE = "ResourceNotFound.Image"
+//  RESOURCEUNAVAILABLE_IMAGEPREHEATING = "ResourceUnavailable.ImagePreheating"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreatePreCacheImageTask(request *CreatePreCacheImageTaskRequest) (response *CreatePreCacheImageTaskResponse, err error) {
     return c.CreatePreCacheImageTaskWithContext(context.Background(), request)
 }
@@ -542,8 +557,23 @@ func (c *Client) CreatePreCacheImageTask(request *CreatePreCacheImageTaskRequest
 // 创建镜像预热任务
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_REGISTRY = "AuthFailure.Registry"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
+//  FAILEDOPERATION_PRECACHEFAILED = "FailedOperation.PrecacheFailed"
+//  FAILEDOPERATION_REQUESTINPROGRESS = "FailedOperation.RequestInProgress"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE_IMAGE = "InvalidParameterValue.Image"
+//  INVALIDPARAMETERVALUE_IMAGEREGISTRY = "InvalidParameterValue.ImageRegistry"
+//  INVALIDPARAMETERVALUE_SCOPE = "InvalidParameterValue.Scope"
 //  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_IMAGE = "ResourceNotFound.Image"
+//  RESOURCEUNAVAILABLE_IMAGEPREHEATING = "ResourceUnavailable.ImagePreheating"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreatePreCacheImageTaskWithContext(ctx context.Context, request *CreatePreCacheImageTaskRequest) (response *CreatePreCacheImageTaskResponse, err error) {
     if request == nil {
         request = NewCreatePreCacheImageTaskRequest()
@@ -1648,8 +1678,13 @@ func NewDescribePreCacheImageTaskResponse() (response *DescribePreCacheImageTask
 // 查询镜像预热任务信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE_IMAGE = "InvalidParameterValue.Image"
+//  INVALIDPARAMETERVALUE_SCOPE = "InvalidParameterValue.Scope"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_IMAGE = "ResourceNotFound.Image"
 func (c *Client) DescribePreCacheImageTask(request *DescribePreCacheImageTaskRequest) (response *DescribePreCacheImageTaskResponse, err error) {
     return c.DescribePreCacheImageTaskWithContext(context.Background(), request)
 }
@@ -1658,8 +1693,13 @@ func (c *Client) DescribePreCacheImageTask(request *DescribePreCacheImageTaskReq
 // 查询镜像预热任务信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE_IMAGE = "InvalidParameterValue.Image"
+//  INVALIDPARAMETERVALUE_SCOPE = "InvalidParameterValue.Scope"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_IMAGE = "ResourceNotFound.Image"
 func (c *Client) DescribePreCacheImageTaskWithContext(ctx context.Context, request *DescribePreCacheImageTaskRequest) (response *DescribePreCacheImageTaskResponse, err error) {
     if request == nil {
         request = NewDescribePreCacheImageTaskRequest()
@@ -1700,8 +1740,13 @@ func NewDescribeQuotaOverviewResponse() (response *DescribeQuotaOverviewResponse
 // 查询当前调用账号的资源配额和当前总用量，以及账号下各配额组的资源配额和当前用量
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE_IMAGE = "InvalidParameterValue.Image"
+//  INVALIDPARAMETERVALUE_SCOPE = "InvalidParameterValue.Scope"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_IMAGE = "ResourceNotFound.Image"
 func (c *Client) DescribeQuotaOverview(request *DescribeQuotaOverviewRequest) (response *DescribeQuotaOverviewResponse, err error) {
     return c.DescribeQuotaOverviewWithContext(context.Background(), request)
 }
@@ -1710,8 +1755,13 @@ func (c *Client) DescribeQuotaOverview(request *DescribeQuotaOverviewRequest) (r
 // 查询当前调用账号的资源配额和当前总用量，以及账号下各配额组的资源配额和当前用量
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE_IMAGE = "InvalidParameterValue.Image"
+//  INVALIDPARAMETERVALUE_SCOPE = "InvalidParameterValue.Scope"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_IMAGE = "ResourceNotFound.Image"
 func (c *Client) DescribeQuotaOverviewWithContext(ctx context.Context, request *DescribeQuotaOverviewRequest) (response *DescribeQuotaOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeQuotaOverviewRequest()

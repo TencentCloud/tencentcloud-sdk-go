@@ -1496,6 +1496,20 @@ type AiAnalysisTaskVideoRemakeResult struct {
 	Output *AiAnalysisTaskVideoRemakeOutput `json:"Output,omitnil,omitempty" name:"Output"`
 }
 
+type AiComposeConfig struct {
+	// <p>能力配置开关。</p><li>ON：开启（默认值）；</li><li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>合成模型。可选值：compose-1.0-lite（默认值，可不传）。</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>画布定义。可省略：省略时取 ZIndex 最小的图层（底层图层）的自然尺寸。</p>
+	Canvas *ImageComposeCanvas `json:"Canvas,omitnil,omitempty" name:"Canvas"`
+
+	// <p>图层列表，图层的唯一来源。至少 1 层、最多 20 层。</p>
+	Layers []*ImageComposeLayer `json:"Layers,omitnil,omitempty" name:"Layers"`
+}
+
 type AiContentReviewResult struct {
 	// 任务的类型，可以取的值有：
 	// <li>Porn：图片鉴黄</li>
@@ -1654,7 +1668,7 @@ type AiPosterSuiteConfig struct {
 	// <p>用户自定义变量。</p>
 	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
 
-	// <p>模型名称。</p><p>枚举值：</p><ul><li>WAND-suite-1.0-flash： WAND-suite-1.0-flash</li></ul>
+	// <p>模型名称。</p><p>枚举值：</p><ul><li>suite-1.0-flash： suite-1.0-flash</li></ul>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
@@ -20116,6 +20130,31 @@ type ImageAreaBoxInfo struct {
 	BoundingBoxUnitType *uint64 `json:"BoundingBoxUnitType,omitnil,omitempty" name:"BoundingBoxUnitType"`
 }
 
+type ImageComposeCanvas struct {
+	// <p>画布宽度，取值范围 [1, 10240]，需与 Height 同时设置。</p>
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// <p>画布高度，取值范围 [1, 10240]，需与 Width 同时设置。</p>
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+
+	// <p>画布底色，统一为 8 位十六进制 #RRGGBBAA（含 alpha），原样作为画布底色。缺省 #00000000（全透明）。示例：#FFFFFFFF 不透明白、#FFFFFF80 半透明白。</p><p>输出格式不支持透明通道时（如 JPEG），透明区域按该底色的 RGB 塌陷；缺省值会得到黑底，需要白底请显式传    #FFFFFFFF。</p>
+	Background *string `json:"Background,omitnil,omitempty" name:"Background"`
+}
+
+type ImageComposeLayer struct {
+	// <p>图层堆叠顺序，必填。同一请求内不可重复，数值越大越靠上（建议从 0 开始连续编号）。</p>
+	ZIndex *int64 `json:"ZIndex,omitnil,omitempty" name:"ZIndex"`
+
+	// <p>图层图片来源，必填。支持 URL / COS / AWS-S3 / VOD。</p>
+	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// <p>图层在画布中的位置与尺寸，必填。长度为 4 的数组 [X1, Y1, X2, Y2]：左上角 + 右下角坐标，要求 X2 &gt; X1、Y2 &gt;    Y1。</p><p>两种语义（与图片擦除能力的 BoundingBox 对齐）：</p><ul><li>像素：坐标值，取值范围 [-10240,    10240]，允许为负或超出画布（超出部分被裁掉）；</li><li>比例：各值 ∈ [-1, 1]，按画布宽高换算（x 乘画布宽、y    乘画布高）。</li></ul><p>图层会缩放填满该矩形；超出画布的部分一律裁掉，输出尺寸恒等于画布尺寸。</p>
+	BoundingBox []*float64 `json:"BoundingBox,omitnil,omitempty" name:"BoundingBox"`
+
+	// <p>坐标单位，与图片擦除能力对齐。取值：</p><ul><li>0：自动判定（不传时的默认值）；</li><li>1：比例；</li><li>2：像素。</li></ul><p>自动判定规则：四个值全部大于 1 按像素解释、全部不大于 1 按比例解释；混合取值会返回InvalidParameter，建议始终显式指定。</p>
+	BoundingBoxUnitType *uint64 `json:"BoundingBoxUnitType,omitnil,omitempty" name:"BoundingBoxUnitType"`
+}
+
 type ImageDenoiseConfig struct {
 	// 能力配置开关，可选值：
 	// <li>ON：开启；</li>
@@ -20507,6 +20546,9 @@ type ImageTaskInput struct {
 
 	// <p>图片质量评估配置</p>
 	ImageQualityConfig *ImageQualityConfig `json:"ImageQualityConfig,omitnil,omitempty" name:"ImageQualityConfig"`
+
+	// <p>图层融合配置。</p>
+	AiComposeConfig *AiComposeConfig `json:"AiComposeConfig,omitnil,omitempty" name:"AiComposeConfig"`
 }
 
 type ImageTransformConfig struct {

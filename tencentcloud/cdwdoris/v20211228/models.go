@@ -960,139 +960,139 @@ func (r *CreateCoolDownPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstanceNewRequestParams struct {
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// FE规格
+	// <p>FE规格</p>
 	FeSpec *CreateInstanceSpec `json:"FeSpec,omitnil,omitempty" name:"FeSpec"`
 
-	// BE规格
+	// <p>BE规格</p>
 	BeSpec *CreateInstanceSpec `json:"BeSpec,omitnil,omitempty" name:"BeSpec"`
 
-	// 是否高可用
+	// <p>是否高可用</p>
 	HaFlag *bool `json:"HaFlag,omitnil,omitempty" name:"HaFlag"`
 
-	// 用户VPCID
+	// <p>用户VPCID</p>
 	UserVPCId *string `json:"UserVPCId,omitnil,omitempty" name:"UserVPCId"`
 
-	// 用户子网ID
+	// <p>用户子网ID</p>
 	UserSubnetId *string `json:"UserSubnetId,omitnil,omitempty" name:"UserSubnetId"`
 
-	// 产品版本号
+	// <p>产品版本号</p>
 	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 
-	// 付费类型
+	// <p>付费类型</p>
 	ChargeProperties *ChargeProperties `json:"ChargeProperties,omitnil,omitempty" name:"ChargeProperties"`
 
-	// 实例名字
+	// <p>实例名字</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 数据库密码
+	// <p>数据库密码</p>
 	DorisUserPwd *string `json:"DorisUserPwd,omitnil,omitempty" name:"DorisUserPwd"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 高可用类型：
-	// 0：非高可用（只有1个FE，FeSpec.CreateInstanceSpec.Count=1），
-	// 1：读高可用（至少需部署3个FE，FeSpec.CreateInstanceSpec.Count>=3，且为奇数），
-	// 2：读写高可用（至少需部署5个FE，FeSpec.CreateInstanceSpec.Count>=5，且为奇数）。
+	// <p>高可用类型：<br>0：非高可用（只有1个FE，FeSpec.CreateInstanceSpec.Count=1），<br>1：读高可用（至少需部署3个FE，FeSpec.CreateInstanceSpec.Count&gt;=3，且为奇数），<br>2：读写高可用（至少需部署5个FE，FeSpec.CreateInstanceSpec.Count&gt;=5，且为奇数）。</p>
 	HaType *int64 `json:"HaType,omitnil,omitempty" name:"HaType"`
 
-	// 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
+	// <p>表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储</p>
 	CaseSensitive *int64 `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
 
-	// 是否开启多可用区
+	// <p>是否开启多可用区</p>
 	EnableMultiZones *bool `json:"EnableMultiZones,omitnil,omitempty" name:"EnableMultiZones"`
 
-	// 开启多可用区后，用户的所有可用区和子网信息
+	// <p>开启多可用区后，用户的所有可用区和子网信息</p>
 	//
 	// Deprecated: UserMultiZoneInfos is deprecated.
 	UserMultiZoneInfos *NetworkInfo `json:"UserMultiZoneInfos,omitnil,omitempty" name:"UserMultiZoneInfos"`
 
-	// 开启多可用区后，用户的所有可用区和子网信息
+	// <p>开启多可用区后，用户的所有可用区和子网信息</p>
 	UserMultiZoneInfoArr []*NetworkInfo `json:"UserMultiZoneInfoArr,omitnil,omitempty" name:"UserMultiZoneInfoArr"`
 
-	// 是否存算分离
+	// <p>是否存算分离</p>
 	IsSSC *bool `json:"IsSSC,omitnil,omitempty" name:"IsSSC"`
 
-	// CU数
+	// <p>CU数</p>
 	SSCCU *int64 `json:"SSCCU,omitnil,omitempty" name:"SSCCU"`
 
-	// 缓存盘大小
+	// <p>缓存盘大小</p>
 	//
 	// Deprecated: CacheDiskSize is deprecated.
 	CacheDiskSize *string `json:"CacheDiskSize,omitnil,omitempty" name:"CacheDiskSize"`
 
-	// 缓存盘大小
+	// <p>缓存盘大小</p>
 	CacheDataDiskSize *int64 `json:"CacheDataDiskSize,omitnil,omitempty" name:"CacheDataDiskSize"`
+
+	// <p>磁盘加密</p>
+	DiskEncrypt *int64 `json:"DiskEncrypt,omitnil,omitempty" name:"DiskEncrypt"`
 }
 
 type CreateInstanceNewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// FE规格
+	// <p>FE规格</p>
 	FeSpec *CreateInstanceSpec `json:"FeSpec,omitnil,omitempty" name:"FeSpec"`
 
-	// BE规格
+	// <p>BE规格</p>
 	BeSpec *CreateInstanceSpec `json:"BeSpec,omitnil,omitempty" name:"BeSpec"`
 
-	// 是否高可用
+	// <p>是否高可用</p>
 	HaFlag *bool `json:"HaFlag,omitnil,omitempty" name:"HaFlag"`
 
-	// 用户VPCID
+	// <p>用户VPCID</p>
 	UserVPCId *string `json:"UserVPCId,omitnil,omitempty" name:"UserVPCId"`
 
-	// 用户子网ID
+	// <p>用户子网ID</p>
 	UserSubnetId *string `json:"UserSubnetId,omitnil,omitempty" name:"UserSubnetId"`
 
-	// 产品版本号
+	// <p>产品版本号</p>
 	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 
-	// 付费类型
+	// <p>付费类型</p>
 	ChargeProperties *ChargeProperties `json:"ChargeProperties,omitnil,omitempty" name:"ChargeProperties"`
 
-	// 实例名字
+	// <p>实例名字</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 数据库密码
+	// <p>数据库密码</p>
 	DorisUserPwd *string `json:"DorisUserPwd,omitnil,omitempty" name:"DorisUserPwd"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 高可用类型：
-	// 0：非高可用（只有1个FE，FeSpec.CreateInstanceSpec.Count=1），
-	// 1：读高可用（至少需部署3个FE，FeSpec.CreateInstanceSpec.Count>=3，且为奇数），
-	// 2：读写高可用（至少需部署5个FE，FeSpec.CreateInstanceSpec.Count>=5，且为奇数）。
+	// <p>高可用类型：<br>0：非高可用（只有1个FE，FeSpec.CreateInstanceSpec.Count=1），<br>1：读高可用（至少需部署3个FE，FeSpec.CreateInstanceSpec.Count&gt;=3，且为奇数），<br>2：读写高可用（至少需部署5个FE，FeSpec.CreateInstanceSpec.Count&gt;=5，且为奇数）。</p>
 	HaType *int64 `json:"HaType,omitnil,omitempty" name:"HaType"`
 
-	// 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
+	// <p>表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储</p>
 	CaseSensitive *int64 `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
 
-	// 是否开启多可用区
+	// <p>是否开启多可用区</p>
 	EnableMultiZones *bool `json:"EnableMultiZones,omitnil,omitempty" name:"EnableMultiZones"`
 
-	// 开启多可用区后，用户的所有可用区和子网信息
+	// <p>开启多可用区后，用户的所有可用区和子网信息</p>
 	UserMultiZoneInfos *NetworkInfo `json:"UserMultiZoneInfos,omitnil,omitempty" name:"UserMultiZoneInfos"`
 
-	// 开启多可用区后，用户的所有可用区和子网信息
+	// <p>开启多可用区后，用户的所有可用区和子网信息</p>
 	UserMultiZoneInfoArr []*NetworkInfo `json:"UserMultiZoneInfoArr,omitnil,omitempty" name:"UserMultiZoneInfoArr"`
 
-	// 是否存算分离
+	// <p>是否存算分离</p>
 	IsSSC *bool `json:"IsSSC,omitnil,omitempty" name:"IsSSC"`
 
-	// CU数
+	// <p>CU数</p>
 	SSCCU *int64 `json:"SSCCU,omitnil,omitempty" name:"SSCCU"`
 
-	// 缓存盘大小
+	// <p>缓存盘大小</p>
 	CacheDiskSize *string `json:"CacheDiskSize,omitnil,omitempty" name:"CacheDiskSize"`
 
-	// 缓存盘大小
+	// <p>缓存盘大小</p>
 	CacheDataDiskSize *int64 `json:"CacheDataDiskSize,omitnil,omitempty" name:"CacheDataDiskSize"`
+
+	// <p>磁盘加密</p>
+	DiskEncrypt *int64 `json:"DiskEncrypt,omitnil,omitempty" name:"DiskEncrypt"`
 }
 
 func (r *CreateInstanceNewRequest) ToJsonString() string {
@@ -1127,6 +1127,7 @@ func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
 	delete(f, "SSCCU")
 	delete(f, "CacheDiskSize")
 	delete(f, "CacheDataDiskSize")
+	delete(f, "DiskEncrypt")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceNewRequest has unknown keys!", "")
 	}
@@ -1135,13 +1136,13 @@ func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstanceNewResponseParams struct {
-	// 流程ID
+	// <p>流程ID</p>
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 错误信息
+	// <p>错误信息</p>
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

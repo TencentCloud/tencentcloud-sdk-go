@@ -615,6 +615,12 @@ type DescribeVsmAttributesResponseParams struct {
 	// <p>环境</p><p>默认值：cloud</p><p>cloud或者cdc</p>
 	DeployEnv *string `json:"DeployEnv,omitnil,omitempty" name:"DeployEnv"`
 
+	// <p>集群id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群角色</p>
+	ClusterRole *int64 `json:"ClusterRole,omitnil,omitempty" name:"ClusterRole"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -637,45 +643,51 @@ func (r *DescribeVsmAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVsmsRequestParams struct {
-	// 偏移
+	// <p>偏移</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 最大数量
+	// <p>最大数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 资源ID或者资源名字模糊查询的关键字
+	// <p>资源ID或者资源名字模糊查询的关键字</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 标签过滤条件
+	// <p>标签过滤条件</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
-	// 设备所属的厂商名称，根据厂商来进行筛选
+	// <p>设备所属的厂商名称，根据厂商来进行筛选</p>
 	Manufacturer *string `json:"Manufacturer,omitnil,omitempty" name:"Manufacturer"`
 
-	// Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all
+	// <p>Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all</p>
 	HsmType *string `json:"HsmType,omitnil,omitempty" name:"HsmType"`
+
+	// <p>集群id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type DescribeVsmsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移
+	// <p>偏移</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 最大数量
+	// <p>最大数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 资源ID或者资源名字模糊查询的关键字
+	// <p>资源ID或者资源名字模糊查询的关键字</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 标签过滤条件
+	// <p>标签过滤条件</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
-	// 设备所属的厂商名称，根据厂商来进行筛选
+	// <p>设备所属的厂商名称，根据厂商来进行筛选</p>
 	Manufacturer *string `json:"Manufacturer,omitnil,omitempty" name:"Manufacturer"`
 
-	// Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all
+	// <p>Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all</p>
 	HsmType *string `json:"HsmType,omitnil,omitempty" name:"HsmType"`
+
+	// <p>集群id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeVsmsRequest) ToJsonString() string {
@@ -696,6 +708,7 @@ func (r *DescribeVsmsRequest) FromJsonString(s string) error {
 	delete(f, "TagFilters")
 	delete(f, "Manufacturer")
 	delete(f, "HsmType")
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVsmsRequest has unknown keys!", "")
 	}
@@ -704,10 +717,10 @@ func (r *DescribeVsmsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVsmsResponseParams struct {
-	// 获取实例的总个数
+	// <p>获取实例的总个数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 资源信息
+	// <p>资源信息</p>
 	VsmList []*ResourceInfo `json:"VsmList,omitnil,omitempty" name:"VsmList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -794,20 +807,20 @@ func (r *GetAlarmEventResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetVsmMonitorInfoRequestParams struct {
-	// 资源Id
+	// <p>资源Id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源名称
+	// <p>资源名称</p>
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 }
 
 type GetVsmMonitorInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源Id
+	// <p>资源Id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源名称
+	// <p>资源名称</p>
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 }
 
@@ -833,8 +846,14 @@ func (r *GetVsmMonitorInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetVsmMonitorInfoResponseParams struct {
-	// VSM监控信息
+	// <p>VSM监控信息</p>
 	MonitorInfo []*string `json:"MonitorInfo,omitnil,omitempty" name:"MonitorInfo"`
+
+	// <p>vsm摘要列表</p>
+	DigestList []*VsmDigestItem `json:"DigestList,omitnil,omitempty" name:"DigestList"`
+
+	// <p>初始化状态</p>
+	InitStatus *int64 `json:"InitStatus,omitnil,omitempty" name:"InitStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1240,6 +1259,15 @@ type ResourceInfo struct {
 
 	// <p>环境</p><p>默认值：cloud</p><p>cloud或者cdc</p>
 	DeployEnv *string `json:"DeployEnv,omitnil,omitempty" name:"DeployEnv"`
+
+	// <p>vsm版本号</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>集群id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群角色，0-未加入集群 1-主 2-从</p>
+	ClusterRole *int64 `json:"ClusterRole,omitnil,omitempty" name:"ClusterRole"`
 }
 
 type SgUnit struct {
@@ -1362,6 +1390,14 @@ type Vpc struct {
 
 	// 是否为默认VPC
 	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+}
+
+type VsmDigestItem struct {
+	// <p>计数</p>
+	DigestVer *int64 `json:"DigestVer,omitnil,omitempty" name:"DigestVer"`
+
+	// <p>摘要值</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type VsmInfo struct {

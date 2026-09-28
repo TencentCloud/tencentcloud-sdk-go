@@ -1244,6 +1244,7 @@ func NewDeleteCfsFileSystemResponse() (response *DeleteCfsFileSystemResponse) {
 // 用于删除文件系统
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FILESYSTEMHASS3ENDPOINT = "FailedOperation.FileSystemHasS3Endpoint"
 //  FAILEDOPERATION_MOUNTTARGETEXISTS = "FailedOperation.MountTargetExists"
 //  FAILEDOPERATION_UNTAGRESOURCEFAILED = "FailedOperation.UntagResourceFailed"
 //  INTERNALERROR = "InternalError"
@@ -1265,6 +1266,7 @@ func (c *Client) DeleteCfsFileSystem(request *DeleteCfsFileSystemRequest) (respo
 // 用于删除文件系统
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FILESYSTEMHASS3ENDPOINT = "FailedOperation.FileSystemHasS3Endpoint"
 //  FAILEDOPERATION_MOUNTTARGETEXISTS = "FailedOperation.MountTargetExists"
 //  FAILEDOPERATION_UNTAGRESOURCEFAILED = "FailedOperation.UntagResourceFailed"
 //  INTERNALERROR = "InternalError"

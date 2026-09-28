@@ -40,14 +40,14 @@ type AccountInfo struct {
 }
 
 type CBSSpec struct {
-	// 盘类型
-	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+	// 个数
+	DiskCount *int64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
 
 	// 大小
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 个数
-	DiskCount *int64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
+	// 盘类型
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 }
 
 type CBSSpecInfo struct {
@@ -62,17 +62,17 @@ type CBSSpecInfo struct {
 }
 
 type CNResourceSpec struct {
-	// 节点类型
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 机型
-	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
-
 	// 节点个数
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 磁盘信息
 	DiskSpec *CBSSpec `json:"DiskSpec,omitnil,omitempty" name:"DiskSpec"`
+
+	// 机型
+	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
+
+	// 节点类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type ChargeProperties struct {
@@ -85,11 +85,11 @@ type ChargeProperties struct {
 	// 时间单位，一般为h和m
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 计费类型0-按量计费，1-包年包月
-	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
-
 	// PREPAID、POSTPAID_BY_HOUR
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 计费类型0-按量计费，1-包年包月
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 }
 
 type ConfigHistory struct {
@@ -855,15 +855,21 @@ func (r *DescribeInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceStateRequestParams struct {
-	// 集群实例名称
+	// <p>集群实例名称</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>集群实例名称列表（批量查询，优先于 InstanceId；上限100，超出截断）</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type DescribeInstanceStateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例名称
+	// <p>集群实例名称</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>集群实例名称列表（批量查询，优先于 InstanceId；上限100，超出截断）</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeInstanceStateRequest) ToJsonString() string {
@@ -879,6 +885,7 @@ func (r *DescribeInstanceStateRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "InstanceIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceStateRequest has unknown keys!", "")
 	}
@@ -887,32 +894,35 @@ func (r *DescribeInstanceStateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceStateResponseParams struct {
-	// 集群状态，例如：Serving
-	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
+	// <p>集群备份任务开启状态2</p>
+	BackupOpenStatus *int64 `json:"BackupOpenStatus,omitnil,omitempty" name:"BackupOpenStatus"`
 
-	// 集群操作创建时间
-	FlowCreateTime *string `json:"FlowCreateTime,omitnil,omitempty" name:"FlowCreateTime"`
-
-	// 集群操作名称
-	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
-
-	// 集群操作进度
-	FlowProgress *float64 `json:"FlowProgress,omitnil,omitempty" name:"FlowProgress"`
-
-	// 集群状态描述，例如：运行中
-	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil,omitempty" name:"InstanceStateDesc"`
-
-	// 集群流程错误信息，例如：“创建失败，资源不足”
-	FlowMsg *string `json:"FlowMsg,omitnil,omitempty" name:"FlowMsg"`
-
-	// 当前步骤的名称，例如：”购买资源中“
-	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
-
-	// 集群备份任务开启状态
+	// <p>集群备份任务开启状态</p>
 	BackupStatus *int64 `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
 
-	// 集群备份任务开启状态2
-	BackupOpenStatus *int64 `json:"BackupOpenStatus,omitnil,omitempty" name:"BackupOpenStatus"`
+	// <p>集群操作创建时间</p>
+	FlowCreateTime *string `json:"FlowCreateTime,omitnil,omitempty" name:"FlowCreateTime"`
+
+	// <p>集群流程错误信息，例如：“创建失败，资源不足”</p>
+	FlowMsg *string `json:"FlowMsg,omitnil,omitempty" name:"FlowMsg"`
+
+	// <p>集群操作名称</p>
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
+
+	// <p>集群操作进度</p>
+	FlowProgress *float64 `json:"FlowProgress,omitnil,omitempty" name:"FlowProgress"`
+
+	// <p>集群状态，例如：Serving</p>
+	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
+
+	// <p>集群状态描述，例如：运行中</p>
+	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil,omitempty" name:"InstanceStateDesc"`
+
+	// <p>当前步骤的名称，例如：”购买资源中“</p>
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
+
+	// <p>批量实例状态列表（InstanceIds 入参时返回，每项含 InstanceId 与状态字段）</p>
+	InstanceStates []*InstanceStateItem `json:"InstanceStates,omitnil,omitempty" name:"InstanceStates"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1762,6 +1772,38 @@ type InstanceStateInfo struct {
 
 	// 集群是否有备份中任务，有为1,无为0
 	BackupOpenStatus *int64 `json:"BackupOpenStatus,omitnil,omitempty" name:"BackupOpenStatus"`
+}
+
+type InstanceStateItem struct {
+	// <p>集群实例名称</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>集群状态，例如：Serving</p>
+	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
+
+	// <p>集群状态描述，例如：运行中</p>
+	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil,omitempty" name:"InstanceStateDesc"`
+
+	// <p>集群备份任务开启状态</p>
+	BackupStatus *int64 `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
+
+	// <p>集群备份任务开启状态2</p>
+	BackupOpenStatus *int64 `json:"BackupOpenStatus,omitnil,omitempty" name:"BackupOpenStatus"`
+
+	// <p>集群操作创建时间</p>
+	FlowCreateTime *string `json:"FlowCreateTime,omitnil,omitempty" name:"FlowCreateTime"`
+
+	// <p>集群操作名称</p>
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
+
+	// <p>集群操作进度</p>
+	FlowProgress *float64 `json:"FlowProgress,omitnil,omitempty" name:"FlowProgress"`
+
+	// <p>集群流程错误信息</p>
+	FlowMsg *string `json:"FlowMsg,omitnil,omitempty" name:"FlowMsg"`
+
+	// <p>当前步骤的名称</p>
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 }
 
 // Predefined struct for user

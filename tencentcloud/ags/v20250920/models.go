@@ -964,7 +964,7 @@ func (r *CreateDeploymentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePreCacheImageTaskRequestParams struct {
-	// <p>镜像地址</p>
+	// <p>镜像地址。仅支持 repository:tag、repository@sha256:&lt;64 位摘要&gt; 或 repository:tag@sha256:&lt;64 位摘要&gt;。</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
@@ -974,7 +974,7 @@ type CreatePreCacheImageTaskRequestParams struct {
 type CreatePreCacheImageTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>镜像地址</p>
+	// <p>镜像地址。仅支持 repository:tag、repository@sha256:&lt;64 位摘要&gt; 或 repository:tag@sha256:&lt;64 位摘要&gt;。</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
@@ -1011,6 +1011,9 @@ type CreatePreCacheImageTaskResponseParams struct {
 
 	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// <p>镜像预热ID</p>
+	PreCacheImageId *string `json:"PreCacheImageId,omitnil,omitempty" name:"PreCacheImageId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2391,11 +2394,14 @@ type DescribePreCacheImageTaskRequestParams struct {
 	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
 	// <p>镜像 Digest</p>
 	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
 
-	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
-	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+	// <p>镜像预热ID，只能ID或三元组（Image、ImageDigest、ImageRegistrytype）二选一查询</p>
+	PreCacheImageId *string `json:"PreCacheImageId,omitnil,omitempty" name:"PreCacheImageId"`
 }
 
 type DescribePreCacheImageTaskRequest struct {
@@ -2404,11 +2410,14 @@ type DescribePreCacheImageTaskRequest struct {
 	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
 	// <p>镜像 Digest</p>
 	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
 
-	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
-	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+	// <p>镜像预热ID，只能ID或三元组（Image、ImageDigest、ImageRegistrytype）二选一查询</p>
+	PreCacheImageId *string `json:"PreCacheImageId,omitnil,omitempty" name:"PreCacheImageId"`
 }
 
 func (r *DescribePreCacheImageTaskRequest) ToJsonString() string {
@@ -2424,8 +2433,9 @@ func (r *DescribePreCacheImageTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Image")
-	delete(f, "ImageDigest")
 	delete(f, "ImageRegistryType")
+	delete(f, "ImageDigest")
+	delete(f, "PreCacheImageId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePreCacheImageTaskRequest has unknown keys!", "")
 	}
@@ -2448,6 +2458,21 @@ type DescribePreCacheImageTaskResponseParams struct {
 
 	// <p>镜像预热状态描述</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>镜像预热创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>镜像预热ID</p>
+	PreCacheImageId *string `json:"PreCacheImageId,omitnil,omitempty" name:"PreCacheImageId"`
+
+	// <p>镜像预热资源的来源类型，取值为 EXPLICIT、AUTO</p><p>枚举值：</p><ul><li>EXPLICIT： 手动创建</li><li>AUTO： 自动创建</li><li>TCR_AUTO： TCR自动预热</li></ul>
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// <p>镜像预热存储大小</p><p>单位：Byte</p>
+	CachedImageSizeBytes *int64 `json:"CachedImageSizeBytes,omitnil,omitempty" name:"CachedImageSizeBytes"`
+
+	// <p>该预热镜像最近一次被沙箱实例使用时间</p>
+	LastUsedTime *string `json:"LastUsedTime,omitnil,omitempty" name:"LastUsedTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

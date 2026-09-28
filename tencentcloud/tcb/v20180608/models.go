@@ -643,6 +643,20 @@ func (r *BindStorageSourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BuildArtifactInfo struct {
+	// <p>产物类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>产物名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>产物状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>扩展详情 Json</p>
+	ContentJson *string `json:"ContentJson,omitnil,omitempty" name:"ContentJson"`
+}
+
 type BuildCommands struct {
 	// <p>平台生成默认 install step 时执行</p>
 	InstallCmd *string `json:"InstallCmd,omitnil,omitempty" name:"InstallCmd"`
@@ -652,6 +666,14 @@ type BuildCommands struct {
 
 	// <p>平台生成默认deploy step 时执行</p>
 	DeployCmd *string `json:"DeployCmd,omitnil,omitempty" name:"DeployCmd"`
+}
+
+type BuildContext struct {
+	// <p>构建路径</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>构建产物输出路径</p>
+	OutPut *string `json:"OutPut,omitnil,omitempty" name:"OutPut"`
 }
 
 type BuildSecret struct {
@@ -686,6 +708,9 @@ type BuildSource struct {
 
 	// <p>仅 Type=zip/cos 时使用。zip 文件后缀，默认 .zip；与 CosTimestamp 配合定位 COS 对象</p>
 	CosSuffix *string `json:"CosSuffix,omitnil,omitempty" name:"CosSuffix"`
+
+	// <p>zip 包名称</p>
+	PackageFileName *string `json:"PackageFileName,omitnil,omitempty" name:"PackageFileName"`
 }
 
 type BuildStep struct {
@@ -761,33 +786,100 @@ func (r *CheckTcbServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type CloudAppServiceItem struct {
-	// 服务名
+type CloudAppFilter struct {
+	// <p>云应用过滤列表</p>
+	ServiceNameList []*string `json:"ServiceNameList,omitnil,omitempty" name:"ServiceNameList"`
+}
+
+type CloudAppLinkService struct {
+	// <p>服务类型</p><p>枚举值：</p><ul><li>http-function： HTTP 云函数</li><li>function： 普通云函数</li><li>static-hosting： 静态托管</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>服务名称</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 框架名
+	// <p>服务身份</p>
+	Identifier *string `json:"Identifier,omitnil,omitempty" name:"Identifier"`
+
+	// <p>服务动作</p>
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// <p>服务构建命令</p>
+	Command *BuildCommands `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// <p>服务构建部署上下文</p>
+	BuildContext *BuildContext `json:"BuildContext,omitnil,omitempty" name:"BuildContext"`
+}
+
+type CloudAppResourceItem struct {
+	// <p>服务名称</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>服务类型</p><p>枚举值：</p><ul><li>http-function： HTTP 云函数</li><li>function： 普通云函数</li><li>static-hosting： 静态托管</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>服务部署版本</p>
+	DeployedRef *string `json:"DeployedRef,omitnil,omitempty" name:"DeployedRef"`
+
+	// <p>服务动作</p>
+	DiffCategory *string `json:"DiffCategory,omitnil,omitempty" name:"DiffCategory"`
+
+	// <p>服务状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type CloudAppRoute struct {
+	// <p>服务跟路由</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>服务类型</p><p>枚举值：</p><ul><li>http-function： HTTP 云函数</li><li>function： 普通云函数</li><li>static-hosting： 静态托管</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>服务名称</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>目标路径，暂不支持</p>
+	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
+}
+
+type CloudAppServiceItem struct {
+	// <p>服务名</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>框架名</p>
 	Framework *string `json:"Framework,omitnil,omitempty" name:"Framework"`
 
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 应用路径
+	// <p>应用路径</p>
 	AppPath *string `json:"AppPath,omitnil,omitempty" name:"AppPath"`
 
-	// 服务创建时间
+	// <p>服务创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最新版本名
+	// <p>最新版本名</p>
 	LatestVersionName *string `json:"LatestVersionName,omitnil,omitempty" name:"LatestVersionName"`
 
-	// 最新版本状态
+	// <p>最新版本状态</p>
 	LatestStatus *string `json:"LatestStatus,omitnil,omitempty" name:"LatestStatus"`
 
-	// 最新版本构建时间
+	// <p>最新版本构建时间</p>
 	LatestBuildTime *string `json:"LatestBuildTime,omitnil,omitempty" name:"LatestBuildTime"`
 
-	// 部署类型
+	// <p>部署类型</p>
 	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// <p>构建配置</p>
+	BuildConfig *string `json:"BuildConfig,omitnil,omitempty" name:"BuildConfig"`
+
+	// <p>当前流量版本</p>
+	CurrentVersion *string `json:"CurrentVersion,omitnil,omitempty" name:"CurrentVersion"`
+}
+
+type CloudAppTrigger struct {
+	// <p>webhook 配置</p>
+	Webhook *CloudAppWebHook `json:"Webhook,omitnil,omitempty" name:"Webhook"`
 }
 
 type CloudAppVersionItem struct {
@@ -815,6 +907,32 @@ type CloudAppVersionItem struct {
 	// <p>构建步骤</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Steps []*BuildStepStatus `json:"Steps,omitnil,omitempty" name:"Steps"`
+
+	// <p>服务版本部署快照</p>
+	Snapshot *string `json:"Snapshot,omitnil,omitempty" name:"Snapshot"`
+
+	// <p>服务版本域名</p>
+	VersionDomain *string `json:"VersionDomain,omitnil,omitempty" name:"VersionDomain"`
+
+	// <p>服务版本流量</p>
+	TrafficPercent *uint64 `json:"TrafficPercent,omitnil,omitempty" name:"TrafficPercent"`
+
+	// <p>服务资源</p>
+	Resources []*CloudAppResourceItem `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// <p>服务产物列表</p>
+	Artifacts []*BuildArtifactInfo `json:"Artifacts,omitnil,omitempty" name:"Artifacts"`
+}
+
+type CloudAppWebHook struct {
+	// <p>开启 webhook 触发</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>触发分支</p>
+	Branches []*string `json:"Branches,omitnil,omitempty" name:"Branches"`
+
+	// <p>触发事件</p>
+	Events []*string `json:"Events,omitnil,omitempty" name:"Events"`
 }
 
 type CloudBaseRunBuildLog struct {
@@ -1395,6 +1513,30 @@ type CreateCloudAppRequestParams struct {
 
 	// <p>选择 NodeRuntime 版本: 16,18,20,22,24 等</p>
 	NodeJsVersion *string `json:"NodeJsVersion,omitnil,omitempty" name:"NodeJsVersion"`
+
+	// <p>暂不支持：Webhook 触发器功能尚未对外开放，客户端传入的 Trigger 字段会被平台静默忽略（仅日志告警，不拒绝请求）</p>
+	Trigger *CloudAppTrigger `json:"Trigger,omitnil,omitempty" name:"Trigger"`
+
+	// <p>服务列表</p>
+	ServiceList []*CloudAppLinkService `json:"ServiceList,omitnil,omitempty" name:"ServiceList"`
+
+	// <p>全局工作目录</p>
+	WorkingDir *string `json:"WorkingDir,omitnil,omitempty" name:"WorkingDir"`
+
+	// <p>路由列表</p>
+	Routes []*CloudAppRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
+
+	// <p>部署类型</p>
+	PromoteType *string `json:"PromoteType,omitnil,omitempty" name:"PromoteType"`
+
+	// <p>发布 Token 校验</p>
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>前置执行命令</p>
+	PreDeployCommand *string `json:"PreDeployCommand,omitnil,omitempty" name:"PreDeployCommand"`
+
+	// <p>后置执行命令</p>
+	PostDeployCommand *string `json:"PostDeployCommand,omitnil,omitempty" name:"PostDeployCommand"`
 }
 
 type CreateCloudAppRequest struct {
@@ -1432,6 +1574,30 @@ type CreateCloudAppRequest struct {
 
 	// <p>选择 NodeRuntime 版本: 16,18,20,22,24 等</p>
 	NodeJsVersion *string `json:"NodeJsVersion,omitnil,omitempty" name:"NodeJsVersion"`
+
+	// <p>暂不支持：Webhook 触发器功能尚未对外开放，客户端传入的 Trigger 字段会被平台静默忽略（仅日志告警，不拒绝请求）</p>
+	Trigger *CloudAppTrigger `json:"Trigger,omitnil,omitempty" name:"Trigger"`
+
+	// <p>服务列表</p>
+	ServiceList []*CloudAppLinkService `json:"ServiceList,omitnil,omitempty" name:"ServiceList"`
+
+	// <p>全局工作目录</p>
+	WorkingDir *string `json:"WorkingDir,omitnil,omitempty" name:"WorkingDir"`
+
+	// <p>路由列表</p>
+	Routes []*CloudAppRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
+
+	// <p>部署类型</p>
+	PromoteType *string `json:"PromoteType,omitnil,omitempty" name:"PromoteType"`
+
+	// <p>发布 Token 校验</p>
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>前置执行命令</p>
+	PreDeployCommand *string `json:"PreDeployCommand,omitnil,omitempty" name:"PreDeployCommand"`
+
+	// <p>后置执行命令</p>
+	PostDeployCommand *string `json:"PostDeployCommand,omitnil,omitempty" name:"PostDeployCommand"`
 }
 
 func (r *CreateCloudAppRequest) ToJsonString() string {
@@ -1457,6 +1623,14 @@ func (r *CreateCloudAppRequest) FromJsonString(s string) error {
 	delete(f, "CustomSteps")
 	delete(f, "Secrets")
 	delete(f, "NodeJsVersion")
+	delete(f, "Trigger")
+	delete(f, "ServiceList")
+	delete(f, "WorkingDir")
+	delete(f, "Routes")
+	delete(f, "PromoteType")
+	delete(f, "ClientToken")
+	delete(f, "PreDeployCommand")
+	delete(f, "PostDeployCommand")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudAppRequest has unknown keys!", "")
 	}
@@ -2293,6 +2467,70 @@ func (r *CreatePlatformEnvResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePlatformHTTPServiceRouteRequestParams struct {
+	// <p>平台id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>域名路由信息</p>
+	Domain *HTTPServiceDomainParam `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type CreatePlatformHTTPServiceRouteRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>平台id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>域名路由信息</p>
+	Domain *HTTPServiceDomainParam `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *CreatePlatformHTTPServiceRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePlatformHTTPServiceRouteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlatformId")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePlatformHTTPServiceRouteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePlatformHTTPServiceRouteResponseParams struct {
+	// <p>归属权校验不通过返回信息，根据校验信息配置dns或者文件验证，可通过VerifyHTTPServiceRoute接口验证归属权是否通过</p>
+	OwnershipVerification *OwnershipVerificationInfo `json:"OwnershipVerification,omitnil,omitempty" name:"OwnershipVerification"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePlatformHTTPServiceRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePlatformHTTPServiceRouteResponseParams `json:"Response"`
+}
+
+func (r *CreatePlatformHTTPServiceRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePlatformHTTPServiceRouteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateStaticStoreRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -3112,6 +3350,74 @@ func (r *DeleteHTTPServiceRouteResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteHTTPServiceRouteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePlatformHTTPServiceRouteRequestParams struct {
+	// <p>平台id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>路径列表。为空则表示删除此域名和所有路由</p>
+	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
+}
+
+type DeletePlatformHTTPServiceRouteRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>平台id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>路径列表。为空则表示删除此域名和所有路由</p>
+	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
+}
+
+func (r *DeletePlatformHTTPServiceRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePlatformHTTPServiceRouteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlatformId")
+	delete(f, "Domain")
+	delete(f, "Paths")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePlatformHTTPServiceRouteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePlatformHTTPServiceRouteResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePlatformHTTPServiceRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePlatformHTTPServiceRouteResponseParams `json:"Response"`
+}
+
+func (r *DeletePlatformHTTPServiceRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePlatformHTTPServiceRouteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3964,6 +4270,15 @@ type DescribeCloudAppInfoResponseParams struct {
 	// <p>部署类型</p>
 	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
 
+	// <p>构建配置</p>
+	BuildConfig *string `json:"BuildConfig,omitnil,omitempty" name:"BuildConfig"`
+
+	// <p>当前服务流量版本</p>
+	CurrentVersion *string `json:"CurrentVersion,omitnil,omitempty" name:"CurrentVersion"`
+
+	// <p>版本关联默认域名</p>
+	PreviewDomain *string `json:"PreviewDomain,omitnil,omitempty" name:"PreviewDomain"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4000,6 +4315,9 @@ type DescribeCloudAppListRequestParams struct {
 
 	// <p>页号</p>
 	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>服务过滤</p>
+	Filter *CloudAppFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
 type DescribeCloudAppListRequest struct {
@@ -4019,6 +4337,9 @@ type DescribeCloudAppListRequest struct {
 
 	// <p>页号</p>
 	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>服务过滤</p>
+	Filter *CloudAppFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
 func (r *DescribeCloudAppListRequest) ToJsonString() string {
@@ -4038,6 +4359,7 @@ func (r *DescribeCloudAppListRequest) FromJsonString(s string) error {
 	delete(f, "SearchKey")
 	delete(f, "PageSize")
 	delete(f, "PageNo")
+	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudAppListRequest has unknown keys!", "")
 	}
@@ -4242,6 +4564,21 @@ type DescribeCloudAppVersionResponseParams struct {
 
 	// <p>[]BuildStepStatus 的 JSON 序列化</p>
 	Steps []*BuildStepStatus `json:"Steps,omitnil,omitempty" name:"Steps"`
+
+	// <p>服务版本快照</p>
+	Snapshot *string `json:"Snapshot,omitnil,omitempty" name:"Snapshot"`
+
+	// <p>服务版本流量比例</p>
+	TrafficPercent *uint64 `json:"TrafficPercent,omitnil,omitempty" name:"TrafficPercent"`
+
+	// <p>服务版本域名</p>
+	VersionDomain *string `json:"VersionDomain,omitnil,omitempty" name:"VersionDomain"`
+
+	// <p>服务管理资源列表</p>
+	Resources []*CloudAppResourceItem `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// <p>[]ArtifactInfo 的 JSON 序列化</p>
+	Artifacts []*BuildArtifactInfo `json:"Artifacts,omitnil,omitempty" name:"Artifacts"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6379,6 +6716,90 @@ func (r *DescribePlatformEnvUsageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePlatformEnvUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlatformHTTPServiceRouteRequestParams struct {
+	// <p>平台id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>过滤条件。Key的含义参考对应字段，Value精确匹配。可过滤: Domain、Path、DomainType、UpstreamResourceType。可过滤的Values单条不超过100</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页偏移量。默认 0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页限制。默认20，最大值1000</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribePlatformHTTPServiceRouteRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>平台id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>过滤条件。Key的含义参考对应字段，Value精确匹配。可过滤: Domain、Path、DomainType、UpstreamResourceType。可过滤的Values单条不超过100</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页偏移量。默认 0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页限制。默认20，最大值1000</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribePlatformHTTPServiceRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformHTTPServiceRouteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlatformId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlatformHTTPServiceRouteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlatformHTTPServiceRouteResponseParams struct {
+	// <p>域名路由信息列表</p>
+	Domains []*HTTPServiceDomain `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// <p>自定义接入的源站域名（HTTPService接入层域名）</p>
+	OriginDomain *string `json:"OriginDomain,omitnil,omitempty" name:"OriginDomain"`
+
+	// <p>域名总数，分页查询使用总数判断是否已经拉取到所有数据</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePlatformHTTPServiceRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePlatformHTTPServiceRouteResponseParams `json:"Response"`
+}
+
+func (r *DescribePlatformHTTPServiceRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformHTTPServiceRouteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9946,6 +10367,67 @@ func (r *ModifyPlatformEnvResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyPlatformHTTPServiceRouteRequestParams struct {
+	// <p>平台id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>域名路由信息</p>
+	Domain *HTTPServiceDomainParam `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type ModifyPlatformHTTPServiceRouteRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>平台id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>域名路由信息</p>
+	Domain *HTTPServiceDomainParam `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *ModifyPlatformHTTPServiceRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPlatformHTTPServiceRouteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlatformId")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPlatformHTTPServiceRouteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPlatformHTTPServiceRouteResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPlatformHTTPServiceRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPlatformHTTPServiceRouteResponseParams `json:"Response"`
+}
+
+func (r *ModifyPlatformHTTPServiceRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPlatformHTTPServiceRouteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyProviderRequestParams struct {
 	// 云开发环境 ID，用于唯一标识当前操作所属的云开发环境。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -12413,10 +12895,10 @@ type UpdateFunctionConfigurationRequestParams struct {
 	// <p>在线依赖安装，TRUE 表示安装，仅支持 Node.js 函数。 </p><p>默认值：FALSE</p>
 	InstallDependency *string `json:"InstallDependency,omitnil,omitempty" name:"InstallDependency"`
 
-	// <p>日志投递到的cls日志集ID</p>
+	// <p>日志投递到的cls Topic ID</p>
 	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
 
-	// <p>日志投递到的cls Topic ID</p>
+	// <p>日志投递到的cls日志集ID</p>
 	ClsLogsetId *string `json:"ClsLogsetId,omitnil,omitempty" name:"ClsLogsetId"`
 
 	// <p>在更新时是否同步发布新版本</p><p>默认值：FALSE</p>
@@ -12477,10 +12959,10 @@ type UpdateFunctionConfigurationRequest struct {
 	// <p>在线依赖安装，TRUE 表示安装，仅支持 Node.js 函数。 </p><p>默认值：FALSE</p>
 	InstallDependency *string `json:"InstallDependency,omitnil,omitempty" name:"InstallDependency"`
 
-	// <p>日志投递到的cls日志集ID</p>
+	// <p>日志投递到的cls Topic ID</p>
 	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
 
-	// <p>日志投递到的cls Topic ID</p>
+	// <p>日志投递到的cls日志集ID</p>
 	ClsLogsetId *string `json:"ClsLogsetId,omitnil,omitempty" name:"ClsLogsetId"`
 
 	// <p>在更新时是否同步发布新版本</p><p>默认值：FALSE</p>
@@ -12931,6 +13413,97 @@ func (r *VerifyHTTPServiceRouteResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *VerifyHTTPServiceRouteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyPlatformHTTPServiceRouteRequestParams struct {
+	// <p>平台id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>域名路由信息</p>
+	Domain *HTTPServiceDomainParam `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type VerifyPlatformHTTPServiceRouteRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>平台id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>域名路由信息</p>
+	Domain *HTTPServiceDomainParam `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *VerifyPlatformHTTPServiceRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyPlatformHTTPServiceRouteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlatformId")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyPlatformHTTPServiceRouteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyPlatformHTTPServiceRouteResponseParams struct {
+	// <p>前置校验总开关。所有启用的检查项均为 PASS 或 SKIPPED 时为 true，任一检查项为 FAIL 时为 false。当为 false 时，前端应根据各 CheckItem 的 Code 精确渲染错误提示和操作指引；当为 true 时可继续调用 CreateHTTPServiceRoute 完成创建。 示例值：false</p>
+	Passed *bool `json:"Passed,omitnil,omitempty" name:"Passed"`
+
+	// <p>域名归属权校验结果</p>
+	Ownership *VerifyHTTPServiceRouteCheckItem `json:"Ownership,omitnil,omitempty" name:"Ownership"`
+
+	// <p>证书校验结果；CertId 为空时 Status=SKIPPED</p>
+	Cert *VerifyHTTPServiceRouteCheckItem `json:"Cert,omitnil,omitempty" name:"Cert"`
+
+	// <p>域名/路径数量配额校验结果</p>
+	Quota *VerifyHTTPServiceRouteCheckItem `json:"Quota,omitnil,omitempty" name:"Quota"`
+
+	// <p>同域名下路由路径冲突校验结果</p>
+	RouteConflict *VerifyHTTPServiceRouteCheckItem `json:"RouteConflict,omitnil,omitempty" name:"RouteConflict"`
+
+	// <p>域名被其他环境占用校验结果</p>
+	DomainConflict *VerifyHTTPServiceRouteCheckItem `json:"DomainConflict,omitnil,omitempty" name:"DomainConflict"`
+
+	// <p>内部域名且非内部账号校验结果</p>
+	InternalAccount *VerifyHTTPServiceRouteCheckItem `json:"InternalAccount,omitnil,omitempty" name:"InternalAccount"`
+
+	// <p>域名黑名单校验结果</p>
+	Blacklist *VerifyHTTPServiceRouteCheckItem `json:"Blacklist,omitnil,omitempty" name:"Blacklist"`
+
+	// <p>AccessType=CDN 时 CDN 资源存在性 / 状态校验结果（含 ICP 未备案的提示）</p>
+	CDNResource *VerifyHTTPServiceRouteCheckItem `json:"CDNResource,omitnil,omitempty" name:"CDNResource"`
+
+	// <p>AccessType=EO 时的 EdgeOne 预检结果（域名冲突/备案/归属权）</p>
+	EO *VerifyHTTPServiceRouteCheckItem `json:"EO,omitnil,omitempty" name:"EO"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VerifyPlatformHTTPServiceRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyPlatformHTTPServiceRouteResponseParams `json:"Response"`
+}
+
+func (r *VerifyPlatformHTTPServiceRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyPlatformHTTPServiceRouteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

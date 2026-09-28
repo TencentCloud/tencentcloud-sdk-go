@@ -69779,6 +69779,9 @@ type NotifyAssetConfigItem struct {
 
 	// <p>总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>项目ID</p>
+	ProjectIds []*uint64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 type NotifySetting struct {
@@ -76708,25 +76711,23 @@ type VulWhitelist struct {
 }
 
 type WebhookAssetScope struct {
-	// 资产范围类型（对齐 NotifyAssetRange）
-	// 枚举值：
-	// 1：全部主机（可剔除）
-	// 2：自选主机
-	// 3：按标签选择
+	// <p>资产范围类型（对齐 NotifyAssetRange）<br>枚举值：<br>1：全部主机（可剔除）<br>2：自选主机<br>3：按标签选择</p>
 	AssetRange *int64 `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
 
-	// 选中的主机 quuid 列表，仅 AssetRange=2 生效
+	// <p>选中的主机 quuid 列表，仅 AssetRange=2 生效</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 排除的主机 quuid 列表，仅 AssetRange=1 生效
+	// <p>排除的主机 quuid 列表，仅 AssetRange=1 生效</p>
 	ExcludedInstanceIds []*string `json:"ExcludedInstanceIds,omitnil,omitempty" name:"ExcludedInstanceIds"`
 
-	// 安全中心标签 ID 列表，仅 AssetRange=3 生效
+	// <p>安全中心标签 ID 列表，仅 AssetRange=3 生效</p>
 	TagIds []*int64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
 
-	// 腾讯云标签列表，仅 AssetRange=3 生效
-	// 入参限制：AssetRange=3 时 TagIds + CloudTags 不能同时为空
+	// <p>腾讯云标签列表，仅 AssetRange=3 生效<br>入参限制：AssetRange=3 时 TagIds + CloudTags 不能同时为空</p>
 	CloudTags []*string `json:"CloudTags,omitnil,omitempty" name:"CloudTags"`
+
+	// <p>项目ID</p>
+	ProjectIds []*uint64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 type WebhookCustomField struct {

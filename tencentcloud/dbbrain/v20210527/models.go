@@ -1987,6 +1987,200 @@ func (r *CreateUserAutonomyProfileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeadLockLogItem struct {
+	// <p>实例 ID，例如 mssql-ks3s56dj。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>时间字段来源。XML_EVENT 表示时间来自 xml_deadlock_report 的引擎打点；OBSERVED_LOG 表示时间来自 chain/lock 观测记录（partial 事件）。</p>
+	TimestampSource *string `json:"TimestampSource,omitnil,omitempty" name:"TimestampSource"`
+
+	// <p>降级原因码。IsPartial=true 时值为 XML_NOT_AVAILABLE；否则为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartialReasonCode *string `json:"PartialReasonCode,omitnil,omitempty" name:"PartialReasonCode"`
+
+	// <p>被回滚的进程内部指针列表，例如 process260256c7468。与 Resources.Owners/Waiters.ProcessId 对齐，可用于死锁环节点定位。</p>
+	VictimProcessIds []*string `json:"VictimProcessIds,omitnil,omitempty" name:"VictimProcessIds"`
+
+	// <p>原始负载是否被上游截断。true 表示 XmlReport 或 chain/lock payload 有过截断，会影响诊断可信度。</p>
+	PayloadTruncated *bool `json:"PayloadTruncated,omitnil,omitempty" name:"PayloadTruncated"`
+
+	// <p>组成本事件的所有 XEvent 原始消息 UUID 列表（去重后按字典序排序），用于多源溯源、审计、补数。</p>
+	SourceUuids []*string `json:"SourceUuids,omitnil,omitempty" name:"SourceUuids"`
+
+	// <p>实际可归因（有 TransactionId）的事务数量。</p>
+	ObservedTransactionCount *int64 `json:"ObservedTransactionCount,omitnil,omitempty" name:"ObservedTransactionCount"`
+
+	// <p>死锁发生时间。ISO-8601 带偏移格式，例如 2026-09-16T06:58:52.611+00:00。来源于 XEvent 原始 timestamp。</p>
+	EventTimestamp *string `json:"EventTimestamp,omitnil,omitempty" name:"EventTimestamp"`
+
+	// <p>死锁图完整性。COMPLETE 表示成功装配 xml_deadlock_report；MISSING 表示无 xml 只有 chain/lock 消息（对应 IsPartial=true）。</p>
+	GraphStatus *string `json:"GraphStatus,omitnil,omitempty" name:"GraphStatus"`
+
+	// <p>本次响应中是否内联了原始死锁 XML。仅当请求参数 IncludeXml=true 且事件为 COMPLETE 时为 true。</p>
+	XmlIncluded *bool `json:"XmlIncluded,omitnil,omitempty" name:"XmlIncluded"`
+
+	// <p>参与死锁的进程总数。2 方死锁最常见，N 方死锁更严重。</p>
+	ProcessCount *int64 `json:"ProcessCount,omitnil,omitempty" name:"ProcessCount"`
+
+	// <p>参与死锁的事务列表（按 IsVictim=true 排前、TransactionId 升序）。每个事务下可能有多个 Session（例如并行执行 worker）。</p>
+	Transactions []*DeadlockTransaction `json:"Transactions,omitnil,omitempty" name:"Transactions"`
+
+	// <p>引擎内的死锁编号，例如 84。与 SQL Server 端 xml_deadlock_report 对齐。同实例短期内可辨识，重启后会复用。若上游数据缺失则为 null。</p>
+	DeadlockId *string `json:"DeadlockId,omitnil,omitempty" name:"DeadlockId"`
+
+	// <p>原始 SQL Server 死锁图 XML 字符串（xml_deadlock_report 输出）。IncludeXml=false 或事件为 partial 时为 null。可用于前端直接绘制死锁环、AI 深度诊断，或落到对象存储做冷归档。</p>
+	XmlReport *string `json:"XmlReport,omitnil,omitempty" name:"XmlReport"`
+
+	// <p>原始 XML 字节数，用于采集侧健康度评估。partial 事件为 null。</p>
+	OriginalXmlBytes *int64 `json:"OriginalXmlBytes,omitnil,omitempty" name:"OriginalXmlBytes"`
+
+	// <p>被 SQL Server 选中回滚的会话 SPID 列表（去重）。DBA 复盘定位牺牲者的核心字段。</p>
+	VictimSessionIds []*int64 `json:"VictimSessionIds,omitnil,omitempty" name:"VictimSessionIds"`
+
+	// <p>是否为降级 partial 事件。true 表示无 xml_deadlock_report，Transactions/Resources 只能从 chain/lock 消息尽力还原。AI 诊断前建议过滤 IsPartial=true 的记录。</p>
+	IsPartial *bool `json:"IsPartial,omitnil,omitempty" name:"IsPartial"`
+
+	// <p>涉及的数据库名去重列表，用于分库聚合与影响范围判断。</p>
+	DatabaseNames []*string `json:"DatabaseNames,omitnil,omitempty" name:"DatabaseNames"`
+
+	// <p>事件唯一 ID，格式为 xml:&lt;uuid&gt; 或 partial:&lt;uuid&gt;。前缀 xml 表示由 xml_deadlock_report 装配的完整事件；partial 表示只有 chain/lock 消息的降级事件。可作为幂等主键。</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// <p>死锁事件级签名（SHA-1 前 16 位）。基于参与死锁的所有锁资源三元组 (Kind, ObjectName, IndexName, Mode) 排序后计算，用于聚合相同锁冲突模式的死锁模板。partial 事件无 Resources 时为 null。</p>
+	DeadlockSignature *string `json:"DeadlockSignature,omitnil,omitempty" name:"DeadlockSignature"`
+
+	// <p>死锁涉及的锁资源节点列表。每个资源节点有若干 Owners（持有边）与 Waiters（等待边），二者组合构成死锁环。partial 事件为空数组。</p>
+	Resources []*DeadlockResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// <p>XE 辅助事件（chain/lock）与 XML 图的关联状态。MATCHED 表示至少一个 chain/lock 消息已关联到该 xml；UNMATCHED 表示只有孤立 xml 或降级 partial 事件。</p>
+	AssociationStatus *string `json:"AssociationStatus,omitnil,omitempty" name:"AssociationStatus"`
+
+	// <p>参与死锁的事务总数（有 TransactionId 的会话按事务分组后的数量）。当存在无 TransactionId 的会话时为 null，通过 ObservedTransactionCount 与该字段的差值可以判断归因缺失情况。</p>
+	TransactionCount *int64 `json:"TransactionCount,omitnil,omitempty" name:"TransactionCount"`
+}
+
+type DeadlockFrame struct {
+	// <p>帧对应的行号（存储过程内的行号）。</p>
+	Line *int64 `json:"Line,omitnil,omitempty" name:"Line"`
+
+	// <p>语句在存储过程文本内的起始字节偏移。</p>
+	StatementStart *int64 `json:"StatementStart,omitnil,omitempty" name:"StatementStart"`
+
+	// <p>存储过程名。adhoc 表示动态 SQL、非存过。</p>
+	ProcName *string `json:"ProcName,omitnil,omitempty" name:"ProcName"`
+
+	// <p>SQL 句柄（0x 十六进制字节），用于拉取具体语句文本和关联执行计划。</p>
+	SqlHandle *string `json:"SqlHandle,omitnil,omitempty" name:"SqlHandle"`
+
+	// <p>语句在存储过程文本内的结束字节偏移。StatementStart/StatementEnd 组合用于精确切片。</p>
+	StatementEnd *int64 `json:"StatementEnd,omitnil,omitempty" name:"StatementEnd"`
+}
+
+type DeadlockResource struct {
+	// <p>锁资源对应的索引名。keylock/ridlock 尤为重要，可判断索引设计是否合理。</p>
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
+
+	// <p>分区 HoBT ID（从 Attributes.hobtid 抽出）。分区表死锁排查必需字段，可定位到具体物理分区。</p>
+	PartitionId *string `json:"PartitionId,omitnil,omitempty" name:"PartitionId"`
+
+	// <p>等待该锁资源的进程列表（死锁环的等待边）。</p>
+	Waiters []*WaiterItem `json:"Waiters,omitnil,omitempty" name:"Waiters"`
+
+	// <p>锁资源类型。常见值：keylock / pagelock / objectlock / ridlock / applicationlock / exchangeEvent 等。</p>
+	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
+
+	// <p>锁模式。常见值：X（排他）/ U（更新）/ S（共享）/ IX / IU / RangeS-U / RangeX-X 等。</p>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>关联对象 ID（从 Attributes.associatedObjectId 抽出）。ObjectName 为空时可用于兜底定位对象。</p>
+	AssociatedObjectId *string `json:"AssociatedObjectId,omitnil,omitempty" name:"AssociatedObjectId"`
+
+	// <p>SQL Server 引擎内的锁资源指针，例如 lock26054644a80。环内节点唯一标识，串联 Owners/Waiters。</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>锁资源对应的数据库对象名，格式 &#39;数据库.架构.表&#39;，例如 tempdb.dbo.dl_a。applicationlock 无此字段。</p>
+	ObjectName *string `json:"ObjectName,omitnil,omitempty" name:"ObjectName"`
+
+	// <p>持有该锁资源的进程列表（死锁环的持有边）。</p>
+	Owners []*OwnerItem `json:"Owners,omitnil,omitempty" name:"Owners"`
+}
+
+type DeadlockSession struct {
+	// <p>SQL 归一化后的指纹（SHA-1 前 16 位）。去掉字面量、注释、参数名、空白差异后计算，抗字面量差异，用于聚合相同 SQL 模板。SqlText 为空时为 null。</p>
+	SqlFingerprint *string `json:"SqlFingerprint,omitnil,omitempty" name:"SqlFingerprint"`
+
+	// <p>SQL Server 登录账号，用于权限归因。可判断是 SQLAgent、业务账号还是 DBA 账号。</p>
+	LoginName *string `json:"LoginName,omitnil,omitempty" name:"LoginName"`
+
+	// <p>会话执行栈帧列表（xml 的 executionStack.frame），用于定位到存储过程内的具体语句区间。partial 事件为空数组。</p>
+	Frames []*DeadlockFrame `json:"Frames,omitnil,omitempty" name:"Frames"`
+
+	// <p>事务隔离级别，例如 &#39;read committed (2)&#39;、&#39;repeatable read (3)&#39;、&#39;serializable (4)&#39; 等。显著影响锁形态和死锁模式。</p>
+	IsolationLevel *string `json:"IsolationLevel,omitnil,omitempty" name:"IsolationLevel"`
+
+	// <p>进程状态。常见值：suspended（挂起等锁）/ running / background。判断是否运行中被检测终止。</p>
+	ProcessStatus *string `json:"ProcessStatus,omitnil,omitempty" name:"ProcessStatus"`
+
+	// <p>客户端应用名（xml 的 clientapp）。判断连接来源，例如 SQLAgent Job、ORM、SSMS、业务服务名等。</p>
+	ClientApp *string `json:"ClientApp,omitnil,omitempty" name:"ClientApp"`
+
+	// <p>会话的 DEADLOCK_PRIORITY 设置。-10 表示主动降级为牺牲者候选；10 表示优先级更高。可解释为何这一方成为牺牲品。</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// <p>会话当前活跃的数据库名（xml 的 currentdbname）。</p>
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// <p>本进程当前持有的锁资源描述列表（死锁环的持有边）。格式同 LockRequest 但结尾为 &#39;holding&#39;。partial 事件为空数组。</p>
+	LockHold []*string `json:"LockHold,omitnil,omitempty" name:"LockHold"`
+
+	// <p>会话最近执行的 SQL 文本（xml 的 InputBuf）。是 AI 诊断的主输入与 SqlFingerprint 的来源。</p>
+	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
+
+	// <p>客户端主机的 IP 地址（点分十进制，来自 message.ip）。判断是否来自同一台机器、批处理源。</p>
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// <p>会话当前活跃的数据库 ID（xml 的 currentdb）。</p>
+	DatabaseId *int64 `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// <p>本事务是否为牺牲事务。true 表示 SQL Server 已回滚该事务；false 表示正常提交；null 表示 XML 缺 VictimProcessIds 无法判定。</p>
+	IsVictim *bool `json:"IsVictim,omitnil,omitempty" name:"IsVictim"`
+
+	// <p>等锁时长，单位毫秒。判断死锁检测延迟、事务超时的辅助指标。</p>
+	WaitTimeMs *int64 `json:"WaitTimeMs,omitnil,omitempty" name:"WaitTimeMs"`
+
+	// <p>事务开始时间（xml 里的 lasttranstarted，本地时间字符串，如 2026-09-16T14:58:23.840）。用于分析长事务、锁持有时长。</p>
+	LastTransStarted *string `json:"LastTransStarted,omitnil,omitempty" name:"LastTransStarted"`
+
+	// <p>该边对应进程的并行执行子线程 ID。</p>
+	ExecutionContextId *int64 `json:"ExecutionContextId,omitnil,omitempty" name:"ExecutionContextId"`
+
+	// <p>SQL Server 引擎内的进程指针，例如 process260256c7468。与 Resources.Owners/Waiters.ProcessId 拼接死锁环。partial 事件为 null。</p>
+	ProcessId *string `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
+
+	// <p>归一化后的客户端应用名。去掉 SQLAgent 的 JobId（16-64 位十六进制串）、Step 号、GUID、末尾进程号等易变部分，用于按应用类别聚合。</p>
+	ClientAppNormalized *string `json:"ClientAppNormalized,omitnil,omitempty" name:"ClientAppNormalized"`
+
+	// <p>本进程正在等待的锁资源描述列表（死锁环的等待边）。每条形如 &#39;keylock on tempdb.dbo.dl_a mode X waiting&#39;。applicationlock 会展示原始资源名（如 &#39;lock_a&#39;）。partial 事件为空数组。</p>
+	LockRequest []*string `json:"LockRequest,omitnil,omitempty" name:"LockRequest"`
+
+	// <p>SQL Server 会话 ID。日志排查主键。</p>
+	SessionId *int64 `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type DeadlockTransaction struct {
+	// <p>事务最终状态。Rollback（被回滚，对应 IsVictim=true）/ Normal（正常，对应 IsVictim=false）/ Unknown（无 victim 信息）。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>SQL Server 引擎内的事务 ID。同实例短期内唯一。与 Auxiliary 记录里的 transaction_id 对齐。</p>
+	TransactionId *string `json:"TransactionId,omitnil,omitempty" name:"TransactionId"`
+
+	// <p>本事务是否为牺牲事务。true 表示 SQL Server 已回滚该事务；false 表示正常提交；null 表示 XML 缺 VictimProcessIds 无法判定。</p>
+	IsVictim *bool `json:"IsVictim,omitnil,omitempty" name:"IsVictim"`
+
+	// <p>该事务下的进程/会话列表。并行计划下同一事务可能包含多个 worker（SessionId 相同 ExecutionContextId 不同）。</p>
+	Sessions []*DeadlockSession `json:"Sessions,omitnil,omitempty" name:"Sessions"`
+}
+
 // Predefined struct for user
 type DeleteAuditLogFileRequestParams struct {
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB， "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL， "postgres" - 云数据库 PostgreSQL。
@@ -3982,6 +4176,121 @@ func (r *DescribeDatabaseAutonomyStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDatabaseAutonomyStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeadLockLogsRequestParams struct {
+	// <p>服务产品类型。取值：sqlserver（云数据库 Sqlserver）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>实例 ID。SQLServer: mssql-xxxx。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>查询开始时间，格式 yyyy-MM-dd HH:mm:ss，按 UTC+8 解析；也兼容带偏移的 ISO-8601（如 2026-09-16T00:00:00+08:00）。半开区间左闭。</p><p>参数格式：2026-09-16 00:00:00</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，格式同 StartTime。EndTime 必须大于 StartTime，且总查询窗口不超过 24 小时。半开区间右开。</p><p>参数格式：2026-09-16 23:59:59</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>分页偏移量，非负整数，默认 0。当 Offset&gt;0 时必须同时传入 ResultVersion，否则报 INVALID_PARAMETER。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单页返回死锁事件数量，范围 [1, 100]。默认 20。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>是否在响应中包含原始死锁图 XML（XmlReport）。默认 false，避免响应体过大。仅在需要绘制完整死锁环时置 true。</p>
+	IncludeXml *bool `json:"IncludeXml,omitnil,omitempty" name:"IncludeXml"`
+
+	// <p>结果集版本号，最大 128 字符。首次查询无需传入；翻页时必须透传首次响应中的 ResultVersion，服务端会校验结果集是否发生变化，变化时返回 RESULT_CHANGED 提示重新拉取首页。</p>
+	ResultVersion *string `json:"ResultVersion,omitnil,omitempty" name:"ResultVersion"`
+}
+
+type DescribeDeadLockLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务产品类型。取值：sqlserver（云数据库 Sqlserver）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>实例 ID。SQLServer: mssql-xxxx。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>查询开始时间，格式 yyyy-MM-dd HH:mm:ss，按 UTC+8 解析；也兼容带偏移的 ISO-8601（如 2026-09-16T00:00:00+08:00）。半开区间左闭。</p><p>参数格式：2026-09-16 00:00:00</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，格式同 StartTime。EndTime 必须大于 StartTime，且总查询窗口不超过 24 小时。半开区间右开。</p><p>参数格式：2026-09-16 23:59:59</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>分页偏移量，非负整数，默认 0。当 Offset&gt;0 时必须同时传入 ResultVersion，否则报 INVALID_PARAMETER。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单页返回死锁事件数量，范围 [1, 100]。默认 20。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>是否在响应中包含原始死锁图 XML（XmlReport）。默认 false，避免响应体过大。仅在需要绘制完整死锁环时置 true。</p>
+	IncludeXml *bool `json:"IncludeXml,omitnil,omitempty" name:"IncludeXml"`
+
+	// <p>结果集版本号，最大 128 字符。首次查询无需传入；翻页时必须透传首次响应中的 ResultVersion，服务端会校验结果集是否发生变化，变化时返回 RESULT_CHANGED 提示重新拉取首页。</p>
+	ResultVersion *string `json:"ResultVersion,omitnil,omitempty" name:"ResultVersion"`
+}
+
+func (r *DescribeDeadLockLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeadLockLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "IncludeXml")
+	delete(f, "ResultVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeadLockLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeadLockLogsResponseParams struct {
+	// <p>是否还有更多分页。true 表示 Offset+Limit &lt; TotalCount，客户端可用 Offset+Limit 与本次 ResultVersion 继续翻页。</p>
+	HasMore *bool `json:"HasMore,omitnil,omitempty" name:"HasMore"`
+
+	// <p>当前查询窗口内可用的死锁事件总数（去重、关联、时间窗口过滤后）。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>结果集版本号（SHA-256 十六进制）。同一批数据在同一查询条件下保持不变；数据发生变化时版本变化。翻页必须透传。</p>
+	ResultVersion *string `json:"ResultVersion,omitnil,omitempty" name:"ResultVersion"`
+
+	// <p>死锁事件列表。按事件时间倒序排列（最近的死锁在前）。</p>
+	Items []*DeadLockLogItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeadLockLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeadLockLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeadLockLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeadLockLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9050,6 +9359,20 @@ func (r *OpenAuditServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type OwnerItem struct {
+	// <p>锁模式。常见值：X（排他）/ U（更新）/ S（共享）/ IX / IU / RangeS-U / RangeX-X 等。</p>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>该边对应进程的并行执行子线程 ID。</p>
+	ExecutionContextId *int64 `json:"ExecutionContextId,omitnil,omitempty" name:"ExecutionContextId"`
+
+	// <p>SQL Server 引擎内的进程指针，例如 process260256c7468。与 Resources.Owners/Waiters.ProcessId 拼接死锁环。partial 事件为 null。</p>
+	ProcessId *string `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
+
+	// <p>SQL Server 会话 ID。日志排查主键。</p>
+	SessionId *int64 `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
 type PostgresSpaceObjectItem struct {
 	// <p>数据库名（PostgreSQL 顶层 catalog）。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10268,4 +10591,21 @@ func (r *VerifyUserAccountResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *VerifyUserAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WaiterItem struct {
+	// <p>该边持有或申请的锁模式。</p>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>并行执行子线程 ID。0 表示主线程；大于 0 表示并行计划的 worker。SessionId + ExecutionContextId 组合可唯一区分并行执行下的 worker。</p>
+	ExecutionContextId *int64 `json:"ExecutionContextId,omitnil,omitempty" name:"ExecutionContextId"`
+
+	// <p>进程内部指针，对应 Transactions[].Processes[].ProcessId。</p>
+	ProcessId *string `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
+
+	// <p>该边对应进程的 SPID，便于前端直接展示无需回查。</p>
+	SessionId *int64 `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>仅 Waiters 边有值。常见值：wait（普通等待）/ convert（锁转换，如从 S 升级到 X）。owner 边无此字段。</p>
+	RequestType *string `json:"RequestType,omitnil,omitempty" name:"RequestType"`
 }

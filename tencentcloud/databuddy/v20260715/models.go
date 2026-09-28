@@ -468,6 +468,96 @@ func (r *CreateFileResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateFolderRequestParams struct {
+	// <p>工作空间名称</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>文件夹名称</p>
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// <p>文件夹类型</p><p>枚举值：</p><ul><li>FOLDER： 文件夹</li><li>GIT_FOLDER： git文件夹</li></ul>
+	FolderType *string `json:"FolderType,omitnil,omitempty" name:"FolderType"`
+
+	// <p>父节点</p>
+	ParentFolder *FolderLocator `json:"ParentFolder,omitnil,omitempty" name:"ParentFolder"`
+
+	// <p>git配置，FolderType=GIT_FOLDER 时必填</p>
+	GitConfig *GitRepoConfig `json:"GitConfig,omitnil,omitempty" name:"GitConfig"`
+}
+
+type CreateFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间名称</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>文件夹名称</p>
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// <p>文件夹类型</p><p>枚举值：</p><ul><li>FOLDER： 文件夹</li><li>GIT_FOLDER： git文件夹</li></ul>
+	FolderType *string `json:"FolderType,omitnil,omitempty" name:"FolderType"`
+
+	// <p>父节点</p>
+	ParentFolder *FolderLocator `json:"ParentFolder,omitnil,omitempty" name:"ParentFolder"`
+
+	// <p>git配置，FolderType=GIT_FOLDER 时必填</p>
+	GitConfig *GitRepoConfig `json:"GitConfig,omitnil,omitempty" name:"GitConfig"`
+}
+
+func (r *CreateFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "FolderName")
+	delete(f, "FolderType")
+	delete(f, "ParentFolder")
+	delete(f, "GitConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFolderResponseParams struct {
+	// <p>创建文件夹结果</p>
+	Data *CreateFolderRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFolderResponseParams `json:"Response"`
+}
+
+func (r *CreateFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFolderRsp struct {
+	// <p>文件夹 ID</p>
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+}
+
+// Predefined struct for user
 type CreateWorkflowRequestParams struct {
 	// <p>工作空间ID，可通过 ListWorkspaces 获取。必填</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
@@ -616,6 +706,82 @@ type CreateWorkflowRsp struct {
 }
 
 // Predefined struct for user
+type CreateWorkspaceRequestParams struct {
+	// <p>工作空间名称，max_len=128</p>
+	WorkspaceName *string `json:"WorkspaceName,omitnil,omitempty" name:"WorkspaceName"`
+
+	// <p>工作空间地域（如 ap-guangzhou），max_len=64</p>
+	WorkspaceRegion *string `json:"WorkspaceRegion,omitnil,omitempty" name:"WorkspaceRegion"`
+
+	// <p>工作空间描述，max_len=300</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type CreateWorkspaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间名称，max_len=128</p>
+	WorkspaceName *string `json:"WorkspaceName,omitnil,omitempty" name:"WorkspaceName"`
+
+	// <p>工作空间地域（如 ap-guangzhou），max_len=64</p>
+	WorkspaceRegion *string `json:"WorkspaceRegion,omitnil,omitempty" name:"WorkspaceRegion"`
+
+	// <p>工作空间描述，max_len=300</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *CreateWorkspaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkspaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceName")
+	delete(f, "WorkspaceRegion")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkspaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWorkspaceResponseParams struct {
+	// <p>创建成功的工作空间ID</p>
+	Data *CreateWorkspaceRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateWorkspaceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWorkspaceResponseParams `json:"Response"`
+}
+
+func (r *CreateWorkspaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkspaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateWorkspaceRsp struct {
+	// 创建成功的工作空间ID
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+// Predefined struct for user
 type DeleteConsoleGroupsRequestParams struct {
 	// <p>要删除的用户组 ID 列表，单次最多100个</p>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
@@ -760,6 +926,82 @@ type DeleteFileResult struct {
 }
 
 // Predefined struct for user
+type DeleteFolderRequestParams struct {
+	// <p>工作空间id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>待删除的文件夹</p>
+	Folder *FolderLocator `json:"Folder,omitnil,omitempty" name:"Folder"`
+
+	// <p>软删除还是从回收站硬删除</p><p>枚举值：</p><ul><li>false： 软删除到回收站</li><li>true： 从回收站硬删除</li></ul>
+	ForceDelete *bool `json:"ForceDelete,omitnil,omitempty" name:"ForceDelete"`
+}
+
+type DeleteFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>待删除的文件夹</p>
+	Folder *FolderLocator `json:"Folder,omitnil,omitempty" name:"Folder"`
+
+	// <p>软删除还是从回收站硬删除</p><p>枚举值：</p><ul><li>false： 软删除到回收站</li><li>true： 从回收站硬删除</li></ul>
+	ForceDelete *bool `json:"ForceDelete,omitnil,omitempty" name:"ForceDelete"`
+}
+
+func (r *DeleteFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "Folder")
+	delete(f, "ForceDelete")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteFolderResponseParams struct {
+	// <p>删除文件夹结果</p>
+	Data *DeleteFolderRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteFolderResponseParams `json:"Response"`
+}
+
+func (r *DeleteFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteFolderRsp struct {
+	// <p>删除文件夹状态</p>
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
 type DeleteWorkflowRequestParams struct {
 	// <p>工作空间ID，可通过 ListWorkspaces 获取。必填</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
@@ -827,6 +1069,68 @@ func (r *DeleteWorkflowResponse) FromJsonString(s string) error {
 type DeleteWorkflowRsp struct {
 	// 删除状态，true 表示成功
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
+type DeleteWorkspaceRequestParams struct {
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+type DeleteWorkspaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+func (r *DeleteWorkspaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWorkspaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWorkspaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWorkspaceResponseParams struct {
+	// <p>操作结果</p>
+	Data *DeleteWorkspaceRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteWorkspaceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteWorkspaceResponseParams `json:"Response"`
+}
+
+func (r *DeleteWorkspaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWorkspaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWorkspaceRsp struct {
+	// 操作是否成功
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -961,6 +1265,62 @@ type FileInfo struct {
 	AsyncOperation *AsyncOperation `json:"AsyncOperation,omitnil,omitempty" name:"AsyncOperation"`
 }
 
+type FileMeta struct {
+	// <p>文件id</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>文件/文件夹名称</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>文件类型</p>
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// <p>创建时间，毫秒秒级时间戳</p><p>参数格式：时间戳</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p><p>参数格式：时间戳字符串</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>acl权限类型</p>
+	AllowActions []*string `json:"AllowActions,omitnil,omitempty" name:"AllowActions"`
+
+	// <p>是否收藏</p>
+	IsFavorite *bool `json:"IsFavorite,omitnil,omitempty" name:"IsFavorite"`
+
+	// <p>文件path</p>
+	PathName *string `json:"PathName,omitnil,omitempty" name:"PathName"`
+
+	// <p>是否系统创建</p>
+	IsSystemGenerated *bool `json:"IsSystemGenerated,omitnil,omitempty" name:"IsSystemGenerated"`
+}
+
+type FileNode struct {
+	// <p>当前节点</p>
+	Node *FileMeta `json:"Node,omitnil,omitempty" name:"Node"`
+
+	// <p>父节点</p>
+	Parent *FileMeta `json:"Parent,omitnil,omitempty" name:"Parent"`
+
+	// <p>创建人</p>
+	Creator *UserInfo `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// <p>拥有者</p>
+	Owner *UserInfo `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// <p>节点类型</p>
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// <p>原始路径</p>
+	OriginPath *string `json:"OriginPath,omitnil,omitempty" name:"OriginPath"`
+
+	// <p>回收时间</p>
+	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
+
+	// <p>文件git配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GitConfig *GitRepoConfig `json:"GitConfig,omitnil,omitempty" name:"GitConfig"`
+}
+
 type FileOutputConf struct {
 	// 单元格 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -984,6 +1344,14 @@ type FileStorage struct {
 
 	// 文件内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type FolderLocator struct {
+	// <p>节点id</p>
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// <p>节点path</p>
+	PathName *string `json:"PathName,omitnil,omitempty" name:"PathName"`
 }
 
 // Predefined struct for user
@@ -1077,6 +1445,75 @@ func (r *GetFileResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFolderRequestParams struct {
+	// <p>工作空间id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>文件夹定位</p>
+	Folder *FolderLocator `json:"Folder,omitnil,omitempty" name:"Folder"`
+}
+
+type GetFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>文件夹定位</p>
+	Folder *FolderLocator `json:"Folder,omitnil,omitempty" name:"Folder"`
+}
+
+func (r *GetFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "Folder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFolderResponseParams struct {
+	// <p>文件夹详情结果</p>
+	Data *GetFolderRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *GetFolderResponseParams `json:"Response"`
+}
+
+func (r *GetFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFolderRsp struct {
+	// <p>文件夹信息</p>
+	Folder *FileNode `json:"Folder,omitnil,omitempty" name:"Folder"`
 }
 
 // Predefined struct for user
@@ -1497,6 +1934,83 @@ type GetWorkflowTaskRunRsp struct {
 	// <p>计划调度时间</p><p>参数格式：毫秒时间戳（UTC）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduledTime *string `json:"ScheduledTime,omitnil,omitempty" name:"ScheduledTime"`
+}
+
+// Predefined struct for user
+type GetWorkspaceRequestParams struct {
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+type GetWorkspaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+func (r *GetWorkspaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetWorkspaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetWorkspaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetWorkspaceResponseParams struct {
+	// <p>工作空间详情</p>
+	Data *GetWorkspaceRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetWorkspaceResponse struct {
+	*tchttp.BaseResponse
+	Response *GetWorkspaceResponseParams `json:"Response"`
+}
+
+func (r *GetWorkspaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetWorkspaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetWorkspaceRsp struct {
+	// 工作空间详情
+	WorkspaceInfo *WorkspaceInfo `json:"WorkspaceInfo,omitnil,omitempty" name:"WorkspaceInfo"`
+}
+
+type GitRepoConfig struct {
+	// <p>检出规则</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparseCheckout *SparseCheckoutConfig `json:"SparseCheckout,omitnil,omitempty" name:"SparseCheckout"`
+
+	// <p>Git 仓库地址</p>
+	RepoUrl *string `json:"RepoUrl,omitnil,omitempty" name:"RepoUrl"`
+
+	// <p>分支名</p>
+	Branch *string `json:"Branch,omitnil,omitempty" name:"Branch"`
+
+	// <p>关联的 gitAuth 配置名称</p>
+	AuthConfigName *string `json:"AuthConfigName,omitnil,omitempty" name:"AuthConfigName"`
 }
 
 type InnerWorkflowTaskBrief struct {
@@ -2151,6 +2665,136 @@ type ListConsoleUsersRsp struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 总页数
+	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+}
+
+// Predefined struct for user
+type ListFilesRequestParams struct {
+	// <p>工作空间id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>父目录，不填默认查询根节点</p>
+	Parent *FolderLocator `json:"Parent,omitnil,omitempty" name:"Parent"`
+
+	// <p>按文件类型过滤</p>
+	FileTypes []*string `json:"FileTypes,omitnil,omitempty" name:"FileTypes"`
+
+	// <p>文件名模糊匹配</p>
+	NameKeyword *string `json:"NameKeyword,omitnil,omitempty" name:"NameKeyword"`
+
+	// <p>按所有者UIN过滤，多值为或关系</p>
+	OwnerUserUins []*string `json:"OwnerUserUins,omitnil,omitempty" name:"OwnerUserUins"`
+
+	// <p>是否只列出文件夹，默认 false</p>
+	OnlyFolder *bool `json:"OnlyFolder,omitnil,omitempty" name:"OnlyFolder"`
+
+	// <p>排序字段列表，如创建时间 [{Name: &#39;CreateTime&#39;, Direction: &#39;DESC&#39;}]，文件名称 [{Name: &#39;Name&#39;, Direction: &#39;ASC&#39;}]</p>
+	OrderBys []*OrderBy `json:"OrderBys,omitnil,omitempty" name:"OrderBys"`
+
+	// <p>页码，默认1，最小值1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页条数，默认10，最小值10，最大值100</p><p>取值范围：[10, 100]</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListFilesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>父目录，不填默认查询根节点</p>
+	Parent *FolderLocator `json:"Parent,omitnil,omitempty" name:"Parent"`
+
+	// <p>按文件类型过滤</p>
+	FileTypes []*string `json:"FileTypes,omitnil,omitempty" name:"FileTypes"`
+
+	// <p>文件名模糊匹配</p>
+	NameKeyword *string `json:"NameKeyword,omitnil,omitempty" name:"NameKeyword"`
+
+	// <p>按所有者UIN过滤，多值为或关系</p>
+	OwnerUserUins []*string `json:"OwnerUserUins,omitnil,omitempty" name:"OwnerUserUins"`
+
+	// <p>是否只列出文件夹，默认 false</p>
+	OnlyFolder *bool `json:"OnlyFolder,omitnil,omitempty" name:"OnlyFolder"`
+
+	// <p>排序字段列表，如创建时间 [{Name: &#39;CreateTime&#39;, Direction: &#39;DESC&#39;}]，文件名称 [{Name: &#39;Name&#39;, Direction: &#39;ASC&#39;}]</p>
+	OrderBys []*OrderBy `json:"OrderBys,omitnil,omitempty" name:"OrderBys"`
+
+	// <p>页码，默认1，最小值1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页条数，默认10，最小值10，最大值100</p><p>取值范围：[10, 100]</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListFilesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "Parent")
+	delete(f, "FileTypes")
+	delete(f, "NameKeyword")
+	delete(f, "OwnerUserUins")
+	delete(f, "OnlyFolder")
+	delete(f, "OrderBys")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListFilesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListFilesResponseParams struct {
+	// <p>文件列表结果</p>
+	Data *ListFilesRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListFilesResponseParams `json:"Response"`
+}
+
+func (r *ListFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListFilesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListFilesRsp struct {
+	// <p>文件/文件夹节点列表</p>
+	Items []*FileNode `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// <p>当前页码</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页条数</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>总条数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>总页数</p>
 	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
 }
 
@@ -3025,6 +3669,34 @@ type ScheduledTimeConfig struct {
 	CycleNum *int64 `json:"CycleNum,omitnil,omitempty" name:"CycleNum"`
 }
 
+type SparseCheckoutConfig struct {
+	// <p>是否启用稀疏检出</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>是否使用 cone 模式（推荐 true，按目录匹配更高效）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConeMode *bool `json:"ConeMode,omitnil,omitempty" name:"ConeMode"`
+
+	// <p>稀疏检出路径列表（如 [&quot;src/module-a/&quot;, &quot;docs/&quot;]）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Patterns []*string `json:"Patterns,omitnil,omitempty" name:"Patterns"`
+}
+
+type StandardUserInfo struct {
+	// 用户UIN
+	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 昵称
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// 0: 普通用户 1: entraId用户
+	UserTag *string `json:"UserTag,omitnil,omitempty" name:"UserTag"`
+}
+
 type TaskRetryStrategy struct {
 	// 最多重试次数，默认3
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3484,6 +4156,96 @@ func (r *UpdateFileResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateFolderRequestParams struct {
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>待更新文件夹</p>
+	Folder *FolderLocator `json:"Folder,omitnil,omitempty" name:"Folder"`
+
+	// <p>操作类型</p><p>枚举值：</p><ul><li>1： 重命名</li><li>2： 移动</li></ul>
+	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// <p>重命名后的文件名，OperationType = 1时生效</p>
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// <p>移动的目的文件夹，OperationType = 2时生效</p>
+	TargetParent *FolderLocator `json:"TargetParent,omitnil,omitempty" name:"TargetParent"`
+}
+
+type UpdateFolderRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>待更新文件夹</p>
+	Folder *FolderLocator `json:"Folder,omitnil,omitempty" name:"Folder"`
+
+	// <p>操作类型</p><p>枚举值：</p><ul><li>1： 重命名</li><li>2： 移动</li></ul>
+	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// <p>重命名后的文件名，OperationType = 1时生效</p>
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// <p>移动的目的文件夹，OperationType = 2时生效</p>
+	TargetParent *FolderLocator `json:"TargetParent,omitnil,omitempty" name:"TargetParent"`
+}
+
+func (r *UpdateFolderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFolderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "Folder")
+	delete(f, "OperationType")
+	delete(f, "FolderName")
+	delete(f, "TargetParent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFolderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateFolderResponseParams struct {
+	// <p>更新文件夹结果</p>
+	Data *UpdateFolderRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateFolderResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateFolderResponseParams `json:"Response"`
+}
+
+func (r *UpdateFolderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateFolderRsp struct {
+	// <p>更新文件夹结果，true为成功</p>
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
 type UpdateWorkflowRequestParams struct {
 	// <p>工作空间ID，可通过 ListWorkspaces 获取。必填</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
@@ -3566,6 +4328,96 @@ type UpdateWorkflowRsp struct {
 	// 更新状态，true 表示成功
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
+type UpdateWorkspaceRequestParams struct {
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>工作空间名称，max_len=128</p>
+	WorkspaceName *string `json:"WorkspaceName,omitnil,omitempty" name:"WorkspaceName"`
+
+	// <p>工作空间描述，max_len=300</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type UpdateWorkspaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>工作空间名称，max_len=128</p>
+	WorkspaceName *string `json:"WorkspaceName,omitnil,omitempty" name:"WorkspaceName"`
+
+	// <p>工作空间描述，max_len=300</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *UpdateWorkspaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateWorkspaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "WorkspaceName")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateWorkspaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateWorkspaceResponseParams struct {
+	// <p>操作结果</p>
+	Data *UpdateWorkspaceRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateWorkspaceResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateWorkspaceResponseParams `json:"Response"`
+}
+
+func (r *UpdateWorkspaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateWorkspaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateWorkspaceRsp struct {
+	// 操作是否成功
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type UserInfo struct {
+	// <p>uin</p>
+	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
+
+	// <p>子用户名称</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>子用户昵称</p>
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// <p>0: 普通用户 1: entraId用户</p>
+	UserTag *string `json:"UserTag,omitnil,omitempty" name:"UserTag"`
 }
 
 type Workflow struct {
@@ -4285,4 +5137,36 @@ type WorkflowTriggerConfiguration struct {
 	// <p>高级配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedConfig *WorkflowTriggerAdvancedConfiguration `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+}
+
+type WorkspaceInfo struct {
+	// 工作空间ID
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 工作空间名称
+	WorkspaceName *string `json:"WorkspaceName,omitnil,omitempty" name:"WorkspaceName"`
+
+	// 工作空间描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 工作空间地域（如 ap-guangzhou）
+	WorkspaceRegion *string `json:"WorkspaceRegion,omitnil,omitempty" name:"WorkspaceRegion"`
+
+	// 工作空间状态：0=未指定 1=创建中 2=创建失败 3=正常运行中 4=已删除
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 失败原因（Status=2 创建失败时有值）
+	ErrorReason *string `json:"ErrorReason,omitnil,omitempty" name:"ErrorReason"`
+
+	// 创建者信息
+	Creator *StandardUserInfo `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 创建时间，毫秒时间戳
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间，毫秒时间戳
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 当前用户是否拥有该工作空间的访问权限
+	HasAccess *bool `json:"HasAccess,omitnil,omitempty" name:"HasAccess"`
 }
