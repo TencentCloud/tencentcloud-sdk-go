@@ -7203,6 +7203,77 @@ func (r *GetSQLFolderResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetSQLRunResultRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 查询任务ID，由 RunSQLScript 返回
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 子查询任务运行ID。不传则返回该任务下全部子查询的结果
+	JobExecutionId *string `json:"JobExecutionId,omitnil,omitempty" name:"JobExecutionId"`
+}
+
+type GetSQLRunResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 查询任务ID，由 RunSQLScript 返回
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 子查询任务运行ID。不传则返回该任务下全部子查询的结果
+	JobExecutionId *string `json:"JobExecutionId,omitnil,omitempty" name:"JobExecutionId"`
+}
+
+func (r *GetSQLRunResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetSQLRunResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "JobId")
+	delete(f, "JobExecutionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSQLRunResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetSQLRunResultResponseParams struct {
+	// SQL查询结果
+	Data *SqlRunResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetSQLRunResultResponse struct {
+	*tchttp.BaseResponse
+	Response *GetSQLRunResultResponseParams `json:"Response"`
+}
+
+func (r *GetSQLRunResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetSQLRunResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetSQLScriptRequestParams struct {
 	// 探索脚本Id
 	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
@@ -18690,6 +18761,16 @@ type ResourceType struct {
 	DataService *ResourceGroupSpecification `json:"DataService,omitnil,omitempty" name:"DataService"`
 }
 
+type ResultColumnInfo struct {
+	// 字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnName *string `json:"ColumnName,omitnil,omitempty" name:"ColumnName"`
+
+	// 字段类型，如 int、string、bigint 等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnType *string `json:"ColumnType,omitnil,omitempty" name:"ColumnType"`
+}
+
 // Predefined struct for user
 type RevokeDataSourceAuthorizationRequestParams struct {
 	// 数据源id
@@ -19183,6 +19264,68 @@ type SqlCreateResult struct {
 	// 文件夹id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+}
+
+type SqlRunExecutionResult struct {
+	// 子查询任务运行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobExecutionId *string `json:"JobExecutionId,omitnil,omitempty" name:"JobExecutionId"`
+
+	// 子查询状态：SUCCESS、FAILED、TERMINATED、CANCELED 等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 结果集字段信息；非查询类语句（INSERT/CREATE 等）为空列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Columns []*ResultColumnInfo `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// 结果数据行，每个元素的 Values 顺序与 Columns 一致
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rows []*SqlRunResultRow `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// 本子查询的预览结果行数。预览行数上限遵循「项目管理-数据分析配置-单次运行的预览行数上限」，由执行平台在结果产出阶段截断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 本子查询耗时，单位毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostMs *int64 `json:"CostMs,omitnil,omitempty" name:"CostMs"`
+
+	// 本子查询结果是否不完整。返回数据总大小超过 10MB、或结果文件已被清理导致读取不完整时为 true
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Truncated *bool `json:"Truncated,omitnil,omitempty" name:"Truncated"`
+}
+
+type SqlRunResult struct {
+	// 查询任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 查询任务状态。终态取值：SUCCESS（成功）、FAILED（失败）、TERMINATED（已终止）、CANCELED（已取消）；非终态取值：QUEUED（排队中）、RUNNING（执行中）。非终态时不报错，Results 返回空数组，调用方应指数退避轮询直至进入终态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 当前状态的可读说明，任意状态下均有值。用于说明 Results 为空的具体原因并给出下一步动作建议：任务未完成时提示稍后以相同 JobId 重试；任务失败/终止/取消时提示无结果数据及后续处理；成功且结果被截断时提示缩小查询范围。命名上与云API错误响应的 Error.Message 区分，本字段描述的是业务状态而非错误信息。随 Language 参数国际化
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusMessage *string `json:"StatusMessage,omitnil,omitempty" name:"StatusMessage"`
+
+	// 查询任务总耗时，单位毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostMs *int64 `json:"CostMs,omitnil,omitempty" name:"CostMs"`
+
+	// 是否存在结果不完整的子查询。任一子查询的 Truncated 为 true 时本字段为 true
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Truncated *bool `json:"Truncated,omitnil,omitempty" name:"Truncated"`
+
+	// 各子查询的结果列表，顺序与 SQL 语句执行顺序一致
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results []*SqlRunExecutionResult `json:"Results,omitnil,omitempty" name:"Results"`
+}
+
+type SqlRunResultRow struct {
+	// 该行各单元格取值，顺序与 Columns 一致。均为字符串：底层预览结果为 CSV 格式不携带类型信息，字段真实类型参见 Columns[].ColumnType
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 // Predefined struct for user

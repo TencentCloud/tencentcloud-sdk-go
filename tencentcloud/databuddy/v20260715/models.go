@@ -2265,7 +2265,7 @@ type LabelBrief struct {
 
 // Predefined struct for user
 type ListConsoleGroupUsersRequestParams struct {
-	// <p>用户组 ID</p>
+	// <p>用户组 ID，可通过 ListConsoleGroups 接口获取</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// <p>用户名称或 UIN 模糊匹配</p>
@@ -2287,7 +2287,7 @@ type ListConsoleGroupUsersRequestParams struct {
 type ListConsoleGroupUsersRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>用户组 ID</p>
+	// <p>用户组 ID，可通过 ListConsoleGroups 接口获取</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// <p>用户名称或 UIN 模糊匹配</p>
@@ -2381,7 +2381,7 @@ type ListConsoleGroupsRequestParams struct {
 	// <p>每页大小，默认10，最小10，最大100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// <p>通过用户组 ID 批量查询</p>
+	// <p>通过用户组ID批量查询；用户组ID可通过 ListConsoleGroups 接口获取</p>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
 	// <p>用户组名称模糊匹配</p>
@@ -2400,7 +2400,7 @@ type ListConsoleGroupsRequest struct {
 	// <p>每页大小，默认10，最小10，最大100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// <p>通过用户组 ID 批量查询</p>
+	// <p>通过用户组ID批量查询；用户组ID可通过 ListConsoleGroups 接口获取</p>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
 	// <p>用户组名称模糊匹配</p>
@@ -2576,7 +2576,7 @@ type ListConsoleUsersRequestParams struct {
 	// <p>用户名称与 UIN 模糊匹配</p>
 	UserKeyword *string `json:"UserKeyword,omitnil,omitempty" name:"UserKeyword"`
 
-	// <p>用于过滤角色关联的用户</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul>
+	// <p>用于过滤角色关联的用户</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul><p>可通过 ListConsoleRoles 接口获取</p>
 	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 
 	// <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;Desc&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;Asc&#39;}]，默认按创建时间降序</p>
@@ -2595,7 +2595,7 @@ type ListConsoleUsersRequest struct {
 	// <p>用户名称与 UIN 模糊匹配</p>
 	UserKeyword *string `json:"UserKeyword,omitnil,omitempty" name:"UserKeyword"`
 
-	// <p>用于过滤角色关联的用户</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul>
+	// <p>用于过滤角色关联的用户</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul><p>可通过 ListConsoleRoles 接口获取</p>
 	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 
 	// <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;Desc&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;Asc&#39;}]，默认按创建时间降序</p>
@@ -3463,7 +3463,7 @@ type ResourceGroupInfo struct {
 }
 
 type RoleBasicInfo struct {
-	// <p>角色ID</p>
+	// <p>角色ID，可通过 ListWorkspaceRoles / ListConsoleRoles 接口获取；创建/更新角色时无需填写（由系统自动生成，创建成功后从响应 Data.RoleId 获取）</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// <p>角色名称</p>
@@ -3475,13 +3475,13 @@ type RoleBasicInfo struct {
 	// <p>显示名称</p>
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
-	// <p>角色类型</p>
+	// <p>角色类型：workspace=工作空间系统角色，workspace_custom=工作空间自定义角色，console=控制台角色；查询时返回，创建时无需填写（系统固定创建自定义角色）</p>
 	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
 
-	// <p>角色来源，参考 web_enum_standard.proto -&gt; RoleSource：0=未指定 1=用户直绑 2=用户组继承 3=两者都有</p>
+	// <p>角色来源（查询侧字段，创建时无需填写）：0=未指定，1=用户直绑，2=用户组继承，3=两者都有</p>
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// <p>继承来源的用户组名称列表，Source=1 时为空</p>
+	// <p>继承来源的用户组名称列表（查询侧字段，创建时无需填写），Source=1 时为空</p>
 	GroupNames []*string `json:"GroupNames,omitnil,omitempty" name:"GroupNames"`
 }
 
@@ -3500,10 +3500,10 @@ type RoleMetaData struct {
 }
 
 type RolePermission struct {
-	// 模块ID
+	// <p>模块ID，须为当前租户已开通的功能模块（叶子节点）的模块ID（层级编码字符串，如 101=快速开始、109=工作流、116101103=工作空间管理_角色权限），非法值返回 InvalidParameterValue；模块清单可通过控制台「工作空间设置-角色权限」页面查看</p>
 	ModuleId *string `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
 
-	// 权限点
+	// <p>模块访问权限，单值：R=只读，RW=读写，RWD=读写删除，N=无权限</p>
 	Permissions *string `json:"Permissions,omitnil,omitempty" name:"Permissions"`
 }
 

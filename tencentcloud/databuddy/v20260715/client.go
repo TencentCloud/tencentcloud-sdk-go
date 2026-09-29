@@ -1445,7 +1445,7 @@ func NewListConsoleGroupUsersResponse() (response *ListConsoleGroupUsersResponse
 }
 
 // ListConsoleGroupUsers
-// 查询控制台用户组成员列表
+// 查询控制台用户组成员列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1469,7 +1469,7 @@ func (c *Client) ListConsoleGroupUsers(request *ListConsoleGroupUsersRequest) (r
 }
 
 // ListConsoleGroupUsers
-// 查询控制台用户组成员列表
+// 查询控制台用户组成员列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1525,7 +1525,7 @@ func NewListConsoleGroupsResponse() (response *ListConsoleGroupsResponse) {
 }
 
 // ListConsoleGroups
-// 查询控制台用户组列表
+// 查询控制台用户组列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1549,7 +1549,7 @@ func (c *Client) ListConsoleGroups(request *ListConsoleGroupsRequest) (response 
 }
 
 // ListConsoleGroups
-// 查询控制台用户组列表
+// 查询控制台用户组列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1605,7 +1605,7 @@ func NewListConsoleRolesResponse() (response *ListConsoleRolesResponse) {
 }
 
 // ListConsoleRoles
-// 查询控制台角色列表
+// 查询控制台角色列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1629,7 +1629,7 @@ func (c *Client) ListConsoleRoles(request *ListConsoleRolesRequest) (response *L
 }
 
 // ListConsoleRoles
-// 查询控制台角色列表
+// 查询控制台角色列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1685,7 +1685,7 @@ func NewListConsoleUsersResponse() (response *ListConsoleUsersResponse) {
 }
 
 // ListConsoleUsers
-// 查询控制台用户列表
+// 查询控制台用户列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1709,7 +1709,7 @@ func (c *Client) ListConsoleUsers(request *ListConsoleUsersRequest) (response *L
 }
 
 // ListConsoleUsers
-// 查询控制台用户列表
+// 查询控制台用户列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

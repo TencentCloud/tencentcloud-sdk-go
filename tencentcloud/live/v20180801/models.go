@@ -4628,6 +4628,81 @@ func (r *CreateLiveRecordTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateLiveSmartEraseRuleRequestParams struct {
+	// <p>模板 ID。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>推流域名。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>推流路径，与推流和播放地址中的AppName保持一致，默认为 live。</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// <p>流名称。<br>注：如果本参数设置为非空字符串，规则将只对此推流起作用。</p>
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+}
+
+type CreateLiveSmartEraseRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模板 ID。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>推流域名。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>推流路径，与推流和播放地址中的AppName保持一致，默认为 live。</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// <p>流名称。<br>注：如果本参数设置为非空字符串，规则将只对此推流起作用。</p>
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+}
+
+func (r *CreateLiveSmartEraseRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveSmartEraseRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "DomainName")
+	delete(f, "AppName")
+	delete(f, "StreamName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveSmartEraseRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveSmartEraseRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLiveSmartEraseRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLiveSmartEraseRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateLiveSmartEraseRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveSmartEraseRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateLiveSmartEraseTemplateRequestParams struct {
 	// <p>模板名称。长度上限：100字节。</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
@@ -7745,6 +7820,135 @@ func (r *DeleteLiveRecordTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteLiveRecordTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveSmartEraseRuleRequestParams struct {
+	// <p>直播智能擦除模板id。</p>
+	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>推流域名。<br>域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>，与推流和播放地址中的AppName保持一致，默认为 live。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。推流路径</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// <p>流名称。<br>域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。</p>
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+}
+
+type DeleteLiveSmartEraseRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>直播智能擦除模板id。</p>
+	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>推流域名。<br>域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>，与推流和播放地址中的AppName保持一致，默认为 live。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。推流路径</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// <p>流名称。<br>域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。</p>
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+}
+
+func (r *DeleteLiveSmartEraseRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveSmartEraseRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "DomainName")
+	delete(f, "AppName")
+	delete(f, "StreamName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveSmartEraseRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveSmartEraseRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLiveSmartEraseRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLiveSmartEraseRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteLiveSmartEraseRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveSmartEraseRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveSmartEraseTemplateRequestParams struct {
+	// <p>模板 ID。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+type DeleteLiveSmartEraseTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模板 ID。</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+func (r *DeleteLiveSmartEraseTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveSmartEraseTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveSmartEraseTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveSmartEraseTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLiveSmartEraseTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLiveSmartEraseTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteLiveSmartEraseTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveSmartEraseTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13075,6 +13279,171 @@ func (r *DescribeLiveRecordTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLiveRecordTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveSmartEraseRulesRequestParams struct {
+
+}
+
+type DescribeLiveSmartEraseRulesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLiveSmartEraseRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveSmartEraseRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveSmartEraseRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveSmartEraseRulesResponseParams struct {
+	// <p>规则信息列表。</p>
+	Rules []*RuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveSmartEraseRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveSmartEraseRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveSmartEraseRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveSmartEraseRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveSmartEraseTemplateRequestParams struct {
+	// <p>模板id。</p>
+	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+type DescribeLiveSmartEraseTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模板id。</p>
+	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribeLiveSmartEraseTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveSmartEraseTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveSmartEraseTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveSmartEraseTemplateResponseParams struct {
+	// <p>直播智能擦除模板信息。</p>
+	Template *SmartEraseTemplate `json:"Template,omitnil,omitempty" name:"Template"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveSmartEraseTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveSmartEraseTemplateResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveSmartEraseTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveSmartEraseTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveSmartEraseTemplatesRequestParams struct {
+
+}
+
+type DescribeLiveSmartEraseTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLiveSmartEraseTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveSmartEraseTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveSmartEraseTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveSmartEraseTemplatesResponseParams struct {
+	// <p>直播智能擦除模板信息。</p>
+	Templates []*SmartEraseTemplate `json:"Templates,omitnil,omitempty" name:"Templates"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveSmartEraseTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveSmartEraseTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveSmartEraseTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveSmartEraseTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -20402,6 +20771,137 @@ func (r *ModifyLiveRecordTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyLiveSmartEraseTemplateRequestParams struct {
+	// <p>模板id。</p>
+	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>模板名称。长度上限：100字节。</p>
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// <p>擦除类型，如&quot;illegal audio|illegal image|logo|privacy protection 。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>关联的审核模板id, 表audio_conf 。</p><p>取值为DescribeAuditTemplates返回的TemplateId</p>
+	AuditConfId *uint64 `json:"AuditConfId,omitnil,omitempty" name:"AuditConfId"`
+
+	// <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>天御图片审核策略BizType Image 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Image&quot;的BizType值</p>
+	ImageBizType *string `json:"ImageBizType,omitnil,omitempty" name:"ImageBizType"`
+
+	// <p>天御音频审核策略BizType ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;ShortAudio&quot;的BizType值</p>
+	AudioBizType *string `json:"AudioBizType,omitnil,omitempty" name:"AudioBizType"`
+
+	// <p>天御音频文本审核策略BizType ShortAudio</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Text&quot;的BizType值</p>
+	AudioTextBizType *string `json:"AudioTextBizType,omitnil,omitempty" name:"AudioTextBizType"`
+
+	// <p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
+	DisplayMode *int64 `json:"DisplayMode,omitnil,omitempty" name:"DisplayMode"`
+
+	// <p>字幕延迟展示时间,单位毫秒。默认10000。</p>
+	DisplayDelayTime *int64 `json:"DisplayDelayTime,omitnil,omitempty" name:"DisplayDelayTime"`
+
+	// <p>擦除类型选择“隐私保护”后，该项可见</p><p>枚举值：</p><ul><li>blur face： 人脸模糊</li><li>license plate： 车牌模糊</li></ul>
+	PrivacyProtection *string `json:"PrivacyProtection,omitnil,omitempty" name:"PrivacyProtection"`
+
+	// <p>仅当擦除类型选择了违规音频，该项可见</p><p>枚举值：</p><ul><li>0： 静音</li><li>1： 哔音</li></ul><p>默认值：0</p>
+	AudioErasureMode *uint64 `json:"AudioErasureMode,omitnil,omitempty" name:"AudioErasureMode"`
+}
+
+type ModifyLiveSmartEraseTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模板id。</p>
+	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>模板名称。长度上限：100字节。</p>
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// <p>擦除类型，如&quot;illegal audio|illegal image|logo|privacy protection 。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>关联的审核模板id, 表audio_conf 。</p><p>取值为DescribeAuditTemplates返回的TemplateId</p>
+	AuditConfId *uint64 `json:"AuditConfId,omitnil,omitempty" name:"AuditConfId"`
+
+	// <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>天御图片审核策略BizType Image 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Image&quot;的BizType值</p>
+	ImageBizType *string `json:"ImageBizType,omitnil,omitempty" name:"ImageBizType"`
+
+	// <p>天御音频审核策略BizType ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;ShortAudio&quot;的BizType值</p>
+	AudioBizType *string `json:"AudioBizType,omitnil,omitempty" name:"AudioBizType"`
+
+	// <p>天御音频文本审核策略BizType ShortAudio</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Text&quot;的BizType值</p>
+	AudioTextBizType *string `json:"AudioTextBizType,omitnil,omitempty" name:"AudioTextBizType"`
+
+	// <p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
+	DisplayMode *int64 `json:"DisplayMode,omitnil,omitempty" name:"DisplayMode"`
+
+	// <p>字幕延迟展示时间,单位毫秒。默认10000。</p>
+	DisplayDelayTime *int64 `json:"DisplayDelayTime,omitnil,omitempty" name:"DisplayDelayTime"`
+
+	// <p>擦除类型选择“隐私保护”后，该项可见</p><p>枚举值：</p><ul><li>blur face： 人脸模糊</li><li>license plate： 车牌模糊</li></ul>
+	PrivacyProtection *string `json:"PrivacyProtection,omitnil,omitempty" name:"PrivacyProtection"`
+
+	// <p>仅当擦除类型选择了违规音频，该项可见</p><p>枚举值：</p><ul><li>0： 静音</li><li>1： 哔音</li></ul><p>默认值：0</p>
+	AudioErasureMode *uint64 `json:"AudioErasureMode,omitnil,omitempty" name:"AudioErasureMode"`
+}
+
+func (r *ModifyLiveSmartEraseTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveSmartEraseTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "TemplateName")
+	delete(f, "Type")
+	delete(f, "AuditConfId")
+	delete(f, "Description")
+	delete(f, "ImageBizType")
+	delete(f, "AudioBizType")
+	delete(f, "AudioTextBizType")
+	delete(f, "DisplayMode")
+	delete(f, "DisplayDelayTime")
+	delete(f, "PrivacyProtection")
+	delete(f, "AudioErasureMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveSmartEraseTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLiveSmartEraseTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLiveSmartEraseTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLiveSmartEraseTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyLiveSmartEraseTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveSmartEraseTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyLiveSnapshotTemplateRequestParams struct {
 	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
@@ -22765,6 +23265,50 @@ func (r *SendTemporaryScriptToAvatarRoomResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SendTemporaryScriptToAvatarRoomResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SmartEraseTemplate struct {
+	// <p>模板id。</p>
+	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>模板名称。</p>
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// <p>模板描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>擦除类型，如&quot;illegal audio|illegal image|logo|privacy protection 。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>关联的审核模板id, 表audio_conf 。</p><p>取值为DescribeAuditTemplates接口返回的AuditTemplates里面的TemplateId字段</p>
+	AuditConfId *uint64 `json:"AuditConfId,omitnil,omitempty" name:"AuditConfId"`
+
+	// <p>天御图片审核策略BizType  Image 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Image&quot;的BizType值</p>
+	ImageBizType *string `json:"ImageBizType,omitnil,omitempty" name:"ImageBizType"`
+
+	// <p>天御音频审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;ShortAudio&quot;的BizType值</p>
+	AudioBizType *string `json:"AudioBizType,omitnil,omitempty" name:"AudioBizType"`
+
+	// <p>天御音频文本审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Text&quot;的BizType值</p>
+	AudioTextBizType *string `json:"AudioTextBizType,omitnil,omitempty" name:"AudioTextBizType"`
+
+	// <p>模板创建时间。</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>模板修改时间。</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
+	DisplayMode *int64 `json:"DisplayMode,omitnil,omitempty" name:"DisplayMode"`
+
+	// <p>字幕延迟展示时间,单位毫秒。默认10000。</p>
+	DisplayDelayTime *int64 `json:"DisplayDelayTime,omitnil,omitempty" name:"DisplayDelayTime"`
+
+	// <p>仅当擦除类型选择了违规音频，该项可见</p><p>枚举值：</p><ul><li>blur face： 人脸模糊</li><li>blur license plate： 车牌模糊</li></ul>
+	PrivacyProtection *string `json:"PrivacyProtection,omitnil,omitempty" name:"PrivacyProtection"`
+
+	// <p>仅当擦除类型选择了“隐私保护”后，该项可见</p><p>枚举值：</p><ul><li>0： 静音</li><li>1： 哔音</li></ul>
+	AudioErasureMode *uint64 `json:"AudioErasureMode,omitnil,omitempty" name:"AudioErasureMode"`
 }
 
 type SnapshotTemplateInfo struct {

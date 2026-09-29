@@ -2985,6 +2985,90 @@ func (c *Client) CreateLiveRecordTemplateWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateLiveSmartEraseRuleRequest() (request *CreateLiveSmartEraseRuleRequest) {
+    request = &CreateLiveSmartEraseRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateLiveSmartEraseRule")
+    
+    
+    return
+}
+
+func NewCreateLiveSmartEraseRuleResponse() (response *CreateLiveSmartEraseRuleResponse) {
+    response = &CreateLiveSmartEraseRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLiveSmartEraseRule
+// 创建直播智能擦除规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  FAILEDOPERATION_RULEALREADYEXIST = "FailedOperation.RuleAlreadyExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CreateLiveSmartEraseRule(request *CreateLiveSmartEraseRuleRequest) (response *CreateLiveSmartEraseRuleResponse, err error) {
+    return c.CreateLiveSmartEraseRuleWithContext(context.Background(), request)
+}
+
+// CreateLiveSmartEraseRule
+// 创建直播智能擦除规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  FAILEDOPERATION_RULEALREADYEXIST = "FailedOperation.RuleAlreadyExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CreateLiveSmartEraseRuleWithContext(ctx context.Context, request *CreateLiveSmartEraseRuleRequest) (response *CreateLiveSmartEraseRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveSmartEraseRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CreateLiveSmartEraseRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveSmartEraseRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveSmartEraseRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLiveSmartEraseTemplateRequest() (request *CreateLiveSmartEraseTemplateRequest) {
     request = &CreateLiveSmartEraseTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5873,6 +5957,176 @@ func (c *Client) DeleteLiveRecordTemplateWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDeleteLiveRecordTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLiveSmartEraseRuleRequest() (request *DeleteLiveSmartEraseRuleRequest) {
+    request = &DeleteLiveSmartEraseRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteLiveSmartEraseRule")
+    
+    
+    return
+}
+
+func NewDeleteLiveSmartEraseRuleResponse() (response *DeleteLiveSmartEraseRuleResponse) {
+    response = &DeleteLiveSmartEraseRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLiveSmartEraseRule
+// 删除直播智能擦除规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DeleteLiveSmartEraseRule(request *DeleteLiveSmartEraseRuleRequest) (response *DeleteLiveSmartEraseRuleResponse, err error) {
+    return c.DeleteLiveSmartEraseRuleWithContext(context.Background(), request)
+}
+
+// DeleteLiveSmartEraseRule
+// 删除直播智能擦除规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DeleteLiveSmartEraseRuleWithContext(ctx context.Context, request *DeleteLiveSmartEraseRuleRequest) (response *DeleteLiveSmartEraseRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveSmartEraseRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DeleteLiveSmartEraseRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveSmartEraseRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveSmartEraseRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLiveSmartEraseTemplateRequest() (request *DeleteLiveSmartEraseTemplateRequest) {
+    request = &DeleteLiveSmartEraseTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteLiveSmartEraseTemplate")
+    
+    
+    return
+}
+
+func NewDeleteLiveSmartEraseTemplateResponse() (response *DeleteLiveSmartEraseTemplateResponse) {
+    response = &DeleteLiveSmartEraseTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLiveSmartEraseTemplate
+// 删除直播智能擦除模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AITRANSCODEOPTIONFAIL = "FailedOperation.AiTranscodeOptionFail"
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DeleteLiveSmartEraseTemplate(request *DeleteLiveSmartEraseTemplateRequest) (response *DeleteLiveSmartEraseTemplateResponse, err error) {
+    return c.DeleteLiveSmartEraseTemplateWithContext(context.Background(), request)
+}
+
+// DeleteLiveSmartEraseTemplate
+// 删除直播智能擦除模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AITRANSCODEOPTIONFAIL = "FailedOperation.AiTranscodeOptionFail"
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DeleteLiveSmartEraseTemplateWithContext(ctx context.Context, request *DeleteLiveSmartEraseTemplateRequest) (response *DeleteLiveSmartEraseTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveSmartEraseTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DeleteLiveSmartEraseTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveSmartEraseTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveSmartEraseTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -11265,6 +11519,258 @@ func (c *Client) DescribeLiveRecordTemplatesWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeLiveRecordTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveSmartEraseRulesRequest() (request *DescribeLiveSmartEraseRulesRequest) {
+    request = &DescribeLiveSmartEraseRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveSmartEraseRules")
+    
+    
+    return
+}
+
+func NewDescribeLiveSmartEraseRulesResponse() (response *DescribeLiveSmartEraseRulesResponse) {
+    response = &DescribeLiveSmartEraseRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveSmartEraseRules
+// 获取直播智能擦除规则列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLiveSmartEraseRules(request *DescribeLiveSmartEraseRulesRequest) (response *DescribeLiveSmartEraseRulesResponse, err error) {
+    return c.DescribeLiveSmartEraseRulesWithContext(context.Background(), request)
+}
+
+// DescribeLiveSmartEraseRules
+// 获取直播智能擦除规则列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLiveSmartEraseRulesWithContext(ctx context.Context, request *DescribeLiveSmartEraseRulesRequest) (response *DescribeLiveSmartEraseRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveSmartEraseRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeLiveSmartEraseRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveSmartEraseRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveSmartEraseRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveSmartEraseTemplateRequest() (request *DescribeLiveSmartEraseTemplateRequest) {
+    request = &DescribeLiveSmartEraseTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveSmartEraseTemplate")
+    
+    
+    return
+}
+
+func NewDescribeLiveSmartEraseTemplateResponse() (response *DescribeLiveSmartEraseTemplateResponse) {
+    response = &DescribeLiveSmartEraseTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveSmartEraseTemplate
+// 获取单个直播智能擦除模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveSmartEraseTemplate(request *DescribeLiveSmartEraseTemplateRequest) (response *DescribeLiveSmartEraseTemplateResponse, err error) {
+    return c.DescribeLiveSmartEraseTemplateWithContext(context.Background(), request)
+}
+
+// DescribeLiveSmartEraseTemplate
+// 获取单个直播智能擦除模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveSmartEraseTemplateWithContext(ctx context.Context, request *DescribeLiveSmartEraseTemplateRequest) (response *DescribeLiveSmartEraseTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveSmartEraseTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeLiveSmartEraseTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveSmartEraseTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveSmartEraseTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveSmartEraseTemplatesRequest() (request *DescribeLiveSmartEraseTemplatesRequest) {
+    request = &DescribeLiveSmartEraseTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveSmartEraseTemplates")
+    
+    
+    return
+}
+
+func NewDescribeLiveSmartEraseTemplatesResponse() (response *DescribeLiveSmartEraseTemplatesResponse) {
+    response = &DescribeLiveSmartEraseTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveSmartEraseTemplates
+// 获取直播智能擦除模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLiveSmartEraseTemplates(request *DescribeLiveSmartEraseTemplatesRequest) (response *DescribeLiveSmartEraseTemplatesResponse, err error) {
+    return c.DescribeLiveSmartEraseTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeLiveSmartEraseTemplates
+// 获取直播智能擦除模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLiveSmartEraseTemplatesWithContext(ctx context.Context, request *DescribeLiveSmartEraseTemplatesRequest) (response *DescribeLiveSmartEraseTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveSmartEraseTemplatesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeLiveSmartEraseTemplates")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveSmartEraseTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveSmartEraseTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -16791,6 +17297,96 @@ func (c *Client) ModifyLiveRecordTemplateWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewModifyLiveRecordTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLiveSmartEraseTemplateRequest() (request *ModifyLiveSmartEraseTemplateRequest) {
+    request = &ModifyLiveSmartEraseTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "ModifyLiveSmartEraseTemplate")
+    
+    
+    return
+}
+
+func NewModifyLiveSmartEraseTemplateResponse() (response *ModifyLiveSmartEraseTemplateResponse) {
+    response = &ModifyLiveSmartEraseTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLiveSmartEraseTemplate
+// 修改直播智能擦除模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) ModifyLiveSmartEraseTemplate(request *ModifyLiveSmartEraseTemplateRequest) (response *ModifyLiveSmartEraseTemplateResponse, err error) {
+    return c.ModifyLiveSmartEraseTemplateWithContext(context.Background(), request)
+}
+
+// ModifyLiveSmartEraseTemplate
+// 修改直播智能擦除模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) ModifyLiveSmartEraseTemplateWithContext(ctx context.Context, request *ModifyLiveSmartEraseTemplateRequest) (response *ModifyLiveSmartEraseTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveSmartEraseTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "ModifyLiveSmartEraseTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveSmartEraseTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLiveSmartEraseTemplateResponse()
     err = c.Send(request, response)
     return
 }
