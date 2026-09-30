@@ -70,8 +70,7 @@ func (r *rewindableBody) Rewind() error {
 	if !r.rewind {
 		// Drain and buffer the original body.
 		buf := bytes.NewBuffer(r.buf)
-		_, err := io.Copy(buf, r.body)
-		if err != nil {
+		if _, err := io.Copy(buf, r.body); err != nil {
 			return err
 		}
 		r.buf = buf.Bytes() // Store the buffered data.

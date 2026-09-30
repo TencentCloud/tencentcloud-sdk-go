@@ -54,8 +54,7 @@ func signRequest(request tchttp.Request, credential CredentialIface, method stri
 	}
 	params["SignatureMethod"] = method
 	delete(params, "Signature")
-	s := getStringToSign(request)
-	signature := Sign(s, secKey, method)
+	signature := Sign(getStringToSign(request), secKey, method)
 	request.GetParams()["Signature"] = signature
 	return
 }
