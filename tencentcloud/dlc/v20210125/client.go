@@ -3915,6 +3915,7 @@ func NewCreatePartitionQueueResponse() (response *CreatePartitionQueueResponse) 
 //  INVALIDPARAMETERVALUE_QUEUENAME = "InvalidParameterValue.QueueName"
 //  INVALIDPARAMETERVALUE_QUOTAEXCEEDED = "InvalidParameterValue.QuotaExceeded"
 //  OPERATIONDENIED_PARTITIONNOTREADY = "OperationDenied.PartitionNotReady"
+//  OPERATIONDENIED_POSTPAYQUEUECREATEFORBIDDEN = "OperationDenied.PostpayQueueCreateForbidden"
 //  RESOURCEINUSE_QUEUENAME = "ResourceInUse.QueueName"
 //  RESOURCENOTFOUND_PARTITION = "ResourceNotFound.Partition"
 func (c *Client) CreatePartitionQueue(request *CreatePartitionQueueRequest) (response *CreatePartitionQueueResponse, err error) {
@@ -3928,6 +3929,7 @@ func (c *Client) CreatePartitionQueue(request *CreatePartitionQueueRequest) (res
 //  INVALIDPARAMETERVALUE_QUEUENAME = "InvalidParameterValue.QueueName"
 //  INVALIDPARAMETERVALUE_QUOTAEXCEEDED = "InvalidParameterValue.QuotaExceeded"
 //  OPERATIONDENIED_PARTITIONNOTREADY = "OperationDenied.PartitionNotReady"
+//  OPERATIONDENIED_POSTPAYQUEUECREATEFORBIDDEN = "OperationDenied.PostpayQueueCreateForbidden"
 //  RESOURCEINUSE_QUEUENAME = "ResourceInUse.QueueName"
 //  RESOURCENOTFOUND_PARTITION = "ResourceNotFound.Partition"
 func (c *Client) CreatePartitionQueueWithContext(ctx context.Context, request *CreatePartitionQueueRequest) (response *CreatePartitionQueueResponse, err error) {

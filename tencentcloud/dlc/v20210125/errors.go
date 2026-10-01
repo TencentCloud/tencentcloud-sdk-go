@@ -662,6 +662,9 @@ const (
 	// 资源分区当前状态不允许该操作
 	OPERATIONDENIED_PARTITIONNOTREADY = "OperationDenied.PartitionNotReady"
 
+	// 按量计费 partition 仅允许 default 队列，禁止创建额外队列
+	OPERATIONDENIED_POSTPAYQUEUECREATEFORBIDDEN = "OperationDenied.PostpayQueueCreateForbidden"
+
 	// 服务未开通
 	OPERATIONDENIED_SERVICENOTACTIVATED = "OperationDenied.ServiceNotActivated"
 

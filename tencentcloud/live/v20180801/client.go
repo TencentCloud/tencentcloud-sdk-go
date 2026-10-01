@@ -13805,6 +13805,56 @@ func (c *Client) DescribeOriginStreamInfoWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeOriginWhiteIpListRequest() (request *DescribeOriginWhiteIpListRequest) {
+    request = &DescribeOriginWhiteIpListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeOriginWhiteIpList")
+    
+    
+    return
+}
+
+func NewDescribeOriginWhiteIpListResponse() (response *DescribeOriginWhiteIpListResponse) {
+    response = &DescribeOriginWhiteIpListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOriginWhiteIpList
+// 获取直播源站的拉流IP白名单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DOMAINNOTEXIST = "InternalError.DomainNotExist"
+func (c *Client) DescribeOriginWhiteIpList(request *DescribeOriginWhiteIpListRequest) (response *DescribeOriginWhiteIpListResponse, err error) {
+    return c.DescribeOriginWhiteIpListWithContext(context.Background(), request)
+}
+
+// DescribeOriginWhiteIpList
+// 获取直播源站的拉流IP白名单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DOMAINNOTEXIST = "InternalError.DomainNotExist"
+func (c *Client) DescribeOriginWhiteIpListWithContext(ctx context.Context, request *DescribeOriginWhiteIpListRequest) (response *DescribeOriginWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewDescribeOriginWhiteIpListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeOriginWhiteIpList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOriginWhiteIpList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOriginWhiteIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePlayErrorCodeDetailInfoListRequest() (request *DescribePlayErrorCodeDetailInfoListRequest) {
     request = &DescribePlayErrorCodeDetailInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
