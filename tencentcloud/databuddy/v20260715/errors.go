@@ -29,6 +29,9 @@ const (
 	// 创建工作流失败
 	FAILEDOPERATION_CREATEWORKFLOWFAILED = "FailedOperation.CreateWorkflowFailed"
 
+	// 该数据源连接已关联分析版 catalog，同一工作空间下每个 Connection 只能创建一个分析版 Catalog
+	FAILEDOPERATION_DUPLICATEANACATALOG = "FailedOperation.DuplicateAnaCatalog"
+
 	// 存在活跃的工作流运行，无法操作
 	FAILEDOPERATION_EXISTWORKFLOWEXECUTIONS = "FailedOperation.ExistWorkflowExecutions"
 
@@ -68,11 +71,29 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// InternalError.BizException
+	INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+
+	// InternalError.FailedOperation
+	INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+
+	// InternalError.InvalidParameter
+	INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+
+	// InternalError.PermissionDenied
+	INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+
+	// InternalError.ResourceNotFound
+	INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+
 	// 未知错误
 	INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 参数不正确
+	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
 	// 无效参数
 	INVALIDPARAMETER_INVALIDPARAMSERROR = "InvalidParameter.InvalidParamsError"
@@ -152,6 +173,9 @@ const (
 	// 请检查工作流触发器高级配置，修正非法的 JSON 内容
 	INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
 
+	// 已达自定义角色数量上限
+	LIMITEXCEEDED_CUSTOMROLEQUOTA = "LimitExceeded.CustomRoleQuota"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
@@ -164,11 +188,23 @@ const (
 	// 地域错误
 	REGIONERROR = "RegionError"
 
+	// 数据目录已存在
+	RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
+
+	// Schema 已存在
+	RESOURCEINUSE_SCHEMAALREADYEXISTS = "ResourceInUse.SchemaAlreadyExists"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
+	// 指定的 Catalog 不存在
+	RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+
 	// 资源不存在或已被删除
 	RESOURCENOTFOUND_ONEFLOWRESOURCENOEXISTERROR = "ResourceNotFound.OneFlowResourceNoExistError"
+
+	// 指定的Schema不存在
+	RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
 
 	// 任务运行不存在
 	RESOURCENOTFOUND_TASKEXECUTIONNOTEXIST = "ResourceNotFound.TaskExecutionNotExist"

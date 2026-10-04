@@ -15571,12 +15571,15 @@ func (r *DescribeOriginStreamInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOriginWhiteIpListRequestParams struct {
-
+	// <p>播放域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 type DescribeOriginWhiteIpListRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>播放域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 func (r *DescribeOriginWhiteIpListRequest) ToJsonString() string {
@@ -15591,7 +15594,7 @@ func (r *DescribeOriginWhiteIpListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Domain")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOriginWhiteIpListRequest has unknown keys!", "")
 	}

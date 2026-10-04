@@ -90,7 +90,7 @@
 | cynosdb | [TDSQL-C MySQL 版](https://cloud.tencent.com/document/product/1003) | [查看](https://cloud.tencent.com/document/product/1003/48107) | 2026-09-23 02:02:27 |
 | dasb | [运维安全中心（堡垒机）](https://cloud.tencent.com/document/product/1025) | [查看](https://cloud.tencent.com/document/product/1025/74426) | 2024-11-19 01:26:13 |
 | dataagent | [腾讯云数据分析智能体](https://cloud.tencent.com/document/product/1800) | [查看](https://cloud.tencent.com/document/product/1800/124934) | 2026-09-25 01:53:14 |
-| databuddy | [大数据智能体工作台DataBuddy](https://cloud.tencent.com/document/product/1835) | [查看](https://cloud.tencent.com/document/product/1835/138017) | 2026-10-01 01:54:13 |
+| databuddy | [大数据智能体工作台DataBuddy](https://cloud.tencent.com/document/product/1835) | [查看](https://cloud.tencent.com/document/product/1835/138017) | 2026-10-05 01:53:05 |
 | dayu | [DDoS 高防包](https://cloud.tencent.com/document/product/1021) | [查看](https://cloud.tencent.com/document/product/1021/39222) | 2023-05-18 01:20:11 |
 | dbbrain | [数据库智能管家 DBbrain](https://cloud.tencent.com/document/product/1130) | [查看](https://cloud.tencent.com/document/product/1130/57822) | 2026-09-29 01:54:17 |
 | dbdc | [云数据库独享集群](https://cloud.tencent.com/document/product/1322) | [查看](https://cloud.tencent.com/document/product/1322/74764) | 2026-09-10 01:51:04 |
@@ -153,7 +153,7 @@
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | [查看](https://cloud.tencent.com/document/product/573/34410) | 2026-08-25 02:35:27 |
 | lcic | [实时互动-教育版](https://cloud.tencent.com/document/product/1639) | [查看](https://cloud.tencent.com/document/product/1639/80955) | 2026-07-16 02:27:34 |
 | lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | [查看](https://cloud.tencent.com/document/product/1207/47580) | 2026-09-16 02:23:47 |
-| live | [云直播CSS](https://cloud.tencent.com/document/product/267) | [查看](https://cloud.tencent.com/document/product/267/20462) | 2026-10-02 02:24:18 |
+| live | [云直播CSS](https://cloud.tencent.com/document/product/267) | [查看](https://cloud.tencent.com/document/product/267/20462) | 2026-10-05 02:26:47 |
 | lke | [腾讯云智能体开发平台](https://cloud.tencent.com/document/product/1759) | [查看](https://cloud.tencent.com/document/product/1759/105115) | 2026-05-26 02:14:49 |
 | lkeap | [知识引擎原子能力](https://cloud.tencent.com/document/product/1772) | [查看](https://cloud.tencent.com/document/product/1772/115375) | 2026-09-10 02:28:38 |
 | lowcode | [云开发低码](https://cloud.tencent.com/document/product/1301) | [查看](https://cloud.tencent.com/document/product/1301/68888) | 2026-04-14 02:16:54 |
