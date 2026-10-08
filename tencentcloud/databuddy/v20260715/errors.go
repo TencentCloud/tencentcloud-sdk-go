@@ -71,13 +71,13 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
-	// InternalError.BizException
+	// 业务逻辑错误
 	INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
 
-	// InternalError.FailedOperation
+	// 操作失败
 	INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 
-	// InternalError.InvalidParameter
+	// 参数不合法
 	INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
 
 	// InternalError.PermissionDenied

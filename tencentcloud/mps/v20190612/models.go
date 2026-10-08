@@ -27264,6 +27264,36 @@ type QueryHunyuan3DTaskResponseParams struct {
 	// <p>仅 Status=DONE 时有值，产物文件列表</p>
 	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
 
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务类型</p><p>枚举值：</p><ul><li>text_to_3d： 文生3D</li><li>image_to_3d： 图生3D</li><li>multiview_to_3d： 多视图生3D</li><li>mesh_to_texture： 网格生纹理</li><li>mesh_to_geometry： 网格生几何</li></ul>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>输入的Prompt</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>图生3D场景下输入的图片URL</p>
+	RefImage *string `json:"RefImage,omitnil,omitempty" name:"RefImage"`
+
+	// <p>多图生3D场景下输入的图片信息</p>
+	MultiViewImages []*ViewImage `json:"MultiViewImages,omitnil,omitempty" name:"MultiViewImages"`
+
+	// <p>任务创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>任务更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>提交任务的目标面数</p>
+	FaceCount *uint64 `json:"FaceCount,omitnil,omitempty" name:"FaceCount"`
+
+	// <p>生成类型</p><p>枚举值：</p><ul><li>Normal： 生成完整 3D 资产（几何 + 纹理）</li><li>Geometry： 只生成几何体（无纹理，输出速度更快）</li><li>Texture： 只生成纹理（需要传 MeshUrl）</li></ul><p>默认值：Normal</p>
+	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
+
+	// <p>任务在队列中的位置，数值越小越靠前；</p>
+	QueuePosition *int64 `json:"QueuePosition,omitnil,omitempty" name:"QueuePosition"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -29908,6 +29938,9 @@ type SubmitHunyuan3DTaskRequestParams struct {
 
 	// <p>风格控制词</p>
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// <p>客户自己申请创建的COS存储桶</p>
+	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
 }
 
 type SubmitHunyuan3DTaskRequest struct {
@@ -29945,6 +29978,9 @@ type SubmitHunyuan3DTaskRequest struct {
 
 	// <p>风格控制词</p>
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// <p>客户自己申请创建的COS存储桶</p>
+	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
 }
 
 func (r *SubmitHunyuan3DTaskRequest) ToJsonString() string {
@@ -29970,6 +30006,7 @@ func (r *SubmitHunyuan3DTaskRequest) FromJsonString(s string) error {
 	delete(f, "ResultFormat")
 	delete(f, "Seed")
 	delete(f, "Style")
+	delete(f, "StoreCosParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuan3DTaskRequest has unknown keys!", "")
 	}

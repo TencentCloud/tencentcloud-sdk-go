@@ -4733,70 +4733,56 @@ func (r *CreateTWeSeeServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTWeSeeSubscriptionRequestParams struct {
-	// 产品 ID
+	// <p>产品 ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 算法类型。可选值：
-	// 
-	// - `VID_COMP`：视频理解
+	// <p>算法类型</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解</li></ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 套餐规格。可选值：
-	// 
-	// - `BASIC`：包年包月基础版（适用于视频理解）
+	// <p>套餐规格</p><p>枚举值：</p><ul><li>BASIC： 包年包月基础版</li><li>ADVANCED： 包年包月高级版</li></ul>
 	ServiceTier *string `json:"ServiceTier,omitnil,omitempty" name:"ServiceTier"`
 
-	// 订阅购买时长，单位：月，支持 1-60
+	// <p>订阅购买时长，单位：月，支持 1-60</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 通道 ID
+	// <p>通道 ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 自定义订单 ID
+	// <p>自定义订单 ID</p>
 	CustomOrderId *string `json:"CustomOrderId,omitnil,omitempty" name:"CustomOrderId"`
 
-	// 续费标识。可选值：
-	// - `NOTIFY_AND_MANUAL_RENEW`：到期前通知并手动续费（默认）
-	// - `NOTIFY_AND_AUTO_RENEW`：到期前通知并自动续费
-	// - `DISABLE_NOTIFY_AND_MANUAL_RENEW`：不通知且手动续费
+	// <p>续费标识。可选值：</p><ul><li><code>NOTIFY_AND_MANUAL_RENEW</code>：到期前通知并手动续费（默认）</li><li><code>NOTIFY_AND_AUTO_RENEW</code>：到期前通知并自动续费</li><li><code>DISABLE_NOTIFY_AND_MANUAL_RENEW</code>：不通知且手动续费</li></ul>
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
 type CreateTWeSeeSubscriptionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品 ID
+	// <p>产品 ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 算法类型。可选值：
-	// 
-	// - `VID_COMP`：视频理解
+	// <p>算法类型</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解</li></ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 套餐规格。可选值：
-	// 
-	// - `BASIC`：包年包月基础版（适用于视频理解）
+	// <p>套餐规格</p><p>枚举值：</p><ul><li>BASIC： 包年包月基础版</li><li>ADVANCED： 包年包月高级版</li></ul>
 	ServiceTier *string `json:"ServiceTier,omitnil,omitempty" name:"ServiceTier"`
 
-	// 订阅购买时长，单位：月，支持 1-60
+	// <p>订阅购买时长，单位：月，支持 1-60</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 通道 ID
+	// <p>通道 ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 自定义订单 ID
+	// <p>自定义订单 ID</p>
 	CustomOrderId *string `json:"CustomOrderId,omitnil,omitempty" name:"CustomOrderId"`
 
-	// 续费标识。可选值：
-	// - `NOTIFY_AND_MANUAL_RENEW`：到期前通知并手动续费（默认）
-	// - `NOTIFY_AND_AUTO_RENEW`：到期前通知并自动续费
-	// - `DISABLE_NOTIFY_AND_MANUAL_RENEW`：不通知且手动续费
+	// <p>续费标识。可选值：</p><ul><li><code>NOTIFY_AND_MANUAL_RENEW</code>：到期前通知并手动续费（默认）</li><li><code>NOTIFY_AND_AUTO_RENEW</code>：到期前通知并自动续费</li><li><code>DISABLE_NOTIFY_AND_MANUAL_RENEW</code>：不通知且手动续费</li></ul>
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
@@ -4828,22 +4814,22 @@ func (r *CreateTWeSeeSubscriptionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTWeSeeSubscriptionResponseParams struct {
-	// 订单 ID
+	// <p>订单 ID</p>
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
-	// 订单状态
+	// <p>订单状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 资源 ID
+	// <p>资源 ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 原价
+	// <p>原价</p>
 	OriginalPrice *string `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 折后价
+	// <p>折后价</p>
 	DiscountPrice *string `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
-	// 币种
+	// <p>币种</p>
 	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12043,7 +12029,7 @@ type DescribeTWeSeeSubscriptionResponseParams struct {
 	// <p>资源 ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// <p>套餐规格。可能取值：</p><ul><li><code>BASIC</code>：包年包月基础版（适用于视频理解）</li></ul>
+	// <p>套餐规格</p><p>枚举值：</p><ul><li>BASIC： 包年包月基础版</li><li>ADVANCED： 包年包月高级版</li></ul>
 	ServiceTier *string `json:"ServiceTier,omitnil,omitempty" name:"ServiceTier"`
 
 	// <p>到期时间，秒级时间戳</p>
@@ -12067,20 +12053,26 @@ type DescribeTWeSeeSubscriptionResponseParams struct {
 	// <p>每日与每周总结配置</p>
 	SummarizeConfig *SeeSummarizeConfig `json:"SummarizeConfig,omitnil,omitempty" name:"SummarizeConfig"`
 
-	// <p>当前周期基础能力总额度</p>
-	QuotaBasic *int64 `json:"QuotaBasic,omitnil,omitempty" name:"QuotaBasic"`
+	// <p>当前周期内的额度总量</p>
+	CreditsQuota *float64 `json:"CreditsQuota,omitnil,omitempty" name:"CreditsQuota"`
 
-	// <p>当前周期基础能力已用额度</p>
-	QuotaUsedBasic *int64 `json:"QuotaUsedBasic,omitnil,omitempty" name:"QuotaUsedBasic"`
-
-	// <p>当前周期高级能力总额度</p>
-	QuotaAdvanced *int64 `json:"QuotaAdvanced,omitnil,omitempty" name:"QuotaAdvanced"`
-
-	// <p>当前周期高级能力已用额度</p>
-	QuotaUsedAdvanced *int64 `json:"QuotaUsedAdvanced,omitnil,omitempty" name:"QuotaUsedAdvanced"`
+	// <p>当前周期内的已使用额度</p>
+	CreditsUsed *float64 `json:"CreditsUsed,omitnil,omitempty" name:"CreditsUsed"`
 
 	// <p>额度刷新时间</p>
 	QuotaRefreshTime *int64 `json:"QuotaRefreshTime,omitnil,omitempty" name:"QuotaRefreshTime"`
+
+	// <p>当前周期基础能力总额度（已废弃，当 ServiceTier=BASIC 时，取值等于 CreditsQuota）</p>
+	QuotaBasic *int64 `json:"QuotaBasic,omitnil,omitempty" name:"QuotaBasic"`
+
+	// <p>当前周期基础能力已用额度（已废弃，当 ServiceTier=BASIC 时，取值等于 CreditsUsed 向下取整）</p>
+	QuotaUsedBasic *int64 `json:"QuotaUsedBasic,omitnil,omitempty" name:"QuotaUsedBasic"`
+
+	// <p>当前周期高级能力总额度（已废弃，当 ServiceTier=ADVANCED 时，取值等于 CreditsQuota）</p>
+	QuotaAdvanced *int64 `json:"QuotaAdvanced,omitnil,omitempty" name:"QuotaAdvanced"`
+
+	// <p>当前周期高级能力已用额度（已废弃，当 ServiceTier=ADVANCED 时，取值等于 CreditsUsed 向下取整）</p>
+	QuotaUsedAdvanced *int64 `json:"QuotaUsedAdvanced,omitnil,omitempty" name:"QuotaUsedAdvanced"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -16797,6 +16789,9 @@ type InvokeTWeSeeComprehensionRequestParams struct {
 	// <p>等待结果的超时时间（单位：秒）。填 0 表示无需等待结果。最大超时时长 25 秒，默认超时时长 20 秒。</p>
 	WaitResultTimeout *int64 `json:"WaitResultTimeout,omitnil,omitempty" name:"WaitResultTimeout"`
 
+	// <p>需额外等待结果的字段列表</p><p>枚举值：</p><ul><li>FaceRecognitionResult： 等待人脸检测结果（仅当 ComprehensionConfig.EnableFaceDetection = true 时有效）</li></ul><p>接口固定会等待视觉理解结果，可选增加等待人脸检测结果</p>
+	WaitResultFields []*string `json:"WaitResultFields,omitnil,omitempty" name:"WaitResultFields"`
+
 	// <p>回调目标 ID</p>
 	CallbackId *string `json:"CallbackId,omitnil,omitempty" name:"CallbackId"`
 }
@@ -16819,6 +16814,9 @@ type InvokeTWeSeeComprehensionRequest struct {
 	// <p>等待结果的超时时间（单位：秒）。填 0 表示无需等待结果。最大超时时长 25 秒，默认超时时长 20 秒。</p>
 	WaitResultTimeout *int64 `json:"WaitResultTimeout,omitnil,omitempty" name:"WaitResultTimeout"`
 
+	// <p>需额外等待结果的字段列表</p><p>枚举值：</p><ul><li>FaceRecognitionResult： 等待人脸检测结果（仅当 ComprehensionConfig.EnableFaceDetection = true 时有效）</li></ul><p>接口固定会等待视觉理解结果，可选增加等待人脸检测结果</p>
+	WaitResultFields []*string `json:"WaitResultFields,omitnil,omitempty" name:"WaitResultFields"`
+
 	// <p>回调目标 ID</p>
 	CallbackId *string `json:"CallbackId,omitnil,omitempty" name:"CallbackId"`
 }
@@ -16840,6 +16838,7 @@ func (r *InvokeTWeSeeComprehensionRequest) FromJsonString(s string) error {
 	delete(f, "Metadata")
 	delete(f, "ComprehensionConfig")
 	delete(f, "WaitResultTimeout")
+	delete(f, "WaitResultFields")
 	delete(f, "CallbackId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeTWeSeeComprehensionRequest has unknown keys!", "")
@@ -16858,11 +16857,14 @@ type InvokeTWeSeeComprehensionResponseParams struct {
 	// <p>视觉理解结果</p>
 	ComprehensionResult *SeeComprehensionResult `json:"ComprehensionResult,omitnil,omitempty" name:"ComprehensionResult"`
 
-	// <p>完成该任务所消耗的基础能力额度</p>
+	// <p>完成该任务所产生的视觉理解基础能力后付费用量</p>
 	CostBasic *int64 `json:"CostBasic,omitnil,omitempty" name:"CostBasic"`
 
-	// <p>完成该任务所消耗的高级能力额度</p>
+	// <p>完成该任务所产生的视觉理解高级能力后付费用量</p>
 	CostAdvanced *int64 `json:"CostAdvanced,omitnil,omitempty" name:"CostAdvanced"`
+
+	// <p>完成该任务所消耗的视觉理解预付费额度</p>
+	CostCredits *float64 `json:"CostCredits,omitnil,omitempty" name:"CostCredits"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -17971,17 +17973,17 @@ func (r *ListTWeSeePersonsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListTWeSeeTasksRequestParams struct {
-	// <p>设备名称</p>
-	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
-
-	// <p>分页拉取数量</p>
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
 	// <p>产品 ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
 	// <p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li><li><code>SUMMARIZATION</code>：每日/每周总结</li></ul>
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
+
+	// <p>分页拉取数量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <p>通道 ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
@@ -18011,17 +18013,17 @@ type ListTWeSeeTasksRequestParams struct {
 type ListTWeSeeTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>设备名称</p>
-	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
-
-	// <p>分页拉取数量</p>
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
 	// <p>产品 ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
 	// <p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li><li><code>SUMMARIZATION</code>：每日/每周总结</li></ul>
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
+
+	// <p>分页拉取数量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <p>通道 ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
@@ -18060,10 +18062,10 @@ func (r *ListTWeSeeTasksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DeviceName")
-	delete(f, "Limit")
 	delete(f, "ProductId")
+	delete(f, "DeviceName")
 	delete(f, "ServiceCategory")
+	delete(f, "Limit")
 	delete(f, "ChannelId")
 	delete(f, "EndTimeMs")
 	delete(f, "FileURLExpireTime")
@@ -19888,67 +19890,67 @@ func (r *ModifyTWeSeeSubscriptionRenewFlagResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type ModifyTWeSeeSubscriptionRequestParams struct {
-	// 设备名称
-	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
-
 	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 算法类型。可选值：
 	// 
 	// - `VID_COMP`：视频理解
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 通道 ID
-	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+	// 视觉理解配置（适用于视频理解、图片理解），不传则不修改
+	ComprehensionConfig *SeeComprehensionConfig `json:"ComprehensionConfig,omitnil,omitempty" name:"ComprehensionConfig"`
 
 	// 视频语义浓缩配置（适用于视频语义浓缩），不传则不修改
 	CompHighlightConfig *SeeCompHighlightConfig `json:"CompHighlightConfig,omitnil,omitempty" name:"CompHighlightConfig"`
 
-	// 视觉理解配置（适用于视频理解、图片理解），不传则不修改
-	ComprehensionConfig *SeeComprehensionConfig `json:"ComprehensionConfig,omitnil,omitempty" name:"ComprehensionConfig"`
-
-	// 功能开关。`true` 为开启，`false` 为关闭；不传表示不修改
-	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+	// 每日与每周总结配置，不传则不修改
+	SummarizeConfig *SeeSummarizeConfig `json:"SummarizeConfig,omitnil,omitempty" name:"SummarizeConfig"`
 
 	// 云存事件 ID 过滤规则配置，不传则不修改
 	EventIdFilterConfig *SeeEventIdFilterConfig `json:"EventIdFilterConfig,omitnil,omitempty" name:"EventIdFilterConfig"`
 
-	// 每日与每周总结配置，不传则不修改
-	SummarizeConfig *SeeSummarizeConfig `json:"SummarizeConfig,omitnil,omitempty" name:"SummarizeConfig"`
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 功能开关。`true` 为开启，`false` 为关闭；不传表示不修改
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
 type ModifyTWeSeeSubscriptionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备名称
-	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
-
 	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 算法类型。可选值：
 	// 
 	// - `VID_COMP`：视频理解
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 通道 ID
-	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+	// 视觉理解配置（适用于视频理解、图片理解），不传则不修改
+	ComprehensionConfig *SeeComprehensionConfig `json:"ComprehensionConfig,omitnil,omitempty" name:"ComprehensionConfig"`
 
 	// 视频语义浓缩配置（适用于视频语义浓缩），不传则不修改
 	CompHighlightConfig *SeeCompHighlightConfig `json:"CompHighlightConfig,omitnil,omitempty" name:"CompHighlightConfig"`
 
-	// 视觉理解配置（适用于视频理解、图片理解），不传则不修改
-	ComprehensionConfig *SeeComprehensionConfig `json:"ComprehensionConfig,omitnil,omitempty" name:"ComprehensionConfig"`
-
-	// 功能开关。`true` 为开启，`false` 为关闭；不传表示不修改
-	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+	// 每日与每周总结配置，不传则不修改
+	SummarizeConfig *SeeSummarizeConfig `json:"SummarizeConfig,omitnil,omitempty" name:"SummarizeConfig"`
 
 	// 云存事件 ID 过滤规则配置，不传则不修改
 	EventIdFilterConfig *SeeEventIdFilterConfig `json:"EventIdFilterConfig,omitnil,omitempty" name:"EventIdFilterConfig"`
 
-	// 每日与每周总结配置，不传则不修改
-	SummarizeConfig *SeeSummarizeConfig `json:"SummarizeConfig,omitnil,omitempty" name:"SummarizeConfig"`
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 功能开关。`true` 为开启，`false` 为关闭；不传表示不修改
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
 func (r *ModifyTWeSeeSubscriptionRequest) ToJsonString() string {
@@ -19963,15 +19965,15 @@ func (r *ModifyTWeSeeSubscriptionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DeviceName")
 	delete(f, "ProductId")
+	delete(f, "DeviceName")
 	delete(f, "ServiceType")
-	delete(f, "ChannelId")
-	delete(f, "CompHighlightConfig")
 	delete(f, "ComprehensionConfig")
-	delete(f, "Enabled")
-	delete(f, "EventIdFilterConfig")
+	delete(f, "CompHighlightConfig")
 	delete(f, "SummarizeConfig")
+	delete(f, "EventIdFilterConfig")
+	delete(f, "ChannelId")
+	delete(f, "Enabled")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeSeeSubscriptionRequest has unknown keys!", "")
 	}
@@ -21512,48 +21514,44 @@ func (r *RemoveUserByRoomIdFromTRTCResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewTWeSeeSubscriptionRequestParams struct {
-	// 产品 ID
+	// <p>产品 ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 算法类型。可选值：
-	// 
-	// - `VID_COMP`：视频理解
+	// <p>算法类型。可选值：</p><ul><li><code>VID_COMP</code>：视频理解</li></ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 续费时长，单位：月，支持 1-60
+	// <p>续费时长，单位：月，支持 1-60</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 通道 ID
+	// <p>通道 ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 自定义订单 ID
+	// <p>自定义订单 ID</p>
 	CustomOrderId *string `json:"CustomOrderId,omitnil,omitempty" name:"CustomOrderId"`
 }
 
 type RenewTWeSeeSubscriptionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品 ID
+	// <p>产品 ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 算法类型。可选值：
-	// 
-	// - `VID_COMP`：视频理解
+	// <p>算法类型。可选值：</p><ul><li><code>VID_COMP</code>：视频理解</li></ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 续费时长，单位：月，支持 1-60
+	// <p>续费时长，单位：月，支持 1-60</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 通道 ID
+	// <p>通道 ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 自定义订单 ID
+	// <p>自定义订单 ID</p>
 	CustomOrderId *string `json:"CustomOrderId,omitnil,omitempty" name:"CustomOrderId"`
 }
 
@@ -21583,22 +21581,22 @@ func (r *RenewTWeSeeSubscriptionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewTWeSeeSubscriptionResponseParams struct {
-	// 订单 ID
+	// <p>订单 ID</p>
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
-	// 订单状态
+	// <p>订单状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 资源 ID
+	// <p>资源 ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 原价
+	// <p>原价</p>
 	OriginalPrice *string `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 折后价
+	// <p>折后价</p>
 	DiscountPrice *string `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
-	// 币种
+	// <p>币种</p>
 	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22754,17 +22752,20 @@ type SeeRenewSubscriptionResult struct {
 }
 
 type SeeStatItem struct {
-	// 时间
+	// <p>时间</p>
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// 任务数量
+	// <p>任务数量</p>
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 基础能力用量
+	// <p>基础能力后付费用量</p>
 	CostBasic *int64 `json:"CostBasic,omitnil,omitempty" name:"CostBasic"`
 
-	// 高级能力用量
+	// <p>高级能力后付费用量</p>
 	CostAdvanced *int64 `json:"CostAdvanced,omitnil,omitempty" name:"CostAdvanced"`
+
+	// <p>预付费额度用量</p>
+	CostCredits *float64 `json:"CostCredits,omitnil,omitempty" name:"CostCredits"`
 }
 
 type SeeSummarizeConfig struct {
@@ -22831,11 +22832,14 @@ type SeeTaskInfo struct {
 	// <p>每日或每周总结结果</p>
 	SummarizeResult *SeeSummarizeResult `json:"SummarizeResult,omitnil,omitempty" name:"SummarizeResult"`
 
-	// <p>完成该任务所消耗的基础能力额度</p>
+	// <p>完成该任务所产生的视觉理解基础能力后付费用量</p>
 	CostBasic *int64 `json:"CostBasic,omitnil,omitempty" name:"CostBasic"`
 
-	// <p>完成该任务所消耗的高级能力额度</p>
+	// <p>完成该任务所产生的视觉理解高级能力后付费用量</p>
 	CostAdvanced *int64 `json:"CostAdvanced,omitnil,omitempty" name:"CostAdvanced"`
+
+	// <p>完成该任务所消耗的视觉理解预付费额度</p>
+	CostCredits *float64 `json:"CostCredits,omitnil,omitempty" name:"CostCredits"`
 
 	// <p>输出文件名列表</p>
 	Files []*string `json:"Files,omitnil,omitempty" name:"Files"`

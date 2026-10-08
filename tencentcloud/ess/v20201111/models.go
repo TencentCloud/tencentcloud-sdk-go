@@ -8045,11 +8045,11 @@ type CreatePrepareFlowRequestParams struct {
 	// <p>执行本接口操作的员工信息。使用此接口时，必须填写userId。<br>支持填入集团子公司经办人 userId 代发合同。</p><p>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// <p>资源id，与ResourceType相对应，取值范围：</p><ul><li>文件Id（通过UploadFiles获取文件资源Id）</li><li>模板Id（通过控制台创建模板后获取模板Id）</li><li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li></ul>注意：需要同时设置 ResourceType 参数指定资源类型
-	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
-
 	// <p>自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&amp;)、（+）组成。</p><p>该名称还将用于合同签署完成后文件下载的默认文件名称。</p>
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
+
+	// <p>资源id，与ResourceType相对应，取值范围：</p><ul><li>文件Id（通过UploadFiles获取文件资源Id）</li><li>模板Id（通过控制台创建模板后获取模板Id）</li><li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li></ul>注意：需要同时设置 ResourceType 参数指定资源类型
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// <p>资源类型，取值有：</p><ul><li> **1**：模板</li><li> **2**：文件（默认值）</li><li> **3**：草稿</li></ul>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
@@ -8117,11 +8117,11 @@ type CreatePrepareFlowRequest struct {
 	// <p>执行本接口操作的员工信息。使用此接口时，必须填写userId。<br>支持填入集团子公司经办人 userId 代发合同。</p><p>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// <p>资源id，与ResourceType相对应，取值范围：</p><ul><li>文件Id（通过UploadFiles获取文件资源Id）</li><li>模板Id（通过控制台创建模板后获取模板Id）</li><li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li></ul>注意：需要同时设置 ResourceType 参数指定资源类型
-	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
-
 	// <p>自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&amp;)、（+）组成。</p><p>该名称还将用于合同签署完成后文件下载的默认文件名称。</p>
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
+
+	// <p>资源id，与ResourceType相对应，取值范围：</p><ul><li>文件Id（通过UploadFiles获取文件资源Id）</li><li>模板Id（通过控制台创建模板后获取模板Id）</li><li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li></ul>注意：需要同时设置 ResourceType 参数指定资源类型
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// <p>资源类型，取值有：</p><ul><li> **1**：模板</li><li> **2**：文件（默认值）</li><li> **3**：草稿</li></ul>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
@@ -8194,8 +8194,8 @@ func (r *CreatePrepareFlowRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Operator")
-	delete(f, "ResourceId")
 	delete(f, "FlowName")
+	delete(f, "ResourceId")
 	delete(f, "ResourceType")
 	delete(f, "Unordered")
 	delete(f, "Deadline")

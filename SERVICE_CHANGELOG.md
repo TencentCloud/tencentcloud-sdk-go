@@ -1,57 +1,10 @@
-# Release v1.3.191
+# Release v1.3.192
 
-## 大数据智能体工作台DataBuddy(databuddy) 版本：2026-07-15
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 6 次发布
+### 第 323 次发布
 
-发布时间：2026-10-05 01:53:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateCatalog](https://cloud.tencent.com/document/api/1835/139028)
-* [CreateSchema](https://cloud.tencent.com/document/api/1835/139027)
-* [CreateWorkspaceRole](https://cloud.tencent.com/document/api/1835/139022)
-* [DeleteCatalog](https://cloud.tencent.com/document/api/1835/139026)
-* [DeleteSchema](https://cloud.tencent.com/document/api/1835/139025)
-* [DeleteWorkspaceRole](https://cloud.tencent.com/document/api/1835/139021)
-* [ListSchemas](https://cloud.tencent.com/document/api/1835/139024)
-* [ListWorkspaces](https://cloud.tencent.com/document/api/1835/139020)
-* [StartCompute](https://cloud.tencent.com/document/api/1835/139018)
-* [StopCompute](https://cloud.tencent.com/document/api/1835/139017)
-* [UpdateWorkspaceRole](https://cloud.tencent.com/document/api/1835/139019)
-
-新增数据结构：
-
-* [Audit](https://cloud.tencent.com/document/api/1835/138006#Audit)
-* [CommonTagInfo](https://cloud.tencent.com/document/api/1835/138006#CommonTagInfo)
-* [CreateCatalogRsp](https://cloud.tencent.com/document/api/1835/138006#CreateCatalogRsp)
-* [CreateSchemaRsp](https://cloud.tencent.com/document/api/1835/138006#CreateSchemaRsp)
-* [CreateWorkspaceRoleResult](https://cloud.tencent.com/document/api/1835/138006#CreateWorkspaceRoleResult)
-* [DeleteCatalogRsp](https://cloud.tencent.com/document/api/1835/138006#DeleteCatalogRsp)
-* [DeleteSchemaRsp](https://cloud.tencent.com/document/api/1835/138006#DeleteSchemaRsp)
-* [DeleteWorkspaceRoleResult](https://cloud.tencent.com/document/api/1835/138006#DeleteWorkspaceRoleResult)
-* [FetchOption](https://cloud.tencent.com/document/api/1835/138006#FetchOption)
-* [KVPair](https://cloud.tencent.com/document/api/1835/138006#KVPair)
-* [ListSchemasRsp](https://cloud.tencent.com/document/api/1835/138006#ListSchemasRsp)
-* [ListWorkspacesRsp](https://cloud.tencent.com/document/api/1835/138006#ListWorkspacesRsp)
-* [MetaOwner](https://cloud.tencent.com/document/api/1835/138006#MetaOwner)
-* [PermissionDetail](https://cloud.tencent.com/document/api/1835/138006#PermissionDetail)
-* [Schema](https://cloud.tencent.com/document/api/1835/138006#Schema)
-* [StartComputeRsp](https://cloud.tencent.com/document/api/1835/138006#StartComputeRsp)
-* [StopComputeRsp](https://cloud.tencent.com/document/api/1835/138006#StopComputeRsp)
-* [UpdateWorkspaceRoleResult](https://cloud.tencent.com/document/api/1835/138006#UpdateWorkspaceRoleResult)
-
-
-
-## 云直播CSS(live) 版本：2018-08-01
-
-### 第 191 次发布
-
-发布时间：2026-10-05 02:26:47
+发布时间：2026-10-09 02:10:07
 
 本次发布包含了以下内容：
 
@@ -59,9 +12,68 @@
 
 修改接口：
 
-* [DescribeOriginWhiteIpList](https://cloud.tencent.com/document/api/267/138999)
+* [CreatePrepareFlow](https://cloud.tencent.com/document/api/1323/83412)
 
-	* 新增入参：Domain
+	* <font color="#dd0000">**修改入参**：</font>ResourceId
+
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 161 次发布
+
+发布时间：2026-10-08 11:53:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTWeSeeSubscription](https://cloud.tencent.com/document/api/1081/132124)
+
+	* 新增出参：CreditsQuota, CreditsUsed
+
+* [InvokeTWeSeeComprehension](https://cloud.tencent.com/document/api/1081/132118)
+
+	* 新增入参：WaitResultFields
+
+	* 新增出参：CostCredits
+
+
+修改数据结构：
+
+* [SeeStatItem](https://cloud.tencent.com/document/api/1081/34988#SeeStatItem)
+
+	* 新增成员：CostCredits
+
+* [SeeTaskInfo](https://cloud.tencent.com/document/api/1081/34988#SeeTaskInfo)
+
+	* 新增成员：CostCredits
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 253 次发布
+
+发布时间：2026-10-09 02:37:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [QueryHunyuan3DTask](https://cloud.tencent.com/document/api/862/137209)
+
+	* 新增出参：TaskId, TaskType, Prompt, RefImage, MultiViewImages, CreateTime, UpdateTime, FaceCount, GenerateType, QueuePosition
+
+* [SubmitHunyuan3DTask](https://cloud.tencent.com/document/api/862/137208)
+
+	* 新增入参：StoreCosParam
 
 
 

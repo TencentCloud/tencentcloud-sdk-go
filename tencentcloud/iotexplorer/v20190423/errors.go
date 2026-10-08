@@ -116,6 +116,9 @@ const (
 	// 未开通 TWeSee 算法的后付费服务
 	FAILEDOPERATION_SEEPOSTPAIDSERVICENOTEXISTS = "FailedOperation.SeePostPaidServiceNotExists"
 
+	// TWeSee 预付费额度已用尽
+	FAILEDOPERATION_SEEPREPAIDQUOTAEXHAUSTED = "FailedOperation.SeePrePaidQuotaExhausted"
+
 	// 该设备已开通指定的 TWeSee 算法预付费订阅，不能重复开通
 	FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONALREADYEXISTS = "FailedOperation.SeePrePaidSubscriptionAlreadyExists"
 

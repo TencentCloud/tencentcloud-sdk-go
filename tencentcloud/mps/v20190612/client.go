@@ -13588,11 +13588,7 @@ func NewSubmitHunyuan3DTaskResponse() (response *SubmitHunyuan3DTaskResponse) {
 // 提交创建混元3D的任务
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
-//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+//  INVALIDPARAMETER_NOINPUTSPECIFIED = "InvalidParameter.NoInputSpecified"
 func (c *Client) SubmitHunyuan3DTask(request *SubmitHunyuan3DTaskRequest) (response *SubmitHunyuan3DTaskResponse, err error) {
     return c.SubmitHunyuan3DTaskWithContext(context.Background(), request)
 }
@@ -13601,11 +13597,7 @@ func (c *Client) SubmitHunyuan3DTask(request *SubmitHunyuan3DTaskRequest) (respo
 // 提交创建混元3D的任务
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
-//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+//  INVALIDPARAMETER_NOINPUTSPECIFIED = "InvalidParameter.NoInputSpecified"
 func (c *Client) SubmitHunyuan3DTaskWithContext(ctx context.Context, request *SubmitHunyuan3DTaskRequest) (response *SubmitHunyuan3DTaskResponse, err error) {
     if request == nil {
         request = NewSubmitHunyuan3DTaskRequest()
@@ -13646,11 +13638,7 @@ func NewSyncDubbingResponse() (response *SyncDubbingResponse) {
 // 同步接口，返回克隆音色ID或合成音频结果。克隆/设计音色数量上限默认100
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
-//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+//  INVALIDPARAMETER_NOINPUTSPECIFIED = "InvalidParameter.NoInputSpecified"
 func (c *Client) SyncDubbing(request *SyncDubbingRequest) (response *SyncDubbingResponse, err error) {
     return c.SyncDubbingWithContext(context.Background(), request)
 }
@@ -13659,11 +13647,7 @@ func (c *Client) SyncDubbing(request *SyncDubbingRequest) (response *SyncDubbing
 // 同步接口，返回克隆音色ID或合成音频结果。克隆/设计音色数量上限默认100
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
-//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+//  INVALIDPARAMETER_NOINPUTSPECIFIED = "InvalidParameter.NoInputSpecified"
 func (c *Client) SyncDubbingWithContext(ctx context.Context, request *SyncDubbingRequest) (response *SyncDubbingResponse, err error) {
     if request == nil {
         request = NewSyncDubbingRequest()
@@ -13704,11 +13688,7 @@ func NewTextToSpeechResponse() (response *TextToSpeechResponse) {
 // 同步语音合成，根据输入文本和指定音色生成语音
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
-//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+//  INVALIDPARAMETER_NOINPUTSPECIFIED = "InvalidParameter.NoInputSpecified"
 func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {
     return c.TextToSpeechWithContext(context.Background(), request)
 }
@@ -13717,11 +13697,7 @@ func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpe
 // 同步语音合成，根据输入文本和指定音色生成语音
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
-//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+//  INVALIDPARAMETER_NOINPUTSPECIFIED = "InvalidParameter.NoInputSpecified"
 func (c *Client) TextToSpeechWithContext(ctx context.Context, request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {
     if request == nil {
         request = NewTextToSpeechRequest()
@@ -13762,11 +13738,7 @@ func NewTextToSpeechAsyncResponse() (response *TextToSpeechAsyncResponse) {
 // 异步语音合成接口，支持长文本转语音
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
-//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+//  INVALIDPARAMETER_NOINPUTSPECIFIED = "InvalidParameter.NoInputSpecified"
 func (c *Client) TextToSpeechAsync(request *TextToSpeechAsyncRequest) (response *TextToSpeechAsyncResponse, err error) {
     return c.TextToSpeechAsyncWithContext(context.Background(), request)
 }
@@ -13775,11 +13747,7 @@ func (c *Client) TextToSpeechAsync(request *TextToSpeechAsyncRequest) (response 
 // 异步语音合成接口，支持长文本转语音
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
-//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+//  INVALIDPARAMETER_NOINPUTSPECIFIED = "InvalidParameter.NoInputSpecified"
 func (c *Client) TextToSpeechAsyncWithContext(ctx context.Context, request *TextToSpeechAsyncRequest) (response *TextToSpeechAsyncResponse, err error) {
     if request == nil {
         request = NewTextToSpeechAsyncRequest()
