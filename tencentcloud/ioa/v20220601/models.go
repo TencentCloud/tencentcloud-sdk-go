@@ -1489,6 +1489,126 @@ type DescribeAccountResourcesItems struct {
 	AreaName *string `json:"AreaName,omitnil,omitempty" name:"AreaName"`
 }
 
+type DescribeAccountVirtualGroupsData struct {
+	// <p>id(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>分组id(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountGroupId *uint64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// <p>账户虚拟组名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>源类型，手动、自动(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceType *int64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// <p>扩展信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
+
+	// <p>用户总数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserTotal *int64 `json:"UserTotal,omitnil,omitempty" name:"UserTotal"`
+
+	// <p>创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
+
+	// <p>最后更新时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
+}
+
+type DescribeAccountVirtualGroupsPageData struct {
+	// <p>分页公共对象</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>列表账户虚拟组分页数据集</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DescribeAccountVirtualGroupsData `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
+type DescribeAccountVirtualGroupsRequestParams struct {
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// <p>滤条件、分页参数</p><li>Name - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按账号虚拟组名称过滤。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// <p>顶层目录分组ID，表示要查询哪个目录下的虚拟组</p>
+	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+}
+
+type DescribeAccountVirtualGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// <p>滤条件、分页参数</p><li>Name - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按账号虚拟组名称过滤。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// <p>顶层目录分组ID，表示要查询哪个目录下的虚拟组</p>
+	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+}
+
+func (r *DescribeAccountVirtualGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountVirtualGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainInstanceId")
+	delete(f, "Condition")
+	delete(f, "AccountGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountVirtualGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccountVirtualGroupsResponseParams struct {
+	// <p>业务响应数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeAccountVirtualGroupsPageData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAccountVirtualGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccountVirtualGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccountVirtualGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountVirtualGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAggrSoftCategorySoftListData struct {
 	// 分页公共对象
 	// 注意：此字段可能返回 null，表示取不到有效值。

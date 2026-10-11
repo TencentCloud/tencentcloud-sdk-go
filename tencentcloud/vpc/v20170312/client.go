@@ -844,6 +844,7 @@ func NewAssignIpv6AddressesResponse() (response *AssignIpv6AddressesResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+//  UNSUPPORTEDOPERATION_MULTIPLEPRIMARYIPADDRESS = "UnsupportedOperation.MultiplePrimaryIpAddress"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 //  UNSUPPORTEDOPERATION_UNASSIGNCIDRBLOCK = "UnsupportedOperation.UnassignCidrBlock"
 func (c *Client) AssignIpv6Addresses(request *AssignIpv6AddressesRequest) (response *AssignIpv6AddressesResponse, err error) {
@@ -878,6 +879,7 @@ func (c *Client) AssignIpv6Addresses(request *AssignIpv6AddressesRequest) (respo
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+//  UNSUPPORTEDOPERATION_MULTIPLEPRIMARYIPADDRESS = "UnsupportedOperation.MultiplePrimaryIpAddress"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 //  UNSUPPORTEDOPERATION_UNASSIGNCIDRBLOCK = "UnsupportedOperation.UnassignCidrBlock"
 func (c *Client) AssignIpv6AddressesWithContext(ctx context.Context, request *AssignIpv6AddressesRequest) (response *AssignIpv6AddressesResponse, err error) {
@@ -25053,6 +25055,7 @@ func NewModifyNetworkInterfaceAttributeResponse() (response *ModifyNetworkInterf
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_ENINOTSUPPORTTERMINATIONPROTECTION = "UnsupportedOperation.EniNotSupportTerminationProtection"
+//  UNSUPPORTEDOPERATION_ENISERVICEMANAGED = "UnsupportedOperation.EniServiceManaged"
 //  UNSUPPORTEDOPERATION_SUBENINOTSUPPORTTRUNKING = "UnsupportedOperation.SubEniNotSupportTrunking"
 func (c *Client) ModifyNetworkInterfaceAttribute(request *ModifyNetworkInterfaceAttributeRequest) (response *ModifyNetworkInterfaceAttributeResponse, err error) {
     return c.ModifyNetworkInterfaceAttributeWithContext(context.Background(), request)
@@ -25069,6 +25072,7 @@ func (c *Client) ModifyNetworkInterfaceAttribute(request *ModifyNetworkInterface
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_ENINOTSUPPORTTERMINATIONPROTECTION = "UnsupportedOperation.EniNotSupportTerminationProtection"
+//  UNSUPPORTEDOPERATION_ENISERVICEMANAGED = "UnsupportedOperation.EniServiceManaged"
 //  UNSUPPORTEDOPERATION_SUBENINOTSUPPORTTRUNKING = "UnsupportedOperation.SubEniNotSupportTrunking"
 func (c *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Context, request *ModifyNetworkInterfaceAttributeRequest) (response *ModifyNetworkInterfaceAttributeResponse, err error) {
     if request == nil {

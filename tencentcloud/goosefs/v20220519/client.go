@@ -377,6 +377,74 @@ func (c *Client) CancelLoadTaskWithContext(ctx context.Context, request *CancelL
     return
 }
 
+func NewCancelPolicyRuleExecuteRecordRequest() (request *CancelPolicyRuleExecuteRecordRequest) {
+    request = &CancelPolicyRuleExecuteRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "CancelPolicyRuleExecuteRecord")
+    
+    
+    return
+}
+
+func NewCancelPolicyRuleExecuteRecordResponse() (response *CancelPolicyRuleExecuteRecordResponse) {
+    response = &CancelPolicyRuleExecuteRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelPolicyRuleExecuteRecord
+// 取消正在执行的扫描任务，正在扫描的任务取消后没有结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelPolicyRuleExecuteRecord(request *CancelPolicyRuleExecuteRecordRequest) (response *CancelPolicyRuleExecuteRecordResponse, err error) {
+    return c.CancelPolicyRuleExecuteRecordWithContext(context.Background(), request)
+}
+
+// CancelPolicyRuleExecuteRecord
+// 取消正在执行的扫描任务，正在扫描的任务取消后没有结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelPolicyRuleExecuteRecordWithContext(ctx context.Context, request *CancelPolicyRuleExecuteRecordRequest) (response *CancelPolicyRuleExecuteRecordResponse, err error) {
+    if request == nil {
+        request = NewCancelPolicyRuleExecuteRecordRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "CancelPolicyRuleExecuteRecord")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelPolicyRuleExecuteRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelPolicyRuleExecuteRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDataRepositoryTaskRequest() (request *CreateDataRepositoryTaskRequest) {
     request = &CreateDataRepositoryTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -647,6 +715,72 @@ func (c *Client) CreateLoadTaskWithContext(ctx context.Context, request *CreateL
     return
 }
 
+func NewCreatePolicyRuleRequest() (request *CreatePolicyRuleRequest) {
+    request = &CreatePolicyRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "CreatePolicyRule")
+    
+    
+    return
+}
+
+func NewCreatePolicyRuleResponse() (response *CreatePolicyRuleResponse) {
+    response = &CreatePolicyRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePolicyRule
+// 创建数据洞察任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePolicyRule(request *CreatePolicyRuleRequest) (response *CreatePolicyRuleResponse, err error) {
+    return c.CreatePolicyRuleWithContext(context.Background(), request)
+}
+
+// CreatePolicyRule
+// 创建数据洞察任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePolicyRuleWithContext(ctx context.Context, request *CreatePolicyRuleRequest) (response *CreatePolicyRuleResponse, err error) {
+    if request == nil {
+        request = NewCreatePolicyRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "CreatePolicyRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePolicyRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePolicyRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCrossVpcSubnetSupportForClientNodeRequest() (request *DeleteCrossVpcSubnetSupportForClientNodeRequest) {
     request = &DeleteCrossVpcSubnetSupportForClientNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -907,6 +1041,72 @@ func (c *Client) DeleteFilesetWithContext(ctx context.Context, request *DeleteFi
     request.SetContext(ctx)
     
     response = NewDeleteFilesetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePolicyRuleRequest() (request *DeletePolicyRuleRequest) {
+    request = &DeletePolicyRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DeletePolicyRule")
+    
+    
+    return
+}
+
+func NewDeletePolicyRuleResponse() (response *DeletePolicyRuleResponse) {
+    response = &DeletePolicyRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeletePolicyRule
+// 删除扫描规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeletePolicyRule(request *DeletePolicyRuleRequest) (response *DeletePolicyRuleResponse, err error) {
+    return c.DeletePolicyRuleWithContext(context.Background(), request)
+}
+
+// DeletePolicyRule
+// 删除扫描规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeletePolicyRuleWithContext(ctx context.Context, request *DeletePolicyRuleRequest) (response *DeletePolicyRuleResponse, err error) {
+    if request == nil {
+        request = NewDeletePolicyRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DeletePolicyRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePolicyRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePolicyRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -1573,6 +1773,142 @@ func (c *Client) DescribeLoadTaskWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribePolicyRuleRequest() (request *DescribePolicyRuleRequest) {
+    request = &DescribePolicyRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DescribePolicyRule")
+    
+    
+    return
+}
+
+func NewDescribePolicyRuleResponse() (response *DescribePolicyRuleResponse) {
+    response = &DescribePolicyRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePolicyRule
+// 列出所有的扫描规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePolicyRule(request *DescribePolicyRuleRequest) (response *DescribePolicyRuleResponse, err error) {
+    return c.DescribePolicyRuleWithContext(context.Background(), request)
+}
+
+// DescribePolicyRule
+// 列出所有的扫描规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePolicyRuleWithContext(ctx context.Context, request *DescribePolicyRuleRequest) (response *DescribePolicyRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribePolicyRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribePolicyRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePolicyRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePolicyRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePolicyRuleExecuteRecordRequest() (request *DescribePolicyRuleExecuteRecordRequest) {
+    request = &DescribePolicyRuleExecuteRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DescribePolicyRuleExecuteRecord")
+    
+    
+    return
+}
+
+func NewDescribePolicyRuleExecuteRecordResponse() (response *DescribePolicyRuleExecuteRecordResponse) {
+    response = &DescribePolicyRuleExecuteRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePolicyRuleExecuteRecord
+// 列出指定扫描规则的执行记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePolicyRuleExecuteRecord(request *DescribePolicyRuleExecuteRecordRequest) (response *DescribePolicyRuleExecuteRecordResponse, err error) {
+    return c.DescribePolicyRuleExecuteRecordWithContext(context.Background(), request)
+}
+
+// DescribePolicyRuleExecuteRecord
+// 列出指定扫描规则的执行记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePolicyRuleExecuteRecordWithContext(ctx context.Context, request *DescribePolicyRuleExecuteRecordRequest) (response *DescribePolicyRuleExecuteRecordResponse, err error) {
+    if request == nil {
+        request = NewDescribePolicyRuleExecuteRecordRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribePolicyRuleExecuteRecord")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePolicyRuleExecuteRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePolicyRuleExecuteRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachFileSystemBucketRequest() (request *DetachFileSystemBucketRequest) {
     request = &DetachFileSystemBucketRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1637,6 +1973,142 @@ func (c *Client) DetachFileSystemBucketWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDetachFileSystemBucketResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisablePolicyRuleRequest() (request *DisablePolicyRuleRequest) {
+    request = &DisablePolicyRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DisablePolicyRule")
+    
+    
+    return
+}
+
+func NewDisablePolicyRuleResponse() (response *DisablePolicyRuleResponse) {
+    response = &DisablePolicyRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisablePolicyRule
+// 禁用扫描任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DisablePolicyRule(request *DisablePolicyRuleRequest) (response *DisablePolicyRuleResponse, err error) {
+    return c.DisablePolicyRuleWithContext(context.Background(), request)
+}
+
+// DisablePolicyRule
+// 禁用扫描任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DisablePolicyRuleWithContext(ctx context.Context, request *DisablePolicyRuleRequest) (response *DisablePolicyRuleResponse, err error) {
+    if request == nil {
+        request = NewDisablePolicyRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DisablePolicyRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisablePolicyRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisablePolicyRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnablePolicyRuleRequest() (request *EnablePolicyRuleRequest) {
+    request = &EnablePolicyRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "EnablePolicyRule")
+    
+    
+    return
+}
+
+func NewEnablePolicyRuleResponse() (response *EnablePolicyRuleResponse) {
+    response = &EnablePolicyRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnablePolicyRule
+// 启用扫描任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EnablePolicyRule(request *EnablePolicyRuleRequest) (response *EnablePolicyRuleResponse, err error) {
+    return c.EnablePolicyRuleWithContext(context.Background(), request)
+}
+
+// EnablePolicyRule
+// 启用扫描任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EnablePolicyRuleWithContext(ctx context.Context, request *EnablePolicyRuleRequest) (response *EnablePolicyRuleResponse, err error) {
+    if request == nil {
+        request = NewEnablePolicyRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "EnablePolicyRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnablePolicyRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnablePolicyRuleResponse()
     err = c.Send(request, response)
     return
 }

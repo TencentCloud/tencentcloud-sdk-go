@@ -1590,6 +1590,20 @@ type AiCutoutConfig struct {
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
+type AiDecomposeConfig struct {
+	// <p>能力配置开关。</p><p>枚举值：</p><ul><li>ON： 开启图层分离功能。</li><li>OFF： 关闭图层分离功能。</li></ul><p>默认值：ON</p>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>预期拆层数量。</p><p>取值范围：[2, 17]</p>
+	Layers *int64 `json:"Layers,omitnil,omitempty" name:"Layers"`
+
+	// <p>提示词。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>模型名称。</p><p>枚举值：</p><ul><li>decompose-1.0-flash： 1.0版本 flash模型</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+}
+
 type AiDramaInput struct {
 	// <p>ai漫剧剧本</p><p>参数格式：无</p><p>入参限制：无</p>
 	Script *string `json:"Script,omitnil,omitempty" name:"Script"`
@@ -3156,21 +3170,33 @@ type AudioDenoiseConfig struct {
 }
 
 type AudioEnhanceConfig struct {
-	// 音频降噪配置。
+	// <p>音频降噪配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Denoise *AudioDenoiseConfig `json:"Denoise,omitnil,omitempty" name:"Denoise"`
 
-	// 音频分离配置。
+	// <p>音频分离配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Separate *AudioSeparateConfig `json:"Separate,omitnil,omitempty" name:"Separate"`
 
-	// 音量均衡配置。
+	// <p>音量均衡配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeBalance *VolumeBalanceConfig `json:"VolumeBalance,omitnil,omitempty" name:"VolumeBalance"`
 
-	// 音频美化配置。
+	// <p>音频美化配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Beautify *AudioBeautifyConfig `json:"Beautify,omitnil,omitempty" name:"Beautify"`
+
+	// <p>音频增强编辑。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioEnhanceEdit *AudioEnhanceEditConfig `json:"AudioEnhanceEdit,omitnil,omitempty" name:"AudioEnhanceEdit"`
+}
+
+type AudioEnhanceEditConfig struct {
+	// <p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>音频编辑类型</p><p>枚举值：</p><ul><li>restore： 修复</li></ul><p>默认值：restore</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type AudioSeparateConfig struct {
@@ -11333,14 +11359,14 @@ func (r *DeleteWatermarkTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteWordSamplesRequestParams struct {
-	// 关键词，数组长度限制：100 个词。
+	// <p>关键词，数组长度限制：100 个词。</p>
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 }
 
 type DeleteWordSamplesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关键词，数组长度限制：100 个词。
+	// <p>关键词，数组长度限制：100 个词。</p>
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 }
 
@@ -12772,7 +12798,7 @@ func (r *DescribeCloneViralTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeContentReviewTemplatesRequestParams struct {
-	// 智能审核模板唯一标识过滤条件，数组长度限制：50。
+	// 智能审核模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
@@ -12793,7 +12819,7 @@ type DescribeContentReviewTemplatesRequestParams struct {
 type DescribeContentReviewTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 智能审核模板唯一标识过滤条件，数组长度限制：50。
+	// 智能审核模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
@@ -18534,6 +18560,15 @@ type DiffusionEnhanceConfig struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+type DiffusionEnhanceV2Config struct {
+	// <p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>强度类型</p><p>枚举值：</p><ul><li>weak： 弱</li><li>normal： 中</li><li>strong： 强</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
 // Predefined struct for user
 type DisableScheduleRequestParams struct {
 	// 编排唯一表示。
@@ -20549,6 +20584,9 @@ type ImageTaskInput struct {
 
 	// <p>图层融合配置。</p>
 	AiComposeConfig *AiComposeConfig `json:"AiComposeConfig,omitnil,omitempty" name:"AiComposeConfig"`
+
+	// <p>图层分离配置。</p>
+	AiDecomposeConfig *AiDecomposeConfig `json:"AiDecomposeConfig,omitnil,omitempty" name:"AiDecomposeConfig"`
 }
 
 type ImageTransformConfig struct {
@@ -32195,6 +32233,10 @@ type VideoEnhanceConfig struct {
 	// <p>大模型修复配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiRestoration *AiRestorationConfig `json:"AiRestoration,omitnil,omitempty" name:"AiRestoration"`
+
+	// <p>大模型增强专业版配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiffusionEnhanceV2 *DiffusionEnhanceV2Config `json:"DiffusionEnhanceV2,omitnil,omitempty" name:"DiffusionEnhanceV2"`
 }
 
 type VideoRedrawCosInfo struct {

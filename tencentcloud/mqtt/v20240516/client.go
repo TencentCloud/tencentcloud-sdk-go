@@ -1879,6 +1879,56 @@ func (c *Client) DescribeCaCertificatesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeClientEventsRequest() (request *DescribeClientEventsRequest) {
+    request = &DescribeClientEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeClientEvents")
+    
+    
+    return
+}
+
+func NewDescribeClientEventsResponse() (response *DescribeClientEventsResponse) {
+    response = &DescribeClientEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClientEvents
+// 查询轨迹
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeClientEvents(request *DescribeClientEventsRequest) (response *DescribeClientEventsResponse, err error) {
+    return c.DescribeClientEventsWithContext(context.Background(), request)
+}
+
+// DescribeClientEvents
+// 查询轨迹
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeClientEventsWithContext(ctx context.Context, request *DescribeClientEventsRequest) (response *DescribeClientEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientEventsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeClientEvents")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClientEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClientEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClientListRequest() (request *DescribeClientListRequest) {
     request = &DescribeClientListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1902,7 +1952,6 @@ func NewDescribeClientListResponse() (response *DescribeClientListResponse) {
 // 查询 MQTT 客户端详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeClientList(request *DescribeClientListRequest) (response *DescribeClientListResponse, err error) {
     return c.DescribeClientListWithContext(context.Background(), request)
@@ -1912,7 +1961,6 @@ func (c *Client) DescribeClientList(request *DescribeClientListRequest) (respons
 // 查询 MQTT 客户端详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeClientListWithContext(ctx context.Context, request *DescribeClientListRequest) (response *DescribeClientListResponse, err error) {
     if request == nil {
@@ -1954,7 +2002,6 @@ func NewDescribeDeviceCertificateResponse() (response *DescribeDeviceCertificate
 // 查询设备证书详情接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeDeviceCertificate(request *DescribeDeviceCertificateRequest) (response *DescribeDeviceCertificateResponse, err error) {
     return c.DescribeDeviceCertificateWithContext(context.Background(), request)
@@ -1964,7 +2011,6 @@ func (c *Client) DescribeDeviceCertificate(request *DescribeDeviceCertificateReq
 // 查询设备证书详情接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeDeviceCertificateWithContext(ctx context.Context, request *DescribeDeviceCertificateRequest) (response *DescribeDeviceCertificateResponse, err error) {
     if request == nil {

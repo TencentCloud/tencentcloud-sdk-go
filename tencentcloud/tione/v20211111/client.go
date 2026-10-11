@@ -4701,6 +4701,56 @@ func (c *Client) DescribeWorkspacesWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewEnableTrainingTaskClsConfigRequest() (request *EnableTrainingTaskClsConfigRequest) {
+    request = &EnableTrainingTaskClsConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "EnableTrainingTaskClsConfig")
+    
+    
+    return
+}
+
+func NewEnableTrainingTaskClsConfigResponse() (response *EnableTrainingTaskClsConfigResponse) {
+    response = &EnableTrainingTaskClsConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableTrainingTaskClsConfig
+// 开启CLS日志投递
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) EnableTrainingTaskClsConfig(request *EnableTrainingTaskClsConfigRequest) (response *EnableTrainingTaskClsConfigResponse, err error) {
+    return c.EnableTrainingTaskClsConfigWithContext(context.Background(), request)
+}
+
+// EnableTrainingTaskClsConfig
+// 开启CLS日志投递
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) EnableTrainingTaskClsConfigWithContext(ctx context.Context, request *EnableTrainingTaskClsConfigRequest) (response *EnableTrainingTaskClsConfigResponse, err error) {
+    if request == nil {
+        request = NewEnableTrainingTaskClsConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "EnableTrainingTaskClsConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableTrainingTaskClsConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableTrainingTaskClsConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyModelServiceRequest() (request *ModifyModelServiceRequest) {
     request = &ModifyModelServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

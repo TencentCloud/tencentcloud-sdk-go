@@ -865,6 +865,58 @@ func (c *Client) DescribeAccountGroupsWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeAccountVirtualGroupsRequest() (request *DescribeAccountVirtualGroupsRequest) {
+    request = &DescribeAccountVirtualGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeAccountVirtualGroups")
+    
+    
+    return
+}
+
+func NewDescribeAccountVirtualGroupsResponse() (response *DescribeAccountVirtualGroupsResponse) {
+    response = &DescribeAccountVirtualGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccountVirtualGroups
+// 列表账户虚拟组，支持分页，名称搜索，私有化调用path为：capi/Assets/DescribeAccountVirtualGroups，从7.x版本开始支持
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeAccountVirtualGroups(request *DescribeAccountVirtualGroupsRequest) (response *DescribeAccountVirtualGroupsResponse, err error) {
+    return c.DescribeAccountVirtualGroupsWithContext(context.Background(), request)
+}
+
+// DescribeAccountVirtualGroups
+// 列表账户虚拟组，支持分页，名称搜索，私有化调用path为：capi/Assets/DescribeAccountVirtualGroups，从7.x版本开始支持
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeAccountVirtualGroupsWithContext(ctx context.Context, request *DescribeAccountVirtualGroupsRequest) (response *DescribeAccountVirtualGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountVirtualGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeAccountVirtualGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountVirtualGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccountVirtualGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAggrSoftCategorySoftListRequest() (request *DescribeAggrSoftCategorySoftListRequest) {
     request = &DescribeAggrSoftCategorySoftListRequest{
         BaseRequest: &tchttp.BaseRequest{},

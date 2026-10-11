@@ -147,57 +147,61 @@ type AlarmLable struct {
 }
 
 type AlarmNotifyHistory struct {
-	// 通知的唯一ID
+	// <p>通知的唯一ID</p>
 	NotifyId *string `json:"NotifyId,omitnil,omitempty" name:"NotifyId"`
 
-	// 告警策略ID
+	// <p>告警策略ID</p>
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 告警周期iD
+	// <p>告警周期iD</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 通知时间 unix秒级时间戳
+	// <p>通知时间 unix秒级时间戳</p>
 	NotifyTime *int64 `json:"NotifyTime,omitnil,omitempty" name:"NotifyTime"`
 
-	// 触发时间 unix秒级时间戳
+	// <p>触发时间 unix秒级时间戳</p>
 	TriggerTime *int64 `json:"TriggerTime,omitnil,omitempty" name:"TriggerTime"`
 
-	// 告警级别 None 非分级告警级别; Note 提示级别; Warn 严重级别; Serious 紧急级别
+	// <p>告警级别 None 非分级告警级别; Note 提示级别; Warn 严重级别; Serious 紧急级别</p>
 	TriggerLevel *string `json:"TriggerLevel,omitnil,omitempty" name:"TriggerLevel"`
 
-	// 告警内容
+	// <p>告警内容</p>
 	AlarmContent *string `json:"AlarmContent,omitnil,omitempty" name:"AlarmContent"`
 
-	// 告警对象
+	// <p>告警对象</p>
 	AlarmObject *string `json:"AlarmObject,omitnil,omitempty" name:"AlarmObject"`
 
-	// 本次告警通知涉及到的渠道合集
+	// <p>本次告警通知涉及到的渠道合集</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelSet []*string `json:"ChannelSet,omitnil,omitempty" name:"ChannelSet"`
 
-	// 渠道的接收人信息
+	// <p>渠道的接收人信息</p>
 	ChannelsReceivers []*ChannelsReceivers `json:"ChannelsReceivers,omitnil,omitempty" name:"ChannelsReceivers"`
 
-	// 告警策略名称
+	// <p>告警策略名称</p>
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
-	// Prometheus实例ID, 仅当 MT_PROME 时有效
+	// <p>Prometheus实例ID, 仅当 MT_PROME 时有效</p>
 	PromeInstanceID *string `json:"PromeInstanceID,omitnil,omitempty" name:"PromeInstanceID"`
 
-	// Prometheus实例所在的地域, 仅当 MT_PROME 时有效
+	// <p>Prometheus实例所在的地域, 仅当 MT_PROME 时有效</p>
 	PromeInstanceRegion *string `json:"PromeInstanceRegion,omitnil,omitempty" name:"PromeInstanceRegion"`
 
-	// 通知模板相关的配置信息
+	// <p>通知模板相关的配置信息</p>
 	Notices []*NotifyRelatedNotice `json:"Notices,omitnil,omitempty" name:"Notices"`
 
-	// 告警触发状态  Trigger 告警状态触发; Recovery 告警状态恢复
+	// <p>告警触发状态  Trigger 告警状态触发; Recovery 告警状态恢复</p>
 	TriggerStatus *string `json:"TriggerStatus,omitnil,omitempty" name:"TriggerStatus"`
 
-	// 与当前Prometheus通知历史相关控制台页面地址，仅当 MR_PROME 时有效
+	// <p>与当前Prometheus通知历史相关控制台页面地址，仅当 MR_PROME 时有效</p>
 	PromeConsoleURL *string `json:"PromeConsoleURL,omitnil,omitempty" name:"PromeConsoleURL"`
 
-	// 告警的lable
+	// <p>告警的lable</p>
 	Labels []*AlarmLable `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>该条通知实际执行的接收人/组明细。一条元素对应通知模板里的一条渠道发送规则</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverGroups []*ReceiverGroup `json:"ReceiverGroups,omitnil,omitempty" name:"ReceiverGroups"`
 }
 
 type ArtifactInfo struct {
@@ -296,18 +300,60 @@ func (r *CancelAIWorkbenchChatResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ChannelContent struct {
+	// <p>本段正文所属的渠道或子渠道全名</p><p>枚举值：</p><ul><li>QCloudYehe_site： 腾讯云野鹤，站内信</li><li>QCloudYehe_email： 腾讯云野鹤，电子邮件</li><li>QCloudYehe_sms： 腾讯云野鹤，短信</li><li>QCloudYehe_wechat： 腾讯云野鹤，微信</li><li>QCloudYehe_voice： 腾讯云野鹤，语音</li><li>QCloudYehe_qywx： 腾讯云野鹤，企业微信</li><li>QCloudYehe_andon： 腾讯云野鹤，安灯</li><li>TOF_weWorkMessage： TOF，企业微信消息</li><li>TOF_email： TOF，企业邮箱</li><li>TOF_phoneCall： TOF，电话</li><li>WeWork： 企业微信机器人</li><li>WebHook： 自定义 WebHook</li><li>FeiShu： 飞书</li><li>DingDing： 钉钉</li><li>Slack： Slack</li><li>GoogleChat： Google Chat</li><li>Teams： Teams</li><li>TeamsWorkflow： Teams Workflow</li><li>PagerDuty： PagerDuty</li><li>CLS： 日志服务 CLS</li><li>AS： 弹性伸缩</li><li>TCSYehe： TCS 野鹤。正文的 SubChannel 取渠道名本身</li><li>SCF： 云函数。不返回 Contents</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubChannel *string `json:"SubChannel,omitnil,omitempty" name:"SubChannel"`
+
+	// <p>该渠道实际发送的消息正文，由 Ark 按写时捕获的内容还原</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
 type ChannelsReceivers struct {
-	// 通知渠道名称
+	// <p>通知渠道名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
-	// 接收者
+	// <p>接收者</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Receivers []*string `json:"Receivers,omitnil,omitempty" name:"Receivers"`
 
-	// 发送结果,0-无效,1-成功,2-失败,3-无需发送
+	// <p>发送结果,0-无效,1-成功,2-失败,3-无需发送</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SendStatus *string `json:"SendStatus,omitnil,omitempty" name:"SendStatus"`
+
+	// <p>参数定义 渠道返回的原始状态码。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SendStatusCode *string `json:"SendStatusCode,omitnil,omitempty" name:"SendStatusCode"`
+
+	// <p>Ark 发起该渠道调用的时间</p><p>单位：Unix 秒级时间戳</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SendTime *int64 `json:"SendTime,omitnil,omitempty" name:"SendTime"`
+
+	// <p>该渠道本次实际发送的子渠道全名，格式为 父渠道_子渠道</p><p>枚举值：</p><ul><li>QCloudYehe_site： 腾讯云野鹤，站内信</li><li>QCloudYehe_email： 腾讯云野鹤，电子邮件</li><li>QCloudYehe_sms： 腾讯云野鹤，短信</li><li>QCloudYehe_wechat： 腾讯云野鹤，微信</li><li>QCloudYehe_voice： 腾讯云野鹤，语音</li><li>QCloudYehe_qywx： 腾讯云野鹤，企业微信</li><li>QCloudYehe_andon： 腾讯云野鹤，安灯</li><li>TOF_weWorkMessage： TOF，企业微信消息</li><li>TOF_email： TOF，企业邮箱</li><li>TOF_phoneCall： TOF，电话</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubChannels []*string `json:"SubChannels,omitnil,omitempty" name:"SubChannels"`
+
+	// <p>该渠道本次执行情况的文字描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecDetail *string `json:"ExecDetail,omitnil,omitempty" name:"ExecDetail"`
+
+	// <p>短信真实投递状态，来自野鹤 smsStatus 回调的 reportStatus 原值</p><p>枚举值：</p><ul><li>SUCCESS： 短信已真实送达</li><li>FAIL： 短信真实投递失败，失败原因见 RealDeliverErrMsg</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealDeliverStatus *string `json:"RealDeliverStatus,omitnil,omitempty" name:"RealDeliverStatus"`
+
+	// <p>用户真实收到短信的时间，取野鹤回调 userReceiverTime 原文字符串</p><p>参数格式：YYYY-MM-DD HH:mm:ss</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealDeliverTime *string `json:"RealDeliverTime,omitnil,omitempty" name:"RealDeliverTime"`
+
+	// <p>短信真实投递回执中的结果码，取野鹤回调 errmsg 原值</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealDeliverErrMsg *string `json:"RealDeliverErrMsg,omitnil,omitempty" name:"RealDeliverErrMsg"`
+
+	// <p>该渠道下各子渠道的消息正文明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Contents []*ChannelContent `json:"Contents,omitnil,omitempty" name:"Contents"`
 }
 
 type ContentBlockInfo struct {
@@ -1502,51 +1548,57 @@ func (r *DescribeAIWorkbenchSkillResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAlarmNotifyHistoriesRequestParams struct {
-	// 监控类型
+	// <p>监控类型</p>
 	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
 
-	// 起始时间点，unix秒级时间戳
+	// <p>起始时间点，unix秒级时间戳</p>
 	QueryBaseTime *int64 `json:"QueryBaseTime,omitnil,omitempty" name:"QueryBaseTime"`
 
-	// 从 QueryBaseTime 开始，需要查询往前多久的时间，单位秒
+	// <p>从 QueryBaseTime 开始，需要查询往前多久的时间，单位秒</p>
 	QueryBeforeSeconds *int64 `json:"QueryBeforeSeconds,omitnil,omitempty" name:"QueryBeforeSeconds"`
 
-	// 分页参数
+	// <p>分页参数</p>
 	PageParams *PageByNoParams `json:"PageParams,omitnil,omitempty" name:"PageParams"`
 
-	// 当监控类型为 MT_QCE 时候需要填写，归属的命名空间
+	// <p>当监控类型为 MT_QCE 时候需要填写，归属的命名空间</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 当监控类型为 MT_QCE 时候需要填写， 告警策略类型
+	// <p>当监控类型为 MT_QCE 时候需要填写， 告警策略类型</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 查询某个策略的通知历史
+	// <p>查询某个策略的通知历史</p>
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>详情页展示所需id</p>
+	NotifyId *string `json:"NotifyId,omitnil,omitempty" name:"NotifyId"`
 }
 
 type DescribeAlarmNotifyHistoriesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 监控类型
+	// <p>监控类型</p>
 	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
 
-	// 起始时间点，unix秒级时间戳
+	// <p>起始时间点，unix秒级时间戳</p>
 	QueryBaseTime *int64 `json:"QueryBaseTime,omitnil,omitempty" name:"QueryBaseTime"`
 
-	// 从 QueryBaseTime 开始，需要查询往前多久的时间，单位秒
+	// <p>从 QueryBaseTime 开始，需要查询往前多久的时间，单位秒</p>
 	QueryBeforeSeconds *int64 `json:"QueryBeforeSeconds,omitnil,omitempty" name:"QueryBeforeSeconds"`
 
-	// 分页参数
+	// <p>分页参数</p>
 	PageParams *PageByNoParams `json:"PageParams,omitnil,omitempty" name:"PageParams"`
 
-	// 当监控类型为 MT_QCE 时候需要填写，归属的命名空间
+	// <p>当监控类型为 MT_QCE 时候需要填写，归属的命名空间</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 当监控类型为 MT_QCE 时候需要填写， 告警策略类型
+	// <p>当监控类型为 MT_QCE 时候需要填写， 告警策略类型</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 查询某个策略的通知历史
+	// <p>查询某个策略的通知历史</p>
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>详情页展示所需id</p>
+	NotifyId *string `json:"NotifyId,omitnil,omitempty" name:"NotifyId"`
 }
 
 func (r *DescribeAlarmNotifyHistoriesRequest) ToJsonString() string {
@@ -1568,6 +1620,7 @@ func (r *DescribeAlarmNotifyHistoriesRequest) FromJsonString(s string) error {
 	delete(f, "Namespace")
 	delete(f, "ModelName")
 	delete(f, "PolicyId")
+	delete(f, "NotifyId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmNotifyHistoriesRequest has unknown keys!", "")
 	}
@@ -1576,10 +1629,10 @@ func (r *DescribeAlarmNotifyHistoriesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAlarmNotifyHistoriesResponseParams struct {
-	// 告警历史
+	// <p>告警历史</p>
 	AlarmNotifyHistoryList []*AlarmNotifyHistory `json:"AlarmNotifyHistoryList,omitnil,omitempty" name:"AlarmNotifyHistoryList"`
 
-	// 分页情况
+	// <p>分页情况</p>
 	PageResult *PageByNoResult `json:"PageResult,omitnil,omitempty" name:"PageResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3687,11 +3740,11 @@ type NotifyRelatedNotice struct {
 }
 
 type PageByNoParams struct {
-	// 每个分页的数量是多少
+	// <p>每个分页的数量是多少</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
 
-	// 第几个分页，从1开始
+	// <p>第几个分页，从1开始</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageNo *string `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 }
@@ -3854,6 +3907,44 @@ type QCloudYeheWeChatNoticeTmplItem struct {
 
 	// 告警时间模板
 	AlarmTimeTmpl *string `json:"AlarmTimeTmpl,omitnil,omitempty" name:"AlarmTimeTmpl"`
+}
+
+type ReceiverGroup struct {
+	// <p>本条发送规则的接收者类型</p><p>枚举值：</p><ul><li>UIDs： 按用户 UID</li><li>UINs： 按账号 UIN</li><li>Group： 按用户分组。ReceiverIds 为分组 ID</li><li>Oncall： 按值班表，且未被发送时的真实接收人覆盖</li><li>RtxName： 发送时解析出的员工 RTX 英文名</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverType *string `json:"ReceiverType,omitnil,omitempty" name:"ReceiverType"`
+
+	// <p>本条规则配置的原始接收者 ID 列表。具体是哪一种 ID，由 ReceiverType 决定</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverIds []*string `json:"ReceiverIds,omitnil,omitempty" name:"ReceiverIds"`
+
+	// <p>接收者展示名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
+
+	// <p>用户分组展开后的成员用户 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberIds []*string `json:"MemberIds,omitnil,omitempty" name:"MemberIds"`
+
+	// <p>该规则允许通知的星期。语义与 time.Weekday 一致</p><p>枚举值：</p><ul><li>0： 周日</li><li>1： 周一</li><li>2： 周二</li><li>3： 周三</li><li>4： 周四</li><li>5： 周五</li><li>6： 周六</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeekDay []*int64 `json:"WeekDay,omitnil,omitempty" name:"WeekDay"`
+
+	// <p>通知时段相对当日零点的秒数偏移，需配合 TimeZoneName 解读</p><p>单位：秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DayStartSeconds *int64 `json:"DayStartSeconds,omitnil,omitempty" name:"DayStartSeconds"`
+
+	// <p>通知时段相对当日零点的秒数偏移，需配合 TimeZoneName 解读</p><p>单位：秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DayEndSeconds *int64 `json:"DayEndSeconds,omitnil,omitempty" name:"DayEndSeconds"`
+
+	// <p>DayStartSeconds、DayEndSeconds 所属时区</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeZoneName *string `json:"TimeZoneName,omitnil,omitempty" name:"TimeZoneName"`
+
+	// <p>该规则实际发送的接收渠道全名列表</p><p>枚举值：</p><ul><li>QCloudYehe_site： 腾讯云野鹤，站内信</li><li>QCloudYehe_email： 腾讯云野鹤，电子邮件</li><li>QCloudYehe_sms： 腾讯云野鹤，短信</li><li>QCloudYehe_wechat： 腾讯云野鹤，微信</li><li>QCloudYehe_voice： 腾讯云野鹤，语音</li><li>QCloudYehe_qywx： 腾讯云野鹤，企业微信</li><li>QCloudYehe_andon： 腾讯云野鹤，安灯</li><li>TOF_weWorkMessage： TOF，企业微信消息</li><li>TOF_email： TOF，企业邮箱</li><li>TOF_phoneCall： TOF，电话</li><li>WeWork： 企业微信机器人</li><li>WebHook： 自定义 WebHook</li><li>FeiShu： 飞书</li><li>DingDing： 钉钉</li><li>Slack： Slack</li><li>GoogleChat： Google Chat</li><li>Teams： Teams</li><li>TeamsWorkflow： Teams Workflow</li><li>PagerDuty： PagerDuty</li><li>CLS： 日志服务 CLS</li><li>AS： 弹性伸缩</li><li>TCSYehe： TCS 野鹤。正文的 SubChannel 取渠道名本身</li><li>SCF： 云函数。不返回 Contents</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelNames []*string `json:"ChannelNames,omitnil,omitempty" name:"ChannelNames"`
 }
 
 type ResourceInstance struct {

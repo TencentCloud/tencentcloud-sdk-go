@@ -21,13 +21,13 @@ import (
 )
 
 type CCN struct {
-	// 私有网络 ID
+	// <p>私有网络 ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID
+	// <p>子网 ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 云联网 ID，如 ccn-rahigzjd
+	// <p>云联网 ID，如 ccn-rahigzjd</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
@@ -548,73 +548,117 @@ type ClusterGroupSetItem struct {
 }
 
 type ClusterSession struct {
-	// 集群SerialId
+	// <p>集群SerialId</p>
 	ClusterGroupSerialId *string `json:"ClusterGroupSerialId,omitnil,omitempty" name:"ClusterGroupSerialId"`
 
-	// 创建者appId
+	// <p>创建者appId</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 创建者主账号
+	// <p>创建者主账号</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 创建者账号
+	// <p>创建者账号</p>
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 
-	// 区域
+	// <p>区域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// zone
+	// <p>zone</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// Session集群状态
+	// <p>Session集群状态</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// Session集群消耗的cu数量
+	// <p>Session集群消耗的cu数量</p>
 	CuNum *float64 `json:"CuNum,omitnil,omitempty" name:"CuNum"`
 
-	// Session集群的Flink版本
+	// <p>Session集群的Flink版本</p>
 	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
 
-	// session集群FlinkUi地址
+	// <p>session集群FlinkUi地址</p>
 	WebUIUrl *string `json:"WebUIUrl,omitnil,omitempty" name:"WebUIUrl"`
 
-	// session集群高级参数
+	// <p>session集群高级参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
 
-	// 引用资源
+	// <p>引用资源</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRefs []*SessionClusterRefItem `json:"ResourceRefs,omitnil,omitempty" name:"ResourceRefs"`
 
-	// JobManager的规格
+	// <p>JobManager的规格</p>
 	JobManagerCuSpec *float64 `json:"JobManagerCuSpec,omitnil,omitempty" name:"JobManagerCuSpec"`
 
-	// TaskManager的规格
+	// <p>TaskManager的规格</p>
 	TaskManagerCuSpec *float64 `json:"TaskManagerCuSpec,omitnil,omitempty" name:"TaskManagerCuSpec"`
 
-	// TaskManager启动的数量
+	// <p>TaskManager启动的数量</p>
 	TaskManagerNum *int64 `json:"TaskManagerNum,omitnil,omitempty" name:"TaskManagerNum"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// JobManagerCpu
+	// <p>JobManagerCpu</p>
 	JobManagerCpu *float64 `json:"JobManagerCpu,omitnil,omitempty" name:"JobManagerCpu"`
 
-	// JobManagerMem
+	// <p>JobManagerMem</p>
 	JobManagerMem *float64 `json:"JobManagerMem,omitnil,omitempty" name:"JobManagerMem"`
 
-	// TaskManagerCpu
+	// <p>TaskManagerCpu</p>
 	TaskManagerCpu *float64 `json:"TaskManagerCpu,omitnil,omitempty" name:"TaskManagerCpu"`
 
-	// TaskManagerMem
+	// <p>TaskManagerMem</p>
 	TaskManagerMem *float64 `json:"TaskManagerMem,omitnil,omitempty" name:"TaskManagerMem"`
 
-	// jdk版本
+	// <p>jdk版本</p>
 	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
+
+	// <p>描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>session集群SerialId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialId *string `json:"SerialId,omitnil,omitempty" name:"SerialId"`
+
+	// <p>集群名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterGroupName *string `json:"ClusterGroupName,omitnil,omitempty" name:"ClusterGroupName"`
+
+	// <p>cu</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCpu *float64 `json:"TotalCpu,omitnil,omitempty" name:"TotalCpu"`
+
+	// <p>使用Mem</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalMem *float64 `json:"TotalMem,omitnil,omitempty" name:"TotalMem"`
+
+	// <p>空间Id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// <p>空间名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkSpaceName *string `json:"WorkSpaceName,omitnil,omitempty" name:"WorkSpaceName"`
+
+	// <p>标签列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>采集日志配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogConfig *string `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
+
+	// <p>更新用户</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateUin *string `json:"UpdateUin,omitnil,omitempty" name:"UpdateUin"`
 }
 
 type ClusterVersion struct {
@@ -6531,6 +6575,14 @@ type Setats struct {
 
 	// <p>集群隔离时间，0为7天，1为15天</p>
 	IsolationPolicyVersion *int64 `json:"IsolationPolicyVersion,omitnil,omitempty" name:"IsolationPolicyVersion"`
+
+	// <p>安全组信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// <p>网络信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CCNs []*CCN `json:"CCNs,omitnil,omitempty" name:"CCNs"`
 }
 
 type SetatsCvmInfo struct {
@@ -7118,6 +7170,10 @@ type Warehouse struct {
 
 	// <p>hive cata 类型</p>
 	HiveCatalogType *uint64 `json:"HiveCatalogType,omitnil,omitempty" name:"HiveCatalogType"`
+
+	// <p>流湖托管通serialId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSerialId *string `json:"StorageSerialId,omitnil,omitempty" name:"StorageSerialId"`
 }
 
 type WorkSpaceClusterItem struct {

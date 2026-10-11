@@ -1688,6 +1688,81 @@ func (r *DescribeMarkEssayAgentJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMultimodalDocParseJobRequestParams struct {
+	// <p>解析任务ID。由创建任务接口返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeMultimodalDocParseJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>解析任务ID。由创建任务接口返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeMultimodalDocParseJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultimodalDocParseJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMultimodalDocParseJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMultimodalDocParseJobResponseParams struct {
+	// <p>任务状态。取值：</p><ul><li>Created：已创建，等待处理</li><li>Processing：处理中</li><li>Success：成功</li><li>Failed：失败</li><li>Unknown：未知</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>任务执行错误码。当任务状态不为 Failed 时，该值为“”。</p>
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>任务执行错误信息。当任务状态不为 Failed 时，该值为“”。</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// <p>结果的临时下载地址。文件类型为 zip 压缩包，下载链接有效期 30 分钟。压缩包内包含 <em>.md、</em>.json 以及 images 文件夹。仅当任务状态为 Success 时返回该字段。</p>
+	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
+
+	// <p>解析失败的页码列表。仅当任务状态为 Success 时返回该字段。</p>
+	FailedPages []*ReconstructDocumentFailedPage `json:"FailedPages,omitnil,omitempty" name:"FailedPages"`
+
+	// <p>解析成功页数。</p>
+	SuccessPageNum *int64 `json:"SuccessPageNum,omitnil,omitempty" name:"SuccessPageNum"`
+
+	// <p>解析失败页数。</p>
+	FailPageNum *int64 `json:"FailPageNum,omitnil,omitempty" name:"FailPageNum"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMultimodalDocParseJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMultimodalDocParseJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeMultimodalDocParseJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultimodalDocParseJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeQuestionMarkAgentJobRequestParams struct {
 	// 任务唯一ID。由服务端生成。	
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -7292,16 +7367,16 @@ type RailwayTicketInfo struct {
 }
 
 type ReasoningConfig struct {
-	// <p>实际使用的推理输出模式：enum 或 string。</p>
+	// <p>推理输出模式。可选值：enum（枚举值输出）、string（自由文本输出）。<br>enum：VLM 必须从 EnumValues 中选择一个值输出，适用于二值判断或分类决策。<br>string：VLM 输出自由文本，适用于需要自然语言解释的场景。</p>
 	OutputMode *string `json:"OutputMode,omitnil,omitempty" name:"OutputMode"`
 
-	// <p>枚举值集合，仅在 OutputMode=enum 时生效。  VLM 输出必须精确命中此集合中的某个值。</p>
+	// <p>枚举值集合，仅在 OutputMode=enum 时生效，设置后VLM推理结果必须精确命中此集合中的某个值，否则会返回“输出偏离枚举值”，Prompt中的指令应与枚举值匹配。</p>
 	EnumValues []*string `json:"EnumValues,omitnil,omitempty" name:"EnumValues"`
 
-	// <p>文本输出最大长度，仅在 OutputMode=string 时生效。</p><p>取值范围：[1, 500]</p><p>默认值：200</p>
+	// <p>文本输出最大长度，仅在 OutputMode=string 时生效。</p><p>取值范围：[1, 500]</p>
 	MaxLength *int64 `json:"MaxLength,omitnil,omitempty" name:"MaxLength"`
 
-	// <p>是否在推理调用时向 VLM 传入原图进行多模态理解。  true（默认）：VLM 同时接收原图和渲染后的 Prompt，具备多模态理解能力，可直接&quot;看&quot;图片内容进行推理。  false：不传入原图，仅以渲染后的 Prompt（含变量注入值）进行纯文本推理。适用于推理逻辑完全基于结构化出参字段（如水印文字、置信度比较等）的场景，可降低推理延迟和计费成本。  建议：当 ReasoningPrompt 中未涉及&quot;观察图片&quot;、&quot;直接看图&quot;等多模态指令，且推理规则完全基于 ${变量名} 引用的文字结果时，可设为 false 以优化性能。</p>
+	// <p>是否在推理时向 VLM 传入原图进行多模态理解，不传入时默认为true。<br>true：VLM 同时接收原图和渲染后的 Prompt，具备多模态理解能力，可直接&quot;看&quot;图片内容进行推理。<br>false：不传入原图，仅以渲染后的 Prompt（含变量注入值）进行纯文本推理，适用于推理逻辑完全基于结构化出参字段（如水印文字、置信度比较等）的场景。<br>建议：当 ReasoningPrompt 中未涉及&quot;观察图片&quot;、&quot;分析图片&quot;等多模态指令，推理规则完全基于 ${变量名} 引用的文字结果时，可设为 false 以获得更低的延迟。</p>
 	EnableImageInput *bool `json:"EnableImageInput,omitnil,omitempty" name:"EnableImageInput"`
 }
 
@@ -7309,16 +7384,16 @@ type ReasoningResult struct {
 	// <p>实际使用的推理输出模式：enum 或 string。</p>
 	OutputMode *string `json:"OutputMode,omitnil,omitempty" name:"OutputMode"`
 
-	// <p>枚举模式下的推理结果值。当 OutputMode=enum 时返回，必定命中请求中 EnumValues 的某个值。 若 VLM 输出无法匹配任何枚举值，则返回 <strong>UNCERTAIN</strong>。</p>
+	// <p>枚举模式下的推理结果值。当 OutputMode=enum 时返回，取值对应请求中配置的 EnumValues。</p>
 	EnumValue *string `json:"EnumValue,omitnil,omitempty" name:"EnumValue"`
 
-	// <p>文本模式下的推理结果值。当 OutputMode=string 时返回。 若 VLM 无法得出结论，则返回 <strong>UNCERTAIN</strong>。</p>
+	// <p>文本模式下的推理结果值。当 OutputMode=string 时返回，以文本形式描述推理结论。</p>
 	TextValue *string `json:"TextValue,omitnil,omitempty" name:"TextValue"`
 
-	// <p>VLM 原始输出文本（未经过结构化校验）。</p>
+	// <p>VLM 原始输出文本（未经过结构化校验）。该字段仅用于调试，生产环境可忽略。</p>
 	RawOutput *string `json:"RawOutput,omitnil,omitempty" name:"RawOutput"`
 
-	// <p>变量替换后的实际 Prompt（脱敏后）。</p>
+	// <p>变量替换后的用户 Prompt 文本。该字段仅用于调试，生产环境可忽略。</p>
 	RenderedPrompt *string `json:"RenderedPrompt,omitnil,omitempty" name:"RenderedPrompt"`
 }
 
@@ -8652,6 +8727,11 @@ func (r *RecognizeValidIDCardOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ReconstructDocumentFailedPage struct {
+	// <p>解析失败页数。</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
 type Rect struct {
 	// <p>左上角x</p>
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
@@ -8701,6 +8781,14 @@ type RequestIdInfo struct {
 
 	// 告警码
 	WarnCodes []*int64 `json:"WarnCodes,omitnil,omitempty" name:"WarnCodes"`
+}
+
+type RerankResult struct {
+	// 文档在输入 Docs 列表中的索引，从 0 开始，用于回溯原文档。
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 文档与查询内容的相关性得分，数值越大越相关。
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
 }
 
 // Predefined struct for user
@@ -9073,6 +9161,77 @@ func (r *RideHailingTransportLicenseOCRResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RideHailingTransportLicenseOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunRerankRequestParams struct {
+	// <p>选择模型。<br>0：Rerank-2b<br>1：Rerank-0.6b</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>查询内容。用于匹配的query，即用户检索意图。</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>文档内容列表。</p>
+	Docs []*string `json:"Docs,omitnil,omitempty" name:"Docs"`
+}
+
+type RunRerankRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>选择模型。<br>0：Rerank-2b<br>1：Rerank-0.6b</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>查询内容。用于匹配的query，即用户检索意图。</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>文档内容列表。</p>
+	Docs []*string `json:"Docs,omitnil,omitempty" name:"Docs"`
+}
+
+func (r *RunRerankRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunRerankRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Model")
+	delete(f, "Query")
+	delete(f, "Docs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunRerankRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunRerankResponseParams struct {
+	// <p>重排序后的结果列表，按相关性得分从高到低排列。</p>
+	Results []*RerankResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RunRerankResponse struct {
+	*tchttp.BaseResponse
+	Response *RunRerankResponseParams `json:"Response"`
+}
+
+func (r *RunRerankResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunRerankResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9771,6 +9930,112 @@ func (r *SubmitMarkEssayAgentJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitMarkEssayAgentJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitMultimodalDocParseJobRequestParams struct {
+	// <p>支持解析的文件类型。取值：</p><ul><li>1：PDF 文档</li><li>2：Word 文档（.doc/.docx）</li><li>3：PPT 演示文稿（.ppt/.pptx）</li><li>4：Excel 表格（.xls/.xlsx）</li><li>5：Markdown 文档（.md）</li><li>6：纯文本文件（.txt）</li><li>7：图片文件（.png/.jpg/.jpeg 等）</li><li>8：WPS 文档<br>支持的文件大小：PDF/WORD/PPT 支持 150M 且 300 页。</li></ul>
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// <p>文件的 Url 地址，支持 FileType 参数对应的文件格式及大小。文件下载时间不超过 3 秒。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// <p>文件的 Base64 值。支持 FileType 参数对应的文件格式，支持的文件大小不超过 8M。文件下载时间不超过 3 秒。<br>文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。</p>
+	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
+
+	// <p>输出格式。<br>1：json格式<br>2：markdown格式<br>3：xml格式<br>9：json+markdown+xml格式</p>
+	ResultType *int64 `json:"ResultType,omitnil,omitempty" name:"ResultType"`
+
+	// <p>是否开启子图提取，默认为 false。</p>
+	EnableSubImg *bool `json:"EnableSubImg,omitnil,omitempty" name:"EnableSubImg"`
+
+	// <p>文档的起始页码。用来指定识别的起始页码，识别的页码包含当前值，不填时默认从文档第一页开始解析。本参数与 FileEndPageNumber 可分开填写，也可只填其中一个。</p>
+	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
+
+	// <p>文档的结束页码。用来指定识别的结束页码，识别的页码包含当前值，不填时默认解析到文档最后一页。本参数与 FileStartPageNumber 可分开填写，也可只填其中一个。</p>
+	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
+
+	// <p>任务类型，默认为 0。取值：</p><ul><li>0：默认</li><li>1：Free OCR</li><li>2：OCR</li><li>3：表格识别</li><li>4：代码识别</li></ul>
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+}
+
+type SubmitMultimodalDocParseJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>支持解析的文件类型。取值：</p><ul><li>1：PDF 文档</li><li>2：Word 文档（.doc/.docx）</li><li>3：PPT 演示文稿（.ppt/.pptx）</li><li>4：Excel 表格（.xls/.xlsx）</li><li>5：Markdown 文档（.md）</li><li>6：纯文本文件（.txt）</li><li>7：图片文件（.png/.jpg/.jpeg 等）</li><li>8：WPS 文档<br>支持的文件大小：PDF/WORD/PPT 支持 150M 且 300 页。</li></ul>
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// <p>文件的 Url 地址，支持 FileType 参数对应的文件格式及大小。文件下载时间不超过 3 秒。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// <p>文件的 Base64 值。支持 FileType 参数对应的文件格式，支持的文件大小不超过 8M。文件下载时间不超过 3 秒。<br>文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。</p>
+	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
+
+	// <p>输出格式。<br>1：json格式<br>2：markdown格式<br>3：xml格式<br>9：json+markdown+xml格式</p>
+	ResultType *int64 `json:"ResultType,omitnil,omitempty" name:"ResultType"`
+
+	// <p>是否开启子图提取，默认为 false。</p>
+	EnableSubImg *bool `json:"EnableSubImg,omitnil,omitempty" name:"EnableSubImg"`
+
+	// <p>文档的起始页码。用来指定识别的起始页码，识别的页码包含当前值，不填时默认从文档第一页开始解析。本参数与 FileEndPageNumber 可分开填写，也可只填其中一个。</p>
+	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
+
+	// <p>文档的结束页码。用来指定识别的结束页码，识别的页码包含当前值，不填时默认解析到文档最后一页。本参数与 FileStartPageNumber 可分开填写，也可只填其中一个。</p>
+	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
+
+	// <p>任务类型，默认为 0。取值：</p><ul><li>0：默认</li><li>1：Free OCR</li><li>2：OCR</li><li>3：表格识别</li><li>4：代码识别</li></ul>
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+}
+
+func (r *SubmitMultimodalDocParseJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitMultimodalDocParseJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileType")
+	delete(f, "FileUrl")
+	delete(f, "FileBase64")
+	delete(f, "ResultType")
+	delete(f, "EnableSubImg")
+	delete(f, "FileStartPageNumber")
+	delete(f, "FileEndPageNumber")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitMultimodalDocParseJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitMultimodalDocParseJobResponseParams struct {
+	// <p>任务唯一 ID。30天内可以通过DescribeMultimodalDocParseJob接口查询TaskId对应的处理结果。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitMultimodalDocParseJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitMultimodalDocParseJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitMultimodalDocParseJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitMultimodalDocParseJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12786,10 +13051,10 @@ type VerifyScenePhotoRequestParams struct {
 	// <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照    </p><p><strong>车牌业务照</strong><br>0201 车牌</p>
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
-	// <p>鉴伪模式，目前支持以下模式，对应支持不同的入参、出参。<br>Image：图像鉴伪模式，根据图像分析输出告警提示，支持推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。每次调用按1次调用计费。<br>Video：视频鉴伪模式，根据视频分析输出告警提示，不支持推理，支持屏幕翻拍提示。每次调用按1次调用计费。<br>Hybrid：混合鉴伪模式，综合图像、视频分析输出告警提示，支持推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。每次调用按2次调用计费。</p>
+	// <p>鉴伪模式，目前支持以下模式，对应支持不同的入参、出参，默认值为Image。<br>Image：图像鉴伪模式，根据图像分析输出告警提示，支持自定义推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。<strong>每次调用按1次调用计费</strong>。<br>Video：视频鉴伪模式，根据视频分析输出告警提示，不支持自定义推理，支持屏幕翻拍提示。<strong>每次调用按1次调用计费</strong>。<br>Hybrid：混合鉴伪模式，综合图像、视频分析输出告警提示，支持自定义推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。<strong>每次调用按2次调用计费</strong>。</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// <p>视频的 Url 地址。格式支持：xxxxxx。要求视频不超过 100M。建议视频时长不小于1s。</p>
+	// <p>视频的 Url 地址。格式支持：mp4、avi、mov、mkv、webm，要求视频不超过 100M。建议视频时长不小于1s。</p>
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
 	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
@@ -12798,7 +13063,7 @@ type VerifyScenePhotoRequestParams struct {
 	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// <p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–2000 字符</p>
+	// <p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–3000 字符</p>
 	ReasoningPrompt *string `json:"ReasoningPrompt,omitnil,omitempty" name:"ReasoningPrompt"`
 
 	// <p>推理输出配置。当 ReasoningPrompt 传入时建议同步传入，未传入时使用默认配置（OutputMode=enum, EnumValues=[&quot;true&quot;,&quot;false&quot;], EnableImageInput=true）。</p>
@@ -12814,10 +13079,10 @@ type VerifyScenePhotoRequest struct {
 	// <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照    </p><p><strong>车牌业务照</strong><br>0201 车牌</p>
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
-	// <p>鉴伪模式，目前支持以下模式，对应支持不同的入参、出参。<br>Image：图像鉴伪模式，根据图像分析输出告警提示，支持推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。每次调用按1次调用计费。<br>Video：视频鉴伪模式，根据视频分析输出告警提示，不支持推理，支持屏幕翻拍提示。每次调用按1次调用计费。<br>Hybrid：混合鉴伪模式，综合图像、视频分析输出告警提示，支持推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。每次调用按2次调用计费。</p>
+	// <p>鉴伪模式，目前支持以下模式，对应支持不同的入参、出参，默认值为Image。<br>Image：图像鉴伪模式，根据图像分析输出告警提示，支持自定义推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。<strong>每次调用按1次调用计费</strong>。<br>Video：视频鉴伪模式，根据视频分析输出告警提示，不支持自定义推理，支持屏幕翻拍提示。<strong>每次调用按1次调用计费</strong>。<br>Hybrid：混合鉴伪模式，综合图像、视频分析输出告警提示，支持自定义推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。<strong>每次调用按2次调用计费</strong>。</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// <p>视频的 Url 地址。格式支持：xxxxxx。要求视频不超过 100M。建议视频时长不小于1s。</p>
+	// <p>视频的 Url 地址。格式支持：mp4、avi、mov、mkv、webm，要求视频不超过 100M。建议视频时长不小于1s。</p>
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
 	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
@@ -12826,7 +13091,7 @@ type VerifyScenePhotoRequest struct {
 	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// <p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–2000 字符</p>
+	// <p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–3000 字符</p>
 	ReasoningPrompt *string `json:"ReasoningPrompt,omitnil,omitempty" name:"ReasoningPrompt"`
 
 	// <p>推理输出配置。当 ReasoningPrompt 传入时建议同步传入，未传入时使用默认配置（OutputMode=enum, EnumValues=[&quot;true&quot;,&quot;false&quot;], EnableImageInput=true）。</p>

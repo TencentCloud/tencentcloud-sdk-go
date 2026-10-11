@@ -14910,52 +14910,52 @@ func (r *ModifyPrometheusAlertPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyPrometheusConfigRequestParams struct {
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集群类型
+	// <p>集群类型</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// ServiceMonitors配置
+	// <p>ServiceMonitors配置</p>
 	ServiceMonitors []*PrometheusConfigItem `json:"ServiceMonitors,omitnil,omitempty" name:"ServiceMonitors"`
 
-	// PodMonitors配置
+	// <p>PodMonitors配置</p>
 	PodMonitors []*PrometheusConfigItem `json:"PodMonitors,omitnil,omitempty" name:"PodMonitors"`
 
-	// prometheus原生Job配置
+	// <p>prometheus原生Job配置</p>
 	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitnil,omitempty" name:"RawJobs"`
 
-	// 0: 更新实例组件镜像版本；
-	// 1: 不更新实例组件镜像版本
+	// <p>0: 更新实例组件镜像版本；<br>1: 不更新实例组件镜像版本</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+	//
+	// Deprecated: UpdateImage is deprecated.
 	UpdateImage *int64 `json:"UpdateImage,omitnil,omitempty" name:"UpdateImage"`
 }
 
 type ModifyPrometheusConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集群类型
+	// <p>集群类型</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// ServiceMonitors配置
+	// <p>ServiceMonitors配置</p>
 	ServiceMonitors []*PrometheusConfigItem `json:"ServiceMonitors,omitnil,omitempty" name:"ServiceMonitors"`
 
-	// PodMonitors配置
+	// <p>PodMonitors配置</p>
 	PodMonitors []*PrometheusConfigItem `json:"PodMonitors,omitnil,omitempty" name:"PodMonitors"`
 
-	// prometheus原生Job配置
+	// <p>prometheus原生Job配置</p>
 	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitnil,omitempty" name:"RawJobs"`
 
-	// 0: 更新实例组件镜像版本；
-	// 1: 不更新实例组件镜像版本
+	// <p>0: 更新实例组件镜像版本；<br>1: 不更新实例组件镜像版本</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
 	UpdateImage *int64 `json:"UpdateImage,omitnil,omitempty" name:"UpdateImage"`
 }
 

@@ -1559,6 +1559,204 @@ func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateInstanceRoleRequestParams struct {
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>角色名</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>角色所属db</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>权限</p>
+	Privileges []*RolePrivilege `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+
+	// <p>继承角色</p>
+	InheritedRoles []*Role `json:"InheritedRoles,omitnil,omitempty" name:"InheritedRoles"`
+}
+
+type CreateInstanceRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>角色名</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>角色所属db</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>权限</p>
+	Privileges []*RolePrivilege `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+
+	// <p>继承角色</p>
+	InheritedRoles []*Role `json:"InheritedRoles,omitnil,omitempty" name:"InheritedRoles"`
+}
+
+func (r *CreateInstanceRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstanceRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RoleName")
+	delete(f, "Database")
+	delete(f, "Privileges")
+	delete(f, "InheritedRoles")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInstanceRoleResponseParams struct {
+	// <p>任务id</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateInstanceRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateInstanceRoleResponseParams `json:"Response"`
+}
+
+func (r *CreateInstanceRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstanceRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInstanceUserRequestParams struct {
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>用户名</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>密码</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>加密后的密码（与Password二选一）</p>
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
+
+	// <p>认证数据库（用户所属数据库）</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>角色列表（新方式，可包含内置角色和自定义角色）</p>
+	Roles []*Role `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// <p>权限列表（旧方式）</p>
+	AuthRole []*Auth `json:"AuthRole,omitnil,omitempty" name:"AuthRole"`
+
+	// <p>自定义描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否开启密码轮转（0-不开启，1-开启）</p>
+	EnablePasswordRotation *int64 `json:"EnablePasswordRotation,omitnil,omitempty" name:"EnablePasswordRotation"`
+}
+
+type CreateInstanceUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>用户名</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>密码</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>加密后的密码（与Password二选一）</p>
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
+
+	// <p>认证数据库（用户所属数据库）</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>角色列表（新方式，可包含内置角色和自定义角色）</p>
+	Roles []*Role `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// <p>权限列表（旧方式）</p>
+	AuthRole []*Auth `json:"AuthRole,omitnil,omitempty" name:"AuthRole"`
+
+	// <p>自定义描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否开启密码轮转（0-不开启，1-开启）</p>
+	EnablePasswordRotation *int64 `json:"EnablePasswordRotation,omitnil,omitempty" name:"EnablePasswordRotation"`
+}
+
+func (r *CreateInstanceUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstanceUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UserName")
+	delete(f, "Password")
+	delete(f, "EncryptedPassword")
+	delete(f, "Database")
+	delete(f, "Roles")
+	delete(f, "AuthRole")
+	delete(f, "Description")
+	delete(f, "EnablePasswordRotation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInstanceUserResponseParams struct {
+	// <p>异步任务ID</p>
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateInstanceUserResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateInstanceUserResponseParams `json:"Response"`
+}
+
+func (r *CreateInstanceUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstanceUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateLogDownloadTaskRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -2025,6 +2223,148 @@ func (r *DeleteDBBackupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDBBackupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteInstanceRoleRequestParams struct {
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>角色名</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>角色所属数据库</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+}
+
+type DeleteInstanceRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>角色名</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>角色所属数据库</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+}
+
+func (r *DeleteInstanceRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInstanceRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RoleName")
+	delete(f, "Database")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteInstanceRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteInstanceRoleResponseParams struct {
+	// <p>任务id</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteInstanceRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteInstanceRoleResponseParams `json:"Response"`
+}
+
+func (r *DeleteInstanceRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInstanceRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteInstanceUserRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>用户名</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>认证数据库</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+}
+
+type DeleteInstanceUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>用户名</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>认证数据库</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+}
+
+func (r *DeleteInstanceUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInstanceUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UserName")
+	delete(f, "Database")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteInstanceUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteInstanceUserResponseParams struct {
+	// <p>流程ID</p>
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteInstanceUserResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteInstanceUserResponseParams `json:"Response"`
+}
+
+func (r *DeleteInstanceUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInstanceUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4137,6 +4477,122 @@ func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceRolesRequestParams struct {
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>数据库名，为空则查询所有数据库的角色</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>角色类型：builtin_database-内置数据库角色，builtin_cluster-内置集群角色，custom-自定义角色，为空则查询所有</p>
+	RoleType []*string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// <p>角色名称，为空则查询所有角色</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>通用搜索关键字，模糊匹配继承角色和权限相关数据库名、角色名、Action名等</p>
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// <p>排序字段，支持：RoleName，默认为 RoleName</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方式：asc-升序，desc-降序，默认为 asc</p>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>分页偏移量，默认为 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量，默认为 20，最大 100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeInstanceRolesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>数据库名，为空则查询所有数据库的角色</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>角色类型：builtin_database-内置数据库角色，builtin_cluster-内置集群角色，custom-自定义角色，为空则查询所有</p>
+	RoleType []*string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// <p>角色名称，为空则查询所有角色</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>通用搜索关键字，模糊匹配继承角色和权限相关数据库名、角色名、Action名等</p>
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// <p>排序字段，支持：RoleName，默认为 RoleName</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方式：asc-升序，desc-降序，默认为 asc</p>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>分页偏移量，默认为 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量，默认为 20，最大 100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeInstanceRolesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceRolesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Database")
+	delete(f, "RoleType")
+	delete(f, "RoleName")
+	delete(f, "SearchKey")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceRolesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceRolesResponseParams struct {
+	// <p>总数</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>角色列表</p>
+	Roles []*RoleInfo `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceRolesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceRolesResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceRolesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceRolesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceSSLRequestParams struct {
 	// <p>实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4199,6 +4655,108 @@ func (r *DescribeInstanceSSLResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceSSLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceUsersRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>用户名，为空则查询所有用户</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>数据库名，为空则查询所有数据库的账号</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>排序字段，可选值：UserName；不传则默认按 UserName 排序</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方式，可选值：asc（升序）、desc（降序），默认 asc</p>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>分页偏移量，默认为 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量，默认为 20，最大 100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeInstanceUsersRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>用户名，为空则查询所有用户</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>数据库名，为空则查询所有数据库的账号</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>排序字段，可选值：UserName；不传则默认按 UserName 排序</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方式，可选值：asc（升序）、desc（降序），默认 asc</p>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>分页偏移量，默认为 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量，默认为 20，最大 100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeInstanceUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UserName")
+	delete(f, "Database")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceUsersResponseParams struct {
+	// <p>账号列表</p>
+	Users []*InstanceUserInfo `json:"Users,omitnil,omitempty" name:"Users"`
+
+	// <p>总数</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceUsersResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceUsersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6314,6 +6872,35 @@ type InstanceTextParam struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
+type InstanceUserInfo struct {
+	// <p>用户名</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>认证数据库</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>角色列表（新方式）</p>
+	Roles []*Role `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// <p>权限列表（老方式）</p>
+	AuthRole []*Auth `json:"AuthRole,omitnil,omitempty" name:"AuthRole"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>控制台密码更新时间</p>
+	ConsolePassUpdateTime *string `json:"ConsolePassUpdateTime,omitnil,omitempty" name:"ConsolePassUpdateTime"`
+
+	// <p>是否开启密码轮转</p>
+	EnablePasswordRotation *int64 `json:"EnablePasswordRotation,omitnil,omitempty" name:"EnablePasswordRotation"`
+
+	// <p>自定义描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
 // Predefined struct for user
 type IsolateDBInstanceRequestParams struct {
 	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制需隔离的实例 ID。
@@ -8066,6 +8653,50 @@ type RestoreDatabases struct {
 	Collections []*RestoreCollection `json:"Collections,omitnil,omitempty" name:"Collections"`
 }
 
+type Role struct {
+	// <p>角色名</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>角色所属db</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+}
+
+type RoleInfo struct {
+	// <p>角色名称</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>角色所属数据库</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>角色类型：builtin_database-内置数据库角色，builtin_cluster-内置集群角色，custom-自定义角色</p>
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// <p>授予的权限</p>
+	Privileges []*RolePrivilege `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+
+	// <p>继承的角色</p>
+	InheritedRoles []*Role `json:"InheritedRoles,omitnil,omitempty" name:"InheritedRoles"`
+}
+
+type RolePrivilege struct {
+	// <p>资源</p>
+	Resource *RoleResource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// <p>动作</p>
+	Actions []*string `json:"Actions,omitnil,omitempty" name:"Actions"`
+}
+
+type RoleResource struct {
+	// <p>是否集群级资源</p>
+	Cluster *bool `json:"Cluster,omitnil,omitempty" name:"Cluster"`
+
+	// <p>db名</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>collection名</p>
+	Collection *string `json:"Collection,omitnil,omitempty" name:"Collection"`
+}
+
 // Predefined struct for user
 type ScaleDownDBInstanceCpuRequestParams struct {
 	// <p>实例ID</p>
@@ -8848,6 +9479,197 @@ func (r *TerminateDBInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TerminateDBInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateInstanceRoleRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>角色名称</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>角色所属数据库</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>角色权限列表，不传则不修改</p>
+	Privileges []*RolePrivilege `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+
+	// <p>角色列表，不传则不修改</p>
+	InheritedRoles []*Role `json:"InheritedRoles,omitnil,omitempty" name:"InheritedRoles"`
+}
+
+type UpdateInstanceRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>角色名称</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>角色所属数据库</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>角色权限列表，不传则不修改</p>
+	Privileges []*RolePrivilege `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+
+	// <p>角色列表，不传则不修改</p>
+	InheritedRoles []*Role `json:"InheritedRoles,omitnil,omitempty" name:"InheritedRoles"`
+}
+
+func (r *UpdateInstanceRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateInstanceRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RoleName")
+	delete(f, "Database")
+	delete(f, "Privileges")
+	delete(f, "InheritedRoles")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateInstanceRoleResponseParams struct {
+	// <p>任务id</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateInstanceRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateInstanceRoleResponseParams `json:"Response"`
+}
+
+func (r *UpdateInstanceRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateInstanceRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateInstanceUserRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>用户名</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>认证数据库</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>新密码（可选，为空则不修改密码）</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>加密后的密码（可选，与Password二选一）</p>
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
+
+	// <p>新的角色列表（可选，为空则不修改角色）</p>
+	Roles []*Role `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// <p>新的权限列表（可选，为空则不修改权限）</p>
+	AuthRole []*Auth `json:"AuthRole,omitnil,omitempty" name:"AuthRole"`
+
+	// <p>用户描述（可选，为空则不修改描述）</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type UpdateInstanceUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>用户名</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>认证数据库</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>新密码（可选，为空则不修改密码）</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>加密后的密码（可选，与Password二选一）</p>
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
+
+	// <p>新的角色列表（可选，为空则不修改角色）</p>
+	Roles []*Role `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// <p>新的权限列表（可选，为空则不修改权限）</p>
+	AuthRole []*Auth `json:"AuthRole,omitnil,omitempty" name:"AuthRole"`
+
+	// <p>用户描述（可选，为空则不修改描述）</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *UpdateInstanceUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateInstanceUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UserName")
+	delete(f, "Database")
+	delete(f, "Password")
+	delete(f, "EncryptedPassword")
+	delete(f, "Roles")
+	delete(f, "AuthRole")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateInstanceUserResponseParams struct {
+	// <p>流程ID</p>
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateInstanceUserResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateInstanceUserResponseParams `json:"Response"`
+}
+
+func (r *UpdateInstanceUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateInstanceUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

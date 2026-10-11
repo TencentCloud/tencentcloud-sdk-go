@@ -50,6 +50,12 @@ const (
 	// 运行工作流返回的执行ID为空
 	FAILEDOPERATION_RUNWORKFLOWFAILEXECUTIONIDEMPTY = "FailedOperation.RunWorkflowFailExecutionIdEmpty"
 
+	// 服务内部错误
+	FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+
+	// 腾讯云SDK请求报错
+	FAILEDOPERATION_TENCENTCLOUDSDKERROR = "FailedOperation.TencentCloudSDKError"
+
 	// 更新工作流失败
 	FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
 
@@ -77,6 +83,9 @@ const (
 	// 操作失败
 	INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 
+	// 接口繁忙，请稍后重试
+	INTERNALERROR_INTERFACECALLERROR = "InternalError.InterfaceCallError"
+
 	// 参数不合法
 	INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
 
@@ -98,11 +107,23 @@ const (
 	// 无效参数
 	INVALIDPARAMETER_INVALIDPARAMSERROR = "InvalidParameter.InvalidParamsError"
 
+	// JWT认证失败
+	INVALIDPARAMETER_JWTAUTHFAILURE = "InvalidParameter.JWTAuthFailure"
+
+	// 用户不存在
+	INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
 	// 同一工作流内存在重名任务
 	INVALIDPARAMETERVALUE_DUPLICATETASKNAMEERROR = "InvalidParameterValue.DuplicateTaskNameError"
+
+	// 用户组Id不存在
+	INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+
+	// 用户组ID无效
+	INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
 
 	// 参数错误
 	INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
@@ -176,6 +197,18 @@ const (
 	// 已达自定义角色数量上限
 	LIMITEXCEEDED_CUSTOMROLEQUOTA = "LimitExceeded.CustomRoleQuota"
 
+	// 当前租户 Setats Catalog 数量已达上限（最多5个）
+	LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
+
+	// 用户组成员数超过工作空间上限
+	LIMITEXCEEDED_WORKSPACEGROUPMEMBERQUOTA = "LimitExceeded.WorkspaceGroupMemberQuota"
+
+	// 已达工作空间用户组数量上限
+	LIMITEXCEEDED_WORKSPACEGROUPQUOTA = "LimitExceeded.WorkspaceGroupQuota"
+
+	// 已达工作空间用户数量上限
+	LIMITEXCEEDED_WORKSPACEUSERQUOTA = "LimitExceeded.WorkspaceUserQuota"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
@@ -206,6 +239,9 @@ const (
 	// 指定的Schema不存在
 	RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
 
+	// 指定的表不存在
+	RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
+
 	// 任务运行不存在
 	RESOURCENOTFOUND_TASKEXECUTIONNOTEXIST = "ResourceNotFound.TaskExecutionNotExist"
 
@@ -226,6 +262,12 @@ const (
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"
+
+	// 系统组不支持删除
+	UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+
+	// 系统组不支持修改
+	UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
 
 	// 工作流运行已到达终态，不可终止
 	UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"

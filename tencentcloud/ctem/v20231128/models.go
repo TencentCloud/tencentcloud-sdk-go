@@ -6856,6 +6856,12 @@ type DisplayConfig struct {
 
 	// <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
 	AggregationCount *int64 `json:"AggregationCount,omitnil,omitempty" name:"AggregationCount"`
+
+	// <p>状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>最近检测时间</p>
+	LastCheckTime *string `json:"LastCheckTime,omitnil,omitempty" name:"LastCheckTime"`
 }
 
 type DisplayDarkWeb struct {
@@ -7505,6 +7511,12 @@ type DisplaySensitiveInfo struct {
 
 	// <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
 	AggregationCount *int64 `json:"AggregationCount,omitnil,omitempty" name:"AggregationCount"`
+
+	// <p>状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>最近检测时间</p>
+	LastCheckTime *string `json:"LastCheckTime,omitnil,omitempty" name:"LastCheckTime"`
 }
 
 type DisplaySubDomain struct {

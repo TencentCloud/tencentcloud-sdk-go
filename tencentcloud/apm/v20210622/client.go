@@ -1513,6 +1513,86 @@ func (c *Client) DescribeServiceOverviewWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeSpanTreeByIDRequest() (request *DescribeSpanTreeByIDRequest) {
+    request = &DescribeSpanTreeByIDRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeSpanTreeByID")
+    
+    
+    return
+}
+
+func NewDescribeSpanTreeByIDResponse() (response *DescribeSpanTreeByIDResponse) {
+    response = &DescribeSpanTreeByIDResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSpanTreeByID
+// 查询trace详情接口信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INVALIDQUERYTIMEINTERVAL = "FailedOperation.InvalidQueryTimeInterval"
+//  FAILEDOPERATION_ITEMNOTFOUND = "FailedOperation.ItemNotFound"
+//  FAILEDOPERATION_QUERYTIMEINTERVALCONFLICT = "FailedOperation.QueryTimeIntervalConflict"
+//  FAILEDOPERATION_QUERYTRACEISEMPTY = "FailedOperation.QueryTraceIsEmpty"
+//  FAILEDOPERATION_SHORTQUERYTIME = "FailedOperation.ShortQueryTime"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSpanTreeByID(request *DescribeSpanTreeByIDRequest) (response *DescribeSpanTreeByIDResponse, err error) {
+    return c.DescribeSpanTreeByIDWithContext(context.Background(), request)
+}
+
+// DescribeSpanTreeByID
+// 查询trace详情接口信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INVALIDQUERYTIMEINTERVAL = "FailedOperation.InvalidQueryTimeInterval"
+//  FAILEDOPERATION_ITEMNOTFOUND = "FailedOperation.ItemNotFound"
+//  FAILEDOPERATION_QUERYTIMEINTERVALCONFLICT = "FailedOperation.QueryTimeIntervalConflict"
+//  FAILEDOPERATION_QUERYTRACEISEMPTY = "FailedOperation.QueryTraceIsEmpty"
+//  FAILEDOPERATION_SHORTQUERYTIME = "FailedOperation.ShortQueryTime"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSpanTreeByIDWithContext(ctx context.Context, request *DescribeSpanTreeByIDRequest) (response *DescribeSpanTreeByIDResponse, err error) {
+    if request == nil {
+        request = NewDescribeSpanTreeByIDRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeSpanTreeByID")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSpanTreeByID require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSpanTreeByIDResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTagValuesRequest() (request *DescribeTagValuesRequest) {
     request = &DescribeTagValuesRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -6534,6 +6534,74 @@ type DeviceMaterialInfo struct {
 	MaterialInfo *MaterialInfo `json:"MaterialInfo,omitnil,omitempty" name:"MaterialInfo"`
 }
 
+// Predefined struct for user
+type EnableTrainingTaskClsConfigRequestParams struct {
+	// 训练任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 是否开启CLS日志投递
+	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
+
+	// 日志配置
+	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
+}
+
+type EnableTrainingTaskClsConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 训练任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 是否开启CLS日志投递
+	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
+
+	// 日志配置
+	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
+}
+
+func (r *EnableTrainingTaskClsConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableTrainingTaskClsConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "LogEnable")
+	delete(f, "LogConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableTrainingTaskClsConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableTrainingTaskClsConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableTrainingTaskClsConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableTrainingTaskClsConfigResponseParams `json:"Response"`
+}
+
+func (r *EnableTrainingTaskClsConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableTrainingTaskClsConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EncodedStartCmdInfo struct {
 	// 任务的启动命令，以base64格式输入，注意转换时需要完整输入{"StartCmd":"","PsStartCmd":"","WorkerStartCmd":""}
 	StartCmdInfo *string `json:"StartCmdInfo,omitnil,omitempty" name:"StartCmdInfo"`

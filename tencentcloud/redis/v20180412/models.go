@@ -1407,7 +1407,7 @@ type CreateInstancesRequestParams struct {
 	// <p>内部参数，标识创建实例是否需要检查。</p><ul><li>false ：默认值。发送正常请求，通过检查后直接创建实例。</li><li>true：发送检查请求，不会创建实例。</li></ul>
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// <p>指实例部署模式。</p><ul><li>local：传统架构，默认为 local。</li><li>cdc：独享集群。</li><li>cloud：云原生，当前已暂停售卖。</li></ul>
+	// <p>指实例部署类型。</p><p>枚举值：</p><ul><li>local： 通用 I 型。</li><li>localv2： 通用 II 型。</li><li>cdc： 独享集群型。</li><li>cloud： 云原生，当前已暂停售卖。</li></ul>
 	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 
 	// <p>独享集群 ID。</p><ul><li>当 <strong>ProductVersion</strong> 设置为 <strong>cdc</strong> 时，该参数必须设置。</li><li>请通过接口<a href="https://cloud.tencent.com/document/product/239/109628"> DescribeRedisClusters</a> 获取集群 ID。</li></ul>
@@ -1504,7 +1504,7 @@ type CreateInstancesRequest struct {
 	// <p>内部参数，标识创建实例是否需要检查。</p><ul><li>false ：默认值。发送正常请求，通过检查后直接创建实例。</li><li>true：发送检查请求，不会创建实例。</li></ul>
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// <p>指实例部署模式。</p><ul><li>local：传统架构，默认为 local。</li><li>cdc：独享集群。</li><li>cloud：云原生，当前已暂停售卖。</li></ul>
+	// <p>指实例部署类型。</p><p>枚举值：</p><ul><li>local： 通用 I 型。</li><li>localv2： 通用 II 型。</li><li>cdc： 独享集群型。</li><li>cloud： 云原生，当前已暂停售卖。</li></ul>
 	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 
 	// <p>独享集群 ID。</p><ul><li>当 <strong>ProductVersion</strong> 设置为 <strong>cdc</strong> 时，该参数必须设置。</li><li>请通过接口<a href="https://cloud.tencent.com/document/product/239/109628"> DescribeRedisClusters</a> 获取集群 ID。</li></ul>
@@ -11689,6 +11689,77 @@ type TradeDealDetail struct {
 
 	// 实例ID
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+// Predefined struct for user
+type UpgradeInstanceProductVersionRequestParams struct {
+	// <p>变更的目标产品类型。</p><p>枚举值：</p><ul><li>localv2： 通用 II 型</li></ul>
+	TargetProductVersion *string `json:"TargetProductVersion,omitnil,omitempty" name:"TargetProductVersion"`
+
+	// <p>切换时间。</p><ul><li>1：维护时间窗切换。</li><li>2：立即切换。</li></ul>
+	SwitchOption *int64 `json:"SwitchOption,omitnil,omitempty" name:"SwitchOption"`
+
+	// <p>指定实例 ID。例如：crs-xjhsdj****，请登录<a href="https://console.cloud.tencent.com/redis#/">Redis控制台</a>在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type UpgradeInstanceProductVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>变更的目标产品类型。</p><p>枚举值：</p><ul><li>localv2： 通用 II 型</li></ul>
+	TargetProductVersion *string `json:"TargetProductVersion,omitnil,omitempty" name:"TargetProductVersion"`
+
+	// <p>切换时间。</p><ul><li>1：维护时间窗切换。</li><li>2：立即切换。</li></ul>
+	SwitchOption *int64 `json:"SwitchOption,omitnil,omitempty" name:"SwitchOption"`
+
+	// <p>指定实例 ID。例如：crs-xjhsdj****，请登录<a href="https://console.cloud.tencent.com/redis#/">Redis控制台</a>在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *UpgradeInstanceProductVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeInstanceProductVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetProductVersion")
+	delete(f, "SwitchOption")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeInstanceProductVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeInstanceProductVersionResponseParams struct {
+	// <p>订单号。</p>
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpgradeInstanceProductVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *UpgradeInstanceProductVersionResponseParams `json:"Response"`
+}
+
+func (r *UpgradeInstanceProductVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeInstanceProductVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

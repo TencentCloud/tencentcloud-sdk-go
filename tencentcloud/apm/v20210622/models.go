@@ -820,6 +820,14 @@ type CVMMeta struct {
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
+type ChartData struct {
+	// <p>接口参数id列表</p>
+	Series []*Series `json:"Series,omitnil,omitempty" name:"Series"`
+
+	// <p>接口参数列表</p>
+	YAxis []*YAxis `json:"YAxis,omitnil,omitempty" name:"YAxis"`
+}
+
 type ComponentTopologyView struct {
 	// 服务纬度的节点数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3152,6 +3160,119 @@ func (r *DescribeServiceOverviewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSpanTreeByIDRequestParams struct {
+	// <p>业务系统 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>TraceID</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>Span查询开始时间戳（单位:秒）</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>Span查询结束时间戳（单位:秒）</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>代表请求的是否为完整瀑布图</p>
+	IsFold *bool `json:"IsFold,omitnil,omitempty" name:"IsFold"`
+
+	// <p>开启关键调用视图</p>
+	EntrySpanSelected *bool `json:"EntrySpanSelected,omitnil,omitempty" name:"EntrySpanSelected"`
+
+	// <p>关注的SpanId</p>
+	FocusSpanId *string `json:"FocusSpanId,omitnil,omitempty" name:"FocusSpanId"`
+
+	// <p>过滤视图的Tag列表</p>
+	FilterViewTagKeyList []*string `json:"FilterViewTagKeyList,omitnil,omitempty" name:"FilterViewTagKeyList"`
+
+	// <p>是否开启云资源关联</p>
+	EnableResourceLink *bool `json:"EnableResourceLink,omitnil,omitempty" name:"EnableResourceLink"`
+}
+
+type DescribeSpanTreeByIDRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>业务系统 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>TraceID</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>Span查询开始时间戳（单位:秒）</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>Span查询结束时间戳（单位:秒）</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>代表请求的是否为完整瀑布图</p>
+	IsFold *bool `json:"IsFold,omitnil,omitempty" name:"IsFold"`
+
+	// <p>开启关键调用视图</p>
+	EntrySpanSelected *bool `json:"EntrySpanSelected,omitnil,omitempty" name:"EntrySpanSelected"`
+
+	// <p>关注的SpanId</p>
+	FocusSpanId *string `json:"FocusSpanId,omitnil,omitempty" name:"FocusSpanId"`
+
+	// <p>过滤视图的Tag列表</p>
+	FilterViewTagKeyList []*string `json:"FilterViewTagKeyList,omitnil,omitempty" name:"FilterViewTagKeyList"`
+
+	// <p>是否开启云资源关联</p>
+	EnableResourceLink *bool `json:"EnableResourceLink,omitnil,omitempty" name:"EnableResourceLink"`
+}
+
+func (r *DescribeSpanTreeByIDRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpanTreeByIDRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Filters")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "IsFold")
+	delete(f, "EntrySpanSelected")
+	delete(f, "FocusSpanId")
+	delete(f, "FilterViewTagKeyList")
+	delete(f, "EnableResourceLink")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSpanTreeByIDRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSpanTreeByIDResponseParams struct {
+	// <p>树形图</p>
+	SpanTreeView *SpanTreeView `json:"SpanTreeView,omitnil,omitempty" name:"SpanTreeView"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSpanTreeByIDResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSpanTreeByIDResponseParams `json:"Response"`
+}
+
+func (r *DescribeSpanTreeByIDResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpanTreeByIDResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTagValuesRequestParams struct {
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3440,6 +3561,14 @@ func (r *DescribeTopologyNewResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeTopologyNewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ErrorSpan struct {
+	// <p>异常SpanId</p>
+	SpanID *string `json:"SpanID,omitnil,omitempty" name:"SpanID"`
+
+	// <p>异常信息</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 
 type Filter struct {
@@ -4917,13 +5046,13 @@ type Position struct {
 }
 
 type QueryMetricItem struct {
-	// 指标名
+	// <p>指标名</p>
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
-	// 同比，现支持 CompareByYesterday (与昨天相比)和CompareByLastWeek (与上周相比) 
+	// <p>同比，现支持 CompareByYesterday (与昨天相比)和CompareByLastWeek (与上周相比)</p>
 	Compares []*string `json:"Compares,omitnil,omitempty" name:"Compares"`
 
-	// 同比，已弃用，不建议使用
+	// <p>同比，已弃用，不建议使用</p>
 	Compare *string `json:"Compare,omitnil,omitempty" name:"Compare"`
 }
 
@@ -4947,9 +5076,21 @@ type SelectorView struct {
 }
 
 type Selectors struct {
-	// 组件勾选情况
+	// <p>组件勾选情况</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Component []*string `json:"Component,omitnil,omitempty" name:"Component"`
+}
+
+type Series struct {
+	// 耗时列表信息
+	Data []*int64 `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 描述
+	Stack *string `json:"Stack,omitnil,omitempty" name:"Stack"`
+
+	// 字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type ServiceDetail struct {
@@ -5090,6 +5231,40 @@ type SpanTag struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type SpanTreeView struct {
+	// 树结构json串
+	TreeData *string `json:"TreeData,omitnil,omitempty" name:"TreeData"`
+
+	// 列表
+	ChartData *ChartData `json:"ChartData,omitnil,omitempty" name:"ChartData"`
+
+	// Trace概览信息
+	TraceOverview *TraceOverview `json:"TraceOverview,omitnil,omitempty" name:"TraceOverview"`
+
+	// 压缩编码后的树结构json串
+	CompressedTreeData *string `json:"CompressedTreeData,omitnil,omitempty" name:"CompressedTreeData"`
+
+	// 整条链路的 span 数量是否超过限制
+	CntExceeded *bool `json:"CntExceeded,omitnil,omitempty" name:"CntExceeded"`
+
+	// 是否有内部查询超时
+	QueryTimeout *bool `json:"QueryTimeout,omitnil,omitempty" name:"QueryTimeout"`
+
+	// 链路中 span 总数量
+	SpanTotalCnt *int64 `json:"SpanTotalCnt,omitnil,omitempty" name:"SpanTotalCnt"`
+
+	// 过滤视图的标签值列表
+	FilterViewTagValues []*TagValues `json:"FilterViewTagValues,omitnil,omitempty" name:"FilterViewTagValues"`
+}
+
+type TagValues struct {
+	// 维度键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 维度值
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
 // Predefined struct for user
 type TerminateApmInstanceRequestParams struct {
 	// 业务系统ID
@@ -5145,25 +5320,25 @@ func (r *TerminateApmInstanceResponse) FromJsonString(s string) error {
 }
 
 type TkeMeta struct {
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// pod name
+	// <p>pod name</p>
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 
-	// 命名空间
+	// <p>命名空间</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 工作负载
+	// <p>工作负载</p>
 	Deployment *string `json:"Deployment,omitnil,omitempty" name:"Deployment"`
 
-	// pod ip
+	// <p>pod ip</p>
 	PodIP *string `json:"PodIP,omitnil,omitempty" name:"PodIP"`
 
-	// node ip
+	// <p>node ip</p>
 	NodeIP *string `json:"NodeIP,omitnil,omitempty" name:"NodeIP"`
 }
 
@@ -5312,4 +5487,45 @@ type TopologyNodeStats struct {
 
 	// 异常节点数量
 	Error *int64 `json:"Error,omitnil,omitempty" name:"Error"`
+}
+
+type TraceOverview struct {
+	// <p>traceID调用状态</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>TraceId查询</p>
+	TraceID *string `json:"TraceID,omitnil,omitempty" name:"TraceID"`
+
+	// <p>错误信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// <p>服务名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>耗时</p>
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>接口名</p>
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// <p>开始时间（微秒）</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>应用数</p>
+	ApplicationCount *int64 `json:"ApplicationCount,omitnil,omitempty" name:"ApplicationCount"`
+
+	// <p>异常Span列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorSpans []*ErrorSpan `json:"ErrorSpans,omitnil,omitempty" name:"ErrorSpans"`
+}
+
+type YAxis struct {
+	// <p>接口列表</p>
+	Keys []*string `json:"Keys,omitnil,omitempty" name:"Keys"`
+
+	// <p>接口列表</p>
+	Data []*string `json:"Data,omitnil,omitempty" name:"Data"`
 }

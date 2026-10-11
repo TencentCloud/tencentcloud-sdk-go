@@ -5803,11 +5803,20 @@ type CreateJobRequestParams struct {
 	// <p>队列名称，必须与 PartitionCode 成对使用（RunMode=JOB 下可选）；RunMode=WAREHOUSE 下被仓库反查值覆盖，无需传。</p>
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
+	// <p>集群规格配置。RunMode=JOB 时必填（MajorType 对应引擎字段须非空、其余引擎字段须为空）；RunMode=WAREHOUSE 时忽略。</p>
+	Spec *Spec `json:"Spec,omitnil,omitempty" name:"Spec"`
+
 	// <p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），作为 SPARK_CUSTOM 配置通道落库，两种运行模式均生效。</p>
 	CustomProperties *string `json:"CustomProperties,omitnil,omitempty" name:"CustomProperties"`
 
+	// <p>依赖管理（jars / files / archives / pyFiles）。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
+	Dependencies *EngineConfigDependencies `json:"Dependencies,omitnil,omitempty" name:"Dependencies"`
+
 	// <p>环境变量（KEY=VALUE）列表。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
 	EnvVars []*KVPair `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+
+	// <p>入口点配置，必填。SPARK_SQL 时 Statement 必填（≤1MB）；SPARK_BATCH 时 Statement 或 EntryFile 至少其一（EntryFile 须匹配路径前缀白名单）。</p>
+	Entrypoint *EntrypointInfo `json:"Entrypoint,omitnil,omitempty" name:"Entrypoint"`
 }
 
 type CreateJobRequest struct {
@@ -5849,11 +5858,20 @@ type CreateJobRequest struct {
 	// <p>队列名称，必须与 PartitionCode 成对使用（RunMode=JOB 下可选）；RunMode=WAREHOUSE 下被仓库反查值覆盖，无需传。</p>
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
+	// <p>集群规格配置。RunMode=JOB 时必填（MajorType 对应引擎字段须非空、其余引擎字段须为空）；RunMode=WAREHOUSE 时忽略。</p>
+	Spec *Spec `json:"Spec,omitnil,omitempty" name:"Spec"`
+
 	// <p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），作为 SPARK_CUSTOM 配置通道落库，两种运行模式均生效。</p>
 	CustomProperties *string `json:"CustomProperties,omitnil,omitempty" name:"CustomProperties"`
 
+	// <p>依赖管理（jars / files / archives / pyFiles）。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
+	Dependencies *EngineConfigDependencies `json:"Dependencies,omitnil,omitempty" name:"Dependencies"`
+
 	// <p>环境变量（KEY=VALUE）列表。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
 	EnvVars []*KVPair `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+
+	// <p>入口点配置，必填。SPARK_SQL 时 Statement 必填（≤1MB）；SPARK_BATCH 时 Statement 或 EntryFile 至少其一（EntryFile 须匹配路径前缀白名单）。</p>
+	Entrypoint *EntrypointInfo `json:"Entrypoint,omitnil,omitempty" name:"Entrypoint"`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {
@@ -5880,8 +5898,11 @@ func (r *CreateJobRequest) FromJsonString(s string) error {
 	delete(f, "SysCatalogVersion")
 	delete(f, "PartitionCode")
 	delete(f, "QueueName")
+	delete(f, "Spec")
 	delete(f, "CustomProperties")
+	delete(f, "Dependencies")
 	delete(f, "EnvVars")
+	delete(f, "Entrypoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRequest has unknown keys!", "")
 	}
@@ -16115,6 +16136,9 @@ func (r *DescribeJobDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobDetailResponseParams struct {
+	// <p>作业详情，JSON 嵌套在 JobDetail 键下。</p>
+	JobDetail *JobDetailInfo `json:"JobDetail,omitnil,omitempty" name:"JobDetail"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -16435,7 +16459,10 @@ type DescribeJobResultResponseParams struct {
 	// <p>行数据（State=SUCCEEDED 才有），每行为 {"Values": [单元格值...]} 数组。</p>
 	Rows []*ResultRow `json:"Rows,omitnil,omitempty" name:"Rows"`
 
-	// <p>本页内容是否因响应大小限制被截断（单元格/行超限，结果集仅 1 行时也可能触发）。行数超过在线展示上限不由本标记表达，以 TotalRows > Total 判断，完整结果通过 Download 获取.</p>
+	// <p>下载链接（结果集可用时按需返回；结果过大无法内联展示时仅返回 Download）。</p>
+	Download *DownloadInfo `json:"Download,omitnil,omitempty" name:"Download"`
+
+	// <p>本页内容是否因响应大小限制被截断（单元格/行超限，结果集仅 1 行时也可能触发）。行数超过在线展示上限不由本标记表达，以 TotalRows &gt; Total 判断，完整结果通过 Download 获取.</p>
 	Truncated *bool `json:"Truncated,omitnil,omitempty" name:"Truncated"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22685,6 +22712,20 @@ type DorisConnection struct {
 	NetWork *NetWork `json:"NetWork,omitnil,omitempty" name:"NetWork"`
 }
 
+type DownloadInfo struct {
+	// <p>下载链接地址.</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>文件格式（如 CSV / JSON）.</p>
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// <p>文件大小（字节）.</p>
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// <p>链接有效时长（秒）.</p>
+	ExpireSeconds *int64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+}
+
 // Predefined struct for user
 type DropDMSDatabaseRequestParams struct {
 	// 数据库名称
@@ -23016,6 +23057,20 @@ type EngineCapabilities struct {
 	ParallelKeys []*ParallelKeyMapping `json:"ParallelKeys,omitnil,omitempty" name:"ParallelKeys"`
 }
 
+type EngineConfigDependencies struct {
+	// <p>JAR 列表：每行一个 COS 路径或 Maven GAV。</p>
+	Jars []*string `json:"Jars,omitnil,omitempty" name:"Jars"`
+
+	// <p>files 列表：COS 路径，下载到 executor 工作目录（不解压）。</p>
+	Files []*string `json:"Files,omitnil,omitempty" name:"Files"`
+
+	// <p>archives 列表：COS 路径，下载并解压到 executor 工作目录。</p>
+	Archives []*string `json:"Archives,omitnil,omitempty" name:"Archives"`
+
+	// <p>pyFiles 列表：COS 路径（.py/.zip/.egg/.whl），等价 Spark --py-files。</p>
+	PyFiles []*string `json:"PyFiles,omitnil,omitempty" name:"PyFiles"`
+}
+
 type EngineNetworkInfo struct {
 	// 引擎网络名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -23081,6 +23136,20 @@ type EngineSessionImage struct {
 	// 镜像地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparkImageTag *string `json:"SparkImageTag,omitnil,omitempty" name:"SparkImageTag"`
+}
+
+type EntrypointInfo struct {
+	// <p>SQL 语句文本，须为 Base64 编码的 UTF-8 文本。仅 SPARK_SQL 模式可传且必填（解码后 ≤1MB）；SPARK_BATCH 模式禁止传。</p>
+	Statement *string `json:"Statement,omitnil,omitempty" name:"Statement"`
+
+	// <p>作业文件路径（JAR/Python），须匹配配置的路径前缀白名单。以 .py 结尾判定为 Python 入口（EntryPoint 禁传），否则为 JAR 入口（EntryPoint 必填）。</p>
+	EntryFile *string `json:"EntryFile,omitnil,omitempty" name:"EntryFile"`
+
+	// <p>入口类名（main class 全限定名）。JAR 入口（EntryFile 非 .py 结尾）必填；Python 入口（.py 结尾）禁传；SPARK_SQL 模式禁止传。</p>
+	EntryPoint *string `json:"EntryPoint,omitnil,omitempty" name:"EntryPoint"`
+
+	// <p>主方法参数列表（JSON 数组字符串），仅 SPARK_BATCH 模式可传；SPARK_SQL 模式禁止传。</p>
+	MainArgs *string `json:"MainArgs,omitnil,omitempty" name:"MainArgs"`
 }
 
 type Env struct {
@@ -27198,6 +27267,92 @@ type JobDefinitionItemInfo struct {
 
 	// <p>计算仓库名称（列表整页按去重后的仓库反查填充；warehouse 模式下非空，仓库已销毁时仍回填历史名称）。</p>
 	WarehouseName *string `json:"WarehouseName,omitnil,omitempty" name:"WarehouseName"`
+}
+
+type JobDetailInfo struct {
+	// <p>作业唯一标识.</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>作业名称.</p>
+	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
+
+	// <p>创建/提交者子账号 UIN。</p>
+	CreatorSubUin *string `json:"CreatorSubUin,omitnil,omitempty" name:"CreatorSubUin"`
+
+	// <p>作业状态.</p>
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>引擎大类.</p>
+	MajorType *string `json:"MajorType,omitnil,omitempty" name:"MajorType"`
+
+	// <p>引擎子类型.</p>
+	MinorType *string `json:"MinorType,omitnil,omitempty" name:"MinorType"`
+
+	// <p>运行模式（WAREHOUSE / JOB）.</p>
+	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
+
+	// <p>计算仓库 ID，RunMode=WAREHOUSE 时非空.</p>
+	WarehouseId *string `json:"WarehouseId,omitnil,omitempty" name:"WarehouseId"`
+
+	// <p>资源分区编码.</p>
+	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
+
+	// <p>资源分区展示名（解析不到时为空）.</p>
+	PartitionName *string `json:"PartitionName,omitnil,omitempty" name:"PartitionName"`
+
+	// <p>队列名称.</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>流作业 checkpoint 路径（MinorType=SPARK_STREAM 时非空）。同一流作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+	CheckpointLocation *string `json:"CheckpointLocation,omitnil,omitempty" name:"CheckpointLocation"`
+
+	// <p>创建时间（Unix 毫秒时间戳）.</p>
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>提交时间（Unix 毫秒时间戳）.</p>
+	SubmitTime *int64 `json:"SubmitTime,omitnil,omitempty" name:"SubmitTime"`
+
+	// <p>完成时间（Unix 毫秒时间戳）.</p>
+	FinishTime *int64 `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// <p>运行时长（毫秒）.</p>
+	RunningTimeMs *int64 `json:"RunningTimeMs,omitnil,omitempty" name:"RunningTimeMs"`
+
+	// <p>计算仓库名称（详情接口反查填充，warehouse 模式下非空）.</p>
+	WarehouseName *string `json:"WarehouseName,omitnil,omitempty" name:"WarehouseName"`
+
+	// <p>流程 ID。</p>
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// <p>执行 ID。</p>
+	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+
+	// <p>作业来源。</p>
+	JobSource *string `json:"JobSource,omitnil,omitempty" name:"JobSource"`
+
+	// <p>排队等待时长（毫秒）。</p>
+	WaitingTimeMs *int64 `json:"WaitingTimeMs,omitnil,omitempty" name:"WaitingTimeMs"`
+
+	// <p>Spark UI 历史链接。</p>
+	HistoryUrl *string `json:"HistoryUrl,omitnil,omitempty" name:"HistoryUrl"`
+
+	// <p>失败时的错误信息。</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// <p>自定义 Spark conf（JSON 字符串，由 job_config 组装）.</p>
+	CustomProperties *string `json:"CustomProperties,omitnil,omitempty" name:"CustomProperties"`
+
+	// <p>环境变量.</p>
+	EnvVars []*KVPair `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+
+	// <p>运行时/镜像。</p>
+	RuntimeCode *string `json:"RuntimeCode,omitnil,omitempty" name:"RuntimeCode"`
+
+	// <p>运行时展示名（如 Spark 3.5.5），与 RuntimeCode 配套；解析不到时为空。</p>
+	RuntimeName *string `json:"RuntimeName,omitnil,omitempty" name:"RuntimeName"`
+
+	// <p>Catalog 版本码。</p>
+	SysCatalogVersion *string `json:"SysCatalogVersion,omitnil,omitempty" name:"SysCatalogVersion"`
 }
 
 type JobLogResult struct {
@@ -36561,6 +36716,26 @@ type SparkJobInfo struct {
 	RunAsIdentity *string `json:"RunAsIdentity,omitnil,omitempty" name:"RunAsIdentity"`
 }
 
+type SparkJobSpec struct {
+	// <p>Driver 资源规格（CU 数）.</p>
+	DriverCU *int64 `json:"DriverCU,omitnil,omitempty" name:"DriverCU"`
+
+	// <p>Executor 资源规格（CU 数）.</p>
+	ExecutorCU *int64 `json:"ExecutorCU,omitnil,omitempty" name:"ExecutorCU"`
+
+	// <p>Executor 实例数量（弹性伸缩关闭时的固定数量）.</p>
+	ExecutorNum *int64 `json:"ExecutorNum,omitnil,omitempty" name:"ExecutorNum"`
+
+	// <p>是否开启弹性扩缩容.</p>
+	DynamicAllocation *bool `json:"DynamicAllocation,omitnil,omitempty" name:"DynamicAllocation"`
+
+	// <p>弹性扩缩容最小 Executor 数.</p>
+	MinExecutors *int64 `json:"MinExecutors,omitnil,omitempty" name:"MinExecutors"`
+
+	// <p>弹性扩缩容最大 Executor 数.</p>
+	MaxExecutors *int64 `json:"MaxExecutors,omitnil,omitempty" name:"MaxExecutors"`
+}
+
 type SparkMonitorMetrics struct {
 	// shuffle写溢出到COS数据量，单位：byte
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -36643,6 +36818,12 @@ type SparkSessionInfo struct {
 
 	// <p>应用启动时间</p>
 	ApplicationStartTime *int64 `json:"ApplicationStartTime,omitnil,omitempty" name:"ApplicationStartTime"`
+}
+
+type Spec struct {
+	// <p>SPARK 资源规格（CU 维度）；MajorType=SPARK 时必填，其余引擎字段须为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Spark *SparkJobSpec `json:"Spark,omitnil,omitempty" name:"Spark"`
 }
 
 type SpecInfo struct {
@@ -38885,6 +39066,9 @@ type TaskFullRespInfo struct {
 
 	// <p>资源组类型</p>
 	ResourceGroupType *string `json:"ResourceGroupType,omitnil,omitempty" name:"ResourceGroupType"`
+
+	// <p>任务标签</p><p>参数格式：任意字符串</p>
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 }
 
 type TaskMonitorInfo struct {

@@ -6068,103 +6068,103 @@ func (r *DescribeUsersResponse) FromJsonString(s string) error {
 }
 
 type Device struct {
-	// 资产ID
+	// <p>资产ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 实例ID，对应CVM、CDB等实例ID
+	// <p>实例ID，对应CVM、CDB等实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 资产名
+	// <p>资产名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 公网IP
+	// <p>公网IP</p>
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
-	// 内网IP
+	// <p>内网IP</p>
 	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
-	// 地域编码
+	// <p>地域编码</p>
 	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
 
-	// 地域名称
+	// <p>地域名称</p>
 	ApName *string `json:"ApName,omitnil,omitempty" name:"ApName"`
 
-	// 操作系统名称
+	// <p>操作系统名称</p>
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
 
-	// 资产类型 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+	// <p>资产类型 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer</p>
 	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// 管理端口
+	// <p>管理端口</p>
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 所属资产组列表
+	// <p>所属资产组列表</p>
 	GroupSet []*Group `json:"GroupSet,omitnil,omitempty" name:"GroupSet"`
 
-	// 资产绑定的账号数
+	// <p>资产绑定的账号数</p>
 	AccountCount *uint64 `json:"AccountCount,omitnil,omitempty" name:"AccountCount"`
 
-	// VPC ID
+	// <p>VPC ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 堡垒机服务信息，注意没有绑定服务时为null
+	// <p>堡垒机服务信息，注意没有绑定服务时为null</p>
 	Resource *Resource `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// 资产所属部门
+	// <p>资产所属部门</p>
 	Department *Department `json:"Department,omitnil,omitempty" name:"Department"`
 
-	// 数据库资产的多节点
+	// <p>数据库资产的多节点</p>
 	IpPortSet []*string `json:"IpPortSet,omitnil,omitempty" name:"IpPortSet"`
 
-	// 网络域Id
+	// <p>网络域Id</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 网络域名称
+	// <p>网络域名称</p>
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// 是否启用SSL，仅支持Redis资产。0：禁用 1：启用
+	// <p>是否启用SSL，仅支持Redis资产。0：禁用 1：启用</p>
 	EnableSSL *int64 `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
 
-	// 已上传的SSL证书名称
+	// <p>已上传的SSL证书名称</p>
 	SSLCertName *string `json:"SSLCertName,omitnil,omitempty" name:"SSLCertName"`
 
-	// IOA侧的资源ID
+	// <p>IOA侧的资源ID</p>
 	IOAId *int64 `json:"IOAId,omitnil,omitempty" name:"IOAId"`
 
-	// K8S集群托管维度。1-集群，2-命名空间，3-工作负载
+	// <p>K8S集群托管维度。1-集群，2-命名空间，3-工作负载</p>
 	ManageDimension *uint64 `json:"ManageDimension,omitnil,omitempty" name:"ManageDimension"`
 
-	// K8S集群托管账号id	
+	// <p>K8S集群托管账号id</p>
 	ManageAccountId *uint64 `json:"ManageAccountId,omitnil,omitempty" name:"ManageAccountId"`
 
-	// K8S集群命名空间	
+	// <p>K8S集群命名空间</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// K8S集群工作负载	
+	// <p>K8S集群工作负载</p>
 	Workload *string `json:"Workload,omitnil,omitempty" name:"Workload"`
 
-	// K8S集群pod已同步数量
+	// <p>K8S集群pod已同步数量</p>
 	SyncPodCount *uint64 `json:"SyncPodCount,omitnil,omitempty" name:"SyncPodCount"`
 
-	// K8S集群pod总数量	
+	// <p>K8S集群pod总数量</p>
 	TotalPodCount *uint64 `json:"TotalPodCount,omitnil,omitempty" name:"TotalPodCount"`
 
-	// 云账号id
+	// <p>云账号id</p>
 	CloudAccountId *uint64 `json:"CloudAccountId,omitnil,omitempty" name:"CloudAccountId"`
 
-	// 云账号名称
+	// <p>云账号名称</p>
 	CloudAccountName *string `json:"CloudAccountName,omitnil,omitempty" name:"CloudAccountName"`
 
-	// 云厂商类型1-腾讯云，2-阿里云
+	// <p>云厂商类型1-腾讯云，2-阿里云</p>
 	ProviderType *uint64 `json:"ProviderType,omitnil,omitempty" name:"ProviderType"`
 
-	// 云厂商名称
+	// <p>云厂商名称</p>
 	ProviderName *string `json:"ProviderName,omitnil,omitempty" name:"ProviderName"`
 
-	// 同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+	// <p>同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期</p>
 	SyncCloudDeviceStatus *uint64 `json:"SyncCloudDeviceStatus,omitnil,omitempty" name:"SyncCloudDeviceStatus"`
 }
 

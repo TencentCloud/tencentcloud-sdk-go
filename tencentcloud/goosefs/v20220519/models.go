@@ -509,6 +509,74 @@ func (r *CancelLoadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CancelPolicyRuleExecuteRecordRequestParams struct {
+	// <p>规则id</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>执行记录id</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+}
+
+type CancelPolicyRuleExecuteRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>规则id</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>执行记录id</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+}
+
+func (r *CancelPolicyRuleExecuteRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelPolicyRuleExecuteRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "FileSystemId")
+	delete(f, "RecordId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelPolicyRuleExecuteRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelPolicyRuleExecuteRecordResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CancelPolicyRuleExecuteRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelPolicyRuleExecuteRecordResponseParams `json:"Response"`
+}
+
+func (r *CancelPolicyRuleExecuteRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelPolicyRuleExecuteRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ChargeAttribute struct {
 	// 到期时间
 	CurDeadline *string `json:"CurDeadline,omitnil,omitempty" name:"CurDeadline"`
@@ -1037,6 +1105,105 @@ func (r *CreateLoadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePolicyRuleRequestParams struct {
+	// <p>文件系统id</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>扫描目录</p>
+	ScanDir *string `json:"ScanDir,omitnil,omitempty" name:"ScanDir"`
+
+	// <p>规则名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>执行计划</p>
+	Execution *ExecutionPlan `json:"Execution,omitnil,omitempty" name:"Execution"`
+
+	// <p>过滤规则</p>
+	PolicyRuleSet []*PolicyRuleOperator `json:"PolicyRuleSet,omitnil,omitempty" name:"PolicyRuleSet"`
+
+	// <p>是否输出清单</p>
+	EnableManifest *bool `json:"EnableManifest,omitnil,omitempty" name:"EnableManifest"`
+
+	// <p>清单配置</p>
+	Manifest *ManifestAttr `json:"Manifest,omitnil,omitempty" name:"Manifest"`
+}
+
+type CreatePolicyRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件系统id</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>扫描目录</p>
+	ScanDir *string `json:"ScanDir,omitnil,omitempty" name:"ScanDir"`
+
+	// <p>规则名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>执行计划</p>
+	Execution *ExecutionPlan `json:"Execution,omitnil,omitempty" name:"Execution"`
+
+	// <p>过滤规则</p>
+	PolicyRuleSet []*PolicyRuleOperator `json:"PolicyRuleSet,omitnil,omitempty" name:"PolicyRuleSet"`
+
+	// <p>是否输出清单</p>
+	EnableManifest *bool `json:"EnableManifest,omitnil,omitempty" name:"EnableManifest"`
+
+	// <p>清单配置</p>
+	Manifest *ManifestAttr `json:"Manifest,omitnil,omitempty" name:"Manifest"`
+}
+
+func (r *CreatePolicyRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePolicyRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "ScanDir")
+	delete(f, "Name")
+	delete(f, "Execution")
+	delete(f, "PolicyRuleSet")
+	delete(f, "EnableManifest")
+	delete(f, "Manifest")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePolicyRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePolicyRuleResponseParams struct {
+	// <p>规则id</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePolicyRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePolicyRuleResponseParams `json:"Response"`
+}
+
+func (r *CreatePolicyRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePolicyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CustomerClusterAttr struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -1309,6 +1476,67 @@ func (r *DeleteFilesetResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteFilesetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePolicyRuleRequestParams struct {
+	// <p>规则id</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+type DeletePolicyRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>规则id</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+func (r *DeletePolicyRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePolicyRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePolicyRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePolicyRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePolicyRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePolicyRuleResponseParams `json:"Response"`
+}
+
+func (r *DeletePolicyRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePolicyRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1940,6 +2168,161 @@ func (r *DescribeLoadTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePolicyRuleExecuteRecordRequestParams struct {
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>偏移量</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>最大返回数量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>规则id</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+type DescribePolicyRuleExecuteRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>偏移量</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>最大返回数量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>规则id</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+func (r *DescribePolicyRuleExecuteRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePolicyRuleExecuteRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "RuleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePolicyRuleExecuteRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePolicyRuleExecuteRecordResponseParams struct {
+	// <p>执行记录详情</p>
+	RuleExecuteList []*RuleExecuteAttribute `json:"RuleExecuteList,omitnil,omitempty" name:"RuleExecuteList"`
+
+	// <p>任务总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePolicyRuleExecuteRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePolicyRuleExecuteRecordResponseParams `json:"Response"`
+}
+
+func (r *DescribePolicyRuleExecuteRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePolicyRuleExecuteRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePolicyRuleRequestParams struct {
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>偏移量</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>最大返回数量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribePolicyRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>偏移量</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>最大返回数量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribePolicyRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePolicyRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePolicyRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePolicyRuleResponseParams struct {
+	// <p>规则任务详情</p>
+	PolicyRuleTaskList []*PolicyRuleTaskAttribute `json:"PolicyRuleTaskList,omitnil,omitempty" name:"PolicyRuleTaskList"`
+
+	// <p>任务总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePolicyRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePolicyRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribePolicyRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePolicyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DetachFileSystemBucketRequestParams struct {
 	// 文件系统ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
@@ -2000,6 +2383,67 @@ func (r *DetachFileSystemBucketResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DisablePolicyRuleRequestParams struct {
+	// <p>规则ID</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+type DisablePolicyRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>规则ID</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+func (r *DisablePolicyRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisablePolicyRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisablePolicyRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisablePolicyRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisablePolicyRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DisablePolicyRuleResponseParams `json:"Response"`
+}
+
+func (r *DisablePolicyRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisablePolicyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DistributedLoadAttrs struct {
 	// 预热类型，枚举值 LoadByPath｜LoadByList
 	LoadType *string `json:"LoadType,omitnil,omitempty" name:"LoadType"`
@@ -2021,15 +2465,112 @@ type DistributedLoadAttrs struct {
 }
 
 // Predefined struct for user
+type EnablePolicyRuleRequestParams struct {
+	// <p>规则ID</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+type EnablePolicyRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>规则ID</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+func (r *EnablePolicyRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnablePolicyRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnablePolicyRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnablePolicyRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnablePolicyRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *EnablePolicyRuleResponseParams `json:"Response"`
+}
+
+func (r *EnablePolicyRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnablePolicyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExecutePeriodAttribute struct {
+	// <p>选择的周期类型</p><p>枚举值：</p><ul><li>DAY： 每天执行 </li><li>WEEK： 每周执行</li><li>MONTH： 每月执行</li></ul>
+	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
+
+	// <p>选择每周执行时必填，需要选择周几,0-6 分别是周日到周六</p><p>取值范围：[0, 6]</p><p>默认值：0</p>
+	StartWeekday *uint64 `json:"StartWeekday,omitnil,omitempty" name:"StartWeekday"`
+
+	// <p>选择每月执行时必填，1-28日选择一天</p><p>取值范围：[1, 28]</p><p>默认值：1</p>
+	StartDate *uint64 `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// <p>周期中的时间点，取值0~59</p><p>取值范围：[0, 59]</p>
+	StartMinute *uint64 `json:"StartMinute,omitnil,omitempty" name:"StartMinute"`
+
+	// <p>24小时周期开始的小时数，取值0~23</p><p>取值范围：[0, 23]</p><p>默认值：1</p>
+	StartHour *uint64 `json:"StartHour,omitnil,omitempty" name:"StartHour"`
+}
+
+type ExecutionPlan struct {
+	// <p>执行类型</p><p>枚举值：</p><ul><li>scheduled： 指定时间执行</li><li>periodic： 周期执行</li></ul>
+	ExecuteMode *string `json:"ExecuteMode,omitnil,omitempty" name:"ExecuteMode"`
+
+	// <p>任务执行时间</p><p>参数格式：2026-07-23 08:30</p><p>入参限制：只有立即执行或者指定时间执行时设置，周期执行不需要设置</p><p>默认值：当前时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteAt *string `json:"ExecuteAt,omitnil,omitempty" name:"ExecuteAt"`
+
+	// <p>周期执行的时间设置</p><p>入参限制：选择周期执行时必填</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutePeriod *ExecutePeriodAttribute `json:"ExecutePeriod,omitnil,omitempty" name:"ExecutePeriod"`
+
+	// <p>任务等待时间</p><p>取值范围：[1, 500]</p><p>单位：H</p><p>默认值：12</p><p>任务执行的等待时间，超过时间任务未启动，自动取消</p>
+	WaitTime *int64 `json:"WaitTime,omitnil,omitempty" name:"WaitTime"`
+}
+
+// Predefined struct for user
 type ExpandCapacityRequestParams struct {
 	// 文件系统ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 新增扩容的系统容量
+	// 新增扩容的系统容量(单位 GiB)
 	ExpandedCapacity *uint64 `json:"ExpandedCapacity,omitnil,omitempty" name:"ExpandedCapacity"`
 
 	// 容量修改类型：add/sub
 	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
+
+	// 是否是快速扩容,只针对部分model有效
+	RapidExpansion *bool `json:"RapidExpansion,omitnil,omitempty" name:"RapidExpansion"`
 }
 
 type ExpandCapacityRequest struct {
@@ -2038,11 +2579,14 @@ type ExpandCapacityRequest struct {
 	// 文件系统ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 新增扩容的系统容量
+	// 新增扩容的系统容量(单位 GiB)
 	ExpandedCapacity *uint64 `json:"ExpandedCapacity,omitnil,omitempty" name:"ExpandedCapacity"`
 
 	// 容量修改类型：add/sub
 	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
+
+	// 是否是快速扩容,只针对部分model有效
+	RapidExpansion *bool `json:"RapidExpansion,omitnil,omitempty" name:"RapidExpansion"`
 }
 
 func (r *ExpandCapacityRequest) ToJsonString() string {
@@ -2060,6 +2604,7 @@ func (r *ExpandCapacityRequest) FromJsonString(s string) error {
 	delete(f, "FileSystemId")
 	delete(f, "ExpandedCapacity")
 	delete(f, "ModifyType")
+	delete(f, "RapidExpansion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExpandCapacityRequest has unknown keys!", "")
 	}
@@ -2397,6 +2942,20 @@ type LoadTaskCreationAttrs struct {
 	LoadDataAttrs *LoadDataAttrs `json:"LoadDataAttrs,omitnil,omitempty" name:"LoadDataAttrs"`
 }
 
+type ManifestAttr struct {
+	// <p>桶名字</p>
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// <p>目录前缀</p>
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// <p>文件属性</p>
+	Attributes []*string `json:"Attributes,omitnil,omitempty" name:"Attributes"`
+
+	// <p>桶所在地域</p><p>桶所在的地域，可以不填，认为是实例所在地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
 type MappedBucket struct {
 	// 对象存储Bucket名
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
@@ -2652,6 +3211,51 @@ type MountPointEntry struct {
 	MountDir *string `json:"MountDir,omitnil,omitempty" name:"MountDir"`
 }
 
+type PolicyRuleOperator struct {
+	// <p>规则名</p><p>枚举值：</p><ul><li>CREATION_TIME_DAYS： 创建时间，比较的value 是days，数字整数。判断条件均为与“今天”相差。例如 CREATION_TIME &gt; 5，指的是创建时间-今天大于5天，即5天前（以及更早）创建的文件</li><li>CHANGE_TIME_DAYS： 元数据修改时间，比较的value 是days，数字整数。判断条件均为与“今天”相差。例如 CHANGE_TIME &gt; 5，指的是元数据修改时间-今天大于5天，即5天前以及更早修改元数据的文件</li><li>MODIFICATION_TIME_DAYS： 数据修改时间，比较的value 是days，数字整数。判断条件均为与“今天”相差。例如 MODIFICATION_TIME &gt; 5，指的是数据修改时间-今天大于5天，即5天前（以及更早）修改的文件</li><li>ACCESS_TIME_DAYS： 访问时间，比较的value 是days，数字整数。判断条件均为与“今天”相差。例如 ACCESS_TIME &gt; 5，指的是访问时间-今天大于5天，即5天前（以及更早）访问的文件</li><li>CREATION_TIME_DATE： 创建时间，比较的value 是date,日期，格式为YYYY-MM-DD。判断条件均为与value对应的日期的对比。例如 CREATION_TIME &gt; 2026-06-01，指的是创建时间晚于2026年6月1日</li><li>CHANGE_TIME_DATE： 元数据修改时间，比较的value 是date,日期，格式为YYYY-MM-DD。判断条件均为与value对应的日期的对比。例如 CHANGE_TIME &gt; 2026-06-01，指的是元数据修改晚于2026年6月1日</li><li>MODIFICATION_TIME_DATE： 数据修改时间，比较的value 是date,日期，格式为YYYY-MM-DD。判断条件均为与value对应的日期的对比。例如 MODIFICATION_TIME &gt; 2026-06-01，指的是数据修改时间晚于2026年6月1日</li><li>ACCESS_TIME_DATE： 访问时间，比较的value 是date,日期，格式为YYYY-MM-DD。判断条件均为与value对应的日期的对比。例如 ACCESS_TIME &gt; 2026-06-01，指的是访问时间晚于2026年6月1日</li><li>FILE_SIZE： 文件大小，数字，单位byte，整数，0 ～ 64位整数最大值</li></ul>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>比较关系</p><p>枚举值：</p><ul><li>&gt;：  大于</li><li>&gt;=： 大于等于</li><li>=： 相等</li><li>&lt;： 小于</li><li>&lt;=： 小于等于</li></ul>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>比较值</p><p>如果Key是CREATION_TIME_DAYS、CHANGE_TIME_DAYS、MODIFICATION_TIME_DAYS、ACCESS_TIME_DAYS时，值是整数；<br>如果Key是CREATION_TIME_DATE、CHANGE_TIME_DATE、MODIFICATION_TIME_DATE、ACCESS_TIME_DATE时，值是日期，格式是YYYY-MM-DD；<br>如果Key是FILE_SIZE，值是整数，单位是byte</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type PolicyRuleTaskAttribute struct {
+	// <p>规则id</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>规则名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>扫描目录</p>
+	ScanDir *string `json:"ScanDir,omitnil,omitempty" name:"ScanDir"`
+
+	// <p>执行计划</p>
+	Execution *ExecutionPlan `json:"Execution,omitnil,omitempty" name:"Execution"`
+
+	// <p>扫描规则</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyRuleSet []*PolicyRuleOperator `json:"PolicyRuleSet,omitnil,omitempty" name:"PolicyRuleSet"`
+
+	// <p>是否输出清单</p>
+	EnableManifest *bool `json:"EnableManifest,omitnil,omitempty" name:"EnableManifest"`
+
+	// <p>输出清单配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Manifest *ManifestAttr `json:"Manifest,omitnil,omitempty" name:"Manifest"`
+
+	// <p>任务状态</p><p>枚举值：</p><ul><li>0： 启用（enable）</li><li>1： 禁用（disable）</li></ul><p>默认值：0</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>修改时间</p>
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+}
+
 // Predefined struct for user
 type QueryClientNodeMountCommandRequestParams struct {
 	// 客户端集群ID
@@ -2849,6 +3453,29 @@ type RoleToken struct {
 
 	// 用于goosefs client/sdk等
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+}
+
+type RuleExecuteAttribute struct {
+	// <p>执行id</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>开始执行时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>执行结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>执行状态</p><p>枚举值：</p><ul><li>0： 等待中</li><li>1： 执行中</li><li>2： 已完成</li><li>3： 已跳过</li></ul><p>默认值：0</p><p>已跳过是指任务排队超过了任务的等待时间会自动跳过</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>存储量</p><p>单位：GB</p><p>默认值：0</p><p>不足1G按照1G 统计</p>
+	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
+
+	// <p>文件数</p>
+	FileCount *uint64 `json:"FileCount,omitnil,omitempty" name:"FileCount"`
+
+	// <p>文件清单路径</p><p>参数格式：http://xxx/xxx/xx</p>
+	ManifestUrl *string `json:"ManifestUrl,omitnil,omitempty" name:"ManifestUrl"`
 }
 
 type SubnetInfo struct {

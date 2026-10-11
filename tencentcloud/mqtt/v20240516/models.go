@@ -2797,6 +2797,84 @@ func (r *DescribeCaCertificatesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClientEventsRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 客户端id
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+}
+
+type DescribeClientEventsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 客户端id
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+}
+
+func (r *DescribeClientEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ClientId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClientEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClientEventsResponseParams struct {
+	// 轨迹
+	Events []*EventItem `json:"Events,omitnil,omitempty" name:"Events"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClientEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClientEventsResponseParams `json:"Response"`
+}
+
+func (r *DescribeClientEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClientListRequestParams struct {
 	// <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5071,6 +5149,34 @@ type DeviceIdentityItem struct {
 
 	// 传播属性列表
 	PropagatingProperties []*PropagatingProperty `json:"PropagatingProperties,omitnil,omitempty" name:"PropagatingProperties"`
+}
+
+type EventInfo struct {
+	// 事件信息key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 事件信息值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type EventItem struct {
+	// <p>创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// <p>事件</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Event *string `json:"Event,omitnil,omitempty" name:"Event"`
+
+	// <p>发消息或者收消息的clientid</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// <p>事件的相关信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Info []*EventInfo `json:"Info,omitnil,omitempty" name:"Info"`
 }
 
 type Filter struct {

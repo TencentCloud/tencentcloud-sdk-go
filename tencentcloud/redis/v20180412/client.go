@@ -7499,6 +7499,64 @@ func (c *Client) UpgradeInstanceWithContext(ctx context.Context, request *Upgrad
     return
 }
 
+func NewUpgradeInstanceProductVersionRequest() (request *UpgradeInstanceProductVersionRequest) {
+    request = &UpgradeInstanceProductVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "UpgradeInstanceProductVersion")
+    
+    
+    return
+}
+
+func NewUpgradeInstanceProductVersionResponse() (response *UpgradeInstanceProductVersionResponse) {
+    response = &UpgradeInstanceProductVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpgradeInstanceProductVersion
+// 本接口（UpgradeInstanceProductVersion）用于升级实例类型，可从通用 I 型升级到通用 II 型。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) UpgradeInstanceProductVersion(request *UpgradeInstanceProductVersionRequest) (response *UpgradeInstanceProductVersionResponse, err error) {
+    return c.UpgradeInstanceProductVersionWithContext(context.Background(), request)
+}
+
+// UpgradeInstanceProductVersion
+// 本接口（UpgradeInstanceProductVersion）用于升级实例类型，可从通用 I 型升级到通用 II 型。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) UpgradeInstanceProductVersionWithContext(ctx context.Context, request *UpgradeInstanceProductVersionRequest) (response *UpgradeInstanceProductVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeInstanceProductVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "redis", APIVersion, "UpgradeInstanceProductVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeInstanceProductVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeInstanceProductVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpgradeInstanceVersionRequest() (request *UpgradeInstanceVersionRequest) {
     request = &UpgradeInstanceVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},

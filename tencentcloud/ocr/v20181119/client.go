@@ -985,6 +985,76 @@ func (c *Client) DescribeMarkEssayAgentJobWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeMultimodalDocParseJobRequest() (request *DescribeMultimodalDocParseJobRequest) {
+    request = &DescribeMultimodalDocParseJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "DescribeMultimodalDocParseJob")
+    
+    
+    return
+}
+
+func NewDescribeMultimodalDocParseJobResponse() (response *DescribeMultimodalDocParseJobResponse) {
+    response = &DescribeMultimodalDocParseJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMultimodalDocParseJob
+// 用于查询异步多模态文档解析任务的执行状态与结果，任务执行成功时返回解析结果包的下载地址，任务执行失败时返回对应错误信息。需要 SubmitMultimodalDocParseJob（创建任务）、DescribeMultimodalDocParseJob（查询任务）两个接口配套使用，计费发生在提交任务后。
+//
+// 
+//
+// 创建任务接口文档地址：https://cloud.tencent.com/document/product/1024/953218
+//
+// 
+//
+// 默认接口请求频率限制：5 页并发（注：可同时解析5页，且同步和异步接口共享并发资源，支持增购并发）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) DescribeMultimodalDocParseJob(request *DescribeMultimodalDocParseJobRequest) (response *DescribeMultimodalDocParseJobResponse, err error) {
+    return c.DescribeMultimodalDocParseJobWithContext(context.Background(), request)
+}
+
+// DescribeMultimodalDocParseJob
+// 用于查询异步多模态文档解析任务的执行状态与结果，任务执行成功时返回解析结果包的下载地址，任务执行失败时返回对应错误信息。需要 SubmitMultimodalDocParseJob（创建任务）、DescribeMultimodalDocParseJob（查询任务）两个接口配套使用，计费发生在提交任务后。
+//
+// 
+//
+// 创建任务接口文档地址：https://cloud.tencent.com/document/product/1024/953218
+//
+// 
+//
+// 默认接口请求频率限制：5 页并发（注：可同时解析5页，且同步和异步接口共享并发资源，支持增购并发）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) DescribeMultimodalDocParseJobWithContext(ctx context.Context, request *DescribeMultimodalDocParseJobRequest) (response *DescribeMultimodalDocParseJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeMultimodalDocParseJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "DescribeMultimodalDocParseJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMultimodalDocParseJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMultimodalDocParseJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQuestionMarkAgentJobRequest() (request *DescribeQuestionMarkAgentJobRequest) {
     request = &DescribeQuestionMarkAgentJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6593,6 +6663,64 @@ func (c *Client) RideHailingTransportLicenseOCRWithContext(ctx context.Context, 
     return
 }
 
+func NewRunRerankRequest() (request *RunRerankRequest) {
+    request = &RunRerankRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RunRerank")
+    
+    
+    return
+}
+
+func NewRunRerankResponse() (response *RunRerankResponse) {
+    response = &RunRerankResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RunRerank
+// 基于知识引擎精调模型技术的 Rerank 模型，支持对多路召回的结果进行重排序，根据查询内容与文档切片内容的相关性，按顺序返回每一条文档内容与查询内容的相关性分数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) RunRerank(request *RunRerankRequest) (response *RunRerankResponse, err error) {
+    return c.RunRerankWithContext(context.Background(), request)
+}
+
+// RunRerank
+// 基于知识引擎精调模型技术的 Rerank 模型，支持对多路召回的结果进行重排序，根据查询内容与文档切片内容的相关性，按顺序返回每一条文档内容与查询内容的相关性分数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) RunRerankWithContext(ctx context.Context, request *RunRerankRequest) (response *RunRerankResponse, err error) {
+    if request == nil {
+        request = NewRunRerankRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "RunRerank")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunRerank require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRunRerankResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSealOCRRequest() (request *SealOCRRequest) {
     request = &SealOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6903,6 +7031,80 @@ func (c *Client) SubmitMarkEssayAgentJobWithContext(ctx context.Context, request
     return
 }
 
+func NewSubmitMultimodalDocParseJobRequest() (request *SubmitMultimodalDocParseJobRequest) {
+    request = &SubmitMultimodalDocParseJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "SubmitMultimodalDocParseJob")
+    
+    
+    return
+}
+
+func NewSubmitMultimodalDocParseJobResponse() (response *SubmitMultimodalDocParseJobResponse) {
+    response = &SubmitMultimodalDocParseJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitMultimodalDocParseJob
+// 本接口为异步多模态文档解析的任务提交接口，支持解析多种类型的文档文件（PDF、Word、PPT、Excel、Markdown、TXT、图片、WPS），服务端异步执行解析任务，提交后返回任务唯一 ID，可通过「异步多模态文档解析（查询任务）」接口获取最终解析结果。需要 SubmitMultimodalDocParseJob（创建任务）、DescribeMultimodalDocParseJob（查询任务）两个接口配套使用，计费发生在提交任务后。
+//
+// 
+//
+// 查询任务接口文档地址：https://cloud.tencent.com/document/product/1024/953219
+//
+// 
+//
+// 默认接口请求频率限制：5 页并发（注：可同时解析5页，且同步和异步接口共享并发资源，支持增购并发）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) SubmitMultimodalDocParseJob(request *SubmitMultimodalDocParseJobRequest) (response *SubmitMultimodalDocParseJobResponse, err error) {
+    return c.SubmitMultimodalDocParseJobWithContext(context.Background(), request)
+}
+
+// SubmitMultimodalDocParseJob
+// 本接口为异步多模态文档解析的任务提交接口，支持解析多种类型的文档文件（PDF、Word、PPT、Excel、Markdown、TXT、图片、WPS），服务端异步执行解析任务，提交后返回任务唯一 ID，可通过「异步多模态文档解析（查询任务）」接口获取最终解析结果。需要 SubmitMultimodalDocParseJob（创建任务）、DescribeMultimodalDocParseJob（查询任务）两个接口配套使用，计费发生在提交任务后。
+//
+// 
+//
+// 查询任务接口文档地址：https://cloud.tencent.com/document/product/1024/953219
+//
+// 
+//
+// 默认接口请求频率限制：5 页并发（注：可同时解析5页，且同步和异步接口共享并发资源，支持增购并发）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) SubmitMultimodalDocParseJobWithContext(ctx context.Context, request *SubmitMultimodalDocParseJobRequest) (response *SubmitMultimodalDocParseJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitMultimodalDocParseJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "SubmitMultimodalDocParseJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitMultimodalDocParseJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitMultimodalDocParseJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitQuestionMarkAgentJobRequest() (request *SubmitQuestionMarkAgentJobRequest) {
     request = &SubmitQuestionMarkAgentJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6930,19 +7132,11 @@ func NewSubmitQuestionMarkAgentJobResponse() (response *SubmitQuestionMarkAgentJ
 // 默认接口请求并发限制：10张/分钟。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) SubmitQuestionMarkAgentJob(request *SubmitQuestionMarkAgentJobRequest) (response *SubmitQuestionMarkAgentJobResponse, err error) {
     return c.SubmitQuestionMarkAgentJobWithContext(context.Background(), request)
 }
@@ -6955,19 +7149,11 @@ func (c *Client) SubmitQuestionMarkAgentJob(request *SubmitQuestionMarkAgentJobR
 // 默认接口请求并发限制：10张/分钟。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) SubmitQuestionMarkAgentJobWithContext(ctx context.Context, request *SubmitQuestionMarkAgentJobRequest) (response *SubmitQuestionMarkAgentJobResponse, err error) {
     if request == nil {
         request = NewSubmitQuestionMarkAgentJobRequest()
@@ -7007,20 +7193,16 @@ func NewSubmitQuestionSplitJobResponse() (response *SubmitQuestionSplitJobRespon
 // SubmitQuestionSplitJob
 // 异步试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置，是试卷切题的接口补充。主要解决试卷录题这类多页场景、单题跨页场景。需要 SubmitQuestionSplitOCRJob（提交任务）、DescribeQuestionSplitOCRJob（查询任务）两个接口配套使用，计费发生在提交任务后。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) SubmitQuestionSplitJob(request *SubmitQuestionSplitJobRequest) (response *SubmitQuestionSplitJobResponse, err error) {
     return c.SubmitQuestionSplitJobWithContext(context.Background(), request)
 }
@@ -7028,20 +7210,16 @@ func (c *Client) SubmitQuestionSplitJob(request *SubmitQuestionSplitJobRequest) 
 // SubmitQuestionSplitJob
 // 异步试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置，是试卷切题的接口补充。主要解决试卷录题这类多页场景、单题跨页场景。需要 SubmitQuestionSplitOCRJob（提交任务）、DescribeQuestionSplitOCRJob（查询任务）两个接口配套使用，计费发生在提交任务后。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) SubmitQuestionSplitJobWithContext(ctx context.Context, request *SubmitQuestionSplitJobRequest) (response *SubmitQuestionSplitJobResponse, err error) {
     if request == nil {
         request = NewSubmitQuestionSplitJobRequest()

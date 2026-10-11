@@ -771,6 +771,112 @@ func (c *Client) CreateRegistryRecordWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateSandboxSnapshotRequest() (request *CreateSandboxSnapshotRequest) {
+    request = &CreateSandboxSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "CreateSandboxSnapshot")
+    
+    
+    return
+}
+
+func NewCreateSandboxSnapshotResponse() (response *CreateSandboxSnapshotResponse) {
+    response = &CreateSandboxSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSandboxSnapshot
+// 创建沙箱快照
+//
+// 该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。接入方需关注后续版本及变更说明，并根据需要调整调用代码。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_AGENTSOURCE = "InvalidParameter.AgentSource"
+//  INVALIDPARAMETER_CUSTOMDESCRIPTORS = "InvalidParameter.CustomDescriptors"
+//  INVALIDPARAMETER_DESCRIPTION = "InvalidParameter.Description"
+//  INVALIDPARAMETER_MCPSOURCE = "InvalidParameter.MCPSource"
+//  INVALIDPARAMETER_RECORDSOURCE = "InvalidParameter.RecordSource"
+//  INVALIDPARAMETER_REGISTRYID = "InvalidParameter.RegistryId"
+//  INVALIDPARAMETER_SKILLSOURCE = "InvalidParameter.SkillSource"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AGENTSOURCETYPE = "InvalidParameterValue.AgentSourceType"
+//  INVALIDPARAMETERVALUE_DESCRIPTORTYPE = "InvalidParameterValue.DescriptorType"
+//  INVALIDPARAMETERVALUE_MCPSOURCETYPE = "InvalidParameterValue.MCPSourceType"
+//  INVALIDPARAMETERVALUE_SKILLSOURCETYPE = "InvalidParameterValue.SkillSourceType"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_AGENTSOURCEENDPOINTURL = "MissingParameter.AgentSourceEndpointURL"
+//  MISSINGPARAMETER_MCPSOURCEDESCRIPTORS = "MissingParameter.MCPSourceDescriptors"
+//  MISSINGPARAMETER_RECORDSOURCE = "MissingParameter.RecordSource"
+//  MISSINGPARAMETER_SKILLSOURCESKILLMD = "MissingParameter.SkillSourceSkillMd"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSandboxSnapshot(request *CreateSandboxSnapshotRequest) (response *CreateSandboxSnapshotResponse, err error) {
+    return c.CreateSandboxSnapshotWithContext(context.Background(), request)
+}
+
+// CreateSandboxSnapshot
+// 创建沙箱快照
+//
+// 该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。接入方需关注后续版本及变更说明，并根据需要调整调用代码。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_AGENTSOURCE = "InvalidParameter.AgentSource"
+//  INVALIDPARAMETER_CUSTOMDESCRIPTORS = "InvalidParameter.CustomDescriptors"
+//  INVALIDPARAMETER_DESCRIPTION = "InvalidParameter.Description"
+//  INVALIDPARAMETER_MCPSOURCE = "InvalidParameter.MCPSource"
+//  INVALIDPARAMETER_RECORDSOURCE = "InvalidParameter.RecordSource"
+//  INVALIDPARAMETER_REGISTRYID = "InvalidParameter.RegistryId"
+//  INVALIDPARAMETER_SKILLSOURCE = "InvalidParameter.SkillSource"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AGENTSOURCETYPE = "InvalidParameterValue.AgentSourceType"
+//  INVALIDPARAMETERVALUE_DESCRIPTORTYPE = "InvalidParameterValue.DescriptorType"
+//  INVALIDPARAMETERVALUE_MCPSOURCETYPE = "InvalidParameterValue.MCPSourceType"
+//  INVALIDPARAMETERVALUE_SKILLSOURCETYPE = "InvalidParameterValue.SkillSourceType"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_AGENTSOURCEENDPOINTURL = "MissingParameter.AgentSourceEndpointURL"
+//  MISSINGPARAMETER_MCPSOURCEDESCRIPTORS = "MissingParameter.MCPSourceDescriptors"
+//  MISSINGPARAMETER_RECORDSOURCE = "MissingParameter.RecordSource"
+//  MISSINGPARAMETER_SKILLSOURCESKILLMD = "MissingParameter.SkillSourceSkillMd"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSandboxSnapshotWithContext(ctx context.Context, request *CreateSandboxSnapshotRequest) (response *CreateSandboxSnapshotResponse, err error) {
+    if request == nil {
+        request = NewCreateSandboxSnapshotRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "CreateSandboxSnapshot")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSandboxSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSandboxSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSandboxToolRequest() (request *CreateSandboxToolRequest) {
     request = &CreateSandboxToolRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1253,6 +1359,90 @@ func (c *Client) DeleteRegistryRecordWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteRegistryRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSandboxSnapshotRequest() (request *DeleteSandboxSnapshotRequest) {
+    request = &DeleteSandboxSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "DeleteSandboxSnapshot")
+    
+    
+    return
+}
+
+func NewDeleteSandboxSnapshotResponse() (response *DeleteSandboxSnapshotResponse) {
+    response = &DeleteSandboxSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSandboxSnapshot
+// 删除沙箱快照
+//
+// 该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。接入方需关注后续版本及变更说明，并根据需要调整调用代码。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_RECORDID = "InvalidParameter.RecordId"
+//  INVALIDPARAMETER_REGISTRYID = "InvalidParameter.RegistryId"
+//  INVALIDPARAMETER_VERSIONID = "InvalidParameter.VersionId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_REASON = "MissingParameter.Reason"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSandboxSnapshot(request *DeleteSandboxSnapshotRequest) (response *DeleteSandboxSnapshotResponse, err error) {
+    return c.DeleteSandboxSnapshotWithContext(context.Background(), request)
+}
+
+// DeleteSandboxSnapshot
+// 删除沙箱快照
+//
+// 该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。接入方需关注后续版本及变更说明，并根据需要调整调用代码。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_RECORDID = "InvalidParameter.RecordId"
+//  INVALIDPARAMETER_REGISTRYID = "InvalidParameter.RegistryId"
+//  INVALIDPARAMETER_VERSIONID = "InvalidParameter.VersionId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_REASON = "MissingParameter.Reason"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSandboxSnapshotWithContext(ctx context.Context, request *DeleteSandboxSnapshotRequest) (response *DeleteSandboxSnapshotResponse, err error) {
+    if request == nil {
+        request = NewDeleteSandboxSnapshotRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "DeleteSandboxSnapshot")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSandboxSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSandboxSnapshotResponse()
     err = c.Send(request, response)
     return
 }
@@ -2305,6 +2495,68 @@ func (c *Client) DescribeSandboxInstanceListWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeSandboxInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSandboxSnapshotListRequest() (request *DescribeSandboxSnapshotListRequest) {
+    request = &DescribeSandboxSnapshotListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "DescribeSandboxSnapshotList")
+    
+    
+    return
+}
+
+func NewDescribeSandboxSnapshotListResponse() (response *DescribeSandboxSnapshotListResponse) {
+    response = &DescribeSandboxSnapshotListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSandboxSnapshotList
+// 查询沙箱快照
+//
+// 该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。请关注后续版本及变更说明，并根据需要调整调用代码。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
+//  INVALIDPARAMETERVALUE_OFFSETTOOLARGE = "InvalidParameterValue.OffsetTooLarge"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeSandboxSnapshotList(request *DescribeSandboxSnapshotListRequest) (response *DescribeSandboxSnapshotListResponse, err error) {
+    return c.DescribeSandboxSnapshotListWithContext(context.Background(), request)
+}
+
+// DescribeSandboxSnapshotList
+// 查询沙箱快照
+//
+// 该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。请关注后续版本及变更说明，并根据需要调整调用代码。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
+//  INVALIDPARAMETERVALUE_OFFSETTOOLARGE = "InvalidParameterValue.OffsetTooLarge"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeSandboxSnapshotListWithContext(ctx context.Context, request *DescribeSandboxSnapshotListRequest) (response *DescribeSandboxSnapshotListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSandboxSnapshotListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "DescribeSandboxSnapshotList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSandboxSnapshotList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSandboxSnapshotListResponse()
     err = c.Send(request, response)
     return
 }

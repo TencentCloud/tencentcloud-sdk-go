@@ -103,16 +103,33 @@ type ArchiveLogModel struct {
 }
 
 type AutoScalingConfig struct {
-	// <p>ccu最小值</p>
+	// <p>最小值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RangeMin *float64 `json:"RangeMin,omitnil,omitempty" name:"RangeMin"`
 
-	// <p>ccu最大值</p>
+	// <p>最大值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RangeMax *float64 `json:"RangeMax,omitnil,omitempty" name:"RangeMax"`
 
-	// <p>返回的 range 参数对应的资源类型</p><p>枚举值：</p><ul><li>cpu： 返回的是 cpu 调整返回限制，当不存在mem限制时代表 ccu</li><li>nodecount： 返回的是水平扩缩容的节点数限制范围</li></ul>
+	// <p>返回的 range 参数对应的资源类型</p><p>枚举值：</p><ul><li>cpu： 返回的是 cpu 调整返回限制，当不存在mem限制时代表 ccu</li><li>nodecount： 返回的是水平扩缩容的节点数限制范围</li><li>datadisk： 返回的是磁盘扩容的容量限制范围</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>是否允许升配</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleUpEnabled *bool `json:"ScaleUpEnabled,omitnil,omitempty" name:"ScaleUpEnabled"`
+
+	// <p>是否允许降配</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleDownEnabled *bool `json:"ScaleDownEnabled,omitnil,omitempty" name:"ScaleDownEnabled"`
+
+	// <p>触发阈值（%）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThresholdPercent *int64 `json:"ThresholdPercent,omitnil,omitempty" name:"ThresholdPercent"`
+
+	// <p>变配步长</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Step *float64 `json:"Step,omitnil,omitempty" name:"Step"`
 }
 
 type BackupMethodStatisticsModel struct {
@@ -3667,6 +3684,9 @@ type DescribeSpecsRequestParams struct {
 
 	// <p>独享实例</p>
 	IsExclusiveInstance *int64 `json:"IsExclusiveInstance,omitnil,omitempty" name:"IsExclusiveInstance"`
+
+	// <p>可用区组合列表</p>
+	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 }
 
 type DescribeSpecsRequest struct {
@@ -3677,6 +3697,9 @@ type DescribeSpecsRequest struct {
 
 	// <p>独享实例</p>
 	IsExclusiveInstance *int64 `json:"IsExclusiveInstance,omitnil,omitempty" name:"IsExclusiveInstance"`
+
+	// <p>可用区组合列表</p>
+	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 }
 
 func (r *DescribeSpecsRequest) ToJsonString() string {
@@ -3693,6 +3716,7 @@ func (r *DescribeSpecsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FullReplications")
 	delete(f, "IsExclusiveInstance")
+	delete(f, "Zones")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSpecsRequest has unknown keys!", "")
 	}
@@ -5257,6 +5281,12 @@ type ModifyInstanceSSLStatusRequestParams struct {
 
 	// <p>是否启用SSL</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>证书类型</p><p>枚举值：</p><ul><li>Cloud： 云端证书</li><li>Custom： 自定义证书</li></ul>
+	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
+
+	// <p>腾讯云SSL证书服务的证书ID</p>
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 type ModifyInstanceSSLStatusRequest struct {
@@ -5267,6 +5297,12 @@ type ModifyInstanceSSLStatusRequest struct {
 
 	// <p>是否启用SSL</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>证书类型</p><p>枚举值：</p><ul><li>Cloud： 云端证书</li><li>Custom： 自定义证书</li></ul>
+	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
+
+	// <p>腾讯云SSL证书服务的证书ID</p>
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 func (r *ModifyInstanceSSLStatusRequest) ToJsonString() string {
@@ -5283,6 +5319,8 @@ func (r *ModifyInstanceSSLStatusRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Enabled")
+	delete(f, "CertificateType")
+	delete(f, "CertificateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceSSLStatusRequest has unknown keys!", "")
 	}

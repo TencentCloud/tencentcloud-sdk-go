@@ -89,6 +89,142 @@ func (c *Client) AddConsoleUsersWithContext(ctx context.Context, request *AddCon
     return
 }
 
+func NewAddWorkspaceGroupsRequest() (request *AddWorkspaceGroupsRequest) {
+    request = &AddWorkspaceGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "AddWorkspaceGroups")
+    
+    
+    return
+}
+
+func NewAddWorkspaceGroupsResponse() (response *AddWorkspaceGroupsResponse) {
+    response = &AddWorkspaceGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddWorkspaceGroups
+// 添加工作空间用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_TENCENTCLOUDSDKERROR = "FailedOperation.TencentCloudSDKError"
+//  INTERNALERROR_INTERFACECALLERROR = "InternalError.InterfaceCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JWTAUTHFAILURE = "InvalidParameter.JWTAuthFailure"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_WORKSPACEGROUPMEMBERQUOTA = "LimitExceeded.WorkspaceGroupMemberQuota"
+//  LIMITEXCEEDED_WORKSPACEGROUPQUOTA = "LimitExceeded.WorkspaceGroupQuota"
+//  LIMITEXCEEDED_WORKSPACEUSERQUOTA = "LimitExceeded.WorkspaceUserQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) AddWorkspaceGroups(request *AddWorkspaceGroupsRequest) (response *AddWorkspaceGroupsResponse, err error) {
+    return c.AddWorkspaceGroupsWithContext(context.Background(), request)
+}
+
+// AddWorkspaceGroups
+// 添加工作空间用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_TENCENTCLOUDSDKERROR = "FailedOperation.TencentCloudSDKError"
+//  INTERNALERROR_INTERFACECALLERROR = "InternalError.InterfaceCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JWTAUTHFAILURE = "InvalidParameter.JWTAuthFailure"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_WORKSPACEGROUPMEMBERQUOTA = "LimitExceeded.WorkspaceGroupMemberQuota"
+//  LIMITEXCEEDED_WORKSPACEGROUPQUOTA = "LimitExceeded.WorkspaceGroupQuota"
+//  LIMITEXCEEDED_WORKSPACEUSERQUOTA = "LimitExceeded.WorkspaceUserQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) AddWorkspaceGroupsWithContext(ctx context.Context, request *AddWorkspaceGroupsRequest) (response *AddWorkspaceGroupsResponse, err error) {
+    if request == nil {
+        request = NewAddWorkspaceGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "AddWorkspaceGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddWorkspaceGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddWorkspaceGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddWorkspaceUsersRequest() (request *AddWorkspaceUsersRequest) {
+    request = &AddWorkspaceUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "AddWorkspaceUsers")
+    
+    
+    return
+}
+
+func NewAddWorkspaceUsersResponse() (response *AddWorkspaceUsersResponse) {
+    response = &AddWorkspaceUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddWorkspaceUsers
+// 创建用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_TENCENTCLOUDSDKERROR = "FailedOperation.TencentCloudSDKError"
+//  INTERNALERROR_INTERFACECALLERROR = "InternalError.InterfaceCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JWTAUTHFAILURE = "InvalidParameter.JWTAuthFailure"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_WORKSPACEUSERQUOTA = "LimitExceeded.WorkspaceUserQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) AddWorkspaceUsers(request *AddWorkspaceUsersRequest) (response *AddWorkspaceUsersResponse, err error) {
+    return c.AddWorkspaceUsersWithContext(context.Background(), request)
+}
+
+// AddWorkspaceUsers
+// 创建用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_TENCENTCLOUDSDKERROR = "FailedOperation.TencentCloudSDKError"
+//  INTERNALERROR_INTERFACECALLERROR = "InternalError.InterfaceCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JWTAUTHFAILURE = "InvalidParameter.JWTAuthFailure"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_WORKSPACEUSERQUOTA = "LimitExceeded.WorkspaceUserQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) AddWorkspaceUsersWithContext(ctx context.Context, request *AddWorkspaceUsersRequest) (response *AddWorkspaceUsersResponse, err error) {
+    if request == nil {
+        request = NewAddWorkspaceUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "AddWorkspaceUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddWorkspaceUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddWorkspaceUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCatalogRequest() (request *CreateCatalogRequest) {
     request = &CreateCatalogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -116,6 +252,7 @@ func NewCreateCatalogResponse() (response *CreateCatalogResponse) {
 //  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
 //  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
 //  RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 func (c *Client) CreateCatalog(request *CreateCatalogRequest) (response *CreateCatalogResponse, err error) {
     return c.CreateCatalogWithContext(context.Background(), request)
@@ -129,6 +266,7 @@ func (c *Client) CreateCatalog(request *CreateCatalogRequest) (response *CreateC
 //  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
 //  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
 //  RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 func (c *Client) CreateCatalogWithContext(ctx context.Context, request *CreateCatalogRequest) (response *CreateCatalogResponse, err error) {
     if request == nil {
@@ -174,6 +312,7 @@ func NewCreateConsoleGroupResponse() (response *CreateConsoleGroupResponse) {
 //  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
 //  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
 //  RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 func (c *Client) CreateConsoleGroup(request *CreateConsoleGroupRequest) (response *CreateConsoleGroupResponse, err error) {
     return c.CreateConsoleGroupWithContext(context.Background(), request)
@@ -187,6 +326,7 @@ func (c *Client) CreateConsoleGroup(request *CreateConsoleGroupRequest) (respons
 //  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
 //  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
 //  RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 func (c *Client) CreateConsoleGroupWithContext(ctx context.Context, request *CreateConsoleGroupRequest) (response *CreateConsoleGroupResponse, err error) {
     if request == nil {
@@ -246,6 +386,7 @@ func NewCreateFileResponse() (response *CreateFileResponse) {
 //  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
 //  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
 //  RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 func (c *Client) CreateFile(request *CreateFileRequest) (response *CreateFileResponse, err error) {
     return c.CreateFileWithContext(context.Background(), request)
@@ -273,6 +414,7 @@ func (c *Client) CreateFile(request *CreateFileRequest) (response *CreateFileRes
 //  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
 //  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
 //  RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 func (c *Client) CreateFileWithContext(ctx context.Context, request *CreateFileRequest) (response *CreateFileResponse, err error) {
     if request == nil {
@@ -318,6 +460,7 @@ func NewCreateFolderResponse() (response *CreateFolderResponse) {
 //  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
 //  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
 //  RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
     return c.CreateFolderWithContext(context.Background(), request)
@@ -331,6 +474,7 @@ func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFol
 //  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
 //  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
 //  RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
     if request == nil {
@@ -372,8 +516,6 @@ func NewCreateSchemaResponse() (response *CreateSchemaResponse) {
 // 创建schema
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  RESOURCEINUSE_SCHEMAALREADYEXISTS = "ResourceInUse.SchemaAlreadyExists"
 //  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
@@ -385,8 +527,6 @@ func (c *Client) CreateSchema(request *CreateSchemaRequest) (response *CreateSch
 // 创建schema
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  RESOURCEINUSE_SCHEMAALREADYEXISTS = "ResourceInUse.SchemaAlreadyExists"
 //  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
@@ -660,8 +800,6 @@ func NewDeleteCatalogResponse() (response *DeleteCatalogResponse) {
 // 删除catalog
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
 func (c *Client) DeleteCatalog(request *DeleteCatalogRequest) (response *DeleteCatalogResponse, err error) {
@@ -672,8 +810,6 @@ func (c *Client) DeleteCatalog(request *DeleteCatalogRequest) (response *DeleteC
 // 删除catalog
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
 func (c *Client) DeleteCatalogWithContext(ctx context.Context, request *DeleteCatalogRequest) (response *DeleteCatalogResponse, err error) {
@@ -716,8 +852,6 @@ func NewDeleteConsoleGroupsResponse() (response *DeleteConsoleGroupsResponse) {
 // 删除控制台用户组
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
 func (c *Client) DeleteConsoleGroups(request *DeleteConsoleGroupsRequest) (response *DeleteConsoleGroupsResponse, err error) {
@@ -728,8 +862,6 @@ func (c *Client) DeleteConsoleGroups(request *DeleteConsoleGroupsRequest) (respo
 // 删除控制台用户组
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
 func (c *Client) DeleteConsoleGroupsWithContext(ctx context.Context, request *DeleteConsoleGroupsRequest) (response *DeleteConsoleGroupsResponse, err error) {
@@ -806,8 +938,6 @@ func NewDeleteFileResponse() (response *DeleteFileResponse) {
 // | `InternalError` | 1030900 | 服务内部异常 | 请携带 RequestId 联系支持 |
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
 func (c *Client) DeleteFile(request *DeleteFileRequest) (response *DeleteFileResponse, err error) {
@@ -852,8 +982,6 @@ func (c *Client) DeleteFile(request *DeleteFileRequest) (response *DeleteFileRes
 // | `InternalError` | 1030900 | 服务内部异常 | 请携带 RequestId 联系支持 |
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
 func (c *Client) DeleteFileWithContext(ctx context.Context, request *DeleteFileRequest) (response *DeleteFileResponse, err error) {
@@ -896,8 +1024,6 @@ func NewDeleteFolderResponse() (response *DeleteFolderResponse) {
 // 删除文件夹
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
 func (c *Client) DeleteFolder(request *DeleteFolderRequest) (response *DeleteFolderResponse, err error) {
@@ -908,8 +1034,6 @@ func (c *Client) DeleteFolder(request *DeleteFolderRequest) (response *DeleteFol
 // 删除文件夹
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
 func (c *Client) DeleteFolderWithContext(ctx context.Context, request *DeleteFolderRequest) (response *DeleteFolderResponse, err error) {
@@ -952,8 +1076,6 @@ func NewDeleteSchemaResponse() (response *DeleteSchemaResponse) {
 // 删除schema
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
 func (c *Client) DeleteSchema(request *DeleteSchemaRequest) (response *DeleteSchemaResponse, err error) {
@@ -964,8 +1086,6 @@ func (c *Client) DeleteSchema(request *DeleteSchemaRequest) (response *DeleteSch
 // 删除schema
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
 func (c *Client) DeleteSchemaWithContext(ctx context.Context, request *DeleteSchemaRequest) (response *DeleteSchemaResponse, err error) {
@@ -981,6 +1101,58 @@ func (c *Client) DeleteSchemaWithContext(ctx context.Context, request *DeleteSch
     request.SetContext(ctx)
     
     response = NewDeleteSchemaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTableRequest() (request *DeleteTableRequest) {
+    request = &DeleteTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "DeleteTable")
+    
+    
+    return
+}
+
+func NewDeleteTableResponse() (response *DeleteTableResponse) {
+    response = &DeleteTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTable
+// 删除table
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
+func (c *Client) DeleteTable(request *DeleteTableRequest) (response *DeleteTableResponse, err error) {
+    return c.DeleteTableWithContext(context.Background(), request)
+}
+
+// DeleteTable
+// 删除table
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
+func (c *Client) DeleteTableWithContext(ctx context.Context, request *DeleteTableRequest) (response *DeleteTableResponse, err error) {
+    if request == nil {
+        request = NewDeleteTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "DeleteTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTableResponse()
     err = c.Send(request, response)
     return
 }
@@ -1177,6 +1349,58 @@ func (c *Client) DeleteWorkspaceRoleWithContext(ctx context.Context, request *De
     return
 }
 
+func NewGetCatalogRequest() (request *GetCatalogRequest) {
+    request = &GetCatalogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "GetCatalog")
+    
+    
+    return
+}
+
+func NewGetCatalogResponse() (response *GetCatalogResponse) {
+    response = &GetCatalogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetCatalog
+// 查询catalog详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+func (c *Client) GetCatalog(request *GetCatalogRequest) (response *GetCatalogResponse, err error) {
+    return c.GetCatalogWithContext(context.Background(), request)
+}
+
+// GetCatalog
+// 查询catalog详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+func (c *Client) GetCatalogWithContext(ctx context.Context, request *GetCatalogRequest) (response *GetCatalogResponse, err error) {
+    if request == nil {
+        request = NewGetCatalogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "GetCatalog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCatalog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetCatalogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetFileRequest() (request *GetFileRequest) {
     request = &GetFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1234,14 +1458,8 @@ func NewGetFileResponse() (response *GetFileResponse) {
 // | `InternalError` | 1030900 | 服务内部异常 | 请携带 RequestId 联系支持 |
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND_ONEFLOWRESOURCENOEXISTERROR = "ResourceNotFound.OneFlowResourceNoExistError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
 func (c *Client) GetFile(request *GetFileRequest) (response *GetFileResponse, err error) {
     return c.GetFileWithContext(context.Background(), request)
 }
@@ -1284,14 +1502,8 @@ func (c *Client) GetFile(request *GetFileRequest) (response *GetFileResponse, er
 // | `InternalError` | 1030900 | 服务内部异常 | 请携带 RequestId 联系支持 |
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND_ONEFLOWRESOURCENOEXISTERROR = "ResourceNotFound.OneFlowResourceNoExistError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
 func (c *Client) GetFileWithContext(ctx context.Context, request *GetFileRequest) (response *GetFileResponse, err error) {
     if request == nil {
         request = NewGetFileRequest()
@@ -1332,14 +1544,8 @@ func NewGetFolderResponse() (response *GetFolderResponse) {
 // 获取文件夹详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND_ONEFLOWRESOURCENOEXISTERROR = "ResourceNotFound.OneFlowResourceNoExistError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
 func (c *Client) GetFolder(request *GetFolderRequest) (response *GetFolderResponse, err error) {
     return c.GetFolderWithContext(context.Background(), request)
 }
@@ -1348,14 +1554,8 @@ func (c *Client) GetFolder(request *GetFolderRequest) (response *GetFolderRespon
 // 获取文件夹详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND_ONEFLOWRESOURCENOEXISTERROR = "ResourceNotFound.OneFlowResourceNoExistError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
 func (c *Client) GetFolderWithContext(ctx context.Context, request *GetFolderRequest) (response *GetFolderResponse, err error) {
     if request == nil {
         request = NewGetFolderRequest()
@@ -1369,6 +1569,180 @@ func (c *Client) GetFolderWithContext(ctx context.Context, request *GetFolderReq
     request.SetContext(ctx)
     
     response = NewGetFolderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetSchemaRequest() (request *GetSchemaRequest) {
+    request = &GetSchemaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "GetSchema")
+    
+    
+    return
+}
+
+func NewGetSchemaResponse() (response *GetSchemaResponse) {
+    response = &GetSchemaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetSchema
+// 查询schema详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) GetSchema(request *GetSchemaRequest) (response *GetSchemaResponse, err error) {
+    return c.GetSchemaWithContext(context.Background(), request)
+}
+
+// GetSchema
+// 查询schema详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) GetSchemaWithContext(ctx context.Context, request *GetSchemaRequest) (response *GetSchemaResponse, err error) {
+    if request == nil {
+        request = NewGetSchemaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "GetSchema")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetSchema require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetSchemaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTableRequest() (request *GetTableRequest) {
+    request = &GetTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "GetTable")
+    
+    
+    return
+}
+
+func NewGetTableResponse() (response *GetTableResponse) {
+    response = &GetTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTable
+// 查询table详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+//  RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
+func (c *Client) GetTable(request *GetTableRequest) (response *GetTableResponse, err error) {
+    return c.GetTableWithContext(context.Background(), request)
+}
+
+// GetTable
+// 查询table详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+//  RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
+func (c *Client) GetTableWithContext(ctx context.Context, request *GetTableRequest) (response *GetTableResponse, err error) {
+    if request == nil {
+        request = NewGetTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "GetTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTablesRequest() (request *GetTablesRequest) {
+    request = &GetTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "GetTables")
+    
+    
+    return
+}
+
+func NewGetTablesResponse() (response *GetTablesResponse) {
+    response = &GetTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTables
+// 批量获取表的元数据。使用场景：根据表的全名列表（catalogName.schemaName.tableName）批量获取表的详细元数据信息。前置条件：需要有对应workspace的读权限，仅返回当前workspace有权限的catalog下的表。权限校验：通过getAuthedCatalogNames获取有权限的catalogName进行过滤，不在权限范围内的表会被静默跳过。限制：FullNames最大支持20个表全名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
+func (c *Client) GetTables(request *GetTablesRequest) (response *GetTablesResponse, err error) {
+    return c.GetTablesWithContext(context.Background(), request)
+}
+
+// GetTables
+// 批量获取表的元数据。使用场景：根据表的全名列表（catalogName.schemaName.tableName）批量获取表的详细元数据信息。前置条件：需要有对应workspace的读权限，仅返回当前workspace有权限的catalog下的表。权限校验：通过getAuthedCatalogNames获取有权限的catalogName进行过滤，不在权限范围内的表会被静默跳过。限制：FullNames最大支持20个表全名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
+func (c *Client) GetTablesWithContext(ctx context.Context, request *GetTablesRequest) (response *GetTablesResponse, err error) {
+    if request == nil {
+        request = NewGetTablesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "GetTables")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTablesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1707,6 +2081,60 @@ func (c *Client) KillWorkflowRunWithContext(ctx context.Context, request *KillWo
     return
 }
 
+func NewListCatalogsRequest() (request *ListCatalogsRequest) {
+    request = &ListCatalogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListCatalogs")
+    
+    
+    return
+}
+
+func NewListCatalogsResponse() (response *ListCatalogsResponse) {
+    response = &ListCatalogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListCatalogs
+// 分页获取数据目录列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) ListCatalogs(request *ListCatalogsRequest) (response *ListCatalogsResponse, err error) {
+    return c.ListCatalogsWithContext(context.Background(), request)
+}
+
+// ListCatalogs
+// 分页获取数据目录列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) ListCatalogsWithContext(ctx context.Context, request *ListCatalogsRequest) (response *ListCatalogsResponse, err error) {
+    if request == nil {
+        request = NewListCatalogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListCatalogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListCatalogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListCatalogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListConsoleGroupUsersRequest() (request *ListConsoleGroupUsersRequest) {
     request = &ListConsoleGroupUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1730,22 +2158,9 @@ func NewListConsoleGroupUsersResponse() (response *ListConsoleGroupUsersResponse
 // 查询控制台用户组成员列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
-//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEDELETE = "FailedOperation.WorkflowExecutionHasBeDelete"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) ListConsoleGroupUsers(request *ListConsoleGroupUsersRequest) (response *ListConsoleGroupUsersResponse, err error) {
     return c.ListConsoleGroupUsersWithContext(context.Background(), request)
 }
@@ -1754,22 +2169,9 @@ func (c *Client) ListConsoleGroupUsers(request *ListConsoleGroupUsersRequest) (r
 // 查询控制台用户组成员列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
-//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEDELETE = "FailedOperation.WorkflowExecutionHasBeDelete"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) ListConsoleGroupUsersWithContext(ctx context.Context, request *ListConsoleGroupUsersRequest) (response *ListConsoleGroupUsersResponse, err error) {
     if request == nil {
         request = NewListConsoleGroupUsersRequest()
@@ -1810,22 +2212,9 @@ func NewListConsoleGroupsResponse() (response *ListConsoleGroupsResponse) {
 // 查询控制台用户组列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
-//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEDELETE = "FailedOperation.WorkflowExecutionHasBeDelete"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) ListConsoleGroups(request *ListConsoleGroupsRequest) (response *ListConsoleGroupsResponse, err error) {
     return c.ListConsoleGroupsWithContext(context.Background(), request)
 }
@@ -1834,22 +2223,9 @@ func (c *Client) ListConsoleGroups(request *ListConsoleGroupsRequest) (response 
 // 查询控制台用户组列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
-//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEDELETE = "FailedOperation.WorkflowExecutionHasBeDelete"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) ListConsoleGroupsWithContext(ctx context.Context, request *ListConsoleGroupsRequest) (response *ListConsoleGroupsResponse, err error) {
     if request == nil {
         request = NewListConsoleGroupsRequest()
@@ -1890,22 +2266,9 @@ func NewListConsoleRolesResponse() (response *ListConsoleRolesResponse) {
 // 查询控制台角色列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
-//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEDELETE = "FailedOperation.WorkflowExecutionHasBeDelete"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) ListConsoleRoles(request *ListConsoleRolesRequest) (response *ListConsoleRolesResponse, err error) {
     return c.ListConsoleRolesWithContext(context.Background(), request)
 }
@@ -1914,22 +2277,9 @@ func (c *Client) ListConsoleRoles(request *ListConsoleRolesRequest) (response *L
 // 查询控制台角色列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
-//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEDELETE = "FailedOperation.WorkflowExecutionHasBeDelete"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) ListConsoleRolesWithContext(ctx context.Context, request *ListConsoleRolesRequest) (response *ListConsoleRolesResponse, err error) {
     if request == nil {
         request = NewListConsoleRolesRequest()
@@ -1970,22 +2320,9 @@ func NewListConsoleUsersResponse() (response *ListConsoleUsersResponse) {
 // 查询控制台用户列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
-//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEDELETE = "FailedOperation.WorkflowExecutionHasBeDelete"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) ListConsoleUsers(request *ListConsoleUsersRequest) (response *ListConsoleUsersResponse, err error) {
     return c.ListConsoleUsersWithContext(context.Background(), request)
 }
@@ -1994,22 +2331,9 @@ func (c *Client) ListConsoleUsers(request *ListConsoleUsersRequest) (response *L
 // 查询控制台用户列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
-//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEDELETE = "FailedOperation.WorkflowExecutionHasBeDelete"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) ListConsoleUsersWithContext(ctx context.Context, request *ListConsoleUsersRequest) (response *ListConsoleUsersResponse, err error) {
     if request == nil {
         request = NewListConsoleUsersRequest()
@@ -2050,22 +2374,9 @@ func NewListFilesResponse() (response *ListFilesResponse) {
 // 获取文件夹和文件列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
-//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEDELETE = "FailedOperation.WorkflowExecutionHasBeDelete"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) ListFiles(request *ListFilesRequest) (response *ListFilesResponse, err error) {
     return c.ListFilesWithContext(context.Background(), request)
 }
@@ -2074,22 +2385,9 @@ func (c *Client) ListFiles(request *ListFilesRequest) (response *ListFilesRespon
 // 获取文件夹和文件列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
-//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEDELETE = "FailedOperation.WorkflowExecutionHasBeDelete"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) ListFilesWithContext(ctx context.Context, request *ListFilesRequest) (response *ListFilesResponse, err error) {
     if request == nil {
         request = NewListFilesRequest()
@@ -2159,6 +2457,64 @@ func (c *Client) ListSchemasWithContext(ctx context.Context, request *ListSchema
     request.SetContext(ctx)
     
     response = NewListSchemasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListTablesRequest() (request *ListTablesRequest) {
+    request = &ListTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListTables")
+    
+    
+    return
+}
+
+func NewListTablesResponse() (response *ListTablesResponse) {
+    response = &ListTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListTables
+// 获取table列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListTables(request *ListTablesRequest) (response *ListTablesResponse, err error) {
+    return c.ListTablesWithContext(context.Background(), request)
+}
+
+// ListTables
+// 获取table列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListTablesWithContext(ctx context.Context, request *ListTablesRequest) (response *ListTablesResponse, err error) {
+    if request == nil {
+        request = NewListTablesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListTables")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTablesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2377,6 +2733,180 @@ func (c *Client) ListWorkflowsWithContext(ctx context.Context, request *ListWork
     return
 }
 
+func NewListWorkspaceGroupUsersRequest() (request *ListWorkspaceGroupUsersRequest) {
+    request = &ListWorkspaceGroupUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListWorkspaceGroupUsers")
+    
+    
+    return
+}
+
+func NewListWorkspaceGroupUsersResponse() (response *ListWorkspaceGroupUsersResponse) {
+    response = &ListWorkspaceGroupUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListWorkspaceGroupUsers
+// 查询工作空间用户组用户列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) ListWorkspaceGroupUsers(request *ListWorkspaceGroupUsersRequest) (response *ListWorkspaceGroupUsersResponse, err error) {
+    return c.ListWorkspaceGroupUsersWithContext(context.Background(), request)
+}
+
+// ListWorkspaceGroupUsers
+// 查询工作空间用户组用户列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) ListWorkspaceGroupUsersWithContext(ctx context.Context, request *ListWorkspaceGroupUsersRequest) (response *ListWorkspaceGroupUsersResponse, err error) {
+    if request == nil {
+        request = NewListWorkspaceGroupUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListWorkspaceGroupUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListWorkspaceGroupUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListWorkspaceGroupUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListWorkspaceGroupsRequest() (request *ListWorkspaceGroupsRequest) {
+    request = &ListWorkspaceGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListWorkspaceGroups")
+    
+    
+    return
+}
+
+func NewListWorkspaceGroupsResponse() (response *ListWorkspaceGroupsResponse) {
+    response = &ListWorkspaceGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListWorkspaceGroups
+// 查询工作空间用户组列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) ListWorkspaceGroups(request *ListWorkspaceGroupsRequest) (response *ListWorkspaceGroupsResponse, err error) {
+    return c.ListWorkspaceGroupsWithContext(context.Background(), request)
+}
+
+// ListWorkspaceGroups
+// 查询工作空间用户组列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) ListWorkspaceGroupsWithContext(ctx context.Context, request *ListWorkspaceGroupsRequest) (response *ListWorkspaceGroupsResponse, err error) {
+    if request == nil {
+        request = NewListWorkspaceGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListWorkspaceGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListWorkspaceGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListWorkspaceGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListWorkspaceUsersRequest() (request *ListWorkspaceUsersRequest) {
+    request = &ListWorkspaceUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListWorkspaceUsers")
+    
+    
+    return
+}
+
+func NewListWorkspaceUsersResponse() (response *ListWorkspaceUsersResponse) {
+    response = &ListWorkspaceUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListWorkspaceUsers
+// 查询工作空间用户列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) ListWorkspaceUsers(request *ListWorkspaceUsersRequest) (response *ListWorkspaceUsersResponse, err error) {
+    return c.ListWorkspaceUsersWithContext(context.Background(), request)
+}
+
+// ListWorkspaceUsers
+// 查询工作空间用户列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) ListWorkspaceUsersWithContext(ctx context.Context, request *ListWorkspaceUsersRequest) (response *ListWorkspaceUsersResponse, err error) {
+    if request == nil {
+        request = NewListWorkspaceUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListWorkspaceUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListWorkspaceUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListWorkspaceUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListWorkspacesRequest() (request *ListWorkspacesRequest) {
     request = &ListWorkspacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2400,16 +2930,11 @@ func NewListWorkspacesResponse() (response *ListWorkspacesResponse) {
 // 查询工作空间列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_LISTWORKFLOWFILTERPARAMERROR = "InvalidParameterValue.ListWorkflowFilterParamError"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
-//  INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
 func (c *Client) ListWorkspaces(request *ListWorkspacesRequest) (response *ListWorkspacesResponse, err error) {
     return c.ListWorkspacesWithContext(context.Background(), request)
 }
@@ -2418,16 +2943,11 @@ func (c *Client) ListWorkspaces(request *ListWorkspacesRequest) (response *ListW
 // 查询工作空间列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_LISTWORKFLOWFILTERPARAMERROR = "InvalidParameterValue.ListWorkflowFilterParamError"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
-//  INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
 func (c *Client) ListWorkspacesWithContext(ctx context.Context, request *ListWorkspacesRequest) (response *ListWorkspacesResponse, err error) {
     if request == nil {
         request = NewListWorkspacesRequest()
@@ -2468,16 +2988,11 @@ func NewRemoveConsoleUsersResponse() (response *RemoveConsoleUsersResponse) {
 // <p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准）</p>
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_LISTWORKFLOWFILTERPARAMERROR = "InvalidParameterValue.ListWorkflowFilterParamError"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
-//  INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
 func (c *Client) RemoveConsoleUsers(request *RemoveConsoleUsersRequest) (response *RemoveConsoleUsersResponse, err error) {
     return c.RemoveConsoleUsersWithContext(context.Background(), request)
 }
@@ -2486,16 +3001,11 @@ func (c *Client) RemoveConsoleUsers(request *RemoveConsoleUsersRequest) (respons
 // <p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准）</p>
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_LISTWORKFLOWFILTERPARAMERROR = "InvalidParameterValue.ListWorkflowFilterParamError"
-//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
-//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
-//  INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
 func (c *Client) RemoveConsoleUsersWithContext(ctx context.Context, request *RemoveConsoleUsersRequest) (response *RemoveConsoleUsersResponse, err error) {
     if request == nil {
         request = NewRemoveConsoleUsersRequest()
@@ -2509,6 +3019,64 @@ func (c *Client) RemoveConsoleUsersWithContext(ctx context.Context, request *Rem
     request.SetContext(ctx)
     
     response = NewRemoveConsoleUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveWorkspaceGroupsRequest() (request *RemoveWorkspaceGroupsRequest) {
+    request = &RemoveWorkspaceGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "RemoveWorkspaceGroups")
+    
+    
+    return
+}
+
+func NewRemoveWorkspaceGroupsResponse() (response *RemoveWorkspaceGroupsResponse) {
+    response = &RemoveWorkspaceGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveWorkspaceGroups
+// 移除工作空间用户组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) RemoveWorkspaceGroups(request *RemoveWorkspaceGroupsRequest) (response *RemoveWorkspaceGroupsResponse, err error) {
+    return c.RemoveWorkspaceGroupsWithContext(context.Background(), request)
+}
+
+// RemoveWorkspaceGroups
+// 移除工作空间用户组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) RemoveWorkspaceGroupsWithContext(ctx context.Context, request *RemoveWorkspaceGroupsRequest) (response *RemoveWorkspaceGroupsResponse, err error) {
+    if request == nil {
+        request = NewRemoveWorkspaceGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "RemoveWorkspaceGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveWorkspaceGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveWorkspaceGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3417,6 +3985,116 @@ func (c *Client) UpdateWorkspaceWithContext(ctx context.Context, request *Update
     return
 }
 
+func NewUpdateWorkspaceGroupsRolesRequest() (request *UpdateWorkspaceGroupsRolesRequest) {
+    request = &UpdateWorkspaceGroupsRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateWorkspaceGroupsRoles")
+    
+    
+    return
+}
+
+func NewUpdateWorkspaceGroupsRolesResponse() (response *UpdateWorkspaceGroupsRolesResponse) {
+    response = &UpdateWorkspaceGroupsRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateWorkspaceGroupsRoles
+// 更新工作空间用户组角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
+//  FAILEDOPERATION_LABELCOUNTLIMIT = "FailedOperation.LabelCountLimit"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWCREATELOCKACQUIREFAILED = "FailedOperation.WorkflowCreateLockAcquireFailed"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATETASKNAMEERROR = "InvalidParameterValue.DuplicateTaskNameError"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYELEMENTCOUNTLIMIT = "InvalidParameterValue.LoopDataArrayElementCountLimit"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYJSONINVALID = "InvalidParameterValue.LoopDataArrayJsonInvalid"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAY = "InvalidParameterValue.LoopDataArrayNotJsonArray"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAYLITERAL = "InvalidParameterValue.LoopDataArrayNotJsonArrayLiteral"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUEBLANK = "InvalidParameterValue.LoopDataArrayValueBlank"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUELENGTHLIMIT = "InvalidParameterValue.LoopDataArrayValueLengthLimit"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVARIABLEEXPRESSIONINVALID = "InvalidParameterValue.LoopDataArrayVariableExpressionInvalid"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  INVALIDPARAMETERVALUE_TASKHOOKVALIDATIONFAILED = "InvalidParameterValue.TaskHookValidationFailed"
+//  INVALIDPARAMETERVALUE_TASKNAMECONTAINSILLEGALCHARACTERSERROR = "InvalidParameterValue.TaskNameContainsIllegalCharactersError"
+//  INVALIDPARAMETERVALUE_TASKNAMEEXCEEDSLIMITERROR = "InvalidParameterValue.TaskNameExceedsLimitError"
+//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTRESOURCEGROUP = "InvalidParameterValue.TaskTypeNotSupportResourceGroup"
+//  INVALIDPARAMETERVALUE_TASKTYPEPROPERTYKEYVALUEREQUESTREQUIREDERROR = "InvalidParameterValue.TaskTypePropertyKeyValueRequestRequiredError"
+//  INVALIDPARAMETERVALUE_WORKFLOWNAMEEXISTS = "InvalidParameterValue.WorkflowNameExists"
+//  INVALIDPARAMETERVALUE_WORKFLOWNAMEINVALID = "InvalidParameterValue.WorkflowNameInvalid"
+//  INVALIDPARAMETERVALUE_WORKFLOWSTARTTIMEAFTERENDTIMEERROR = "InvalidParameterValue.WorkflowStartTimeAfterEndTimeError"
+//  INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTEXIST = "ResourceNotFound.WorkflowNotExist"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+//  RESOURCENOTFOUND_WORKFLOWTRIGGERNOTFOUND = "ResourceNotFound.WorkflowTriggerNotFound"
+func (c *Client) UpdateWorkspaceGroupsRoles(request *UpdateWorkspaceGroupsRolesRequest) (response *UpdateWorkspaceGroupsRolesResponse, err error) {
+    return c.UpdateWorkspaceGroupsRolesWithContext(context.Background(), request)
+}
+
+// UpdateWorkspaceGroupsRoles
+// 更新工作空间用户组角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
+//  FAILEDOPERATION_LABELCOUNTLIMIT = "FailedOperation.LabelCountLimit"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWCREATELOCKACQUIREFAILED = "FailedOperation.WorkflowCreateLockAcquireFailed"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATETASKNAMEERROR = "InvalidParameterValue.DuplicateTaskNameError"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYELEMENTCOUNTLIMIT = "InvalidParameterValue.LoopDataArrayElementCountLimit"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYJSONINVALID = "InvalidParameterValue.LoopDataArrayJsonInvalid"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAY = "InvalidParameterValue.LoopDataArrayNotJsonArray"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAYLITERAL = "InvalidParameterValue.LoopDataArrayNotJsonArrayLiteral"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUEBLANK = "InvalidParameterValue.LoopDataArrayValueBlank"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUELENGTHLIMIT = "InvalidParameterValue.LoopDataArrayValueLengthLimit"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVARIABLEEXPRESSIONINVALID = "InvalidParameterValue.LoopDataArrayVariableExpressionInvalid"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  INVALIDPARAMETERVALUE_TASKHOOKVALIDATIONFAILED = "InvalidParameterValue.TaskHookValidationFailed"
+//  INVALIDPARAMETERVALUE_TASKNAMECONTAINSILLEGALCHARACTERSERROR = "InvalidParameterValue.TaskNameContainsIllegalCharactersError"
+//  INVALIDPARAMETERVALUE_TASKNAMEEXCEEDSLIMITERROR = "InvalidParameterValue.TaskNameExceedsLimitError"
+//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTRESOURCEGROUP = "InvalidParameterValue.TaskTypeNotSupportResourceGroup"
+//  INVALIDPARAMETERVALUE_TASKTYPEPROPERTYKEYVALUEREQUESTREQUIREDERROR = "InvalidParameterValue.TaskTypePropertyKeyValueRequestRequiredError"
+//  INVALIDPARAMETERVALUE_WORKFLOWNAMEEXISTS = "InvalidParameterValue.WorkflowNameExists"
+//  INVALIDPARAMETERVALUE_WORKFLOWNAMEINVALID = "InvalidParameterValue.WorkflowNameInvalid"
+//  INVALIDPARAMETERVALUE_WORKFLOWSTARTTIMEAFTERENDTIMEERROR = "InvalidParameterValue.WorkflowStartTimeAfterEndTimeError"
+//  INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTEXIST = "ResourceNotFound.WorkflowNotExist"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+//  RESOURCENOTFOUND_WORKFLOWTRIGGERNOTFOUND = "ResourceNotFound.WorkflowTriggerNotFound"
+func (c *Client) UpdateWorkspaceGroupsRolesWithContext(ctx context.Context, request *UpdateWorkspaceGroupsRolesRequest) (response *UpdateWorkspaceGroupsRolesResponse, err error) {
+    if request == nil {
+        request = NewUpdateWorkspaceGroupsRolesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateWorkspaceGroupsRoles")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateWorkspaceGroupsRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateWorkspaceGroupsRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateWorkspaceRoleRequest() (request *UpdateWorkspaceRoleRequest) {
     request = &UpdateWorkspaceRoleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3523,6 +4201,116 @@ func (c *Client) UpdateWorkspaceRoleWithContext(ctx context.Context, request *Up
     request.SetContext(ctx)
     
     response = NewUpdateWorkspaceRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateWorkspaceUsersRolesRequest() (request *UpdateWorkspaceUsersRolesRequest) {
+    request = &UpdateWorkspaceUsersRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateWorkspaceUsersRoles")
+    
+    
+    return
+}
+
+func NewUpdateWorkspaceUsersRolesResponse() (response *UpdateWorkspaceUsersRolesResponse) {
+    response = &UpdateWorkspaceUsersRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateWorkspaceUsersRoles
+// 修改工作空间用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
+//  FAILEDOPERATION_LABELCOUNTLIMIT = "FailedOperation.LabelCountLimit"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWCREATELOCKACQUIREFAILED = "FailedOperation.WorkflowCreateLockAcquireFailed"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATETASKNAMEERROR = "InvalidParameterValue.DuplicateTaskNameError"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYELEMENTCOUNTLIMIT = "InvalidParameterValue.LoopDataArrayElementCountLimit"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYJSONINVALID = "InvalidParameterValue.LoopDataArrayJsonInvalid"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAY = "InvalidParameterValue.LoopDataArrayNotJsonArray"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAYLITERAL = "InvalidParameterValue.LoopDataArrayNotJsonArrayLiteral"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUEBLANK = "InvalidParameterValue.LoopDataArrayValueBlank"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUELENGTHLIMIT = "InvalidParameterValue.LoopDataArrayValueLengthLimit"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVARIABLEEXPRESSIONINVALID = "InvalidParameterValue.LoopDataArrayVariableExpressionInvalid"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  INVALIDPARAMETERVALUE_TASKHOOKVALIDATIONFAILED = "InvalidParameterValue.TaskHookValidationFailed"
+//  INVALIDPARAMETERVALUE_TASKNAMECONTAINSILLEGALCHARACTERSERROR = "InvalidParameterValue.TaskNameContainsIllegalCharactersError"
+//  INVALIDPARAMETERVALUE_TASKNAMEEXCEEDSLIMITERROR = "InvalidParameterValue.TaskNameExceedsLimitError"
+//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTRESOURCEGROUP = "InvalidParameterValue.TaskTypeNotSupportResourceGroup"
+//  INVALIDPARAMETERVALUE_TASKTYPEPROPERTYKEYVALUEREQUESTREQUIREDERROR = "InvalidParameterValue.TaskTypePropertyKeyValueRequestRequiredError"
+//  INVALIDPARAMETERVALUE_WORKFLOWNAMEEXISTS = "InvalidParameterValue.WorkflowNameExists"
+//  INVALIDPARAMETERVALUE_WORKFLOWNAMEINVALID = "InvalidParameterValue.WorkflowNameInvalid"
+//  INVALIDPARAMETERVALUE_WORKFLOWSTARTTIMEAFTERENDTIMEERROR = "InvalidParameterValue.WorkflowStartTimeAfterEndTimeError"
+//  INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTEXIST = "ResourceNotFound.WorkflowNotExist"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+//  RESOURCENOTFOUND_WORKFLOWTRIGGERNOTFOUND = "ResourceNotFound.WorkflowTriggerNotFound"
+func (c *Client) UpdateWorkspaceUsersRoles(request *UpdateWorkspaceUsersRolesRequest) (response *UpdateWorkspaceUsersRolesResponse, err error) {
+    return c.UpdateWorkspaceUsersRolesWithContext(context.Background(), request)
+}
+
+// UpdateWorkspaceUsersRoles
+// 修改工作空间用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
+//  FAILEDOPERATION_LABELCOUNTLIMIT = "FailedOperation.LabelCountLimit"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWCREATELOCKACQUIREFAILED = "FailedOperation.WorkflowCreateLockAcquireFailed"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATETASKNAMEERROR = "InvalidParameterValue.DuplicateTaskNameError"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYELEMENTCOUNTLIMIT = "InvalidParameterValue.LoopDataArrayElementCountLimit"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYJSONINVALID = "InvalidParameterValue.LoopDataArrayJsonInvalid"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAY = "InvalidParameterValue.LoopDataArrayNotJsonArray"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAYLITERAL = "InvalidParameterValue.LoopDataArrayNotJsonArrayLiteral"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUEBLANK = "InvalidParameterValue.LoopDataArrayValueBlank"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUELENGTHLIMIT = "InvalidParameterValue.LoopDataArrayValueLengthLimit"
+//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVARIABLEEXPRESSIONINVALID = "InvalidParameterValue.LoopDataArrayVariableExpressionInvalid"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  INVALIDPARAMETERVALUE_TASKHOOKVALIDATIONFAILED = "InvalidParameterValue.TaskHookValidationFailed"
+//  INVALIDPARAMETERVALUE_TASKNAMECONTAINSILLEGALCHARACTERSERROR = "InvalidParameterValue.TaskNameContainsIllegalCharactersError"
+//  INVALIDPARAMETERVALUE_TASKNAMEEXCEEDSLIMITERROR = "InvalidParameterValue.TaskNameExceedsLimitError"
+//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTRESOURCEGROUP = "InvalidParameterValue.TaskTypeNotSupportResourceGroup"
+//  INVALIDPARAMETERVALUE_TASKTYPEPROPERTYKEYVALUEREQUESTREQUIREDERROR = "InvalidParameterValue.TaskTypePropertyKeyValueRequestRequiredError"
+//  INVALIDPARAMETERVALUE_WORKFLOWNAMEEXISTS = "InvalidParameterValue.WorkflowNameExists"
+//  INVALIDPARAMETERVALUE_WORKFLOWNAMEINVALID = "InvalidParameterValue.WorkflowNameInvalid"
+//  INVALIDPARAMETERVALUE_WORKFLOWSTARTTIMEAFTERENDTIMEERROR = "InvalidParameterValue.WorkflowStartTimeAfterEndTimeError"
+//  INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTEXIST = "ResourceNotFound.WorkflowNotExist"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+//  RESOURCENOTFOUND_WORKFLOWTRIGGERNOTFOUND = "ResourceNotFound.WorkflowTriggerNotFound"
+func (c *Client) UpdateWorkspaceUsersRolesWithContext(ctx context.Context, request *UpdateWorkspaceUsersRolesRequest) (response *UpdateWorkspaceUsersRolesResponse, err error) {
+    if request == nil {
+        request = NewUpdateWorkspaceUsersRolesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateWorkspaceUsersRoles")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateWorkspaceUsersRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateWorkspaceUsersRolesResponse()
     err = c.Send(request, response)
     return
 }

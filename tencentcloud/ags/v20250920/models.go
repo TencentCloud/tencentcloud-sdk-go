@@ -1249,6 +1249,91 @@ func (r *CreateRegistryResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSandboxSnapshotRequestParams struct {
+	// <p>待制作快照的沙箱实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>快照名称</p>
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// <p>制作快照时是否包含内存状态</p>
+	Memory *bool `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// <p>云资源标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>幂等 token</p>
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+}
+
+type CreateSandboxSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待制作快照的沙箱实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>快照名称</p>
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// <p>制作快照时是否包含内存状态</p>
+	Memory *bool `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// <p>云资源标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>幂等 token</p>
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+}
+
+func (r *CreateSandboxSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSandboxSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SnapshotName")
+	delete(f, "Memory")
+	delete(f, "Tags")
+	delete(f, "ClientToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSandboxSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSandboxSnapshotResponseParams struct {
+	// <p>沙箱快照</p>
+	Snapshot *SandboxSnapshot `json:"Snapshot,omitnil,omitempty" name:"Snapshot"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSandboxSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSandboxSnapshotResponseParams `json:"Response"`
+}
+
+func (r *CreateSandboxSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSandboxSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSandboxToolRequestParams struct {
 	// <p>沙箱工具名称，长度 1-50 字符，支持英文、数字、下划线和连接线。同一 AppId 下沙箱工具名称必须唯一</p>
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
@@ -1867,6 +1952,60 @@ func (r *DeleteRegistryResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteRegistryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSandboxSnapshotRequestParams struct {
+	// <p>待删除的沙箱快照 ID</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+}
+
+type DeleteSandboxSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待删除的沙箱快照 ID</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+}
+
+func (r *DeleteSandboxSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSandboxSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SnapshotId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSandboxSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSandboxSnapshotResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSandboxSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSandboxSnapshotResponseParams `json:"Response"`
+}
+
+func (r *DeleteSandboxSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSandboxSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3189,6 +3328,104 @@ func (r *DescribeSandboxInstanceListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSandboxInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSandboxSnapshotListRequestParams struct {
+	// <p>待查询的沙箱快照 ID 列表</p>
+	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量，与 NextToken 参数互斥</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量上限</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移 token，与 Offset 参数互斥</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+}
+
+type DescribeSandboxSnapshotListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待查询的沙箱快照 ID 列表</p>
+	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量，与 NextToken 参数互斥</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量上限</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移 token，与 Offset 参数互斥</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+}
+
+func (r *DescribeSandboxSnapshotListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSandboxSnapshotListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SnapshotIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "NextToken")
+	delete(f, "MaxResults")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSandboxSnapshotListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSandboxSnapshotListResponseParams struct {
+	// <p>查询到的沙箱快照列表</p>
+	SnapshotSet []*SandboxSnapshot `json:"SnapshotSet,omitnil,omitempty" name:"SnapshotSet"`
+
+	// <p>查询到的沙箱快照数量</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>分页偏移 token，可用于下一次查询</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSandboxSnapshotListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSandboxSnapshotListResponseParams `json:"Response"`
+}
+
+func (r *DescribeSandboxSnapshotListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSandboxSnapshotListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4604,6 +4841,35 @@ type SandboxInstance struct {
 	AuthMode *string `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
 }
 
+type SandboxSnapshot struct {
+	// <p>沙箱快照 ID</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
+	// <p>沙箱快照名称</p>
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// <p>源沙箱实例 ID，沙箱快照由其派生</p>
+	SourceInstanceId *string `json:"SourceInstanceId,omitnil,omitempty" name:"SourceInstanceId"`
+
+	// <p>制作快照时是否包含内存状态</p>
+	MemoryIncluded *bool `json:"MemoryIncluded,omitnil,omitempty" name:"MemoryIncluded"`
+
+	// <p>沙箱快照状态</p><p>枚举值：</p><ul><li>ACTIVE： 可用</li><li>DELETING： 删除中</li><li>DELETED： 已删除</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>用于说明沙箱快照处于该状态的原因</p>
+	StatusReason *string `json:"StatusReason,omitnil,omitempty" name:"StatusReason"`
+
+	// <p>云资源标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>创建时间</p><p>参数格式：ISO8601</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p><p>参数格式：ISO8601</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
 type SandboxTool struct {
 	// <p>沙箱工具唯一标识符</p>
 	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
@@ -4738,6 +5004,9 @@ type StartSandboxInstanceRequestParams struct {
 	// <p>沙箱工具名称，与 ToolId 至少有一个要填</p>
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
 
+	// <p>待克隆的源沙箱 ID</p>
+	SourceInstanceId *string `json:"SourceInstanceId,omitnil,omitempty" name:"SourceInstanceId"`
+
 	// <p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
 	Timeout *string `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
@@ -4765,6 +5034,9 @@ type StartSandboxInstanceRequest struct {
 
 	// <p>沙箱工具名称，与 ToolId 至少有一个要填</p>
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// <p>待克隆的源沙箱 ID</p>
+	SourceInstanceId *string `json:"SourceInstanceId,omitnil,omitempty" name:"SourceInstanceId"`
 
 	// <p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
 	Timeout *string `json:"Timeout,omitnil,omitempty" name:"Timeout"`
@@ -4799,6 +5071,7 @@ func (r *StartSandboxInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ToolId")
 	delete(f, "ToolName")
+	delete(f, "SourceInstanceId")
 	delete(f, "Timeout")
 	delete(f, "ClientToken")
 	delete(f, "MountOptions")
