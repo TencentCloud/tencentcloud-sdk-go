@@ -593,6 +593,9 @@ const (
 	// 任务已经结束，不能取消。
 	INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
 
+	// 超过最大查询范围，请缩小查询时间范围或增加过滤条件
+	INVALIDPARAMETER_TASKLIMITEXCEEDEDCODE = "InvalidParameter.TaskLimitExceededCode"
+
 	// 筛选参数不匹配
 	INVALIDPARAMETER_TASKLISTFILTERSKEYTYPENOTMATH = "InvalidParameter.TaskListFiltersKeyTypeNotMath"
 

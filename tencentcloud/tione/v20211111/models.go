@@ -219,7 +219,7 @@ type ChatCompletionRequestParams struct {
 	// <p>输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。</p>
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。</p>
@@ -241,7 +241,7 @@ type ChatCompletionRequest struct {
 	// <p>输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。</p>
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。</p>
@@ -772,7 +772,7 @@ type CreateModelServiceAuthTokenRequestParams struct {
 	// <p>服务组 id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>token 名称</p>
@@ -788,7 +788,7 @@ type CreateModelServiceAuthTokenRequest struct {
 	// <p>服务组 id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>token 名称</p>
@@ -844,7 +844,7 @@ func (r *CreateModelServiceAuthTokenResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateModelServiceRequestParams struct {
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>新增版本时需要填写</p>
@@ -995,7 +995,7 @@ type CreateModelServiceRequestParams struct {
 type CreateModelServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>新增版本时需要填写</p>
@@ -1312,27 +1312,39 @@ func (r *CreateMountLimitResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNotebookImageRequestParams struct {
-	// 镜像信息
+	// <p>镜像信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// notebook id
+	// <p>notebook id</p>
 	NotebookId *string `json:"NotebookId,omitnil,omitempty" name:"NotebookId"`
 
-	// 要保存的kernel数组
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>要保存的kernel数组</p>
 	Kernels []*string `json:"Kernels,omitnil,omitempty" name:"Kernels"`
+
+	// <p>是否保存到镜像中心</p>
+	RegisterToImageCenter *bool `json:"RegisterToImageCenter,omitnil,omitempty" name:"RegisterToImageCenter"`
 }
 
 type CreateNotebookImageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 镜像信息
+	// <p>镜像信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// notebook id
+	// <p>notebook id</p>
 	NotebookId *string `json:"NotebookId,omitnil,omitempty" name:"NotebookId"`
 
-	// 要保存的kernel数组
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>要保存的kernel数组</p>
 	Kernels []*string `json:"Kernels,omitnil,omitempty" name:"Kernels"`
+
+	// <p>是否保存到镜像中心</p>
+	RegisterToImageCenter *bool `json:"RegisterToImageCenter,omitnil,omitempty" name:"RegisterToImageCenter"`
 }
 
 func (r *CreateNotebookImageRequest) ToJsonString() string {
@@ -1349,7 +1361,9 @@ func (r *CreateNotebookImageRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageInfo")
 	delete(f, "NotebookId")
+	delete(f, "TiProjectId")
 	delete(f, "Kernels")
+	delete(f, "RegisterToImageCenter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookImageRequest has unknown keys!", "")
 	}
@@ -1607,6 +1621,9 @@ func (r *CreateNotebookResponse) FromJsonString(s string) error {
 type CreatePresignedNotebookUrlRequestParams struct {
 	// Notebook ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type CreatePresignedNotebookUrlRequest struct {
@@ -1614,6 +1631,9 @@ type CreatePresignedNotebookUrlRequest struct {
 	
 	// Notebook ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *CreatePresignedNotebookUrlRequest) ToJsonString() string {
@@ -1629,6 +1649,7 @@ func (r *CreatePresignedNotebookUrlRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePresignedNotebookUrlRequest has unknown keys!", "")
 	}
@@ -1923,7 +1944,7 @@ type CreateTrainingTaskRequestParams struct {
 	// <p>资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{&quot;Role&quot;:&quot;WORKER&quot;, &quot;InstanceType&quot;: &quot;TI.S.MEDIUM.POST&quot;, &quot;InstanceNum&quot;: 1}]</p>
 	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitnil,omitempty" name:"ResourceConfigInfos"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
@@ -2017,7 +2038,7 @@ type CreateTrainingTaskRequest struct {
 	// <p>资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{&quot;Role&quot;:&quot;WORKER&quot;, &quot;InstanceType&quot;: &quot;TI.S.MEDIUM.POST&quot;, &quot;InstanceNum&quot;: 1}]</p>
 	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitnil,omitempty" name:"ResourceConfigInfos"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
@@ -2806,7 +2827,7 @@ type DeleteModelServiceAuthTokenRequestParams struct {
 	// <p>服务组 id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>token 值</p>
@@ -2819,7 +2840,7 @@ type DeleteModelServiceAuthTokenRequest struct {
 	// <p>服务组 id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>token 值</p>
@@ -2874,7 +2895,7 @@ type DeleteModelServiceGroupRequestParams struct {
 	// 服务id
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -2884,7 +2905,7 @@ type DeleteModelServiceGroupRequest struct {
 	// 服务id
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -2935,7 +2956,7 @@ type DeleteModelServiceRequestParams struct {
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 服务分类
@@ -2950,7 +2971,7 @@ type DeleteModelServiceRequest struct {
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 服务分类
@@ -3072,6 +3093,9 @@ func (r *DeleteMountLimitResponse) FromJsonString(s string) error {
 type DeleteNotebookRequestParams struct {
 	// notebook id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type DeleteNotebookRequest struct {
@@ -3079,6 +3103,9 @@ type DeleteNotebookRequest struct {
 	
 	// notebook id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *DeleteNotebookRequest) ToJsonString() string {
@@ -3094,6 +3121,7 @@ func (r *DeleteNotebookRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNotebookRequest has unknown keys!", "")
 	}
@@ -3270,7 +3298,7 @@ type DeleteTrainingTaskRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -3280,7 +3308,7 @@ type DeleteTrainingTaskRequest struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -3434,7 +3462,7 @@ type DescribeBillingResourceGroupAttachedWorkspacesRequestParams struct {
 	// <p>资源组ID</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -3444,7 +3472,7 @@ type DescribeBillingResourceGroupAttachedWorkspacesRequest struct {
 	// <p>资源组ID</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -3712,7 +3740,7 @@ type DescribeBillingResourceInstanceRunningJobsRequestParams struct {
 	// 资源组节点id
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitnil,omitempty" name:"ResourceInstanceId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -3725,7 +3753,7 @@ type DescribeBillingResourceInstanceRunningJobsRequest struct {
 	// 资源组节点id
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitnil,omitempty" name:"ResourceInstanceId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -3780,6 +3808,9 @@ func (r *DescribeBillingResourceInstanceRunningJobsResponse) FromJsonString(s st
 type DescribeBillingSpecsPriceRequestParams struct {
 	// 询价参数，支持批量询价
 	SpecsParam []*SpecUnit `json:"SpecsParam,omitnil,omitempty" name:"SpecsParam"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type DescribeBillingSpecsPriceRequest struct {
@@ -3787,6 +3818,9 @@ type DescribeBillingSpecsPriceRequest struct {
 	
 	// 询价参数，支持批量询价
 	SpecsParam []*SpecUnit `json:"SpecsParam,omitnil,omitempty" name:"SpecsParam"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *DescribeBillingSpecsPriceRequest) ToJsonString() string {
@@ -3802,6 +3836,7 @@ func (r *DescribeBillingSpecsPriceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SpecsParam")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingSpecsPriceRequest has unknown keys!", "")
 	}
@@ -3838,7 +3873,7 @@ type DescribeBillingSpecsRequestParams struct {
 	// <p>付费模式：POSTPAID_BY_HOUR按量计费、PREPAID包年包月</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>枚举值：空、TRAIN、NOTEBOOK、INFERENCE或EMS</p>
@@ -3854,7 +3889,7 @@ type DescribeBillingSpecsRequest struct {
 	// <p>付费模式：POSTPAID_BY_HOUR按量计费、PREPAID包年包月</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>枚举值：空、TRAIN、NOTEBOOK、INFERENCE或EMS</p>
@@ -4268,102 +4303,68 @@ func (r *DescribeDatasetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEventsRequestParams struct {
-	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
-	// 枚举值：
-	// - TRAIN
-	// - NOTEBOOK
-	// - INFER
-	// - BATCH
+	// <p>服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测<br>枚举值：</p><ul><li>TRAIN</li><li>NOTEBOOK</li><li>INFER</li><li>BATCH</li></ul>
 	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
 
-	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
-	// - Service类型为TRAIN：
-	//   调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
-	// - Service类型为NOTEBOOK：
-	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
-	// - Service类型为INFER：
-	//   调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
-	// - Service类型为BATCH：
-	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：</p><ul><li>Service类型为TRAIN：<br>调用<a href="/document/product/851/75089">DescribeTrainingTask接口</a>查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId</li><li>Service类型为NOTEBOOK：<br>调用<a href="/document/product/851/95662">DescribeNotebook接口</a>查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName</li><li>Service类型为INFER：<br>调用<a href="/document/product/851/82285">DescribeModelServiceGroup接口</a>查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId</li><li>Service类型为BATCH：<br>调用<a href="/document/product/851/80180">DescribeBatchTask接口</a>查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId</li></ul>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天
+	// <p>查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间
+	// <p>查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 分页Limit，默认值为100，最大值为100
+	// <p>分页Limit，默认值为100，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页Offset，默认值为0
+	// <p>分页Offset，默认值为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排列顺序（可选值为ASC, DESC ），默认为DESC
+	// <p>排列顺序（可选值为ASC, DESC ），默认为DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp
+	// <p>排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 过滤条件
-	// 注意: 
-	// 1. Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）
-	// 2. Filter.Values：
-	// 对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；
-	// 对于Name为Type，Values的可选取值仅为Normal或者Warning；
-	// Values为多个的时候表示同时满足
-	// 3. Filter. Negative和Filter. Fuzzy没有使用
+	// <p>过滤条件<br>注意: </p><ol><li>Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）</li><li>Filter.Values：<br>对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；<br>对于Name为Type，Values的可选取值仅为Normal或者Warning；<br>Values为多个的时候表示同时满足</li><li>Filter. Negative和Filter. Fuzzy没有使用</li></ol>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeEventsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
-	// 枚举值：
-	// - TRAIN
-	// - NOTEBOOK
-	// - INFER
-	// - BATCH
+	// <p>服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测<br>枚举值：</p><ul><li>TRAIN</li><li>NOTEBOOK</li><li>INFER</li><li>BATCH</li></ul>
 	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
 
-	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
-	// - Service类型为TRAIN：
-	//   调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
-	// - Service类型为NOTEBOOK：
-	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
-	// - Service类型为INFER：
-	//   调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
-	// - Service类型为BATCH：
-	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：</p><ul><li>Service类型为TRAIN：<br>调用<a href="/document/product/851/75089">DescribeTrainingTask接口</a>查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId</li><li>Service类型为NOTEBOOK：<br>调用<a href="/document/product/851/95662">DescribeNotebook接口</a>查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName</li><li>Service类型为INFER：<br>调用<a href="/document/product/851/82285">DescribeModelServiceGroup接口</a>查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId</li><li>Service类型为BATCH：<br>调用<a href="/document/product/851/80180">DescribeBatchTask接口</a>查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId</li></ul>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天
+	// <p>查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间
+	// <p>查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 分页Limit，默认值为100，最大值为100
+	// <p>分页Limit，默认值为100，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页Offset，默认值为0
+	// <p>分页Offset，默认值为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排列顺序（可选值为ASC, DESC ），默认为DESC
+	// <p>排列顺序（可选值为ASC, DESC ），默认为DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp
+	// <p>排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 过滤条件
-	// 注意: 
-	// 1. Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）
-	// 2. Filter.Values：
-	// 对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；
-	// 对于Name为Type，Values的可选取值仅为Normal或者Warning；
-	// Values为多个的时候表示同时满足
-	// 3. Filter. Negative和Filter. Fuzzy没有使用
+	// <p>过滤条件<br>注意: </p><ol><li>Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）</li><li>Filter.Values：<br>对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；<br>对于Name为Type，Values的可选取值仅为Normal或者Warning；<br>Values为多个的时候表示同时满足</li><li>Filter. Negative和Filter. Fuzzy没有使用</li></ol>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -4380,6 +4381,7 @@ func (r *DescribeEventsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Service")
+	delete(f, "TiProjectId")
 	delete(f, "ServiceId")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
@@ -4396,11 +4398,11 @@ func (r *DescribeEventsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEventsResponseParams struct {
-	// 事件的列表
+	// <p>事件的列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Events []*Event `json:"Events,omitnil,omitempty" name:"Events"`
 
-	// 此次查询的事件的个数
+	// <p>此次查询的事件的个数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
@@ -4897,7 +4899,7 @@ type DescribeModelServiceCallInfoRequestParams struct {
 	// 服务组id
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 服务分类
@@ -4912,7 +4914,7 @@ type DescribeModelServiceCallInfoRequest struct {
 	// 服务组id
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 服务分类
@@ -4987,7 +4989,7 @@ type DescribeModelServiceGroupRequestParams struct {
 	// 服务组ID
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 服务分类
@@ -5002,7 +5004,7 @@ type DescribeModelServiceGroupRequest struct {
 	// 服务组ID
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 服务分类
@@ -5058,7 +5060,7 @@ func (r *DescribeModelServiceGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModelServiceGroupsRequestParams struct {
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>偏移量，默认为0</p>
@@ -5088,7 +5090,7 @@ type DescribeModelServiceGroupsRequestParams struct {
 type DescribeModelServiceGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>偏移量，默认为0</p>
@@ -5248,7 +5250,7 @@ type DescribeModelServiceRequestParams struct {
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 服务分类
@@ -5263,7 +5265,7 @@ type DescribeModelServiceRequest struct {
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 服务分类
@@ -5568,7 +5570,7 @@ type DescribeNotebookRequestParams struct {
 	// notebook id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -5578,7 +5580,7 @@ type DescribeNotebookRequest struct {
 	// notebook id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -5629,72 +5631,50 @@ func (r *DescribeNotebookResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNotebooksRequestParams struct {
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页返回的实例数，默认为10
+	// <p>每页返回的实例数，默认为 10，最小值 0，最大值 100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列。默认为DESC
+	// <p>输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列。默认为DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 根据哪个字段排序，如：CreateTime、UpdateTime，默认为UpdateTime
+	// <p>根据哪个字段排序，如：CreateTime、UpdateTime，默认为UpdateTime</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 过滤器，eg：[{ "Name": "Id", "Values": ["nb-123456789"] }]
-	// 
-	// 取值范围
-	// Name（名称）：notebook1
-	// Id（notebook ID）：nb-123456789
-	// Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed
-	// Creator（创建者 uin）：100014761913
-	// ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
-	// ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）
-	// DefaultCodeRepoId（默认代码仓库ID）：cr-123456789
-	// AdditionalCodeRepoId（关联代码仓库ID）：cr-123456789
-	// LifecycleScriptId（生命周期ID）：ls-12312312311312
+	// <p>过滤器，eg：[{ &quot;Name&quot;: &quot;Id&quot;, &quot;Values&quot;: [&quot;nb-123456789&quot;] }]</p><p>取值范围<br>Name（名称）：notebook1<br>Id（notebook ID）：nb-123456789<br>Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed<br>Creator（创建者 uin）：100014761913<br>ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）<br>ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）<br>DefaultCodeRepoId（默认代码仓库ID）：cr-123456789<br>AdditionalCodeRepoId（关联代码仓库ID）：cr-123456789<br>LifecycleScriptId（生命周期ID）：ls-12312312311312</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+	// <p>标签过滤器，eg：[{ &quot;TagKey&quot;: &quot;TagKeyA&quot;, &quot;TagValue&quot;: [&quot;TagValueA&quot;] }]</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 type DescribeNotebooksRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页返回的实例数，默认为10
+	// <p>每页返回的实例数，默认为 10，最小值 0，最大值 100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列。默认为DESC
+	// <p>输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列。默认为DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 根据哪个字段排序，如：CreateTime、UpdateTime，默认为UpdateTime
+	// <p>根据哪个字段排序，如：CreateTime、UpdateTime，默认为UpdateTime</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 过滤器，eg：[{ "Name": "Id", "Values": ["nb-123456789"] }]
-	// 
-	// 取值范围
-	// Name（名称）：notebook1
-	// Id（notebook ID）：nb-123456789
-	// Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed
-	// Creator（创建者 uin）：100014761913
-	// ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
-	// ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）
-	// DefaultCodeRepoId（默认代码仓库ID）：cr-123456789
-	// AdditionalCodeRepoId（关联代码仓库ID）：cr-123456789
-	// LifecycleScriptId（生命周期ID）：ls-12312312311312
+	// <p>过滤器，eg：[{ &quot;Name&quot;: &quot;Id&quot;, &quot;Values&quot;: [&quot;nb-123456789&quot;] }]</p><p>取值范围<br>Name（名称）：notebook1<br>Id（notebook ID）：nb-123456789<br>Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed<br>Creator（创建者 uin）：100014761913<br>ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）<br>ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）<br>DefaultCodeRepoId（默认代码仓库ID）：cr-123456789<br>AdditionalCodeRepoId（关联代码仓库ID）：cr-123456789<br>LifecycleScriptId（生命周期ID）：ls-12312312311312</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+	// <p>标签过滤器，eg：[{ &quot;TagKey&quot;: &quot;TagKeyA&quot;, &quot;TagValue&quot;: [&quot;TagValueA&quot;] }]</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
@@ -5725,10 +5705,10 @@ func (r *DescribeNotebooksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNotebooksResponseParams struct {
-	// notebook详情
+	// <p>notebook详情</p>
 	NotebookSet []*NotebookSetItem `json:"NotebookSet,omitnil,omitempty" name:"NotebookSet"`
 
-	// 总条数
+	// <p>总条数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5929,6 +5909,9 @@ func (r *DescribePresetImageListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicAlgoVersionListRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 过滤器
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -5945,6 +5928,9 @@ type DescribePublicAlgoVersionListRequestParams struct {
 type DescribePublicAlgoVersionListRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 过滤器
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -5970,6 +5956,7 @@ func (r *DescribePublicAlgoVersionListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
@@ -6016,6 +6003,9 @@ func (r *DescribePublicAlgoVersionListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSubAccountLinuxUserInfosRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 分页偏移量（0 表示全量）
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -6029,6 +6019,9 @@ type DescribeSubAccountLinuxUserInfosRequestParams struct {
 type DescribeSubAccountLinuxUserInfosRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 分页偏移量（0 表示全量）
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -6051,6 +6044,7 @@ func (r *DescribeSubAccountLinuxUserInfosRequest) FromJsonString(s string) error
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
@@ -6227,6 +6221,9 @@ func (r *DescribeTrainingModelVersionsResponse) FromJsonString(s string) error {
 type DescribeTrainingTaskPodUrlRequestParams struct {
 	// 任务实例名
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type DescribeTrainingTaskPodUrlRequest struct {
@@ -6234,6 +6231,9 @@ type DescribeTrainingTaskPodUrlRequest struct {
 	
 	// 任务实例名
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *DescribeTrainingTaskPodUrlRequest) ToJsonString() string {
@@ -6249,6 +6249,7 @@ func (r *DescribeTrainingTaskPodUrlRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "PodName")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrainingTaskPodUrlRequest has unknown keys!", "")
 	}
@@ -6285,7 +6286,7 @@ type DescribeTrainingTaskPodsRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -6295,7 +6296,7 @@ type DescribeTrainingTaskPodsRequest struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -6355,7 +6356,7 @@ type DescribeTrainingTaskRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 训练任务实例ID
@@ -6368,7 +6369,7 @@ type DescribeTrainingTaskRequest struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 训练任务实例ID
@@ -6423,7 +6424,7 @@ func (r *DescribeTrainingTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTrainingTasksRequestParams struct {
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 过滤器，eg：[{ "Name": "Id", "Values": ["train-23091792777383936"] }]
@@ -6457,7 +6458,7 @@ type DescribeTrainingTasksRequestParams struct {
 type DescribeTrainingTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 过滤器，eg：[{ "Name": "Id", "Values": ["train-23091792777383936"] }]
@@ -6664,6 +6665,9 @@ type EnableTrainingTaskClsConfigRequestParams struct {
 	// 是否开启CLS日志投递
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 日志配置
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 }
@@ -6676,6 +6680,9 @@ type EnableTrainingTaskClsConfigRequest struct {
 
 	// 是否开启CLS日志投递
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 日志配置
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
@@ -6695,6 +6702,7 @@ func (r *EnableTrainingTaskClsConfigRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	delete(f, "LogEnable")
+	delete(f, "TiProjectId")
 	delete(f, "LogConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableTrainingTaskClsConfigRequest has unknown keys!", "")
@@ -7640,7 +7648,7 @@ type ModifyModelServiceAuthTokenRequestParams struct {
 	// <p>服务组 id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>是否需要重置，如果为 true，重置 token 值</p>
@@ -7656,7 +7664,7 @@ type ModifyModelServiceAuthTokenRequest struct {
 	// <p>服务组 id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>是否需要重置，如果为 true，重置 token 值</p>
@@ -7715,6 +7723,9 @@ type ModifyModelServiceAuthorizationRequestParams struct {
 	// 服务组Id
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 是否开启鉴权,true表示开启
 	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil,omitempty" name:"AuthorizationEnable"`
 }
@@ -7724,6 +7735,9 @@ type ModifyModelServiceAuthorizationRequest struct {
 	
 	// 服务组Id
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 是否开启鉴权,true表示开启
 	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil,omitempty" name:"AuthorizationEnable"`
@@ -7742,6 +7756,7 @@ func (r *ModifyModelServiceAuthorizationRequest) FromJsonString(s string) error 
 		return err
 	}
 	delete(f, "ServiceGroupId")
+	delete(f, "TiProjectId")
 	delete(f, "AuthorizationEnable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceAuthorizationRequest has unknown keys!", "")
@@ -7776,7 +7791,7 @@ type ModifyModelServiceRequestParams struct {
 	// <p>服务id</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>模型信息，需要挂载模型时填写</p>
@@ -7897,7 +7912,7 @@ type ModifyModelServiceRequest struct {
 	// <p>服务id</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>模型信息，需要挂载模型时填写</p>
@@ -8121,6 +8136,9 @@ type ModifyNotebookRequestParams struct {
 	// <p>是否上报日志</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// <p>资源组ID(for预付费)</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
@@ -8203,6 +8221,9 @@ type ModifyNotebookRequest struct {
 	// <p>是否上报日志</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// <p>资源组ID(for预付费)</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
@@ -8278,6 +8299,7 @@ func (r *ModifyNotebookRequest) FromJsonString(s string) error {
 	delete(f, "DirectInternetAccess")
 	delete(f, "RootAccess")
 	delete(f, "LogEnable")
+	delete(f, "TiProjectId")
 	delete(f, "ResourceGroupId")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
@@ -8329,6 +8351,9 @@ type ModifyNotebookTagsRequestParams struct {
 	// Notebook Id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// Notebook修改标签集合
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
@@ -8338,6 +8363,9 @@ type ModifyNotebookTagsRequest struct {
 	
 	// Notebook Id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// Notebook修改标签集合
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
@@ -8356,6 +8384,7 @@ func (r *ModifyNotebookTagsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "TiProjectId")
 	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNotebookTagsRequest has unknown keys!", "")
@@ -8392,6 +8421,9 @@ type ModifyServiceGroupWeightsRequestParams struct {
 
 	// 权重设置
 	Weights []*WeightEntry `json:"Weights,omitnil,omitempty" name:"Weights"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type ModifyServiceGroupWeightsRequest struct {
@@ -8402,6 +8434,9 @@ type ModifyServiceGroupWeightsRequest struct {
 
 	// 权重设置
 	Weights []*WeightEntry `json:"Weights,omitnil,omitempty" name:"Weights"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *ModifyServiceGroupWeightsRequest) ToJsonString() string {
@@ -8418,6 +8453,7 @@ func (r *ModifyServiceGroupWeightsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ServiceGroupId")
 	delete(f, "Weights")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServiceGroupWeightsRequest has unknown keys!", "")
 	}
@@ -9983,6 +10019,10 @@ type ServiceGroup struct {
 
 	// <p>变更服务的子账户名称</p>
 	ChangerName *string `json:"ChangerName,omitnil,omitempty" name:"ChangerName"`
+
+	// <p>智能路由（SmartRouter）配置与运行时状态。未开启时该字段为空</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SmartRouter *SmartRouter `json:"SmartRouter,omitnil,omitempty" name:"SmartRouter"`
 }
 
 type ServiceInfo struct {
@@ -10161,6 +10201,100 @@ type SidecarSpec struct {
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 }
 
+type SmartRouter struct {
+	// 智能路由开关状态（true=已开启，false=未开启/已停止）
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 绑定的服务组 ID（一对一）
+	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// 组件列表（gateway + scheduler；repeated 为未来扩展预留）
+	ComponentList []*SmartRouterComponent `json:"ComponentList,omitnil,omitempty" name:"ComponentList"`
+
+	// 创建人
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type SmartRouterComponent struct {
+	// <p>组件名称：{ServiceGroupId}-gateway / {ServiceGroupId}-scheduler</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>组件类型：&quot;Gateway&quot; / &quot;Scheduler&quot;</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>组件镜像（从 K8s Deployment 实时查询）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
+
+	// <p>期望配置（Replicas/Cpu/Memory/Env）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceConfig *SmartRouterResourceConfig `json:"ResourceConfig,omitnil,omitempty" name:"ResourceConfig"`
+
+	// <p>组件状态：CREATING 创建中 / CREATE_FAILED 创建失败 / Normal 正常运行中 / Stopped 已停止 / Stopping 停止中 / Abnormal 异常 / Pending 启动中 / Waiting 就绪中</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>资源规格（查询时回显用户创建/修改时的资源选择）。公有云场景展示：ChargeType / Zone / ResourceSupplyAttribute；内网版场景展示：QueueId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceSpec *SmartRouterResourceSpec `json:"ResourceSpec,omitnil,omitempty" name:"ResourceSpec"`
+
+	// <p>业务状态（组件级计费状态，Gateway/Scheduler 独立判定）：Billing 计费中 / Normal 正常（未计费或已停止计费）/ WhitelistUsing 白名单使用中（免计费）</p>
+	BusinessStatus *string `json:"BusinessStatus,omitnil,omitempty" name:"BusinessStatus"`
+
+	// <p>费用信息（组件级计费明细 JSON 字符串，格式与 Service.BillingInfo 一致，前端可复用同一渲染逻辑）</p>
+	BillingInfo *string `json:"BillingInfo,omitnil,omitempty" name:"BillingInfo"`
+}
+
+type SmartRouterResourceConfig struct {
+	// <p>副本数，最小 1，建议 &gt;=2 以确保高可用；Scheduler（EPP）默认 2（保障 EPP 高可用与 Gossip 同步）</p>
+	Replicas *uint64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
+
+	// <p>处理器资源，单位为 1/1000 核（milliCPU），与 EMS 一致</p>
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>内存资源，单位为 1MB，与 EMS 一致</p>
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// <p>自定义环境变量，用于覆盖 Deployment 内置默认环境变量。Gateway 典型用途：覆盖 BACKEND_SERVICE_HOST 等；Scheduler 典型用途：覆盖 LRU_CAPACITY、BLOCK_SIZE_TOKENS 等</p>
+	Env []*EnvVar `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// <p>实例类型/规格，用于指定组件运行的机器规格</p>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>sidecar 容器配置，复用推理服务同款 SidecarSpec；未设置或 ImageInfo.ImageUrl 为空时不创建 sidecar 容器。sidecar 容器环境变量与组件主容器保持一致，不单独下发</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
+}
+
+type SmartRouterResourceSpec struct {
+	// <p>付费模式：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）。不传则默认 POSTPAID_BY_HOUR</p>
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// <p>预付费资源组 ID（ChargeType=PREPAID 时必填）</p>
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// <p>预付费资源组名称（output only，ChargeType=PREPAID 时有值，查询时回显）</p>
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// <p>可用区（如 ap-guangzhou-3），公有云场景用于指定机器来源</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// <p>资源队列 ID（内网版使用，标识任务所属的调度队列）</p>
+	QueueId *string `json:"QueueId,omitnil,omitempty" name:"QueueId"`
+
+	// <p>服务的优先级，可选范围 [0,9]，默认 0（内网版/私有化使用）</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// <p>资源供应属性（潮汐/竞价等供应模式），公有云场景用于指定机器来源类型。仅区分供应来源，计费/部署/伸缩仍按后付费处理（ChargeType 恒为 POSTPAID_BY_HOUR）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
+}
+
 type Spec struct {
 	// <p>计费项标签</p>
 	SpecId *string `json:"SpecId,omitnil,omitempty" name:"SpecId"`
@@ -10231,6 +10365,9 @@ type StartCmdInfo struct {
 type StartNotebookRequestParams struct {
 	// notebook id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type StartNotebookRequest struct {
@@ -10238,6 +10375,9 @@ type StartNotebookRequest struct {
 	
 	// notebook id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *StartNotebookRequest) ToJsonString() string {
@@ -10253,6 +10393,7 @@ func (r *StartNotebookRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartNotebookRequest has unknown keys!", "")
 	}
@@ -10286,7 +10427,7 @@ type StartTrainingTaskRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -10296,7 +10437,7 @@ type StartTrainingTaskRequest struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -10441,6 +10582,9 @@ func (r *StopModelAccelerateTaskResponse) FromJsonString(s string) error {
 type StopNotebookRequestParams struct {
 	// notebook id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type StopNotebookRequest struct {
@@ -10448,6 +10592,9 @@ type StopNotebookRequest struct {
 	
 	// notebook id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *StopNotebookRequest) ToJsonString() string {
@@ -10463,6 +10610,7 @@ func (r *StopNotebookRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopNotebookRequest has unknown keys!", "")
 	}
@@ -10496,7 +10644,7 @@ type StopTrainingTaskRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -10506,7 +10654,7 @@ type StopTrainingTaskRequest struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
@@ -11194,6 +11342,9 @@ func (r *UpdateMountLimitResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateSubAccountLinuxUserInfoRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 子账号信息列表
 	SubAccountList []*SubAccountInfo `json:"SubAccountList,omitnil,omitempty" name:"SubAccountList"`
 }
@@ -11201,6 +11352,9 @@ type UpdateSubAccountLinuxUserInfoRequestParams struct {
 type UpdateSubAccountLinuxUserInfoRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 子账号信息列表
 	SubAccountList []*SubAccountInfo `json:"SubAccountList,omitnil,omitempty" name:"SubAccountList"`
 }
@@ -11217,6 +11371,7 @@ func (r *UpdateSubAccountLinuxUserInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "SubAccountList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateSubAccountLinuxUserInfoRequest has unknown keys!", "")

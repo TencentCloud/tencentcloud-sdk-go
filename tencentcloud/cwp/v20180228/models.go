@@ -2466,71 +2466,80 @@ type BashEvent struct {
 }
 
 type BashEventNew struct {
-	// 数据ID
+	// <p>数据ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 主机安全ID
+	// <p>主机安全ID</p>
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 主机ID
+	// <p>主机ID</p>
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
-	// 主机内网IP
+	// <p>主机内网IP</p>
 	HostIp *string `json:"HostIp,omitnil,omitempty" name:"HostIp"`
 
-	// 执行用户名
+	// <p>执行用户名</p>
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 平台类型
+	// <p>平台类型</p>
 	Platform *uint64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
-	// 执行命令
+	// <p>执行命令</p>
 	BashCmd *string `json:"BashCmd,omitnil,omitempty" name:"BashCmd"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 规则等级：1-高 2-中 3-低
+	// <p>规则等级：1-高 2-中 3-低</p>
 	RuleLevel *uint64 `json:"RuleLevel,omitnil,omitempty" name:"RuleLevel"`
 
-	// 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3 = 已忽略
+	// <p>处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3 = 已忽略</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 发生时间
+	// <p>发生时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 主机名
+	// <p>主机名</p>
 	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
-	// 0: bash日志 1: 实时监控(雷霆版)
+	// <p>0: bash日志 1: 实时监控(雷霆版)</p>
 	DetectBy *uint64 `json:"DetectBy,omitnil,omitempty" name:"DetectBy"`
 
-	// 进程id
+	// <p>进程id</p>
 	Pid *string `json:"Pid,omitnil,omitempty" name:"Pid"`
 
-	// 进程名称
+	// <p>进程名称</p>
 	Exe *string `json:"Exe,omitnil,omitempty" name:"Exe"`
 
-	// 处理时间
+	// <p>处理时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 规则类别  0=系统规则，1=用户规则
+	// <p>规则类别  0=系统规则，1=用户规则</p>
 	RuleCategory *uint64 `json:"RuleCategory,omitnil,omitempty" name:"RuleCategory"`
 
-	// 转义后的正则表达式
+	// <p>转义后的正则表达式</p>
 	RegexBashCmd *string `json:"RegexBashCmd,omitnil,omitempty" name:"RegexBashCmd"`
 
-	// 转义后的正则表达式
+	// <p>转义后的正则表达式</p>
 	RegexExe *string `json:"RegexExe,omitnil,omitempty" name:"RegexExe"`
 
-	// 0:普通 1:专业版 2:旗舰版
+	// <p>0:普通 1:专业版 2:旗舰版</p>
 	MachineType *int64 `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 机器额外信息
+	// <p>机器额外信息</p>
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
+
+	// <p>告警次数：同一聚合维度当天的告警命中次数，老数据为空</p>
+	EventCount *uint64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+
+	// <p>首次发现时间（格式 yyyy-MM-dd HH:mm:ss）</p>
+	FirstDetectTime *string `json:"FirstDetectTime,omitnil,omitempty" name:"FirstDetectTime"`
+
+	// <p>最近发现时间（格式 yyyy-MM-dd HH:mm:ss）</p>
+	LatestDetectTime *string `json:"LatestDetectTime,omitnil,omitempty" name:"LatestDetectTime"`
 }
 
 type BashEventsInfo struct {
@@ -2614,142 +2623,184 @@ type BashEventsInfo struct {
 }
 
 type BashEventsInfoNew struct {
-	// 数据ID
+	// <p>数据ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 主机安全ID
+	// <p>主机安全ID</p>
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 主机ID
+	// <p>主机ID</p>
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
-	// 主机内网IP
+	// <p>主机内网IP</p>
 	HostIp *string `json:"HostIp,omitnil,omitempty" name:"HostIp"`
 
-	// 平台类型
+	// <p>平台类型</p>
 	Platform *uint64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
-	// 执行命令
+	// <p>执行命令</p>
 	BashCmd *string `json:"BashCmd,omitnil,omitempty" name:"BashCmd"`
 
-	// 规则ID,等于0表示已规则已被删除或生效范围已修改
+	// <p>规则ID,等于0表示已规则已被删除或生效范围已修改</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 规则等级：1-高 2-中 3-低
+	// <p>规则等级：1-高 2-中 3-低</p>
 	RuleLevel *uint64 `json:"RuleLevel,omitnil,omitempty" name:"RuleLevel"`
 
-	// 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3= 已忽略
+	// <p>处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3= 已忽略</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 发生时间
+	// <p>发生时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 主机名
+	// <p>主机名</p>
 	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
-	// 进程名称
+	// <p>进程名称</p>
 	Exe *string `json:"Exe,omitnil,omitempty" name:"Exe"`
 
-	// 处理时间
+	// <p>处理时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 规则类别  0=系统规则，1=用户规则
+	// <p>规则类别  0=系统规则，1=用户规则</p>
 	RuleCategory *uint64 `json:"RuleCategory,omitnil,omitempty" name:"RuleCategory"`
 
-	// 自动生成的正则表达式
+	// <p>自动生成的正则表达式</p>
 	RegexBashCmd *string `json:"RegexBashCmd,omitnil,omitempty" name:"RegexBashCmd"`
 
-	// 进程树 json  pid:进程id，exe:文件路径 ，account:进程所属用组和用户 ,cmdline:执行命令，ssh_service: SSH服务ip, ssh_soure:登录源
+	// <p>进程树 json  pid:进程id，exe:文件路径 ，account:进程所属用组和用户 ,cmdline:执行命令，ssh_service: SSH服务ip, ssh_soure:登录源</p>
 	PsTree *string `json:"PsTree,omitnil,omitempty" name:"PsTree"`
 
-	// 建议方案
+	// <p>建议方案</p>
 	SuggestScheme *string `json:"SuggestScheme,omitnil,omitempty" name:"SuggestScheme"`
 
-	// 描述
+	// <p>描述</p>
 	HarmDescribe *string `json:"HarmDescribe,omitnil,omitempty" name:"HarmDescribe"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 参考链接
+	// <p>参考链接</p>
 	References []*string `json:"References,omitnil,omitempty" name:"References"`
 
-	// 主机外网ip
+	// <p>主机外网ip</p>
 	MachineWanIp *string `json:"MachineWanIp,omitnil,omitempty" name:"MachineWanIp"`
 
-	// 主机在线状态 OFFLINE  ONLINE
+	// <p>主机在线状态 OFFLINE  ONLINE</p>
 	MachineStatus *string `json:"MachineStatus,omitnil,omitempty" name:"MachineStatus"`
 
-	// 登录用户
+	// <p>登录用户</p>
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 进程号
+	// <p>进程号</p>
 	Pid *string `json:"Pid,omitnil,omitempty" name:"Pid"`
 
-	// 0:普通 1:专业版 2:旗舰版
+	// <p>0:普通 1:专业版 2:旗舰版</p>
 	MachineType *int64 `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 检测来源 0:bash日志 1:实时监控
+	// <p>检测来源 0:bash日志 1:实时监控</p>
 	DetectBy *int64 `json:"DetectBy,omitnil,omitempty" name:"DetectBy"`
 
-	// 执行命令(解码后)
+	// <p>执行命令(解码后)</p>
 	BashCmdDecoded *string `json:"BashCmdDecoded,omitnil,omitempty" name:"BashCmdDecoded"`
+
+	// <p>告警次数：同一聚合维度当天的告警命中次数，老数据为空</p>
+	EventCount *uint64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+
+	// <p>首次发现时间（格式 yyyy-MM-dd HH:mm:ss）</p>
+	FirstDetectTime *string `json:"FirstDetectTime,omitnil,omitempty" name:"FirstDetectTime"`
+
+	// <p>最近发现时间（格式 yyyy-MM-dd HH:mm:ss）</p>
+	LatestDetectTime *string `json:"LatestDetectTime,omitnil,omitempty" name:"LatestDetectTime"`
+
+	// <p>进程MD5（文件监控行为独有）</p>
+	FileProcessMd5 *string `json:"FileProcessMd5,omitnil,omitempty" name:"FileProcessMd5"`
+
+	// <p>动作：进程对文件的操作，如 读/写/重命名/删除/清空内容（文件监控行为独有）</p>
+	FileAction *string `json:"FileAction,omitnil,omitempty" name:"FileAction"`
+
+	// <p>文件路径（文件监控行为独有）</p>
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// <p>文件MD5（文件监控行为独有）</p>
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
+
+	// <p>文件名称（文件监控行为独有）</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>文件大小（文件监控行为独有）</p>
+	FileSize *string `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// <p>文件修改时间（文件监控行为独有）</p>
+	FileModifyTime *string `json:"FileModifyTime,omitnil,omitempty" name:"FileModifyTime"`
+
+	// <p>文件权限（文件监控行为独有）</p>
+	FilePermission *string `json:"FilePermission,omitnil,omitempty" name:"FilePermission"`
+
+	// <p>文件访问时间</p>
+	FileAccessTime *string `json:"FileAccessTime,omitnil,omitempty" name:"FileAccessTime"`
+
+	// <p>高危命令事件类型</p><p>枚举值：</p><ul><li>filemon： 文件监控事件</li><li>connect： 外联行为事件</li><li>process： 进程启动事件</li></ul>
+	BashType *string `json:"BashType,omitnil,omitempty" name:"BashType"`
 }
 
 type BashPolicy struct {
-	// 策略名称
+	// <p>策略名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 1:有效 0:无效
+	// <p>1:有效 0:无效</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 0:黑名单 1:白名单
+	// <p>0:黑名单 1:白名单</p>
 	White *int64 `json:"White,omitnil,omitempty" name:"White"`
 
-	// 0:告警 1:白名单 2:拦截
+	// <p>0:告警 1:白名单 2:拦截</p>
 	BashAction *int64 `json:"BashAction,omitnil,omitempty" name:"BashAction"`
 
-	// 正则表达式 base64 加密,该字段废弃,如果写入则自动替换为Rules.Process.CmdLine
+	// <p>正则表达式 base64 加密,该字段废弃,如果写入则自动替换为Rules.Process.CmdLine</p>
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
-	// 危险等级(0:无，1: 高危 2:中危 3: 低危)
+	// <p>危险等级(0:无，1: 高危 2:中危 3: 低危)</p>
 	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// 生效范围（0:一组quuid 1:所有专业版(包含旗舰版) 2:所有旗舰版 3:所有主机）
+	// <p>生效范围（0:一组quuid 1:所有专业版(包含旗舰版) 2:所有旗舰版 3:所有主机）</p>
 	Scope *int64 `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 策略ID
+	// <p>策略ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 策略描述
+	// <p>策略描述</p>
 	Descript *string `json:"Descript,omitnil,omitempty" name:"Descript"`
 
-	// 事件列表点击“加入白名单”时,需要传EventId 事件的id
+	// <p>事件列表点击“加入白名单”时,需要传EventId 事件的id</p>
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 是否处理旧事件为白名单 0=不处理 1=处理
+	// <p>是否处理旧事件为白名单 0=不处理 1=处理</p>
 	DealOldEvents *int64 `json:"DealOldEvents,omitnil,omitempty" name:"DealOldEvents"`
 
-	// 生效主机的QUUID集合
+	// <p>生效主机的QUUID集合</p>
 	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
 
-	// 策略类型，0:系统  1:用户
+	// <p>策略类型，0:系统  1:用户</p>
 	Category *int64 `json:"Category,omitnil,omitempty" name:"Category"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 老版本兼容可能会用到
+	// <p>老版本兼容可能会用到</p>
 	Uuids []*string `json:"Uuids,omitnil,omitempty" name:"Uuids"`
 
-	// 规则表达式
+	// <p>规则表达式</p>
 	Rules *PolicyRules `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// <p>匹配类型：0-命令行（默认） 1-文件操作</p>
+	MatchType *uint64 `json:"MatchType,omitnil,omitempty" name:"MatchType"`
 }
 
 type BashRule struct {
@@ -44280,14 +44331,20 @@ type Place struct {
 }
 
 type PolicyRules struct {
-	// 进程
+	// <p>进程</p>
 	Process *CommandLine `json:"Process,omitnil,omitempty" name:"Process"`
 
-	// 父进程
+	// <p>父进程</p>
 	PProcess *CommandLine `json:"PProcess,omitnil,omitempty" name:"PProcess"`
 
-	// 祖先进程
+	// <p>祖先进程</p>
 	AProcess *CommandLine `json:"AProcess,omitnil,omitempty" name:"AProcess"`
+
+	// <p>目标文件路径（匹配类型=文件操作时有效）</p>
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// <p>动作列表（匹配类型=文件操作时有效，多选为或关系）：read-读 write-写 rename-重命名 delete-删除 truncate-清空内容</p>
+	FileActions []*string `json:"FileActions,omitnil,omitempty" name:"FileActions"`
 }
 
 type PrivilegeEscalationProcess struct {

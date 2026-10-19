@@ -16303,6 +16303,72 @@ func (c *Client) VerifyDomainRecordWithContext(ctx context.Context, request *Ver
     return
 }
 
+func NewVideoDepthEstimationRequest() (request *VideoDepthEstimationRequest) {
+    request = &VideoDepthEstimationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "VideoDepthEstimation")
+    
+    
+    return
+}
+
+func NewVideoDepthEstimationResponse() (response *VideoDepthEstimationResponse) {
+    response = &VideoDepthEstimationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VideoDepthEstimation
+// 视频深度估计接口。输入视频，输出灰度深度视频，白色为近、黑色为远。深度值为单视频内归一化的相对深度。输出存储由 OutputConfig 控制，默认临时存储 7 天后过期。任务提交成功后返回任务 ID，可通过 DescribeTaskDetail 查询结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EXPIRETIME = "InvalidParameterValue.ExpireTime"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_URL = "InvalidParameterValue.Url"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) VideoDepthEstimation(request *VideoDepthEstimationRequest) (response *VideoDepthEstimationResponse, err error) {
+    return c.VideoDepthEstimationWithContext(context.Background(), request)
+}
+
+// VideoDepthEstimation
+// 视频深度估计接口。输入视频，输出灰度深度视频，白色为近、黑色为远。深度值为单视频内归一化的相对深度。输出存储由 OutputConfig 控制，默认临时存储 7 天后过期。任务提交成功后返回任务 ID，可通过 DescribeTaskDetail 查询结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EXPIRETIME = "InvalidParameterValue.ExpireTime"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_URL = "InvalidParameterValue.Url"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) VideoDepthEstimationWithContext(ctx context.Context, request *VideoDepthEstimationRequest) (response *VideoDepthEstimationResponse, err error) {
+    if request == nil {
+        request = NewVideoDepthEstimationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "VideoDepthEstimation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VideoDepthEstimation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVideoDepthEstimationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewWeChatMiniProgramPublishRequest() (request *WeChatMiniProgramPublishRequest) {
     request = &WeChatMiniProgramPublishRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -5223,6 +5223,9 @@ type MigrateOption struct {
 
 	// <p>迁移配置阶段限速相关参数</p>
 	RateLimit *RateLimit `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
+
+	// <p>跳过报错的DDL策略</p>
+	SkipDdlOnError *SkipDdlOnError `json:"SkipDdlOnError,omitnil,omitempty" name:"SkipDdlOnError"`
 }
 
 type ModifiedSubscribeObject struct {
@@ -6549,6 +6552,9 @@ type Options struct {
 
 	// <p>同步到kafka链路是否过滤掉checkpoint消息。目前仅mysql2kafka链路支持</p>
 	FilterCheckpoint *bool `json:"FilterCheckpoint,omitnil,omitempty" name:"FilterCheckpoint"`
+
+	// <p>跳过报错的DDL策略</p>
+	SkipDdlOnError *SkipDdlOnError `json:"SkipDdlOnError,omitnil,omitempty" name:"SkipDdlOnError"`
 }
 
 type OwnerDifference struct {
@@ -7422,6 +7428,14 @@ func (r *SkipCheckItemResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SkipCheckItemResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SkipDdlOnError struct {
+	// <p>按表名跳过，支持精确 &quot;db.tbl&quot;、库通配 &quot;db.*&quot;、表通配 &quot;<em>.tbl&quot;、全通配 &quot;</em>&quot;</p>
+	Tables []*string `json:"Tables,omitnil,omitempty" name:"Tables"`
+
+	// <p>按 MySQL 错误码（1~65535）跳过</p><p>取值范围：[1, 65535]</p>
+	ErrorCodes []*int64 `json:"ErrorCodes,omitnil,omitempty" name:"ErrorCodes"`
 }
 
 // Predefined struct for user

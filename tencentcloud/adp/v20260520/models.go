@@ -1408,6 +1408,84 @@ type BillingAttribute struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type CallMCPToolRequestParams struct {
+	// <p>能力边界：一次请求只能调该 plugin 上的工具</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>agent-exec 侧 thread</p>
+	ThreadId *string `json:"ThreadId,omitnil,omitempty" name:"ThreadId"`
+
+	// <p>工具名，用于在 plugin 配置的 tool_list 中定位 tool_id</p>
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// <p>JSON：工具入参原文，原样透传给 MCP Server</p>
+	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
+}
+
+type CallMCPToolRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>能力边界：一次请求只能调该 plugin 上的工具</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>agent-exec 侧 thread</p>
+	ThreadId *string `json:"ThreadId,omitnil,omitempty" name:"ThreadId"`
+
+	// <p>工具名，用于在 plugin 配置的 tool_list 中定位 tool_id</p>
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// <p>JSON：工具入参原文，原样透传给 MCP Server</p>
+	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
+}
+
+func (r *CallMCPToolRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CallMCPToolRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	delete(f, "ThreadId")
+	delete(f, "ToolName")
+	delete(f, "Arguments")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CallMCPToolRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CallMCPToolResponseParams struct {
+	// <p>JSON：完整 CallToolResult 原文，含 structuredContent / isError / _meta</p>
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CallMCPToolResponse struct {
+	*tchttp.BaseResponse
+	Response *CallMCPToolResponseParams `json:"Response"`
+}
+
+func (r *CallMCPToolResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CallMCPToolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CallSource struct {
 	// <p>调用主体 ID，含义由 subject_type 决定（如 app_id、kb_id 等）</p>
 	SubjectId *string `json:"SubjectId,omitnil,omitempty" name:"SubjectId"`
@@ -11034,6 +11112,28 @@ type MCPPluginConfig struct {
 	SupportsApps *bool `json:"SupportsApps,omitnil,omitempty" name:"SupportsApps"`
 }
 
+type MCPResourceContents struct {
+	// <p>二进制内容，与 text 二选一</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Blob *string `json:"Blob,omitnil,omitempty" name:"Blob"`
+
+	// <p>JSON：单个资源的 _meta 原文</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Meta *string `json:"Meta,omitnil,omitempty" name:"Meta"`
+
+	// <p>MIME 类型，MCP App 的 HTML 为 text/html;profile=mcp-app</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MimeType *string `json:"MimeType,omitnil,omitempty" name:"MimeType"`
+
+	// <p>文本内容，与 blob 二选一</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>资源 URI</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+}
+
 type MCPToolConfig struct {
 	// <p>输入参数</p>
 	Inputs []*RequestParam `json:"Inputs,omitnil,omitempty" name:"Inputs"`
@@ -13663,6 +13763,80 @@ type QASummary struct {
 	// <p>来源信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceInfo *QASourceInfo `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
+}
+
+// Predefined struct for user
+type ReadMCPResourceRequestParams struct {
+	// <p>能力边界：一次请求只能读该 plugin 的资源</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>agent-exec 侧 thread</p>
+	ThreadId *string `json:"ThreadId,omitnil,omitempty" name:"ThreadId"`
+
+	// <p>资源 URI，来源 tool 的 _meta.ui.resourceUri</p>
+	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+}
+
+type ReadMCPResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>能力边界：一次请求只能读该 plugin 的资源</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>agent-exec 侧 thread</p>
+	ThreadId *string `json:"ThreadId,omitnil,omitempty" name:"ThreadId"`
+
+	// <p>资源 URI，来源 tool 的 _meta.ui.resourceUri</p>
+	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+}
+
+func (r *ReadMCPResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReadMCPResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	delete(f, "ThreadId")
+	delete(f, "Uri")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReadMCPResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReadMCPResourceResponseParams struct {
+	// <p>MCP resources/read 返回的资源内容</p>
+	Contents []*MCPResourceContents `json:"Contents,omitnil,omitempty" name:"Contents"`
+
+	// <p>JSON：Resource 的 _meta 原文，MCP App 场景 Host 依据 ui.csp 强制 CSP 策略</p>
+	ResourceMeta *string `json:"ResourceMeta,omitnil,omitempty" name:"ResourceMeta"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReadMCPResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *ReadMCPResourceResponseParams `json:"Response"`
+}
+
+func (r *ReadMCPResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReadMCPResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ReleaseRecord struct {

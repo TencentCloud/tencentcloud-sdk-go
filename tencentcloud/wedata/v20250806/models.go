@@ -2081,63 +2081,69 @@ func (r *CreateResourceFolderResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateResourceGroupRequestParams struct {
-	// 资源组名称。创建通用资源组的名称，必须以字母开头，可包含字母、数字、下划线（_），最多 64 个字符。
+	// <p>资源组名称。创建通用资源组的名称，必须以字母开头，可包含字母、数字、下划线（_），最多 64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 开通的资源组信息
+	// <p>开通的资源组信息</p>
 	Type *ResourceType `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 是否自动续费
+	// <p>是否自动续费</p>
 	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitnil,omitempty" name:"AutoRenewEnabled"`
 
-	// 购买时长，单位月
+	// <p>购买时长，单位月</p>
 	PurchasePeriod *int64 `json:"PurchasePeriod,omitnil,omitempty" name:"PurchasePeriod"`
 
-	// vpcId
+	// <p>vpcId</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网
+	// <p>子网</p>
 	SubNet *string `json:"SubNet,omitnil,omitempty" name:"SubNet"`
 
-	// 资源购买地域
+	// <p>资源购买地域</p>
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 关联项目空间项目id
+	// <p>关联项目空间项目id</p>
 	AssociatedProjectId *string `json:"AssociatedProjectId,omitnil,omitempty" name:"AssociatedProjectId"`
 
-	// 资源组描述
+	// <p>资源组描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>标签值</p>
+	Tags []*ResourceTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateResourceGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源组名称。创建通用资源组的名称，必须以字母开头，可包含字母、数字、下划线（_），最多 64 个字符。
+	// <p>资源组名称。创建通用资源组的名称，必须以字母开头，可包含字母、数字、下划线（_），最多 64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 开通的资源组信息
+	// <p>开通的资源组信息</p>
 	Type *ResourceType `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 是否自动续费
+	// <p>是否自动续费</p>
 	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitnil,omitempty" name:"AutoRenewEnabled"`
 
-	// 购买时长，单位月
+	// <p>购买时长，单位月</p>
 	PurchasePeriod *int64 `json:"PurchasePeriod,omitnil,omitempty" name:"PurchasePeriod"`
 
-	// vpcId
+	// <p>vpcId</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网
+	// <p>子网</p>
 	SubNet *string `json:"SubNet,omitnil,omitempty" name:"SubNet"`
 
-	// 资源购买地域
+	// <p>资源购买地域</p>
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
-	// 关联项目空间项目id
+	// <p>关联项目空间项目id</p>
 	AssociatedProjectId *string `json:"AssociatedProjectId,omitnil,omitempty" name:"AssociatedProjectId"`
 
-	// 资源组描述
+	// <p>资源组描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>标签值</p>
+	Tags []*ResourceTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateResourceGroupRequest) ToJsonString() string {
@@ -2161,6 +2167,7 @@ func (r *CreateResourceGroupRequest) FromJsonString(s string) error {
 	delete(f, "ResourceRegion")
 	delete(f, "AssociatedProjectId")
 	delete(f, "Description")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResourceGroupRequest has unknown keys!", "")
 	}
@@ -2169,7 +2176,7 @@ func (r *CreateResourceGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateResourceGroupResponseParams struct {
-	// 是否开启成功
+	// <p>是否开启成功</p>
 	Data *ResourceResult `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8962,6 +8969,14 @@ type LineageNodeInfo struct {
 
 	// 下游数量
 	UpStreamCount *int64 `json:"UpStreamCount,omitnil,omitempty" name:"UpStreamCount"`
+
+	// 查询字段名（本次请求携带的字段名，用于聚合）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceColumnName *string `json:"SourceColumnName,omitnil,omitempty" name:"SourceColumnName"`
+
+	// 当前结果字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnName *string `json:"ColumnName,omitnil,omitempty" name:"ColumnName"`
 }
 
 type LineagePair struct {
@@ -16556,6 +16571,9 @@ type Project struct {
 	// <p>项目状态：0：禁用，1：启用，-3:禁用中，2：启用中</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
+	// <p>项目状态枚举：ENABLED 正常、UNABLED 已禁用、ENABLING 启用中、UNABLING 禁用中、REMOVING 删除中、DELETED 已删除</p>
+	DisplayStatus *string `json:"DisplayStatus,omitnil,omitempty" name:"DisplayStatus"`
+
 	// <p>项目模式，SIMPLE：简单模式 STANDARD：标准模式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectModel *string `json:"ProjectModel,omitnil,omitempty" name:"ProjectModel"`
@@ -18732,6 +18750,14 @@ type ResourceStatus struct {
 	// 资源组操作状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ResourceTag struct {
+	// <p>标签键</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>标签值</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type ResourceType struct {

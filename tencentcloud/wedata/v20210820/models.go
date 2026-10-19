@@ -677,79 +677,82 @@ type AlarmReceiverInfo struct {
 }
 
 type Apply struct {
-	// 申请人id
+	// <p>申请人id</p>
 	ApplicantId *string `json:"ApplicantId,omitnil,omitempty" name:"ApplicantId"`
 
-	// 申请人名称
+	// <p>申请人名称</p>
 	ApplicantName *string `json:"ApplicantName,omitnil,omitempty" name:"ApplicantName"`
 
-	// 审批备注
+	// <p>审批备注</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 审批分类key
+	// <p>审批分类key</p>
 	ApproveClassification *string `json:"ApproveClassification,omitnil,omitempty" name:"ApproveClassification"`
 
-	// 审批单id
+	// <p>审批单id</p>
 	ApproveId *string `json:"ApproveId,omitnil,omitempty" name:"ApproveId"`
 
-	// 审批类型key
+	// <p>审批类型key</p>
 	ApproveType *string `json:"ApproveType,omitnil,omitempty" name:"ApproveType"`
 
-	// 申请原因
+	// <p>申请原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 审批时间
+	// <p>审批时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveTime *string `json:"ApproveTime,omitnil,omitempty" name:"ApproveTime"`
 
-	// 审批分类名称
+	// <p>审批分类名称</p>
 	ApproveClassificationName *string `json:"ApproveClassificationName,omitnil,omitempty" name:"ApproveClassificationName"`
 
-	// 状态
+	// <p>状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 审批类型名称
+	// <p>审批类型名称</p>
 	ApproveTypeName *string `json:"ApproveTypeName,omitnil,omitempty" name:"ApproveTypeName"`
 
-	// 审批异常或者失败信息
+	// <p>审批异常或者失败信息</p>
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
-	// 申请名称
+	// <p>申请名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyName *string `json:"ApplyName,omitnil,omitempty" name:"ApplyName"`
 
-	// 审批人id
+	// <p>审批人id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverId *string `json:"ApproverId,omitnil,omitempty" name:"ApproverId"`
 
-	// 审批人名称
+	// <p>审批人名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
 
-	// 审批所属项目
+	// <p>审批所属项目</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveProjectName *string `json:"ApproveProjectName,omitnil,omitempty" name:"ApproveProjectName"`
 
-	// 审批id
+	// <p>审批id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyId *string `json:"ApplyId,omitnil,omitempty" name:"ApplyId"`
 
-	// 扩展字段
+	// <p>扩展字段</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metadata *string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTimestamp *uint64 `json:"CreateTimestamp,omitnil,omitempty" name:"CreateTimestamp"`
 
-	// 审批时间
+	// <p>审批时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveTimestamp *uint64 `json:"ApproveTimestamp,omitnil,omitempty" name:"ApproveTimestamp"`
+
+	// <p>审批扩展码</p>
+	ApproveCode *string `json:"ApproveCode,omitnil,omitempty" name:"ApproveCode"`
 }
 
 type ApproveModify struct {
@@ -32657,225 +32660,231 @@ func (r *ModifyTaskAlarmRegularResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTaskInfoDsRequestParams struct {
-	// 项目Id
+	// <p>项目Id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 执行时间，单位分钟，天/周/月/年调度才有。比如天调度，每天的02:00点执行一次，delayTime就是120分钟
+	// <p>执行时间，单位分钟，天/周/月/年调度才有。比如天调度，每天的02:00点执行一次，delayTime就是120分钟</p>
 	DelayTime *int64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 启动时间：该字段已废弃，无需填写
+	// <p>启动时间：该字段已废弃，无需填写</p>
 	StartupTime *int64 `json:"StartupTime,omitnil,omitempty" name:"StartupTime"`
 
-	// 自依赖类型  1:有序串行 一次一个 排队  2: 无序串行 一次一个 不排队 3:并行 一次多个；暂不支持其他值
+	// <p>自依赖类型  1:有序串行 一次一个 排队  2: 无序串行 一次一个 不排队 3:并行 一次多个；暂不支持其他值</p>
 	SelfDepend *int64 `json:"SelfDepend,omitnil,omitempty" name:"SelfDepend"`
 
-	// 生效开始时间，格式 yyyy-MM-dd HH:mm:ss
+	// <p>生效开始时间，格式 yyyy-MM-dd HH:mm:ss</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 生效结束时间，格式 yyyy-MM-dd HH:mm:ss
+	// <p>生效结束时间，格式 yyyy-MM-dd HH:mm:ss</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为 0,3,4。设置该值时，请把CycleStep字段设置为1（如果原始值不为1）。
+	// <p>调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为 0,3,4。设置该值时，请把CycleStep字段设置为1（如果原始值不为1）。</p>
 	TaskAction *string `json:"TaskAction,omitnil,omitempty" name:"TaskAction"`
 
-	// 周期类型  0:crontab类型, 1:分钟，2:小时，3:天，4:周，5:月，6:一次性，7:用户驱动，10:弹性周期 周,11:弹性周期 月,12:年,13:即时触发Instant类型，与正常周期调度任务逻辑隔离
+	// <p>周期类型  0:crontab类型, 1:分钟，2:小时，3:天，4:周，5:月，6:一次性，7:用户驱动，10:弹性周期 周,11:弹性周期 月,12:年,13:即时触发Instant类型，与正常周期调度任务逻辑隔离</p>
 	CycleType *int64 `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// 小时和分钟任务才有；分钟任务：5、10、15、20、30，表示每隔5【或其他值】分钟执行一次；小时任务：1、2、3、4、5、6、7、8、9、10、11、12，表示每隔1【或其他值】小时执行一次。该值大于1时，请把TaskAction字段设置为空字符串。
+	// <p>小时和分钟任务才有；分钟任务：5、10、15、20、30，表示每隔5【或其他值】分钟执行一次；小时任务：1、2、3、4、5、6、7、8、9、10、11、12，表示每隔1【或其他值】小时执行一次。该值大于1时，请把TaskAction字段设置为空字符串。</p>
 	CycleStep *int64 `json:"CycleStep,omitnil,omitempty" name:"CycleStep"`
 
-	// cron表达式  周期类型为crontab调度才需要
+	// <p>cron表达式  周期类型为crontab调度才需要</p>
 	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
 
-	// 执行时间左闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+	// <p>执行时间左闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效</p>
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
 
-	// 执行时间右闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+	// <p>执行时间右闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效</p>
 	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
 
-	// 任务名，该字段废弃，请勿使用该字段重命名任务
+	// <p>任务名，该字段废弃，请勿使用该字段重命名任务</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 失败重试间隔,单位分钟，创建任务的时候已经给了默认值
+	// <p>失败重试间隔,单位分钟，创建任务的时候已经给了默认值</p>
 	RetryWait *int64 `json:"RetryWait,omitnil,omitempty" name:"RetryWait"`
 
-	// 失败重试次数，创建任务的时候已经给了默认值
+	// <p>失败重试次数，创建任务的时候已经给了默认值</p>
 	TryLimit *int64 `json:"TryLimit,omitnil,omitempty" name:"TryLimit"`
 
-	// 是否可重试，0代码不可重试，1代表可以重试；暂不支持其他值
+	// <p>是否可重试，0代码不可重试，1代表可以重试；暂不支持其他值</p>
 	Retriable *int64 `json:"Retriable,omitnil,omitempty" name:"Retriable"`
 
-	// 运行优先级，4高 5中 6低；暂不支持其他值
+	// <p>运行优先级，4高 5中 6低；暂不支持其他值</p>
 	RunPriority *int64 `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
 
-	// 任务的扩展配置
+	// <p>任务的扩展配置</p>
 	TaskExt []*TaskExtInfo `json:"TaskExt,omitnil,omitempty" name:"TaskExt"`
 
-	// 执行资源组Id，需要去资源管理服务上创建调度资源组，并且绑定cvm机器
+	// <p>执行资源组Id，需要去资源管理服务上创建调度资源组，并且绑定cvm机器</p>
 	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
 
-	// 资源池队列名称
+	// <p>资源池队列名称</p>
 	YarnQueue *string `json:"YarnQueue,omitnil,omitempty" name:"YarnQueue"`
 
-	// 资源组下具体执行机，any 表示可以跑在任意一台。
+	// <p>资源组下具体执行机，any 表示可以跑在任意一台。</p>
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
-	// 责任人，多个责任人请用分号隔开
+	// <p>责任人，多个责任人请用分号隔开</p>
 	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
 
-	// 任务备注
+	// <p>任务备注</p>
 	Notes *string `json:"Notes,omitnil,omitempty" name:"Notes"`
 
-	// 任务参数
+	// <p>任务参数</p>
 	TaskParamInfos []*ParamInfo `json:"TaskParamInfos,omitnil,omitempty" name:"TaskParamInfos"`
 
-	// 源数据源Id
+	// <p>源数据源Id</p>
 	SourceServer *string `json:"SourceServer,omitnil,omitempty" name:"SourceServer"`
 
-	// 目标数据源Id
+	// <p>目标数据源Id</p>
 	TargetServer *string `json:"TargetServer,omitnil,omitempty" name:"TargetServer"`
 
-	// 是否支持工作流依赖 yes / no 默认 no
+	// <p>是否支持工作流依赖 yes / no 默认 no</p>
 	DependencyWorkflow *string `json:"DependencyWorkflow,omitnil,omitempty" name:"DependencyWorkflow"`
 
-	// 依赖配置,仅可修改上游任务实例配置方法
+	// <p>依赖配置,仅可修改上游任务实例配置方法</p>
 	DependencyConfigDTOs []*DependencyConfig `json:"DependencyConfigDTOs,omitnil,omitempty" name:"DependencyConfigDTOs"`
 
-	// 运行耗时超时时间分钟数
+	// <p>运行耗时超时时间分钟数</p>
 	ExecutionTTL *int64 `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
 
-	// 脚本是否改变
+	// <p>脚本是否改变</p>
 	ScriptChange *bool `json:"ScriptChange,omitnil,omitempty" name:"ScriptChange"`
 
-	// 任务时区，仅支持整数时区配置
+	// <p>任务时区，仅支持整数时区配置</p>
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 
-	// 0 正常调度 1 空跑调度；暂不支持其他值
+	// <p>0 正常调度 1 空跑调度；暂不支持其他值</p>
 	ScheduleRunType *uint64 `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
 
-	// 0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill；暂不支持其他值
+	// <p>0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill；暂不支持其他值</p>
 	ConcurrentStrategy *uint64 `json:"ConcurrentStrategy,omitnil,omitempty" name:"ConcurrentStrategy"`
 
-	// shell任务发布事件
+	// <p>shell任务发布事件</p>
 	RegisterDsEventPublisherRequest *RegisterDsEventPublisherReq `json:"RegisterDsEventPublisherRequest,omitnil,omitempty" name:"RegisterDsEventPublisherRequest"`
 
-	// base64编码后脚本内容
+	// <p>base64编码后脚本内容</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>分钟任务相位偏移</p>
+	MinuteOffset *uint64 `json:"MinuteOffset,omitnil,omitempty" name:"MinuteOffset"`
 }
 
 type ModifyTaskInfoDsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目Id
+	// <p>项目Id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 执行时间，单位分钟，天/周/月/年调度才有。比如天调度，每天的02:00点执行一次，delayTime就是120分钟
+	// <p>执行时间，单位分钟，天/周/月/年调度才有。比如天调度，每天的02:00点执行一次，delayTime就是120分钟</p>
 	DelayTime *int64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 启动时间：该字段已废弃，无需填写
+	// <p>启动时间：该字段已废弃，无需填写</p>
 	StartupTime *int64 `json:"StartupTime,omitnil,omitempty" name:"StartupTime"`
 
-	// 自依赖类型  1:有序串行 一次一个 排队  2: 无序串行 一次一个 不排队 3:并行 一次多个；暂不支持其他值
+	// <p>自依赖类型  1:有序串行 一次一个 排队  2: 无序串行 一次一个 不排队 3:并行 一次多个；暂不支持其他值</p>
 	SelfDepend *int64 `json:"SelfDepend,omitnil,omitempty" name:"SelfDepend"`
 
-	// 生效开始时间，格式 yyyy-MM-dd HH:mm:ss
+	// <p>生效开始时间，格式 yyyy-MM-dd HH:mm:ss</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 生效结束时间，格式 yyyy-MM-dd HH:mm:ss
+	// <p>生效结束时间，格式 yyyy-MM-dd HH:mm:ss</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为 0,3,4。设置该值时，请把CycleStep字段设置为1（如果原始值不为1）。
+	// <p>调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为 0,3,4。设置该值时，请把CycleStep字段设置为1（如果原始值不为1）。</p>
 	TaskAction *string `json:"TaskAction,omitnil,omitempty" name:"TaskAction"`
 
-	// 周期类型  0:crontab类型, 1:分钟，2:小时，3:天，4:周，5:月，6:一次性，7:用户驱动，10:弹性周期 周,11:弹性周期 月,12:年,13:即时触发Instant类型，与正常周期调度任务逻辑隔离
+	// <p>周期类型  0:crontab类型, 1:分钟，2:小时，3:天，4:周，5:月，6:一次性，7:用户驱动，10:弹性周期 周,11:弹性周期 月,12:年,13:即时触发Instant类型，与正常周期调度任务逻辑隔离</p>
 	CycleType *int64 `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// 小时和分钟任务才有；分钟任务：5、10、15、20、30，表示每隔5【或其他值】分钟执行一次；小时任务：1、2、3、4、5、6、7、8、9、10、11、12，表示每隔1【或其他值】小时执行一次。该值大于1时，请把TaskAction字段设置为空字符串。
+	// <p>小时和分钟任务才有；分钟任务：5、10、15、20、30，表示每隔5【或其他值】分钟执行一次；小时任务：1、2、3、4、5、6、7、8、9、10、11、12，表示每隔1【或其他值】小时执行一次。该值大于1时，请把TaskAction字段设置为空字符串。</p>
 	CycleStep *int64 `json:"CycleStep,omitnil,omitempty" name:"CycleStep"`
 
-	// cron表达式  周期类型为crontab调度才需要
+	// <p>cron表达式  周期类型为crontab调度才需要</p>
 	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
 
-	// 执行时间左闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+	// <p>执行时间左闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效</p>
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
 
-	// 执行时间右闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+	// <p>执行时间右闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效</p>
 	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
 
-	// 任务名，该字段废弃，请勿使用该字段重命名任务
+	// <p>任务名，该字段废弃，请勿使用该字段重命名任务</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 失败重试间隔,单位分钟，创建任务的时候已经给了默认值
+	// <p>失败重试间隔,单位分钟，创建任务的时候已经给了默认值</p>
 	RetryWait *int64 `json:"RetryWait,omitnil,omitempty" name:"RetryWait"`
 
-	// 失败重试次数，创建任务的时候已经给了默认值
+	// <p>失败重试次数，创建任务的时候已经给了默认值</p>
 	TryLimit *int64 `json:"TryLimit,omitnil,omitempty" name:"TryLimit"`
 
-	// 是否可重试，0代码不可重试，1代表可以重试；暂不支持其他值
+	// <p>是否可重试，0代码不可重试，1代表可以重试；暂不支持其他值</p>
 	Retriable *int64 `json:"Retriable,omitnil,omitempty" name:"Retriable"`
 
-	// 运行优先级，4高 5中 6低；暂不支持其他值
+	// <p>运行优先级，4高 5中 6低；暂不支持其他值</p>
 	RunPriority *int64 `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
 
-	// 任务的扩展配置
+	// <p>任务的扩展配置</p>
 	TaskExt []*TaskExtInfo `json:"TaskExt,omitnil,omitempty" name:"TaskExt"`
 
-	// 执行资源组Id，需要去资源管理服务上创建调度资源组，并且绑定cvm机器
+	// <p>执行资源组Id，需要去资源管理服务上创建调度资源组，并且绑定cvm机器</p>
 	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
 
-	// 资源池队列名称
+	// <p>资源池队列名称</p>
 	YarnQueue *string `json:"YarnQueue,omitnil,omitempty" name:"YarnQueue"`
 
-	// 资源组下具体执行机，any 表示可以跑在任意一台。
+	// <p>资源组下具体执行机，any 表示可以跑在任意一台。</p>
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
-	// 责任人，多个责任人请用分号隔开
+	// <p>责任人，多个责任人请用分号隔开</p>
 	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
 
-	// 任务备注
+	// <p>任务备注</p>
 	Notes *string `json:"Notes,omitnil,omitempty" name:"Notes"`
 
-	// 任务参数
+	// <p>任务参数</p>
 	TaskParamInfos []*ParamInfo `json:"TaskParamInfos,omitnil,omitempty" name:"TaskParamInfos"`
 
-	// 源数据源Id
+	// <p>源数据源Id</p>
 	SourceServer *string `json:"SourceServer,omitnil,omitempty" name:"SourceServer"`
 
-	// 目标数据源Id
+	// <p>目标数据源Id</p>
 	TargetServer *string `json:"TargetServer,omitnil,omitempty" name:"TargetServer"`
 
-	// 是否支持工作流依赖 yes / no 默认 no
+	// <p>是否支持工作流依赖 yes / no 默认 no</p>
 	DependencyWorkflow *string `json:"DependencyWorkflow,omitnil,omitempty" name:"DependencyWorkflow"`
 
-	// 依赖配置,仅可修改上游任务实例配置方法
+	// <p>依赖配置,仅可修改上游任务实例配置方法</p>
 	DependencyConfigDTOs []*DependencyConfig `json:"DependencyConfigDTOs,omitnil,omitempty" name:"DependencyConfigDTOs"`
 
-	// 运行耗时超时时间分钟数
+	// <p>运行耗时超时时间分钟数</p>
 	ExecutionTTL *int64 `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
 
-	// 脚本是否改变
+	// <p>脚本是否改变</p>
 	ScriptChange *bool `json:"ScriptChange,omitnil,omitempty" name:"ScriptChange"`
 
-	// 任务时区，仅支持整数时区配置
+	// <p>任务时区，仅支持整数时区配置</p>
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 
-	// 0 正常调度 1 空跑调度；暂不支持其他值
+	// <p>0 正常调度 1 空跑调度；暂不支持其他值</p>
 	ScheduleRunType *uint64 `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
 
-	// 0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill；暂不支持其他值
+	// <p>0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill；暂不支持其他值</p>
 	ConcurrentStrategy *uint64 `json:"ConcurrentStrategy,omitnil,omitempty" name:"ConcurrentStrategy"`
 
-	// shell任务发布事件
+	// <p>shell任务发布事件</p>
 	RegisterDsEventPublisherRequest *RegisterDsEventPublisherReq `json:"RegisterDsEventPublisherRequest,omitnil,omitempty" name:"RegisterDsEventPublisherRequest"`
 
-	// base64编码后脚本内容
+	// <p>base64编码后脚本内容</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>分钟任务相位偏移</p>
+	MinuteOffset *uint64 `json:"MinuteOffset,omitnil,omitempty" name:"MinuteOffset"`
 }
 
 func (r *ModifyTaskInfoDsRequest) ToJsonString() string {
@@ -32926,6 +32935,7 @@ func (r *ModifyTaskInfoDsRequest) FromJsonString(s string) error {
 	delete(f, "ConcurrentStrategy")
 	delete(f, "RegisterDsEventPublisherRequest")
 	delete(f, "Content")
+	delete(f, "MinuteOffset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTaskInfoDsRequest has unknown keys!", "")
 	}
@@ -32934,7 +32944,7 @@ func (r *ModifyTaskInfoDsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTaskInfoDsResponseParams struct {
-	// 执行结果
+	// <p>执行结果</p>
 	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -36071,149 +36081,153 @@ func (r *RenewWorkflowOwnerDsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewWorkflowSchedulerInfoDsRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 工作流ID
+	// <p>工作流ID</p>
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 延迟时间
+	// <p>延迟时间</p>
 	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 启动时间
+	// <p>启动时间</p>
 	StartupTime *uint64 `json:"StartupTime,omitnil,omitempty" name:"StartupTime"`
 
-	// 任务依赖
+	// <p>任务依赖</p>
 	SelfDepend *string `json:"SelfDepend,omitnil,omitempty" name:"SelfDepend"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 指定运行时间
+	// <p>指定运行时间</p>
 	TaskAction *string `json:"TaskAction,omitnil,omitempty" name:"TaskAction"`
 
-	// 调度周期时间单位
+	// <p>调度周期时间单位</p>
 	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// 调度周期
+	// <p>调度周期</p>
 	CycleStep *int64 `json:"CycleStep,omitnil,omitempty" name:"CycleStep"`
 
-	// 执行时间左闭区间
+	// <p>执行时间左闭区间</p>
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
 
-	// 执行时间右闭区间
+	// <p>执行时间右闭区间</p>
 	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
 
-	// 任务初始化策略，T_PLUS_1、T_PLUS_0、T_MINUS_1
+	// <p>任务初始化策略，T_PLUS_1、T_PLUS_0、T_MINUS_1</p>
 	InstanceInitStrategy *string `json:"InstanceInitStrategy,omitnil,omitempty" name:"InstanceInitStrategy"`
 
-	// 工作流依赖，yes or no
+	// <p>工作流依赖，yes or no</p>
 	DependencyWorkflow *string `json:"DependencyWorkflow,omitnil,omitempty" name:"DependencyWorkflow"`
 
-	// CrontabExpression
+	// <p>CrontabExpression</p>
 	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
 
-	// 0：不修改
-	// 1：将任务的上游依赖配置改为默认值 
+	// <p>0：不修改<br>1：将任务的上游依赖配置改为默认值</p>
 	ModifyCycleValue *string `json:"ModifyCycleValue,omitnil,omitempty" name:"ModifyCycleValue"`
 
-	// 是否开启日历调度 1 开启 0关闭
+	// <p>是否开启日历调度 1 开启 0关闭</p>
 	CalendarOpen *string `json:"CalendarOpen,omitnil,omitempty" name:"CalendarOpen"`
 
-	// 日历名称
+	// <p>日历名称</p>
 	CalendarName *string `json:"CalendarName,omitnil,omitempty" name:"CalendarName"`
 
-	// 日历id
+	// <p>日历id</p>
 	CalendarId *string `json:"CalendarId,omitnil,omitempty" name:"CalendarId"`
 
-	// 时区
+	// <p>时区</p>
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 
-	// 是否自动清理不支持的任务链接
+	// <p>是否自动清理不支持的任务链接</p>
 	ClearLink *bool `json:"ClearLink,omitnil,omitempty" name:"ClearLink"`
 
-	// ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度
+	// <p>ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度</p>
 	MainCyclicConfig *string `json:"MainCyclicConfig,omitnil,omitempty" name:"MainCyclicConfig"`
 
-	// ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围
+	// <p>ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围</p>
 	SubordinateCyclicConfig *string `json:"SubordinateCyclicConfig,omitnil,omitempty" name:"SubordinateCyclicConfig"`
+
+	// <p>分钟任务相位偏移</p>
+	MinuteOffset *uint64 `json:"MinuteOffset,omitnil,omitempty" name:"MinuteOffset"`
 }
 
 type RenewWorkflowSchedulerInfoDsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 工作流ID
+	// <p>工作流ID</p>
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 延迟时间
+	// <p>延迟时间</p>
 	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 启动时间
+	// <p>启动时间</p>
 	StartupTime *uint64 `json:"StartupTime,omitnil,omitempty" name:"StartupTime"`
 
-	// 任务依赖
+	// <p>任务依赖</p>
 	SelfDepend *string `json:"SelfDepend,omitnil,omitempty" name:"SelfDepend"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 指定运行时间
+	// <p>指定运行时间</p>
 	TaskAction *string `json:"TaskAction,omitnil,omitempty" name:"TaskAction"`
 
-	// 调度周期时间单位
+	// <p>调度周期时间单位</p>
 	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// 调度周期
+	// <p>调度周期</p>
 	CycleStep *int64 `json:"CycleStep,omitnil,omitempty" name:"CycleStep"`
 
-	// 执行时间左闭区间
+	// <p>执行时间左闭区间</p>
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
 
-	// 执行时间右闭区间
+	// <p>执行时间右闭区间</p>
 	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
 
-	// 任务初始化策略，T_PLUS_1、T_PLUS_0、T_MINUS_1
+	// <p>任务初始化策略，T_PLUS_1、T_PLUS_0、T_MINUS_1</p>
 	InstanceInitStrategy *string `json:"InstanceInitStrategy,omitnil,omitempty" name:"InstanceInitStrategy"`
 
-	// 工作流依赖，yes or no
+	// <p>工作流依赖，yes or no</p>
 	DependencyWorkflow *string `json:"DependencyWorkflow,omitnil,omitempty" name:"DependencyWorkflow"`
 
-	// CrontabExpression
+	// <p>CrontabExpression</p>
 	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
 
-	// 0：不修改
-	// 1：将任务的上游依赖配置改为默认值 
+	// <p>0：不修改<br>1：将任务的上游依赖配置改为默认值</p>
 	ModifyCycleValue *string `json:"ModifyCycleValue,omitnil,omitempty" name:"ModifyCycleValue"`
 
-	// 是否开启日历调度 1 开启 0关闭
+	// <p>是否开启日历调度 1 开启 0关闭</p>
 	CalendarOpen *string `json:"CalendarOpen,omitnil,omitempty" name:"CalendarOpen"`
 
-	// 日历名称
+	// <p>日历名称</p>
 	CalendarName *string `json:"CalendarName,omitnil,omitempty" name:"CalendarName"`
 
-	// 日历id
+	// <p>日历id</p>
 	CalendarId *string `json:"CalendarId,omitnil,omitempty" name:"CalendarId"`
 
-	// 时区
+	// <p>时区</p>
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 
-	// 是否自动清理不支持的任务链接
+	// <p>是否自动清理不支持的任务链接</p>
 	ClearLink *bool `json:"ClearLink,omitnil,omitempty" name:"ClearLink"`
 
-	// ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度
+	// <p>ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度</p>
 	MainCyclicConfig *string `json:"MainCyclicConfig,omitnil,omitempty" name:"MainCyclicConfig"`
 
-	// ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围
+	// <p>ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围</p>
 	SubordinateCyclicConfig *string `json:"SubordinateCyclicConfig,omitnil,omitempty" name:"SubordinateCyclicConfig"`
+
+	// <p>分钟任务相位偏移</p>
+	MinuteOffset *uint64 `json:"MinuteOffset,omitnil,omitempty" name:"MinuteOffset"`
 }
 
 func (r *RenewWorkflowSchedulerInfoDsRequest) ToJsonString() string {
@@ -36251,6 +36265,7 @@ func (r *RenewWorkflowSchedulerInfoDsRequest) FromJsonString(s string) error {
 	delete(f, "ClearLink")
 	delete(f, "MainCyclicConfig")
 	delete(f, "SubordinateCyclicConfig")
+	delete(f, "MinuteOffset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewWorkflowSchedulerInfoDsRequest has unknown keys!", "")
 	}
@@ -36259,7 +36274,7 @@ func (r *RenewWorkflowSchedulerInfoDsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewWorkflowSchedulerInfoDsResponseParams struct {
-	// 数据
+	// <p>数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *BatchResultDs `json:"Data,omitnil,omitempty" name:"Data"`
 

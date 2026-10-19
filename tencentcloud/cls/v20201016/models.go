@@ -613,6 +613,9 @@ type AnonymousLoginInfo struct {
 	// <p>匿名登录账号secretKey</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// <p>角色的资源描述，可在<a href="https://console.cloud.tencent.com/cam/role">访问管理</a>，点击角色名获取。<br>普通角色：<br>qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName<br>服务角色：<br>qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName</p><p>DataSight将扮演此角色，使用此角色的临时密钥来发起API请求。</p>
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 }
 
 // Predefined struct for user
@@ -707,6 +710,9 @@ type AuthRoleInfo struct {
 	// <p>Auth角色对应权限SecretKey</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// <p>角色的资源描述，可在<a href="https://console.cloud.tencent.com/cam/role">访问管理</a>，点击角色名获取。<br>普通角色：<br>qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName<br>服务角色：<br>qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName</p><p>DataSight将扮演此角色，使用此角色的临时密钥来发起API请求。</p>
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 }
 
 type BaseMetricCollectConfig struct {
@@ -1617,6 +1623,9 @@ type ConsoleAccount struct {
 	// <p>电子邮箱，用于发送验证码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// <p>角色的资源描述，可在<a href="https://console.cloud.tencent.com/cam/role">访问管理</a>，点击角色名获取。<br>普通角色：<br>qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName<br>服务角色：<br>qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName</p><p>DataSight将扮演此角色，使用此角色的临时密钥来发起API请求。</p>
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 }
 
 type ConsoleSharingConfig struct {
@@ -3065,10 +3074,10 @@ type CreateConsoleRequestParams struct {
 	// <p>自定义域名前缀</p>
 	DomainPrefix *string `json:"DomainPrefix,omitnil,omitempty" name:"DomainPrefix"`
 
-	// <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传</p>
+	// <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传。<br>SecretId + SecretKey 或 RoleArn需要传其中一种。</p>
 	Accounts []*ConsoleAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
-	// <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+	// <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传。<br>SecretId + SecretKey 或 RoleArn需要传其中一种。</p>
 	AnonymousLogin *AnonymousLoginInfo `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
 
 	// <p>内网类型，默认为0</p>
@@ -3083,7 +3092,7 @@ type CreateConsoleRequestParams struct {
 	// <p>内网子网SubnetId</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// <p>Auth角色信息</p><p>“第三方认证登录”登录方式必传</p>
+	// <p>Auth角色信息</p><p>“第三方认证登录”登录方式必传。<br>SecretId + SecretKey 或 RoleArn需要传其中一种。</p>
 	AuthRoles []*AuthRoleInfo `json:"AuthRoles,omitnil,omitempty" name:"AuthRoles"`
 
 	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
@@ -3114,10 +3123,10 @@ type CreateConsoleRequest struct {
 	// <p>自定义域名前缀</p>
 	DomainPrefix *string `json:"DomainPrefix,omitnil,omitempty" name:"DomainPrefix"`
 
-	// <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传</p>
+	// <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传。<br>SecretId + SecretKey 或 RoleArn需要传其中一种。</p>
 	Accounts []*ConsoleAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
-	// <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+	// <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传。<br>SecretId + SecretKey 或 RoleArn需要传其中一种。</p>
 	AnonymousLogin *AnonymousLoginInfo `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
 
 	// <p>内网类型，默认为0</p>
@@ -3132,7 +3141,7 @@ type CreateConsoleRequest struct {
 	// <p>内网子网SubnetId</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// <p>Auth角色信息</p><p>“第三方认证登录”登录方式必传</p>
+	// <p>Auth角色信息</p><p>“第三方认证登录”登录方式必传。<br>SecretId + SecretKey 或 RoleArn需要传其中一种。</p>
 	AuthRoles []*AuthRoleInfo `json:"AuthRoles,omitnil,omitempty" name:"AuthRoles"`
 
 	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
@@ -19479,10 +19488,10 @@ type ModifyConsoleRequestParams struct {
 	// <p>自定义域名前缀</p>
 	DomainPrefix *string `json:"DomainPrefix,omitnil,omitempty" name:"DomainPrefix"`
 
-	// <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传</p>
+	// <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传。<br>如果SecretId、SecretKey、RoleArn都不传，表示不修改这部分鉴权信息。</p>
 	Accounts []*ConsoleAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
-	// <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+	// <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传。<br>如果SecretId、SecretKey、RoleArn都不传，表示不修改这部分鉴权信息。</p>
 	AnonymousLogin *AnonymousLoginInfo `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
 
 	// <p>内网类型，默认为0</p>
@@ -19497,7 +19506,7 @@ type ModifyConsoleRequestParams struct {
 	// <p>内网子网SubnetId</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// <p>Auth用户角色信息</p><p>“第三方认证登录”登录方式必传</p>
+	// <p>Auth用户角色信息</p><p>“第三方认证登录”登录方式必传。<br>如果SecretId、SecretKey、RoleArn都不传，表示不修改这部分鉴权信息。</p>
 	AuthRoles []*AuthRoleInfo `json:"AuthRoles,omitnil,omitempty" name:"AuthRoles"`
 
 	// <p>自定义隐藏参数</p>
@@ -19528,10 +19537,10 @@ type ModifyConsoleRequest struct {
 	// <p>自定义域名前缀</p>
 	DomainPrefix *string `json:"DomainPrefix,omitnil,omitempty" name:"DomainPrefix"`
 
-	// <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传</p>
+	// <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传。<br>如果SecretId、SecretKey、RoleArn都不传，表示不修改这部分鉴权信息。</p>
 	Accounts []*ConsoleAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
-	// <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+	// <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传。<br>如果SecretId、SecretKey、RoleArn都不传，表示不修改这部分鉴权信息。</p>
 	AnonymousLogin *AnonymousLoginInfo `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
 
 	// <p>内网类型，默认为0</p>
@@ -19546,7 +19555,7 @@ type ModifyConsoleRequest struct {
 	// <p>内网子网SubnetId</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// <p>Auth用户角色信息</p><p>“第三方认证登录”登录方式必传</p>
+	// <p>Auth用户角色信息</p><p>“第三方认证登录”登录方式必传。<br>如果SecretId、SecretKey、RoleArn都不传，表示不修改这部分鉴权信息。</p>
 	AuthRoles []*AuthRoleInfo `json:"AuthRoles,omitnil,omitempty" name:"AuthRoles"`
 
 	// <p>自定义隐藏参数</p>

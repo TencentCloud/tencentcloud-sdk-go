@@ -65,7 +65,7 @@ func NewSearchProResponse() (response *SearchProResponse) {
 }
 
 // SearchPro
-// 联网搜索API，以JSON形式向客户提供搜索结果数据，包含标题、摘要、内容来源url等信息
+// 元宝搜索（Tencent Yuanbao Search，wsa）以互联网全网公开资源为基础，叠加腾讯优质内容生态，结合元宝 App 联网搜索应用实践，从数据收录到智能检索召回，全链路构建 AI 友好搜索引擎。合作伙伴通过检索词发起请求，接口以 JSON 形式返回搜索结果对应的排序信息、数据字段，合作伙伴可在业务场景中结合搜索结果的内容，扩充信息内容源，丰富展现效果，提升用户的查询满意度。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -79,7 +79,7 @@ func (c *Client) SearchPro(request *SearchProRequest) (response *SearchProRespon
 }
 
 // SearchPro
-// 联网搜索API，以JSON形式向客户提供搜索结果数据，包含标题、摘要、内容来源url等信息
+// 元宝搜索（Tencent Yuanbao Search，wsa）以互联网全网公开资源为基础，叠加腾讯优质内容生态，结合元宝 App 联网搜索应用实践，从数据收录到智能检索召回，全链路构建 AI 友好搜索引擎。合作伙伴通过检索词发起请求，接口以 JSON 形式返回搜索结果对应的排序信息、数据字段，合作伙伴可在业务场景中结合搜索结果的内容，扩充信息内容源，丰富展现效果，提升用户的查询满意度。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

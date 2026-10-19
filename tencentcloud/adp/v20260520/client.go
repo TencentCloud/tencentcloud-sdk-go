@@ -45,6 +45,50 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCallMCPToolRequest() (request *CallMCPToolRequest) {
+    request = &CallMCPToolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CallMCPTool")
+    
+    
+    return
+}
+
+func NewCallMCPToolResponse() (response *CallMCPToolResponse) {
+    response = &CallMCPToolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CallMCPTool
+// 用户在 MCP App iframe 内触发的工具调用
+func (c *Client) CallMCPTool(request *CallMCPToolRequest) (response *CallMCPToolResponse, err error) {
+    return c.CallMCPToolWithContext(context.Background(), request)
+}
+
+// CallMCPTool
+// 用户在 MCP App iframe 内触发的工具调用
+func (c *Client) CallMCPToolWithContext(ctx context.Context, request *CallMCPToolRequest) (response *CallMCPToolResponse, err error) {
+    if request == nil {
+        request = NewCallMCPToolRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CallMCPTool")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CallMCPTool require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCallMCPToolResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckLabelRequest() (request *CheckLabelRequest) {
     request = &CheckLabelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6085,6 +6129,56 @@ func (c *Client) PauseAppTriggerWithContext(ctx context.Context, request *PauseA
     request.SetContext(ctx)
     
     response = NewPauseAppTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReadMCPResourceRequest() (request *ReadMCPResourceRequest) {
+    request = &ReadMCPResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ReadMCPResource")
+    
+    
+    return
+}
+
+func NewReadMCPResourceResponse() (response *ReadMCPResourceResponse) {
+    response = &ReadMCPResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReadMCPResource
+// 读取 MCP UI 资源（HTML），供前端 iframe 加载 MCP App 界面
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ReadMCPResource(request *ReadMCPResourceRequest) (response *ReadMCPResourceResponse, err error) {
+    return c.ReadMCPResourceWithContext(context.Background(), request)
+}
+
+// ReadMCPResource
+// 读取 MCP UI 资源（HTML），供前端 iframe 加载 MCP App 界面
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ReadMCPResourceWithContext(ctx context.Context, request *ReadMCPResourceRequest) (response *ReadMCPResourceResponse, err error) {
+    if request == nil {
+        request = NewReadMCPResourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ReadMCPResource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReadMCPResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReadMCPResourceResponse()
     err = c.Send(request, response)
     return
 }

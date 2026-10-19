@@ -22345,40 +22345,40 @@ type QuerySimpleFilter struct {
 }
 
 type RedoLogItem struct {
-	// 文件名
+	// <p>文件名</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文件大小
+	// <p>文件大小</p>
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 备份时间
+	// <p>备份时间</p>
 	BackupTime *string `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
 
-	// redoLogId
+	// <p>redoLogId</p>
 	RedoLogId *int64 `json:"RedoLogId,omitnil,omitempty" name:"RedoLogId"`
 
-	// 跨地域信息
+	// <p>跨地域信息</p>
 	RedoCrossRegions []*BackupRegionAndIds `json:"RedoCrossRegions,omitnil,omitempty" name:"RedoCrossRegions"`
 
-	// 状态
+	// <p>状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 完成时间
+	// <p>完成时间</p>
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 
-	// 保险箱信息
+	// <p>保险箱信息</p>
 	VaultInfos []*VaultInfo `json:"VaultInfos,omitnil,omitempty" name:"VaultInfos"`
 
-	// 备份投递状态
+	// <p>备份投递状态</p>
 	CopyStatus *string `json:"CopyStatus,omitnil,omitempty" name:"CopyStatus"`
 
-	// 加密秘钥key
+	// <p>加密秘钥key</p>
 	EncryptKeyId *string `json:"EncryptKeyId,omitnil,omitempty" name:"EncryptKeyId"`
 
-	// 加密秘钥地域
+	// <p>加密秘钥地域</p>
 	EncryptRegion *string `json:"EncryptRegion,omitnil,omitempty" name:"EncryptRegion"`
 }
 

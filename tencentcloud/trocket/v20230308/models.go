@@ -109,53 +109,58 @@ type ClientSubscriptionInfo struct {
 }
 
 type ConsumeGroupItem struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称
+	// <p>消费组名称</p>
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
-	// 是否开启消费
+	// <p>是否开启消费</p>
 	ConsumeEnable *bool `json:"ConsumeEnable,omitnil,omitempty" name:"ConsumeEnable"`
 
-	// 顺序投递：true
-	// 并发投递：false
+	// <p>顺序投递：true<br>并发投递：false</p>
 	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
 
-	// 最大重试次数
+	// <p>最大重试次数</p>
 	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil,omitempty" name:"MaxRetryTimes"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 4.x的集群ID
+	// <p>4.x的集群ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterIdV4 *string `json:"ClusterIdV4,omitnil,omitempty" name:"ClusterIdV4"`
 
-	// 4.x的命名空间
+	// <p>4.x的命名空间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceV4 *string `json:"NamespaceV4,omitnil,omitempty" name:"NamespaceV4"`
 
-	// 4.x的消费组名称
+	// <p>4.x的消费组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerGroupV4 *string `json:"ConsumerGroupV4,omitnil,omitempty" name:"ConsumerGroupV4"`
 
-	// 4.x的完整命名空间
+	// <p>4.x的完整命名空间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullNamespaceV4 *string `json:"FullNamespaceV4,omitnil,omitempty" name:"FullNamespaceV4"`
 
-	// 订阅的主题个数
+	// <p>订阅的主题个数</p>
 	SubscribeTopicNum *int64 `json:"SubscribeTopicNum,omitnil,omitempty" name:"SubscribeTopicNum"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 绑定的标签列表
+	// <p>绑定的标签列表</p>
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 重试策略
+	// <p>重试策略</p>
 	RetryPolicy *RetryPolicy `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
+
+	// <p>消费模式，枚举值如下：</p><ul><li>CLUSTERING：集群/广播消费</li><li>LITE：LiteTopic 消费</li></ul>
+	ConsumeModel *string `json:"ConsumeModel,omitnil,omitempty" name:"ConsumeModel"`
+
+	// <p>自定义的死信Topic名称</p>
+	DeadLetterTargetTopic *string `json:"DeadLetterTargetTopic,omitnil,omitempty" name:"DeadLetterTargetTopic"`
 }
 
 type ConsumerClient struct {
@@ -319,6 +324,9 @@ type CreateConsumerGroupRequestParams struct {
 
 	// <p>轻量主题</p>
 	LiteTopic *string `json:"LiteTopic,omitnil,omitempty" name:"LiteTopic"`
+
+	// <p>自定义死信 Topic</p><p>非必选，死信消息默认投递到系统死信 Topic</p>
+	DeadLetterTargetTopic *string `json:"DeadLetterTargetTopic,omitnil,omitempty" name:"DeadLetterTargetTopic"`
 }
 
 type CreateConsumerGroupRequest struct {
@@ -350,6 +358,9 @@ type CreateConsumerGroupRequest struct {
 
 	// <p>轻量主题</p>
 	LiteTopic *string `json:"LiteTopic,omitnil,omitempty" name:"LiteTopic"`
+
+	// <p>自定义死信 Topic</p><p>非必选，死信消息默认投递到系统死信 Topic</p>
+	DeadLetterTargetTopic *string `json:"DeadLetterTargetTopic,omitnil,omitempty" name:"DeadLetterTargetTopic"`
 }
 
 func (r *CreateConsumerGroupRequest) ToJsonString() string {
@@ -373,6 +384,7 @@ func (r *CreateConsumerGroupRequest) FromJsonString(s string) error {
 	delete(f, "TagList")
 	delete(f, "RetryPolicy")
 	delete(f, "LiteTopic")
+	delete(f, "DeadLetterTargetTopic")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsumerGroupRequest has unknown keys!", "")
 	}
@@ -959,31 +971,25 @@ type CreateTopicRequestParams struct {
 	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 主题类型，枚举值如下：
-	// 
-	// - NORMAL: 普通消息
-	// - FIFO: 顺序消息
-	// - DELAY: 延时消息
-	// - TRANSACTION: 事务消息
-	// - LITE: 轻量消息
+	// <p>主题类型</p><p>枚举值：</p><ul><li>NORMAL： 普通消息</li><li>FIFO： 顺序消息</li><li>DELAY： 延迟消息</li><li>TRANSACTION： 事务消息</li><li>LITE： 轻量消息</li><li>PRIORITY： 优先级消息</li></ul>
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
-	// 队列数量，取值范围3～16
+	// <p>队列数量，取值范围3～16</p>
 	QueueNum *int64 `json:"QueueNum,omitnil,omitempty" name:"QueueNum"`
 
-	// 备注信息，最多 128 个字符
+	// <p>备注信息，最多 128 个字符</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 消息保留时长（单位：小时）
+	// <p>消息保留时长（单位：小时）</p>
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 是否过期自动删除（仅针对轻量主题类型）
+	// <p>是否过期自动删除（仅针对轻量主题类型）</p>
 	AutoExpireDelete *bool `json:"AutoExpireDelete,omitnil,omitempty" name:"AutoExpireDelete"`
 
-	// 过期时间，单位：秒（仅针对轻量主题类型）
+	// <p>过期时间，单位：秒（仅针对轻量主题类型）</p>
 	AutoExpireTime *int64 `json:"AutoExpireTime,omitnil,omitempty" name:"AutoExpireTime"`
 }
 
@@ -996,31 +1002,25 @@ type CreateTopicRequest struct {
 	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 主题类型，枚举值如下：
-	// 
-	// - NORMAL: 普通消息
-	// - FIFO: 顺序消息
-	// - DELAY: 延时消息
-	// - TRANSACTION: 事务消息
-	// - LITE: 轻量消息
+	// <p>主题类型</p><p>枚举值：</p><ul><li>NORMAL： 普通消息</li><li>FIFO： 顺序消息</li><li>DELAY： 延迟消息</li><li>TRANSACTION： 事务消息</li><li>LITE： 轻量消息</li><li>PRIORITY： 优先级消息</li></ul>
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
-	// 队列数量，取值范围3～16
+	// <p>队列数量，取值范围3～16</p>
 	QueueNum *int64 `json:"QueueNum,omitnil,omitempty" name:"QueueNum"`
 
-	// 备注信息，最多 128 个字符
+	// <p>备注信息，最多 128 个字符</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 消息保留时长（单位：小时）
+	// <p>消息保留时长（单位：小时）</p>
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 是否过期自动删除（仅针对轻量主题类型）
+	// <p>是否过期自动删除（仅针对轻量主题类型）</p>
 	AutoExpireDelete *bool `json:"AutoExpireDelete,omitnil,omitempty" name:"AutoExpireDelete"`
 
-	// 过期时间，单位：秒（仅针对轻量主题类型）
+	// <p>过期时间，单位：秒（仅针对轻量主题类型）</p>
 	AutoExpireTime *int64 `json:"AutoExpireTime,omitnil,omitempty" name:"AutoExpireTime"`
 }
 
@@ -1053,10 +1053,10 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicResponseParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名
+	// <p>主题名</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2047,6 +2047,9 @@ type DescribeConsumerGroupResponseParams struct {
 
 	// <p>订阅的轻量主题（仅适用于轻量消费模式）</p>
 	LiteTopic *string `json:"LiteTopic,omitnil,omitempty" name:"LiteTopic"`
+
+	// <p>自定义死信Topic</p>
+	DeadLetterTargetTopic *string `json:"DeadLetterTargetTopic,omitnil,omitempty" name:"DeadLetterTargetTopic"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3298,6 +3301,12 @@ type DescribeMessageTraceRequestParams struct {
 
 	// <p>是否是延时消息，默认为false</p>
 	QueryDelayMessage *bool `json:"QueryDelayMessage,omitnil,omitempty" name:"QueryDelayMessage"`
+
+	// <p>是否为重试消息</p>
+	QueryRetryMessage *bool `json:"QueryRetryMessage,omitnil,omitempty" name:"QueryRetryMessage"`
+
+	// <p>查询重试消息时，需要指定具体的消费组名称</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DescribeMessageTraceRequest struct {
@@ -3317,6 +3326,12 @@ type DescribeMessageTraceRequest struct {
 
 	// <p>是否是延时消息，默认为false</p>
 	QueryDelayMessage *bool `json:"QueryDelayMessage,omitnil,omitempty" name:"QueryDelayMessage"`
+
+	// <p>是否为重试消息</p>
+	QueryRetryMessage *bool `json:"QueryRetryMessage,omitnil,omitempty" name:"QueryRetryMessage"`
+
+	// <p>查询重试消息时，需要指定具体的消费组名称</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 func (r *DescribeMessageTraceRequest) ToJsonString() string {
@@ -3336,6 +3351,8 @@ func (r *DescribeMessageTraceRequest) FromJsonString(s string) error {
 	delete(f, "MsgId")
 	delete(f, "QueryDeadLetterMessage")
 	delete(f, "QueryDelayMessage")
+	delete(f, "QueryRetryMessage")
+	delete(f, "GroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMessageTraceRequest has unknown keys!", "")
 	}
@@ -4324,6 +4341,9 @@ type DescribeTopicResponseParams struct {
 	// <p>主题类型<br>UNSPECIFIED:未指定,<br>NORMAL:普通消息,<br>FIFO:顺序消息,<br>DELAY:延时消息,<br>TRANSACTION:事务消息</p>
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
+	// <p>队列数量</p>
+	QueueNum *int64 `json:"QueueNum,omitnil,omitempty" name:"QueueNum"`
+
 	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
@@ -5132,24 +5152,26 @@ type ModifyConsumerGroupRequestParams struct {
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 是否开启消费
+	// <p>是否开启消费</p>
 	ConsumeEnable *bool `json:"ConsumeEnable,omitnil,omitempty" name:"ConsumeEnable"`
 
-	// 顺序投递：true
-	// 并发投递：false
+	// <p>顺序投递：true<br>并发投递：false</p>
 	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
 
 	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
-	// 最大重试次数，取值范围0～1000
+	// <p>最大重试次数，取值范围0～1000</p>
 	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil,omitempty" name:"MaxRetryTimes"`
 
-	// 备注信息，最多 128 个字符
+	// <p>备注信息，最多 128 个字符</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 重试策略
+	// <p>重试策略</p>
 	RetryPolicy *RetryPolicy `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
+
+	// <p>自定义死信Topic</p>
+	DeadLetterTargetTopic *string `json:"DeadLetterTargetTopic,omitnil,omitempty" name:"DeadLetterTargetTopic"`
 }
 
 type ModifyConsumerGroupRequest struct {
@@ -5158,24 +5180,26 @@ type ModifyConsumerGroupRequest struct {
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 是否开启消费
+	// <p>是否开启消费</p>
 	ConsumeEnable *bool `json:"ConsumeEnable,omitnil,omitempty" name:"ConsumeEnable"`
 
-	// 顺序投递：true
-	// 并发投递：false
+	// <p>顺序投递：true<br>并发投递：false</p>
 	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
 
 	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
-	// 最大重试次数，取值范围0～1000
+	// <p>最大重试次数，取值范围0～1000</p>
 	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil,omitempty" name:"MaxRetryTimes"`
 
-	// 备注信息，最多 128 个字符
+	// <p>备注信息，最多 128 个字符</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 重试策略
+	// <p>重试策略</p>
 	RetryPolicy *RetryPolicy `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
+
+	// <p>自定义死信Topic</p>
+	DeadLetterTargetTopic *string `json:"DeadLetterTargetTopic,omitnil,omitempty" name:"DeadLetterTargetTopic"`
 }
 
 func (r *ModifyConsumerGroupRequest) ToJsonString() string {
@@ -5197,6 +5221,7 @@ func (r *ModifyConsumerGroupRequest) FromJsonString(s string) error {
 	delete(f, "MaxRetryTimes")
 	delete(f, "Remark")
 	delete(f, "RetryPolicy")
+	delete(f, "DeadLetterTargetTopic")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsumerGroupRequest has unknown keys!", "")
 	}
@@ -6280,17 +6305,20 @@ type SendMessageRequestParams struct {
 	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 消息内容
+	// <p>消息内容</p>
 	MsgBody *string `json:"MsgBody,omitnil,omitempty" name:"MsgBody"`
 
-	// 消息Key
+	// <p>消息Key</p>
 	MsgKey *string `json:"MsgKey,omitnil,omitempty" name:"MsgKey"`
 
-	// 消息Tag
+	// <p>消息Tag</p>
 	MsgTag *string `json:"MsgTag,omitnil,omitempty" name:"MsgTag"`
 
-	// 轻量主题
+	// <p>轻量主题</p>
 	LiteTopic *string `json:"LiteTopic,omitnil,omitempty" name:"LiteTopic"`
+
+	// <p>指定队列优先级</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 type SendMessageRequest struct {
@@ -6302,17 +6330,20 @@ type SendMessageRequest struct {
 	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 消息内容
+	// <p>消息内容</p>
 	MsgBody *string `json:"MsgBody,omitnil,omitempty" name:"MsgBody"`
 
-	// 消息Key
+	// <p>消息Key</p>
 	MsgKey *string `json:"MsgKey,omitnil,omitempty" name:"MsgKey"`
 
-	// 消息Tag
+	// <p>消息Tag</p>
 	MsgTag *string `json:"MsgTag,omitnil,omitempty" name:"MsgTag"`
 
-	// 轻量主题
+	// <p>轻量主题</p>
 	LiteTopic *string `json:"LiteTopic,omitnil,omitempty" name:"LiteTopic"`
+
+	// <p>指定队列优先级</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 func (r *SendMessageRequest) ToJsonString() string {
@@ -6333,6 +6364,7 @@ func (r *SendMessageRequest) FromJsonString(s string) error {
 	delete(f, "MsgKey")
 	delete(f, "MsgTag")
 	delete(f, "LiteTopic")
+	delete(f, "Priority")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendMessageRequest has unknown keys!", "")
 	}
@@ -6341,7 +6373,7 @@ func (r *SendMessageRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SendMessageResponseParams struct {
-	// 消息ID
+	// <p>消息ID</p>
 	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6624,46 +6656,50 @@ type TopicConsumeStats struct {
 }
 
 type TopicItem struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// <p>主题名称</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 主题类型
-	// NORMAL:普通消息,
-	// FIFO:顺序消息,
-	// DELAY:延时消息,
-	// TRANSACTION:事务消息
+	// <p>主题类型<br>NORMAL:普通消息,<br>FIFO:顺序消息,<br>DELAY:延时消息,<br>TRANSACTION:事务消息</p>
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
-	// 队列数量
+	// <p>队列数量</p>
 	QueueNum *int64 `json:"QueueNum,omitnil,omitempty" name:"QueueNum"`
 
-	// 备注信息
+	// <p>备注信息</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 4.x的集群id
+	// <p>4.x的集群id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterIdV4 *string `json:"ClusterIdV4,omitnil,omitempty" name:"ClusterIdV4"`
 
-	// 4.x的命名空间
+	// <p>4.x的命名空间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceV4 *string `json:"NamespaceV4,omitnil,omitempty" name:"NamespaceV4"`
 
-	// 4.x的主题名称
+	// <p>4.x的主题名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicV4 *string `json:"TopicV4,omitnil,omitempty" name:"TopicV4"`
 
-	// 4.x的完整命名空间
+	// <p>4.x的完整命名空间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullNamespaceV4 *string `json:"FullNamespaceV4,omitnil,omitempty" name:"FullNamespaceV4"`
 
-	// 消息保留时长
+	// <p>消息保留时长</p>
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 
-	// 绑定的标签列表
+	// <p>绑定的标签列表</p>
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// <p>LITE 类型 Topic 专用：是否开启自动过期删除</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoExpireDelete *bool `json:"AutoExpireDelete,omitnil,omitempty" name:"AutoExpireDelete"`
+
+	// <p>LITE 类型 Topic 专用：自动过期时间</p><p>单位：分钟</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoExpireTime *uint64 `json:"AutoExpireTime,omitnil,omitempty" name:"AutoExpireTime"`
 }
 
 type TopicStageChangeResult struct {

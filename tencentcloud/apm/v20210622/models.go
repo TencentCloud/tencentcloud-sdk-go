@@ -2305,20 +2305,20 @@ func (r *DescribeApmVulnerabilityDetailResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeGeneralApmApplicationConfigRequestParams struct {
-	// 应用名
+	// <p>应用名</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 业务系统ID
+	// <p>业务系统ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeGeneralApmApplicationConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用名
+	// <p>应用名</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 业务系统ID
+	// <p>业务系统ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -2344,7 +2344,7 @@ func (r *DescribeGeneralApmApplicationConfigRequest) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeGeneralApmApplicationConfigResponseParams struct {
-	// 应用配置项
+	// <p>应用配置项</p>
 	ApmApplicationConfigView *ApmApplicationConfigView `json:"ApmApplicationConfigView,omitnil,omitempty" name:"ApmApplicationConfigView"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

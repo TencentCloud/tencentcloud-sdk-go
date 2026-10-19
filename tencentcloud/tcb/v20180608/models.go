@@ -9321,6 +9321,22 @@ type LocalizedTemplate struct {
 	// <p>英文</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnUS *string `json:"EnUS,omitnil,omitempty" name:"EnUS"`
+
+	// <p>中文主题</p><p>入参限制：长度限制100字符以内，仅允许：{{.VerificationCode}}、{{.Usage}}、{{.Email}}、{{.ExpireMinutes}}、{{.ConfirmationURL}}，未知变量拒绝</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubjectZhCN *string `json:"SubjectZhCN,omitnil,omitempty" name:"SubjectZhCN"`
+
+	// <p>英文主题</p><p>入参限制：长度限制100字符以内，仅允许：{{.VerificationCode}}、{{.Usage}}、{{.Email}}、{{.ExpireMinutes}}、{{.ConfirmationURL}}，未知变量拒绝</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubjectEnUS *string `json:"SubjectEnUS,omitnil,omitempty" name:"SubjectEnUS"`
+
+	// <p>中文发件人</p><p>入参限制：长度限制50字符以内，静态纯文本，不支持变量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SenderNameZhCN *string `json:"SenderNameZhCN,omitnil,omitempty" name:"SenderNameZhCN"`
+
+	// <p>英文发件人</p><p>默认值：长度限制50字符以内，静态纯文本，不支持变量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SenderNameEnUS *string `json:"SenderNameEnUS,omitnil,omitempty" name:"SenderNameEnUS"`
 }
 
 type LogObject struct {

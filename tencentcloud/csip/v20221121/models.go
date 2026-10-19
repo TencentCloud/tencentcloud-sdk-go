@@ -3201,6 +3201,9 @@ type BaselineAggregatedPolicy struct {
 
 	// <p>该基线类别是否被扫描过</p>
 	Scanned *bool `json:"Scanned,omitnil,omitempty" name:"Scanned"`
+
+	// <p>自定义策略情况下策略的appid</p>
+	AppID *uint64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 }
 
 type BaselineCategory struct {
@@ -3449,6 +3452,9 @@ type BaselineMainTask struct {
 
 	// <p>子任务总数</p>
 	ScanTotalCount *uint64 `json:"ScanTotalCount,omitnil,omitempty" name:"ScanTotalCount"`
+
+	// <p>检测的策略列表</p>
+	PolicyList []*BaselinePolicyBrief `json:"PolicyList,omitnil,omitempty" name:"PolicyList"`
 }
 
 type BaselineOverviewStatistic struct {
@@ -3537,6 +3543,17 @@ type BaselinePolicy struct {
 
 	// <p>云标签列表</p>
 	CloudTagList []*string `json:"CloudTagList,omitnil,omitempty" name:"CloudTagList"`
+}
+
+type BaselinePolicyBrief struct {
+	// <p>基线策略 ID。</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>基线策略名称。</p>
+	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
+
+	// <p>是否为系统内置策略。true 是，false 否（用户自定义策略）。</p>
+	IsSystem *bool `json:"IsSystem,omitnil,omitempty" name:"IsSystem"`
 }
 
 type BaselinePolicySubCategoryConf struct {
@@ -24859,12 +24876,21 @@ func (r *DescribeCLSLogListV3Response) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCSCPayInfoRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
+	// <p>是否返回配额已使用量。默认为 false：不采集用量，QuotaList 中的 QuotaUsed 恒为 0；需要展示已用量的调用方显式传 true。只关心订单状态、到期时间或配额购买数量的调用方无需传入</p>
+	NeedQuotaUsed *bool `json:"NeedQuotaUsed,omitnil,omitempty" name:"NeedQuotaUsed"`
 }
 
 type DescribeCSCPayInfoRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>是否返回配额已使用量。默认为 false：不采集用量，QuotaList 中的 QuotaUsed 恒为 0；需要展示已用量的调用方显式传 true。只关心订单状态、到期时间或配额购买数量的调用方无需传入</p>
+	NeedQuotaUsed *bool `json:"NeedQuotaUsed,omitnil,omitempty" name:"NeedQuotaUsed"`
 }
 
 func (r *DescribeCSCPayInfoRequest) ToJsonString() string {
@@ -24879,7 +24905,8 @@ func (r *DescribeCSCPayInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "MemberId")
+	delete(f, "NeedQuotaUsed")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCSCPayInfoRequest has unknown keys!", "")
 	}
@@ -24929,6 +24956,9 @@ type DescribeCSCPayInfoResponseParams struct {
 
 	// <p>用户计费信息，Key为L4</p>
 	QuotaList []*OrderQuotaInfo `json:"QuotaList,omitnil,omitempty" name:"QuotaList"`
+
+	// <p>配额用量查询失败提示。仅请求参数 NeedQuotaUsed 为 true 时可能非空：此时订单信息仍正常返回，QuotaList 中的 QuotaUsed 恒为 0；查询正常或未请求用量时为空字符串</p>
+	QuotaUsedError *string `json:"QuotaUsedError,omitnil,omitempty" name:"QuotaUsedError"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -37025,6 +37055,9 @@ type DescribeEDRRuleListRequestParams struct {
 
 	// <p>可选排序列: [ModifyTime]</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+	FileOperationRules *RuleContentFileOperation `json:"FileOperationRules,omitnil,omitempty" name:"FileOperationRules"`
 }
 
 type DescribeEDRRuleListRequest struct {
@@ -37047,6 +37080,9 @@ type DescribeEDRRuleListRequest struct {
 
 	// <p>可选排序列: [ModifyTime]</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+	FileOperationRules *RuleContentFileOperation `json:"FileOperationRules,omitnil,omitempty" name:"FileOperationRules"`
 }
 
 func (r *DescribeEDRRuleListRequest) ToJsonString() string {
@@ -37067,6 +37103,7 @@ func (r *DescribeEDRRuleListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Order")
 	delete(f, "By")
+	delete(f, "FileOperationRules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEDRRuleListRequest has unknown keys!", "")
 	}
@@ -55006,6 +55043,9 @@ type EDRRule struct {
 
 	// <p>安全中心标签</p>
 	TagItems []*EDRRuleTagItem `json:"TagItems,omitnil,omitempty" name:"TagItems"`
+
+	// <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+	FileOperationRules *RuleContentFileOperation `json:"FileOperationRules,omitnil,omitempty" name:"FileOperationRules"`
 }
 
 type EDRRuleTagItem struct {
@@ -55815,6 +55855,9 @@ type ExportEDRRulesRequestParams struct {
 
 	// <p>排序列，ModifyTime</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+	FileOperationRules *RuleContentFileOperation `json:"FileOperationRules,omitnil,omitempty" name:"FileOperationRules"`
 }
 
 type ExportEDRRulesRequest struct {
@@ -55831,6 +55874,9 @@ type ExportEDRRulesRequest struct {
 
 	// <p>排序列，ModifyTime</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+	FileOperationRules *RuleContentFileOperation `json:"FileOperationRules,omitnil,omitempty" name:"FileOperationRules"`
 }
 
 func (r *ExportEDRRulesRequest) ToJsonString() string {
@@ -55849,6 +55895,7 @@ func (r *ExportEDRRulesRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Order")
 	delete(f, "By")
+	delete(f, "FileOperationRules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportEDRRulesRequest has unknown keys!", "")
 	}
@@ -58381,6 +58428,9 @@ type LicenseStatusItem struct {
 
 	// <p>最晚到期时间（格式：2006-01-02 15:04:05）</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>订单类型</p><p>枚举值：</p><ul><li>PURCHASED： 正式订单</li><li>TRIAL： 试用订单</li></ul>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 }
 
 type LicenseUnbindFailedItem struct {
@@ -63939,6 +63989,9 @@ type ModifyEDRRuleRequestParams struct {
 
 	// <p>容器条件匹配</p>
 	ConditionMatches []*ConditionMatch `json:"ConditionMatches,omitnil,omitempty" name:"ConditionMatches"`
+
+	// <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+	FileOperationRules *RuleContentFileOperation `json:"FileOperationRules,omitnil,omitempty" name:"FileOperationRules"`
 }
 
 type ModifyEDRRuleRequest struct {
@@ -64039,6 +64092,9 @@ type ModifyEDRRuleRequest struct {
 
 	// <p>容器条件匹配</p>
 	ConditionMatches []*ConditionMatch `json:"ConditionMatches,omitnil,omitempty" name:"ConditionMatches"`
+
+	// <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+	FileOperationRules *RuleContentFileOperation `json:"FileOperationRules,omitnil,omitempty" name:"FileOperationRules"`
 }
 
 func (r *ModifyEDRRuleRequest) ToJsonString() string {
@@ -64085,6 +64141,7 @@ func (r *ModifyEDRRuleRequest) FromJsonString(s string) error {
 	delete(f, "ExcludeClusterIDsWithAppId")
 	delete(f, "ImageIDsWithAppId")
 	delete(f, "ConditionMatches")
+	delete(f, "FileOperationRules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEDRRuleRequest has unknown keys!", "")
 	}
@@ -70013,17 +70070,17 @@ type OrderDetail struct {
 }
 
 type OrderQuotaInfo struct {
-	// 配额键
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// <p>配额键</p>
 	QuotaKey *string `json:"QuotaKey,omitnil,omitempty" name:"QuotaKey"`
 
-	// 配额总量
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// <p>配额总量</p>
 	QuotaNum *int64 `json:"QuotaNum,omitnil,omitempty" name:"QuotaNum"`
 
-	// 配额已使用量
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// <p>配额已使用量（含共享给其他账号的消耗）。仅请求参数 NeedQuotaUsed 为 true 时采集；未传或为 false 时恒为 0；用量查询失败时恒为 0，错误提示见响应 QuotaUsedError 字段</p>
 	QuotaUsed *int64 `json:"QuotaUsed,omitnil,omitempty" name:"QuotaUsed"`
+
+	// <p>赠送配额。仅 CSPM 存在赠送额度，其余计费项为 0</p>
+	QuotaGranted *int64 `json:"QuotaGranted,omitnil,omitempty" name:"QuotaGranted"`
 }
 
 type OrganizationInfo struct {
@@ -71210,6 +71267,20 @@ type RuleContentCmdLine struct {
 
 	// <p>祖先进程命令行信息</p>
 	AncestorProcess *RuleContentProcessInfo `json:"AncestorProcess,omitnil,omitempty" name:"AncestorProcess"`
+}
+
+type RuleContentFileOperation struct {
+	// <p>当前进程命令行信息（可选，未配置时该维度不参与匹配）</p>
+	Process *RuleContentProcessInfo `json:"Process,omitnil,omitempty" name:"Process"`
+
+	// <p>父进程命令行信息（可选，未配置时该维度不参与匹配）</p>
+	ParentProcess *RuleContentProcessInfo `json:"ParentProcess,omitnil,omitempty" name:"ParentProcess"`
+
+	// <p>目标文件路径（正则）</p>
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// <p>动作列表（多选为或关系）：read-读 write-写 rename-重命名 delete-删除 truncate-清空内容</p>
+	FileActions []*string `json:"FileActions,omitnil,omitempty" name:"FileActions"`
 }
 
 type RuleContentProcessInfo struct {
@@ -76777,6 +76848,9 @@ type WebhookNotifyItem struct {
 
 	// <p>处理状态等</p>
 	Items []*string `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// <p>可选项</p>
+	Options []*string `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 type WebhookPolicy struct {

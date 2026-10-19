@@ -1717,58 +1717,47 @@ func (r *ControlDeviceSnapshotResponse) FromJsonString(s string) error {
 }
 
 type ControlDeviceStreamData struct {
-	// flv 流地址
+	// <p>flv 流地址</p>
 	Flv *string `json:"Flv,omitnil,omitempty" name:"Flv"`
 
-	// hls 流地址
+	// <p>hls 流地址</p>
 	Hls *string `json:"Hls,omitnil,omitempty" name:"Hls"`
 
-	// rtmp 流地址
+	// <p>rtmp 流地址</p>
 	Rtmp *string `json:"Rtmp,omitnil,omitempty" name:"Rtmp"`
+
+	// <p>fmp4地址</p>
+	FMp4 *string `json:"FMp4,omitnil,omitempty" name:"FMp4"`
 }
 
 // Predefined struct for user
 type ControlDeviceStreamRequestParams struct {
-	// 通道 ID（从通道查询接口DescribeDeviceChannel中获取）
+	// <p>通道 ID（从通道查询接口DescribeDeviceChannel中获取）</p>
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 流类型（1:主码流；
-	// 2:子码流（不可以和 Resolution 同时下发））
+	// <p>流类型（1:主码流；<br>2:子码流（不可以和 Resolution 同时下发））</p>
 	StreamType *string `json:"StreamType,omitnil,omitempty" name:"StreamType"`
 
-	// 分辨率（1:QCIF；
-	// 2:CIF；
-	// 3:4CIF；
-	// 4:D1；
-	// 5:720P；
-	// 6:1080P/I；
-	// 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
+	// <p>分辨率（1:QCIF；<br>2:CIF；<br>3:4CIF；<br>4:D1；<br>5:720P；<br>6:1080P/I；<br>自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 是否内网
+	// <p>是否内网</p>
 	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
 type ControlDeviceStreamRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通道 ID（从通道查询接口DescribeDeviceChannel中获取）
+	// <p>通道 ID（从通道查询接口DescribeDeviceChannel中获取）</p>
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 流类型（1:主码流；
-	// 2:子码流（不可以和 Resolution 同时下发））
+	// <p>流类型（1:主码流；<br>2:子码流（不可以和 Resolution 同时下发））</p>
 	StreamType *string `json:"StreamType,omitnil,omitempty" name:"StreamType"`
 
-	// 分辨率（1:QCIF；
-	// 2:CIF；
-	// 3:4CIF；
-	// 4:D1；
-	// 5:720P；
-	// 6:1080P/I；
-	// 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
+	// <p>分辨率（1:QCIF；<br>2:CIF；<br>3:4CIF；<br>4:D1；<br>5:720P；<br>6:1080P/I；<br>自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 是否内网
+	// <p>是否内网</p>
 	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
@@ -1796,7 +1785,7 @@ func (r *ControlDeviceStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ControlDeviceStreamResponseParams struct {
-	// 返回数据
+	// <p>返回数据</p>
 	Data *ControlDeviceStreamData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7107,50 +7096,53 @@ type OrganizationChannelInfo struct {
 }
 
 type PlayRecordData struct {
-	// 录像播放地址
+	// <p>flv录像播放地址</p>
 	Flv *string `json:"Flv,omitnil,omitempty" name:"Flv"`
+
+	// <p>fmp4录像播放地址</p>
+	FMp4 *string `json:"FMp4,omitnil,omitempty" name:"FMp4"`
 }
 
 // Predefined struct for user
 type PlayRecordRequestParams struct {
-	// 通道 ID（从查询通道DescribeDeviceChannel接口中获取）
+	// <p>通道 ID（从查询通道DescribeDeviceChannel接口中获取）</p>
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 起始时间
+	// <p>起始时间</p>
 	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
 
-	//  结束时间
+	// <p>结束时间</p>
 	End *int64 `json:"End,omitnil,omitempty" name:"End"`
 
-	// 流类型（1:主码流；2:子码流（不可以和 Resolution 同时下发））
+	// <p>流类型（1:主码流；2:子码流（不可以和 Resolution 同时下发））</p>
 	StreamType *int64 `json:"StreamType,omitnil,omitempty" name:"StreamType"`
 
-	// 分辨率（1:QCIF；2:CIF； 3:4CIF； 4:D1； 5:720P； 6:1080P/I； 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
+	// <p>分辨率（1:QCIF；2:CIF； 3:4CIF； 4:D1； 5:720P； 6:1080P/I； 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 是否内网
+	// <p>是否内网</p>
 	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
 type PlayRecordRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通道 ID（从查询通道DescribeDeviceChannel接口中获取）
+	// <p>通道 ID（从查询通道DescribeDeviceChannel接口中获取）</p>
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 起始时间
+	// <p>起始时间</p>
 	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
 
-	//  结束时间
+	// <p>结束时间</p>
 	End *int64 `json:"End,omitnil,omitempty" name:"End"`
 
-	// 流类型（1:主码流；2:子码流（不可以和 Resolution 同时下发））
+	// <p>流类型（1:主码流；2:子码流（不可以和 Resolution 同时下发））</p>
 	StreamType *int64 `json:"StreamType,omitnil,omitempty" name:"StreamType"`
 
-	// 分辨率（1:QCIF；2:CIF； 3:4CIF； 4:D1； 5:720P； 6:1080P/I； 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
+	// <p>分辨率（1:QCIF；2:CIF； 3:4CIF； 4:D1； 5:720P； 6:1080P/I； 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 是否内网
+	// <p>是否内网</p>
 	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
@@ -7180,7 +7172,7 @@ func (r *PlayRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PlayRecordResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Data *PlayRecordData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

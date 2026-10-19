@@ -274,6 +274,17 @@ type AirTransport struct {
 	TaxAmount *string `json:"TaxAmount,omitnil,omitempty" name:"TaxAmount"`
 }
 
+type AnswerElement struct {
+	// <p>答案是否正确</p>
+	IsCorrect *bool `json:"IsCorrect,omitnil,omitempty" name:"IsCorrect"`
+
+	// <p>答案分析结果</p>
+	AnswerAnalysis *string `json:"AnswerAnalysis,omitnil,omitempty" name:"AnswerAnalysis"`
+
+	// <p>返回正确答案内容</p>
+	RightAnswer *string `json:"RightAnswer,omitnil,omitempty" name:"RightAnswer"`
+}
+
 type AnswerInfo struct {
 	// 手写答案内容，比如选择题的手写的选项、填空题的手写内容
 	HandwriteInfo *string `json:"HandwriteInfo,omitnil,omitempty" name:"HandwriteInfo"`
@@ -1745,14 +1756,14 @@ func (r *DescribeMultimodalDocParseJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeQuestionMarkAgentJobRequestParams struct {
-	// 任务唯一ID。由服务端生成。	
+	// <p>任务唯一ID。由服务端生成。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type DescribeQuestionMarkAgentJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务唯一ID。由服务端生成。	
+	// <p>任务唯一ID。由服务端生成。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
@@ -1777,20 +1788,23 @@ func (r *DescribeQuestionMarkAgentJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeQuestionMarkAgentJobResponseParams struct {
-	// 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+	// <p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
 	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 
-	// 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+	// <p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
-	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	// <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
 	JobStatus *string `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
 
-	// 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+	// <p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 试题批改信息
+	// <p>试题批改信息  （该字段后续废弃，使用QuestionInfo兼容多页批改场景）</p>
 	MarkInfos []*MarkInfo `json:"MarkInfos,omitnil,omitempty" name:"MarkInfos"`
+
+	// <p>试题批改信息。</p>
+	QuestionInfo []*QuestionInfo `json:"QuestionInfo,omitnil,omitempty" name:"QuestionInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2487,6 +2501,9 @@ type Element struct {
 
 	// <p>元素所在页</p><p>单位：页</p><p>默认值：1</p>
 	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// <p>批改时答案的额外数据</p>
+	AnswerElement *AnswerElement `json:"AnswerElement,omitnil,omitempty" name:"AnswerElement"`
 }
 
 type Encryption struct {
@@ -6948,6 +6965,9 @@ type QuestionInfo struct {
 
 	// <p>预处理后的图片base64编码</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// <p>预处理后的图片URL,如果开启了图像切边矫正，后续的坐标都是基于当前图片返回的坐标</p>
+	ReturnImageUrl *string `json:"ReturnImageUrl,omitnil,omitempty" name:"ReturnImageUrl"`
 }
 
 // Predefined struct for user
@@ -8955,6 +8975,15 @@ type ResultList struct {
 
 	// <p>多坐标返回，显示坐标所在页</p><p>默认值：[]</p>
 	CoordPageIndex []*int64 `json:"CoordPageIndex,omitnil,omitempty" name:"CoordPageIndex"`
+
+	// <p>返回正确答案内容</p>
+	RightAnswer *string `json:"RightAnswer,omitnil,omitempty" name:"RightAnswer"`
+
+	// <p>学科（如语文、数学、英语）</p>
+	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
+
+	// <p>返回题目的知识点内容</p>
+	KnowledgePoints []*string `json:"KnowledgePoints,omitnil,omitempty" name:"KnowledgePoints"`
 }
 
 // Predefined struct for user
@@ -9995,7 +10024,7 @@ type SubmitQuestionMarkAgentJobRequestParams struct {
 	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。</p>
+	// <p>不传则默认识别整个PDF，如果识别单页则输入指定页码</p>
 	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
 	// <p>表示整张试卷批改需要先切题，默认为false</p>
@@ -10008,16 +10037,16 @@ type SubmitQuestionMarkAgentJobRequestParams struct {
 	// Deprecated: EnableDeepThink is deprecated.
 	EnableDeepThink *bool `json:"EnableDeepThink,omitnil,omitempty" name:"EnableDeepThink"`
 
-	// <p>题目信息输出配置，当key对应为true表示开启配置开关。</p><p>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；</p><p>当key为DisableAnswerAnalysis value为true表示不输出答案解析；</p><p>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；</p><p>当key为UseCoordAssist value为true表示使用精调坐标辅助模型，false表示默认模型坐标（性能更优）；</p><p>参数格式：{&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p>
+	// <p>题目信息输出配置，当key对应为true表示开启配置开关。<br>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；<br>当key为DisableAnswerAnalysis value为true表示不输出答案解析；<br>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；<br>当key为UseCoordAssist value为true表示使用精调坐标辅助模型，false表示默认模型坐标（性能更优）；</p>
 	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
 
-	// <p>仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中</p>
+	// <p>【废除字段】<br>仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中</p>
 	ReferenceAnswer *string `json:"ReferenceAnswer,omitnil,omitempty" name:"ReferenceAnswer"`
 
-	// <p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
+	// <p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行多图同时批改逻辑（解决单题跨页场景）</li></ol>
 	ImageBase64List []*string `json:"ImageBase64List,omitnil,omitempty" name:"ImageBase64List"`
 
-	// <p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
+	// <p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行多图同时批改逻辑（解决单题跨页场景）</li></ol>
 	ImageUrlList []*string `json:"ImageUrlList,omitnil,omitempty" name:"ImageUrlList"`
 
 	// <p>辅助批改类型</p><p>枚举值：</p><ul><li>0： 无辅助批改，直接模型批改</li><li>1： 单题文本辅助批改，配合AnswerAssistMap使用</li><li>2： 整页辅助批改，待批改试卷使用ImageUrl/ImageBase64，答案部分使用ImageBase64List.N/ImageUrlList.N</li></ul><p>默认值：0</p>
@@ -10025,6 +10054,9 @@ type SubmitQuestionMarkAgentJobRequestParams struct {
 
 	// <p>单题辅助批改文本内容列表，当AssistMarkType为1时生效，用于提供题目相关的辅助文本信息。</p><ol><li>当key为ReferenceAnswer，value可以输入单题的辅助答案文本。</li><li>当key为QuestionAuxStem，value可以输入单题的辅助题干。</li></ol>
 	AnswerAssistMap *string `json:"AnswerAssistMap,omitnil,omitempty" name:"AnswerAssistMap"`
+
+	// <p>是否开启切边、弯曲矫正、方向矫正，开启则批改之前先做图片前处理，图片url地址返回在查询接口的QuestionInfo-&gt; ReturnImageUr中l,默认为false不开启<br>示例值：false</p>
+	EnableImageCrop *bool `json:"EnableImageCrop,omitnil,omitempty" name:"EnableImageCrop"`
 }
 
 type SubmitQuestionMarkAgentJobRequest struct {
@@ -10036,7 +10068,7 @@ type SubmitQuestionMarkAgentJobRequest struct {
 	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。</p>
+	// <p>不传则默认识别整个PDF，如果识别单页则输入指定页码</p>
 	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
 	// <p>表示整张试卷批改需要先切题，默认为false</p>
@@ -10045,16 +10077,16 @@ type SubmitQuestionMarkAgentJobRequest struct {
 	// <p>默认false 表示关闭深度思考  true 表示打开深度思考，更深层次推理分析，速度更慢</p>
 	EnableDeepThink *bool `json:"EnableDeepThink,omitnil,omitempty" name:"EnableDeepThink"`
 
-	// <p>题目信息输出配置，当key对应为true表示开启配置开关。</p><p>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；</p><p>当key为DisableAnswerAnalysis value为true表示不输出答案解析；</p><p>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；</p><p>当key为UseCoordAssist value为true表示使用精调坐标辅助模型，false表示默认模型坐标（性能更优）；</p><p>参数格式：{&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p>
+	// <p>题目信息输出配置，当key对应为true表示开启配置开关。<br>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；<br>当key为DisableAnswerAnalysis value为true表示不输出答案解析；<br>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；<br>当key为UseCoordAssist value为true表示使用精调坐标辅助模型，false表示默认模型坐标（性能更优）；</p>
 	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
 
-	// <p>仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中</p>
+	// <p>【废除字段】<br>仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中</p>
 	ReferenceAnswer *string `json:"ReferenceAnswer,omitnil,omitempty" name:"ReferenceAnswer"`
 
-	// <p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
+	// <p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行多图同时批改逻辑（解决单题跨页场景）</li></ol>
 	ImageBase64List []*string `json:"ImageBase64List,omitnil,omitempty" name:"ImageBase64List"`
 
-	// <p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
+	// <p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行多图同时批改逻辑（解决单题跨页场景）</li></ol>
 	ImageUrlList []*string `json:"ImageUrlList,omitnil,omitempty" name:"ImageUrlList"`
 
 	// <p>辅助批改类型</p><p>枚举值：</p><ul><li>0： 无辅助批改，直接模型批改</li><li>1： 单题文本辅助批改，配合AnswerAssistMap使用</li><li>2： 整页辅助批改，待批改试卷使用ImageUrl/ImageBase64，答案部分使用ImageBase64List.N/ImageUrlList.N</li></ul><p>默认值：0</p>
@@ -10062,6 +10094,9 @@ type SubmitQuestionMarkAgentJobRequest struct {
 
 	// <p>单题辅助批改文本内容列表，当AssistMarkType为1时生效，用于提供题目相关的辅助文本信息。</p><ol><li>当key为ReferenceAnswer，value可以输入单题的辅助答案文本。</li><li>当key为QuestionAuxStem，value可以输入单题的辅助题干。</li></ol>
 	AnswerAssistMap *string `json:"AnswerAssistMap,omitnil,omitempty" name:"AnswerAssistMap"`
+
+	// <p>是否开启切边、弯曲矫正、方向矫正，开启则批改之前先做图片前处理，图片url地址返回在查询接口的QuestionInfo-&gt; ReturnImageUr中l,默认为false不开启<br>示例值：false</p>
+	EnableImageCrop *bool `json:"EnableImageCrop,omitnil,omitempty" name:"EnableImageCrop"`
 }
 
 func (r *SubmitQuestionMarkAgentJobRequest) ToJsonString() string {
@@ -10087,6 +10122,7 @@ func (r *SubmitQuestionMarkAgentJobRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrlList")
 	delete(f, "AssistMarkType")
 	delete(f, "AnswerAssistMap")
+	delete(f, "EnableImageCrop")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitQuestionMarkAgentJobRequest has unknown keys!", "")
 	}
@@ -10104,7 +10140,7 @@ type SubmitQuestionMarkAgentJobResponseParams struct {
 	// <p>题目切题数量，作为计费题目数总量</p>
 	QuestionCount *string `json:"QuestionCount,omitnil,omitempty" name:"QuestionCount"`
 
-	// <p>客户图片url</p>
+	// <p>废弃字段</p>
 	OriginalImageUrl *string `json:"OriginalImageUrl,omitnil,omitempty" name:"OriginalImageUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10137,6 +10173,9 @@ type SubmitQuestionSplitJobRequestParams struct {
 
 	// <p>选择切题模型</p><p>枚举值：</p><ul><li>youtu_crop： 轻量化切题模型，运算速度更快，适合常规切题</li><li>youtu_crop_pro： 属于切题精调大模型，针对双栏、跨栏等复杂版式识别精度大幅提升，但推理耗时更长</li></ul><p>默认值：youtu_crop</p>
 	ModelType *string `json:"ModelType,omitnil,omitempty" name:"ModelType"`
+
+	// <p>是否开启切边、弯曲矫正、方向矫正，开启则批改之前先做图片前处理，图片url地址返回在查询接口的QuestionInfo-&gt; ReturnImageUr中l,默认为false不开启</p>
+	EnableImageCrop *bool `json:"EnableImageCrop,omitnil,omitempty" name:"EnableImageCrop"`
 }
 
 type SubmitQuestionSplitJobRequest struct {
@@ -10150,6 +10189,9 @@ type SubmitQuestionSplitJobRequest struct {
 
 	// <p>选择切题模型</p><p>枚举值：</p><ul><li>youtu_crop： 轻量化切题模型，运算速度更快，适合常规切题</li><li>youtu_crop_pro： 属于切题精调大模型，针对双栏、跨栏等复杂版式识别精度大幅提升，但推理耗时更长</li></ul><p>默认值：youtu_crop</p>
 	ModelType *string `json:"ModelType,omitnil,omitempty" name:"ModelType"`
+
+	// <p>是否开启切边、弯曲矫正、方向矫正，开启则批改之前先做图片前处理，图片url地址返回在查询接口的QuestionInfo-&gt; ReturnImageUr中l,默认为false不开启</p>
+	EnableImageCrop *bool `json:"EnableImageCrop,omitnil,omitempty" name:"EnableImageCrop"`
 }
 
 func (r *SubmitQuestionSplitJobRequest) ToJsonString() string {
@@ -10167,6 +10209,7 @@ func (r *SubmitQuestionSplitJobRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrlList")
 	delete(f, "ImageBase64List")
 	delete(f, "ModelType")
+	delete(f, "EnableImageCrop")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitQuestionSplitJobRequest has unknown keys!", "")
 	}

@@ -4281,20 +4281,20 @@ type DatabasesWithCharacterLists struct {
 
 // Predefined struct for user
 type DeleteAccountsRequestParams struct {
-	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云数据库账号。
+	// <p>云数据库账号。</p>
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 }
 
 type DeleteAccountsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云数据库账号。
+	// <p>云数据库账号。</p>
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 }
 
@@ -4320,7 +4320,7 @@ func (r *DeleteAccountsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAccountsResponseParams struct {
-	// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+	// <p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5064,50 +5064,50 @@ func (r *DescribeAccountPrivilegesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccountsRequestParams struct {
-	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 记录偏移量，默认值为0。
+	// <p>记录偏移量，默认值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次请求返回的数量，默认值为20，最小值为1，最大值为100。
+	// <p>单次请求返回的数量，默认值为20，最小值为1，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 匹配账号名的正则表达式，规则同 MySQL 官网。
+	// <p>匹配账号名的正则表达式，规则同 MySQL 官网。</p>
 	AccountRegexp *string `json:"AccountRegexp,omitnil,omitempty" name:"AccountRegexp"`
 
-	// 默认无排序，支持：ASC、DESC、asc、desc
+	// <p>默认无排序，支持：ASC、DESC、asc、desc</p>
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// 待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)
+	// <p>待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 匹配账号主机地址（Host）的正则表达式，规则同 MySQL 官网
+	// <p>匹配账号主机地址（Host）的正则表达式，规则同 MySQL 官网</p>
 	HostRegexp *string `json:"HostRegexp,omitnil,omitempty" name:"HostRegexp"`
 }
 
 type DescribeAccountsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 记录偏移量，默认值为0。
+	// <p>记录偏移量，默认值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次请求返回的数量，默认值为20，最小值为1，最大值为100。
+	// <p>单次请求返回的数量，默认值为20，最小值为1，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 匹配账号名的正则表达式，规则同 MySQL 官网。
+	// <p>匹配账号名的正则表达式，规则同 MySQL 官网。</p>
 	AccountRegexp *string `json:"AccountRegexp,omitnil,omitempty" name:"AccountRegexp"`
 
-	// 默认无排序，支持：ASC、DESC、asc、desc
+	// <p>默认无排序，支持：ASC、DESC、asc、desc</p>
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// 待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)
+	// <p>待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 匹配账号主机地址（Host）的正则表达式，规则同 MySQL 官网
+	// <p>匹配账号主机地址（Host）的正则表达式，规则同 MySQL 官网</p>
 	HostRegexp *string `json:"HostRegexp,omitnil,omitempty" name:"HostRegexp"`
 }
 
@@ -5138,13 +5138,13 @@ func (r *DescribeAccountsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccountsResponseParams struct {
-	// 符合查询条件的账号数量。
+	// <p>符合查询条件的账号数量。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 符合查询条件的账号详细信息。
+	// <p>符合查询条件的账号详细信息。</p>
 	Items []*AccountInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 用户可设置实例最大连接数。
+	// <p>用户可设置实例最大连接数。</p>
 	MaxUserConnections *int64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

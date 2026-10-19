@@ -3042,6 +3042,7 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 // 本接口（DescribeAccounts）用于查询云数据库的所有账户信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CDBERROR = "FailedOperation.CdbError"
 //  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
 //  FAILEDOPERATION_DBOPERATIONACTIONERROR = "FailedOperation.DBOperationActionError"
 //  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"
@@ -3090,6 +3091,7 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
 // 本接口（DescribeAccounts）用于查询云数据库的所有账户信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CDBERROR = "FailedOperation.CdbError"
 //  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
 //  FAILEDOPERATION_DBOPERATIONACTIONERROR = "FailedOperation.DBOperationActionError"
 //  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"

@@ -53,6 +53,9 @@ const (
 	// 审计不存在。
 	FAILEDOPERATION_AUDITCONFIGNOTEXIST = "FailedOperation.AuditConfigNotExist"
 
+	// 操作失败
+	FAILEDOPERATION_CDBERROR = "FailedOperation.CdbError"
+
 	// 实例互斥操作锁定失败,请稍后重试。
 	FAILEDOPERATION_CDBINSTANCELOCKFAILERROR = "FailedOperation.CdbInstanceLockFailError"
 
