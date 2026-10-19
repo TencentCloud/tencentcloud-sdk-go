@@ -657,6 +657,150 @@ func (c *Client) AddUserDeviceWithContext(ctx context.Context, request *AddUserD
     return
 }
 
+func NewBatchAddVideoSnapshotConfigChannelRequest() (request *BatchAddVideoSnapshotConfigChannelRequest) {
+    request = &BatchAddVideoSnapshotConfigChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "BatchAddVideoSnapshotConfigChannel")
+    
+    
+    return
+}
+
+func NewBatchAddVideoSnapshotConfigChannelResponse() (response *BatchAddVideoSnapshotConfigChannelResponse) {
+    response = &BatchAddVideoSnapshotConfigChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchAddVideoSnapshotConfigChannel
+// 批量添加截图配置的通道
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDCHANNELID = "InvalidParameterValue.ContainInvalidChannelId"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDSNAPSHOTTIME = "InvalidParameterValue.ContainInvalidSnapshotTime"
+//  INVALIDPARAMETERVALUE_INVALIDCONFIGID = "InvalidParameterValue.InvalidConfigId"
+//  LIMITEXCEEDED_BATCHADDCHANNELNUMEXCEEDED = "LimitExceeded.BatchAddChannelNumExceeded"
+//  LIMITEXCEEDED_CHANNELNUMEXCEEDED = "LimitExceeded.ChannelNumExceeded"
+//  OPERATIONDENIED_CONFIGCHANGING = "OperationDenied.ConfigChanging"
+//  OPERATIONDENIED_INPUTDUPLICATECHANNELID = "OperationDenied.InputDuplicateChannelId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ACCESSUNAUTHORIZED = "ResourceNotFound.AccessUnauthorized"
+//  RESOURCENOTFOUND_SNAPSHOTCONFIGNOTEXIST = "ResourceNotFound.SnapshotConfigNotExist"
+func (c *Client) BatchAddVideoSnapshotConfigChannel(request *BatchAddVideoSnapshotConfigChannelRequest) (response *BatchAddVideoSnapshotConfigChannelResponse, err error) {
+    return c.BatchAddVideoSnapshotConfigChannelWithContext(context.Background(), request)
+}
+
+// BatchAddVideoSnapshotConfigChannel
+// 批量添加截图配置的通道
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDCHANNELID = "InvalidParameterValue.ContainInvalidChannelId"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDSNAPSHOTTIME = "InvalidParameterValue.ContainInvalidSnapshotTime"
+//  INVALIDPARAMETERVALUE_INVALIDCONFIGID = "InvalidParameterValue.InvalidConfigId"
+//  LIMITEXCEEDED_BATCHADDCHANNELNUMEXCEEDED = "LimitExceeded.BatchAddChannelNumExceeded"
+//  LIMITEXCEEDED_CHANNELNUMEXCEEDED = "LimitExceeded.ChannelNumExceeded"
+//  OPERATIONDENIED_CONFIGCHANGING = "OperationDenied.ConfigChanging"
+//  OPERATIONDENIED_INPUTDUPLICATECHANNELID = "OperationDenied.InputDuplicateChannelId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ACCESSUNAUTHORIZED = "ResourceNotFound.AccessUnauthorized"
+//  RESOURCENOTFOUND_SNAPSHOTCONFIGNOTEXIST = "ResourceNotFound.SnapshotConfigNotExist"
+func (c *Client) BatchAddVideoSnapshotConfigChannelWithContext(ctx context.Context, request *BatchAddVideoSnapshotConfigChannelRequest) (response *BatchAddVideoSnapshotConfigChannelResponse, err error) {
+    if request == nil {
+        request = NewBatchAddVideoSnapshotConfigChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "BatchAddVideoSnapshotConfigChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchAddVideoSnapshotConfigChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchAddVideoSnapshotConfigChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchAssignVLPlanChannelsRequest() (request *BatchAssignVLPlanChannelsRequest) {
+    request = &BatchAssignVLPlanChannelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "BatchAssignVLPlanChannels")
+    
+    
+    return
+}
+
+func NewBatchAssignVLPlanChannelsResponse() (response *BatchAssignVLPlanChannelsResponse) {
+    response = &BatchAssignVLPlanChannelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchAssignVLPlanChannels
+// 批量关联视觉理解计划通道
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CONTAINUNAUTHORIZEDCHANNELID = "AuthFailure.ContainUnauthorizedChannelId"
+//  AUTHFAILURE_ORGANIZATIONUNAUTHORIZED = "AuthFailure.OrganizationUnauthorized"
+//  FAILEDOPERATION_CHANNELALREADYASSIGNED = "FailedOperation.ChannelAlreadyAssigned"
+//  FAILEDOPERATION_CHANNELNOTASSIGNED = "FailedOperation.ChannelNotAssigned"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDCHANNELID = "InvalidParameterValue.ContainInvalidChannelId"
+//  INVALIDPARAMETERVALUE_CONTAINNONEXISTENTCHANNELID = "InvalidParameterValue.ContainNonexistentChannelId"
+//  INVALIDPARAMETERVALUE_EMPTYCHANNELIDS = "InvalidParameterValue.EmptyChannelIds"
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANIDNOTEXISTED = "InvalidParameterValue.ImageVLPlanIDNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDCMD = "InvalidParameterValue.InvalidCmd"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANID = "InvalidParameterValue.InvalidImageVLPlanID"
+//  INVALIDPARAMETERVALUE_ORGANIZATIONIDNOTEXISTED = "InvalidParameterValue.OrganizationIDNotExisted"
+//  INVALIDPARAMETERVALUE_ORGANIZATIONIDSNOTALLOWEDFORUNASSIGN = "InvalidParameterValue.OrganizationIdsNotAllowedForUnAssign"
+//  INVALIDPARAMETERVALUE_TOOMANYCHANNELIDS = "InvalidParameterValue.TooManyChannelIds"
+func (c *Client) BatchAssignVLPlanChannels(request *BatchAssignVLPlanChannelsRequest) (response *BatchAssignVLPlanChannelsResponse, err error) {
+    return c.BatchAssignVLPlanChannelsWithContext(context.Background(), request)
+}
+
+// BatchAssignVLPlanChannels
+// 批量关联视觉理解计划通道
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CONTAINUNAUTHORIZEDCHANNELID = "AuthFailure.ContainUnauthorizedChannelId"
+//  AUTHFAILURE_ORGANIZATIONUNAUTHORIZED = "AuthFailure.OrganizationUnauthorized"
+//  FAILEDOPERATION_CHANNELALREADYASSIGNED = "FailedOperation.ChannelAlreadyAssigned"
+//  FAILEDOPERATION_CHANNELNOTASSIGNED = "FailedOperation.ChannelNotAssigned"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDCHANNELID = "InvalidParameterValue.ContainInvalidChannelId"
+//  INVALIDPARAMETERVALUE_CONTAINNONEXISTENTCHANNELID = "InvalidParameterValue.ContainNonexistentChannelId"
+//  INVALIDPARAMETERVALUE_EMPTYCHANNELIDS = "InvalidParameterValue.EmptyChannelIds"
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANIDNOTEXISTED = "InvalidParameterValue.ImageVLPlanIDNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDCMD = "InvalidParameterValue.InvalidCmd"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANID = "InvalidParameterValue.InvalidImageVLPlanID"
+//  INVALIDPARAMETERVALUE_ORGANIZATIONIDNOTEXISTED = "InvalidParameterValue.OrganizationIDNotExisted"
+//  INVALIDPARAMETERVALUE_ORGANIZATIONIDSNOTALLOWEDFORUNASSIGN = "InvalidParameterValue.OrganizationIdsNotAllowedForUnAssign"
+//  INVALIDPARAMETERVALUE_TOOMANYCHANNELIDS = "InvalidParameterValue.TooManyChannelIds"
+func (c *Client) BatchAssignVLPlanChannelsWithContext(ctx context.Context, request *BatchAssignVLPlanChannelsRequest) (response *BatchAssignVLPlanChannelsResponse, err error) {
+    if request == nil {
+        request = NewBatchAssignVLPlanChannelsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "BatchAssignVLPlanChannels")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchAssignVLPlanChannels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchAssignVLPlanChannelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchDeleteVideoDownloadTaskRequest() (request *BatchDeleteVideoDownloadTaskRequest) {
     request = &BatchDeleteVideoDownloadTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -680,22 +824,19 @@ func NewBatchDeleteVideoDownloadTaskResponse() (response *BatchDeleteVideoDownlo
 // 用于批量删除本地录像下载失败的任务
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_INVALIDCLUSTERID = "InvalidParameterValue.InvalidClusterId"
-//  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
-//  INVALIDPARAMETERVALUE_INVALIDDEVICEPASSWORDLENGTH = "InvalidParameterValue.InvalidDevicePasswordLength"
-//  INVALIDPARAMETERVALUE_INVALIDGATEWAYPROTOCOLTYPE = "InvalidParameterValue.InvalidGatewayProtocolType"
-//  INVALIDPARAMETERVALUE_INVALIDIPV4 = "InvalidParameterValue.InvalidIpv4"
-//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
-//  INVALIDPARAMETERVALUE_INVALIDRTMPAPPNAME = "InvalidParameterValue.InvalidRTMPAppName"
-//  INVALIDPARAMETERVALUE_INVALIDRTMPSTREAMNAME = "InvalidParameterValue.InvalidRTMPStreamName"
-//  INVALIDPARAMETERVALUE_INVALIDUSERNAME = "InvalidParameterValue.InvalidUsername"
-//  INVALIDPARAMETERVALUE_RTMPPUSHSTREAMPARAMREPEAT = "InvalidParameterValue.RTMPPushStreamParamRepeat"
-//  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
-//  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_NOTFOUNDCLUSTER = "ResourceNotFound.NotFoundCluster"
-//  UNSUPPORTEDOPERATION_PUSHDOMAINNOTEXIST = "UnsupportedOperation.PushDomainNotExist"
+//  AUTHFAILURE_CONTAINUNAUTHORIZEDCHANNELID = "AuthFailure.ContainUnauthorizedChannelId"
+//  AUTHFAILURE_ORGANIZATIONUNAUTHORIZED = "AuthFailure.OrganizationUnauthorized"
+//  FAILEDOPERATION_CHANNELALREADYASSIGNED = "FailedOperation.ChannelAlreadyAssigned"
+//  FAILEDOPERATION_CHANNELNOTASSIGNED = "FailedOperation.ChannelNotAssigned"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDCHANNELID = "InvalidParameterValue.ContainInvalidChannelId"
+//  INVALIDPARAMETERVALUE_CONTAINNONEXISTENTCHANNELID = "InvalidParameterValue.ContainNonexistentChannelId"
+//  INVALIDPARAMETERVALUE_EMPTYCHANNELIDS = "InvalidParameterValue.EmptyChannelIds"
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANIDNOTEXISTED = "InvalidParameterValue.ImageVLPlanIDNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDCMD = "InvalidParameterValue.InvalidCmd"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANID = "InvalidParameterValue.InvalidImageVLPlanID"
+//  INVALIDPARAMETERVALUE_ORGANIZATIONIDNOTEXISTED = "InvalidParameterValue.OrganizationIDNotExisted"
+//  INVALIDPARAMETERVALUE_ORGANIZATIONIDSNOTALLOWEDFORUNASSIGN = "InvalidParameterValue.OrganizationIdsNotAllowedForUnAssign"
+//  INVALIDPARAMETERVALUE_TOOMANYCHANNELIDS = "InvalidParameterValue.TooManyChannelIds"
 func (c *Client) BatchDeleteVideoDownloadTask(request *BatchDeleteVideoDownloadTaskRequest) (response *BatchDeleteVideoDownloadTaskResponse, err error) {
     return c.BatchDeleteVideoDownloadTaskWithContext(context.Background(), request)
 }
@@ -704,22 +845,19 @@ func (c *Client) BatchDeleteVideoDownloadTask(request *BatchDeleteVideoDownloadT
 // 用于批量删除本地录像下载失败的任务
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_INVALIDCLUSTERID = "InvalidParameterValue.InvalidClusterId"
-//  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
-//  INVALIDPARAMETERVALUE_INVALIDDEVICEPASSWORDLENGTH = "InvalidParameterValue.InvalidDevicePasswordLength"
-//  INVALIDPARAMETERVALUE_INVALIDGATEWAYPROTOCOLTYPE = "InvalidParameterValue.InvalidGatewayProtocolType"
-//  INVALIDPARAMETERVALUE_INVALIDIPV4 = "InvalidParameterValue.InvalidIpv4"
-//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
-//  INVALIDPARAMETERVALUE_INVALIDRTMPAPPNAME = "InvalidParameterValue.InvalidRTMPAppName"
-//  INVALIDPARAMETERVALUE_INVALIDRTMPSTREAMNAME = "InvalidParameterValue.InvalidRTMPStreamName"
-//  INVALIDPARAMETERVALUE_INVALIDUSERNAME = "InvalidParameterValue.InvalidUsername"
-//  INVALIDPARAMETERVALUE_RTMPPUSHSTREAMPARAMREPEAT = "InvalidParameterValue.RTMPPushStreamParamRepeat"
-//  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
-//  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_NOTFOUNDCLUSTER = "ResourceNotFound.NotFoundCluster"
-//  UNSUPPORTEDOPERATION_PUSHDOMAINNOTEXIST = "UnsupportedOperation.PushDomainNotExist"
+//  AUTHFAILURE_CONTAINUNAUTHORIZEDCHANNELID = "AuthFailure.ContainUnauthorizedChannelId"
+//  AUTHFAILURE_ORGANIZATIONUNAUTHORIZED = "AuthFailure.OrganizationUnauthorized"
+//  FAILEDOPERATION_CHANNELALREADYASSIGNED = "FailedOperation.ChannelAlreadyAssigned"
+//  FAILEDOPERATION_CHANNELNOTASSIGNED = "FailedOperation.ChannelNotAssigned"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDCHANNELID = "InvalidParameterValue.ContainInvalidChannelId"
+//  INVALIDPARAMETERVALUE_CONTAINNONEXISTENTCHANNELID = "InvalidParameterValue.ContainNonexistentChannelId"
+//  INVALIDPARAMETERVALUE_EMPTYCHANNELIDS = "InvalidParameterValue.EmptyChannelIds"
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANIDNOTEXISTED = "InvalidParameterValue.ImageVLPlanIDNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDCMD = "InvalidParameterValue.InvalidCmd"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANID = "InvalidParameterValue.InvalidImageVLPlanID"
+//  INVALIDPARAMETERVALUE_ORGANIZATIONIDNOTEXISTED = "InvalidParameterValue.OrganizationIDNotExisted"
+//  INVALIDPARAMETERVALUE_ORGANIZATIONIDSNOTALLOWEDFORUNASSIGN = "InvalidParameterValue.OrganizationIdsNotAllowedForUnAssign"
+//  INVALIDPARAMETERVALUE_TOOMANYCHANNELIDS = "InvalidParameterValue.TooManyChannelIds"
 func (c *Client) BatchDeleteVideoDownloadTaskWithContext(ctx context.Context, request *BatchDeleteVideoDownloadTaskRequest) (response *BatchDeleteVideoDownloadTaskResponse, err error) {
     if request == nil {
         request = NewBatchDeleteVideoDownloadTaskRequest()
@@ -733,6 +871,118 @@ func (c *Client) BatchDeleteVideoDownloadTaskWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewBatchDeleteVideoDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchGetVLPlanSourceFileURLRequest() (request *BatchGetVLPlanSourceFileURLRequest) {
+    request = &BatchGetVLPlanSourceFileURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "BatchGetVLPlanSourceFileURL")
+    
+    
+    return
+}
+
+func NewBatchGetVLPlanSourceFileURLResponse() (response *BatchGetVLPlanSourceFileURLResponse) {
+    response = &BatchGetVLPlanSourceFileURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchGetVLPlanSourceFileURL
+// 批量获取视觉理解计划源素材 URL
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXPIRE = "InvalidParameterValue.InvalidExpire"
+//  INVALIDPARAMETERVALUE_INVALIDVLPLANRESULTIDS = "InvalidParameterValue.InvalidVLPlanResultIds"
+//  INVALIDPARAMETERVALUE_VLPLANRESULTIDSEXCEEDLIMIT = "InvalidParameterValue.VLPlanResultIdsExceedLimit"
+func (c *Client) BatchGetVLPlanSourceFileURL(request *BatchGetVLPlanSourceFileURLRequest) (response *BatchGetVLPlanSourceFileURLResponse, err error) {
+    return c.BatchGetVLPlanSourceFileURLWithContext(context.Background(), request)
+}
+
+// BatchGetVLPlanSourceFileURL
+// 批量获取视觉理解计划源素材 URL
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXPIRE = "InvalidParameterValue.InvalidExpire"
+//  INVALIDPARAMETERVALUE_INVALIDVLPLANRESULTIDS = "InvalidParameterValue.InvalidVLPlanResultIds"
+//  INVALIDPARAMETERVALUE_VLPLANRESULTIDSEXCEEDLIMIT = "InvalidParameterValue.VLPlanResultIdsExceedLimit"
+func (c *Client) BatchGetVLPlanSourceFileURLWithContext(ctx context.Context, request *BatchGetVLPlanSourceFileURLRequest) (response *BatchGetVLPlanSourceFileURLResponse, err error) {
+    if request == nil {
+        request = NewBatchGetVLPlanSourceFileURLRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "BatchGetVLPlanSourceFileURL")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchGetVLPlanSourceFileURL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchGetVLPlanSourceFileURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchGetVideoSnapshotImageUrlRequest() (request *BatchGetVideoSnapshotImageUrlRequest) {
+    request = &BatchGetVideoSnapshotImageUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "BatchGetVideoSnapshotImageUrl")
+    
+    
+    return
+}
+
+func NewBatchGetVideoSnapshotImageUrlResponse() (response *BatchGetVideoSnapshotImageUrlResponse) {
+    response = &BatchGetVideoSnapshotImageUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchGetVideoSnapshotImageUrl
+// 批量获取截图图片URL
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDIMAGEID = "InvalidParameterValue.ContainInvalidImageId"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDIMAGEURLEXPIRETIME = "InvalidParameterValue.UnsupportedImageUrlExpireTime"
+//  LIMITEXCEEDED_IMAGEIDSLICEEXCEEDLIMIT = "LimitExceeded.ImageIdSliceExceedLimit"
+//  UNSUPPORTEDOPERATION_IMAGEDOMAINNOTEXIST = "UnsupportedOperation.ImageDomainNotExist"
+func (c *Client) BatchGetVideoSnapshotImageUrl(request *BatchGetVideoSnapshotImageUrlRequest) (response *BatchGetVideoSnapshotImageUrlResponse, err error) {
+    return c.BatchGetVideoSnapshotImageUrlWithContext(context.Background(), request)
+}
+
+// BatchGetVideoSnapshotImageUrl
+// 批量获取截图图片URL
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDIMAGEID = "InvalidParameterValue.ContainInvalidImageId"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDIMAGEURLEXPIRETIME = "InvalidParameterValue.UnsupportedImageUrlExpireTime"
+//  LIMITEXCEEDED_IMAGEIDSLICEEXCEEDLIMIT = "LimitExceeded.ImageIdSliceExceedLimit"
+//  UNSUPPORTEDOPERATION_IMAGEDOMAINNOTEXIST = "UnsupportedOperation.ImageDomainNotExist"
+func (c *Client) BatchGetVideoSnapshotImageUrlWithContext(ctx context.Context, request *BatchGetVideoSnapshotImageUrlRequest) (response *BatchGetVideoSnapshotImageUrlResponse, err error) {
+    if request == nil {
+        request = NewBatchGetVideoSnapshotImageUrlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "BatchGetVideoSnapshotImageUrl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchGetVideoSnapshotImageUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchGetVideoSnapshotImageUrlResponse()
     err = c.Send(request, response)
     return
 }
@@ -1281,6 +1531,138 @@ func (c *Client) ControlRecordTimelineWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateVLPlanRequest() (request *CreateVLPlanRequest) {
+    request = &CreateVLPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "CreateVLPlan")
+    
+    
+    return
+}
+
+func NewCreateVLPlanResponse() (response *CreateVLPlanResponse) {
+    response = &CreateVLPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVLPlan
+// 创建视觉理解计划
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANNAMECONTAINILLEGALCHARACTER = "InvalidParameterValue.ImageVLPlanNameContainIllegalCharacter"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+//  INVALIDPARAMETERVALUE_INVALIDFILEEXPIRES = "InvalidParameterValue.InvalidFileExpires"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANDESCRIBE = "InvalidParameterValue.InvalidImageVLPlanDescribe"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANNAME = "InvalidParameterValue.InvalidImageVLPlanName"
+//  INVALIDPARAMETERVALUE_TEMPLATEIDNOTEXISTED = "InvalidParameterValue.TemplateIDNotExisted"
+func (c *Client) CreateVLPlan(request *CreateVLPlanRequest) (response *CreateVLPlanResponse, err error) {
+    return c.CreateVLPlanWithContext(context.Background(), request)
+}
+
+// CreateVLPlan
+// 创建视觉理解计划
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANNAMECONTAINILLEGALCHARACTER = "InvalidParameterValue.ImageVLPlanNameContainIllegalCharacter"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+//  INVALIDPARAMETERVALUE_INVALIDFILEEXPIRES = "InvalidParameterValue.InvalidFileExpires"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANDESCRIBE = "InvalidParameterValue.InvalidImageVLPlanDescribe"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANNAME = "InvalidParameterValue.InvalidImageVLPlanName"
+//  INVALIDPARAMETERVALUE_TEMPLATEIDNOTEXISTED = "InvalidParameterValue.TemplateIDNotExisted"
+func (c *Client) CreateVLPlanWithContext(ctx context.Context, request *CreateVLPlanRequest) (response *CreateVLPlanResponse, err error) {
+    if request == nil {
+        request = NewCreateVLPlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "CreateVLPlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVLPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVLPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVLTemplateRequest() (request *CreateVLTemplateRequest) {
+    request = &CreateVLTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "CreateVLTemplate")
+    
+    
+    return
+}
+
+func NewCreateVLTemplateResponse() (response *CreateVLTemplateResponse) {
+    response = &CreateVLTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVLTemplate
+// 创建视觉理解模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDAIMODEL = "InvalidParameterValue.InvalidAIModel"
+//  INVALIDPARAMETERVALUE_INVALIDDESCRIBE = "InvalidParameterValue.InvalidDescribe"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGINTERVALFORLOWFREQ = "InvalidParameterValue.InvalidImageConfigIntervalForLowFreq"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGINTERVALFORREALTIME = "InvalidParameterValue.InvalidImageConfigIntervalForRealtime"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGTYPE = "InvalidParameterValue.InvalidImageConfigType"
+//  INVALIDPARAMETERVALUE_INVALIDMEDIATYPE = "InvalidParameterValue.InvalidMediaType"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDPROMPT = "InvalidParameterValue.InvalidPrompt"
+//  INVALIDPARAMETERVALUE_INVALIDTIMES = "InvalidParameterValue.InvalidTimes"
+//  INVALIDPARAMETERVALUE_MISSINGIMAGECONFIG = "InvalidParameterValue.MissingImageConfig"
+//  INVALIDPARAMETERVALUE_MISSINGTIMES = "InvalidParameterValue.MissingTimes"
+func (c *Client) CreateVLTemplate(request *CreateVLTemplateRequest) (response *CreateVLTemplateResponse, err error) {
+    return c.CreateVLTemplateWithContext(context.Background(), request)
+}
+
+// CreateVLTemplate
+// 创建视觉理解模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDAIMODEL = "InvalidParameterValue.InvalidAIModel"
+//  INVALIDPARAMETERVALUE_INVALIDDESCRIBE = "InvalidParameterValue.InvalidDescribe"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGINTERVALFORLOWFREQ = "InvalidParameterValue.InvalidImageConfigIntervalForLowFreq"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGINTERVALFORREALTIME = "InvalidParameterValue.InvalidImageConfigIntervalForRealtime"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGTYPE = "InvalidParameterValue.InvalidImageConfigType"
+//  INVALIDPARAMETERVALUE_INVALIDMEDIATYPE = "InvalidParameterValue.InvalidMediaType"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDPROMPT = "InvalidParameterValue.InvalidPrompt"
+//  INVALIDPARAMETERVALUE_INVALIDTIMES = "InvalidParameterValue.InvalidTimes"
+//  INVALIDPARAMETERVALUE_MISSINGIMAGECONFIG = "InvalidParameterValue.MissingImageConfig"
+//  INVALIDPARAMETERVALUE_MISSINGTIMES = "InvalidParameterValue.MissingTimes"
+func (c *Client) CreateVLTemplateWithContext(ctx context.Context, request *CreateVLTemplateRequest) (response *CreateVLTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateVLTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "CreateVLTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVLTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVLTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateVideoDownloadTaskRequest() (request *CreateVideoDownloadTaskRequest) {
     request = &CreateVideoDownloadTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1304,20 +1686,17 @@ func NewCreateVideoDownloadTaskResponse() (response *CreateVideoDownloadTaskResp
 // 创建本地录像下载任务
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DEVICERESPONSETIMEOUT = "FailedOperation.DeviceResponseTimeOut"
-//  FAILEDOPERATION_DEVICERESULTTIMEOUT = "FailedOperation.DeviceResultTimeOut"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ENDTIMEZERO = "InvalidParameterValue.EndTimeZero"
-//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
-//  INVALIDPARAMETERVALUE_STARTOVERENDTIME = "InvalidParameterValue.StartOverEndTime"
-//  INVALIDPARAMETERVALUE_STARTOVERNOWTIME = "InvalidParameterValue.StartOverNowTime"
-//  INVALIDPARAMETERVALUE_STARTTIMEGREATERTHANOREQUALENDTIME = "InvalidParameterValue.StartTimeGreaterThanOrEqualEndTime"
-//  INVALIDPARAMETERVALUE_STARTTIMEZERO = "InvalidParameterValue.StartTimeZero"
-//  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE_DEVDISABLE = "ResourceUnavailable.DevDisable"
-//  RESOURCEUNAVAILABLE_DEVNOREGISTER = "ResourceUnavailable.DevNoRegister"
-//  RESOURCEUNAVAILABLE_DEVOFFLINE = "ResourceUnavailable.DevOffline"
+//  INVALIDPARAMETERVALUE_INVALIDAIMODEL = "InvalidParameterValue.InvalidAIModel"
+//  INVALIDPARAMETERVALUE_INVALIDDESCRIBE = "InvalidParameterValue.InvalidDescribe"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGINTERVALFORLOWFREQ = "InvalidParameterValue.InvalidImageConfigIntervalForLowFreq"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGINTERVALFORREALTIME = "InvalidParameterValue.InvalidImageConfigIntervalForRealtime"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGTYPE = "InvalidParameterValue.InvalidImageConfigType"
+//  INVALIDPARAMETERVALUE_INVALIDMEDIATYPE = "InvalidParameterValue.InvalidMediaType"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDPROMPT = "InvalidParameterValue.InvalidPrompt"
+//  INVALIDPARAMETERVALUE_INVALIDTIMES = "InvalidParameterValue.InvalidTimes"
+//  INVALIDPARAMETERVALUE_MISSINGIMAGECONFIG = "InvalidParameterValue.MissingImageConfig"
+//  INVALIDPARAMETERVALUE_MISSINGTIMES = "InvalidParameterValue.MissingTimes"
 func (c *Client) CreateVideoDownloadTask(request *CreateVideoDownloadTaskRequest) (response *CreateVideoDownloadTaskResponse, err error) {
     return c.CreateVideoDownloadTaskWithContext(context.Background(), request)
 }
@@ -1326,20 +1705,17 @@ func (c *Client) CreateVideoDownloadTask(request *CreateVideoDownloadTaskRequest
 // 创建本地录像下载任务
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DEVICERESPONSETIMEOUT = "FailedOperation.DeviceResponseTimeOut"
-//  FAILEDOPERATION_DEVICERESULTTIMEOUT = "FailedOperation.DeviceResultTimeOut"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ENDTIMEZERO = "InvalidParameterValue.EndTimeZero"
-//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
-//  INVALIDPARAMETERVALUE_STARTOVERENDTIME = "InvalidParameterValue.StartOverEndTime"
-//  INVALIDPARAMETERVALUE_STARTOVERNOWTIME = "InvalidParameterValue.StartOverNowTime"
-//  INVALIDPARAMETERVALUE_STARTTIMEGREATERTHANOREQUALENDTIME = "InvalidParameterValue.StartTimeGreaterThanOrEqualEndTime"
-//  INVALIDPARAMETERVALUE_STARTTIMEZERO = "InvalidParameterValue.StartTimeZero"
-//  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE_DEVDISABLE = "ResourceUnavailable.DevDisable"
-//  RESOURCEUNAVAILABLE_DEVNOREGISTER = "ResourceUnavailable.DevNoRegister"
-//  RESOURCEUNAVAILABLE_DEVOFFLINE = "ResourceUnavailable.DevOffline"
+//  INVALIDPARAMETERVALUE_INVALIDAIMODEL = "InvalidParameterValue.InvalidAIModel"
+//  INVALIDPARAMETERVALUE_INVALIDDESCRIBE = "InvalidParameterValue.InvalidDescribe"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGINTERVALFORLOWFREQ = "InvalidParameterValue.InvalidImageConfigIntervalForLowFreq"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGINTERVALFORREALTIME = "InvalidParameterValue.InvalidImageConfigIntervalForRealtime"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGTYPE = "InvalidParameterValue.InvalidImageConfigType"
+//  INVALIDPARAMETERVALUE_INVALIDMEDIATYPE = "InvalidParameterValue.InvalidMediaType"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDPROMPT = "InvalidParameterValue.InvalidPrompt"
+//  INVALIDPARAMETERVALUE_INVALIDTIMES = "InvalidParameterValue.InvalidTimes"
+//  INVALIDPARAMETERVALUE_MISSINGIMAGECONFIG = "InvalidParameterValue.MissingImageConfig"
+//  INVALIDPARAMETERVALUE_MISSINGTIMES = "InvalidParameterValue.MissingTimes"
 func (c *Client) CreateVideoDownloadTaskWithContext(ctx context.Context, request *CreateVideoDownloadTaskRequest) (response *CreateVideoDownloadTaskResponse, err error) {
     if request == nil {
         request = NewCreateVideoDownloadTaskRequest()
@@ -1353,6 +1729,136 @@ func (c *Client) CreateVideoDownloadTaskWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewCreateVideoDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVideoSnapshotConfigRequest() (request *CreateVideoSnapshotConfigRequest) {
+    request = &CreateVideoSnapshotConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "CreateVideoSnapshotConfig")
+    
+    
+    return
+}
+
+func NewCreateVideoSnapshotConfigResponse() (response *CreateVideoSnapshotConfigResponse) {
+    response = &CreateVideoSnapshotConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVideoSnapshotConfig
+// 创建截图配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDTOKEN = "InvalidParameterValue.ContainInvalidToken"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDFILEEXPIRETIME = "InvalidParameterValue.UnsupportedFileExpireTime"
+//  LIMITEXCEEDED_SNAPSHOTCONFIGNUMEXCEEDED = "LimitExceeded.SnapshotConfigNumExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateVideoSnapshotConfig(request *CreateVideoSnapshotConfigRequest) (response *CreateVideoSnapshotConfigResponse, err error) {
+    return c.CreateVideoSnapshotConfigWithContext(context.Background(), request)
+}
+
+// CreateVideoSnapshotConfig
+// 创建截图配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDTOKEN = "InvalidParameterValue.ContainInvalidToken"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDFILEEXPIRETIME = "InvalidParameterValue.UnsupportedFileExpireTime"
+//  LIMITEXCEEDED_SNAPSHOTCONFIGNUMEXCEEDED = "LimitExceeded.SnapshotConfigNumExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateVideoSnapshotConfigWithContext(ctx context.Context, request *CreateVideoSnapshotConfigRequest) (response *CreateVideoSnapshotConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateVideoSnapshotConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "CreateVideoSnapshotConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoSnapshotConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVideoSnapshotConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVideoSnapshotTemplateRequest() (request *CreateVideoSnapshotTemplateRequest) {
+    request = &CreateVideoSnapshotTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "CreateVideoSnapshotTemplate")
+    
+    
+    return
+}
+
+func NewCreateVideoSnapshotTemplateResponse() (response *CreateVideoSnapshotTemplateResponse) {
+    response = &CreateVideoSnapshotTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVideoSnapshotTemplate
+// 创建截图模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDSNAPSHOTTIME = "InvalidParameterValue.ContainInvalidSnapshotTime"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDINTERVAL = "InvalidParameterValue.UnsupportedInterval"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDSNAPSHOTTOTAL = "InvalidParameterValue.UnsupportedSnapshotTotal"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDSNAPSHOTTYPE = "InvalidParameterValue.UnsupportedSnapshotType"
+//  LIMITEXCEEDED_SNAPSHOTTEMPLATENUMEXCEEDED = "LimitExceeded.SnapshotTemplateNumExceeded"
+//  LIMITEXCEEDED_TIMELINESLICEEXCEEDLIMIT = "LimitExceeded.TimelineSliceExceedLimit"
+//  UNSUPPORTEDOPERATION_IMAGEDOMAINNOTEXIST = "UnsupportedOperation.ImageDomainNotExist"
+func (c *Client) CreateVideoSnapshotTemplate(request *CreateVideoSnapshotTemplateRequest) (response *CreateVideoSnapshotTemplateResponse, err error) {
+    return c.CreateVideoSnapshotTemplateWithContext(context.Background(), request)
+}
+
+// CreateVideoSnapshotTemplate
+// 创建截图模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDSNAPSHOTTIME = "InvalidParameterValue.ContainInvalidSnapshotTime"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDINTERVAL = "InvalidParameterValue.UnsupportedInterval"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDSNAPSHOTTOTAL = "InvalidParameterValue.UnsupportedSnapshotTotal"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDSNAPSHOTTYPE = "InvalidParameterValue.UnsupportedSnapshotType"
+//  LIMITEXCEEDED_SNAPSHOTTEMPLATENUMEXCEEDED = "LimitExceeded.SnapshotTemplateNumExceeded"
+//  LIMITEXCEEDED_TIMELINESLICEEXCEEDLIMIT = "LimitExceeded.TimelineSliceExceedLimit"
+//  UNSUPPORTEDOPERATION_IMAGEDOMAINNOTEXIST = "UnsupportedOperation.ImageDomainNotExist"
+func (c *Client) CreateVideoSnapshotTemplateWithContext(ctx context.Context, request *CreateVideoSnapshotTemplateRequest) (response *CreateVideoSnapshotTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateVideoSnapshotTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "CreateVideoSnapshotTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoSnapshotTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVideoSnapshotTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -1861,6 +2367,224 @@ func (c *Client) DeleteUserDeviceWithContext(ctx context.Context, request *Delet
     request.SetContext(ctx)
     
     response = NewDeleteUserDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVLPlanRequest() (request *DeleteVLPlanRequest) {
+    request = &DeleteVLPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DeleteVLPlan")
+    
+    
+    return
+}
+
+func NewDeleteVLPlanResponse() (response *DeleteVLPlanResponse) {
+    response = &DeleteVLPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVLPlan
+// 删除视觉理解计划
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANIDNOTEXISTED = "InvalidParameterValue.ImageVLPlanIDNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANID = "InvalidParameterValue.InvalidImageVLPlanID"
+func (c *Client) DeleteVLPlan(request *DeleteVLPlanRequest) (response *DeleteVLPlanResponse, err error) {
+    return c.DeleteVLPlanWithContext(context.Background(), request)
+}
+
+// DeleteVLPlan
+// 删除视觉理解计划
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANIDNOTEXISTED = "InvalidParameterValue.ImageVLPlanIDNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANID = "InvalidParameterValue.InvalidImageVLPlanID"
+func (c *Client) DeleteVLPlanWithContext(ctx context.Context, request *DeleteVLPlanRequest) (response *DeleteVLPlanResponse, err error) {
+    if request == nil {
+        request = NewDeleteVLPlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteVLPlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVLPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVLPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVLTemplateRequest() (request *DeleteVLTemplateRequest) {
+    request = &DeleteVLTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DeleteVLTemplate")
+    
+    
+    return
+}
+
+func NewDeleteVLTemplateResponse() (response *DeleteVLTemplateResponse) {
+    response = &DeleteVLTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVLTemplate
+// 删除视觉理解模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TEMPLATEINUSE = "FailedOperation.TemplateInUse"
+//  INVALIDPARAMETERVALUE_TEMPLATEIDNOTEXISTED = "InvalidParameterValue.TemplateIDNotExisted"
+func (c *Client) DeleteVLTemplate(request *DeleteVLTemplateRequest) (response *DeleteVLTemplateResponse, err error) {
+    return c.DeleteVLTemplateWithContext(context.Background(), request)
+}
+
+// DeleteVLTemplate
+// 删除视觉理解模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TEMPLATEINUSE = "FailedOperation.TemplateInUse"
+//  INVALIDPARAMETERVALUE_TEMPLATEIDNOTEXISTED = "InvalidParameterValue.TemplateIDNotExisted"
+func (c *Client) DeleteVLTemplateWithContext(ctx context.Context, request *DeleteVLTemplateRequest) (response *DeleteVLTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteVLTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteVLTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVLTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVLTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVideoSnapshotConfigRequest() (request *DeleteVideoSnapshotConfigRequest) {
+    request = &DeleteVideoSnapshotConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DeleteVideoSnapshotConfig")
+    
+    
+    return
+}
+
+func NewDeleteVideoSnapshotConfigResponse() (response *DeleteVideoSnapshotConfigResponse) {
+    response = &DeleteVideoSnapshotConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVideoSnapshotConfig
+// 删除截图配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDCONFIGID = "InvalidParameterValue.InvalidConfigId"
+//  OPERATIONDENIED_CONFIGCHANGING = "OperationDenied.ConfigChanging"
+//  RESOURCENOTFOUND_ACCESSUNAUTHORIZED = "ResourceNotFound.AccessUnauthorized"
+//  RESOURCENOTFOUND_SNAPSHOTCONFIGNOTEXIST = "ResourceNotFound.SnapshotConfigNotExist"
+func (c *Client) DeleteVideoSnapshotConfig(request *DeleteVideoSnapshotConfigRequest) (response *DeleteVideoSnapshotConfigResponse, err error) {
+    return c.DeleteVideoSnapshotConfigWithContext(context.Background(), request)
+}
+
+// DeleteVideoSnapshotConfig
+// 删除截图配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDCONFIGID = "InvalidParameterValue.InvalidConfigId"
+//  OPERATIONDENIED_CONFIGCHANGING = "OperationDenied.ConfigChanging"
+//  RESOURCENOTFOUND_ACCESSUNAUTHORIZED = "ResourceNotFound.AccessUnauthorized"
+//  RESOURCENOTFOUND_SNAPSHOTCONFIGNOTEXIST = "ResourceNotFound.SnapshotConfigNotExist"
+func (c *Client) DeleteVideoSnapshotConfigWithContext(ctx context.Context, request *DeleteVideoSnapshotConfigRequest) (response *DeleteVideoSnapshotConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteVideoSnapshotConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteVideoSnapshotConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVideoSnapshotConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVideoSnapshotConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVideoSnapshotTemplateRequest() (request *DeleteVideoSnapshotTemplateRequest) {
+    request = &DeleteVideoSnapshotTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DeleteVideoSnapshotTemplate")
+    
+    
+    return
+}
+
+func NewDeleteVideoSnapshotTemplateResponse() (response *DeleteVideoSnapshotTemplateResponse) {
+    response = &DeleteVideoSnapshotTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVideoSnapshotTemplate
+// 删除截图模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  RESOURCEINUSE_TEMPLATEISUSED = "ResourceInUse.TemplateIsUsed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteVideoSnapshotTemplate(request *DeleteVideoSnapshotTemplateRequest) (response *DeleteVideoSnapshotTemplateResponse, err error) {
+    return c.DeleteVideoSnapshotTemplateWithContext(context.Background(), request)
+}
+
+// DeleteVideoSnapshotTemplate
+// 删除截图模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  RESOURCEINUSE_TEMPLATEISUSED = "ResourceInUse.TemplateIsUsed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteVideoSnapshotTemplateWithContext(ctx context.Context, request *DeleteVideoSnapshotTemplateRequest) (response *DeleteVideoSnapshotTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteVideoSnapshotTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DeleteVideoSnapshotTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVideoSnapshotTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVideoSnapshotTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -3001,6 +3725,162 @@ func (c *Client) DescribeUserDeviceListWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeVLPlanRequest() (request *DescribeVLPlanRequest) {
+    request = &DescribeVLPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DescribeVLPlan")
+    
+    
+    return
+}
+
+func NewDescribeVLPlanResponse() (response *DescribeVLPlanResponse) {
+    response = &DescribeVLPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVLPlan
+// 查询视觉理解计划详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANIDNOTEXISTED = "InvalidParameterValue.ImageVLPlanIDNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANID = "InvalidParameterValue.InvalidImageVLPlanID"
+func (c *Client) DescribeVLPlan(request *DescribeVLPlanRequest) (response *DescribeVLPlanResponse, err error) {
+    return c.DescribeVLPlanWithContext(context.Background(), request)
+}
+
+// DescribeVLPlan
+// 查询视觉理解计划详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANIDNOTEXISTED = "InvalidParameterValue.ImageVLPlanIDNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANID = "InvalidParameterValue.InvalidImageVLPlanID"
+func (c *Client) DescribeVLPlanWithContext(ctx context.Context, request *DescribeVLPlanRequest) (response *DescribeVLPlanResponse, err error) {
+    if request == nil {
+        request = NewDescribeVLPlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeVLPlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVLPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVLPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVLPlanResultRequest() (request *DescribeVLPlanResultRequest) {
+    request = &DescribeVLPlanResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DescribeVLPlanResult")
+    
+    
+    return
+}
+
+func NewDescribeVLPlanResultResponse() (response *DescribeVLPlanResultResponse) {
+    response = &DescribeVLPlanResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVLPlanResult
+// 查询视觉理解计划结果详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDVLPLANRESULTID = "InvalidParameterValue.InvalidVLPlanResultID"
+//  INVALIDPARAMETERVALUE_VLPLANRESULTIDNOTEXISTED = "InvalidParameterValue.VLPlanResultIDNotExisted"
+func (c *Client) DescribeVLPlanResult(request *DescribeVLPlanResultRequest) (response *DescribeVLPlanResultResponse, err error) {
+    return c.DescribeVLPlanResultWithContext(context.Background(), request)
+}
+
+// DescribeVLPlanResult
+// 查询视觉理解计划结果详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDVLPLANRESULTID = "InvalidParameterValue.InvalidVLPlanResultID"
+//  INVALIDPARAMETERVALUE_VLPLANRESULTIDNOTEXISTED = "InvalidParameterValue.VLPlanResultIDNotExisted"
+func (c *Client) DescribeVLPlanResultWithContext(ctx context.Context, request *DescribeVLPlanResultRequest) (response *DescribeVLPlanResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeVLPlanResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeVLPlanResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVLPlanResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVLPlanResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVLTemplateRequest() (request *DescribeVLTemplateRequest) {
+    request = &DescribeVLTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DescribeVLTemplate")
+    
+    
+    return
+}
+
+func NewDescribeVLTemplateResponse() (response *DescribeVLTemplateResponse) {
+    response = &DescribeVLTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVLTemplate
+// 查询视觉理解模板详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDVLPLANRESULTID = "InvalidParameterValue.InvalidVLPlanResultID"
+//  INVALIDPARAMETERVALUE_VLPLANRESULTIDNOTEXISTED = "InvalidParameterValue.VLPlanResultIDNotExisted"
+func (c *Client) DescribeVLTemplate(request *DescribeVLTemplateRequest) (response *DescribeVLTemplateResponse, err error) {
+    return c.DescribeVLTemplateWithContext(context.Background(), request)
+}
+
+// DescribeVLTemplate
+// 查询视觉理解模板详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDVLPLANRESULTID = "InvalidParameterValue.InvalidVLPlanResultID"
+//  INVALIDPARAMETERVALUE_VLPLANRESULTIDNOTEXISTED = "InvalidParameterValue.VLPlanResultIDNotExisted"
+func (c *Client) DescribeVLTemplateWithContext(ctx context.Context, request *DescribeVLTemplateRequest) (response *DescribeVLTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeVLTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeVLTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVLTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVLTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVideoBitRateRequest() (request *DescribeVideoBitRateRequest) {
     request = &DescribeVideoBitRateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3135,6 +4015,114 @@ func (c *Client) DescribeVideoDownloadUrlWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeVideoDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoSnapshotConfigRequest() (request *DescribeVideoSnapshotConfigRequest) {
+    request = &DescribeVideoSnapshotConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DescribeVideoSnapshotConfig")
+    
+    
+    return
+}
+
+func NewDescribeVideoSnapshotConfigResponse() (response *DescribeVideoSnapshotConfigResponse) {
+    response = &DescribeVideoSnapshotConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVideoSnapshotConfig
+// 获取截图配置详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDCONFIGID = "InvalidParameterValue.InvalidConfigId"
+//  RESOURCENOTFOUND_SNAPSHOTCONFIGNOTEXIST = "ResourceNotFound.SnapshotConfigNotExist"
+func (c *Client) DescribeVideoSnapshotConfig(request *DescribeVideoSnapshotConfigRequest) (response *DescribeVideoSnapshotConfigResponse, err error) {
+    return c.DescribeVideoSnapshotConfigWithContext(context.Background(), request)
+}
+
+// DescribeVideoSnapshotConfig
+// 获取截图配置详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDCONFIGID = "InvalidParameterValue.InvalidConfigId"
+//  RESOURCENOTFOUND_SNAPSHOTCONFIGNOTEXIST = "ResourceNotFound.SnapshotConfigNotExist"
+func (c *Client) DescribeVideoSnapshotConfigWithContext(ctx context.Context, request *DescribeVideoSnapshotConfigRequest) (response *DescribeVideoSnapshotConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoSnapshotConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeVideoSnapshotConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoSnapshotConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoSnapshotConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoSnapshotTemplateRequest() (request *DescribeVideoSnapshotTemplateRequest) {
+    request = &DescribeVideoSnapshotTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DescribeVideoSnapshotTemplate")
+    
+    
+    return
+}
+
+func NewDescribeVideoSnapshotTemplateResponse() (response *DescribeVideoSnapshotTemplateResponse) {
+    response = &DescribeVideoSnapshotTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVideoSnapshotTemplate
+// 获取截图模板详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVideoSnapshotTemplate(request *DescribeVideoSnapshotTemplateRequest) (response *DescribeVideoSnapshotTemplateResponse, err error) {
+    return c.DescribeVideoSnapshotTemplateWithContext(context.Background(), request)
+}
+
+// DescribeVideoSnapshotTemplate
+// 获取截图模板详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVideoSnapshotTemplateWithContext(ctx context.Context, request *DescribeVideoSnapshotTemplateRequest) (response *DescribeVideoSnapshotTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoSnapshotTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "DescribeVideoSnapshotTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoSnapshotTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoSnapshotTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -3945,6 +4933,114 @@ func (c *Client) ListTasksWithContext(ctx context.Context, request *ListTasksReq
     return
 }
 
+func NewListVLPlansRequest() (request *ListVLPlansRequest) {
+    request = &ListVLPlansRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ListVLPlans")
+    
+    
+    return
+}
+
+func NewListVLPlansResponse() (response *ListVLPlansResponse) {
+    response = &ListVLPlansResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListVLPlans
+// 获取视觉理解计划列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = "InvalidParameterValue.InvalidPageNumber"
+//  INVALIDPARAMETERVALUE_INVALIDPAGESIZE = "InvalidParameterValue.InvalidPageSize"
+func (c *Client) ListVLPlans(request *ListVLPlansRequest) (response *ListVLPlansResponse, err error) {
+    return c.ListVLPlansWithContext(context.Background(), request)
+}
+
+// ListVLPlans
+// 获取视觉理解计划列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = "InvalidParameterValue.InvalidPageNumber"
+//  INVALIDPARAMETERVALUE_INVALIDPAGESIZE = "InvalidParameterValue.InvalidPageSize"
+func (c *Client) ListVLPlansWithContext(ctx context.Context, request *ListVLPlansRequest) (response *ListVLPlansResponse, err error) {
+    if request == nil {
+        request = NewListVLPlansRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListVLPlans")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListVLPlans require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListVLPlansResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListVLTemplatesRequest() (request *ListVLTemplatesRequest) {
+    request = &ListVLTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ListVLTemplates")
+    
+    
+    return
+}
+
+func NewListVLTemplatesResponse() (response *ListVLTemplatesResponse) {
+    response = &ListVLTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListVLTemplates
+// 获取视觉理解模板列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDCAPTURETYPE = "InvalidParameterValue.InvalidCaptureType"
+//  INVALIDPARAMETERVALUE_INVALIDMEDIATYPE = "InvalidParameterValue.InvalidMediaType"
+//  INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = "InvalidParameterValue.InvalidPageNumber"
+//  INVALIDPARAMETERVALUE_INVALIDPAGESIZE = "InvalidParameterValue.InvalidPageSize"
+func (c *Client) ListVLTemplates(request *ListVLTemplatesRequest) (response *ListVLTemplatesResponse, err error) {
+    return c.ListVLTemplatesWithContext(context.Background(), request)
+}
+
+// ListVLTemplates
+// 获取视觉理解模板列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDCAPTURETYPE = "InvalidParameterValue.InvalidCaptureType"
+//  INVALIDPARAMETERVALUE_INVALIDMEDIATYPE = "InvalidParameterValue.InvalidMediaType"
+//  INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = "InvalidParameterValue.InvalidPageNumber"
+//  INVALIDPARAMETERVALUE_INVALIDPAGESIZE = "InvalidParameterValue.InvalidPageSize"
+func (c *Client) ListVLTemplatesWithContext(ctx context.Context, request *ListVLTemplatesRequest) (response *ListVLTemplatesResponse, err error) {
+    if request == nil {
+        request = NewListVLTemplatesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListVLTemplates")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListVLTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListVLTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListVideoDownloadTaskRequest() (request *ListVideoDownloadTaskRequest) {
     request = &ListVideoDownloadTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3968,14 +5064,10 @@ func NewListVideoDownloadTaskResponse() (response *ListVideoDownloadTaskResponse
 // 查询本店里录像下载任务列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DATABASEERROR = "FailedOperation.DatabaseError"
-//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
-//  INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
-//  INVALIDPARAMETER_INVALIDPARAMETERFORMAT = "InvalidParameter.InvalidParameterFormat"
-//  INVALIDPARAMETER_REQUIREDHEADERPARAMETEREMPTY = "InvalidParameter.RequiredHeaderParameterEmpty"
-//  INVALIDPARAMETERVALUE_INVALIDPAGEPARAMETER = "InvalidParameterValue.InvalidPageParameter"
-//  INVALIDPARAMETERVALUE_INVALIDSTATUS = "InvalidParameterValue.InvalidStatus"
-//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = "InvalidParameterValue.TaskTypeNotSupported"
+//  INVALIDPARAMETERVALUE_INVALIDCAPTURETYPE = "InvalidParameterValue.InvalidCaptureType"
+//  INVALIDPARAMETERVALUE_INVALIDMEDIATYPE = "InvalidParameterValue.InvalidMediaType"
+//  INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = "InvalidParameterValue.InvalidPageNumber"
+//  INVALIDPARAMETERVALUE_INVALIDPAGESIZE = "InvalidParameterValue.InvalidPageSize"
 func (c *Client) ListVideoDownloadTask(request *ListVideoDownloadTaskRequest) (response *ListVideoDownloadTaskResponse, err error) {
     return c.ListVideoDownloadTaskWithContext(context.Background(), request)
 }
@@ -3984,14 +5076,10 @@ func (c *Client) ListVideoDownloadTask(request *ListVideoDownloadTaskRequest) (r
 // 查询本店里录像下载任务列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DATABASEERROR = "FailedOperation.DatabaseError"
-//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
-//  INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
-//  INVALIDPARAMETER_INVALIDPARAMETERFORMAT = "InvalidParameter.InvalidParameterFormat"
-//  INVALIDPARAMETER_REQUIREDHEADERPARAMETEREMPTY = "InvalidParameter.RequiredHeaderParameterEmpty"
-//  INVALIDPARAMETERVALUE_INVALIDPAGEPARAMETER = "InvalidParameterValue.InvalidPageParameter"
-//  INVALIDPARAMETERVALUE_INVALIDSTATUS = "InvalidParameterValue.InvalidStatus"
-//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = "InvalidParameterValue.TaskTypeNotSupported"
+//  INVALIDPARAMETERVALUE_INVALIDCAPTURETYPE = "InvalidParameterValue.InvalidCaptureType"
+//  INVALIDPARAMETERVALUE_INVALIDMEDIATYPE = "InvalidParameterValue.InvalidMediaType"
+//  INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = "InvalidParameterValue.InvalidPageNumber"
+//  INVALIDPARAMETERVALUE_INVALIDPAGESIZE = "InvalidParameterValue.InvalidPageSize"
 func (c *Client) ListVideoDownloadTaskWithContext(ctx context.Context, request *ListVideoDownloadTaskRequest) (response *ListVideoDownloadTaskResponse, err error) {
     if request == nil {
         request = NewListVideoDownloadTaskRequest()
@@ -4005,6 +5093,200 @@ func (c *Client) ListVideoDownloadTaskWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewListVideoDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListVideoSnapshotTemplateRequest() (request *ListVideoSnapshotTemplateRequest) {
+    request = &ListVideoSnapshotTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ListVideoSnapshotTemplate")
+    
+    
+    return
+}
+
+func NewListVideoSnapshotTemplateResponse() (response *ListVideoSnapshotTemplateResponse) {
+    response = &ListVideoSnapshotTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListVideoSnapshotTemplate
+// 获取截图模板详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_PAGESIZEEXCEEDLIMIT = "InvalidParameterValue.PageSizeExceedLimit"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDSNAPSHOTTYPE = "InvalidParameterValue.UnsupportedSnapshotType"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDSORTRULE = "InvalidParameterValue.UnsupportedSortRule"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ListVideoSnapshotTemplate(request *ListVideoSnapshotTemplateRequest) (response *ListVideoSnapshotTemplateResponse, err error) {
+    return c.ListVideoSnapshotTemplateWithContext(context.Background(), request)
+}
+
+// ListVideoSnapshotTemplate
+// 获取截图模板详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_PAGESIZEEXCEEDLIMIT = "InvalidParameterValue.PageSizeExceedLimit"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDSNAPSHOTTYPE = "InvalidParameterValue.UnsupportedSnapshotType"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDSORTRULE = "InvalidParameterValue.UnsupportedSortRule"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ListVideoSnapshotTemplateWithContext(ctx context.Context, request *ListVideoSnapshotTemplateRequest) (response *ListVideoSnapshotTemplateResponse, err error) {
+    if request == nil {
+        request = NewListVideoSnapshotTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListVideoSnapshotTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListVideoSnapshotTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListVideoSnapshotTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVLPlanRequest() (request *ModifyVLPlanRequest) {
+    request = &ModifyVLPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ModifyVLPlan")
+    
+    
+    return
+}
+
+func NewModifyVLPlanResponse() (response *ModifyVLPlanResponse) {
+    response = &ModifyVLPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyVLPlan
+// 修改视觉理解计划
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANIDNOTEXISTED = "InvalidParameterValue.ImageVLPlanIDNotExisted"
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANNAMECONTAINILLEGALCHARACTER = "InvalidParameterValue.ImageVLPlanNameContainIllegalCharacter"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+//  INVALIDPARAMETERVALUE_INVALIDFILEEXPIRES = "InvalidParameterValue.InvalidFileExpires"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANDESCRIBE = "InvalidParameterValue.InvalidImageVLPlanDescribe"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANID = "InvalidParameterValue.InvalidImageVLPlanID"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANNAME = "InvalidParameterValue.InvalidImageVLPlanName"
+//  INVALIDPARAMETERVALUE_TEMPLATEIDNOTEXISTED = "InvalidParameterValue.TemplateIDNotExisted"
+func (c *Client) ModifyVLPlan(request *ModifyVLPlanRequest) (response *ModifyVLPlanResponse, err error) {
+    return c.ModifyVLPlanWithContext(context.Background(), request)
+}
+
+// ModifyVLPlan
+// 修改视觉理解计划
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANIDNOTEXISTED = "InvalidParameterValue.ImageVLPlanIDNotExisted"
+//  INVALIDPARAMETERVALUE_IMAGEVLPLANNAMECONTAINILLEGALCHARACTER = "InvalidParameterValue.ImageVLPlanNameContainIllegalCharacter"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+//  INVALIDPARAMETERVALUE_INVALIDFILEEXPIRES = "InvalidParameterValue.InvalidFileExpires"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANDESCRIBE = "InvalidParameterValue.InvalidImageVLPlanDescribe"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANID = "InvalidParameterValue.InvalidImageVLPlanID"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANNAME = "InvalidParameterValue.InvalidImageVLPlanName"
+//  INVALIDPARAMETERVALUE_TEMPLATEIDNOTEXISTED = "InvalidParameterValue.TemplateIDNotExisted"
+func (c *Client) ModifyVLPlanWithContext(ctx context.Context, request *ModifyVLPlanRequest) (response *ModifyVLPlanResponse, err error) {
+    if request == nil {
+        request = NewModifyVLPlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ModifyVLPlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVLPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVLPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVideoSnapshotConfigRequest() (request *ModifyVideoSnapshotConfigRequest) {
+    request = &ModifyVideoSnapshotConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ModifyVideoSnapshotConfig")
+    
+    
+    return
+}
+
+func NewModifyVideoSnapshotConfigResponse() (response *ModifyVideoSnapshotConfigResponse) {
+    response = &ModifyVideoSnapshotConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyVideoSnapshotConfig
+// 更新截图配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDTOKEN = "InvalidParameterValue.ContainInvalidToken"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+//  INVALIDPARAMETERVALUE_INVALIDCONFIGID = "InvalidParameterValue.InvalidConfigId"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDFILEEXPIRETIME = "InvalidParameterValue.UnsupportedFileExpireTime"
+//  LIMITEXCEEDED_SNAPSHOTCONFIGNUMEXCEEDED = "LimitExceeded.SnapshotConfigNumExceeded"
+//  OPERATIONDENIED_CONFIGCHANGING = "OperationDenied.ConfigChanging"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SNAPSHOTCONFIGNOTEXIST = "ResourceNotFound.SnapshotConfigNotExist"
+func (c *Client) ModifyVideoSnapshotConfig(request *ModifyVideoSnapshotConfigRequest) (response *ModifyVideoSnapshotConfigResponse, err error) {
+    return c.ModifyVideoSnapshotConfigWithContext(context.Background(), request)
+}
+
+// ModifyVideoSnapshotConfig
+// 更新截图配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDTOKEN = "InvalidParameterValue.ContainInvalidToken"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+//  INVALIDPARAMETERVALUE_INVALIDCONFIGID = "InvalidParameterValue.InvalidConfigId"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDFILEEXPIRETIME = "InvalidParameterValue.UnsupportedFileExpireTime"
+//  LIMITEXCEEDED_SNAPSHOTCONFIGNUMEXCEEDED = "LimitExceeded.SnapshotConfigNumExceeded"
+//  OPERATIONDENIED_CONFIGCHANGING = "OperationDenied.ConfigChanging"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SNAPSHOTCONFIGNOTEXIST = "ResourceNotFound.SnapshotConfigNotExist"
+func (c *Client) ModifyVideoSnapshotConfigWithContext(ctx context.Context, request *ModifyVideoSnapshotConfigRequest) (response *ModifyVideoSnapshotConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyVideoSnapshotConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ModifyVideoSnapshotConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVideoSnapshotConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVideoSnapshotConfigResponse()
     err = c.Send(request, response)
     return
 }

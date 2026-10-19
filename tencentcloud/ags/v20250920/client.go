@@ -263,7 +263,6 @@ func NewApproveRegistryRecordResponse() (response *ApproveRegistryRecordResponse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -286,7 +285,6 @@ func (c *Client) ApproveRegistryRecord(request *ApproveRegistryRecordRequest) (r
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -341,7 +339,6 @@ func NewCancelRegistryRecordResponse() (response *CancelRegistryRecordResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -364,7 +361,6 @@ func (c *Client) CancelRegistryRecord(request *CancelRegistryRecordRequest) (res
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -624,7 +620,6 @@ func NewCreateRegistryResponse() (response *CreateRegistryResponse) {
 //  INVALIDPARAMETERVALUE_APPROVALMODE = "InvalidParameterValue.ApprovalMode"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -647,7 +642,6 @@ func (c *Client) CreateRegistry(request *CreateRegistryRequest) (response *Creat
 //  INVALIDPARAMETERVALUE_APPROVALMODE = "InvalidParameterValue.ApprovalMode"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -713,7 +707,6 @@ func NewCreateRegistryRecordResponse() (response *CreateRegistryRecordResponse) 
 //  MISSINGPARAMETER_MCPSOURCEDESCRIPTORS = "MissingParameter.MCPSourceDescriptors"
 //  MISSINGPARAMETER_RECORDSOURCE = "MissingParameter.RecordSource"
 //  MISSINGPARAMETER_SKILLSOURCESKILLMD = "MissingParameter.SkillSourceSkillMd"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -748,7 +741,6 @@ func (c *Client) CreateRegistryRecord(request *CreateRegistryRecordRequest) (res
 //  MISSINGPARAMETER_MCPSOURCEDESCRIPTORS = "MissingParameter.MCPSourceDescriptors"
 //  MISSINGPARAMETER_RECORDSOURCE = "MissingParameter.RecordSource"
 //  MISSINGPARAMETER_SKILLSOURCESKILLMD = "MissingParameter.SkillSourceSkillMd"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -817,7 +809,6 @@ func NewCreateSandboxSnapshotResponse() (response *CreateSandboxSnapshotResponse
 //  MISSINGPARAMETER_MCPSOURCEDESCRIPTORS = "MissingParameter.MCPSourceDescriptors"
 //  MISSINGPARAMETER_RECORDSOURCE = "MissingParameter.RecordSource"
 //  MISSINGPARAMETER_SKILLSOURCESKILLMD = "MissingParameter.SkillSourceSkillMd"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -854,7 +845,6 @@ func (c *Client) CreateSandboxSnapshot(request *CreateSandboxSnapshotRequest) (r
 //  MISSINGPARAMETER_MCPSOURCEDESCRIPTORS = "MissingParameter.MCPSourceDescriptors"
 //  MISSINGPARAMETER_RECORDSOURCE = "MissingParameter.RecordSource"
 //  MISSINGPARAMETER_SKILLSOURCESKILLMD = "MissingParameter.SkillSourceSkillMd"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -1211,6 +1201,70 @@ func (c *Client) DeleteDeploymentWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeletePreCacheImageRequest() (request *DeletePreCacheImageRequest) {
+    request = &DeletePreCacheImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "DeletePreCacheImage")
+    
+    
+    return
+}
+
+func NewDeletePreCacheImageResponse() (response *DeletePreCacheImageResponse) {
+    response = &DeletePreCacheImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeletePreCacheImage
+// 删除预热镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
+//  FAILEDOPERATION_REQUESTINPROGRESS = "FailedOperation.RequestInProgress"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_IMAGE = "ResourceNotFound.Image"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeletePreCacheImage(request *DeletePreCacheImageRequest) (response *DeletePreCacheImageResponse, err error) {
+    return c.DeletePreCacheImageWithContext(context.Background(), request)
+}
+
+// DeletePreCacheImage
+// 删除预热镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
+//  FAILEDOPERATION_REQUESTINPROGRESS = "FailedOperation.RequestInProgress"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_IMAGE = "ResourceNotFound.Image"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeletePreCacheImageWithContext(ctx context.Context, request *DeletePreCacheImageRequest) (response *DeletePreCacheImageResponse, err error) {
+    if request == nil {
+        request = NewDeletePreCacheImageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "DeletePreCacheImage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePreCacheImage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePreCacheImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRegistryRequest() (request *DeleteRegistryRequest) {
     request = &DeleteRegistryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1241,7 +1295,6 @@ func NewDeleteRegistryResponse() (response *DeleteRegistryResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -1261,7 +1314,6 @@ func (c *Client) DeleteRegistry(request *DeleteRegistryRequest) (response *Delet
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -1316,7 +1368,6 @@ func NewDeleteRegistryRecordResponse() (response *DeleteRegistryRecordResponse) 
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_REASON = "MissingParameter.Reason"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -1340,7 +1391,6 @@ func (c *Client) DeleteRegistryRecord(request *DeleteRegistryRecordRequest) (res
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_REASON = "MissingParameter.Reason"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -1398,7 +1448,6 @@ func NewDeleteSandboxSnapshotResponse() (response *DeleteSandboxSnapshotResponse
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_REASON = "MissingParameter.Reason"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -1424,7 +1473,6 @@ func (c *Client) DeleteSandboxSnapshot(request *DeleteSandboxSnapshotRequest) (r
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_REASON = "MissingParameter.Reason"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -1845,6 +1893,64 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribePreCacheImageListRequest() (request *DescribePreCacheImageListRequest) {
+    request = &DescribePreCacheImageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "DescribePreCacheImageList")
+    
+    
+    return
+}
+
+func NewDescribePreCacheImageListResponse() (response *DescribePreCacheImageListResponse) {
+    response = &DescribePreCacheImageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePreCacheImageList
+// 查询镜像预热列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePreCacheImageList(request *DescribePreCacheImageListRequest) (response *DescribePreCacheImageListResponse, err error) {
+    return c.DescribePreCacheImageListWithContext(context.Background(), request)
+}
+
+// DescribePreCacheImageList
+// 查询镜像预热列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePreCacheImageListWithContext(ctx context.Context, request *DescribePreCacheImageListRequest) (response *DescribePreCacheImageListResponse, err error) {
+    if request == nil {
+        request = NewDescribePreCacheImageListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "DescribePreCacheImageList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePreCacheImageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePreCacheImageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePreCacheImageTaskRequest() (request *DescribePreCacheImageTaskRequest) {
     request = &DescribePreCacheImageTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1999,7 +2105,6 @@ func NewDescribeRegistryResponse() (response *DescribeRegistryResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -2019,7 +2124,6 @@ func (c *Client) DescribeRegistry(request *DescribeRegistryRequest) (response *D
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -2077,7 +2181,6 @@ func NewDescribeRegistryAuditLogListResponse() (response *DescribeRegistryAuditL
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -2103,7 +2206,6 @@ func (c *Client) DescribeRegistryAuditLogList(request *DescribeRegistryAuditLogL
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -2157,7 +2259,6 @@ func NewDescribeRegistryListResponse() (response *DescribeRegistryListResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -2179,7 +2280,6 @@ func (c *Client) DescribeRegistryList(request *DescribeRegistryListRequest) (res
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -2234,7 +2334,6 @@ func NewDescribeRegistryRecordResponse() (response *DescribeRegistryRecordRespon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -2258,7 +2357,6 @@ func (c *Client) DescribeRegistryRecord(request *DescribeRegistryRecordRequest) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -2314,7 +2412,6 @@ func NewDescribeRegistryRecordListResponse() (response *DescribeRegistryRecordLi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -2337,7 +2434,6 @@ func (c *Client) DescribeRegistryRecordList(request *DescribeRegistryRecordListR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -2393,7 +2489,6 @@ func NewDescribeRegistryRecordVersionListResponse() (response *DescribeRegistryR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -2418,7 +2513,6 @@ func (c *Client) DescribeRegistryRecordVersionList(request *DescribeRegistryReco
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -2878,7 +2972,6 @@ func NewGetSkillPackageDownloadURLResponse() (response *GetSkillPackageDownloadU
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -2903,7 +2996,6 @@ func (c *Client) GetSkillPackageDownloadURL(request *GetSkillPackageDownloadURLR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -2959,7 +3051,6 @@ func NewGetSkillPackageUploadURLResponse() (response *GetSkillPackageUploadURLRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -2983,7 +3074,6 @@ func (c *Client) GetSkillPackageUploadURL(request *GetSkillPackageUploadURLReque
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -3270,7 +3360,6 @@ func NewPreviewRegistryRecordResponse() (response *PreviewRegistryRecordResponse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -3295,7 +3384,6 @@ func (c *Client) PreviewRegistryRecord(request *PreviewRegistryRecordRequest) (r
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -3351,7 +3439,6 @@ func NewRejectRegistryRecordResponse() (response *RejectRegistryRecordResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -3374,7 +3461,6 @@ func (c *Client) RejectRegistryRecord(request *RejectRegistryRecordRequest) (res
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -3488,7 +3574,6 @@ func NewStartSandboxInstanceResponse() (response *StartSandboxInstanceResponse) 
 //  LIMITEXCEEDED_SANDBOXINSTANCE = "LimitExceeded.SandboxInstance"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_ROLEARN = "MissingParameter.RoleArn"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SANDBOXTOOL = "ResourceNotFound.SandboxTool"
 //  RESOURCENOTFOUND_STORAGEMOUNT = "ResourceNotFound.StorageMount"
@@ -3517,7 +3602,6 @@ func (c *Client) StartSandboxInstance(request *StartSandboxInstanceRequest) (res
 //  LIMITEXCEEDED_SANDBOXINSTANCE = "LimitExceeded.SandboxInstance"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_ROLEARN = "MissingParameter.RoleArn"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SANDBOXTOOL = "ResourceNotFound.SandboxTool"
 //  RESOURCENOTFOUND_STORAGEMOUNT = "ResourceNotFound.StorageMount"
@@ -3628,7 +3712,6 @@ func NewSyncRegistryRecordResponse() (response *SyncRegistryRecordResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -3653,7 +3736,6 @@ func (c *Client) SyncRegistryRecord(request *SyncRegistryRecordRequest) (respons
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -3707,7 +3789,6 @@ func NewUpdateRegistryResponse() (response *UpdateRegistryResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -3727,7 +3808,6 @@ func (c *Client) UpdateRegistry(request *UpdateRegistryRequest) (response *Updat
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -3794,7 +3874,6 @@ func NewUpdateRegistryRecordResponse() (response *UpdateRegistryRecordResponse) 
 //  MISSINGPARAMETER_MCPSOURCEDESCRIPTORS = "MissingParameter.MCPSourceDescriptors"
 //  MISSINGPARAMETER_RECORDSOURCE = "MissingParameter.RecordSource"
 //  MISSINGPARAMETER_SKILLSOURCESKILLMD = "MissingParameter.SkillSourceSkillMd"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -3831,7 +3910,6 @@ func (c *Client) UpdateRegistryRecord(request *UpdateRegistryRecordRequest) (res
 //  MISSINGPARAMETER_MCPSOURCEDESCRIPTORS = "MissingParameter.MCPSourceDescriptors"
 //  MISSINGPARAMETER_RECORDSOURCE = "MissingParameter.RecordSource"
 //  MISSINGPARAMETER_SKILLSOURCESKILLMD = "MissingParameter.SkillSourceSkillMd"
-//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"

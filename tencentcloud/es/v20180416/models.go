@@ -470,52 +470,75 @@ type CollectorOutputInstance struct {
 }
 
 type CollectorTarget struct {
-	// 采集配置名称
+	// <p>采集配置名称</p>
 	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
 
-	// 命名空间列表，包括Include包含和Exclude不包含选项，两者都为空时等同于全部命名空间(包含当前所有的以及未来创建的)。
+	// <p>命名空间列表，包括Include包含和Exclude不包含选项，两者都为空时等同于全部命名空间(包含当前所有的以及未来创建的)。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespaces *Namespaces `json:"Namespaces,omitnil,omitempty" name:"Namespaces"`
 
-	// Pod标签列表
+	// <p>Pod标签列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodLabels []*PodLabel `json:"PodLabels,omitnil,omitempty" name:"PodLabels"`
 
-	// 容器名称，支持小写字母、数字、连接符-、下划线_，最多支持63个字符
+	// <p>容器名称，支持小写字母、数字、连接符-、下划线_，最多支持63个字符</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
 
-	// ES索引名称前缀，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称的前缀，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符
+	// <p>ES索引名称前缀，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称的前缀，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexPrefix *string `json:"IndexPrefix,omitnil,omitempty" name:"IndexPrefix"`
 
-	// 日志内容过滤，以逗号分隔，支持大小写字母、数字、连接符-、下划线_以及逗号，最多支持50个字符
+	// <p>日志内容过滤，以逗号分隔，支持大小写字母、数字、连接符-、下划线_以及逗号，最多支持50个字符</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogFilters *string `json:"LogFilters,omitnil,omitempty" name:"LogFilters"`
 
-	// 高级配置，可自定义采集规则，最多支持2048个字符
+	// <p>高级配置，可自定义采集规则，最多支持2048个字符</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
 
-	// Ckafka实例的Topic
+	// <p>Ckafka实例的Topic</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaTopic *string `json:"KafkaTopic,omitnil,omitempty" name:"KafkaTopic"`
 
-	// ES索引名称，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符
+	// <p>ES索引名称，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexAlias *string `json:"IndexAlias,omitnil,omitempty" name:"IndexAlias"`
 
-	// /
+	// <p>/</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
 
-	// 日志采集host路径
+	// <p>日志采集host路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputPath *string `json:"InputPath,omitnil,omitempty" name:"InputPath"`
 
-	// inputs.tail_files
+	// <p>inputs.tail_files</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputsTailFiles *bool `json:"InputsTailFiles,omitnil,omitempty" name:"InputsTailFiles"`
+
+	// <p>开关inputs.multitline</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputsMultiLineEnabled *bool `json:"InputsMultiLineEnabled,omitnil,omitempty" name:"InputsMultiLineEnabled"`
+
+	// <p>inputs.multiline.type</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputsMultiLineType *string `json:"InputsMultiLineType,omitnil,omitempty" name:"InputsMultiLineType"`
+
+	// <p>inputs.multiline.pattern</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputsMultiLinePattern *string `json:"InputsMultiLinePattern,omitnil,omitempty" name:"InputsMultiLinePattern"`
+
+	// <p>inputs.multiline.negate</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputsMultiLineNegate *bool `json:"InputsMultiLineNegate,omitnil,omitempty" name:"InputsMultiLineNegate"`
+
+	// <p>inputs.multiline.match</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputsMultiLineMatch *string `json:"InputsMultiLineMatch,omitnil,omitempty" name:"InputsMultiLineMatch"`
+
+	// <p>按空间采集时 tke 的采集类型，默认为 container，支持 container、filestream</p>
+	TkeCollectType *string `json:"TkeCollectType,omitnil,omitempty" name:"TkeCollectType"`
 }
 
 type CommonIndexInfo struct {
@@ -3780,86 +3803,92 @@ func (r *DescribeInstancePluginListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// 集群实例所属可用区，不传则默认所有可用区
+	// <p>集群实例所属可用区，不传则默认所有可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 集群实例ID列表
+	// <p>集群实例ID列表</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 集群实例名称列表
+	// <p>集群实例名称列表</p>
 	InstanceNames []*string `json:"InstanceNames,omitnil,omitempty" name:"InstanceNames"`
 
-	// 分页起始值, 默认值0
+	// <p>分页起始值, 默认值0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认值20
+	// <p>分页大小，默认值20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderByKey未传递则按创建时间降序排序
+	// <p>排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderByKey未传递则按创建时间降序排序</p>
 	OrderByKey *uint64 `json:"OrderByKey,omitnil,omitempty" name:"OrderByKey"`
 
-	// 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
+	// <p>排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序</p>
 	OrderByType *uint64 `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 节点标签信息列表
+	// <p>节点标签信息列表</p>
 	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 私有网络vip列表
+	// <p>私有网络vip列表</p>
 	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 
-	// 可用区列表
+	// <p>集群节点IP列表</p>
+	NodeIps []*string `json:"NodeIps,omitnil,omitempty" name:"NodeIps"`
+
+	// <p>可用区列表</p>
 	ZoneList []*string `json:"ZoneList,omitnil,omitempty" name:"ZoneList"`
 
-	// 健康状态筛列表:0表示绿色，1表示黄色，2表示红色,-1表示未知
+	// <p>健康状态筛列表:0表示绿色，1表示黄色，2表示红色,-1表示未知</p>
 	HealthStatus []*int64 `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
 
-	// Vpc列表 筛选项
+	// <p>Vpc列表 筛选项</p>
 	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
 
-	// cdc集群id
+	// <p>cdc集群id</p>
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 }
 
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例所属可用区，不传则默认所有可用区
+	// <p>集群实例所属可用区，不传则默认所有可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 集群实例ID列表
+	// <p>集群实例ID列表</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 集群实例名称列表
+	// <p>集群实例名称列表</p>
 	InstanceNames []*string `json:"InstanceNames,omitnil,omitempty" name:"InstanceNames"`
 
-	// 分页起始值, 默认值0
+	// <p>分页起始值, 默认值0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认值20
+	// <p>分页大小，默认值20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderByKey未传递则按创建时间降序排序
+	// <p>排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderByKey未传递则按创建时间降序排序</p>
 	OrderByKey *uint64 `json:"OrderByKey,omitnil,omitempty" name:"OrderByKey"`
 
-	// 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
+	// <p>排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序</p>
 	OrderByType *uint64 `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 节点标签信息列表
+	// <p>节点标签信息列表</p>
 	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 私有网络vip列表
+	// <p>私有网络vip列表</p>
 	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 
-	// 可用区列表
+	// <p>集群节点IP列表</p>
+	NodeIps []*string `json:"NodeIps,omitnil,omitempty" name:"NodeIps"`
+
+	// <p>可用区列表</p>
 	ZoneList []*string `json:"ZoneList,omitnil,omitempty" name:"ZoneList"`
 
-	// 健康状态筛列表:0表示绿色，1表示黄色，2表示红色,-1表示未知
+	// <p>健康状态筛列表:0表示绿色，1表示黄色，2表示红色,-1表示未知</p>
 	HealthStatus []*int64 `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
 
-	// Vpc列表 筛选项
+	// <p>Vpc列表 筛选项</p>
 	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
 
-	// cdc集群id
+	// <p>cdc集群id</p>
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 }
 
@@ -3884,6 +3913,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "OrderByType")
 	delete(f, "TagList")
 	delete(f, "IpList")
+	delete(f, "NodeIps")
 	delete(f, "ZoneList")
 	delete(f, "HealthStatus")
 	delete(f, "VpcIds")
@@ -3896,10 +3926,10 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesResponseParams struct {
-	// 返回的实例个数
+	// <p>返回的实例个数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 实例详细信息列表
+	// <p>实例详细信息列表</p>
 	InstanceList []*InstanceInfo `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5820,6 +5850,9 @@ type EventDataInfoOverview struct {
 
 	// <p>子事件名称</p>
 	SubEventName *string `json:"SubEventName,omitnil,omitempty" name:"SubEventName"`
+
+	// <p>事件范围</p><p>枚举值：</p><ul><li>0： 实例级</li><li>1： 账号级</li></ul>
+	EventScope *uint64 `json:"EventScope,omitnil,omitempty" name:"EventScope"`
 }
 
 type EventTypeInfo struct {
@@ -5980,6 +6013,26 @@ type Failures struct {
 	// 快照失败的状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type FamilyResourceStat struct {
+	// <p>机型族，如 &quot;SA5&quot;</p>
+	InsFamily *string `json:"InsFamily,omitnil,omitempty" name:"InsFamily"`
+
+	// <p>CVM资源是否有货</p>
+	CvmAvailable *bool `json:"CvmAvailable,omitnil,omitempty" name:"CvmAvailable"`
+
+	// <p>系统盘资源是否有货</p>
+	SysDiskAvailable *bool `json:"SysDiskAvailable,omitnil,omitempty" name:"SysDiskAvailable"`
+
+	// <p>该盘型数据盘资源是否有货</p>
+	DiskAvailable *bool `json:"DiskAvailable,omitnil,omitempty" name:"DiskAvailable"`
+
+	// <p>三类资源是否全部有货(可直接购买)</p>
+	Purchasable *bool `json:"Purchasable,omitnil,omitempty" name:"Purchasable"`
+
+	// <p>缺少的资源，取值 CVM/SYSDISK/DISK；为空表示不缺</p>
+	MissingResources []*string `json:"MissingResources,omitnil,omitempty" name:"MissingResources"`
 }
 
 // Predefined struct for user
@@ -7227,102 +7280,130 @@ type LogstashNodeInfo struct {
 }
 
 type LogstashNodeTypeResource struct {
-	// 规格名称
+	// <p>规格名称</p>
 	NodeTypeName *string `json:"NodeTypeName,omitnil,omitempty" name:"NodeTypeName"`
 
-	// 是否可售
+	// <p>是否可售</p>
 	Available *bool `json:"Available,omitnil,omitempty" name:"Available"`
 
-	// 规格信息
+	// <p>规格信息</p>
 	NodeTypeInfo *NodeTypeInfo `json:"NodeTypeInfo,omitnil,omitempty" name:"NodeTypeInfo"`
 
-	// SSD盘是否可售
+	// <p>SSD盘是否可售</p>
 	SsdAvailable *bool `json:"SsdAvailable,omitnil,omitempty" name:"SsdAvailable"`
 
-	// SSD磁盘取值范围
+	// <p>SSD磁盘取值范围</p>
 	SsdDiskSizeRange *DiskSizeRange `json:"SsdDiskSizeRange,omitnil,omitempty" name:"SsdDiskSizeRange"`
 
-	// SATA盘是否可售
+	// <p>SSD云硬盘售罄明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SsdSoldOutDetail []*FamilyResourceStat `json:"SsdSoldOutDetail,omitnil,omitempty" name:"SsdSoldOutDetail"`
+
+	// <p>SATA盘是否可售</p>
 	SataAvailable *bool `json:"SataAvailable,omitnil,omitempty" name:"SataAvailable"`
 
-	// SATA磁盘取值范围
+	// <p>SATA磁盘取值范围</p>
 	SataDiskSizeRange *DiskSizeRange `json:"SataDiskSizeRange,omitnil,omitempty" name:"SataDiskSizeRange"`
 
-	// SSD机型售罄原因
+	// <p>SSD机型售罄原因</p>
 	SsdSoldOutReason *string `json:"SsdSoldOutReason,omitnil,omitempty" name:"SsdSoldOutReason"`
 
-	// SATA机型售罄原因
+	// <p>SATA机型售罄原因</p>
 	SataSoldOutReason *string `json:"SataSoldOutReason,omitnil,omitempty" name:"SataSoldOutReason"`
 
-	// 本地盘信息
+	// <p>高性能云硬盘售罄明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SataSoldOutDetail []*FamilyResourceStat `json:"SataSoldOutDetail,omitnil,omitempty" name:"SataSoldOutDetail"`
+
+	// <p>本地盘信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalDiskInfo *LocalDiskInfo `json:"LocalDiskInfo,omitnil,omitempty" name:"LocalDiskInfo"`
 
-	// 云盘块数取值范围
+	// <p>云盘块数取值范围</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskCountRange *DiskCountRange `json:"DiskCountRange,omitnil,omitempty" name:"DiskCountRange"`
 
-	// 增强型SSD是否可用
+	// <p>增强型SSD是否可用</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HSsdAvailable *bool `json:"HSsdAvailable,omitnil,omitempty" name:"HSsdAvailable"`
 
-	// 增强型SSD机型售罄原因
+	// <p>增强型SSD机型售罄原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HSsdSoldOutReason *string `json:"HSsdSoldOutReason,omitnil,omitempty" name:"HSsdSoldOutReason"`
 
-	// 增强型SSD磁盘取值范围
+	// <p>增强型SSD售罄明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HSsdSoldOutDetail []*FamilyResourceStat `json:"HSsdSoldOutDetail,omitnil,omitempty" name:"HSsdSoldOutDetail"`
+
+	// <p>增强型SSD磁盘取值范围</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HSsdDiskSizeRange *DiskSizeRange `json:"HSsdDiskSizeRange,omitnil,omitempty" name:"HSsdDiskSizeRange"`
 
-	// 吞吐型云盘是否可用
+	// <p>吞吐型云盘是否可用</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThroughputAvailable *bool `json:"ThroughputAvailable,omitnil,omitempty" name:"ThroughputAvailable"`
 
-	// 吞吐型云盘售罄原因
+	// <p>吞吐型云盘售罄原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThroughputSoldOutReason *string `json:"ThroughputSoldOutReason,omitnil,omitempty" name:"ThroughputSoldOutReason"`
 
-	// 吞吐型云盘取值范围
+	// <p>吞吐型云硬盘售罄</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThroughputSoldOutDetail []*FamilyResourceStat `json:"ThroughputSoldOutDetail,omitnil,omitempty" name:"ThroughputSoldOutDetail"`
+
+	// <p>吞吐型云盘取值范围</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThroughputDiskSizeRange *DiskSizeRange `json:"ThroughputDiskSizeRange,omitnil,omitempty" name:"ThroughputDiskSizeRange"`
 
-	// BigData盘是否可售
+	// <p>BigData盘是否可售</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDataAvailable *bool `json:"BigDataAvailable,omitnil,omitempty" name:"BigDataAvailable"`
 
-	// BigData盘售罄原因
+	// <p>BigData盘售罄原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDataSoldOutReason *string `json:"BigDataSoldOutReason,omitnil,omitempty" name:"BigDataSoldOutReason"`
 
-	// BigData磁盘取值范围
+	// <p>大数据型云硬盘售罄明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDataSoldOutDetail []*FamilyResourceStat `json:"BigDataSoldOutDetail,omitnil,omitempty" name:"BigDataSoldOutDetail"`
+
+	// <p>BigData磁盘取值范围</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDataDiskSizeRange *DiskSizeRange `json:"BigDataDiskSizeRange,omitnil,omitempty" name:"BigDataDiskSizeRange"`
 
-	// HighIO盘是否可售
+	// <p>HighIO盘是否可售</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighIOAvailable *bool `json:"HighIOAvailable,omitnil,omitempty" name:"HighIOAvailable"`
 
-	// HighIO盘售罄原因
+	// <p>HighIO盘售罄原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighIOSoldOutReason *string `json:"HighIOSoldOutReason,omitnil,omitempty" name:"HighIOSoldOutReason"`
 
-	// HighIO磁盘取值范围
+	// <p>高IO型云硬盘售罄明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighIOSoldOutDetail []*FamilyResourceStat `json:"HighIOSoldOutDetail,omitnil,omitempty" name:"HighIOSoldOutDetail"`
+
+	// <p>HighIO磁盘取值范围</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighIODiskSizeRange *DiskSizeRange `json:"HighIODiskSizeRange,omitnil,omitempty" name:"HighIODiskSizeRange"`
 
-	// Bssd盘是否可售
+	// <p>Bssd盘是否可售</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BssdAvailable *bool `json:"BssdAvailable,omitnil,omitempty" name:"BssdAvailable"`
 
-	// Bssd盘售罄原因
+	// <p>Bssd盘售罄原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BssdSoldOutReason *string `json:"BssdSoldOutReason,omitnil,omitempty" name:"BssdSoldOutReason"`
 
-	// Bssd盘取值范围
+	// <p>Bssd盘取值范围</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BssdDiskSizeRange *DiskSizeRange `json:"BssdDiskSizeRange,omitnil,omitempty" name:"BssdDiskSizeRange"`
 
-	// GpuInfo
+	// <p>通用型SSD云硬盘售罄明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BssdSoldOutDetail []*FamilyResourceStat `json:"BssdSoldOutDetail,omitnil,omitempty" name:"BssdSoldOutDetail"`
+
+	// <p>GpuInfo</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GpuInfo *GpuInfo `json:"GpuInfo,omitnil,omitempty" name:"GpuInfo"`
 }
@@ -7898,89 +7979,117 @@ type NodeTypeInfo struct {
 }
 
 type NodeTypeResource struct {
-	// 规格名称
+	// <p>规格名称</p>
 	NodeTypeName *string `json:"NodeTypeName,omitnil,omitempty" name:"NodeTypeName"`
 
-	// 是否可售
+	// <p>是否可售</p>
 	Available *bool `json:"Available,omitnil,omitempty" name:"Available"`
 
-	// 规格信息
+	// <p>规格信息</p>
 	NodeTypeInfo *NodeTypeInfo `json:"NodeTypeInfo,omitnil,omitempty" name:"NodeTypeInfo"`
 
-	// SSD盘是否可售
+	// <p>SSD盘是否可售</p>
 	SsdAvailable *bool `json:"SsdAvailable,omitnil,omitempty" name:"SsdAvailable"`
 
-	// SSD磁盘取值范围
+	// <p>SSD磁盘取值范围</p>
 	SsdDiskSizeRange *DiskSizeRange `json:"SsdDiskSizeRange,omitnil,omitempty" name:"SsdDiskSizeRange"`
 
-	// SATA盘是否可售
-	SataAvailable *bool `json:"SataAvailable,omitnil,omitempty" name:"SataAvailable"`
-
-	// SATA磁盘取值范围
-	SataDiskSizeRange *DiskSizeRange `json:"SataDiskSizeRange,omitnil,omitempty" name:"SataDiskSizeRange"`
-
-	// SSD机型售罄原因
+	// <p>SSD机型售罄原因</p>
 	SsdSoldOutReason *string `json:"SsdSoldOutReason,omitnil,omitempty" name:"SsdSoldOutReason"`
 
-	// SATA机型售罄原因
+	// <p>SSD云硬盘售罄明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SsdSoldOutDetail []*FamilyResourceStat `json:"SsdSoldOutDetail,omitnil,omitempty" name:"SsdSoldOutDetail"`
+
+	// <p>SATA盘是否可售</p>
+	SataAvailable *bool `json:"SataAvailable,omitnil,omitempty" name:"SataAvailable"`
+
+	// <p>SATA磁盘取值范围</p>
+	SataDiskSizeRange *DiskSizeRange `json:"SataDiskSizeRange,omitnil,omitempty" name:"SataDiskSizeRange"`
+
+	// <p>SATA机型售罄原因</p>
 	SataSoldOutReason *string `json:"SataSoldOutReason,omitnil,omitempty" name:"SataSoldOutReason"`
 
-	// 本地盘信息
+	// <p>高性能云硬盘售罄明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SataSoldOutDetail []*FamilyResourceStat `json:"SataSoldOutDetail,omitnil,omitempty" name:"SataSoldOutDetail"`
+
+	// <p>本地盘信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalDiskInfo *LocalDiskInfo `json:"LocalDiskInfo,omitnil,omitempty" name:"LocalDiskInfo"`
 
-	// 云盘块数取值范围
+	// <p>云盘块数取值范围</p>
 	DiskCountRange *DiskCountRange `json:"DiskCountRange,omitnil,omitempty" name:"DiskCountRange"`
 
-	// HSSD盘是否可售
+	// <p>HSSD盘是否可售</p>
 	HSsdAvailable *bool `json:"HSsdAvailable,omitnil,omitempty" name:"HSsdAvailable"`
 
-	// HSSD机型售罄原因
-	HSsdSoldOutReason *string `json:"HSsdSoldOutReason,omitnil,omitempty" name:"HSsdSoldOutReason"`
-
-	// HSSD磁盘取值范围
+	// <p>HSSD磁盘取值范围</p>
 	HSsdDiskSizeRange *DiskSizeRange `json:"HSsdDiskSizeRange,omitnil,omitempty" name:"HSsdDiskSizeRange"`
 
-	// Throughput盘是否可售
+	// <p>HSSD机型售罄原因</p>
+	HSsdSoldOutReason *string `json:"HSsdSoldOutReason,omitnil,omitempty" name:"HSsdSoldOutReason"`
+
+	// <p>增强型SSD售罄明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HSsdSoldOutDetail []*FamilyResourceStat `json:"HSsdSoldOutDetail,omitnil,omitempty" name:"HSsdSoldOutDetail"`
+
+	// <p>Throughput盘是否可售</p>
 	ThroughputAvailable *bool `json:"ThroughputAvailable,omitnil,omitempty" name:"ThroughputAvailable"`
 
-	// Throughput机型售罄原因
-	ThroughputSoldOutReason *string `json:"ThroughputSoldOutReason,omitnil,omitempty" name:"ThroughputSoldOutReason"`
-
-	// Throughput磁盘取值范围
+	// <p>Throughput磁盘取值范围</p>
 	ThroughputDiskSizeRange *DiskSizeRange `json:"ThroughputDiskSizeRange,omitnil,omitempty" name:"ThroughputDiskSizeRange"`
 
-	// BigData盘是否可售
+	// <p>Throughput机型售罄原因</p>
+	ThroughputSoldOutReason *string `json:"ThroughputSoldOutReason,omitnil,omitempty" name:"ThroughputSoldOutReason"`
+
+	// <p>吞吐型云硬盘售罄</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThroughputSoldOutDetail []*FamilyResourceStat `json:"ThroughputSoldOutDetail,omitnil,omitempty" name:"ThroughputSoldOutDetail"`
+
+	// <p>BigData盘是否可售</p>
 	BigDataAvailable *bool `json:"BigDataAvailable,omitnil,omitempty" name:"BigDataAvailable"`
 
-	// BigData盘售罄原因
-	BigDataSoldOutReason *string `json:"BigDataSoldOutReason,omitnil,omitempty" name:"BigDataSoldOutReason"`
-
-	// BigData磁盘取值范围
+	// <p>BigData磁盘取值范围</p>
 	BigDataDiskSizeRange *DiskSizeRange `json:"BigDataDiskSizeRange,omitnil,omitempty" name:"BigDataDiskSizeRange"`
 
-	// HighIO盘是否可售
+	// <p>BigData盘售罄原因</p>
+	BigDataSoldOutReason *string `json:"BigDataSoldOutReason,omitnil,omitempty" name:"BigDataSoldOutReason"`
+
+	// <p>大数据型云硬盘售罄明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDataSoldOutDetail []*FamilyResourceStat `json:"BigDataSoldOutDetail,omitnil,omitempty" name:"BigDataSoldOutDetail"`
+
+	// <p>HighIO盘是否可售</p>
 	HighIOAvailable *bool `json:"HighIOAvailable,omitnil,omitempty" name:"HighIOAvailable"`
 
-	// HighIO盘售罄原因
+	// <p>HighIO盘售罄原因</p>
 	HighIOSoldOutReason *string `json:"HighIOSoldOutReason,omitnil,omitempty" name:"HighIOSoldOutReason"`
 
-	// HighIO磁盘取值范围
+	// <p>HighIO磁盘取值范围</p>
 	HighIODiskSizeRange *DiskSizeRange `json:"HighIODiskSizeRange,omitnil,omitempty" name:"HighIODiskSizeRange"`
 
-	// Bssd盘是否可售
+	// <p>高IO型云硬盘售罄明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighIOSoldOutDetail []*FamilyResourceStat `json:"HighIOSoldOutDetail,omitnil,omitempty" name:"HighIOSoldOutDetail"`
+
+	// <p>Bssd盘是否可售</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BssdAvailable *bool `json:"BssdAvailable,omitnil,omitempty" name:"BssdAvailable"`
 
-	// Bssd盘售罄原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	BssdSoldOutReason *string `json:"BssdSoldOutReason,omitnil,omitempty" name:"BssdSoldOutReason"`
-
-	// Bssd盘取值范围
+	// <p>Bssd盘取值范围</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BssdDiskSizeRange *DiskSizeRange `json:"BssdDiskSizeRange,omitnil,omitempty" name:"BssdDiskSizeRange"`
 
-	// 节点Gpu信息
+	// <p>Bssd盘售罄原因</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BssdSoldOutReason *string `json:"BssdSoldOutReason,omitnil,omitempty" name:"BssdSoldOutReason"`
+
+	// <p>通用型SSD云硬盘售罄明细</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BssdSoldOutDetail []*FamilyResourceStat `json:"BssdSoldOutDetail,omitnil,omitempty" name:"BssdSoldOutDetail"`
+
+	// <p>节点Gpu信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GpuInfo *GpuInfo `json:"GpuInfo,omitnil,omitempty" name:"GpuInfo"`
 }
@@ -8649,32 +8758,32 @@ func (r *RequestInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RestartInstanceRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false
+	// <p>是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false</p>
 	ForceRestart *bool `json:"ForceRestart,omitnil,omitempty" name:"ForceRestart"`
 
-	// 重启模式：0 滚动重启； 1 全量重启
+	// <p>重启模式：0 滚动重启； 1 全量重启</p>
 	RestartMode *int64 `json:"RestartMode,omitnil,omitempty" name:"RestartMode"`
 
-	// 重启时选择是否升级内核patch版本
+	// <p>重启时选择是否升级内核patch版本</p>
 	UpgradeKernel *bool `json:"UpgradeKernel,omitnil,omitempty" name:"UpgradeKernel"`
 }
 
 type RestartInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false
+	// <p>是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false</p>
 	ForceRestart *bool `json:"ForceRestart,omitnil,omitempty" name:"ForceRestart"`
 
-	// 重启模式：0 滚动重启； 1 全量重启
+	// <p>重启模式：0 滚动重启； 1 全量重启</p>
 	RestartMode *int64 `json:"RestartMode,omitnil,omitempty" name:"RestartMode"`
 
-	// 重启时选择是否升级内核patch版本
+	// <p>重启时选择是否升级内核patch版本</p>
 	UpgradeKernel *bool `json:"UpgradeKernel,omitnil,omitempty" name:"UpgradeKernel"`
 }
 

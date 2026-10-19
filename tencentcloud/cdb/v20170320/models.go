@@ -6432,27 +6432,39 @@ func (r *DescribeBackupSummariesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupsRequestParams struct {
-	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	// <p>实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量，最小值为0。
+	// <p>偏移量，最小值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认值为20，最小值为1，最大值为1000。
+	// <p>分页大小，默认值为20，最小值为1，最大值为1000。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>备份开始时间，筛选大于等于此值，时间格式：2016-03-17 02:10:37</p>
+	MinStartTime *string `json:"MinStartTime,omitnil,omitempty" name:"MinStartTime"`
+
+	// <p>备份开始时间，筛选小于等于此值，时间格式：2016-03-17 02:10:37</p>
+	MaxStartTime *string `json:"MaxStartTime,omitnil,omitempty" name:"MaxStartTime"`
 }
 
 type DescribeBackupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	// <p>实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量，最小值为0。
+	// <p>偏移量，最小值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认值为20，最小值为1，最大值为1000。
+	// <p>分页大小，默认值为20，最小值为1，最大值为1000。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>备份开始时间，筛选大于等于此值，时间格式：2016-03-17 02:10:37</p>
+	MinStartTime *string `json:"MinStartTime,omitnil,omitempty" name:"MinStartTime"`
+
+	// <p>备份开始时间，筛选小于等于此值，时间格式：2016-03-17 02:10:37</p>
+	MaxStartTime *string `json:"MaxStartTime,omitnil,omitempty" name:"MaxStartTime"`
 }
 
 func (r *DescribeBackupsRequest) ToJsonString() string {
@@ -6470,6 +6482,8 @@ func (r *DescribeBackupsRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "MinStartTime")
+	delete(f, "MaxStartTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupsRequest has unknown keys!", "")
 	}
@@ -6478,10 +6492,10 @@ func (r *DescribeBackupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupsResponseParams struct {
-	// 符合查询条件的实例总数。
+	// <p>符合查询条件的实例总数。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 符合查询条件的备份信息详情。
+	// <p>符合查询条件的备份信息详情。</p>
 	Items []*BackupInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17184,15 +17198,21 @@ func (r *SwitchDBInstanceMasterSlaveResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SwitchDrInstanceToMasterRequestParams struct {
-	// 灾备实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// <p>灾备实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>忽略同步延迟的阈值，不填默认为0表示完全等待追平</p><p>取值范围：[0, 104857600]</p><p>默认值：0</p>
+	IgnoreSyncDelay *int64 `json:"IgnoreSyncDelay,omitnil,omitempty" name:"IgnoreSyncDelay"`
 }
 
 type SwitchDrInstanceToMasterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 灾备实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// <p>灾备实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>忽略同步延迟的阈值，不填默认为0表示完全等待追平</p><p>取值范围：[0, 104857600]</p><p>默认值：0</p>
+	IgnoreSyncDelay *int64 `json:"IgnoreSyncDelay,omitnil,omitempty" name:"IgnoreSyncDelay"`
 }
 
 func (r *SwitchDrInstanceToMasterRequest) ToJsonString() string {
@@ -17208,6 +17228,7 @@ func (r *SwitchDrInstanceToMasterRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "IgnoreSyncDelay")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchDrInstanceToMasterRequest has unknown keys!", "")
 	}
@@ -17216,7 +17237,7 @@ func (r *SwitchDrInstanceToMasterRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SwitchDrInstanceToMasterResponseParams struct {
-	// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+	// <p>异步任务的请求ID，可使用此ID查询异步任务的执行结果。</p>
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

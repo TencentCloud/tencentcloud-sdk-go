@@ -809,6 +809,60 @@ func (c *Client) AttachPolicyWithContext(ctx context.Context, request *AttachPol
     return
 }
 
+func NewAuditPermissionApplyOrderRequest() (request *AuditPermissionApplyOrderRequest) {
+    request = &AuditPermissionApplyOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "AuditPermissionApplyOrder")
+    
+    
+    return
+}
+
+func NewAuditPermissionApplyOrderResponse() (response *AuditPermissionApplyOrderResponse) {
+    response = &AuditPermissionApplyOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AuditPermissionApplyOrder
+// 审批用户权限申请
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_PERMISSIONAPPLYORDERSTATUSINVALID = "FailedOperation.PermissionApplyOrderStatusInvalid"
+//  RESOURCENOTFOUND_PERMISSIONAPPLYORDERNOTFOUND = "ResourceNotFound.PermissionApplyOrderNotFound"
+func (c *Client) AuditPermissionApplyOrder(request *AuditPermissionApplyOrderRequest) (response *AuditPermissionApplyOrderResponse, err error) {
+    return c.AuditPermissionApplyOrderWithContext(context.Background(), request)
+}
+
+// AuditPermissionApplyOrder
+// 审批用户权限申请
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_PERMISSIONAPPLYORDERSTATUSINVALID = "FailedOperation.PermissionApplyOrderStatusInvalid"
+//  RESOURCENOTFOUND_PERMISSIONAPPLYORDERNOTFOUND = "ResourceNotFound.PermissionApplyOrderNotFound"
+func (c *Client) AuditPermissionApplyOrderWithContext(ctx context.Context, request *AuditPermissionApplyOrderRequest) (response *AuditPermissionApplyOrderResponse, err error) {
+    if request == nil {
+        request = NewAuditPermissionApplyOrderRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "AuditPermissionApplyOrder")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AuditPermissionApplyOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAuditPermissionApplyOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindOrganizationMemberAuthAccountRequest() (request *BindOrganizationMemberAuthAccountRequest) {
     request = &BindOrganizationMemberAuthAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},

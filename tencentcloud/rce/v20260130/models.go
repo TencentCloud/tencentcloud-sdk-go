@@ -20,6 +20,11 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AccountSecurityEvent struct {
+	// <p>与RCE约定的定制化信息，为K:V 格式的对象数组，示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+	Cust []*Cust `json:"Cust,omitnil,omitempty" name:"Cust"`
+}
+
 type AddFriendEvent struct {
 	// <p>所属服务器ID，允许空串</p>
 	ServerId *string `json:"ServerId,omitnil,omitempty" name:"ServerId"`
@@ -532,6 +537,20 @@ type Billing struct {
 	Recipient *string `json:"Recipient,omitnil,omitempty" name:"Recipient"`
 }
 
+type BookingEvent struct {
+	// <p>预约场景。例如：预订机票、预订酒店</p>
+	BookingScene *string `json:"BookingScene,omitnil,omitempty" name:"BookingScene"`
+
+	// <p>预约时间。要求符合ISO-8601标准的带时区的毫秒级时间，格式&quot;YYYY-MM-DDTHH:mm:ss.sssZ&quot; ，例如&quot;2025-10-19T09:11:10.145+08:00&quot;。</p>
+	BookingTime *string `json:"BookingTime,omitnil,omitempty" name:"BookingTime"`
+
+	// <p>预约单唯一ID。</p>
+	BookingId *string `json:"BookingId,omitnil,omitempty" name:"BookingId"`
+
+	// <p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。<br>示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+	Cust []*Cust `json:"Cust,omitnil,omitempty" name:"Cust"`
+}
+
 type BrowseEvent struct {
 	// <p>当前浏览网页的类型，例如主页、搜索页等</p>
 	PageType *string `json:"PageType,omitnil,omitempty" name:"PageType"`
@@ -960,6 +979,15 @@ type EventDetail struct {
 
 	// <p>编辑公会资料</p>
 	ModifyGuild *ModifyGuildEvent `json:"ModifyGuild,omitnil,omitempty" name:"ModifyGuild"`
+
+	// <p>搜索</p>
+	Search *SearchEvent `json:"Search,omitnil,omitempty" name:"Search"`
+
+	// <p>预约</p>
+	Booking *BookingEvent `json:"Booking,omitnil,omitempty" name:"Booking"`
+
+	// <p>账号安全</p>
+	AccountSecurity *AccountSecurityEvent `json:"AccountSecurity,omitnil,omitempty" name:"AccountSecurity"`
 }
 
 type Guild struct {
@@ -1703,6 +1731,23 @@ type Score struct {
 
 	// <p>风险标签</p>
 	RiskLabels []*RiskLabel `json:"RiskLabels,omitnil,omitempty" name:"RiskLabels"`
+}
+
+type SearchEvent struct {
+	// <p>查询场景。例如：查询航班、查询库存等。</p>
+	SearchScene *string `json:"SearchScene,omitnil,omitempty" name:"SearchScene"`
+
+	// <p>查询参数。查询时输入的参数。</p>
+	SearchParam *string `json:"SearchParam,omitnil,omitempty" name:"SearchParam"`
+
+	// <p>上一个网页URL</p>
+	ReferPageUrl *string `json:"ReferPageUrl,omitnil,omitempty" name:"ReferPageUrl"`
+
+	// <p>游客账号ID</p>
+	GuestId *string `json:"GuestId,omitnil,omitempty" name:"GuestId"`
+
+	// <p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。<br>示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+	Cust []*Cust `json:"Cust,omitnil,omitempty" name:"Cust"`
 }
 
 type SecurityVerificationEvent struct {

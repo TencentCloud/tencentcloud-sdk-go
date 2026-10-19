@@ -8705,6 +8705,99 @@ func (r *DescribeFOOMReportListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFileCertificateRequestParams struct {
+	// 超时时间，不填默认是 5 分钟
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// bucket类型，不填默认1:web，2:app
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// ProjectID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// reigon对应的id
+	RegionID *int64 `json:"RegionID,omitnil,omitempty" name:"RegionID"`
+}
+
+type DescribeFileCertificateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 超时时间，不填默认是 5 分钟
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// bucket类型，不填默认1:web，2:app
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// ProjectID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// reigon对应的id
+	RegionID *int64 `json:"RegionID,omitnil,omitempty" name:"RegionID"`
+}
+
+func (r *DescribeFileCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Timeout")
+	delete(f, "FileType")
+	delete(f, "ID")
+	delete(f, "RegionID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFileCertificateResponseParams struct {
+	// 临时密钥key
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// 临时密钥 id
+	SecretID *string `json:"SecretID,omitnil,omitempty" name:"SecretID"`
+
+	// 临时密钥临时 token
+	SessionToken *string `json:"SessionToken,omitnil,omitempty" name:"SessionToken"`
+
+	// 开始时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 过期时间戳
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// 桶地址
+	BucketAddress *string `json:"BucketAddress,omitnil,omitempty" name:"BucketAddress"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFileCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFileCertificateResponseParams `json:"Response"`
+}
+
+func (r *DescribeFileCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeIssuesDistributionRequestParams struct {
 	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`

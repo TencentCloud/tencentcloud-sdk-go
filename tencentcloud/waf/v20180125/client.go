@@ -693,6 +693,66 @@ func (c *Client) AddDomainWhiteRuleWithContext(ctx context.Context, request *Add
     return
 }
 
+func NewAddLLMSdkAccessRequest() (request *AddLLMSdkAccessRequest) {
+    request = &AddLLMSdkAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "AddLLMSdkAccess")
+    
+    
+    return
+}
+
+func NewAddLLMSdkAccessResponse() (response *AddLLMSdkAccessResponse) {
+    response = &AddLLMSdkAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddLLMSdkAccess
+// llmwaf-sdk新增接入配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) AddLLMSdkAccess(request *AddLLMSdkAccessRequest) (response *AddLLMSdkAccessResponse, err error) {
+    return c.AddLLMSdkAccessWithContext(context.Background(), request)
+}
+
+// AddLLMSdkAccess
+// llmwaf-sdk新增接入配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) AddLLMSdkAccessWithContext(ctx context.Context, request *AddLLMSdkAccessRequest) (response *AddLLMSdkAccessResponse, err error) {
+    if request == nil {
+        request = NewAddLLMSdkAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "AddLLMSdkAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddLLMSdkAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddLLMSdkAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddSpartaProtectionRequest() (request *AddSpartaProtectionRequest) {
     request = &AddSpartaProtectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2879,6 +2939,114 @@ func (c *Client) DeleteIpAccessControlV2WithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteLLMContentRuleRequest() (request *DeleteLLMContentRuleRequest) {
+    request = &DeleteLLMContentRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteLLMContentRule")
+    
+    
+    return
+}
+
+func NewDeleteLLMContentRuleResponse() (response *DeleteLLMContentRuleResponse) {
+    response = &DeleteLLMContentRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLLMContentRule
+// 删除大模型内容防护规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteLLMContentRule(request *DeleteLLMContentRuleRequest) (response *DeleteLLMContentRuleResponse, err error) {
+    return c.DeleteLLMContentRuleWithContext(context.Background(), request)
+}
+
+// DeleteLLMContentRule
+// 删除大模型内容防护规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteLLMContentRuleWithContext(ctx context.Context, request *DeleteLLMContentRuleRequest) (response *DeleteLLMContentRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteLLMContentRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteLLMContentRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLLMContentRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLLMContentRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLLMKeywordLibraryRequest() (request *DeleteLLMKeywordLibraryRequest) {
+    request = &DeleteLLMKeywordLibraryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteLLMKeywordLibrary")
+    
+    
+    return
+}
+
+func NewDeleteLLMKeywordLibraryResponse() (response *DeleteLLMKeywordLibraryResponse) {
+    response = &DeleteLLMKeywordLibraryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLLMKeywordLibrary
+// 删除词库列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteLLMKeywordLibrary(request *DeleteLLMKeywordLibraryRequest) (response *DeleteLLMKeywordLibraryResponse, err error) {
+    return c.DeleteLLMKeywordLibraryWithContext(context.Background(), request)
+}
+
+// DeleteLLMKeywordLibrary
+// 删除词库列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteLLMKeywordLibraryWithContext(ctx context.Context, request *DeleteLLMKeywordLibraryRequest) (response *DeleteLLMKeywordLibraryResponse, err error) {
+    if request == nil {
+        request = NewDeleteLLMKeywordLibraryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteLLMKeywordLibrary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLLMKeywordLibrary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLLMKeywordLibraryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteOwaspRuleStatusRequest() (request *DeleteOwaspRuleStatusRequest) {
     request = &DeleteOwaspRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2902,13 +3070,9 @@ func NewDeleteOwaspRuleStatusResponse() (response *DeleteOwaspRuleStatusResponse
 // 解除门神规则的状态锁
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERR = "InternalError.DBErr"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteOwaspRuleStatus(request *DeleteOwaspRuleStatusRequest) (response *DeleteOwaspRuleStatusResponse, err error) {
     return c.DeleteOwaspRuleStatusWithContext(context.Background(), request)
 }
@@ -2917,13 +3081,9 @@ func (c *Client) DeleteOwaspRuleStatus(request *DeleteOwaspRuleStatusRequest) (r
 // 解除门神规则的状态锁
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERR = "InternalError.DBErr"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteOwaspRuleStatusWithContext(ctx context.Context, request *DeleteOwaspRuleStatusRequest) (response *DeleteOwaspRuleStatusResponse, err error) {
     if request == nil {
         request = NewDeleteOwaspRuleStatusRequest()
@@ -3687,6 +3847,90 @@ func (c *Client) DescribeAccessIndexWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeAccessIndexResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAfterPayInstancesRequest() (request *DescribeAfterPayInstancesRequest) {
+    request = &DescribeAfterPayInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeAfterPayInstances")
+    
+    
+    return
+}
+
+func NewDescribeAfterPayInstancesResponse() (response *DescribeAfterPayInstancesResponse) {
+    response = &DescribeAfterPayInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAfterPayInstances
+// 查询后付费实例列表（仅 Edition=llm-sdk-waf）。请求参数与 DescribeInstances 一致；仅返回 tb_instance_conf 基础数据，不含套餐/标签等扩展信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAfterPayInstances(request *DescribeAfterPayInstancesRequest) (response *DescribeAfterPayInstancesResponse, err error) {
+    return c.DescribeAfterPayInstancesWithContext(context.Background(), request)
+}
+
+// DescribeAfterPayInstances
+// 查询后付费实例列表（仅 Edition=llm-sdk-waf）。请求参数与 DescribeInstances 一致；仅返回 tb_instance_conf 基础数据，不含套餐/标签等扩展信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAfterPayInstancesWithContext(ctx context.Context, request *DescribeAfterPayInstancesRequest) (response *DescribeAfterPayInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAfterPayInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeAfterPayInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAfterPayInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAfterPayInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -6583,6 +6827,58 @@ func (c *Client) DescribeIpHitItemsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeLLMContentRuleListRequest() (request *DescribeLLMContentRuleListRequest) {
+    request = &DescribeLLMContentRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeLLMContentRuleList")
+    
+    
+    return
+}
+
+func NewDescribeLLMContentRuleListResponse() (response *DescribeLLMContentRuleListResponse) {
+    response = &DescribeLLMContentRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLLMContentRuleList
+// 获取LLM大模型内容防护规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+func (c *Client) DescribeLLMContentRuleList(request *DescribeLLMContentRuleListRequest) (response *DescribeLLMContentRuleListResponse, err error) {
+    return c.DescribeLLMContentRuleListWithContext(context.Background(), request)
+}
+
+// DescribeLLMContentRuleList
+// 获取LLM大模型内容防护规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+func (c *Client) DescribeLLMContentRuleListWithContext(ctx context.Context, request *DescribeLLMContentRuleListRequest) (response *DescribeLLMContentRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLLMContentRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeLLMContentRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLLMContentRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLLMContentRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLLMContentSecCheckRequest() (request *DescribeLLMContentSecCheckRequest) {
     request = &DescribeLLMContentSecCheckRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6643,6 +6939,262 @@ func (c *Client) DescribeLLMContentSecCheckWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeLLMContentSecCheckResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLLMKeywordLibraryRequest() (request *DescribeLLMKeywordLibraryRequest) {
+    request = &DescribeLLMKeywordLibraryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeLLMKeywordLibrary")
+    
+    
+    return
+}
+
+func NewDescribeLLMKeywordLibraryResponse() (response *DescribeLLMKeywordLibraryResponse) {
+    response = &DescribeLLMKeywordLibraryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLLMKeywordLibrary
+// 查询关键词列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMKeywordLibrary(request *DescribeLLMKeywordLibraryRequest) (response *DescribeLLMKeywordLibraryResponse, err error) {
+    return c.DescribeLLMKeywordLibraryWithContext(context.Background(), request)
+}
+
+// DescribeLLMKeywordLibrary
+// 查询关键词列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMKeywordLibraryWithContext(ctx context.Context, request *DescribeLLMKeywordLibraryRequest) (response *DescribeLLMKeywordLibraryResponse, err error) {
+    if request == nil {
+        request = NewDescribeLLMKeywordLibraryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeLLMKeywordLibrary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLLMKeywordLibrary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLLMKeywordLibraryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLLMSdkAccessRequest() (request *DescribeLLMSdkAccessRequest) {
+    request = &DescribeLLMSdkAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeLLMSdkAccess")
+    
+    
+    return
+}
+
+func NewDescribeLLMSdkAccessResponse() (response *DescribeLLMSdkAccessResponse) {
+    response = &DescribeLLMSdkAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLLMSdkAccess
+// 查询sdk接入配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMSdkAccess(request *DescribeLLMSdkAccessRequest) (response *DescribeLLMSdkAccessResponse, err error) {
+    return c.DescribeLLMSdkAccessWithContext(context.Background(), request)
+}
+
+// DescribeLLMSdkAccess
+// 查询sdk接入配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMSdkAccessWithContext(ctx context.Context, request *DescribeLLMSdkAccessRequest) (response *DescribeLLMSdkAccessResponse, err error) {
+    if request == nil {
+        request = NewDescribeLLMSdkAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeLLMSdkAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLLMSdkAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLLMSdkAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLLMWafDLPRulesRequest() (request *DescribeLLMWafDLPRulesRequest) {
+    request = &DescribeLLMWafDLPRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeLLMWafDLPRules")
+    
+    
+    return
+}
+
+func NewDescribeLLMWafDLPRulesResponse() (response *DescribeLLMWafDLPRulesResponse) {
+    response = &DescribeLLMWafDLPRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLLMWafDLPRules
+// 查询 DLP 规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMWafDLPRules(request *DescribeLLMWafDLPRulesRequest) (response *DescribeLLMWafDLPRulesResponse, err error) {
+    return c.DescribeLLMWafDLPRulesWithContext(context.Background(), request)
+}
+
+// DescribeLLMWafDLPRules
+// 查询 DLP 规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMWafDLPRulesWithContext(ctx context.Context, request *DescribeLLMWafDLPRulesRequest) (response *DescribeLLMWafDLPRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLLMWafDLPRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeLLMWafDLPRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLLMWafDLPRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLLMWafDLPRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLLMWafProtectRulesRequest() (request *DescribeLLMWafProtectRulesRequest) {
+    request = &DescribeLLMWafProtectRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeLLMWafProtectRules")
+    
+    
+    return
+}
+
+func NewDescribeLLMWafProtectRulesResponse() (response *DescribeLLMWafProtectRulesResponse) {
+    response = &DescribeLLMWafProtectRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLLMWafProtectRules
+// 查询 LLM 规则请求
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMWafProtectRules(request *DescribeLLMWafProtectRulesRequest) (response *DescribeLLMWafProtectRulesResponse, err error) {
+    return c.DescribeLLMWafProtectRulesWithContext(context.Background(), request)
+}
+
+// DescribeLLMWafProtectRules
+// 查询 LLM 规则请求
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMWafProtectRulesWithContext(ctx context.Context, request *DescribeLLMWafProtectRulesRequest) (response *DescribeLLMWafProtectRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLLMWafProtectRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeLLMWafProtectRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLLMWafProtectRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLLMWafProtectRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -9387,6 +9939,60 @@ func (c *Client) EnableRateLimitsV2WithContext(ctx context.Context, request *Ena
     request.SetContext(ctx)
     
     response = NewEnableRateLimitsV2Response()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportLLMKeywordLibRequest() (request *ExportLLMKeywordLibRequest) {
+    request = &ExportLLMKeywordLibRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ExportLLMKeywordLib")
+    
+    
+    return
+}
+
+func NewExportLLMKeywordLibResponse() (response *ExportLLMKeywordLibResponse) {
+    response = &ExportLLMKeywordLibResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportLLMKeywordLib
+// 导出词库文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ExportLLMKeywordLib(request *ExportLLMKeywordLibRequest) (response *ExportLLMKeywordLibResponse, err error) {
+    return c.ExportLLMKeywordLibWithContext(context.Background(), request)
+}
+
+// ExportLLMKeywordLib
+// 导出词库文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ExportLLMKeywordLibWithContext(ctx context.Context, request *ExportLLMKeywordLibRequest) (response *ExportLLMKeywordLibResponse, err error) {
+    if request == nil {
+        request = NewExportLLMKeywordLibRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ExportLLMKeywordLib")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportLLMKeywordLib require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportLLMKeywordLibResponse()
     err = c.Send(request, response)
     return
 }
@@ -12567,6 +13173,346 @@ func (c *Client) ModifyIpAccessControlWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyIpAccessControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLLMContentRuleRequest() (request *ModifyLLMContentRuleRequest) {
+    request = &ModifyLLMContentRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyLLMContentRule")
+    
+    
+    return
+}
+
+func NewModifyLLMContentRuleResponse() (response *ModifyLLMContentRuleResponse) {
+    response = &ModifyLLMContentRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLLMContentRule
+// 更新大模型内容安全规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_CONTENTRULEERR = "LimitExceeded.ContentRuleErr"
+//  LIMITEXCEEDED_LIMITRULEERR = "LimitExceeded.LimitRuleErr"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyLLMContentRule(request *ModifyLLMContentRuleRequest) (response *ModifyLLMContentRuleResponse, err error) {
+    return c.ModifyLLMContentRuleWithContext(context.Background(), request)
+}
+
+// ModifyLLMContentRule
+// 更新大模型内容安全规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_CONTENTRULEERR = "LimitExceeded.ContentRuleErr"
+//  LIMITEXCEEDED_LIMITRULEERR = "LimitExceeded.LimitRuleErr"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyLLMContentRuleWithContext(ctx context.Context, request *ModifyLLMContentRuleRequest) (response *ModifyLLMContentRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyLLMContentRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyLLMContentRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLLMContentRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLLMContentRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLLMContentRuleStatusRequest() (request *ModifyLLMContentRuleStatusRequest) {
+    request = &ModifyLLMContentRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyLLMContentRuleStatus")
+    
+    
+    return
+}
+
+func NewModifyLLMContentRuleStatusResponse() (response *ModifyLLMContentRuleStatusResponse) {
+    response = &ModifyLLMContentRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLLMContentRuleStatus
+// 切换大模型内容防护规则开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLLMContentRuleStatus(request *ModifyLLMContentRuleStatusRequest) (response *ModifyLLMContentRuleStatusResponse, err error) {
+    return c.ModifyLLMContentRuleStatusWithContext(context.Background(), request)
+}
+
+// ModifyLLMContentRuleStatus
+// 切换大模型内容防护规则开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLLMContentRuleStatusWithContext(ctx context.Context, request *ModifyLLMContentRuleStatusRequest) (response *ModifyLLMContentRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyLLMContentRuleStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyLLMContentRuleStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLLMContentRuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLLMContentRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLLMKeywordLibraryRequest() (request *ModifyLLMKeywordLibraryRequest) {
+    request = &ModifyLLMKeywordLibraryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyLLMKeywordLibrary")
+    
+    
+    return
+}
+
+func NewModifyLLMKeywordLibraryResponse() (response *ModifyLLMKeywordLibraryResponse) {
+    response = &ModifyLLMKeywordLibraryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLLMKeywordLibrary
+// 用户修改自定义词库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLLMKeywordLibrary(request *ModifyLLMKeywordLibraryRequest) (response *ModifyLLMKeywordLibraryResponse, err error) {
+    return c.ModifyLLMKeywordLibraryWithContext(context.Background(), request)
+}
+
+// ModifyLLMKeywordLibrary
+// 用户修改自定义词库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLLMKeywordLibraryWithContext(ctx context.Context, request *ModifyLLMKeywordLibraryRequest) (response *ModifyLLMKeywordLibraryResponse, err error) {
+    if request == nil {
+        request = NewModifyLLMKeywordLibraryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyLLMKeywordLibrary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLLMKeywordLibrary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLLMKeywordLibraryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLLMStatusRequest() (request *ModifyLLMStatusRequest) {
+    request = &ModifyLLMStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyLLMStatus")
+    
+    
+    return
+}
+
+func NewModifyLLMStatusResponse() (response *ModifyLLMStatusResponse) {
+    response = &ModifyLLMStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLLMStatus
+// 修改大模型防护的模块开关状态，支持总开关及各子模块独立开关的开启/关闭操作。开启前需确保实例已购买大模型防护能力，未购买时开启操作会返回 AuthFailure.ErrCodeNoPurchased 错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) ModifyLLMStatus(request *ModifyLLMStatusRequest) (response *ModifyLLMStatusResponse, err error) {
+    return c.ModifyLLMStatusWithContext(context.Background(), request)
+}
+
+// ModifyLLMStatus
+// 修改大模型防护的模块开关状态，支持总开关及各子模块独立开关的开启/关闭操作。开启前需确保实例已购买大模型防护能力，未购买时开启操作会返回 AuthFailure.ErrCodeNoPurchased 错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) ModifyLLMStatusWithContext(ctx context.Context, request *ModifyLLMStatusRequest) (response *ModifyLLMStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyLLMStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyLLMStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLLMStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLLMStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLLMWafDLPRuleRequest() (request *ModifyLLMWafDLPRuleRequest) {
+    request = &ModifyLLMWafDLPRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyLLMWafDLPRule")
+    
+    
+    return
+}
+
+func NewModifyLLMWafDLPRuleResponse() (response *ModifyLLMWafDLPRuleResponse) {
+    response = &ModifyLLMWafDLPRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLLMWafDLPRule
+// 修改llmwaf DLP 规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) ModifyLLMWafDLPRule(request *ModifyLLMWafDLPRuleRequest) (response *ModifyLLMWafDLPRuleResponse, err error) {
+    return c.ModifyLLMWafDLPRuleWithContext(context.Background(), request)
+}
+
+// ModifyLLMWafDLPRule
+// 修改llmwaf DLP 规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) ModifyLLMWafDLPRuleWithContext(ctx context.Context, request *ModifyLLMWafDLPRuleRequest) (response *ModifyLLMWafDLPRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyLLMWafDLPRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyLLMWafDLPRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLLMWafDLPRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLLMWafDLPRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLLMWafProtectRuleRequest() (request *ModifyLLMWafProtectRuleRequest) {
+    request = &ModifyLLMWafProtectRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyLLMWafProtectRule")
+    
+    
+    return
+}
+
+func NewModifyLLMWafProtectRuleResponse() (response *ModifyLLMWafProtectRuleResponse) {
+    response = &ModifyLLMWafProtectRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLLMWafProtectRule
+// 修改 LLM 规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) ModifyLLMWafProtectRule(request *ModifyLLMWafProtectRuleRequest) (response *ModifyLLMWafProtectRuleResponse, err error) {
+    return c.ModifyLLMWafProtectRuleWithContext(context.Background(), request)
+}
+
+// ModifyLLMWafProtectRule
+// 修改 LLM 规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) ModifyLLMWafProtectRuleWithContext(ctx context.Context, request *ModifyLLMWafProtectRuleRequest) (response *ModifyLLMWafProtectRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyLLMWafProtectRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyLLMWafProtectRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLLMWafProtectRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLLMWafProtectRuleResponse()
     err = c.Send(request, response)
     return
 }

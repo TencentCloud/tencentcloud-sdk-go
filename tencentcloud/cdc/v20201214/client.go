@@ -963,6 +963,60 @@ func (c *Client) DescribeDedicatedSupportedZonesWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeEdgeHostVmRequest() (request *DescribeEdgeHostVmRequest) {
+    request = &DescribeEdgeHostVmRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdc", APIVersion, "DescribeEdgeHostVm")
+    
+    
+    return
+}
+
+func NewDescribeEdgeHostVmResponse() (response *DescribeEdgeHostVmResponse) {
+    response = &DescribeEdgeHostVmResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEdgeHostVm
+// 查询专属集群宿主机上的虚机信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDVALUEREGION = "InvalidParameterValue.InvalidValueRegion"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
+//  INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = "InvalidParameterValue.ZoneMismatchRegion"
+func (c *Client) DescribeEdgeHostVm(request *DescribeEdgeHostVmRequest) (response *DescribeEdgeHostVmResponse, err error) {
+    return c.DescribeEdgeHostVmWithContext(context.Background(), request)
+}
+
+// DescribeEdgeHostVm
+// 查询专属集群宿主机上的虚机信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDVALUEREGION = "InvalidParameterValue.InvalidValueRegion"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
+//  INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = "InvalidParameterValue.ZoneMismatchRegion"
+func (c *Client) DescribeEdgeHostVmWithContext(ctx context.Context, request *DescribeEdgeHostVmRequest) (response *DescribeEdgeHostVmResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeHostVmRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cdc", APIVersion, "DescribeEdgeHostVm")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeHostVm require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeHostVmResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSitesRequest() (request *DescribeSitesRequest) {
     request = &DescribeSitesRequest{
         BaseRequest: &tchttp.BaseRequest{},

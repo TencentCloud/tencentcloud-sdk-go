@@ -9349,6 +9349,69 @@ func (r *DescribeOfflineExportTemporaryCredentialsResponse) FromJsonString(s str
 }
 
 // Predefined struct for user
+type DescribeOverviewResourceQuotaRequestParams struct {
+	// <p>返回视图范围</p><p>默认值：不传该参数时，默认返回完整的资源与配额详情数据</p>
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+}
+
+type DescribeOverviewResourceQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>返回视图范围</p><p>默认值：不传该参数时，默认返回完整的资源与配额详情数据</p>
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+}
+
+func (r *DescribeOverviewResourceQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewResourceQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Scene")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOverviewResourceQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOverviewResourceQuotaResponseParams struct {
+	// <p>资源与配额详情数据</p><p>包含详情字段和能力标识，具体字段含义见关联数据结构说明。访问控制规则同时提供汇总字段及按互联网边界、NAT边界、VPC边界拆分的字段。</p>
+	Data *OverviewResourceQuotaDataLite `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>返回代码</p>
+	ReturnCode *uint64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+
+	// <p>返回状态字符</p>
+	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOverviewResourceQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOverviewResourceQuotaResponseParams `json:"Response"`
+}
+
+func (r *DescribeOverviewResourceQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewResourceQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResourceGroupNewRequestParams struct {
 	// 查询类型 网络结构-vpc，业务识别-resource ，资源标签-tag
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
@@ -10802,6 +10865,134 @@ func (r *DescribeVpcFwGroupSwitchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVpcFwIpStatRequestParams struct {
+	// <p>每页条数</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移值</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>防火墙组ID</p>
+	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
+
+	// <p>防火墙的实例id</p>
+	FwInsId *string `json:"FwInsId,omitnil,omitempty" name:"FwInsId"`
+
+	// <p>选择的时间区间 1:1小时内，2: 24 小时 ，3：7天， 4：1个月</p>
+	TimeType *int64 `json:"TimeType,omitnil,omitempty" name:"TimeType"`
+
+	// <p>过滤条件组合</p>
+	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>检索的起始时间，可不传</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>检索的截止时间，可不传</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序所用到的字段</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeVpcFwIpStatRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>每页条数</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移值</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>防火墙组ID</p>
+	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
+
+	// <p>防火墙的实例id</p>
+	FwInsId *string `json:"FwInsId,omitnil,omitempty" name:"FwInsId"`
+
+	// <p>选择的时间区间 1:1小时内，2: 24 小时 ，3：7天， 4：1个月</p>
+	TimeType *int64 `json:"TimeType,omitnil,omitempty" name:"TimeType"`
+
+	// <p>过滤条件组合</p>
+	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>检索的起始时间，可不传</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>检索的截止时间，可不传</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序所用到的字段</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeVpcFwIpStatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVpcFwIpStatRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "FwGroupId")
+	delete(f, "FwInsId")
+	delete(f, "TimeType")
+	delete(f, "Filters")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpcFwIpStatRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVpcFwIpStatResponseParams struct {
+	// <p>单台cvm峰值带宽统计列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*FwGroupIpFlowStat `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>总行数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>异步查询状态，1查询执行中，0查询已结束</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVpcFwIpStatResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVpcFwIpStatResponseParams `json:"Response"`
+}
+
+func (r *DescribeVpcFwIpStatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVpcFwIpStatResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DisposalSuggestionItem struct {
 	// 处置动作
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
@@ -11477,6 +11668,48 @@ type FwGroupIdName struct {
 	// 防火墙(组)名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwGroupName *string `json:"FwGroupName,omitnil,omitempty" name:"FwGroupName"`
+}
+
+type FwGroupIpFlowStat struct {
+	// IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// VPCID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// VPC 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
+
+	// 峰值流量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowMax *int64 `json:"FlowMax,omitnil,omitempty" name:"FlowMax"`
+
+	// 均值带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowAvg *float64 `json:"FlowAvg,omitnil,omitempty" name:"FlowAvg"`
+
+	// 限速状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcRuleStatus *int64 `json:"TcRuleStatus,omitnil,omitempty" name:"TcRuleStatus"`
+
+	// 防火墙ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FwInsId *string `json:"FwInsId,omitnil,omitempty" name:"FwInsId"`
+
+	// 0 IPV4 , 1 IPV6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
 type FwGroupSwitch struct {
@@ -15210,6 +15443,373 @@ type OperatorFilter struct {
 	OperatorType *uint64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
 }
 
+type OverviewBlockListQuota struct {
+	// <p>封禁列表总配额数量。</p>
+	TotalCnt *int64 `json:"TotalCnt,omitnil,omitempty" name:"TotalCnt"`
+
+	// <p>封禁列表已使用数量。</p>
+	UsedCnt *int64 `json:"UsedCnt,omitnil,omitempty" name:"UsedCnt"`
+
+	// <p>入站方向已使用的封禁列表记录。</p>
+	InUsedCnt *int64 `json:"InUsedCnt,omitnil,omitempty" name:"InUsedCnt"`
+
+	// <p>出方向封禁列表已使用数量。</p>
+	OutUsedCnt *int64 `json:"OutUsedCnt,omitnil,omitempty" name:"OutUsedCnt"`
+}
+
+type OverviewBlockListQuotaDetail struct {
+	// <p>封禁列表总配额数量。</p>
+	TotalCnt *int64 `json:"TotalCnt,omitnil,omitempty" name:"TotalCnt"`
+
+	// <p>封禁列表已使用数量。</p>
+	UsedCnt *int64 `json:"UsedCnt,omitnil,omitempty" name:"UsedCnt"`
+
+	// <p>封禁列表剩余配额数量。</p>
+	RemainCnt *int64 `json:"RemainCnt,omitnil,omitempty" name:"RemainCnt"`
+
+	// <p>基础配额总数量。</p>
+	BaseTotalCnt *int64 `json:"BaseTotalCnt,omitnil,omitempty" name:"BaseTotalCnt"`
+
+	// <p>基础配额已使用数量。</p>
+	BaseUsedCnt *int64 `json:"BaseUsedCnt,omitnil,omitempty" name:"BaseUsedCnt"`
+
+	// <p>基础配额剩余数量。</p>
+	BaseRemainCnt *int64 `json:"BaseRemainCnt,omitnil,omitempty" name:"BaseRemainCnt"`
+
+	// <p>扩容配额总数量。</p>
+	ExtensionTotalCnt *int64 `json:"ExtensionTotalCnt,omitnil,omitempty" name:"ExtensionTotalCnt"`
+
+	// <p>扩容配额已使用数量。</p>
+	ExtensionUsedCnt *int64 `json:"ExtensionUsedCnt,omitnil,omitempty" name:"ExtensionUsedCnt"`
+
+	// <p>扩容配额剩余数量。</p>
+	ExtensionRemainCnt *int64 `json:"ExtensionRemainCnt,omitnil,omitempty" name:"ExtensionRemainCnt"`
+}
+
+type OverviewCommonRuleQuotaDetail struct {
+	// <p>允许使用的规则总数。</p>
+	AllowedNum *int64 `json:"AllowedNum,omitnil,omitempty" name:"AllowedNum"`
+
+	// <p>已使用规则数量。</p>
+	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
+
+	// <p>剩余规则配额数量。</p>
+	RemainQuota *int64 `json:"RemainQuota,omitnil,omitempty" name:"RemainQuota"`
+
+	// <p>剩余扩容规则数量。</p>
+	RemainExtensionNum *int64 `json:"RemainExtensionNum,omitnil,omitempty" name:"RemainExtensionNum"`
+
+	// <p>入方向规则总数。</p>
+	InTotal *int64 `json:"InTotal,omitnil,omitempty" name:"InTotal"`
+
+	// <p>入方向启用规则数。</p>
+	InEnableNum *int64 `json:"InEnableNum,omitnil,omitempty" name:"InEnableNum"`
+
+	// <p>出方向规则总数。</p>
+	OutTotal *int64 `json:"OutTotal,omitnil,omitempty" name:"OutTotal"`
+
+	// <p>出方向启用规则数。</p>
+	OutEnableNum *int64 `json:"OutEnableNum,omitnil,omitempty" name:"OutEnableNum"`
+}
+
+type OverviewEastWestDetail struct {
+	// <p>东西向总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+	TotalMbps *int64 `json:"TotalMbps,omitnil,omitempty" name:"TotalMbps"`
+
+	// <p>当前已使用流量，单位为 bps。</p><p>单位：bps</p>
+	UsedBps *int64 `json:"UsedBps,omitnil,omitempty" name:"UsedBps"`
+
+	// <p>当前带宽使用率。</p><p>单位：%</p>
+	UsagePercent *float64 `json:"UsagePercent,omitnil,omitempty" name:"UsagePercent"`
+
+	// <p>已分配并使用的带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+	AllocatedBandwidthUsedMbps *int64 `json:"AllocatedBandwidthUsedMbps,omitnil,omitempty" name:"AllocatedBandwidthUsedMbps"`
+
+	// <p>当前仍可使用带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+	CanUsedBandwidthMbps *int64 `json:"CanUsedBandwidthMbps,omitnil,omitempty" name:"CanUsedBandwidthMbps"`
+
+	// <p>集群模式带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+	ClusterModeWidthMbps *int64 `json:"ClusterModeWidthMbps,omitnil,omitempty" name:"ClusterModeWidthMbps"`
+
+	// <p>主备模式带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+	MasterSlaveModeWidthMbps *int64 `json:"MasterSlaveModeWidthMbps,omitnil,omitempty" name:"MasterSlaveModeWidthMbps"`
+
+	// <p>同地域防火墙实例 ID。</p>
+	SameRegionFwInsId *string `json:"SameRegionFwInsId,omitnil,omitempty" name:"SameRegionFwInsId"`
+
+	// <p>同地域防火墙实例名称。</p>
+	SameRegionFwInsName *string `json:"SameRegionFwInsName,omitnil,omitempty" name:"SameRegionFwInsName"`
+
+	// <p>同地域防火墙实例峰值流量，单位为 bps。</p><p>单位：bps</p>
+	SameRegionMaxFlowBps *int64 `json:"SameRegionMaxFlowBps,omitnil,omitempty" name:"SameRegionMaxFlowBps"`
+
+	// <p>跨地域防火墙实例 ID。</p>
+	DiffRegionFwInsId *string `json:"DiffRegionFwInsId,omitnil,omitempty" name:"DiffRegionFwInsId"`
+
+	// <p>跨地域防火墙实例名称。</p>
+	DiffRegionFwInsName *string `json:"DiffRegionFwInsName,omitnil,omitempty" name:"DiffRegionFwInsName"`
+
+	// <p>跨地域防火墙实例峰值流量，单位为 bps。</p><p>单位：bps</p>
+	DiffRegionMaxFlowBps *int64 `json:"DiffRegionMaxFlowBps,omitnil,omitempty" name:"DiffRegionMaxFlowBps"`
+
+	// <p>防火墙实例组 ID。</p>
+	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
+
+	// <p>防火墙实例组名称。</p>
+	FwGroupName *string `json:"FwGroupName,omitnil,omitempty" name:"FwGroupName"`
+
+	// <p>防火墙实例组峰值流量，单位为 bps。</p><p>单位：bps</p>
+	FwGroupMaxFlowBps *int64 `json:"FwGroupMaxFlowBps,omitnil,omitempty" name:"FwGroupMaxFlowBps"`
+
+	// <p>防火墙实例 ID。</p>
+	FwInsId *string `json:"FwInsId,omitnil,omitempty" name:"FwInsId"`
+
+	// <p>防火墙实例名称。</p>
+	FwInsName *string `json:"FwInsName,omitnil,omitempty" name:"FwInsName"`
+
+	// <p>防火墙实例峰值流量，单位为 bps。</p><p>单位：bps</p>
+	FwInsMaxFlowBps *int64 `json:"FwInsMaxFlowBps,omitnil,omitempty" name:"FwInsMaxFlowBps"`
+
+	// <p>集群 VPC 峰值流量，单位为 bps。</p><p>单位：bps</p>
+	ClusterVpcMaxFlowBps *int64 `json:"ClusterVpcMaxFlowBps,omitnil,omitempty" name:"ClusterVpcMaxFlowBps"`
+}
+
+type OverviewLogStorageDetail struct {
+	// <p>日志已使用存储容量，单位为 Byte。</p><p>单位：Byte</p>
+	UsedBytes *int64 `json:"UsedBytes,omitnil,omitempty" name:"UsedBytes"`
+
+	// <p>日志总存储容量，单位为 Byte。</p><p>单位：Byte</p>
+	TotalBytes *int64 `json:"TotalBytes,omitnil,omitempty" name:"TotalBytes"`
+
+	// <p>日志保留天数。</p><p>单位：天</p>
+	StorageDay *int64 `json:"StorageDay,omitnil,omitempty" name:"StorageDay"`
+
+	// <p>NDR 日志保留天数。</p><p>单位：天</p>
+	NDRStorageDay *int64 `json:"NDRStorageDay,omitnil,omitempty" name:"NDRStorageDay"`
+
+	// <p>访问控制日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+	AclSize *int64 `json:"AclSize,omitnil,omitempty" name:"AclSize"`
+
+	// <p>入侵检测日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+	IdsSize *int64 `json:"IdsSize,omitnil,omitempty" name:"IdsSize"`
+
+	// <p>流量日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+	NetFlowSize *int64 `json:"NetFlowSize,omitnil,omitempty" name:"NetFlowSize"`
+
+	// <p>操作日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+	OperateSize *int64 `json:"OperateSize,omitnil,omitempty" name:"OperateSize"`
+
+	// <p>NDR 风险日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+	NDRRiskSize *int64 `json:"NDRRiskSize,omitnil,omitempty" name:"NDRRiskSize"`
+
+	// <p>NDR 流量日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+	NDRNetFlowSize *int64 `json:"NDRNetFlowSize,omitnil,omitempty" name:"NDRNetFlowSize"`
+
+	// <p>日志存储计费模式标识。</p>
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// <p>是否因欠费停止写入日志的状态标识。</p>
+	ArrearsStopWriting *int64 `json:"ArrearsStopWriting,omitnil,omitempty" name:"ArrearsStopWriting"`
+}
+
+type OverviewNDRDetail struct {
+	// <p>NDR 能力或服务状态标识。</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>NDR 总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+	TotalMbps *int64 `json:"TotalMbps,omitnil,omitempty" name:"TotalMbps"`
+
+	// <p>入方向峰值流量，单位为 bps。</p><p>单位：bps</p>
+	InMaxBps *int64 `json:"InMaxBps,omitnil,omitempty" name:"InMaxBps"`
+
+	// <p>出方向峰值流量，单位为 bps。</p><p>单位：bps</p>
+	OutMaxBps *int64 `json:"OutMaxBps,omitnil,omitempty" name:"OutMaxBps"`
+
+	// <p>总体峰值流量，单位为 bps。</p><p>单位：bps</p>
+	MaxFlowBps *int64 `json:"MaxFlowBps,omitnil,omitempty" name:"MaxFlowBps"`
+
+	// <p>当前流量使用率。</p><p>单位：%</p>
+	FlowPercent *float64 `json:"FlowPercent,omitnil,omitempty" name:"FlowPercent"`
+}
+
+type OverviewNorthSouthDetail struct {
+	// <p>南北向互联网总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+	InternetBandwidthTotalMbps *float64 `json:"InternetBandwidthTotalMbps,omitnil,omitempty" name:"InternetBandwidthTotalMbps"`
+
+	// <p>南北向网络峰值流量，单位为 bps。</p><p>单位：bps</p>
+	NetMaxFlowBps *float64 `json:"NetMaxFlowBps,omitnil,omitempty" name:"NetMaxFlowBps"`
+
+	// <p>串行接入总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+	SerialBandwidthTotalMbps *int64 `json:"SerialBandwidthTotalMbps,omitnil,omitempty" name:"SerialBandwidthTotalMbps"`
+
+	// <p>NAT 防火墙总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+	NatBandwidthTotalMbps *int64 `json:"NatBandwidthTotalMbps,omitnil,omitempty" name:"NatBandwidthTotalMbps"`
+
+	// <p>仅旁路接入带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+	BypassOnlyBandwidthMbps *int64 `json:"BypassOnlyBandwidthMbps,omitnil,omitempty" name:"BypassOnlyBandwidthMbps"`
+
+	// <p>未使用带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+	UnusedBandwidthMbps *int64 `json:"UnusedBandwidthMbps,omitnil,omitempty" name:"UnusedBandwidthMbps"`
+
+	// <p>当前仍可使用带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+	CanUsedBandwidthMbps *int64 `json:"CanUsedBandwidthMbps,omitnil,omitempty" name:"CanUsedBandwidthMbps"`
+
+	// <p>串行链路峰值流量最高的地域名称。</p>
+	MaxSerialRegion *string `json:"MaxSerialRegion,omitnil,omitempty" name:"MaxSerialRegion"`
+
+	// <p>峰值最高地域的入站流量峰值，单位为 bps。</p><p>单位：bps</p>
+	SerialRegionInFlowMax *int64 `json:"SerialRegionInFlowMax,omitnil,omitempty" name:"SerialRegionInFlowMax"`
+
+	// <p>峰值最高地域的出方向最大流量，单位为 bps。</p><p>单位：bps</p>
+	SerialRegionOutFlowMax *int64 `json:"SerialRegionOutFlowMax,omitnil,omitempty" name:"SerialRegionOutFlowMax"`
+}
+
+type OverviewQuotaDetail struct {
+	// <p>已使用公网 IP 数量。</p>
+	PublicIpUsed *int64 `json:"PublicIpUsed,omitnil,omitempty" name:"PublicIpUsed"`
+
+	// <p>公网 IP 总配额数量。</p>
+	PublicIpTotal *int64 `json:"PublicIpTotal,omitnil,omitempty" name:"PublicIpTotal"`
+
+	// <p>通用实例总配额数量。</p>
+	CommonInstanceTotal *int64 `json:"CommonInstanceTotal,omitnil,omitempty" name:"CommonInstanceTotal"`
+
+	// <p>通用实例剩余配额数量。</p>
+	CommonInstanceRemain *int64 `json:"CommonInstanceRemain,omitnil,omitempty" name:"CommonInstanceRemain"`
+
+	// <p>通用实例已使用数量。</p>
+	CommonInstanceUsed *int64 `json:"CommonInstanceUsed,omitnil,omitempty" name:"CommonInstanceUsed"`
+
+	// <p>访问控制规则已使用数量。</p>
+	AccessControlRuleUsed *int64 `json:"AccessControlRuleUsed,omitnil,omitempty" name:"AccessControlRuleUsed"`
+
+	// <p>访问控制规则总配额数量。</p>
+	AccessControlRuleTotal *int64 `json:"AccessControlRuleTotal,omitnil,omitempty" name:"AccessControlRuleTotal"`
+
+	// <p>已使用串行地域数量。</p>
+	SerialRegionUsed *int64 `json:"SerialRegionUsed,omitnil,omitempty" name:"SerialRegionUsed"`
+
+	// <p>已使用 NAT 防火墙实例数量。</p>
+	NatInstanceUsed *int64 `json:"NatInstanceUsed,omitnil,omitempty" name:"NatInstanceUsed"`
+
+	// <p>已使用 VPC 防火墙实例数量。</p>
+	VpcInstanceUsed *int64 `json:"VpcInstanceUsed,omitnil,omitempty" name:"VpcInstanceUsed"`
+
+	// <p>边界规则配额详情。</p>
+	BorderRuleQuota *OverviewCommonRuleQuotaDetail `json:"BorderRuleQuota,omitnil,omitempty" name:"BorderRuleQuota"`
+
+	// <p>NAT 规则配额详情。</p>
+	NatRuleQuota *OverviewCommonRuleQuotaDetail `json:"NatRuleQuota,omitnil,omitempty" name:"NatRuleQuota"`
+
+	// <p>VPC 规则配额详情。</p>
+	VpcRuleQuota *OverviewVpcRuleQuotaDetail `json:"VpcRuleQuota,omitnil,omitempty" name:"VpcRuleQuota"`
+
+	// <p>封禁列表配额统计信息。</p>
+	BlockListQuota *OverviewBlockListQuota `json:"BlockListQuota,omitnil,omitempty" name:"BlockListQuota"`
+
+	// <p>封禁 IP 总数量。</p>
+	BlockIpCount *int64 `json:"BlockIpCount,omitnil,omitempty" name:"BlockIpCount"`
+
+	// <p>已使用封禁 IP 数量。</p>
+	BlockIpUsed *int64 `json:"BlockIpUsed,omitnil,omitempty" name:"BlockIpUsed"`
+
+	// <p>封禁 IP 总配额数量。</p>
+	BlockIpTotal *int64 `json:"BlockIpTotal,omitnil,omitempty" name:"BlockIpTotal"`
+
+	// <p>封禁列表基础包与扩容包配额详情。</p>
+	BlockListQuotaDetail *OverviewBlockListQuotaDetail `json:"BlockListQuotaDetail,omitnil,omitempty" name:"BlockListQuotaDetail"`
+
+	// <p>安全组规则已使用数量。</p>
+	SgRuleQuotaUsed *int64 `json:"SgRuleQuotaUsed,omitnil,omitempty" name:"SgRuleQuotaUsed"`
+
+	// <p>安全组规则总配额数量。</p>
+	SgRuleQuotaTotal *int64 `json:"SgRuleQuotaTotal,omitnil,omitempty" name:"SgRuleQuotaTotal"`
+
+	// <p>总扩容资源已使用数量。</p>
+	TotalExtensionUsed *int64 `json:"TotalExtensionUsed,omitnil,omitempty" name:"TotalExtensionUsed"`
+
+	// <p>总扩容资源配额数量。</p>
+	TotalExtensionNum *int64 `json:"TotalExtensionNum,omitnil,omitempty" name:"TotalExtensionNum"`
+
+	// <p>地址模板已使用数量。</p>
+	AddressTemplateUsed *int64 `json:"AddressTemplateUsed,omitnil,omitempty" name:"AddressTemplateUsed"`
+
+	// <p>地址模板总配额数量。</p>
+	AddressTemplateTotal *int64 `json:"AddressTemplateTotal,omitnil,omitempty" name:"AddressTemplateTotal"`
+
+	// <p>蜜罐已使用数量。</p>
+	HoneyPotUsed *int64 `json:"HoneyPotUsed,omitnil,omitempty" name:"HoneyPotUsed"`
+
+	// <p>蜜罐总配额数量。</p>
+	HoneyPotTotal *int64 `json:"HoneyPotTotal,omitnil,omitempty" name:"HoneyPotTotal"`
+}
+
+type OverviewResourceQuotaDataLite struct {
+	// <p>资源与配额详情核心数据，包含南北向带宽、东西向带宽、NDR 带宽、资源配额和日志存储信息。</p>
+	Detail *OverviewResourceQuotaDetail `json:"Detail,omitnil,omitempty" name:"Detail"`
+
+	// <p>纯按量计费使用情况</p>
+	VolumeUsageDetail *VolumeUsageDetail `json:"VolumeUsageDetail,omitnil,omitempty" name:"VolumeUsageDetail"`
+}
+
+type OverviewResourceQuotaDetail struct {
+	// <p>南北向带宽与流量详情数据。</p>
+	NorthSouthDetail *OverviewNorthSouthDetail `json:"NorthSouthDetail,omitnil,omitempty" name:"NorthSouthDetail"`
+
+	// <p>东西向带宽与流量详情数据。</p>
+	EastWestDetail *OverviewEastWestDetail `json:"EastWestDetail,omitnil,omitempty" name:"EastWestDetail"`
+
+	// <p>NDR 带宽与流量详情数据。</p>
+	NDRDetail *OverviewNDRDetail `json:"NDRDetail,omitnil,omitempty" name:"NDRDetail"`
+
+	// <p>账号下资源、实例、规则和扩容配额详情数据。</p>
+	QuotaDetail *OverviewQuotaDetail `json:"QuotaDetail,omitnil,omitempty" name:"QuotaDetail"`
+
+	// <p>日志存储使用量、保留天数和各类日志容量详情数据。</p>
+	LogStorageDetail *OverviewLogStorageDetail `json:"LogStorageDetail,omitnil,omitempty" name:"LogStorageDetail"`
+}
+
+type OverviewVpcRuleQuotaDetail struct {
+	// <p>允许使用的规则总数。</p>
+	AllowedNum *int64 `json:"AllowedNum,omitnil,omitempty" name:"AllowedNum"`
+
+	// <p>已使用规则数量。</p>
+	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
+
+	// <p>剩余规则配额数量。</p>
+	RemainQuota *int64 `json:"RemainQuota,omitnil,omitempty" name:"RemainQuota"`
+
+	// <p>剩余扩容规则数量。</p>
+	RemainExtensionNum *int64 `json:"RemainExtensionNum,omitnil,omitempty" name:"RemainExtensionNum"`
+
+	// <p>全局规则总数。</p>
+	GlobalRuleNum *int64 `json:"GlobalRuleNum,omitnil,omitempty" name:"GlobalRuleNum"`
+
+	// <p>当前已启用的全局规则条目。</p>
+	GlobalEnableRuleNum *int64 `json:"GlobalEnableRuleNum,omitnil,omitempty" name:"GlobalEnableRuleNum"`
+
+	// <p>边界规则总数。</p>
+	EdgeRuleNum *int64 `json:"EdgeRuleNum,omitnil,omitempty" name:"EdgeRuleNum"`
+
+	// <p>边界启用规则数。</p>
+	EdgeEnableRuleNum *int64 `json:"EdgeEnableRuleNum,omitnil,omitempty" name:"EdgeEnableRuleNum"`
+
+	// <p>IPv4 规则总数。</p>
+	V4RuleTotal *int64 `json:"V4RuleTotal,omitnil,omitempty" name:"V4RuleTotal"`
+
+	// <p>当前已启用的 IPv4 规则条目。</p>
+	V4EnableRuleTotal *int64 `json:"V4EnableRuleTotal,omitnil,omitempty" name:"V4EnableRuleTotal"`
+
+	// <p>IPv6 规则总数。</p>
+	V6RuleTotal *int64 `json:"V6RuleTotal,omitnil,omitempty" name:"V6RuleTotal"`
+
+	// <p>当前已启用的 IPv6 规则条目。</p>
+	V6EnableRuleTotal *int64 `json:"V6EnableRuleTotal,omitnil,omitempty" name:"V6EnableRuleTotal"`
+
+	// <p>VPC 防火墙开关状态标识。</p>
+	IsSwitchEnable *int64 `json:"IsSwitchEnable,omitnil,omitempty" name:"IsSwitchEnable"`
+}
+
 type PolicyRoutePreCheckReport struct {
 	// 本次编排生成的下一跳数量
 	NextHopCount *int64 `json:"NextHopCount,omitnil,omitempty" name:"NextHopCount"`
@@ -16904,6 +17504,23 @@ func (r *UpdateClusterVpcFwResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateClusterVpcFwResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VolumeUsageDetail struct {
+	// <p>防护IP数</p><p>默认值：0</p>
+	PublicIpUsed *int64 `json:"PublicIpUsed,omitnil,omitempty" name:"PublicIpUsed"`
+
+	// <p>防护实例数</p><p>默认值：0</p>
+	InstanceUsed *int64 `json:"InstanceUsed,omitnil,omitempty" name:"InstanceUsed"`
+
+	// <p>统计日期</p>
+	StatDate *string `json:"StatDate,omitnil,omitempty" name:"StatDate"`
+
+	// <p>处理流量</p>
+	TodayTrafficGB *float64 `json:"TodayTrafficGB,omitnil,omitempty" name:"TodayTrafficGB"`
+
+	// <p>防护天数</p>
+	ProtectDays *int64 `json:"ProtectDays,omitnil,omitempty" name:"ProtectDays"`
 }
 
 type VpcDnsInfo struct {

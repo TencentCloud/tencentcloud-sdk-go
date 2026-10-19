@@ -170,14 +170,17 @@ type CkafkaParams struct {
 }
 
 type CkafkaTargetParams struct {
-	// 要投递到的ckafka topic
+	// <p>要投递到的ckafka topic</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 重试策略
+	// <p>重试策略</p>
 	RetryPolicy *RetryPolicy `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
 
-	// 事件投递kafka时的协议格式；目前只支持两种格式：1.CloudEvent(完整的cloudevent消息协议)2.CloudEventDataKey(cloudevent协议中的data字段内容)
+	// <p>事件投递kafka时的协议格式；目前只支持两种格式：1.CloudEvent(完整的cloudevent消息协议)2.CloudEventDataKey(cloudevent协议中的data字段内容)</p>
 	EventDeliveryFormat *string `json:"EventDeliveryFormat,omitnil,omitempty" name:"EventDeliveryFormat"`
+
+	// <p>事件顶层Time参数投递格式</p><p>枚举值：</p><ul><li>RFC3339： 将时间戳转换成 YYYY-MM-DDTHH:mm:ssZ 格式</li></ul>
+	TimeFormat *string `json:"TimeFormat,omitnil,omitempty" name:"TimeFormat"`
 }
 
 type Connection struct {

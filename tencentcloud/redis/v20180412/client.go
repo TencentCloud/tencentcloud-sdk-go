@@ -1753,6 +1753,64 @@ func (c *Client) DescribeBackupDownloadRestrictionWithContext(ctx context.Contex
     return
 }
 
+func NewDescribeBackupEncryptConfigRequest() (request *DescribeBackupEncryptConfigRequest) {
+    request = &DescribeBackupEncryptConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeBackupEncryptConfig")
+    
+    
+    return
+}
+
+func NewDescribeBackupEncryptConfigResponse() (response *DescribeBackupEncryptConfigResponse) {
+    response = &DescribeBackupEncryptConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBackupEncryptConfig
+// 本接口（DescribeBackupEncryptConfig）用于查询实例 备份加密相关信息，包括开启状态、加密密钥等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeBackupEncryptConfig(request *DescribeBackupEncryptConfigRequest) (response *DescribeBackupEncryptConfigResponse, err error) {
+    return c.DescribeBackupEncryptConfigWithContext(context.Background(), request)
+}
+
+// DescribeBackupEncryptConfig
+// 本接口（DescribeBackupEncryptConfig）用于查询实例 备份加密相关信息，包括开启状态、加密密钥等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeBackupEncryptConfigWithContext(ctx context.Context, request *DescribeBackupEncryptConfigRequest) (response *DescribeBackupEncryptConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupEncryptConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "redis", APIVersion, "DescribeBackupEncryptConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupEncryptConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupEncryptConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupUrlRequest() (request *DescribeBackupUrlRequest) {
     request = &DescribeBackupUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5503,6 +5561,64 @@ func (c *Client) ModifyBackupDownloadRestrictionWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewModifyBackupDownloadRestrictionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBackupEncryptRequest() (request *ModifyBackupEncryptRequest) {
+    request = &ModifyBackupEncryptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyBackupEncrypt")
+    
+    
+    return
+}
+
+func NewModifyBackupEncryptResponse() (response *ModifyBackupEncryptResponse) {
+    response = &ModifyBackupEncryptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBackupEncrypt
+// 本接口（ModifyBackupEncrypt）用于开启 /关闭备份加密，修改备份密钥功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) ModifyBackupEncrypt(request *ModifyBackupEncryptRequest) (response *ModifyBackupEncryptResponse, err error) {
+    return c.ModifyBackupEncryptWithContext(context.Background(), request)
+}
+
+// ModifyBackupEncrypt
+// 本接口（ModifyBackupEncrypt）用于开启 /关闭备份加密，修改备份密钥功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) ModifyBackupEncryptWithContext(ctx context.Context, request *ModifyBackupEncryptRequest) (response *ModifyBackupEncryptResponse, err error) {
+    if request == nil {
+        request = NewModifyBackupEncryptRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "redis", APIVersion, "ModifyBackupEncrypt")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBackupEncrypt require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBackupEncryptResponse()
     err = c.Send(request, response)
     return
 }

@@ -721,6 +721,62 @@ func (c *Client) CreateNotebookWithContext(ctx context.Context, request *CreateN
     return
 }
 
+func NewCreateNotebookImageRequest() (request *CreateNotebookImageRequest) {
+    request = &CreateNotebookImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreateNotebookImage")
+    
+    
+    return
+}
+
+func NewCreateNotebookImageResponse() (response *CreateNotebookImageResponse) {
+    response = &CreateNotebookImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateNotebookImage
+// 保存镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEIMAGEFAILED = "FailedOperation.CreateImageFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_NOTSUPPORTEDTOCREATEIMAGE = "FailedOperation.NotSupportedToCreateImage"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateNotebookImage(request *CreateNotebookImageRequest) (response *CreateNotebookImageResponse, err error) {
+    return c.CreateNotebookImageWithContext(context.Background(), request)
+}
+
+// CreateNotebookImage
+// 保存镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEIMAGEFAILED = "FailedOperation.CreateImageFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_NOTSUPPORTEDTOCREATEIMAGE = "FailedOperation.NotSupportedToCreateImage"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateNotebookImageWithContext(ctx context.Context, request *CreateNotebookImageRequest) (response *CreateNotebookImageResponse, err error) {
+    if request == nil {
+        request = NewCreateNotebookImageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateNotebookImage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNotebookImage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNotebookImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePresignedNotebookUrlRequest() (request *CreatePresignedNotebookUrlRequest) {
     request = &CreatePresignedNotebookUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},

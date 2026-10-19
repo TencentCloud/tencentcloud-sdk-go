@@ -822,6 +822,84 @@ func (r *AttachPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AuditPermissionApplyOrderRequestParams struct {
+	// <p>空间 ID</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>申请单 ID</p>
+	ApplyId *string `json:"ApplyId,omitnil,omitempty" name:"ApplyId"`
+
+	// <p>审批结果</p><p>枚举值：</p><ul><li>Approve： 通过</li><li>Reject： 拒绝</li></ul>
+	AuditResult *string `json:"AuditResult,omitnil,omitempty" name:"AuditResult"`
+
+	// <p>审批意见</p>
+	AuditOpinion *string `json:"AuditOpinion,omitnil,omitempty" name:"AuditOpinion"`
+}
+
+type AuditPermissionApplyOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>空间 ID</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>申请单 ID</p>
+	ApplyId *string `json:"ApplyId,omitnil,omitempty" name:"ApplyId"`
+
+	// <p>审批结果</p><p>枚举值：</p><ul><li>Approve： 通过</li><li>Reject： 拒绝</li></ul>
+	AuditResult *string `json:"AuditResult,omitnil,omitempty" name:"AuditResult"`
+
+	// <p>审批意见</p>
+	AuditOpinion *string `json:"AuditOpinion,omitnil,omitempty" name:"AuditOpinion"`
+}
+
+func (r *AuditPermissionApplyOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AuditPermissionApplyOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ApplyId")
+	delete(f, "AuditResult")
+	delete(f, "AuditOpinion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AuditPermissionApplyOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AuditPermissionApplyOrderResponseParams struct {
+	// <p>同步任务列表</p>
+	Tasks []*TaskInfo `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AuditPermissionApplyOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *AuditPermissionApplyOrderResponseParams `json:"Response"`
+}
+
+func (r *AuditPermissionApplyOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AuditPermissionApplyOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AuthNode struct {
 	// 互信主体关系ID
 	RelationId *int64 `json:"RelationId,omitnil,omitempty" name:"RelationId"`

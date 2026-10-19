@@ -1740,6 +1740,57 @@ func (r *DescribeDedicatedSupportedZonesResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type DescribeEdgeHostVmRequestParams struct {
+
+}
+
+type DescribeEdgeHostVmRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeEdgeHostVmRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdgeHostVmRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEdgeHostVmRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEdgeHostVmResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEdgeHostVmResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEdgeHostVmResponseParams `json:"Response"`
+}
+
+func (r *DescribeEdgeHostVmResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdgeHostVmResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSitesDetailRequestParams struct {
 	// 按照站点id过滤
 	SiteIds []*string `json:"SiteIds,omitnil,omitempty" name:"SiteIds"`

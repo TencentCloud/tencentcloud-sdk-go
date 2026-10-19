@@ -6341,6 +6341,62 @@ func (c *Client) DescribeOfflineExportTemporaryCredentialsWithContext(ctx contex
     return
 }
 
+func NewDescribeOverviewResourceQuotaRequest() (request *DescribeOverviewResourceQuotaRequest) {
+    request = &DescribeOverviewResourceQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeOverviewResourceQuota")
+    
+    
+    return
+}
+
+func NewDescribeOverviewResourceQuotaResponse() (response *DescribeOverviewResourceQuotaResponse) {
+    response = &DescribeOverviewResourceQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOverviewResourceQuota
+// 查询云防火墙概览页资源与配额详情信息，返回带宽配额、实例与规则配额、日志存储信息及相关能力标识。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeOverviewResourceQuota(request *DescribeOverviewResourceQuotaRequest) (response *DescribeOverviewResourceQuotaResponse, err error) {
+    return c.DescribeOverviewResourceQuotaWithContext(context.Background(), request)
+}
+
+// DescribeOverviewResourceQuota
+// 查询云防火墙概览页资源与配额详情信息，返回带宽配额、实例与规则配额、日志存储信息及相关能力标识。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeOverviewResourceQuotaWithContext(ctx context.Context, request *DescribeOverviewResourceQuotaRequest) (response *DescribeOverviewResourceQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeOverviewResourceQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeOverviewResourceQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOverviewResourceQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOverviewResourceQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourceGroupRequest() (request *DescribeResourceGroupRequest) {
     request = &DescribeResourceGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7471,6 +7527,90 @@ func (c *Client) DescribeVpcFwGroupSwitchWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeVpcFwGroupSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpcFwIpStatRequest() (request *DescribeVpcFwIpStatRequest) {
+    request = &DescribeVpcFwIpStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeVpcFwIpStat")
+    
+    
+    return
+}
+
+func NewDescribeVpcFwIpStatResponse() (response *DescribeVpcFwIpStatResponse) {
+    response = &DescribeVpcFwIpStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVpcFwIpStat
+// 查询VPC防火墙下，单IP粒度的流量统计
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVpcFwIpStat(request *DescribeVpcFwIpStatRequest) (response *DescribeVpcFwIpStatResponse, err error) {
+    return c.DescribeVpcFwIpStatWithContext(context.Background(), request)
+}
+
+// DescribeVpcFwIpStat
+// 查询VPC防火墙下，单IP粒度的流量统计
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVpcFwIpStatWithContext(ctx context.Context, request *DescribeVpcFwIpStatRequest) (response *DescribeVpcFwIpStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcFwIpStatRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeVpcFwIpStat")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpcFwIpStat require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVpcFwIpStatResponse()
     err = c.Send(request, response)
     return
 }

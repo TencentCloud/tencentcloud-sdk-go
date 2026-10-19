@@ -2338,6 +2338,72 @@ func (r *DescribeBackupDownloadRestrictionResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type DescribeBackupEncryptConfigRequestParams struct {
+	// <p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis/instance/list">Redis控制台</a>在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeBackupEncryptConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis/instance/list">Redis控制台</a>在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeBackupEncryptConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupEncryptConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupEncryptConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupEncryptConfigResponseParams struct {
+	// <p>备份是否加密</p><p>枚举值：</p><ul><li>true： 加密</li><li>false： 不加密</li></ul>
+	BackupEncrypt *bool `json:"BackupEncrypt,omitnil,omitempty" name:"BackupEncrypt"`
+
+	// <p>加密密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云托管（默认）</li><li>1： 用户自定义 KMS 密钥</li></ul>
+	EncryptKeyType *int64 `json:"EncryptKeyType,omitnil,omitempty" name:"EncryptKeyType"`
+
+	// <p>KMS的密钥ID。</p><p>参数格式：xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx</p>
+	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
+
+	// <p>KMS地域信息。</p><p>参数格式：ap-xxxx</p>
+	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupEncryptConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupEncryptConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupEncryptConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupEncryptConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBackupUrlRequestParams struct {
 	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -8625,6 +8691,88 @@ func (r *ModifyBackupDownloadRestrictionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyBackupDownloadRestrictionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupEncryptRequestParams struct {
+	// <p>实例 ID，请登录Redis控制台在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否开启备份加密。</p><p>默认值：false</p>
+	BackupEncrypt *bool `json:"BackupEncrypt,omitnil,omitempty" name:"BackupEncrypt"`
+
+	// <p>加密密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云托管（默认）</li><li>1： 用户自定义 KMS 密钥</li></ul><p>默认值：0</p>
+	EncryptKeyType *int64 `json:"EncryptKeyType,omitnil,omitempty" name:"EncryptKeyType"`
+
+	// <p>KMS的密钥ID。</p><p>参数格式：xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx</p>
+	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
+
+	// <p>地域信息。</p><p>参数格式：ap-xxxx</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/573/34406#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">KMS支持的地域列表</a></p>
+	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
+}
+
+type ModifyBackupEncryptRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例 ID，请登录Redis控制台在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否开启备份加密。</p><p>默认值：false</p>
+	BackupEncrypt *bool `json:"BackupEncrypt,omitnil,omitempty" name:"BackupEncrypt"`
+
+	// <p>加密密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云托管（默认）</li><li>1： 用户自定义 KMS 密钥</li></ul><p>默认值：0</p>
+	EncryptKeyType *int64 `json:"EncryptKeyType,omitnil,omitempty" name:"EncryptKeyType"`
+
+	// <p>KMS的密钥ID。</p><p>参数格式：xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx</p>
+	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
+
+	// <p>地域信息。</p><p>参数格式：ap-xxxx</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/573/34406#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">KMS支持的地域列表</a></p>
+	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
+}
+
+func (r *ModifyBackupEncryptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupEncryptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BackupEncrypt")
+	delete(f, "EncryptKeyType")
+	delete(f, "KmsKeyId")
+	delete(f, "KmsRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupEncryptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupEncryptResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBackupEncryptResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBackupEncryptResponseParams `json:"Response"`
+}
+
+func (r *ModifyBackupEncryptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupEncryptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -272,8 +272,14 @@ const (
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
+	// 当前域名下的内容规则数量已达上限
+	LIMITEXCEEDED_CONTENTRULEERR = "LimitExceeded.ContentRuleErr"
+
 	// LimitExceeded.Export
 	LIMITEXCEEDED_EXPORT = "LimitExceeded.Export"
+
+	// 当前域名下的算力消耗规则数量已达上限
+	LIMITEXCEEDED_LIMITRULEERR = "LimitExceeded.LimitRuleErr"
 
 	// LimitExceeded.LogSearch
 	LIMITEXCEEDED_LOGSEARCH = "LimitExceeded.LogSearch"

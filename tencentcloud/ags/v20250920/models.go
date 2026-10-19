@@ -435,6 +435,14 @@ func (r *CancelRegistryRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Capabilities struct {
+	// <p>要添加的capabilities</p><p>取值参考：[&quot;SYS_ADMIN&quot;]</p>
+	Add []*string `json:"Add,omitnil,omitempty" name:"Add"`
+
+	// <p>要移除的capabilities</p><p>取值参考：[&quot;ALL&quot;]</p>
+	Drop []*string `json:"Drop,omitnil,omitempty" name:"Drop"`
+}
+
 type CfsStorageSource struct {
 	// CFS资源ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
@@ -1673,6 +1681,9 @@ type CustomConfiguration struct {
 
 	// <p>沙箱 DNS 配置</p>
 	DNSConfig *DNSConfig `json:"DNSConfig,omitnil,omitempty" name:"DNSConfig"`
+
+	// <p>沙箱安全上下文</p>
+	SecurityContext *SecurityContext `json:"SecurityContext,omitnil,omitempty" name:"SecurityContext"`
 }
 
 type CustomConfigurationDetail struct {
@@ -1705,6 +1716,9 @@ type CustomConfigurationDetail struct {
 
 	// <p>沙箱 DNS 配置</p>
 	DNSConfig *DNSConfig `json:"DNSConfig,omitnil,omitempty" name:"DNSConfig"`
+
+	// <p>沙箱安全上下文</p>
+	SecurityContext *SecurityContext `json:"SecurityContext,omitnil,omitempty" name:"SecurityContext"`
 }
 
 type DNSConfig struct {
@@ -1823,6 +1837,81 @@ func (r *DeleteDeploymentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDeploymentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePreCacheImageRequestParams struct {
+	// <p>镜像地址</p>
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// <p>镜像仓库配置</p>
+	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
+
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// <p>镜像预热ID</p>
+	PreCacheImageId *string `json:"PreCacheImageId,omitnil,omitempty" name:"PreCacheImageId"`
+}
+
+type DeletePreCacheImageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>镜像地址</p>
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// <p>镜像仓库配置</p>
+	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
+
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// <p>镜像预热ID</p>
+	PreCacheImageId *string `json:"PreCacheImageId,omitnil,omitempty" name:"PreCacheImageId"`
+}
+
+func (r *DeletePreCacheImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePreCacheImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Image")
+	delete(f, "ImageDigest")
+	delete(f, "ImageRegistryType")
+	delete(f, "PreCacheImageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePreCacheImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePreCacheImageResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePreCacheImageResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePreCacheImageResponseParams `json:"Response"`
+}
+
+func (r *DeletePreCacheImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePreCacheImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2525,6 +2614,90 @@ func (r *DescribeEventsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePreCacheImageListRequestParams struct {
+	// <p>查询过滤条件。支持 Image, ImageDigest, ImageRegistryType, Status, SourceType；不同 Filter 之间为 AND，同一 Filter 的 Values 之间为 OR。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>返回数据列数</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>默认 false；仅控制是否返回精确总数</p>
+	NeedTotalCount *bool `json:"NeedTotalCount,omitnil,omitempty" name:"NeedTotalCount"`
+}
+
+type DescribePreCacheImageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>查询过滤条件。支持 Image, ImageDigest, ImageRegistryType, Status, SourceType；不同 Filter 之间为 AND，同一 Filter 的 Values 之间为 OR。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>返回数据列数</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>默认 false；仅控制是否返回精确总数</p>
+	NeedTotalCount *bool `json:"NeedTotalCount,omitnil,omitempty" name:"NeedTotalCount"`
+}
+
+func (r *DescribePreCacheImageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePreCacheImageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "MaxResults")
+	delete(f, "NextToken")
+	delete(f, "NeedTotalCount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePreCacheImageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePreCacheImageListResponseParams struct {
+	// <p>镜像预热总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>镜像预热列表</p>
+	PreCacheImageList []*PreCacheImage `json:"PreCacheImageList,omitnil,omitempty" name:"PreCacheImageList"`
+
+	// <p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePreCacheImageListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePreCacheImageListResponseParams `json:"Response"`
+}
+
+func (r *DescribePreCacheImageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePreCacheImageListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4502,6 +4675,35 @@ type PortConfiguration struct {
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
+type PreCacheImage struct {
+	// <p>镜像地址</p>
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// <p>镜像 Digest</p>
+	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
+
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
+	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// <p>镜像预热状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>镜像预热创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>镜像预热ID</p>
+	PreCacheImageId *string `json:"PreCacheImageId,omitnil,omitempty" name:"PreCacheImageId"`
+
+	// <p>镜像预热来源</p><p>枚举值：</p><ul><li>AUTO： Sandbox Tool / Instance 自动预热</li><li>EXPLICIT： 手动预热</li><li>TCR_AUTO： TCR自动预热</li></ul>
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// <p>镜像预热存储大小</p><p>单位：Byte</p>
+	CachedImageSizeBytes *int64 `json:"CachedImageSizeBytes,omitnil,omitempty" name:"CachedImageSizeBytes"`
+
+	// <p>该预热镜像最近一次被沙箱实例使用时间</p>
+	LastUsedTime *string `json:"LastUsedTime,omitnil,omitempty" name:"LastUsedTime"`
+}
+
 // Predefined struct for user
 type PreviewRegistryRecordRequestParams struct {
 	// <p>父 Registry ID。</p>
@@ -4934,6 +5136,14 @@ type ScalingConfiguration struct {
 	MaxInstanceRequestConcurrency *int64 `json:"MaxInstanceRequestConcurrency,omitnil,omitempty" name:"MaxInstanceRequestConcurrency"`
 }
 
+type SecurityContext struct {
+	// <p>是否开启特权</p><p>默认值：true</p>
+	Privileged *bool `json:"Privileged,omitnil,omitempty" name:"Privileged"`
+
+	// <p>Capabilities 指的是可以添加到正在运行的容器中或从中移除的 POSIX capabilities。</p>
+	Capabilities *Capabilities `json:"Capabilities,omitnil,omitempty" name:"Capabilities"`
+}
+
 type SessionInfo struct {
 	// <p>会话 ID。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
@@ -5007,6 +5217,9 @@ type StartSandboxInstanceRequestParams struct {
 	// <p>待克隆的源沙箱 ID</p>
 	SourceInstanceId *string `json:"SourceInstanceId,omitnil,omitempty" name:"SourceInstanceId"`
 
+	// <p>待启动的沙箱快照 ID</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
 	// <p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
 	Timeout *string `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
@@ -5037,6 +5250,9 @@ type StartSandboxInstanceRequest struct {
 
 	// <p>待克隆的源沙箱 ID</p>
 	SourceInstanceId *string `json:"SourceInstanceId,omitnil,omitempty" name:"SourceInstanceId"`
+
+	// <p>待启动的沙箱快照 ID</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
 	// <p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
 	Timeout *string `json:"Timeout,omitnil,omitempty" name:"Timeout"`
@@ -5072,6 +5288,7 @@ func (r *StartSandboxInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ToolId")
 	delete(f, "ToolName")
 	delete(f, "SourceInstanceId")
+	delete(f, "SnapshotId")
 	delete(f, "Timeout")
 	delete(f, "ClientToken")
 	delete(f, "MountOptions")
@@ -5176,6 +5393,14 @@ type StorageMount struct {
 
 	// <p>存储挂载读写权限配置，默认为false</p>
 	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
+
+	// <p>Volume的引用</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Volume *VolumeRef `json:"Volume,omitnil,omitempty" name:"Volume"`
+
+	// <p>VolumeTemplate 的引用以及派生规则</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeTemplate *VolumeTemplateRef `json:"VolumeTemplate,omitnil,omitempty" name:"VolumeTemplate"`
 }
 
 type StorageSource struct {
@@ -5670,6 +5895,26 @@ type VPCConfig struct {
 
 	// <p>安全组ID列表</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+}
+
+type VolumeRef struct {
+	// Volume 名称；服务端在当前认证 AppId 下解析为稳定 VolumeId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// 稳定 Volume ID，格式 vol-xxxxxxxx
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
+}
+
+type VolumeTemplateRef struct {
+	// <p>VolumeTemplate 名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeTemplateName *string `json:"VolumeTemplateName,omitnil,omitempty" name:"VolumeTemplateName"`
+
+	// <p>复用键，可为字面量或 ${metadata.xxx}</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReuseKey *string `json:"ReuseKey,omitnil,omitempty" name:"ReuseKey"`
 }
 
 type WAAConfiguration struct {

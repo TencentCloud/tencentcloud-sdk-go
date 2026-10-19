@@ -984,6 +984,142 @@ func (r *AddUserDeviceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type BatchAddVideoSnapshotConfigChannelRequestParams struct {
+	// <p>截图配置Id</p>
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// <p>通道Id列表</p>
+	Channels []*string `json:"Channels,omitnil,omitempty" name:"Channels"`
+}
+
+type BatchAddVideoSnapshotConfigChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>截图配置Id</p>
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// <p>通道Id列表</p>
+	Channels []*string `json:"Channels,omitnil,omitempty" name:"Channels"`
+}
+
+func (r *BatchAddVideoSnapshotConfigChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchAddVideoSnapshotConfigChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	delete(f, "Channels")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchAddVideoSnapshotConfigChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchAddVideoSnapshotConfigChannelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchAddVideoSnapshotConfigChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchAddVideoSnapshotConfigChannelResponseParams `json:"Response"`
+}
+
+func (r *BatchAddVideoSnapshotConfigChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchAddVideoSnapshotConfigChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchAssignVLPlanChannelsRequestParams struct {
+	// <p>计划 ID</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
+
+	// <p>操作命令：1=关联，2=解绑</p>
+	Cmd *int64 `json:"Cmd,omitnil,omitempty" name:"Cmd"`
+
+	// <p>通道 ID 列表，最多 500 个；与 OrganizationIds 至少传一个（Cmd=1 时）</p>
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// <p>组织 ID 列表（仅 Cmd=1 时有效，Cmd=2 时不允许传入）；展开该组织下所有通道参与关联，与 ChannelIds 取并集去重</p>
+	OrganizationIds []*string `json:"OrganizationIds,omitnil,omitempty" name:"OrganizationIds"`
+}
+
+type BatchAssignVLPlanChannelsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>计划 ID</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
+
+	// <p>操作命令：1=关联，2=解绑</p>
+	Cmd *int64 `json:"Cmd,omitnil,omitempty" name:"Cmd"`
+
+	// <p>通道 ID 列表，最多 500 个；与 OrganizationIds 至少传一个（Cmd=1 时）</p>
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// <p>组织 ID 列表（仅 Cmd=1 时有效，Cmd=2 时不允许传入）；展开该组织下所有通道参与关联，与 ChannelIds 取并集去重</p>
+	OrganizationIds []*string `json:"OrganizationIds,omitnil,omitempty" name:"OrganizationIds"`
+}
+
+func (r *BatchAssignVLPlanChannelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchAssignVLPlanChannelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VLPlanId")
+	delete(f, "Cmd")
+	delete(f, "ChannelIds")
+	delete(f, "OrganizationIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchAssignVLPlanChannelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchAssignVLPlanChannelsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchAssignVLPlanChannelsResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchAssignVLPlanChannelsResponseParams `json:"Response"`
+}
+
+func (r *BatchAssignVLPlanChannelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchAssignVLPlanChannelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BatchDeleteVideoDownloadTaskRequestParams struct {
 	// 本地录像下载任务 ID 列表
 	DownloadTaskIds []*string `json:"DownloadTaskIds,omitnil,omitempty" name:"DownloadTaskIds"`
@@ -1034,6 +1170,145 @@ func (r *BatchDeleteVideoDownloadTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BatchDeleteVideoDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchGetVLPlanSourceFileURLRequestParams struct {
+	// <p>分析结果 ID 列表，最多 200 个</p>
+	VLPlanResultIds []*string `json:"VLPlanResultIds,omitnil,omitempty" name:"VLPlanResultIds"`
+
+	// <p>URL 有效期（秒），范围 [60, 86400]，默认 600</p>
+	Expire *int64 `json:"Expire,omitnil,omitempty" name:"Expire"`
+}
+
+type BatchGetVLPlanSourceFileURLRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分析结果 ID 列表，最多 200 个</p>
+	VLPlanResultIds []*string `json:"VLPlanResultIds,omitnil,omitempty" name:"VLPlanResultIds"`
+
+	// <p>URL 有效期（秒），范围 [60, 86400]，默认 600</p>
+	Expire *int64 `json:"Expire,omitnil,omitempty" name:"Expire"`
+}
+
+func (r *BatchGetVLPlanSourceFileURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchGetVLPlanSourceFileURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VLPlanResultIds")
+	delete(f, "Expire")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchGetVLPlanSourceFileURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchGetVLPlanSourceFileURLResponseParams struct {
+	// <p>URL 列表</p>
+	Data []*VLPlanResultSnapshotImageUrlInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>总数量</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchGetVLPlanSourceFileURLResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchGetVLPlanSourceFileURLResponseParams `json:"Response"`
+}
+
+func (r *BatchGetVLPlanSourceFileURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchGetVLPlanSourceFileURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchGetVideoSnapshotImageUrlData struct {
+	// <p>图片Url信息</p>
+	Images []*ImageUrlInfo `json:"Images,omitnil,omitempty" name:"Images"`
+
+	// <p>图片Url有效期</p><p>单位：秒</p><p>默认值：600</p>
+	ImageUrlExpires *int64 `json:"ImageUrlExpires,omitnil,omitempty" name:"ImageUrlExpires"`
+}
+
+// Predefined struct for user
+type BatchGetVideoSnapshotImageUrlRequestParams struct {
+	// <p>图片Id</p>
+	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
+
+	// <p>图片URL有效期，单位：秒</p><p>取值范围：[60, 86400]</p><p>默认值：600</p>
+	ImageUrlExpires *int64 `json:"ImageUrlExpires,omitnil,omitempty" name:"ImageUrlExpires"`
+}
+
+type BatchGetVideoSnapshotImageUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>图片Id</p>
+	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
+
+	// <p>图片URL有效期，单位：秒</p><p>取值范围：[60, 86400]</p><p>默认值：600</p>
+	ImageUrlExpires *int64 `json:"ImageUrlExpires,omitnil,omitempty" name:"ImageUrlExpires"`
+}
+
+func (r *BatchGetVideoSnapshotImageUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchGetVideoSnapshotImageUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageIds")
+	delete(f, "ImageUrlExpires")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchGetVideoSnapshotImageUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchGetVideoSnapshotImageUrlResponseParams struct {
+	// <p>截图图片URL结果列表</p>
+	Data *BatchGetVideoSnapshotImageUrlData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchGetVideoSnapshotImageUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchGetVideoSnapshotImageUrlResponseParams `json:"Response"`
+}
+
+func (r *BatchGetVideoSnapshotImageUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchGetVideoSnapshotImageUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1183,6 +1458,17 @@ func (r *CallISAPIResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CallISAPIResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CallbackURL struct {
+	// <p>图片回调地址</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>Token</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>是否开启</p>
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
 type ChannelAttrInfo struct {
@@ -1688,6 +1974,190 @@ func (r *ControlRecordTimelineResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateVLPlanRequestParams struct {
+	// <p>计划名称，仅支持中文/英文/数字/_/-，最长 32 个字符</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>关联的视觉理解模板 ID</p>
+	VLTemplateId *string `json:"VLTemplateId,omitnil,omitempty" name:"VLTemplateId"`
+
+	// <p>计划描述，最长 256 个字符</p>
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// <p>截图文件存储天数，范围 [7, 1080]；图片模式必填，视频模式不传</p>
+	FileExpires *int64 `json:"FileExpires,omitnil,omitempty" name:"FileExpires"`
+
+	// <p>回调通知配置</p>
+	Callback *CallbackURL `json:"Callback,omitnil,omitempty" name:"Callback"`
+}
+
+type CreateVLPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>计划名称，仅支持中文/英文/数字/_/-，最长 32 个字符</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>关联的视觉理解模板 ID</p>
+	VLTemplateId *string `json:"VLTemplateId,omitnil,omitempty" name:"VLTemplateId"`
+
+	// <p>计划描述，最长 256 个字符</p>
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// <p>截图文件存储天数，范围 [7, 1080]；图片模式必填，视频模式不传</p>
+	FileExpires *int64 `json:"FileExpires,omitnil,omitempty" name:"FileExpires"`
+
+	// <p>回调通知配置</p>
+	Callback *CallbackURL `json:"Callback,omitnil,omitempty" name:"Callback"`
+}
+
+func (r *CreateVLPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVLPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "VLTemplateId")
+	delete(f, "Describe")
+	delete(f, "FileExpires")
+	delete(f, "Callback")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVLPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVLPlanResponseParams struct {
+	// <p>视觉理解计划信息</p>
+	Data *VLPlanInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVLPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVLPlanResponseParams `json:"Response"`
+}
+
+func (r *CreateVLPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVLPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVLTemplateRequestParams struct {
+	// <p>AI 模型</p><p>枚举值：</p><ul><li>ivc-vl-1.0： 视图大模型</li></ul>
+	AIModel *string `json:"AIModel,omitnil,omitempty" name:"AIModel"`
+
+	// <p>模板名称，仅支持中文/英文/数字/_/-，最长 32 个字符</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>提示词，最大 2MB</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>分析模式</p><p>枚举值：</p><ul><li>image： 图片模式</li><li>video： 视频模式</li></ul>
+	AnalysisMode *string `json:"AnalysisMode,omitnil,omitempty" name:"AnalysisMode"`
+
+	// <p>生效时段列表，最多 100 条</p>
+	Times []*EffectiveTime `json:"Times,omitnil,omitempty" name:"Times"`
+
+	// <p>模板描述，最长 256 个字符</p>
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// <p>图片场景配置（AnalysisMode=image 时必填）</p>
+	ImageConfig *ImageSceneInfo `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
+}
+
+type CreateVLTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>AI 模型</p><p>枚举值：</p><ul><li>ivc-vl-1.0： 视图大模型</li></ul>
+	AIModel *string `json:"AIModel,omitnil,omitempty" name:"AIModel"`
+
+	// <p>模板名称，仅支持中文/英文/数字/_/-，最长 32 个字符</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>提示词，最大 2MB</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>分析模式</p><p>枚举值：</p><ul><li>image： 图片模式</li><li>video： 视频模式</li></ul>
+	AnalysisMode *string `json:"AnalysisMode,omitnil,omitempty" name:"AnalysisMode"`
+
+	// <p>生效时段列表，最多 100 条</p>
+	Times []*EffectiveTime `json:"Times,omitnil,omitempty" name:"Times"`
+
+	// <p>模板描述，最长 256 个字符</p>
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// <p>图片场景配置（AnalysisMode=image 时必填）</p>
+	ImageConfig *ImageSceneInfo `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
+}
+
+func (r *CreateVLTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVLTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AIModel")
+	delete(f, "Name")
+	delete(f, "Prompt")
+	delete(f, "AnalysisMode")
+	delete(f, "Times")
+	delete(f, "Describe")
+	delete(f, "ImageConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVLTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVLTemplateResponseParams struct {
+	// <p>视觉理解模板信息</p>
+	Data *VLTemplateInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVLTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVLTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateVLTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVLTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateVideoDownloadTaskRequestParams struct {
 	// 通道ID
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
@@ -1783,6 +2253,169 @@ func (r *CreateVideoDownloadTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateVideoDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoSnapshotConfigRequestParams struct {
+	// <p>截图配置名称</p><p>入参限制：中文、英文、数字、“-”、“_” 长度不超过128个字符</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>截图模板Id</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>图片文件的热存储天数</p><p>枚举值：</p><ul><li>7： 7天</li><li>15： 15天</li><li>30： 30天</li><li>60： 60天</li><li>90： 90天</li><li>180： 180天</li><li>270： 270天</li><li>360： 360天</li><li>540： 540天</li><li>720： 720天</li><li>900： 900天</li><li>1080： 1080天</li></ul>
+	FileExpires *int64 `json:"FileExpires,omitnil,omitempty" name:"FileExpires"`
+
+	// <p>截图结果回调地址</p>
+	Callback *CallbackURL `json:"Callback,omitnil,omitempty" name:"Callback"`
+}
+
+type CreateVideoSnapshotConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>截图配置名称</p><p>入参限制：中文、英文、数字、“-”、“_” 长度不超过128个字符</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>截图模板Id</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>图片文件的热存储天数</p><p>枚举值：</p><ul><li>7： 7天</li><li>15： 15天</li><li>30： 30天</li><li>60： 60天</li><li>90： 90天</li><li>180： 180天</li><li>270： 270天</li><li>360： 360天</li><li>540： 540天</li><li>720： 720天</li><li>900： 900天</li><li>1080： 1080天</li></ul>
+	FileExpires *int64 `json:"FileExpires,omitnil,omitempty" name:"FileExpires"`
+
+	// <p>截图结果回调地址</p>
+	Callback *CallbackURL `json:"Callback,omitnil,omitempty" name:"Callback"`
+}
+
+func (r *CreateVideoSnapshotConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoSnapshotConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "TemplateId")
+	delete(f, "FileExpires")
+	delete(f, "Callback")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoSnapshotConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoSnapshotConfigResponseParams struct {
+	// <p>截图配置信息</p>
+	Data *VideoSnapshotConfigInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVideoSnapshotConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVideoSnapshotConfigResponseParams `json:"Response"`
+}
+
+func (r *CreateVideoSnapshotConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoSnapshotConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoSnapshotTemplateRequestParams struct {
+	// <p>模板名称： 中文、英文、数字、“-”、“_” 长度不超过128个字符</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>截图类型： 1-实时截帧 2-低频截帧<br>注意：实时截帧在生效时段期间一直拉取实时流， 低频截帧在生效时段期间按需拉取实时流，每次拉流的最短持续时间不低于1分钟</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>截帧频率： Type = 1时，取值[5, 180]秒 Type = 2时 取值[30, 36000]秒</p>
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// <p>生效时段，注：数组大小不超过100个且每个时间段不低于1分钟</p>
+	Times []*EffectiveTime `json:"Times,omitnil,omitempty" name:"Times"`
+
+	// <p>多张模式</p>
+	MultiMode *MultiVideoSnapshotMode `json:"MultiMode,omitnil,omitempty" name:"MultiMode"`
+}
+
+type CreateVideoSnapshotTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模板名称： 中文、英文、数字、“-”、“_” 长度不超过128个字符</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>截图类型： 1-实时截帧 2-低频截帧<br>注意：实时截帧在生效时段期间一直拉取实时流， 低频截帧在生效时段期间按需拉取实时流，每次拉流的最短持续时间不低于1分钟</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>截帧频率： Type = 1时，取值[5, 180]秒 Type = 2时 取值[30, 36000]秒</p>
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// <p>生效时段，注：数组大小不超过100个且每个时间段不低于1分钟</p>
+	Times []*EffectiveTime `json:"Times,omitnil,omitempty" name:"Times"`
+
+	// <p>多张模式</p>
+	MultiMode *MultiVideoSnapshotMode `json:"MultiMode,omitnil,omitempty" name:"MultiMode"`
+}
+
+func (r *CreateVideoSnapshotTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoSnapshotTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Interval")
+	delete(f, "Times")
+	delete(f, "MultiMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoSnapshotTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoSnapshotTemplateResponseParams struct {
+	// <p>截图模板信息</p>
+	Data *VideoSnapshotTemplateInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVideoSnapshotTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVideoSnapshotTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateVideoSnapshotTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoSnapshotTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2269,6 +2902,222 @@ func (r *DeleteUserDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteUserDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVLPlanRequestParams struct {
+	// <p>计划 ID</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
+}
+
+type DeleteVLPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>计划 ID</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
+}
+
+func (r *DeleteVLPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVLPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VLPlanId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVLPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVLPlanResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVLPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVLPlanResponseParams `json:"Response"`
+}
+
+func (r *DeleteVLPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVLPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVLTemplateRequestParams struct {
+	// <p>模板 ID</p>
+	VLTemplateId *string `json:"VLTemplateId,omitnil,omitempty" name:"VLTemplateId"`
+}
+
+type DeleteVLTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模板 ID</p>
+	VLTemplateId *string `json:"VLTemplateId,omitnil,omitempty" name:"VLTemplateId"`
+}
+
+func (r *DeleteVLTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVLTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VLTemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVLTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVLTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVLTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVLTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteVLTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVLTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVideoSnapshotConfigRequestParams struct {
+	// <p>截图配置Id</p>
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+}
+
+type DeleteVideoSnapshotConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>截图配置Id</p>
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+}
+
+func (r *DeleteVideoSnapshotConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVideoSnapshotConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVideoSnapshotConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVideoSnapshotConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVideoSnapshotConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVideoSnapshotConfigResponseParams `json:"Response"`
+}
+
+func (r *DeleteVideoSnapshotConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVideoSnapshotConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVideoSnapshotTemplateRequestParams struct {
+	// <p>截图模板Id</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+type DeleteVideoSnapshotTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>截图模板Id</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+func (r *DeleteVideoSnapshotTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVideoSnapshotTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVideoSnapshotTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVideoSnapshotTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVideoSnapshotTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVideoSnapshotTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteVideoSnapshotTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVideoSnapshotTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3834,6 +4683,177 @@ func (r *DescribeUserDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVLPlanRequestParams struct {
+	// <p>计划 ID</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
+}
+
+type DescribeVLPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>计划 ID</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
+}
+
+func (r *DescribeVLPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVLPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VLPlanId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVLPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVLPlanResponseParams struct {
+	// <p>视觉理解计划信息</p>
+	Data *VLPlanInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVLPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVLPlanResponseParams `json:"Response"`
+}
+
+func (r *DescribeVLPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVLPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVLPlanResultRequestParams struct {
+	// <p>分析结果 ID</p>
+	VLPlanResultId *string `json:"VLPlanResultId,omitnil,omitempty" name:"VLPlanResultId"`
+}
+
+type DescribeVLPlanResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分析结果 ID</p>
+	VLPlanResultId *string `json:"VLPlanResultId,omitnil,omitempty" name:"VLPlanResultId"`
+}
+
+func (r *DescribeVLPlanResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVLPlanResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VLPlanResultId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVLPlanResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVLPlanResultResponseParams struct {
+	// <p>分析结果详情</p>
+	Data *VLPlanResultDetailInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVLPlanResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVLPlanResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeVLPlanResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVLPlanResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVLTemplateRequestParams struct {
+	// <p>模板 ID</p>
+	VLTemplateId *string `json:"VLTemplateId,omitnil,omitempty" name:"VLTemplateId"`
+}
+
+type DescribeVLTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模板 ID</p>
+	VLTemplateId *string `json:"VLTemplateId,omitnil,omitempty" name:"VLTemplateId"`
+}
+
+func (r *DescribeVLTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVLTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VLTemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVLTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVLTemplateResponseParams struct {
+	// <p>视觉理解模板信息</p>
+	Data *VLTemplateInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVLTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVLTemplateResponseParams `json:"Response"`
+}
+
+func (r *DescribeVLTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVLTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVideoBitRateList struct {
 	// 通道码率列表
 	BitRates []*BitRateInfo `json:"BitRates,omitnil,omitempty" name:"BitRates"`
@@ -4031,6 +5051,131 @@ func (r *DescribeVideoDownloadUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVideoSnapshotConfigRequestParams struct {
+	// <p>截图配置Id</p>
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+}
+
+type DescribeVideoSnapshotConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>截图配置Id</p>
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+}
+
+func (r *DescribeVideoSnapshotConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoSnapshotConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoSnapshotConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoSnapshotConfigResponseParams struct {
+	// <p>截图配置详情结果</p>
+	Data *VideoSnapshotConfigInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVideoSnapshotConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVideoSnapshotConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeVideoSnapshotConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoSnapshotConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoSnapshotTemplateRequestParams struct {
+	// <p>截图模板Id</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+type DescribeVideoSnapshotTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>截图模板Id</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribeVideoSnapshotTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoSnapshotTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoSnapshotTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoSnapshotTemplateResponseParams struct {
+	// <p>截图模板详情</p>
+	Data *VideoSnapshotTemplateInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVideoSnapshotTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVideoSnapshotTemplateResponseParams `json:"Response"`
+}
+
+func (r *DescribeVideoSnapshotTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoSnapshotTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EffectiveTime struct {
+	// <p>开始时间</p><p>参数格式：hh:mm:ss</p>
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// <p>结束时间</p><p>参数格式：hh:mm:ss</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>重复周期： 1-周一 2-周二 3-周三 4-周四 5-周五 6-周六 7-周日</p><p>取值范围：[1, 7]</p>
+	WeekDay *int64 `json:"WeekDay,omitnil,omitempty" name:"WeekDay"`
+}
+
 type GBDeviceSnapInfo struct {
 	// 文件名称
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
@@ -4057,6 +5202,29 @@ type GBDeviceSnapInfo struct {
 type ISAPIOutputData struct {
 	// 输出参数
 	OutputData *string `json:"OutputData,omitnil,omitempty" name:"OutputData"`
+}
+
+type ImageSceneInfo struct {
+	// <p>截图类型</p><p>枚举值：</p><ul><li>1：实时截帧</li><li>2：低频截帧</li></ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>截帧频率</p><p>Type=1时取值[5, 180]秒，Type=2时取值[30, 36000]秒</p>
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// <p>多张截图模式</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiMode *MultiSnapshotMode `json:"MultiMode,omitnil,omitempty" name:"MultiMode"`
+}
+
+type ImageUrlInfo struct {
+	// <p>图片Id</p>
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// <p>图片Url</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>错误信息</p><p>说明获取图片url失败的原因</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 
 type LifeCycleData struct {
@@ -5320,6 +6488,168 @@ func (r *ListTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListVLPlansRequestParams struct {
+	// <p>计划名称，精确匹配</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>页码，默认 1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，默认 20，最大 200</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListVLPlansRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>计划名称，精确匹配</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>页码，默认 1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，默认 20，最大 200</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListVLPlansRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVLPlansRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListVLPlansRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListVLPlansResponseParams struct {
+	// <p>计划列表</p>
+	Data []*VLPlanInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>总数量</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListVLPlansResponse struct {
+	*tchttp.BaseResponse
+	Response *ListVLPlansResponseParams `json:"Response"`
+}
+
+func (r *ListVLPlansResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVLPlansResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListVLTemplatesRequestParams struct {
+	// <p>模板名称，精确匹配</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>分析模式过滤，image / video</p>
+	AnalysisMode *string `json:"AnalysisMode,omitnil,omitempty" name:"AnalysisMode"`
+
+	// <p>截图类型过滤（仅 AnalysisMode=image 时生效）：realtime / low</p>
+	CaptureType *string `json:"CaptureType,omitnil,omitempty" name:"CaptureType"`
+
+	// <p>页码，默认 1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，默认 20，最大 200</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListVLTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模板名称，精确匹配</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>分析模式过滤，image / video</p>
+	AnalysisMode *string `json:"AnalysisMode,omitnil,omitempty" name:"AnalysisMode"`
+
+	// <p>截图类型过滤（仅 AnalysisMode=image 时生效）：realtime / low</p>
+	CaptureType *string `json:"CaptureType,omitnil,omitempty" name:"CaptureType"`
+
+	// <p>页码，默认 1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，默认 20，最大 200</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListVLTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVLTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "AnalysisMode")
+	delete(f, "CaptureType")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListVLTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListVLTemplatesResponseParams struct {
+	// <p>模板列表</p>
+	Data []*VLTemplateInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>总数量</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListVLTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListVLTemplatesResponseParams `json:"Response"`
+}
+
+func (r *ListVLTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVLTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListVideoDownloadTaskData struct {
 	// 任务列表
 	List []*VideoDownloadTask `json:"List,omitnil,omitempty" name:"List"`
@@ -5446,6 +6776,317 @@ func (r *ListVideoDownloadTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ListVideoDownloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListVideoSnapshotTemplateData struct {
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>排序参数</p>
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// <p>排序顺序</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>页码</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数目</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>截图模板列表</p>
+	List []*VideoSnapshotTemplateInfo `json:"List,omitnil,omitempty" name:"List"`
+}
+
+// Predefined struct for user
+type ListVideoSnapshotTemplateRequestParams struct {
+	// <p>模板名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>排序参数</p><p>默认值：update_time</p>
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// <p>排序顺序</p><p>枚举值：</p><ul><li>desc： 降序</li><li>asc： 生序</li></ul><p>默认值：desc</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>页码</p><p>默认值：1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数目</p><p>默认值：20</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListVideoSnapshotTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模板名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>排序参数</p><p>默认值：update_time</p>
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// <p>排序顺序</p><p>枚举值：</p><ul><li>desc： 降序</li><li>asc： 生序</li></ul><p>默认值：desc</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>页码</p><p>默认值：1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数目</p><p>默认值：20</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListVideoSnapshotTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVideoSnapshotTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Sort")
+	delete(f, "Order")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListVideoSnapshotTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListVideoSnapshotTemplateResponseParams struct {
+	// <p>截图模板结果列表</p>
+	Data *ListVideoSnapshotTemplateData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListVideoSnapshotTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ListVideoSnapshotTemplateResponseParams `json:"Response"`
+}
+
+func (r *ListVideoSnapshotTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVideoSnapshotTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVLPlanRequestParams struct {
+	// <p>计划 ID</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
+
+	// <p>新计划名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>新计划描述</p>
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// <p>新关联视觉理解模板 ID</p>
+	VLTemplateId *string `json:"VLTemplateId,omitnil,omitempty" name:"VLTemplateId"`
+
+	// <p>新存储天数，范围 [7, 1080]，0 表示不修改</p>
+	FileExpires *int64 `json:"FileExpires,omitnil,omitempty" name:"FileExpires"`
+
+	// <p>新回调配置</p>
+	Callback *CallbackURL `json:"Callback,omitnil,omitempty" name:"Callback"`
+}
+
+type ModifyVLPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>计划 ID</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
+
+	// <p>新计划名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>新计划描述</p>
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// <p>新关联视觉理解模板 ID</p>
+	VLTemplateId *string `json:"VLTemplateId,omitnil,omitempty" name:"VLTemplateId"`
+
+	// <p>新存储天数，范围 [7, 1080]，0 表示不修改</p>
+	FileExpires *int64 `json:"FileExpires,omitnil,omitempty" name:"FileExpires"`
+
+	// <p>新回调配置</p>
+	Callback *CallbackURL `json:"Callback,omitnil,omitempty" name:"Callback"`
+}
+
+func (r *ModifyVLPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVLPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VLPlanId")
+	delete(f, "Name")
+	delete(f, "Describe")
+	delete(f, "VLTemplateId")
+	delete(f, "FileExpires")
+	delete(f, "Callback")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVLPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVLPlanResponseParams struct {
+	// <p>视觉理解计划信息</p>
+	Data *VLPlanInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyVLPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyVLPlanResponseParams `json:"Response"`
+}
+
+func (r *ModifyVLPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVLPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVideoSnapshotConfigRequestParams struct {
+	// <p>截图配置Id</p>
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// <p>截图配置名称</p><p>入参限制：中文、英文、数字、“-”、“_” 长度不超过128个字符</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>截图模板Id</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>图片文件的热存储天数</p><p>枚举值：</p><ul><li>7： 7天</li><li>15： 15天</li><li>30： 30天</li><li>60： 60天</li><li>90： 90天</li><li>180： 180天</li><li>270： 270天</li><li>360： 360天</li><li>540： 540天</li><li>720： 720天</li><li>900： 900天</li><li>1080： 1080天</li></ul>
+	FileExpires *int64 `json:"FileExpires,omitnil,omitempty" name:"FileExpires"`
+
+	// <p>回调配置</p>
+	Callback *CallbackURL `json:"Callback,omitnil,omitempty" name:"Callback"`
+}
+
+type ModifyVideoSnapshotConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>截图配置Id</p>
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// <p>截图配置名称</p><p>入参限制：中文、英文、数字、“-”、“_” 长度不超过128个字符</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>截图模板Id</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>图片文件的热存储天数</p><p>枚举值：</p><ul><li>7： 7天</li><li>15： 15天</li><li>30： 30天</li><li>60： 60天</li><li>90： 90天</li><li>180： 180天</li><li>270： 270天</li><li>360： 360天</li><li>540： 540天</li><li>720： 720天</li><li>900： 900天</li><li>1080： 1080天</li></ul>
+	FileExpires *int64 `json:"FileExpires,omitnil,omitempty" name:"FileExpires"`
+
+	// <p>回调配置</p>
+	Callback *CallbackURL `json:"Callback,omitnil,omitempty" name:"Callback"`
+}
+
+func (r *ModifyVideoSnapshotConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVideoSnapshotConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	delete(f, "Name")
+	delete(f, "TemplateId")
+	delete(f, "FileExpires")
+	delete(f, "Callback")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVideoSnapshotConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVideoSnapshotConfigResponseParams struct {
+	// <p>截图配置信息</p>
+	Data *VideoSnapshotConfigInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyVideoSnapshotConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyVideoSnapshotConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyVideoSnapshotConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVideoSnapshotConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type MultiSnapshotMode struct {
+	// <p>是否启用多张模式</p><p>false时为单张模式，忽略Interval、Total参数</p><p>默认值：false</p>
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// <p>截帧间隔</p><p>取值范围：[10, 600]</p><p>单位：秒</p>
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// <p>截帧张数</p><p>取值范围：[1, 10]</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+}
+
+type MultiVideoSnapshotMode struct {
+	// <p>是否启用多张模式， false时，为单张模式，忽略Interval、Total参数</p><p>默认值：false</p>
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// <p>截帧间隔</p><p>取值范围：[10, 600]</p><p>单位：秒</p>
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// <p>截帧张数</p><p>取值范围：[1, 10]</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 }
 
 type OrganizationChannelInfo struct {
@@ -6859,61 +8500,275 @@ func (r *UpdateUserDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type VideoDownloadTask struct {
-	// 下载任务 ID
-	DownloadTaskId *string `json:"DownloadTaskId,omitnil,omitempty" name:"DownloadTaskId"`
+type VLPlanInfo struct {
+	// <p>计划ID</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
 
-	// 通道 ID
+	// <p>计划名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>计划描述</p>
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// <p>视觉理解模板ID</p>
+	VLTemplateId *string `json:"VLTemplateId,omitnil,omitempty" name:"VLTemplateId"`
+
+	// <p>回调通知配置</p>
+	Callback *CallbackURL `json:"Callback,omitnil,omitempty" name:"Callback"`
+
+	// <p>文件过期时间（秒）</p>
+	FileExpires *int64 `json:"FileExpires,omitnil,omitempty" name:"FileExpires"`
+
+	// <p>计划包含的通道数量</p>
+	ChannelCount *int64 `json:"ChannelCount,omitnil,omitempty" name:"ChannelCount"`
+
+	// <p>创建时间</p>
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>最近一次更新时间</p>
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+}
+
+type VLPlanResultDetailInfo struct {
+	// <p>分析结果 ID</p>
+	VLPlanResultId *string `json:"VLPlanResultId,omitnil,omitempty" name:"VLPlanResultId"`
+
+	// <p>媒体类型，当前固定为 image</p>
+	MediaType *string `json:"MediaType,omitnil,omitempty" name:"MediaType"`
+
+	// <p>所属分析计划 ID</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
+
+	// <p>计划名称</p>
+	VLPlanName *string `json:"VLPlanName,omitnil,omitempty" name:"VLPlanName"`
+
+	// <p>通道 ID</p>
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 通道名称
+	// <p>通道名称</p>
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
-	// 通道编码
-	ChannelCode *string `json:"ChannelCode,omitnil,omitempty" name:"ChannelCode"`
+	// <p>设备 ID</p>
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 设备编码
-	DeviceCode *string `json:"DeviceCode,omitnil,omitempty" name:"DeviceCode"`
+	// <p>所属组织 ID</p>
+	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
-	// 任务状态（0：未执行；1：执行中；2 任务完成；
-	// 3：任务失败）
-	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+	// <p>所属组织名称</p>
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
-	// 下载录像时间段
-	VideoTimeSection *string `json:"VideoTimeSection,omitnil,omitempty" name:"VideoTimeSection"`
+	// <p>分析时间戳（秒）</p>
+	VLResultTimestamp *int64 `json:"VLResultTimestamp,omitnil,omitempty" name:"VLResultTimestamp"`
 
-	// 倍速
-	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
+	// <p>图片模式截图时间戳（秒）</p>
+	SnapshotTimestamp *int64 `json:"SnapshotTimestamp,omitnil,omitempty" name:"SnapshotTimestamp"`
 
-	// 下载时长
-	DownloadTime *int64 `json:"DownloadTime,omitnil,omitempty" name:"DownloadTime"`
+	// <p>视频片段开始时间戳（秒）</p>
+	VideoStartTimestamp *int64 `json:"VideoStartTimestamp,omitnil,omitempty" name:"VideoStartTimestamp"`
 
-	// 录像大小
-	VideoSize *int64 `json:"VideoSize,omitnil,omitempty" name:"VideoSize"`
+	// <p>视频片段结束时间戳（秒）</p>
+	VideoEndTimestamp *int64 `json:"VideoEndTimestamp,omitnil,omitempty" name:"VideoEndTimestamp"`
 
-	// 任务开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+	// <p>视频模式计费帧数</p>
+	BilledFrameCount *int64 `json:"BilledFrameCount,omitnil,omitempty" name:"BilledFrameCount"`
 
-	// 任务结束时间
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+	// <p>AI 分析结果内容（JSON 字符串）</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 文件下载地址
-	FileDownloadUrl *string `json:"FileDownloadUrl,omitnil,omitempty" name:"FileDownloadUrl"`
+	// <p>截图临时下载 URL（有效期 300 秒）</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 失败原因
-	FailedReason *string `json:"FailedReason,omitnil,omitempty" name:"FailedReason"`
+	// <p>截图 URL 有效期（秒）</p>
+	ImageUrlExpire *int64 `json:"ImageUrlExpire,omitnil,omitempty" name:"ImageUrlExpire"`
 
-	// 生命周期规则，热存天数
+	// <p>创建时间，格式 2006-01-02 15:04:05</p>
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>更新时间，格式 2006-01-02 15:04:05</p>
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+}
+
+type VLPlanResultSnapshotImageUrlInfo struct {
+	// <p>分析结果 ID</p>
+	VLPlanResultId *string `json:"VLPlanResultId,omitnil,omitempty" name:"VLPlanResultId"`
+
+	// <p>源素材下载 URL（失败时为空）</p>
+	SourceFileURL *string `json:"SourceFileURL,omitnil,omitempty" name:"SourceFileURL"`
+
+	// <p>URL 有效期（秒，失败时为 0）</p>
 	Expire *int64 `json:"Expire,omitnil,omitempty" name:"Expire"`
 
-	// mp4预览地址
+	// <p>错误信息（失败时有值）</p>
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+}
+
+type VLTemplateInfo struct {
+	// <p>模板ID</p>
+	VLTemplateId *string `json:"VLTemplateId,omitnil,omitempty" name:"VLTemplateId"`
+
+	// <p>AI 模型</p><p>枚举值：</p><ul><li>IVC-G： 视图默认大模型</li></ul>
+	AIModel *string `json:"AIModel,omitnil,omitempty" name:"AIModel"`
+
+	// <p>AI场景名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>AI场景描述</p>
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
+
+	// <p>提示词</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>分析模式</p><p>枚举值：</p><ul><li>image： 图片模式</li><li>video： 视频模式</li></ul>
+	AnalysisMode *string `json:"AnalysisMode,omitnil,omitempty" name:"AnalysisMode"`
+
+	// <p>图片场景配置</p>
+	ImageConfig *ImageSceneInfo `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
+
+	// <p>生效时段列表</p>
+	Times []*EffectiveTime `json:"Times,omitnil,omitempty" name:"Times"`
+
+	// <p>创建时间</p>
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>最近一次更新时间</p>
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+
+	// <p>是否关联到视觉理解计划</p>
+	IsUsed *bool `json:"IsUsed,omitnil,omitempty" name:"IsUsed"`
+
+	// <p>视频场景配置</p>
+	VideoConfig *VideoSceneInfo `json:"VideoConfig,omitnil,omitempty" name:"VideoConfig"`
+}
+
+type VideoDownloadTask struct {
+	// <p>下载任务 ID</p>
+	DownloadTaskId *string `json:"DownloadTaskId,omitnil,omitempty" name:"DownloadTaskId"`
+
+	// <p>通道 ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>通道名称</p>
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+
+	// <p>通道编码</p>
+	ChannelCode *string `json:"ChannelCode,omitnil,omitempty" name:"ChannelCode"`
+
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>设备编码</p>
+	DeviceCode *string `json:"DeviceCode,omitnil,omitempty" name:"DeviceCode"`
+
+	// <p>任务状态（0：未执行；1：执行中；2 任务完成；<br>3：任务失败）</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>下载录像时间段</p>
+	VideoTimeSection *string `json:"VideoTimeSection,omitnil,omitempty" name:"VideoTimeSection"`
+
+	// <p>倍速</p>
+	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
+
+	// <p>下载时长</p><p>单位：秒</p>
+	DownloadTime *int64 `json:"DownloadTime,omitnil,omitempty" name:"DownloadTime"`
+
+	// <p>录像大小</p><p>单位：字节（Byte）</p>
+	VideoSize *int64 `json:"VideoSize,omitnil,omitempty" name:"VideoSize"`
+
+	// <p>任务开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>任务结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>文件下载地址</p>
+	FileDownloadUrl *string `json:"FileDownloadUrl,omitnil,omitempty" name:"FileDownloadUrl"`
+
+	// <p>失败原因</p>
+	FailedReason *string `json:"FailedReason,omitnil,omitempty" name:"FailedReason"`
+
+	// <p>生命周期规则，热存天数</p>
+	Expire *int64 `json:"Expire,omitnil,omitempty" name:"Expire"`
+
+	// <p>mp4预览地址</p>
 	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
 }
 
 type VideoDownloadTaskData struct {
 	// 下载任务ID
 	DownloadTaskId *string `json:"DownloadTaskId,omitnil,omitempty" name:"DownloadTaskId"`
+}
+
+type VideoSceneInfo struct {
+	// <p>分析周期（秒）：每隔多少秒从云端录像中截取一个视频片段进行分析。例如 Interval=3600、Duration=600，表示每隔1小时 取一个 10 分钟的视频片段进行分析。需满足 Duration ≤ Interval，否则相邻片段将重叠。取值范围［5,86400］。</p>
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// <p>分析片段时长（秒）：每次分析截取的视频片段长度，即单次分析覆盖的视频时长。取值范围［5,12800］。</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>抽帧率（FPS）：在片段内每隔1/Fps 秒截取一帧进行分析。取值越大，分析越精细，单次分析的帧数越多。默认值1，取值范围［0.1,1</p>
+	Fps *float64 `json:"Fps,omitnil,omitempty" name:"Fps"`
+}
+
+type VideoSnapshotConfigInfo struct {
+	// <p>截图配置Id</p>
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// <p>截图配置名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>截图模板Id</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>截图模板名称</p>
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// <p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>图片存储天数</p><p>单位：天</p>
+	FileExpires *int64 `json:"FileExpires,omitnil,omitempty" name:"FileExpires"`
+
+	// <p>回调配置</p>
+	Callback *CallbackURL `json:"Callback,omitnil,omitempty" name:"Callback"`
+
+	// <p>截图配置关联的通道数</p>
+	RelatedChannelCount *int64 `json:"RelatedChannelCount,omitnil,omitempty" name:"RelatedChannelCount"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>最近一次更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type VideoSnapshotTemplateInfo struct {
+	// <p>截图模板Id</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>截图模板名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>截帧频率</p>
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// <p>多张模式</p>
+	MultiMode *MultiVideoSnapshotMode `json:"MultiMode,omitnil,omitempty" name:"MultiMode"`
+
+	// <p>生效时段</p>
+	Times []*EffectiveTime `json:"Times,omitnil,omitempty" name:"Times"`
+
+	// <p>模板关联的配置数</p>
+	RelatedConfigCount *int64 `json:"RelatedConfigCount,omitnil,omitempty" name:"RelatedConfigCount"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>最近一次更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }

@@ -1234,6 +1234,77 @@ func (r *AddDomainWhiteRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AddLLMSdkAccessRequestParams struct {
+	// 要接入的应用名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type AddLLMSdkAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要接入的应用名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *AddLLMSdkAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddLLMSdkAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "InstanceId")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddLLMSdkAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddLLMSdkAccessResponseParams struct {
+	// 服务id
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddLLMSdkAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *AddLLMSdkAccessResponseParams `json:"Response"`
+}
+
+func (r *AddLLMSdkAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddLLMSdkAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddSpartaProtectionRequestParams struct {
 	// <p>需要防护的域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -1647,6 +1718,77 @@ func (r *AddSpartaProtectionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AddSpartaProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type AfterPayInstanceInfo struct {
+	// <p>用户appid</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>实例唯一ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例名称</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>实例对应资源ID，计费使用</p>
+	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// <p>实例版本，后付费实例固定为 llm-sdk-waf</p>
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// <p>实例所属地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>付费模式，后付费实例为 0</p>
+	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// <p>实例过期时间</p>
+	ValidTime *string `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
+
+	// <p>实例开始时间</p>
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// <p>计费项</p>
+	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
+
+	// <p>自动续费标识。<br>0：关闭<br>1：开启</p>
+	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// <p>实例套餐版本</p>
+	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>实例修改时间</p>
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// <p>域名数量上限</p>
+	SubDomainLimit *uint64 `json:"SubDomainLimit,omitnil,omitempty" name:"SubDomainLimit"`
+
+	// <p>主域名数量上限</p>
+	MainDomainLimit *uint64 `json:"MainDomainLimit,omitnil,omitempty" name:"MainDomainLimit"`
+
+	// <p>qps弹性计费上限</p>
+	ElasticBilling *uint64 `json:"ElasticBilling,omitnil,omitempty" name:"ElasticBilling"`
+
+	// <p>攻击日志投递开关</p>
+	AttackLogPost *int64 `json:"AttackLogPost,omitnil,omitempty" name:"AttackLogPost"`
+
+	// <p>api安全是否购买</p>
+	APISecurity *uint64 `json:"APISecurity,omitnil,omitempty" name:"APISecurity"`
+
+	// <p>是否api 安全试用</p>
+	IsAPISecurityTrial *uint64 `json:"IsAPISecurityTrial,omitnil,omitempty" name:"IsAPISecurityTrial"`
+
+	// <p>实例延期释放标识</p>
+	FreeDelayFlag *uint64 `json:"FreeDelayFlag,omitnil,omitempty" name:"FreeDelayFlag"`
+
+	// <p>1是基础2025版本；0不是</p>
+	BasicFlag *uint64 `json:"BasicFlag,omitnil,omitempty" name:"BasicFlag"`
+
+	// <p>大模型安全「后付费」资源信息，结构与内容与 DescribeInstances 的 InstanceDetail.LLMPkg 保持一致</p>
+	LLMPkg *LLMPkg `json:"LLMPkg,omitnil,omitempty" name:"LLMPkg"`
+
+	// <p>LLM实例当天4个计费模块token消耗量及近7天趋势（仅后付费llm-sdk-waf实例返回）</p>
+	LLMTokenUsage *LLMTokenUsage `json:"LLMTokenUsage,omitnil,omitempty" name:"LLMTokenUsage"`
 }
 
 type AnonymousInfo struct {
@@ -3155,6 +3297,17 @@ type CacheUrlItems struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type CategoryGroup struct {
+	// <p>分类</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>总数</p>
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// <p>规则列表</p>
+	Rules []*RuleDetail `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type CdcCluster struct {
@@ -6201,6 +6354,121 @@ func (r *DeleteIpAccessControlV2Response) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteLLMContentRuleRequestParams struct {
+	// <p>Id列表</p>
+	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type DeleteLLMContentRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Id列表</p>
+	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *DeleteLLMContentRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLLMContentRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLLMContentRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLLMContentRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLLMContentRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLLMContentRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteLLMContentRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLLMContentRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLLMKeywordLibraryRequestParams struct {
+	// 要删除的词库 id 列表
+	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DeleteLLMKeywordLibraryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要删除的词库 id 列表
+	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DeleteLLMKeywordLibraryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLLMKeywordLibraryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLLMKeywordLibraryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLLMKeywordLibraryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLLMKeywordLibraryResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLLMKeywordLibraryResponseParams `json:"Response"`
+}
+
+func (r *DeleteLLMKeywordLibraryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLLMKeywordLibraryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteOwaspRuleStatusRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -6967,6 +7235,87 @@ func (r *DescribeAccessIndexResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAccessIndexResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAfterPayInstancesRequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 容量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤数组
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 释放延期标识
+	FreeDelayFlag *uint64 `json:"FreeDelayFlag,omitnil,omitempty" name:"FreeDelayFlag"`
+}
+
+type DescribeAfterPayInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 容量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤数组
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 释放延期标识
+	FreeDelayFlag *uint64 `json:"FreeDelayFlag,omitnil,omitempty" name:"FreeDelayFlag"`
+}
+
+func (r *DescribeAfterPayInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAfterPayInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "FreeDelayFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAfterPayInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAfterPayInstancesResponseParams struct {
+	// 总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 后付费实例列表
+	Instances []*AfterPayInstanceInfo `json:"Instances,omitnil,omitempty" name:"Instances"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAfterPayInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAfterPayInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAfterPayInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAfterPayInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11378,6 +11727,57 @@ func (r *DescribeIpHitItemsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLLMContentRuleListRequestParams struct {
+
+}
+
+type DescribeLLMContentRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLLMContentRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMContentRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMContentRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLLMContentRuleListResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLLMContentRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLLMContentRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLLMContentRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMContentRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLLMContentSecCheckRequestParams struct {
 	// <p>服务id，使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
@@ -11515,6 +11915,360 @@ func (r *DescribeLLMContentSecCheckResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLLMContentSecCheckResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLLMKeywordLibraryRequestParams struct {
+	// 词库类型筛选
+	// 枚举值：
+	// custom：自定义黑库
+	// builtin：内置词库
+	// all：全部词库
+	// white：自定义白库
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 分页偏移量
+	// 取值范围：[0, +∞)
+	// 默认值：0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页返回数量
+	// 取值范围：[1, 1000]
+	// 默认值：10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段
+	// 枚举值：
+	// UpdateTime：按更新时间排序
+	// CreateTime：按创建时间排序
+	// Name：按名称排序
+	// 默认值：UpdateTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序方向
+	// 枚举值：
+	// ASC：升序
+	// DESC：降序
+	// 默认值：DESC
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+type DescribeLLMKeywordLibraryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 词库类型筛选
+	// 枚举值：
+	// custom：自定义黑库
+	// builtin：内置词库
+	// all：全部词库
+	// white：自定义白库
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 分页偏移量
+	// 取值范围：[0, +∞)
+	// 默认值：0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页返回数量
+	// 取值范围：[1, 1000]
+	// 默认值：10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段
+	// 枚举值：
+	// UpdateTime：按更新时间排序
+	// CreateTime：按创建时间排序
+	// Name：按名称排序
+	// 默认值：UpdateTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序方向
+	// 枚举值：
+	// ASC：升序
+	// DESC：降序
+	// 默认值：DESC
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+func (r *DescribeLLMKeywordLibraryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMKeywordLibraryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "By")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMKeywordLibraryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLLMKeywordLibraryResponseParams struct {
+	// 关键词库列表
+	LibList []*LLMKeywordLibrary `json:"LibList,omitnil,omitempty" name:"LibList"`
+
+	// 词库总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLLMKeywordLibraryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLLMKeywordLibraryResponseParams `json:"Response"`
+}
+
+func (r *DescribeLLMKeywordLibraryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMKeywordLibraryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLLMSdkAccessRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 分页的起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页行数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤器
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 支持根据ts排序
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// asc或者desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+type DescribeLLMSdkAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 分页的起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页行数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤器
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 支持根据ts排序
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// asc或者desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+func (r *DescribeLLMSdkAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMSdkAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "By")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMSdkAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLLMSdkAccessResponseParams struct {
+	// 查询结果中规则数量
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 操作结果
+	Data []*LLMSdkAccessItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLLMSdkAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLLMSdkAccessResponseParams `json:"Response"`
+}
+
+func (r *DescribeLLMSdkAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMSdkAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLLMWafDLPRulesRequestParams struct {
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeLLMWafDLPRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeLLMWafDLPRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMWafDLPRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMWafDLPRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLLMWafDLPRulesResponseParams struct {
+	// <p>规则列表</p>
+	Rules []*RuleDetail `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLLMWafDLPRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLLMWafDLPRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLLMWafDLPRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMWafDLPRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLLMWafProtectRulesRequestParams struct {
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>规则类型</p>
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+}
+
+type DescribeLLMWafProtectRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>规则类型</p>
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+}
+
+func (r *DescribeLLMWafProtectRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMWafProtectRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "InstanceId")
+	delete(f, "RuleType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMWafProtectRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLLMWafProtectRulesResponseParams struct {
+	// <p>类别列表</p>
+	Categories []*CategoryGroup `json:"Categories,omitnil,omitempty" name:"Categories"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLLMWafProtectRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLLMWafProtectRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLLMWafProtectRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMWafProtectRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15081,6 +15835,63 @@ type ExportInfo struct {
 	DerivedFields []*string `json:"DerivedFields,omitnil,omitempty" name:"DerivedFields"`
 }
 
+// Predefined struct for user
+type ExportLLMKeywordLibRequestParams struct {
+	// 要导出的词库id列表
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+}
+
+type ExportLLMKeywordLibRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要导出的词库id列表
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+}
+
+func (r *ExportLLMKeywordLibRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportLLMKeywordLibRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportLLMKeywordLibRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportLLMKeywordLibResponseParams struct {
+	// 导出的文件url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExportLLMKeywordLibResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportLLMKeywordLibResponseParams `json:"Response"`
+}
+
+func (r *ExportLLMKeywordLibResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportLLMKeywordLibResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FieldWriteConfig struct {
 	// <p>1:开启 0:不开启</p>
 	EnableHeaders *int64 `json:"EnableHeaders,omitnil,omitempty" name:"EnableHeaders"`
@@ -16613,6 +17424,40 @@ type LLMDetectResult struct {
 	IntentDetectResult *IntentDetectResult `json:"IntentDetectResult,omitnil,omitempty" name:"IntentDetectResult"`
 }
 
+type LLMImageTrendItem struct {
+	// <p>YYYYMMDD 格式日期</p>
+	DayTime *string `json:"DayTime,omitnil,omitempty" name:"DayTime"`
+
+	// <p>当日图片送检量（单位：张）</p>
+	ImageUsage *int64 `json:"ImageUsage,omitnil,omitempty" name:"ImageUsage"`
+}
+
+type LLMKeywordLibrary struct {
+	// 词库名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 词库描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 词库类型，custom 或 builtin
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 关键词列表
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// 词库规则 id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 被引用的规则 id 列表
+	ReferencedRules []*string `json:"ReferencedRules,omitnil,omitempty" name:"ReferencedRules"`
+
+	// 更新时间
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 词库类别：black-黑库(默认)，white-白库；空值按黑库处理
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+}
+
 type LLMMonPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
@@ -16643,6 +17488,23 @@ type LLMMonPkg struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
+type LLMOptionsItem struct {
+	// 键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 操作符
+	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
+
+	// 值
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// Header参数值时使用
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 区域选择
+	Areas []*Area `json:"Areas,omitnil,omitempty" name:"Areas"`
+}
+
 type LLMPkg struct {
 	// <p>资源id</p>
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
@@ -16671,12 +17533,99 @@ type LLMRisks struct {
 	Risks []*ClawRiskItem `json:"Risks,omitnil,omitempty" name:"Risks"`
 }
 
+type LLMSdkAccessItem struct {
+	// <p>服务id</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>服务名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>SDK接入来源，可不填</p>
+	SdkSource *string `json:"SdkSource,omitnil,omitempty" name:"SdkSource"`
+
+	// <p>总开关</p>
+	MainStatus *bool `json:"MainStatus,omitnil,omitempty" name:"MainStatus"`
+
+	// <p>限速开关</p>
+	LimitRuleStatus *bool `json:"LimitRuleStatus,omitnil,omitempty" name:"LimitRuleStatus"`
+
+	// <p>内容安全开关</p>
+	ContentRuleStatus *bool `json:"ContentRuleStatus,omitnil,omitempty" name:"ContentRuleStatus"`
+
+	// <p>创建时间</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>修改时间</p>
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>限流规则数量</p>
+	LimitRuleCount *uint64 `json:"LimitRuleCount,omitnil,omitempty" name:"LimitRuleCount"`
+
+	// <p>内容安全规则数量</p>
+	ContentRuleCount *uint64 `json:"ContentRuleCount,omitnil,omitempty" name:"ContentRuleCount"`
+
+	// <p>toolcall防护开关</p>
+	ToolCallStatus *bool `json:"ToolCallStatus,omitnil,omitempty" name:"ToolCallStatus"`
+
+	// <p>llm推理防护开关</p>
+	LLMProtectStatus *bool `json:"LLMProtectStatus,omitnil,omitempty" name:"LLMProtectStatus"`
+
+	// <p>内容合规检测开关</p>
+	ContentComplianceStatus *bool `json:"ContentComplianceStatus,omitnil,omitempty" name:"ContentComplianceStatus"`
+
+	// <p>dlp防护开关</p>
+	DLPStatus *bool `json:"DLPStatus,omitnil,omitempty" name:"DLPStatus"`
+
+	// <p>skills防护开关</p>
+	SkillsStatus *bool `json:"SkillsStatus,omitnil,omitempty" name:"SkillsStatus"`
+
+	// <p>意图识别检测开关</p>
+	IntentStatus *bool `json:"IntentStatus,omitnil,omitempty" name:"IntentStatus"`
+
+	// <p>恶意URL检测开关</p>
+	UrlDetectStatus *bool `json:"UrlDetectStatus,omitnil,omitempty" name:"UrlDetectStatus"`
+
+	// <p>生效规则数量</p>
+	EffectiveRules *int64 `json:"EffectiveRules,omitnil,omitempty" name:"EffectiveRules"`
+}
+
 type LLMSensitiveValueLevel struct {
 	// 敏感数据标签，如政治、色情
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 敏感数据等级，250,300，400分别代表超严格、严格、标准等级
 	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
+}
+
+type LLMTokenTrendItem struct {
+	// <p>YYYYMMDD 格式日期</p>
+	DayTime *string `json:"DayTime,omitnil,omitempty" name:"DayTime"`
+
+	// <p>当日token总用量</p>
+	TokenUsage *int64 `json:"TokenUsage,omitnil,omitempty" name:"TokenUsage"`
+}
+
+type LLMTokenUsage struct {
+	// <p>今日提示词攻击防护 token 消耗量</p>
+	PromptUsage *int64 `json:"PromptUsage,omitnil,omitempty" name:"PromptUsage"`
+
+	// <p>今日内容安全文本检测 token 消耗量</p>
+	ContentTextUsage *int64 `json:"ContentTextUsage,omitnil,omitempty" name:"ContentTextUsage"`
+
+	// <p>今日敏感数据检测 token 消耗量</p>
+	SensitiveDataUsage *int64 `json:"SensitiveDataUsage,omitnil,omitempty" name:"SensitiveDataUsage"`
+
+	// <p>今日图片送检量（单位：张）</p>
+	ContentImageUsage *int64 `json:"ContentImageUsage,omitnil,omitempty" name:"ContentImageUsage"`
+
+	// <p>该实例近7天token总量趋势（按天，缺失日期补0）</p>
+	TokenTrend []*LLMTokenTrendItem `json:"TokenTrend,omitnil,omitempty" name:"TokenTrend"`
+
+	// <p>该实例近7天图片送检趋势（按天，缺失日期补0）</p>
+	ImageTrend []*LLMImageTrendItem `json:"ImageTrend,omitnil,omitempty" name:"ImageTrend"`
 }
 
 type LimitHeader struct {
@@ -20559,6 +21508,577 @@ func (r *ModifyIpAccessControlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyLLMContentRuleRequestParams struct {
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>优先级</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// <p>规则开关</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>检测范围，1：入向，2：出向，3：入向和出向</p>
+	CheckType *uint64 `json:"CheckType,omitnil,omitempty" name:"CheckType"`
+
+	// <p>检测内容匹配</p>
+	RuleItem []*RuleItem `json:"RuleItem,omitnil,omitempty" name:"RuleItem"`
+
+	// <p>匹配条件</p>
+	Options []*LLMOptionsItem `json:"Options,omitnil,omitempty" name:"Options"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>动作，观察monitor，拦截intercept</p>
+	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// <p>响应提示内容</p>
+	ResponseText *string `json:"ResponseText,omitnil,omitempty" name:"ResponseText"`
+
+	// <p>规则需要启用的SessionID</p>
+	SessionApplied []*string `json:"SessionApplied,omitnil,omitempty" name:"SessionApplied"`
+
+	// <p>规则ID，新增时填0</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>拦截页面id</p>
+	PageId *uint64 `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// <p>检测内容and or表达式,默认为and</p>
+	ContentLogicalOp *string `json:"ContentLogicalOp,omitnil,omitempty" name:"ContentLogicalOp"`
+
+	// <p>实例id，必填项</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>代答类型：1-内置可信模型安全代答，2-自定义代答（ActionType=reply时生效</p><p>枚举值：</p><ul><li>1： 内置可信模型安全代答</li><li>2： 自定义代答ActionType=reply时生效</li></ul>
+	ReplyType *uint64 `json:"ReplyType,omitnil,omitempty" name:"ReplyType"`
+
+	// <p>自定义回答模板</p>
+	CustomReplyRuleId *string `json:"CustomReplyRuleId,omitnil,omitempty" name:"CustomReplyRuleId"`
+
+	// <p>模态类型：0-文本（默认），1-图片</p><p>枚举值：</p><ul><li>0： 文本</li><li>1： 图片</li></ul>
+	ModalType *uint64 `json:"ModalType,omitnil,omitempty" name:"ModalType"`
+
+	// <p>规则类别：black-普通规则(默认)，white-白名单规则；空值按black处理。white时ActionType仅允许pass(放行)，RuleItem支持白名单匹配字段(Key: ip/geo/type/content/chat_id/user_id/tool_name/tool_args/keyword_whitelist；Op: belong/not_belong/equal/not_equal/contain/not_contain/prefix/suffix/wildcard)</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>白名单规则生效范围：多个serviceId/domain列表（Category=white时使用），表示该白名单规则同时生效于哪些域名/serviceId。黑名单规则不使用此字段。</p>
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// <p>加白生效模块type列表（Category=white时使用），表示该白名单规则命中后对哪些防护模块生效(放行)。取值：2-算力消耗规则，3-自定义防护规则，4-ToolCall防护，5-提示词攻击防护，6-内容合规检测，7-敏感数据检测。</p>
+	AppliedModules []*uint64 `json:"AppliedModules,omitnil,omitempty" name:"AppliedModules"`
+}
+
+type ModifyLLMContentRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>优先级</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// <p>规则开关</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>检测范围，1：入向，2：出向，3：入向和出向</p>
+	CheckType *uint64 `json:"CheckType,omitnil,omitempty" name:"CheckType"`
+
+	// <p>检测内容匹配</p>
+	RuleItem []*RuleItem `json:"RuleItem,omitnil,omitempty" name:"RuleItem"`
+
+	// <p>匹配条件</p>
+	Options []*LLMOptionsItem `json:"Options,omitnil,omitempty" name:"Options"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>动作，观察monitor，拦截intercept</p>
+	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// <p>响应提示内容</p>
+	ResponseText *string `json:"ResponseText,omitnil,omitempty" name:"ResponseText"`
+
+	// <p>规则需要启用的SessionID</p>
+	SessionApplied []*string `json:"SessionApplied,omitnil,omitempty" name:"SessionApplied"`
+
+	// <p>规则ID，新增时填0</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>拦截页面id</p>
+	PageId *uint64 `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// <p>检测内容and or表达式,默认为and</p>
+	ContentLogicalOp *string `json:"ContentLogicalOp,omitnil,omitempty" name:"ContentLogicalOp"`
+
+	// <p>实例id，必填项</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>代答类型：1-内置可信模型安全代答，2-自定义代答（ActionType=reply时生效</p><p>枚举值：</p><ul><li>1： 内置可信模型安全代答</li><li>2： 自定义代答ActionType=reply时生效</li></ul>
+	ReplyType *uint64 `json:"ReplyType,omitnil,omitempty" name:"ReplyType"`
+
+	// <p>自定义回答模板</p>
+	CustomReplyRuleId *string `json:"CustomReplyRuleId,omitnil,omitempty" name:"CustomReplyRuleId"`
+
+	// <p>模态类型：0-文本（默认），1-图片</p><p>枚举值：</p><ul><li>0： 文本</li><li>1： 图片</li></ul>
+	ModalType *uint64 `json:"ModalType,omitnil,omitempty" name:"ModalType"`
+
+	// <p>规则类别：black-普通规则(默认)，white-白名单规则；空值按black处理。white时ActionType仅允许pass(放行)，RuleItem支持白名单匹配字段(Key: ip/geo/type/content/chat_id/user_id/tool_name/tool_args/keyword_whitelist；Op: belong/not_belong/equal/not_equal/contain/not_contain/prefix/suffix/wildcard)</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>白名单规则生效范围：多个serviceId/domain列表（Category=white时使用），表示该白名单规则同时生效于哪些域名/serviceId。黑名单规则不使用此字段。</p>
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// <p>加白生效模块type列表（Category=white时使用），表示该白名单规则命中后对哪些防护模块生效(放行)。取值：2-算力消耗规则，3-自定义防护规则，4-ToolCall防护，5-提示词攻击防护，6-内容合规检测，7-敏感数据检测。</p>
+	AppliedModules []*uint64 `json:"AppliedModules,omitnil,omitempty" name:"AppliedModules"`
+}
+
+func (r *ModifyLLMContentRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMContentRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Priority")
+	delete(f, "Status")
+	delete(f, "CheckType")
+	delete(f, "RuleItem")
+	delete(f, "Options")
+	delete(f, "Domain")
+	delete(f, "ActionType")
+	delete(f, "ResponseText")
+	delete(f, "SessionApplied")
+	delete(f, "RuleId")
+	delete(f, "PageId")
+	delete(f, "ContentLogicalOp")
+	delete(f, "InstanceId")
+	delete(f, "ReplyType")
+	delete(f, "CustomReplyRuleId")
+	delete(f, "ModalType")
+	delete(f, "Category")
+	delete(f, "Domains")
+	delete(f, "AppliedModules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLLMContentRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMContentRuleResponseParams struct {
+	// <p>操作的RuleId</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLLMContentRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLLMContentRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyLLMContentRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMContentRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMContentRuleStatusRequestParams struct {
+	// <p>状态</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>Id列表</p>
+	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type ModifyLLMContentRuleStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>状态</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>Id列表</p>
+	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *ModifyLLMContentRuleStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMContentRuleStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Status")
+	delete(f, "Ids")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLLMContentRuleStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMContentRuleStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLLMContentRuleStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLLMContentRuleStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyLLMContentRuleStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMContentRuleStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMKeywordLibraryRequestParams struct {
+	// 新增的关键词库列表
+	LibList []*LLMKeywordLibrary `json:"LibList,omitnil,omitempty" name:"LibList"`
+}
+
+type ModifyLLMKeywordLibraryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 新增的关键词库列表
+	LibList []*LLMKeywordLibrary `json:"LibList,omitnil,omitempty" name:"LibList"`
+}
+
+func (r *ModifyLLMKeywordLibraryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMKeywordLibraryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLLMKeywordLibraryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMKeywordLibraryResponseParams struct {
+	// 成功创建的列表id
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLLMKeywordLibraryResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLLMKeywordLibraryResponseParams `json:"Response"`
+}
+
+func (r *ModifyLLMKeywordLibraryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMKeywordLibraryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMStatusRequestParams struct {
+	// <p>开关状态。true：开启，false：关闭。</p>
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>需要操作的域名或者serviceid</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>开关类型，用于指定要操作的防护模块开关。取值如下：<br>1：防护总开关，控制大模型防护功能的全局开启/关闭。<br>2：算力消耗防护规则开关，控制算力消耗限制功能的开启/关闭。<br>3：自定义防护规则开关，控制内容安全自定义规则功能的开启/关闭。<br>4：ToolCall 防护开关，控制工具调用安全检测功能的开启/关闭。<br>5：提示词攻击防护开关，控制提示词注入/越狱攻击检测功能的开启/关闭。<br>6：内容合规检测开关，控制输入输出内容合规检测功能的开启/关闭。<br>7：敏感数据检测开关，控制敏感信息泄露检测（DLP）功能的开启/关闭。<br>8：Skill 安全检测开关，控制 Skill/Plugin 调用安全检测功能的开启/关闭。<br>9：意图行为检测开关，控制用户意图识别与行为检测功能的开启/关闭。<br>10：恶意URL检测开关，控制响应中恶意链接检测功能的开启/关闭。</p>
+	SwitchType *uint64 `json:"SwitchType,omitnil,omitempty" name:"SwitchType"`
+
+	// <p>WAF 实例 ID，表示当前操作所属的 WAF 实例。可通过 DescribeInstances 接口获取。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type ModifyLLMStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>开关状态。true：开启，false：关闭。</p>
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>需要操作的域名或者serviceid</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>开关类型，用于指定要操作的防护模块开关。取值如下：<br>1：防护总开关，控制大模型防护功能的全局开启/关闭。<br>2：算力消耗防护规则开关，控制算力消耗限制功能的开启/关闭。<br>3：自定义防护规则开关，控制内容安全自定义规则功能的开启/关闭。<br>4：ToolCall 防护开关，控制工具调用安全检测功能的开启/关闭。<br>5：提示词攻击防护开关，控制提示词注入/越狱攻击检测功能的开启/关闭。<br>6：内容合规检测开关，控制输入输出内容合规检测功能的开启/关闭。<br>7：敏感数据检测开关，控制敏感信息泄露检测（DLP）功能的开启/关闭。<br>8：Skill 安全检测开关，控制 Skill/Plugin 调用安全检测功能的开启/关闭。<br>9：意图行为检测开关，控制用户意图识别与行为检测功能的开启/关闭。<br>10：恶意URL检测开关，控制响应中恶意链接检测功能的开启/关闭。</p>
+	SwitchType *uint64 `json:"SwitchType,omitnil,omitempty" name:"SwitchType"`
+
+	// <p>WAF 实例 ID，表示当前操作所属的 WAF 实例。可通过 DescribeInstances 接口获取。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *ModifyLLMStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Status")
+	delete(f, "Domain")
+	delete(f, "SwitchType")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLLMStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMStatusResponseParams struct {
+	// <p>操作结果，成功时返回 &quot;Success&quot;。</p>
+	Res *string `json:"Res,omitnil,omitempty" name:"Res"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLLMStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLLMStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyLLMStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMWafDLPRuleRequestParams struct {
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>要修改的规则id列表</p>
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
+	// <p>动作</p>
+	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
+
+	// <p>开关</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
+	Direction *int64 `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+type ModifyLLMWafDLPRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>要修改的规则id列表</p>
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
+	// <p>动作</p>
+	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
+
+	// <p>开关</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
+	Direction *int64 `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+func (r *ModifyLLMWafDLPRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMWafDLPRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "RuleIds")
+	delete(f, "RuleAction")
+	delete(f, "Status")
+	delete(f, "InstanceId")
+	delete(f, "Direction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLLMWafDLPRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMWafDLPRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLLMWafDLPRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLLMWafDLPRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyLLMWafDLPRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMWafDLPRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMWafProtectRuleRequestParams struct {
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>要修改的规则id列表</p>
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
+	// <p>规则动作</p>
+	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
+
+	// <p>开关</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
+	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+type ModifyLLMWafProtectRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>要修改的规则id列表</p>
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
+	// <p>规则动作</p>
+	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
+
+	// <p>开关</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
+	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+func (r *ModifyLLMWafProtectRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMWafProtectRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "RuleIds")
+	delete(f, "RuleAction")
+	delete(f, "Status")
+	delete(f, "InstanceId")
+	delete(f, "Direction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLLMWafProtectRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMWafProtectRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLLMWafProtectRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLLMWafProtectRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyLLMWafProtectRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMWafProtectRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyModuleStatusRequestParams struct {
 	// 需要设置的domain
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -23371,6 +24891,46 @@ type Rule struct {
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 }
 
+type RuleDetail struct {
+	// <p>规则ID</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>规则名称</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>严重度</p>
+	Severity *string `json:"Severity,omitnil,omitempty" name:"Severity"`
+
+	// <p>动作</p>
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// <p>开关</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>脱敏样例</p>
+	DesensitizeSample *string `json:"DesensitizeSample,omitnil,omitempty" name:"DesensitizeSample"`
+
+	// <p>检测方向</p><p>取值范围：[0, 3]</p>
+	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+type RuleItem struct {
+	//  信息类型
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	//  操作符，默认是包含
+	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
+
+	// 信息类型
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 信息类
+	Levels []*ValueLevel `json:"Levels,omitnil,omitempty" name:"Levels"`
+}
+
 type RuleList struct {
 	// 规则Id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -25818,6 +27378,14 @@ type UserWhiteRuleItem struct {
 
 	// 匹配参数名
 	MatchParams *string `json:"MatchParams,omitnil,omitempty" name:"MatchParams"`
+}
+
+type ValueLevel struct {
+	// 标签，如政治等
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 敏感度
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 }
 
 type VipInfo struct {

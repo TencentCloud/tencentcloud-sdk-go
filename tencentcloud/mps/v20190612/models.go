@@ -3195,7 +3195,7 @@ type AudioEnhanceEditConfig struct {
 	// <p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
-	// <p>音频编辑类型</p><p>枚举值：</p><ul><li>restore： 修复</li></ul><p>默认值：restore</p>
+	// <p>音频编辑类型</p><p>枚举值：</p><ul><li>restore： 修复</li></ul><p>开关开启时，必须显式指定枚举值</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -3925,7 +3925,7 @@ type CloneViralAIGC struct {
 	// <p>分辨率。支持720p（默认）/1080p/2k/4k</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// <p>模型等级。flagship（默认）、standard</p>
+	// <p>模式。flagship（高级版，默认）、standard（标准版）、depthcrafter(深度提取)</p>
 	ModelTier *string `json:"ModelTier,omitnil,omitempty" name:"ModelTier"`
 }
 
@@ -3992,7 +3992,7 @@ type CloneViralRequestParams struct {
 	// <p>爆款视频Url</p>
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
-	// <p>产品信息</p>
+	// <p>产品信息。除深度提取外，其他模式必填</p>
 	Product *CloneViralProduct `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// <p>AIGC生视频相关参数</p>
@@ -4014,7 +4014,7 @@ type CloneViralRequest struct {
 	// <p>爆款视频Url</p>
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
-	// <p>产品信息</p>
+	// <p>产品信息。除深度提取外，其他模式必填</p>
 	Product *CloneViralProduct `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// <p>AIGC生视频相关参数</p>
@@ -5677,10 +5677,10 @@ func (r *CreateAigcImageTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAigcVideoTaskRequestParams struct {
-	// <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan，<br>Hailuo，<br>Kling，<br>Vidu，<br>PixVerse，<br>Mingmou，<br>H2。</p>
+	// <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan，<br>wand-vega-video，<br>Hailuo，<br>Kling，<br>Vidu，<br>PixVerse，<br>Mingmou，<br>H2。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [1.5]。</li><li>Hailuo，可选 [02、2.3、2.3-fast]。</li><li>Kling，可选 [1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu，可选 [q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>PixVerse，可选 [v5.6、v6、c1]。</li><li>H2，可选 [1.0]。</li></ol>
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [1.5]。</li><li>wand-vega-video, 可选[1.0-lite]。</li><li>Hailuo，可选 [02、2.3、2.3-fast]。</li><li>Kling，可选 [1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu，可选 [q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>PixVerse，可选 [v5.6、v6、c1]。</li><li>H2，可选 [1.0]。</li></ol>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// <p>指定场景生成视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持：动作控制，motion_control；数字人，avatar_i2v；对口型，lip_sync。</li><li>Mingmou支持：横转竖，land2port。</li><li>Vidu支持：特效模板，template_effect。</li><li>Hunyuan支持: 3d世界模型, 3d_scene；涉及的返回文件非视频。</li></ol>
@@ -5698,10 +5698,10 @@ type CreateAigcVideoTaskRequestParams struct {
 	// <p>用于指导视频生成的图片 URL。该URL需外网可访问。<br>注意：</p><ol><li>推荐图片大小不超过10M，不同模型大小限制不相同，可查看相应模型官网获取更完整描述。</li><li>支持的图片格式：jpeg、png。</li></ol>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// <p>模型将以此参数传入的图片作为尾帧画面来生成视频。<br>支持此参数的模型：</p><ol><li>Kling，2.0、O1、3.0、3.0-Omni 支持首尾帧。</li><li>Kling，1.6、2.1、2.5、2.6 在 Resolution:1080P 的情况下支持首尾帧。</li><li>Vidu，q2-pro、q2-turbo、q3-pro、q3-turbo 支持首尾帧。</li><li>PixVerse，v5.6、v6、c1 支持首尾帧。</li><li>Hailuo，02 支持首尾帧。</li></ol><p>注意：</p><ol><li>推荐图片大小不超过10M，各模型限制不同。</li><li>支持的图片格式：jpeg、png。</li></ol>
+	// <p>模型将以此参数传入的图片作为尾帧画面来生成视频。<br>支持此参数的模型：</p><ol><li>Kling，2.0、O1、3.0、3.0-Omni 支持首尾帧。</li><li>Kling，1.6、2.1、2.5、2.6 在 Resolution:1080P 的情况下支持首尾帧。</li><li>Vidu，q2-pro、q2-turbo、q3-pro、q3-turbo 支持首尾帧。</li><li>PixVerse，v5.6、v6、c1 支持首尾帧。</li><li>Hailuo，02 支持首尾帧。</li><li>wand-vega-video，1.0-lite 支持首尾帧。</li></ol><p>注意：</p><ol><li>推荐图片大小不超过10M，各模型限制不同。</li><li>支持的图片格式：jpeg、png。</li></ol>
 	LastImageUrl *string `json:"LastImageUrl,omitnil,omitempty" name:"LastImageUrl"`
 
-	// <p>包含多张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。</p><p>支持多图输入的模型：</p><ol><li>Vidu，q2、q2-pro、q3-turbo、q3、q3-mix 支持多图参考生视频。支持上传 1-7 张图片，可通过 ImageInfos 里面的 ReferenceType 作为主体 id 来传入。</li><li>Kling，O1、3.0-Omni、1.6 支持多图参考生视频。<ol><li>Kling 1.6 支持上传 1-4 张图片。</li><li>Kling O1、3.0-Omni 支持上传 1-7 张图片。当有参考视频时，支持上传 0-4 张图片。</li></ol></li><li>PixVerse，v5.6、v6、c1 支持多图参考生视频。支持上传 1-7 张图片，需要通过 ImageInfos 里面的 Text 字段传入图片名称。</li><li>H2，1.0 支持多图参数生视频。支持上传 1-9 张图片。当有参考视频时，支持上传 0-5 张图片。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
+	// <p>包含多张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。</p><p>支持多图输入的模型：</p><ol><li>Vidu，q2、q2-pro、q3-turbo、q3、q3-mix 支持多图参考生视频。支持上传 1-7 张图片，可通过 ImageInfos 里面的 ReferenceType 作为主体 id 来传入。</li><li>wand-vega-video，1.0-lite支持最多9张参考图。</li><li>Kling，O1、3.0-Omni、1.6 支持多图参考生视频。<ol><li>Kling 1.6 支持上传 1-4 张图片。</li><li>Kling O1、3.0-Omni 支持上传 1-7 张图片。当有参考视频时，支持上传 0-4 张图片。</li></ol></li><li>PixVerse，v5.6、v6、c1 支持多图参考生视频。支持上传 1-7 张图片，需要通过 ImageInfos 里面的 Text 字段传入图片名称。</li><li>H2，1.0 支持多图参数生视频。支持上传 1-9 张图片。当有参考视频时，支持上传 0-5 张图片。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
 	ImageInfos []*AigcVideoReferenceImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
 
 	// <p>目前仅 Kling O1、Kling 3.0-Omni、Vidu q2-pro、H2 1.0 支持参考视频信息传入。</p><ol><li>Kling O1、3.0-Omni 可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声。</li><li>Vidu q2-pro 支持视频参考。</li><li>H2 1.0 支持视频参考。</li></ol>
@@ -5713,7 +5713,7 @@ type CreateAigcVideoTaskRequestParams struct {
 	// <p>主体信息。</p>
 	SubjectInfos []*AigcVideoReferenceSubjectInfo `json:"SubjectInfos,omitnil,omitempty" name:"SubjectInfos"`
 
-	// <p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
+	// <p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>wand-vega-video, 1.0-lite支持：4-15秒。</li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// <p>用于传入要求的额外参数。</p>
@@ -5732,10 +5732,10 @@ type CreateAigcVideoTaskRequestParams struct {
 type CreateAigcVideoTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan，<br>Hailuo，<br>Kling，<br>Vidu，<br>PixVerse，<br>Mingmou，<br>H2。</p>
+	// <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan，<br>wand-vega-video，<br>Hailuo，<br>Kling，<br>Vidu，<br>PixVerse，<br>Mingmou，<br>H2。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [1.5]。</li><li>Hailuo，可选 [02、2.3、2.3-fast]。</li><li>Kling，可选 [1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu，可选 [q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>PixVerse，可选 [v5.6、v6、c1]。</li><li>H2，可选 [1.0]。</li></ol>
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [1.5]。</li><li>wand-vega-video, 可选[1.0-lite]。</li><li>Hailuo，可选 [02、2.3、2.3-fast]。</li><li>Kling，可选 [1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu，可选 [q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>PixVerse，可选 [v5.6、v6、c1]。</li><li>H2，可选 [1.0]。</li></ol>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// <p>指定场景生成视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持：动作控制，motion_control；数字人，avatar_i2v；对口型，lip_sync。</li><li>Mingmou支持：横转竖，land2port。</li><li>Vidu支持：特效模板，template_effect。</li><li>Hunyuan支持: 3d世界模型, 3d_scene；涉及的返回文件非视频。</li></ol>
@@ -5753,10 +5753,10 @@ type CreateAigcVideoTaskRequest struct {
 	// <p>用于指导视频生成的图片 URL。该URL需外网可访问。<br>注意：</p><ol><li>推荐图片大小不超过10M，不同模型大小限制不相同，可查看相应模型官网获取更完整描述。</li><li>支持的图片格式：jpeg、png。</li></ol>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// <p>模型将以此参数传入的图片作为尾帧画面来生成视频。<br>支持此参数的模型：</p><ol><li>Kling，2.0、O1、3.0、3.0-Omni 支持首尾帧。</li><li>Kling，1.6、2.1、2.5、2.6 在 Resolution:1080P 的情况下支持首尾帧。</li><li>Vidu，q2-pro、q2-turbo、q3-pro、q3-turbo 支持首尾帧。</li><li>PixVerse，v5.6、v6、c1 支持首尾帧。</li><li>Hailuo，02 支持首尾帧。</li></ol><p>注意：</p><ol><li>推荐图片大小不超过10M，各模型限制不同。</li><li>支持的图片格式：jpeg、png。</li></ol>
+	// <p>模型将以此参数传入的图片作为尾帧画面来生成视频。<br>支持此参数的模型：</p><ol><li>Kling，2.0、O1、3.0、3.0-Omni 支持首尾帧。</li><li>Kling，1.6、2.1、2.5、2.6 在 Resolution:1080P 的情况下支持首尾帧。</li><li>Vidu，q2-pro、q2-turbo、q3-pro、q3-turbo 支持首尾帧。</li><li>PixVerse，v5.6、v6、c1 支持首尾帧。</li><li>Hailuo，02 支持首尾帧。</li><li>wand-vega-video，1.0-lite 支持首尾帧。</li></ol><p>注意：</p><ol><li>推荐图片大小不超过10M，各模型限制不同。</li><li>支持的图片格式：jpeg、png。</li></ol>
 	LastImageUrl *string `json:"LastImageUrl,omitnil,omitempty" name:"LastImageUrl"`
 
-	// <p>包含多张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。</p><p>支持多图输入的模型：</p><ol><li>Vidu，q2、q2-pro、q3-turbo、q3、q3-mix 支持多图参考生视频。支持上传 1-7 张图片，可通过 ImageInfos 里面的 ReferenceType 作为主体 id 来传入。</li><li>Kling，O1、3.0-Omni、1.6 支持多图参考生视频。<ol><li>Kling 1.6 支持上传 1-4 张图片。</li><li>Kling O1、3.0-Omni 支持上传 1-7 张图片。当有参考视频时，支持上传 0-4 张图片。</li></ol></li><li>PixVerse，v5.6、v6、c1 支持多图参考生视频。支持上传 1-7 张图片，需要通过 ImageInfos 里面的 Text 字段传入图片名称。</li><li>H2，1.0 支持多图参数生视频。支持上传 1-9 张图片。当有参考视频时，支持上传 0-5 张图片。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
+	// <p>包含多张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。</p><p>支持多图输入的模型：</p><ol><li>Vidu，q2、q2-pro、q3-turbo、q3、q3-mix 支持多图参考生视频。支持上传 1-7 张图片，可通过 ImageInfos 里面的 ReferenceType 作为主体 id 来传入。</li><li>wand-vega-video，1.0-lite支持最多9张参考图。</li><li>Kling，O1、3.0-Omni、1.6 支持多图参考生视频。<ol><li>Kling 1.6 支持上传 1-4 张图片。</li><li>Kling O1、3.0-Omni 支持上传 1-7 张图片。当有参考视频时，支持上传 0-4 张图片。</li></ol></li><li>PixVerse，v5.6、v6、c1 支持多图参考生视频。支持上传 1-7 张图片，需要通过 ImageInfos 里面的 Text 字段传入图片名称。</li><li>H2，1.0 支持多图参数生视频。支持上传 1-9 张图片。当有参考视频时，支持上传 0-5 张图片。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
 	ImageInfos []*AigcVideoReferenceImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
 
 	// <p>目前仅 Kling O1、Kling 3.0-Omni、Vidu q2-pro、H2 1.0 支持参考视频信息传入。</p><ol><li>Kling O1、3.0-Omni 可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声。</li><li>Vidu q2-pro 支持视频参考。</li><li>H2 1.0 支持视频参考。</li></ol>
@@ -5768,7 +5768,7 @@ type CreateAigcVideoTaskRequest struct {
 	// <p>主体信息。</p>
 	SubjectInfos []*AigcVideoReferenceSubjectInfo `json:"SubjectInfos,omitnil,omitempty" name:"SubjectInfos"`
 
-	// <p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
+	// <p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>wand-vega-video, 1.0-lite支持：4-15秒。</li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// <p>用于传入要求的额外参数。</p>
@@ -8080,20 +8080,20 @@ func (r *CreateStreamLinkFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateStreamLinkInputRequestParams struct {
-	// 媒体传输流ID。
+	// <p>媒体传输流ID。</p>
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 流的输入组。
+	// <p>流的输入组。</p>
 	InputGroup []*CreateInput `json:"InputGroup,omitnil,omitempty" name:"InputGroup"`
 }
 
 type CreateStreamLinkInputRequest struct {
 	*tchttp.BaseRequest
 	
-	// 媒体传输流ID。
+	// <p>媒体传输流ID。</p>
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 流的输入组。
+	// <p>流的输入组。</p>
 	InputGroup []*CreateInput `json:"InputGroup,omitnil,omitempty" name:"InputGroup"`
 }
 
@@ -8119,7 +8119,7 @@ func (r *CreateStreamLinkInputRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateStreamLinkInputResponseParams struct {
-	// 创建的Flow信息。
+	// <p>创建的Flow信息。</p>
 	Info *DescribeFlow `json:"Info,omitnil,omitempty" name:"Info"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14935,14 +14935,14 @@ func (r *DescribeStreamLinkEventAttachedFlowsResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeStreamLinkEventRequestParams struct {
-	// 媒体传输事件ID。
+	// <p>媒体传输事件ID。</p>
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 }
 
 type DescribeStreamLinkEventRequest struct {
 	*tchttp.BaseRequest
 	
-	// 媒体传输事件ID。
+	// <p>媒体传输事件ID。</p>
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 }
 
@@ -14967,7 +14967,7 @@ func (r *DescribeStreamLinkEventRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStreamLinkEventResponseParams struct {
-	// 媒体传输事件的配置信息。
+	// <p>媒体传输事件的配置信息。</p>
 	Info *DescribeEvent `json:"Info,omitnil,omitempty" name:"Info"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14992,20 +14992,20 @@ func (r *DescribeStreamLinkEventResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStreamLinkEventsRequestParams struct {
-	// 当前页数，默认1。
+	// <p>当前页数，默认1。</p>
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// 每页大小，默认10。
+	// <p>每页大小，默认10。</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type DescribeStreamLinkEventsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 当前页数，默认1。
+	// <p>当前页数，默认1。</p>
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// 每页大小，默认10。
+	// <p>每页大小，默认10。</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
@@ -15031,19 +15031,19 @@ func (r *DescribeStreamLinkEventsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStreamLinkEventsResponseParams struct {
-	// 媒体传输事件的配置信息列表。
+	// <p>媒体传输事件的配置信息列表。</p>
 	Infos []*DescribeEvent `json:"Infos,omitnil,omitempty" name:"Infos"`
 
-	// 当前页数。
+	// <p>当前页数。</p>
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// 每页大小。
+	// <p>每页大小。</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 总数量。
+	// <p>总数量。</p>
 	TotalNum *int64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
-	// 总页数。
+	// <p>总页数。</p>
 	TotalPage *int64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18140,38 +18140,32 @@ func (r *DescribeWordSamplesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWorkflowsRequestParams struct {
-	// 工作流 ID 过滤条件，数组长度限制：100。
+	// <p>工作流 ID 过滤条件，数组长度限制：100。</p>
 	WorkflowIds []*int64 `json:"WorkflowIds,omitnil,omitempty" name:"WorkflowIds"`
 
-	// 工作流状态，取值范围：
-	// <li>Enabled：已启用，</li>
-	// <li>Disabled：已禁用。</li>
-	// 不填此参数，则不区分工作流状态。
+	// <p>工作流状态，取值范围：</p><li>Enabled：已启用，</li><li>Disabled：已禁用。</li>不填此参数，则不区分工作流状态。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 分页偏移量，默认值：0。
+	// <p>分页偏移量，默认值：0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回记录条数，默认值：10，最大值：100。
+	// <p>返回记录条数，默认值：10，最大值：100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeWorkflowsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作流 ID 过滤条件，数组长度限制：100。
+	// <p>工作流 ID 过滤条件，数组长度限制：100。</p>
 	WorkflowIds []*int64 `json:"WorkflowIds,omitnil,omitempty" name:"WorkflowIds"`
 
-	// 工作流状态，取值范围：
-	// <li>Enabled：已启用，</li>
-	// <li>Disabled：已禁用。</li>
-	// 不填此参数，则不区分工作流状态。
+	// <p>工作流状态，取值范围：</p><li>Enabled：已启用，</li><li>Disabled：已禁用。</li>不填此参数，则不区分工作流状态。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 分页偏移量，默认值：0。
+	// <p>分页偏移量，默认值：0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回记录条数，默认值：10，最大值：100。
+	// <p>返回记录条数，默认值：10，最大值：100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -18199,10 +18193,10 @@ func (r *DescribeWorkflowsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWorkflowsResponseParams struct {
-	// 符合过滤条件的记录总数。
+	// <p>符合过滤条件的记录总数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 工作流信息数组。
+	// <p>工作流信息数组。</p>
 	WorkflowInfoSet []*WorkflowInfo `json:"WorkflowInfoSet,omitnil,omitempty" name:"WorkflowInfoSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

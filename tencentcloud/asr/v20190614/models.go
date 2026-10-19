@@ -2734,6 +2734,9 @@ type VoicePrintEnrollRequestParams struct {
 
 	// <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
 	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// <p>是否对注册/更新的音频做质量检测。开启后使用质检专用引擎提取特征，对音频进行多说话人、信噪比、截幅等检查，不合格返回对应错误码；关闭时不做这些检查，沿用常规注册流。默认false</p><p>默认值：false</p>
+	QualityCheck *bool `json:"QualityCheck,omitnil,omitempty" name:"QualityCheck"`
 }
 
 type VoicePrintEnrollRequest struct {
@@ -2756,6 +2759,9 @@ type VoicePrintEnrollRequest struct {
 
 	// <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
 	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// <p>是否对注册/更新的音频做质量检测。开启后使用质检专用引擎提取特征，对音频进行多说话人、信噪比、截幅等检查，不合格返回对应错误码；关闭时不做这些检查，沿用常规注册流。默认false</p><p>默认值：false</p>
+	QualityCheck *bool `json:"QualityCheck,omitnil,omitempty" name:"QualityCheck"`
 }
 
 func (r *VoicePrintEnrollRequest) ToJsonString() string {
@@ -2776,6 +2782,7 @@ func (r *VoicePrintEnrollRequest) FromJsonString(s string) error {
 	delete(f, "SpeakerNick")
 	delete(f, "GroupId")
 	delete(f, "AudioUrl")
+	delete(f, "QualityCheck")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintEnrollRequest has unknown keys!", "")
 	}

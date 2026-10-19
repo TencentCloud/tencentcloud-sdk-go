@@ -1009,7 +1009,7 @@ func NewDescribeMultimodalDocParseJobResponse() (response *DescribeMultimodalDoc
 //
 // 
 //
-// 创建任务接口文档地址：https://cloud.tencent.com/document/product/1024/953218
+// 创建任务接口文档地址：https://cloud.tencent.com/document/product/866/139312
 //
 // 
 //
@@ -1028,7 +1028,7 @@ func (c *Client) DescribeMultimodalDocParseJob(request *DescribeMultimodalDocPar
 //
 // 
 //
-// 创建任务接口文档地址：https://cloud.tencent.com/document/product/1024/953218
+// 创建任务接口文档地址：https://cloud.tencent.com/document/product/866/139312
 //
 // 
 //
@@ -3393,6 +3393,10 @@ func NewImageEnhancementResponse() (response *ImageEnhancementResponse) {
 }
 
 // ImageEnhancement
+// 产品规划
+//
+// 
+//
 // 文本图像增强是面向文档类图片提供的图像增强处理能力，包括切边增强、图像矫正、阴影去除、摩尔纹去除等；可以有效优化文档类的图片质量，提升文字的清晰度。
 //
 // 
@@ -3416,6 +3420,10 @@ func (c *Client) ImageEnhancement(request *ImageEnhancementRequest) (response *I
 }
 
 // ImageEnhancement
+// 产品规划
+//
+// 
+//
 // 文本图像增强是面向文档类图片提供的图像增强处理能力，包括切边增强、图像矫正、阴影去除、摩尔纹去除等；可以有效优化文档类的图片质量，提升文字的清晰度。
 //
 // 
@@ -3945,7 +3953,7 @@ func NewMultimodalDocParseResponse() (response *MultimodalDocParseResponse) {
 //
 // 
 //
-// 支持的文件大小：PDF/Word/PPT支持150M且300页以内、Excel支持10M以内、TXT支持10M以内、图片文件支持70M以内。
+// 支持的文件大小：PDF/Word/PPT支持150M且300页以内、Excel支持10M以内、TXT支持10M以内、图片文件支持30M以内。
 //
 // 
 //
@@ -3970,7 +3978,7 @@ func (c *Client) MultimodalDocParse(request *MultimodalDocParseRequest) (respons
 //
 // 
 //
-// 支持的文件大小：PDF/Word/PPT支持150M且300页以内、Excel支持10M以内、TXT支持10M以内、图片文件支持70M以内。
+// 支持的文件大小：PDF/Word/PPT支持150M且300页以内、Excel支持10M以内、TXT支持10M以内、图片文件支持30M以内。
 //
 // 
 //
@@ -7055,7 +7063,7 @@ func NewSubmitMultimodalDocParseJobResponse() (response *SubmitMultimodalDocPars
 //
 // 
 //
-// 查询任务接口文档地址：https://cloud.tencent.com/document/product/1024/953219
+// 查询任务接口文档地址：https://cloud.tencent.com/document/product/866/139313
 //
 // 
 //
@@ -7076,7 +7084,7 @@ func (c *Client) SubmitMultimodalDocParseJob(request *SubmitMultimodalDocParseJo
 //
 // 
 //
-// 查询任务接口文档地址：https://cloud.tencent.com/document/product/1024/953219
+// 查询任务接口文档地址：https://cloud.tencent.com/document/product/866/139313
 //
 // 
 //

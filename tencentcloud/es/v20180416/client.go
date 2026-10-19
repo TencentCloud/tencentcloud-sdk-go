@@ -2100,9 +2100,11 @@ func NewDescribeEsInstanceEventListsResponse() (response *DescribeEsInstanceEven
 // 查询事件中心列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_CAMINFONOTFOUND = "ResourceNotFound.CAMInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 func (c *Client) DescribeEsInstanceEventLists(request *DescribeEsInstanceEventListsRequest) (response *DescribeEsInstanceEventListsResponse, err error) {
     return c.DescribeEsInstanceEventListsWithContext(context.Background(), request)
@@ -2112,9 +2114,11 @@ func (c *Client) DescribeEsInstanceEventLists(request *DescribeEsInstanceEventLi
 // 查询事件中心列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_CAMINFONOTFOUND = "ResourceNotFound.CAMInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 func (c *Client) DescribeEsInstanceEventListsWithContext(ctx context.Context, request *DescribeEsInstanceEventListsRequest) (response *DescribeEsInstanceEventListsResponse, err error) {
     if request == nil {

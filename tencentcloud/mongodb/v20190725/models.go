@@ -7346,42 +7346,38 @@ func (r *ModifyDBInstanceLogToCLSResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceNetworkAddressRequestParams struct {
-	// 指定需修改网络的实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// <p>指定需修改网络的实例 ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 原 IP 地址保留时长。
-	// - 单位为分钟，0表示立即回收原 IP 地址。
-	// - 原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。
+	// <p>原 IP 地址保留时长。</p><ul><li>单位为分钟，0表示立即回收原 IP 地址。</li><li>原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。</li></ul>
 	OldIpExpiredTime *uint64 `json:"OldIpExpiredTime,omitnil,omitempty" name:"OldIpExpiredTime"`
 
-	// 切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络 ID。
+	// <p>切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。请通过接口 <a href="https://cloud.tencent.com/document/product/240/38568">DescribeDBInstances</a> 获取私有网络 ID。</p>
 	NewUniqVpcId *string `json:"NewUniqVpcId,omitnil,omitempty" name:"NewUniqVpcId"`
 
-	// 切换后私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络的子网 ID。
+	// <p>切换后私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。请通过接口 <a href="https://cloud.tencent.com/document/product/240/38568">DescribeDBInstances</a> 获取私有网络的子网 ID。</p>
 	NewUniqSubnetId *string `json:"NewUniqSubnetId,omitnil,omitempty" name:"NewUniqSubnetId"`
 
-	// IP 地址信息，包含新 IP 地址与 原 IP 地址。
+	// <p>IP 地址信息，包含新 IP 地址与 原 IP 地址。</p>
 	NetworkAddresses []*ModifyNetworkAddress `json:"NetworkAddresses,omitnil,omitempty" name:"NetworkAddresses"`
 }
 
 type ModifyDBInstanceNetworkAddressRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指定需修改网络的实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// <p>指定需修改网络的实例 ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 原 IP 地址保留时长。
-	// - 单位为分钟，0表示立即回收原 IP 地址。
-	// - 原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。
+	// <p>原 IP 地址保留时长。</p><ul><li>单位为分钟，0表示立即回收原 IP 地址。</li><li>原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。</li></ul>
 	OldIpExpiredTime *uint64 `json:"OldIpExpiredTime,omitnil,omitempty" name:"OldIpExpiredTime"`
 
-	// 切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络 ID。
+	// <p>切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。请通过接口 <a href="https://cloud.tencent.com/document/product/240/38568">DescribeDBInstances</a> 获取私有网络 ID。</p>
 	NewUniqVpcId *string `json:"NewUniqVpcId,omitnil,omitempty" name:"NewUniqVpcId"`
 
-	// 切换后私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络的子网 ID。
+	// <p>切换后私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。请通过接口 <a href="https://cloud.tencent.com/document/product/240/38568">DescribeDBInstances</a> 获取私有网络的子网 ID。</p>
 	NewUniqSubnetId *string `json:"NewUniqSubnetId,omitnil,omitempty" name:"NewUniqSubnetId"`
 
-	// IP 地址信息，包含新 IP 地址与 原 IP 地址。
+	// <p>IP 地址信息，包含新 IP 地址与 原 IP 地址。</p>
 	NetworkAddresses []*ModifyNetworkAddress `json:"NetworkAddresses,omitnil,omitempty" name:"NetworkAddresses"`
 }
 
@@ -7410,7 +7406,7 @@ func (r *ModifyDBInstanceNetworkAddressRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceNetworkAddressResponseParams struct {
-	// 修改网络异步流程任务ID。
+	// <p>修改网络异步流程任务ID。</p>
 	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7889,11 +7885,14 @@ type ModifyMongoDBParamType struct {
 }
 
 type ModifyNetworkAddress struct {
-	// 新IP地址。
+	// <p>新IP地址。</p>
 	NewIPAddress *string `json:"NewIPAddress,omitnil,omitempty" name:"NewIPAddress"`
 
-	// 原IP地址。
+	// <p>原IP地址。</p>
 	OldIpAddress *string `json:"OldIpAddress,omitnil,omitempty" name:"OldIpAddress"`
+
+	// <p>在副本集时，修改网络需要传此字段，用于标识该ip地址为主节点或者hidden节点</p><p>枚举值：</p><ul><li>PRIMARY： 主节点</li><li>HIDDEN： hidden节点</li></ul>
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 }
 
 // Predefined struct for user

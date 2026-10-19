@@ -17,8 +17,20 @@ package v20230517
 const (
 	// 此产品的特有错误码
 
+	// 包含没有权限操作的通道ID
+	AUTHFAILURE_CONTAINUNAUTHORIZEDCHANNELID = "AuthFailure.ContainUnauthorizedChannelId"
+
+	// 组织无权访问
+	AUTHFAILURE_ORGANIZATIONUNAUTHORIZED = "AuthFailure.OrganizationUnauthorized"
+
 	// 操作失败
 	FAILEDOPERATION = "FailedOperation"
+
+	// 包含已关联的通道ID，请勿重复关联
+	FAILEDOPERATION_CHANNELALREADYASSIGNED = "FailedOperation.ChannelAlreadyAssigned"
+
+	// 包含未关联的通道ID，无法取消关联
+	FAILEDOPERATION_CHANNELNOTASSIGNED = "FailedOperation.ChannelNotAssigned"
 
 	// 数据库错误
 	FAILEDOPERATION_DATABASEERROR = "FailedOperation.DatabaseError"
@@ -34,6 +46,9 @@ const (
 
 	// 请求超时
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+
+	// AI场景模板已被计划关联，不允许删除
+	FAILEDOPERATION_TEMPLATEINUSE = "FailedOperation.TemplateInUse"
 
 	// 服务器内部错误
 	INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"
@@ -92,6 +107,18 @@ const (
 	// 包含无效的设备ID
 	INVALIDPARAMETERVALUE_CONTAININVALIDDEVICEID = "InvalidParameterValue.ContainInvalidDeviceId"
 
+	// 包含无效的图片ID
+	INVALIDPARAMETERVALUE_CONTAININVALIDIMAGEID = "InvalidParameterValue.ContainInvalidImageId"
+
+	// 包含无效的截图时间段
+	INVALIDPARAMETERVALUE_CONTAININVALIDSNAPSHOTTIME = "InvalidParameterValue.ContainInvalidSnapshotTime"
+
+	// 包含无效的Token
+	INVALIDPARAMETERVALUE_CONTAININVALIDTOKEN = "InvalidParameterValue.ContainInvalidToken"
+
+	// 包含不存在的通道ID
+	INVALIDPARAMETERVALUE_CONTAINNONEXISTENTCHANNELID = "InvalidParameterValue.ContainNonexistentChannelId"
+
 	// 周期超出限制（1-7）
 	INVALIDPARAMETERVALUE_DATAOUTOFRANGE = "InvalidParameterValue.DataOutOfRange"
 
@@ -100,6 +127,9 @@ const (
 
 	// 通道ID不能为空
 	INVALIDPARAMETERVALUE_EMPTYCHANNELID = "InvalidParameterValue.EmptyChannelId"
+
+	// ChannelIds不能为空，至少需要传入1个通道ID
+	INVALIDPARAMETERVALUE_EMPTYCHANNELIDS = "InvalidParameterValue.EmptyChannelIds"
 
 	// 设备ID不能为空
 	INVALIDPARAMETERVALUE_EMPTYDEVICEID = "InvalidParameterValue.EmptyDeviceId"
@@ -134,11 +164,29 @@ const (
 	// 码流类型包含非法字符(仅支持英文、数字、_、-)
 	INVALIDPARAMETERVALUE_ILLEGALSTREAMTYPE = "InvalidParameterValue.IllegalStreamType"
 
+	// InvalidParameterValue.ImageVLPlanIDNotExisted
+	INVALIDPARAMETERVALUE_IMAGEVLPLANIDNOTEXISTED = "InvalidParameterValue.ImageVLPlanIDNotExisted"
+
+	// InvalidParameterValue.ImageVLPlanNameContainIllegalCharacter
+	INVALIDPARAMETERVALUE_IMAGEVLPLANNAMECONTAINILLEGALCHARACTER = "InvalidParameterValue.ImageVLPlanNameContainIllegalCharacter"
+
+	// InvalidParameterValue.InvalidAIModel
+	INVALIDPARAMETERVALUE_INVALIDAIMODEL = "InvalidParameterValue.InvalidAIModel"
+
 	// 无效的设备接入协议
 	INVALIDPARAMETERVALUE_INVALIDACCESSPROTOCOL = "InvalidParameterValue.InvalidAccessProtocol"
 
 	// 无效的开始时间
 	INVALIDPARAMETERVALUE_INVALIDBEGINTIME = "InvalidParameterValue.InvalidBeginTime"
+
+	// 无效的回调Token
+	INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
+
+	// 无效的回调地址
+	INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+
+	// 无效的截图类型过滤值，仅支持 realtime / low
+	INVALIDPARAMETERVALUE_INVALIDCAPTURETYPE = "InvalidParameterValue.InvalidCaptureType"
 
 	// 无效的通道ID
 	INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
@@ -151,6 +199,15 @@ const (
 
 	// 无效的集群ID，长度或内容不符合规则
 	INVALIDPARAMETERVALUE_INVALIDCLUSTERID = "InvalidParameterValue.InvalidClusterId"
+
+	// 无效的命令
+	INVALIDPARAMETERVALUE_INVALIDCMD = "InvalidParameterValue.InvalidCmd"
+
+	// 无效的配置ID
+	INVALIDPARAMETERVALUE_INVALIDCONFIGID = "InvalidParameterValue.InvalidConfigId"
+
+	// 无效的描述
+	INVALIDPARAMETERVALUE_INVALIDDESCRIBE = "InvalidParameterValue.InvalidDescribe"
 
 	// 描述填写有误
 	INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
@@ -185,17 +242,44 @@ const (
 	// 冷存储至少60天, 并且热存储和冷存储总天数不能超过3650天
 	INVALIDPARAMETERVALUE_INVALIDEXPIRATIONRANGE = "InvalidParameterValue.InvalidExpirationRange"
 
+	// 无效的过期时间参数，大于0并且小于60
+	INVALIDPARAMETERVALUE_INVALIDEXPIRE = "InvalidParameterValue.InvalidExpire"
+
+	// 无效的文件存储天数
+	INVALIDPARAMETERVALUE_INVALIDFILEEXPIRES = "InvalidParameterValue.InvalidFileExpires"
+
 	// 无效的文件格式
 	INVALIDPARAMETERVALUE_INVALIDFILETYPE = "InvalidParameterValue.InvalidFileType"
 
 	// 无效的网关接入协议
 	INVALIDPARAMETERVALUE_INVALIDGATEWAYPROTOCOLTYPE = "InvalidParameterValue.InvalidGatewayProtocolType"
 
+	// 低频截帧频率取值范围为[30, 36000]秒
+	INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGINTERVALFORLOWFREQ = "InvalidParameterValue.InvalidImageConfigIntervalForLowFreq"
+
+	// 实时截帧频率取值范围为[5, 180]秒
+	INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGINTERVALFORREALTIME = "InvalidParameterValue.InvalidImageConfigIntervalForRealtime"
+
+	// 无效的截图类型
+	INVALIDPARAMETERVALUE_INVALIDIMAGECONFIGTYPE = "InvalidParameterValue.InvalidImageConfigType"
+
+	// InvalidParameterValue.InvalidImageVLPlanDescribe
+	INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANDESCRIBE = "InvalidParameterValue.InvalidImageVLPlanDescribe"
+
+	// InvalidParameterValue.InvalidImageVLPlanID
+	INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANID = "InvalidParameterValue.InvalidImageVLPlanID"
+
+	// InvalidParameterValue.InvalidImageVLPlanName
+	INVALIDPARAMETERVALUE_INVALIDIMAGEVLPLANNAME = "InvalidParameterValue.InvalidImageVLPlanName"
+
 	// 无效的Ipv4地址
 	INVALIDPARAMETERVALUE_INVALIDIPV4 = "InvalidParameterValue.InvalidIpv4"
 
 	// 无效的关键字
 	INVALIDPARAMETERVALUE_INVALIDKEYWORD = "InvalidParameterValue.InvalidKeyword"
+
+	// 无效的媒体类型
+	INVALIDPARAMETERVALUE_INVALIDMEDIATYPE = "InvalidParameterValue.InvalidMediaType"
 
 	// 名称为空或填写有误
 	INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
@@ -217,6 +301,9 @@ const (
 
 	// 无效的计划ID
 	INVALIDPARAMETERVALUE_INVALIDPLANID = "InvalidParameterValue.InvalidPlanId"
+
+	// 无效的提示词
+	INVALIDPARAMETERVALUE_INVALIDPROMPT = "InvalidParameterValue.InvalidPrompt"
 
 	// 无效的拉流鉴权开关值
 	INVALIDPARAMETERVALUE_INVALIDPULLSTATE = "InvalidParameterValue.InvalidPullState"
@@ -260,6 +347,9 @@ const (
 	// 无效时间片段取值
 	INVALIDPARAMETERVALUE_INVALIDTIMESECTIONVALUE = "InvalidParameterValue.InvalidTimeSectionValue"
 
+	// InvalidParameterValue.InvalidTimes
+	INVALIDPARAMETERVALUE_INVALIDTIMES = "InvalidParameterValue.InvalidTimes"
+
 	// 热存储至少1天, 最多3650天
 	INVALIDPARAMETERVALUE_INVALIDTRANSITIONRANGE = "InvalidParameterValue.InvalidTransitionRange"
 
@@ -269,8 +359,20 @@ const (
 	// 无效的用户名，长度或内容不符合规则
 	INVALIDPARAMETERVALUE_INVALIDUSERNAME = "InvalidParameterValue.InvalidUsername"
 
+	// InvalidParameterValue.InvalidVLPlanResultID
+	INVALIDPARAMETERVALUE_INVALIDVLPLANRESULTID = "InvalidParameterValue.InvalidVLPlanResultID"
+
+	// InvalidParameterValue.InvalidVLPlanResultIds
+	INVALIDPARAMETERVALUE_INVALIDVLPLANRESULTIDS = "InvalidParameterValue.InvalidVLPlanResultIds"
+
 	// 开启录像补录热存不能小于3天
 	INVALIDPARAMETERVALUE_LIMITREPAIRTRANSITION = "InvalidParameterValue.LimitRepairTransition"
+
+	// InvalidParameterValue.MissingImageConfig
+	INVALIDPARAMETERVALUE_MISSINGIMAGECONFIG = "InvalidParameterValue.MissingImageConfig"
+
+	// InvalidParameterValue.MissingTimes
+	INVALIDPARAMETERVALUE_MISSINGTIMES = "InvalidParameterValue.MissingTimes"
 
 	// 时间不能跨天
 	INVALIDPARAMETERVALUE_NONSAMEDAY = "InvalidParameterValue.NonSameDay"
@@ -280,6 +382,12 @@ const (
 
 	// 组织数量不能大于1000个
 	INVALIDPARAMETERVALUE_ORGANIZATIONCOUNTEXCEEDSRANGE = "InvalidParameterValue.OrganizationCountExceedsRange"
+
+	// 组织ID不存在
+	INVALIDPARAMETERVALUE_ORGANIZATIONIDNOTEXISTED = "InvalidParameterValue.OrganizationIDNotExisted"
+
+	// Cmd=2（解绑）时不允许传入 OrganizationIds
+	INVALIDPARAMETERVALUE_ORGANIZATIONIDSNOTALLOWEDFORUNASSIGN = "InvalidParameterValue.OrganizationIdsNotAllowedForUnAssign"
 
 	// 时间范围超限
 	INVALIDPARAMETERVALUE_OUTOFTIMERANGE = "InvalidParameterValue.OutOfTimeRange"
@@ -314,6 +422,9 @@ const (
 	// 不支持任务类型
 	INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = "InvalidParameterValue.TaskTypeNotSupported"
 
+	// 视觉理解分析模板ID不存在
+	INVALIDPARAMETERVALUE_TEMPLATEIDNOTEXISTED = "InvalidParameterValue.TemplateIDNotExisted"
+
 	// 时间间隔不能小于10分钟
 	INVALIDPARAMETERVALUE_TIMELESSTHANTENMINUTES = "InvalidParameterValue.TimeLessThanTenMinutes"
 
@@ -325,6 +436,9 @@ const (
 
 	// 码流类型过长
 	INVALIDPARAMETERVALUE_TOOLONGSTREAMTYPE = "InvalidParameterValue.TooLongStreamType"
+
+	// ChannelId数量超过上限
+	INVALIDPARAMETERVALUE_TOOMANYCHANNELIDS = "InvalidParameterValue.TooManyChannelIds"
 
 	// 不支持的操作命令
 	INVALIDPARAMETERVALUE_UNSUPPORTOPERATECMD = "InvalidParameterValue.UnSupportOperateCMD"
@@ -344,8 +458,35 @@ const (
 	// 不支持的倍速播放参数
 	INVALIDPARAMETERVALUE_UNSUPPORTEDSCALEPARAM = "InvalidParameterValue.UnSupportedScaleParam"
 
+	// 不支持的文件存储过期时间
+	INVALIDPARAMETERVALUE_UNSUPPORTEDFILEEXPIRETIME = "InvalidParameterValue.UnsupportedFileExpireTime"
+
+	// 不支持的图片下载url过期时间
+	INVALIDPARAMETERVALUE_UNSUPPORTEDIMAGEURLEXPIRETIME = "InvalidParameterValue.UnsupportedImageUrlExpireTime"
+
+	// 不支持的截帧频率配置
+	INVALIDPARAMETERVALUE_UNSUPPORTEDINTERVAL = "InvalidParameterValue.UnsupportedInterval"
+
+	// 不支持的截帧张数配置
+	INVALIDPARAMETERVALUE_UNSUPPORTEDSNAPSHOTTOTAL = "InvalidParameterValue.UnsupportedSnapshotTotal"
+
+	// 不支持的截图类型
+	INVALIDPARAMETERVALUE_UNSUPPORTEDSNAPSHOTTYPE = "InvalidParameterValue.UnsupportedSnapshotType"
+
+	// 不支持的排序规则
+	INVALIDPARAMETERVALUE_UNSUPPORTEDSORTRULE = "InvalidParameterValue.UnsupportedSortRule"
+
 	// 不支持的流协议
 	INVALIDPARAMETERVALUE_UNSUPPORTEDSTREAMPROTOCOL = "InvalidParameterValue.UnsupportedStreamProtocol"
+
+	// InvalidParameterValue.VLPlanResultIDNotExisted
+	INVALIDPARAMETERVALUE_VLPLANRESULTIDNOTEXISTED = "InvalidParameterValue.VLPlanResultIDNotExisted"
+
+	// InvalidParameterValue.VLPlanResultIdsExceedLimit
+	INVALIDPARAMETERVALUE_VLPLANRESULTIDSEXCEEDLIMIT = "InvalidParameterValue.VLPlanResultIdsExceedLimit"
+
+	// 单次批量添加到配置中的通道数超出限制
+	LIMITEXCEEDED_BATCHADDCHANNELNUMEXCEEDED = "LimitExceeded.BatchAddChannelNumExceeded"
 
 	// 通道数量超出限制
 	LIMITEXCEEDED_CHANNELNUMEXCEEDED = "LimitExceeded.ChannelNumExceeded"
@@ -355,6 +496,18 @@ const (
 
 	// 查询的国标设备数量不能超过500个
 	LIMITEXCEEDED_GBDEVICENUMEXCEEDED = "LimitExceeded.GBDeviceNumExceeded"
+
+	// 图片ID数量超出限制
+	LIMITEXCEEDED_IMAGEIDSLICEEXCEEDLIMIT = "LimitExceeded.ImageIdSliceExceedLimit"
+
+	// 可创建的截图配置数量超限
+	LIMITEXCEEDED_SNAPSHOTCONFIGNUMEXCEEDED = "LimitExceeded.SnapshotConfigNumExceeded"
+
+	// 可创建的截图模板数量超限
+	LIMITEXCEEDED_SNAPSHOTTEMPLATENUMEXCEEDED = "LimitExceeded.SnapshotTemplateNumExceeded"
+
+	// 时间段数量超出限制
+	LIMITEXCEEDED_TIMELINESLICEEXCEEDLIMIT = "LimitExceeded.TimelineSliceExceedLimit"
 
 	// 时间片段不存在
 	MISSINGPARAMETER_EMPTYTIMESECTION = "MissingParameter.EmptyTimeSection"
@@ -380,11 +533,17 @@ const (
 	// 并发下载数超限
 	OPERATIONDENIED_CONCURRENTDOWNLOADSOVERLIMIT = "OperationDenied.ConcurrentDownloadsOverLimit"
 
+	// 配置正在变更中，请稍后重试
+	OPERATIONDENIED_CONFIGCHANGING = "OperationDenied.ConfigChanging"
+
 	// 链接数受限
 	OPERATIONDENIED_CONNECTSLIMITZERO = "OperationDenied.ConnectsLimitZero"
 
 	// 新增组织树失败，超出组织树的最大深度
 	OPERATIONDENIED_EXCEEDEDMAXIMUMDEPTH = "OperationDenied.ExceededMaximumDepth"
+
+	// 检测到重复的通道ID
+	OPERATIONDENIED_INPUTDUPLICATECHANNELID = "OperationDenied.InputDuplicateChannelId"
 
 	// 该功能需要申请白名单配置
 	OPERATIONDENIED_NOWHITELIST = "OperationDenied.NoWhitelist"
@@ -413,11 +572,17 @@ const (
 	// 取回任务名称不能重复
 	RESOURCEINUSE_RETRIEVETASKNAMEREPEAT = "ResourceInUse.RetrieveTaskNameRepeat"
 
+	// 模板正在使用中，无法删除
+	RESOURCEINUSE_TEMPLATEISUSED = "ResourceInUse.TemplateIsUsed"
+
 	// 模板名称不能重复
 	RESOURCEINUSE_TEMPLATENAMEREPEAT = "ResourceInUse.TemplateNameRepeat"
 
 	// 资源不存在
 	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 无法访问未经授权的设备
+	RESOURCENOTFOUND_ACCESSUNAUTHORIZED = "ResourceNotFound.AccessUnauthorized"
 
 	// 通道不存在
 	RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
@@ -436,6 +601,9 @@ const (
 
 	// 取回任务不存在
 	RESOURCENOTFOUND_RETRIEVETASKNOTEXIST = "ResourceNotFound.RetrieveTaskNotExist"
+
+	// 截图配置不存在
+	RESOURCENOTFOUND_SNAPSHOTCONFIGNOTEXIST = "ResourceNotFound.SnapshotConfigNotExist"
 
 	// 视频流不存在或已关闭
 	RESOURCENOTFOUND_STREAMNOTEXISTORCLOSE = "ResourceNotFound.StreamNotExistOrClose"
@@ -460,6 +628,9 @@ const (
 
 	// 录像已归档
 	RESOURCEUNAVAILABLE_VIDEOARCHIVED = "ResourceUnavailable.VideoArchived"
+
+	// 图片域名不存在
+	UNSUPPORTEDOPERATION_IMAGEDOMAINNOTEXIST = "UnsupportedOperation.ImageDomainNotExist"
 
 	// 组织下仍有主账号或其他子账号添加的设备，您无法查看或删除组织
 	UNSUPPORTEDOPERATION_ORGLINKDEV = "UnsupportedOperation.OrgLinkDev"

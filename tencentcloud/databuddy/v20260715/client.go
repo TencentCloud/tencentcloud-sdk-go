@@ -65,13 +65,13 @@ func NewAddConsoleUsersResponse() (response *AddConsoleUsersResponse) {
 }
 
 // AddConsoleUsers
-// 添加控制台用户
+// 添加控制台用户，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 func (c *Client) AddConsoleUsers(request *AddConsoleUsersRequest) (response *AddConsoleUsersResponse, err error) {
     return c.AddConsoleUsersWithContext(context.Background(), request)
 }
 
 // AddConsoleUsers
-// 添加控制台用户
+// 添加控制台用户，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 func (c *Client) AddConsoleUsersWithContext(ctx context.Context, request *AddConsoleUsersRequest) (response *AddConsoleUsersResponse, err error) {
     if request == nil {
         request = NewAddConsoleUsersRequest()
@@ -305,7 +305,7 @@ func NewCreateConsoleGroupResponse() (response *CreateConsoleGroupResponse) {
 }
 
 // CreateConsoleGroup
-// 创建控制台用户组
+// 创建控制台用户组，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DUPLICATEANACATALOG = "FailedOperation.DuplicateAnaCatalog"
@@ -319,7 +319,7 @@ func (c *Client) CreateConsoleGroup(request *CreateConsoleGroupRequest) (respons
 }
 
 // CreateConsoleGroup
-// 创建控制台用户组
+// 创建控制台用户组，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DUPLICATEANACATALOG = "FailedOperation.DuplicateAnaCatalog"
@@ -657,7 +657,7 @@ func NewCreateWorkspaceResponse() (response *CreateWorkspaceResponse) {
 }
 
 // CreateWorkspace
-// 创建工作空间
+// 创建工作空间，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -686,7 +686,7 @@ func (c *Client) CreateWorkspace(request *CreateWorkspaceRequest) (response *Cre
 }
 
 // CreateWorkspace
-// 创建工作空间
+// 创建工作空间，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -849,7 +849,7 @@ func NewDeleteConsoleGroupsResponse() (response *DeleteConsoleGroupsResponse) {
 }
 
 // DeleteConsoleGroups
-// 删除控制台用户组
+// 删除控制台用户组，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
@@ -859,7 +859,7 @@ func (c *Client) DeleteConsoleGroups(request *DeleteConsoleGroupsRequest) (respo
 }
 
 // DeleteConsoleGroups
-// 删除控制台用户组
+// 删除控制台用户组，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
@@ -2927,7 +2927,7 @@ func NewListWorkspacesResponse() (response *ListWorkspacesResponse) {
 }
 
 // ListWorkspaces
-// 查询工作空间列表
+// 查询工作空间列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
@@ -2940,7 +2940,7 @@ func (c *Client) ListWorkspaces(request *ListWorkspacesRequest) (response *ListW
 }
 
 // ListWorkspaces
-// 查询工作空间列表
+// 查询工作空间列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
@@ -2985,7 +2985,7 @@ func NewRemoveConsoleUsersResponse() (response *RemoveConsoleUsersResponse) {
 }
 
 // RemoveConsoleUsers
-// <p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准）</p>
+// <p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准），该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。</p>
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
@@ -2998,7 +2998,7 @@ func (c *Client) RemoveConsoleUsers(request *RemoveConsoleUsersRequest) (respons
 }
 
 // RemoveConsoleUsers
-// <p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准）</p>
+// <p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准），该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。</p>
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
@@ -3437,7 +3437,7 @@ func NewUpdateConsoleGroupResponse() (response *UpdateConsoleGroupResponse) {
 }
 
 // UpdateConsoleGroup
-// 修改控制台用户组
+// 修改控制台用户组，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3455,7 +3455,7 @@ func (c *Client) UpdateConsoleGroup(request *UpdateConsoleGroupRequest) (respons
 }
 
 // UpdateConsoleGroup
-// 修改控制台用户组
+// 修改控制台用户组，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3505,7 +3505,7 @@ func NewUpdateConsoleUsersResponse() (response *UpdateConsoleUsersResponse) {
 }
 
 // UpdateConsoleUsers
-// 修改控制台用户角色
+// 修改控制台用户角色，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3523,7 +3523,7 @@ func (c *Client) UpdateConsoleUsers(request *UpdateConsoleUsersRequest) (respons
 }
 
 // UpdateConsoleUsers
-// 修改控制台用户角色
+// 修改控制台用户角色，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3895,7 +3895,7 @@ func NewUpdateWorkspaceResponse() (response *UpdateWorkspaceResponse) {
 }
 
 // UpdateWorkspace
-// 修改工作空间
+// 修改工作空间，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3934,7 +3934,7 @@ func (c *Client) UpdateWorkspace(request *UpdateWorkspaceRequest) (response *Upd
 }
 
 // UpdateWorkspace
-// 修改工作空间
+// 修改工作空间，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

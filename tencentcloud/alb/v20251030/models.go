@@ -3685,9 +3685,6 @@ type ListenerOutput struct {
 }
 
 type LoadBalancer struct {
-	// 访问日志配置结构。
-	AccessLogConfig *AccessLogConfig `json:"AccessLogConfig,omitnil,omitempty" name:"AccessLogConfig"`
-
 	// IP 地址版本，取值 IPv4 或 IPv6。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressIpVersion *string `json:"AddressIpVersion,omitnil,omitempty" name:"AddressIpVersion"`
@@ -3855,16 +3852,13 @@ type LoadBalancerOperationLocksItem struct {
 }
 
 type ModificationProtectionInfo struct {
-	// 是否开启修改保护。开启后，可防止实例被意外修改或删除。
-	// - true：开启修改保护
-	// - false：关闭修改保护
+	// <p>是否开启修改保护。开启后，可防止实例被意外修改或删除。</p><ul><li>true：开启修改保护</li><li>false：关闭修改保护</li></ul>
 	ModificationProtectionEnabled *bool `json:"ModificationProtectionEnabled,omitnil,omitempty" name:"ModificationProtectionEnabled"`
 
-	// 1238716123
+	// <p>1238716123</p>
 	OperatorUin *string `json:"OperatorUin,omitnil,omitempty" name:"OperatorUin"`
 
-	// 开启修改保护的原因说明。
-	// 长度为 1~255 个字符，必须是中文和无害字符串中的字符， 可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。
+	// <p>开启修改保护的原因说明。<br>长度为 1~255 个字符，必须是中文和无害字符串中的字符， 可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。</p>
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
@@ -5053,14 +5047,17 @@ type RuleCondition struct {
 }
 
 type RuleHealthStatusInfo struct {
-	// 是否为默认转发规则。
+	// <p>是否为默认转发规则。</p>
 	IsDefaultRule *string `json:"IsDefaultRule,omitnil,omitempty" name:"IsDefaultRule"`
 
-	// 转发规则 ID，格式为 rule- 后接 8 位字母数字。
+	// <p>转发规则 ID，格式为 rule- 后接 8 位字母数字。</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 目标组健康状态。
+	// <p>目标组健康状态。</p>
 	TargetGroupHealthInfos []*TargetGroupHealthInfo `json:"TargetGroupHealthInfos,omitnil,omitempty" name:"TargetGroupHealthInfos"`
+
+	// <p>优先级，值越小优先级越高，取值范围：1~10000。</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 type RuleInput struct {

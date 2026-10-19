@@ -4875,7 +4875,7 @@ func NewDeleteFunctionResponse() (response *DeleteFunctionResponse) {
 }
 
 // DeleteFunction
-// 删除边缘函数，删除后函数无法恢复，关联的触发规则会一并删除。
+// 删除边缘函数，删除后函数无法恢复，关联的触发规则，环境变量和副本会一并删除。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4889,7 +4889,7 @@ func (c *Client) DeleteFunction(request *DeleteFunctionRequest) (response *Delet
 }
 
 // DeleteFunction
-// 删除边缘函数，删除后函数无法恢复，关联的触发规则会一并删除。
+// 删除边缘函数，删除后函数无法恢复，关联的触发规则，环境变量和副本会一并删除。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11965,7 +11965,7 @@ func NewHandleFunctionRuntimeEnvironmentResponse() (response *HandleFunctionRunt
 // HandleFunctionRuntimeEnvironment
 // 操作边缘函数运行环境，支持环境变量的相关设置。
 //
-// 设置环境变量后，可在函数代码中使用，具体参考 [边缘函数引入环境变量](https://cloud.tencent.com/document/product/1552/109151#0151fd9a-8b0e-407b-ae37-54553a60ded6)。
+// 设置环境变量后，可在函数代码和函数副本代码中使用，具体参考 [边缘函数引入环境变量](https://cloud.tencent.com/document/product/1552/109151#0151fd9a-8b0e-407b-ae37-54553a60ded6)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11981,7 +11981,7 @@ func (c *Client) HandleFunctionRuntimeEnvironment(request *HandleFunctionRuntime
 // HandleFunctionRuntimeEnvironment
 // 操作边缘函数运行环境，支持环境变量的相关设置。
 //
-// 设置环境变量后，可在函数代码中使用，具体参考 [边缘函数引入环境变量](https://cloud.tencent.com/document/product/1552/109151#0151fd9a-8b0e-407b-ae37-54553a60ded6)。
+// 设置环境变量后，可在函数代码和函数副本代码中使用，具体参考 [边缘函数引入环境变量](https://cloud.tencent.com/document/product/1552/109151#0151fd9a-8b0e-407b-ae37-54553a60ded6)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -13425,6 +13425,7 @@ func NewModifyHostsCertificateResponse() (response *ModifyHostsCertificateRespon
 //  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
 //  INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTKEYLESS = "InvalidParameter.AliasDomainNotSupportKeyless"
 //  INVALIDPARAMETER_CERTNOTMATCHDOMAIN = "InvalidParameter.CertNotMatchDomain"
+//  INVALIDPARAMETER_CERTSANTOOLONG = "InvalidParameter.CertSANTooLong"
 //  INVALIDPARAMETER_CERTTOEXPIRE = "InvalidParameter.CertToExpire"
 //  INVALIDPARAMETER_CERTTOOSHORTKEYSIZE = "InvalidParameter.CertTooShortKeySize"
 //  INVALIDPARAMETER_CERTIFICATECONFLICTWITHKEYLESSSERVER = "InvalidParameter.CertificateConflictWithKeylessServer"
@@ -13509,6 +13510,7 @@ func (c *Client) ModifyHostsCertificate(request *ModifyHostsCertificateRequest) 
 //  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
 //  INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTKEYLESS = "InvalidParameter.AliasDomainNotSupportKeyless"
 //  INVALIDPARAMETER_CERTNOTMATCHDOMAIN = "InvalidParameter.CertNotMatchDomain"
+//  INVALIDPARAMETER_CERTSANTOOLONG = "InvalidParameter.CertSANTooLong"
 //  INVALIDPARAMETER_CERTTOEXPIRE = "InvalidParameter.CertToExpire"
 //  INVALIDPARAMETER_CERTTOOSHORTKEYSIZE = "InvalidParameter.CertTooShortKeySize"
 //  INVALIDPARAMETER_CERTIFICATECONFLICTWITHKEYLESSSERVER = "InvalidParameter.CertificateConflictWithKeylessServer"

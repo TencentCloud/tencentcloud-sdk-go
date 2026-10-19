@@ -127,6 +127,9 @@ type AddDeploymentRequestParams struct {
 
 	// <p>高级参数</p>
 	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
+
+	// <p>NetworkConfig</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type AddDeploymentRequest struct {
@@ -167,6 +170,9 @@ type AddDeploymentRequest struct {
 
 	// <p>高级参数</p>
 	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
+
+	// <p>NetworkConfig</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 func (r *AddDeploymentRequest) ToJsonString() string {
@@ -193,6 +199,7 @@ func (r *AddDeploymentRequest) FromJsonString(s string) error {
 	delete(f, "AutoscalingEnabled")
 	delete(f, "Image")
 	delete(f, "AdvancedOptions")
+	delete(f, "NetworkConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddDeploymentRequest has unknown keys!", "")
 	}
@@ -5244,6 +5251,9 @@ type CreateInferenceServiceRequestParams struct {
 
 	// <p>python runtime env</p>
 	RuntimeEnv *string `json:"RuntimeEnv,omitnil,omitempty" name:"RuntimeEnv"`
+
+	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type CreateInferenceServiceRequest struct {
@@ -5314,6 +5324,9 @@ type CreateInferenceServiceRequest struct {
 
 	// <p>python runtime env</p>
 	RuntimeEnv *string `json:"RuntimeEnv,omitnil,omitempty" name:"RuntimeEnv"`
+
+	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 func (r *CreateInferenceServiceRequest) ToJsonString() string {
@@ -5350,6 +5363,7 @@ func (r *CreateInferenceServiceRequest) FromJsonString(s string) error {
 	delete(f, "ResourceTags")
 	delete(f, "IsCustom")
 	delete(f, "RuntimeEnv")
+	delete(f, "NetworkConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInferenceServiceRequest has unknown keys!", "")
 	}
@@ -5468,6 +5482,9 @@ type CreateInferenceServiceResponseParams struct {
 
 	// <p>是否是自定义 RayServe 创建</p>
 	IsCustom *bool `json:"IsCustom,omitnil,omitempty" name:"IsCustom"`
+
+	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6001,6 +6018,9 @@ type CreateJobSpecRequestParams struct {
 
 	// <p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
 	DispatchStrategy *string `json:"DispatchStrategy,omitnil,omitempty" name:"DispatchStrategy"`
+
+	// <p>用户自定义网络配置JSON</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type CreateJobSpecRequest struct {
@@ -6071,6 +6091,9 @@ type CreateJobSpecRequest struct {
 
 	// <p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
 	DispatchStrategy *string `json:"DispatchStrategy,omitnil,omitempty" name:"DispatchStrategy"`
+
+	// <p>用户自定义网络配置JSON</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 func (r *CreateJobSpecRequest) ToJsonString() string {
@@ -6107,6 +6130,7 @@ func (r *CreateJobSpecRequest) FromJsonString(s string) error {
 	delete(f, "Priority")
 	delete(f, "Tags")
 	delete(f, "DispatchStrategy")
+	delete(f, "NetworkConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobSpecRequest has unknown keys!", "")
 	}
@@ -6229,6 +6253,9 @@ type CreateJobSpecResponseParams struct {
 	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
+	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6316,6 +6343,9 @@ type CreateLabRequestParams struct {
 
 	// <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	LabImagePullType *string `json:"LabImagePullType,omitnil,omitempty" name:"LabImagePullType"`
+
+	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type CreateLabRequest struct {
@@ -6386,6 +6416,9 @@ type CreateLabRequest struct {
 
 	// <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	LabImagePullType *string `json:"LabImagePullType,omitnil,omitempty" name:"LabImagePullType"`
+
+	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 func (r *CreateLabRequest) ToJsonString() string {
@@ -6422,6 +6455,7 @@ func (r *CreateLabRequest) FromJsonString(s string) error {
 	delete(f, "EnableToken")
 	delete(f, "ImagePullType")
 	delete(f, "LabImagePullType")
+	delete(f, "NetworkConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLabRequest has unknown keys!", "")
 	}
@@ -6516,6 +6550,9 @@ type CreateLabResponseParams struct {
 
 	// <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	ImagePullType *string `json:"ImagePullType,omitnil,omitempty" name:"ImagePullType"`
+
+	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7432,6 +7469,9 @@ type CreateRayClusterRequestParams struct {
 
 	// <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>自定义网络配置</p><p>参数格式：{"appId":22,"uin":"111","uniqVpcId":"vpc-xxx","subnetId":"subnet-xxx"}</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type CreateRayClusterRequest struct {
@@ -7478,6 +7518,9 @@ type CreateRayClusterRequest struct {
 
 	// <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>自定义网络配置</p><p>参数格式：{"appId":22,"uin":"111","uniqVpcId":"vpc-xxx","subnetId":"subnet-xxx"}</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 func (r *CreateRayClusterRequest) ToJsonString() string {
@@ -7506,6 +7549,7 @@ func (r *CreateRayClusterRequest) FromJsonString(s string) error {
 	delete(f, "AdvancedOptions")
 	delete(f, "Priority")
 	delete(f, "Tags")
+	delete(f, "NetworkConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRayClusterRequest has unknown keys!", "")
 	}
@@ -7582,6 +7626,9 @@ type CreateRayClusterResponseParams struct {
 
 	// <p>标签列表（TagKey-TagValue）</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -20175,7 +20222,7 @@ type DescribeTaskListRequestParams struct {
 	// <p>过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。<br>task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。<br>task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。<br>task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。<br>task-operator- string （子uin过滤）<br>task-kind - string （任务类型过滤）</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// <p>排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）</p>
+	// <p>排序字段，支持如下字段类型，create-time（创建时间，默认）</p>
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
 	// <p>排序方式，desc表示正序，asc表示反序， 默认为asc。</p>
@@ -20209,7 +20256,7 @@ type DescribeTaskListRequest struct {
 	// <p>过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。<br>task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。<br>task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。<br>task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。<br>task-operator- string （子uin过滤）<br>task-kind - string （任务类型过滤）</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// <p>排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）</p>
+	// <p>排序字段，支持如下字段类型，create-time（创建时间，默认）</p>
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
 	// <p>排序方式，desc表示正序，asc表示反序， 默认为asc。</p>
@@ -24164,6 +24211,9 @@ type GetJobSpecResponseParams struct {
 	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
+	// <p>用户自定义网络配置</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -24316,6 +24366,9 @@ type GetLabDetailResponseParams struct {
 
 	// <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	ImagePullType *string `json:"ImagePullType,omitnil,omitempty" name:"ImagePullType"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -25576,6 +25629,9 @@ type GetRayClusterResponseParams struct {
 
 	// <p>资源配置ID</p>
 	ResourceConfigId *string `json:"ResourceConfigId,omitnil,omitempty" name:"ResourceConfigId"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -27541,6 +27597,9 @@ type JobSpec struct {
 
 	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>网络配置，JSON 字符串</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type JobStatusHistory struct {
@@ -27717,6 +27776,9 @@ type LabResponse struct {
 
 	// <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type Label struct {
@@ -33035,6 +33097,9 @@ type ModifyTrainingJobSpecRequestParams struct {
 
 	// <p>调优参数（整体替换，未填字段回模板默认值；不传则不更新；仅 POST_TRAINING）</p>
 	TuningParams *TrainingTuningParams `json:"TuningParams,omitnil,omitempty" name:"TuningParams"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type ModifyTrainingJobSpecRequest struct {
@@ -33114,6 +33179,9 @@ type ModifyTrainingJobSpecRequest struct {
 
 	// <p>调优参数（整体替换，未填字段回模板默认值；不传则不更新；仅 POST_TRAINING）</p>
 	TuningParams *TrainingTuningParams `json:"TuningParams,omitnil,omitempty" name:"TuningParams"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 func (r *ModifyTrainingJobSpecRequest) ToJsonString() string {
@@ -33153,6 +33221,7 @@ func (r *ModifyTrainingJobSpecRequest) FromJsonString(s string) error {
 	delete(f, "Checkpoint")
 	delete(f, "ResumeTraining")
 	delete(f, "TuningParams")
+	delete(f, "NetworkConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTrainingJobSpecRequest has unknown keys!", "")
 	}
@@ -34107,7 +34176,7 @@ type Policy struct {
 	// <p>需要授权的数据源名称，管理员级别下只支持填  * （代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。</p>
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
-	// <p>需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。</p>
+	// <p>需要授权的表名，填 * 代表当前Database有表（TClake场景下暂不支持通配符）。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。</p>
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// <p>授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CREATE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。</p>
@@ -34915,6 +34984,9 @@ type RayClusterEntity struct {
 
 	// <p>标签列表（TagKey-TagValue）</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type RayClusterHistory struct {
@@ -37136,6 +37208,9 @@ type StartLabResponseParams struct {
 	// <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	ImagePullType *string `json:"ImagePullType,omitnil,omitempty" name:"ImagePullType"`
 
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -37324,6 +37399,9 @@ type StartRayClusterResponseParams struct {
 
 	// <p>标签列表（TagKey-TagValue）</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -37922,6 +38000,9 @@ type StopLabResponseParams struct {
 	// <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	ImagePullType *string `json:"ImagePullType,omitnil,omitempty" name:"ImagePullType"`
 
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -38099,6 +38180,9 @@ type StopRayClusterResponseParams struct {
 	// <p>标签列表（TagKey-TagValue）</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -38230,6 +38314,9 @@ type SubmitTrainingJobRequestParams struct {
 
 	// <p>产出模型名称（用于后续模型注册，当前仅保存）</p>
 	OutputModelName *string `json:"OutputModelName,omitnil,omitempty" name:"OutputModelName"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type SubmitTrainingJobRequest struct {
@@ -38309,6 +38396,9 @@ type SubmitTrainingJobRequest struct {
 
 	// <p>产出模型名称（用于后续模型注册，当前仅保存）</p>
 	OutputModelName *string `json:"OutputModelName,omitnil,omitempty" name:"OutputModelName"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 func (r *SubmitTrainingJobRequest) ToJsonString() string {
@@ -38348,6 +38438,7 @@ func (r *SubmitTrainingJobRequest) FromJsonString(s string) error {
 	delete(f, "MlFlowConfig")
 	delete(f, "Tags")
 	delete(f, "OutputModelName")
+	delete(f, "NetworkConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitTrainingJobRequest has unknown keys!", "")
 	}
@@ -39595,6 +39686,15 @@ type TrainingJobSpec struct {
 
 	// <p>高级参数 JSON（透传给 Neutrino advanced_options）</p>
 	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
+
+	// <p>创建人子账号 UIN（实际提交者）</p>
+	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
+
+	// <p>创建人子账号名称（CAM 解析，解析失败为 null）</p>
+	SubAccountName *string `json:"SubAccountName,omitnil,omitempty" name:"SubAccountName"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type TrainingParams struct {
@@ -41034,6 +41134,9 @@ type UpdateJobSpecRequestParams struct {
 
 	// <p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
 	DispatchStrategy *string `json:"DispatchStrategy,omitnil,omitempty" name:"DispatchStrategy"`
+
+	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type UpdateJobSpecRequest struct {
@@ -41107,6 +41210,9 @@ type UpdateJobSpecRequest struct {
 
 	// <p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
 	DispatchStrategy *string `json:"DispatchStrategy,omitnil,omitempty" name:"DispatchStrategy"`
+
+	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 func (r *UpdateJobSpecRequest) ToJsonString() string {
@@ -41144,6 +41250,7 @@ func (r *UpdateJobSpecRequest) FromJsonString(s string) error {
 	delete(f, "Priority")
 	delete(f, "Tags")
 	delete(f, "DispatchStrategy")
+	delete(f, "NetworkConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateJobSpecRequest has unknown keys!", "")
 	}
@@ -41266,6 +41373,9 @@ type UpdateJobSpecResponseParams struct {
 	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
+	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -41341,6 +41451,9 @@ type UpdateLabRequestParams struct {
 
 	// <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	LabImagePullType *string `json:"LabImagePullType,omitnil,omitempty" name:"LabImagePullType"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type UpdateLabRequest struct {
@@ -41399,6 +41512,9 @@ type UpdateLabRequest struct {
 
 	// <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	LabImagePullType *string `json:"LabImagePullType,omitnil,omitempty" name:"LabImagePullType"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 func (r *UpdateLabRequest) ToJsonString() string {
@@ -41431,6 +41547,7 @@ func (r *UpdateLabRequest) FromJsonString(s string) error {
 	delete(f, "PersistentWorkDir")
 	delete(f, "ImagePullType")
 	delete(f, "LabImagePullType")
+	delete(f, "NetworkConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateLabRequest has unknown keys!", "")
 	}
@@ -41516,6 +41633,9 @@ type UpdateLabResponseParams struct {
 
 	// <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	ImagePullType *string `json:"ImagePullType,omitnil,omitempty" name:"ImagePullType"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -41644,6 +41764,9 @@ type UpdateRayClusterRequestParams struct {
 
 	// <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type UpdateRayClusterRequest struct {
@@ -41693,6 +41816,9 @@ type UpdateRayClusterRequest struct {
 
 	// <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 func (r *UpdateRayClusterRequest) ToJsonString() string {
@@ -41722,6 +41848,7 @@ func (r *UpdateRayClusterRequest) FromJsonString(s string) error {
 	delete(f, "AdvancedOptions")
 	delete(f, "Priority")
 	delete(f, "Tags")
+	delete(f, "NetworkConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRayClusterRequest has unknown keys!", "")
 	}
@@ -41798,6 +41925,9 @@ type UpdateRayClusterResponseParams struct {
 
 	// <p>标签列表（TagKey-TagValue）</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -43095,6 +43225,10 @@ type WarehouseInfo struct {
 	// <p>资源组/队列名。</p>
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
+	// <p>规格详情（profile 完整基础信息，describe 与 list 均返回）.</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProfileDetail *WarehouseProfileBriefInfo `json:"ProfileDetail,omitnil,omitempty" name:"ProfileDetail"`
+
 	// <p>创建时间（毫秒时间戳）。</p>
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
@@ -43127,6 +43261,23 @@ type WarehouseInfo struct {
 
 	// <p>动态参数（DynamicProperties）：spark.* KV 的 JSON 字符串，运行期生效（会话级，openSession 弱注入，即改即生效）。</p>
 	DynamicProperties *string `json:"DynamicProperties,omitnil,omitempty" name:"DynamicProperties"`
+}
+
+type WarehouseProfileBriefInfo struct {
+	// <p>规格编码（常见 XS / S / M / L / XL，租户自定义编码亦合法）.</p>
+	ProfileCode *string `json:"ProfileCode,omitnil,omitempty" name:"ProfileCode"`
+
+	// <p>规格名称.</p>
+	ProfileName *string `json:"ProfileName,omitnil,omitempty" name:"ProfileName"`
+
+	// <p>规格描述.</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>规格展示文案（后端渲染后的字符串，如 "4CU"；前端直接展示，不做二次拼装）.</p>
+	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// <p>适用场景描述.</p>
+	Scenario *string `json:"Scenario,omitnil,omitempty" name:"Scenario"`
 }
 
 type WorkGroupDetailInfo struct {

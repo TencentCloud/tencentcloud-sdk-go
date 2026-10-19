@@ -2441,6 +2441,18 @@ func (r *CloseWanResponse) FromJsonString(s string) error {
 }
 
 type ClusterInstanceDetail struct {
+	// <p>用户Uin</p>
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>用户AppId</p>
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群名称</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
 	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
@@ -2457,7 +2469,21 @@ type ClusterInstanceDetail struct {
 	InstanceStatusDesc *string `json:"InstanceStatusDesc,omitnil,omitempty" name:"InstanceStatusDesc"`
 
 	// <p>cpu核数</p>
+	//
+	// Deprecated: InstanceCpu is deprecated.
 	InstanceCpu *int64 `json:"InstanceCpu,omitnil,omitempty" name:"InstanceCpu"`
+
+	// <p>Cpu</p><p>单位：核</p>
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>serverless实例cpu下限</p><p>单位：核</p>
+	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
+
+	// <p>serverless实例cpu上限</p><p>单位：核</p>
+	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
+
+	// <p>内存</p><p>单位：GB</p>
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// <p>内存</p>
 	InstanceMemory *int64 `json:"InstanceMemory,omitnil,omitempty" name:"InstanceMemory"`
@@ -2477,9 +2503,6 @@ type ClusterInstanceDetail struct {
 	// <p>可以执行的时间，枚举值：[&quot;Mon&quot;,&quot;Tue&quot;,&quot;Wed&quot;,&quot;Thu&quot;,&quot;Fri&quot;, &quot;Sat&quot;, &quot;Sun&quot;]</p>
 	MaintainWeekDays []*string `json:"MaintainWeekDays,omitnil,omitempty" name:"MaintainWeekDays"`
 
-	// <p>serverless实例子状态</p>
-	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
-
 	// <p>实例任务信息</p>
 	InstanceTasks []*ObjectTask `json:"InstanceTasks,omitnil,omitempty" name:"InstanceTasks"`
 
@@ -2495,8 +2518,120 @@ type ClusterInstanceDetail struct {
 	// <p>节点列表<br>说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。</p>
 	NodeList []*string `json:"NodeList,omitnil,omitempty" name:"NodeList"`
 
+	// <p>serverless实例子状态</p>
+	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
+
 	// <p>AI优化器状态</p>
 	AIOptimizerStatus *AIOptimizerStatus `json:"AIOptimizerStatus,omitnil,omitempty" name:"AIOptimizerStatus"`
+
+	// <p>项目ID</p>
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// <p>实例所在的物理可用区</p>
+	PhysicalZone *string `json:"PhysicalZone,omitnil,omitempty" name:"PhysicalZone"`
+
+	// <p>实例状态</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>running： 运行中</li><li>isolating： 隔离中</li><li>isolated： 已隔离</li><li>activating： 恢复中</li><li>offlining： 下线中</li><li>offlined： 已下线</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>实例状态中文描述</p>
+	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
+
+	// <p>数据库类型</p>
+	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
+
+	// <p>数据库版本</p>
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
+
+	// <p>存储量</p><p>单位：GB</p>
+	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// <p>预付费存储Id</p>
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+
+	// <p>存储付费类型</p><p>枚举值：</p><ul><li>0： 后付费</li><li>1： 预付费</li></ul>
+	StoragePayMode *int64 `json:"StoragePayMode,omitnil,omitempty" name:"StoragePayMode"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>隔离时间</p>
+	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
+
+	// <p>实例销毁时间</p>
+	DestroyTime *string `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
+
+	// <p>销毁期限</p>
+	DestroyDeadlineText *string `json:"DestroyDeadlineText,omitnil,omitempty" name:"DestroyDeadlineText"`
+
+	// <p>实例过期时间</p>
+	PeriodEndTime *string `json:"PeriodEndTime,omitnil,omitempty" name:"PeriodEndTime"`
+
+	// <p>VPC网络ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>子网ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>实例内网IP</p>
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// <p>实例内网端口</p>
+	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
+
+	// <p>网络类型</p>
+	NetType *int64 `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// <p>外网IP</p>
+	WanIP *string `json:"WanIP,omitnil,omitempty" name:"WanIP"`
+
+	// <p>外网端口</p>
+	WanPort *int64 `json:"WanPort,omitnil,omitempty" name:"WanPort"`
+
+	// <p>外网开启状态</p>
+	WanStatus *string `json:"WanStatus,omitnil,omitempty" name:"WanStatus"`
+
+	// <p>实例外网域名</p>
+	WanDomain *string `json:"WanDomain,omitnil,omitempty" name:"WanDomain"`
+
+	// <p>实例的网络信息</p>
+	InstanceNetInfo []*InstanceNetInfo `json:"InstanceNetInfo,omitnil,omitempty" name:"InstanceNetInfo"`
+
+	// <p>付费模式</p><p>枚举值：</p><ul><li>0： 后付费</li><li>1： 预付费</li></ul>
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// <p>正在处理的任务</p>
+	ProcessingTask *string `json:"ProcessingTask,omitnil,omitempty" name:"ProcessingTask"`
+
+	// <p>续费标志</p>
+	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// <p>任务</p>
+	Tasks []*ObjectTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// <p>是否冻结</p>
+	IsFreeze *string `json:"IsFreeze,omitnil,omitempty" name:"IsFreeze"`
+
+	// <p>资源标签</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// <p>当前实例支持的能力</p>
+	InstanceAbility *InstanceAbility `json:"InstanceAbility,omitnil,omitempty" name:"InstanceAbility"`
+
+	// <p>实例机器类型</p><p>枚举值：</p><ul><li>common： 通用型</li><li>exclusive： 独享型</li></ul>
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
+	// <p>全球数据库唯一标识</p>
+	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
 }
 
 type ClusterParamModifyLog struct {
@@ -4566,6 +4701,9 @@ type CreateProxyEndPointRequestParams struct {
 
 	// <p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
 	LoadBalanceMode *string `json:"LoadBalanceMode,omitnil,omitempty" name:"LoadBalanceMode"`
+
+	// <p>是否开启事务全拆分。在一个事务中将事务写前和写后的读拆分到不同的实例上去执行。</p>
+	TransAllSplit *bool `json:"TransAllSplit,omitnil,omitempty" name:"TransAllSplit"`
 }
 
 type CreateProxyEndPointRequest struct {
@@ -4627,6 +4765,9 @@ type CreateProxyEndPointRequest struct {
 
 	// <p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
 	LoadBalanceMode *string `json:"LoadBalanceMode,omitnil,omitempty" name:"LoadBalanceMode"`
+
+	// <p>是否开启事务全拆分。在一个事务中将事务写前和写后的读拆分到不同的实例上去执行。</p>
+	TransAllSplit *bool `json:"TransAllSplit,omitnil,omitempty" name:"TransAllSplit"`
 }
 
 func (r *CreateProxyEndPointRequest) ToJsonString() string {
@@ -4660,6 +4801,7 @@ func (r *CreateProxyEndPointRequest) FromJsonString(s string) error {
 	delete(f, "AccessMode")
 	delete(f, "InstanceWeights")
 	delete(f, "LoadBalanceMode")
+	delete(f, "TransAllSplit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProxyEndPointRequest has unknown keys!", "")
 	}
@@ -19766,6 +19908,9 @@ type ModifyProxyRwSplitRequestParams struct {
 
 	// <p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
 	LoadBalanceMode *string `json:"LoadBalanceMode,omitnil,omitempty" name:"LoadBalanceMode"`
+
+	// <p>是否开启事务全拆分。在一个事务中将事务写前和写后的读拆分到不同的实例上去执行。</p>
+	TransAllSplit *bool `json:"TransAllSplit,omitnil,omitempty" name:"TransAllSplit"`
 }
 
 type ModifyProxyRwSplitRequest struct {
@@ -19824,6 +19969,9 @@ type ModifyProxyRwSplitRequest struct {
 
 	// <p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
 	LoadBalanceMode *string `json:"LoadBalanceMode,omitnil,omitempty" name:"LoadBalanceMode"`
+
+	// <p>是否开启事务全拆分。在一个事务中将事务写前和写后的读拆分到不同的实例上去执行。</p>
+	TransAllSplit *bool `json:"TransAllSplit,omitnil,omitempty" name:"TransAllSplit"`
 }
 
 func (r *ModifyProxyRwSplitRequest) ToJsonString() string {
@@ -19856,6 +20004,7 @@ func (r *ModifyProxyRwSplitRequest) FromJsonString(s string) error {
 	delete(f, "ApNodeAsRoNode")
 	delete(f, "ApQueryToOtherNode")
 	delete(f, "LoadBalanceMode")
+	delete(f, "TransAllSplit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProxyRwSplitRequest has unknown keys!", "")
 	}
@@ -22076,6 +22225,9 @@ type ProxyGroupRwInfo struct {
 
 	// <p>自动负载</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
 	LoadBalanceMode *string `json:"LoadBalanceMode,omitnil,omitempty" name:"LoadBalanceMode"`
+
+	// <p>是否开启事务全拆分。在一个事务中将事务写前和写后的读拆分到不同的实例上去执行。</p>
+	TransAllSplit *bool `json:"TransAllSplit,omitnil,omitempty" name:"TransAllSplit"`
 }
 
 type ProxyInstanceWeight struct {

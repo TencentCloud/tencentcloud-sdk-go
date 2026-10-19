@@ -681,52 +681,38 @@ func (r *BankSlipOCRResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BizLicenseOCRRequestParams struct {
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。<br>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。<br>支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。<br>图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。<br>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。<br>支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。<br>图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。<br>非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 是否返回告警码，默认为false
+	// <p>是否返回告警码，默认为false</p>
 	EnableCopyWarn *bool `json:"EnableCopyWarn,omitnil,omitempty" name:"EnableCopyWarn"`
 
-	// 是否返回自动拼接的有效期，默认为true
+	// <p>是否返回自动拼接的有效期，默认为true</p>
 	EnablePeriodComplete *bool `json:"EnablePeriodComplete,omitnil,omitempty" name:"EnablePeriodComplete"`
 
-	// 是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false
+	// <p>是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false</p>
 	EnableBusinessCertificate *bool `json:"EnableBusinessCertificate,omitnil,omitempty" name:"EnableBusinessCertificate"`
 }
 
 type BizLicenseOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。<br>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。<br>支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。<br>图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。<br>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。<br>支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。<br>图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。<br>非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 是否返回告警码，默认为false
+	// <p>是否返回告警码，默认为false</p>
 	EnableCopyWarn *bool `json:"EnableCopyWarn,omitnil,omitempty" name:"EnableCopyWarn"`
 
-	// 是否返回自动拼接的有效期，默认为true
+	// <p>是否返回自动拼接的有效期，默认为true</p>
 	EnablePeriodComplete *bool `json:"EnablePeriodComplete,omitnil,omitempty" name:"EnablePeriodComplete"`
 
-	// 是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false
+	// <p>是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false</p>
 	EnableBusinessCertificate *bool `json:"EnableBusinessCertificate,omitnil,omitempty" name:"EnableBusinessCertificate"`
 }
 
@@ -755,81 +741,76 @@ func (r *BizLicenseOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BizLicenseOCRResponseParams struct {
-	// 统一社会信用代码（三合一之前为注册号）
+	// <p>统一社会信用代码（三合一之前为注册号）</p>
 	RegNum *string `json:"RegNum,omitnil,omitempty" name:"RegNum"`
 
-	// 公司名称
+	// <p>公司名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 注册资本
+	// <p>注册资本</p>
 	Capital *string `json:"Capital,omitnil,omitempty" name:"Capital"`
 
-	// 法定代表人
+	// <p>法定代表人</p>
 	Person *string `json:"Person,omitnil,omitempty" name:"Person"`
 
-	// 地址
+	// <p>地址</p>
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 经营范围
+	// <p>经营范围</p>
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// 主体类型
+	// <p>主体类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 营业期限
+	// <p>营业期限</p>
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 组成形式
+	// <p>组成形式</p>
 	ComposingForm *string `json:"ComposingForm,omitnil,omitempty" name:"ComposingForm"`
 
-	// 成立日期
+	// <p>成立日期</p>
 	SetDate *string `json:"SetDate,omitnil,omitempty" name:"SetDate"`
 
-	// Code 告警码列表和释义：
-	// -9102 黑白复印件告警
-	// -9104 翻拍件告警
+	// <p>Code 告警码列表和释义：<br>-9102 黑白复印件告警<br>-9104 翻拍件告警<br>-9108 经营范围识别异常告警（由于文字过小、模糊、反光、遮挡或明显倾斜等情况导致未能正常识别）</p>
 	RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitnil,omitempty" name:"RecognizeWarnCode"`
 
-	// 告警码说明：
-	// WARN_COPY_CARD 黑白复印件告警
-	// WARN_RESHOOT_CARD翻拍件告警
+	// <p>告警码说明：<br>WARN_COPY_CARD 黑白复印件告警<br>WARN_RESHOOT_CARD翻拍件告警<br>WARN_EARLY_STOP 经营范围识别异常告警</p>
 	RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitnil,omitempty" name:"RecognizeWarnMsg"`
 
-	// 是否为副本。1为是，-1为不是。
+	// <p>是否为副本。1为是，-1为不是。</p>
 	IsDuplication *int64 `json:"IsDuplication,omitnil,omitempty" name:"IsDuplication"`
 
-	// 登记日期
+	// <p>登记日期</p>
 	RegistrationDate *string `json:"RegistrationDate,omitnil,omitempty" name:"RegistrationDate"`
 
-	//  图片旋转角度(角度制)，文本的水平方向为0度；顺时针为正，角度范围是0-360度
-	// 
+	// <p>图片旋转角度(角度制)，文本的水平方向为0度；顺时针为正，角度范围是0-360度</p>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 是否有国徽。false为没有，true为有。
+	// <p>是否有国徽。false为没有，true为有。</p>
 	NationalEmblem *bool `json:"NationalEmblem,omitnil,omitempty" name:"NationalEmblem"`
 
-	// 是否有二维码。false为没有，true为有。
+	// <p>是否有二维码。false为没有，true为有。</p>
 	QRCode *bool `json:"QRCode,omitnil,omitempty" name:"QRCode"`
 
-	// 是否有印章。false为没有，true为有。
+	// <p>是否有印章。false为没有，true为有。</p>
 	Seal *bool `json:"Seal,omitnil,omitempty" name:"Seal"`
 
-	// 标题
+	// <p>标题</p>
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
-	// 编号
+	// <p>编号</p>
 	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
 
-	// 登记机关
+	// <p>登记机关</p>
 	RegistrationAuthority *string `json:"RegistrationAuthority,omitnil,omitempty" name:"RegistrationAuthority"`
 
-	// 是否是电子营业执照。false为没有，true为有。
+	// <p>是否是电子营业执照。false为没有，true为有。</p>
 	Electronic *bool `json:"Electronic,omitnil,omitempty" name:"Electronic"`
 
-	// 非营业执照的营业类证件识别结果，将以结构化形式呈现。
+	// <p>非营业执照的营业类证件识别结果，将以结构化形式呈现。</p>
 	BusinessCertificate []*BusinessCertificateInfo `json:"BusinessCertificate,omitnil,omitempty" name:"BusinessCertificate"`
 
-	// 重要提示字段
+	// <p>重要提示字段</p>
 	Important *string `json:"Important,omitnil,omitempty" name:"Important"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7735,60 +7716,38 @@ func (r *RecognizeFormulaOCRResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RecognizeGeneralCardWarnRequestParams struct {
-	// 图片链接
+	// <p>图片链接</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 图片base64
+	// <p>图片base64</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 卡证类型参数，包含以下范围：  
-	// General：通用卡证
-	// IDCard：身份证 
-	// Passport：护照 
-	// BankCard：银行卡
-	// VehicleLicense：行驶证
-	// DriverLicense：驾驶证
-	// BizLicense：营业执照 
-	// HmtResidentPermit：港澳台居住证
-	// ForeignPermanentResident：外国人永居证
-	// MainlandPermit：港澳台来往内地通行证
-	// SocialSecurityCard：社保卡
+	// <p>卡证类型参数，选填，不填则默认为General，枚举值：<br>（如输入图片的卡证类型明确，建议填入，可降低请求耗时）</p><p>General：系统自动分类/其他类型<br>IDCard：身份证<br>Passport：护照<br>BankCard：银行卡<br>VehicleLicense：行驶证<br>DriverLicense：驾驶证<br>BizLicense：营业执照<br>HmtResidentPermit：港澳台居住证<br>ForeignPermanentResident：外国人永居证<br>MainlandPermit：港澳台来往内地通行证<br>SocialSecurityCard：社保卡</p>
 	CardType *string `json:"CardType,omitnil,omitempty" name:"CardType"`
 
-	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	// <p>是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。</p>
 	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。</p>
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 }
 
 type RecognizeGeneralCardWarnRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片链接
+	// <p>图片链接</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 图片base64
+	// <p>图片base64</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 卡证类型参数，包含以下范围：  
-	// General：通用卡证
-	// IDCard：身份证 
-	// Passport：护照 
-	// BankCard：银行卡
-	// VehicleLicense：行驶证
-	// DriverLicense：驾驶证
-	// BizLicense：营业执照 
-	// HmtResidentPermit：港澳台居住证
-	// ForeignPermanentResident：外国人永居证
-	// MainlandPermit：港澳台来往内地通行证
-	// SocialSecurityCard：社保卡
+	// <p>卡证类型参数，选填，不填则默认为General，枚举值：<br>（如输入图片的卡证类型明确，建议填入，可降低请求耗时）</p><p>General：系统自动分类/其他类型<br>IDCard：身份证<br>Passport：护照<br>BankCard：银行卡<br>VehicleLicense：行驶证<br>DriverLicense：驾驶证<br>BizLicense：营业执照<br>HmtResidentPermit：港澳台居住证<br>ForeignPermanentResident：外国人永居证<br>MainlandPermit：港澳台来往内地通行证<br>SocialSecurityCard：社保卡</p>
 	CardType *string `json:"CardType,omitnil,omitempty" name:"CardType"`
 
-	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	// <p>是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。</p>
 	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。</p>
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 }
 
@@ -7817,51 +7776,40 @@ func (r *RecognizeGeneralCardWarnRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RecognizeGeneralCardWarnResponseParams struct {
-	// 卡证类型参数，包含以下范围： 
-	// General：通用卡证
-	// IDCard：身份证 
-	// Passport：护照 
-	// BankCard：银行卡
-	// VehicleLicense：行驶证
-	// DriverLicense：驾驶证
-	// BizLicense：营业执照 
-	// HmtResidentPermit：港澳台居住证
-	// ForeignPermanentResident：外国人永居证
-	// MainlandPermit：港澳台来往内地通行证
-	// SocialSecurityCard：社保卡
+	// <p>卡证类型参数，枚举值：<br>（如入参CardType未填或填入General，返回自动分类的卡证类型，未能分类的其他类型返回General；如入参CardType填入General以外的值，则不进行自动分类、返回相同的值）</p><p>General：其他类型<br>IDCard：身份证<br>Passport：护照<br>BankCard：银行卡<br>VehicleLicense：行驶证<br>DriverLicense：驾驶证<br>BizLicense：营业执照<br>HmtResidentPermit：港澳台居住证<br>ForeignPermanentResident：外国人永居证<br>MainlandPermit：港澳台来往内地通行证<br>SocialSecurityCard：社保卡</p>
 	CardType *string `json:"CardType,omitnil,omitempty" name:"CardType"`
 
-	// 模糊信息
+	// <p>模糊信息</p>
 	Blur *GeneralCardWarnInfo `json:"Blur,omitnil,omitempty" name:"Blur"`
 
-	// 边框不完整信息
+	// <p>边框不完整信息</p>
 	BorderIncomplete *GeneralCardWarnInfo `json:"BorderIncomplete,omitnil,omitempty" name:"BorderIncomplete"`
 
-	// 复印件信息
+	// <p>复印件信息</p>
 	Copy *GeneralCardWarnInfo `json:"Copy,omitnil,omitempty" name:"Copy"`
 
-	// ps篡改信息
+	// <p>ps篡改信息</p>
 	Ps *GeneralCardWarnInfo `json:"Ps,omitnil,omitempty" name:"Ps"`
 
-	// 反光信息
+	// <p>反光信息</p>
 	Reflection *GeneralCardWarnInfo `json:"Reflection,omitnil,omitempty" name:"Reflection"`
 
-	// 翻拍件信息
+	// <p>翻拍件信息</p>
 	Reprint *GeneralCardWarnInfo `json:"Reprint,omitnil,omitempty" name:"Reprint"`
 
-	// 是否截图
+	// <p>是否截图</p>
 	Screenshot *GeneralCardWarnInfo `json:"Screenshot,omitnil,omitempty" name:"Screenshot"`
 
-	// 是否遮挡
+	// <p>是否遮挡</p>
 	Cover *GeneralCardWarnInfo `json:"Cover,omitnil,omitempty" name:"Cover"`
 
-	// 是否重叠
+	// <p>是否重叠</p>
 	Overlap *GeneralCardWarnInfo `json:"Overlap,omitnil,omitempty" name:"Overlap"`
 
-	// 是否水印
+	// <p>是否水印</p>
 	Watermark *GeneralCardWarnInfo `json:"Watermark,omitnil,omitempty" name:"Watermark"`
 
-	// 是否电子证照（目前仅支持电子身份证、电子营业执照识别
+	// <p>是否电子证照（目前仅支持电子身份证、电子营业执照识别</p>
 	Electron *GeneralCardWarnInfo `json:"Electron,omitnil,omitempty" name:"Electron"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

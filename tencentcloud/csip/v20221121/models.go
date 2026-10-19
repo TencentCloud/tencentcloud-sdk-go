@@ -53932,6 +53932,9 @@ type DspmDbAsset struct {
 	// <p>日志审计禁止开通的原因，可选值：VersionNotSupportLogSubscription, InstanceIsUpgrading, CdbRuleAuditEnabled, AssetNotExists</p>
 	LogDeliveryDisableReason *string `json:"LogDeliveryDisableReason,omitnil,omitempty" name:"LogDeliveryDisableReason"`
 
+	// <p>日志审计禁止开通时的详细说明</p>
+	LogDeliveryDisableMessage *string `json:"LogDeliveryDisableMessage,omitnil,omitempty" name:"LogDeliveryDisableMessage"`
+
 	// <p>在线日志的起始时间戳，精确到秒</p>
 	OldestOnlineLogTimestamp *uint64 `json:"OldestOnlineLogTimestamp,omitnil,omitempty" name:"OldestOnlineLogTimestamp"`
 
@@ -53960,6 +53963,9 @@ type DspmDbAsset struct {
 	// <p>集群名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>数据库版本</p>
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 type DspmDbAssetId struct {
@@ -54507,47 +54513,53 @@ type DspmRisk struct {
 }
 
 type DspmRiskCount struct {
-	// 待处理风险个数
+	// <p>待处理风险个数</p>
 	UnprocessedRisk *int64 `json:"UnprocessedRisk,omitnil,omitempty" name:"UnprocessedRisk"`
 
-	// 配置风险个数
+	// <p>配置风险个数</p>
 	//
 	// Deprecated: ConfigurationRisk is deprecated.
 	ConfigurationRisk *int64 `json:"ConfigurationRisk,omitnil,omitempty" name:"ConfigurationRisk"`
 
-	// 基线风险个数
+	// <p>基线风险个数</p>
 	//
 	// Deprecated: BaselineDeviation is deprecated.
 	BaselineDeviation *int64 `json:"BaselineDeviation,omitnil,omitempty" name:"BaselineDeviation"`
 
-	// 泄露风险个数
+	// <p>泄露风险个数</p>
 	//
 	// Deprecated: LeakDetection is deprecated.
 	LeakDetection *int64 `json:"LeakDetection,omitnil,omitempty" name:"LeakDetection"`
 
-	// SQL行为异常风险个数
+	// <p>SQL行为异常风险个数</p>
 	SQLBehaviorAnomaly *int64 `json:"SQLBehaviorAnomaly,omitnil,omitempty" name:"SQLBehaviorAnomaly"`
 
-	// 权限异常风险个数
+	// <p>权限异常风险个数</p>
 	PermissionAnomaly *int64 `json:"PermissionAnomaly,omitnil,omitempty" name:"PermissionAnomaly"`
 
-	// 登录行为异常风险个数
+	// <p>登录行为异常风险个数</p>
 	LoginBehaviorAnomaly *int64 `json:"LoginBehaviorAnomaly,omitnil,omitempty" name:"LoginBehaviorAnomaly"`
 
-	// 攻击面风险个数
+	// <p>攻击面风险个数</p>
 	AttackSurfaceRisk *int64 `json:"AttackSurfaceRisk,omitnil,omitempty" name:"AttackSurfaceRisk"`
 
-	// 账号敏感操作个数
+	// <p>账号敏感操作个数</p>
 	AccountSensitiveOperation *int64 `json:"AccountSensitiveOperation,omitnil,omitempty" name:"AccountSensitiveOperation"`
 
-	// 待处理告警个数
+	// <p>待处理告警个数</p>
 	UnprocessedAlarm *int64 `json:"UnprocessedAlarm,omitnil,omitempty" name:"UnprocessedAlarm"`
 
-	// 新增事件告警
+	// <p>新增事件告警</p>
 	NumOfNewAlarmEvent *int64 `json:"NumOfNewAlarmEvent,omitnil,omitempty" name:"NumOfNewAlarmEvent"`
 
-	// 新增配置风险
+	// <p>新增配置风险</p>
 	NumOfNewConfigRisk *int64 `json:"NumOfNewConfigRisk,omitnil,omitempty" name:"NumOfNewConfigRisk"`
+
+	// <p>账号风险条数</p>
+	AccountRisk *int64 `json:"AccountRisk,omitnil,omitempty" name:"AccountRisk"`
+
+	// <p>配置风险条数</p>
+	ConfigRisk *int64 `json:"ConfigRisk,omitnil,omitempty" name:"ConfigRisk"`
 }
 
 type DspmRiskStrategy struct {
@@ -56943,6 +56955,9 @@ type ImageAssociatedAssetCount struct {
 
 	// <p>镜像所属账号uin</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// <p>镜像关联超级节点数</p>
+	SuperNodeHostCount *uint64 `json:"SuperNodeHostCount,omitnil,omitempty" name:"SuperNodeHostCount"`
 }
 
 type ImageAssociatedContainer struct {
@@ -70095,79 +70110,83 @@ type OrganizationInfo struct {
 }
 
 type OrganizationUserInfo struct {
-	// 成员账号Uin
+	// <p>成员账号Uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 成员账号名称
+	// <p>成员账号名称</p>
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
-	// 部门节点名称，账号所属部门
+	// <p>部门节点名称，账号所属部门</p>
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 资产数量
+	// <p>资产数量</p>
 	AssetCount *int64 `json:"AssetCount,omitnil,omitempty" name:"AssetCount"`
 
-	// 风险数量
+	// <p>风险数量</p>
 	RiskCount *int64 `json:"RiskCount,omitnil,omitempty" name:"RiskCount"`
 
-	// 攻击数量
+	// <p>攻击数量</p>
 	AttackCount *int64 `json:"AttackCount,omitnil,omitempty" name:"AttackCount"`
 
-	// Member/Admin/;成员或者管理员
+	// <p>Member/Admin/;成员或者管理员</p>
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 成员账号id
+	// <p>成员账号id</p>
 	MemberId *string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 成员账号Appid
+	// <p>成员账号Appid</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 账号加入方式,create/invite
+	// <p>账号加入方式,create/invite</p>
 	JoinType *string `json:"JoinType,omitnil,omitempty" name:"JoinType"`
 
-	// 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+	// <p>空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本</p>
 	CFWProtect *string `json:"CFWProtect,omitnil,omitempty" name:"CFWProtect"`
 
-	// 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+	// <p>空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本</p>
 	WAFProtect *string `json:"WAFProtect,omitnil,omitempty" name:"WAFProtect"`
 
-	// 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+	// <p>空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本</p>
 	CWPProtect *string `json:"CWPProtect,omitnil,omitempty" name:"CWPProtect"`
 
-	// 1启用，0未启用
+	// <p>1启用，0未启用</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// "Free"       //免费版  "Advanced"   //高级版 "Enterprise" //企业版 "Ultimate"   //旗舰版
+	// <p>&quot;Free&quot;       //免费版  &quot;Advanced&quot;   //高级版 &quot;Enterprise&quot; //企业版 &quot;Ultimate&quot;   //旗舰版</p>
 	CSIPProtect *string `json:"CSIPProtect,omitnil,omitempty" name:"CSIPProtect"`
 
-	// 1为配额消耗者
+	// <p>1为配额消耗者</p>
 	QuotaConsumer *int64 `json:"QuotaConsumer,omitnil,omitempty" name:"QuotaConsumer"`
 
-	// 账户类型，0为腾讯云账户，1为AWS账户
+	// <p>账户类型，0为腾讯云账户，1为AWS账户</p>
 	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 
-	// 0为缺省值，1为10分钟，2为1小时，3为24小时
+	// <p>0为缺省值，1为10分钟，2为1小时，3为24小时</p>
 	SyncFrequency *int64 `json:"SyncFrequency,omitnil,omitempty" name:"SyncFrequency"`
 
-	// 多云账户是否过期
+	// <p>多云账户是否过期</p>
 	IsExpired *bool `json:"IsExpired,omitnil,omitempty" name:"IsExpired"`
 
-	// 多云账户 权限列表
+	// <p>多云账户 权限列表</p>
 	PermissionList []*string `json:"PermissionList,omitnil,omitempty" name:"PermissionList"`
 
-	// 1
+	// <p>账户权限类型</p><p>枚举值：</p><ul><li>1： 认证类型-Root账号AKSK</li><li>2： 认证类型-子账号AKSK</li><li>3： 认证类型-角色</li></ul>
 	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// 0 腾讯云集团账户
-	// 1 腾讯云接入账户
-	// 2 非腾讯云
+	// <p>0 腾讯云集团账户<br>1 腾讯云接入账户<br>2 非腾讯云</p>
 	TcMemberType *int64 `json:"TcMemberType,omitnil,omitempty" name:"TcMemberType"`
 
-	// 子账号数量
+	// <p>子账号数量</p>
 	SubUserCount *int64 `json:"SubUserCount,omitnil,omitempty" name:"SubUserCount"`
 
-	// 加入方式详细信息
+	// <p>加入方式详细信息</p>
 	JoinTypeInfo *string `json:"JoinTypeInfo,omitnil,omitempty" name:"JoinTypeInfo"`
+
+	// <p>被共享模块列表</p><p>枚举值：</p><ul><li>AKSK： 云API异常监测</li><li>SDL： 日志分析</li><li>CSPM： 云安全态势管理</li><li>CWP： 主机安全</li><li>COS_AUDIT： COS审计</li><li>IMAGE_SCAN： 容器镜像扫描</li><li>SKILL_SCAN： Skill安全检测</li><li>SKILL_SCAN_POST： Skill安全检测(后付费)</li><li>DSPM： 数据安全态势管理</li></ul><p>默认值：[]</p>
+	SharedModules []*string `json:"SharedModules,omitnil,omitempty" name:"SharedModules"`
+
+	// <p>安全分</p>
+	SecurityScore *int64 `json:"SecurityScore,omitnil,omitempty" name:"SecurityScore"`
 }
 
 type OsName struct {
@@ -75303,38 +75322,44 @@ type UserConfSyncStatus struct {
 }
 
 type UserDspmInfo struct {
-	// APPID
+	// <p>APPID</p>
 	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 
-	// UIN
+	// <p>UIN</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 账号昵称
+	// <p>账号昵称</p>
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
-	// 账号下数据库资产数量
+	// <p>账号下数据库资产数量</p>
 	AssetNum *int64 `json:"AssetNum,omitnil,omitempty" name:"AssetNum"`
 
-	// 账号下开启安全分析数据库资产数量
+	// <p>账号下开启安全分析数据库资产数量</p>
 	UsedAssetNum *int64 `json:"UsedAssetNum,omitnil,omitempty" name:"UsedAssetNum"`
 
-	// 是否被共享，1-被共享，2-未被共享
+	// <p>是否被共享，1-被共享，2-未被共享</p>
 	IsShared *int64 `json:"IsShared,omitnil,omitempty" name:"IsShared"`
 
-	// 是否单独购买，1-单独购买，2-未单独购买
+	// <p>是否单独购买，1-单独购买，2-未单独购买</p>
 	IsSelfBuy *int64 `json:"IsSelfBuy,omitnil,omitempty" name:"IsSelfBuy"`
 
-	// 配额来源账号
+	// <p>配额来源账号</p>
 	ShareFromAppID *int64 `json:"ShareFromAppID,omitnil,omitempty" name:"ShareFromAppID"`
 
-	// 云类型（0：腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云）
+	// <p>云类型（0：腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云）</p>
 	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 
-	// 账号是否隔离中
+	// <p>账号是否隔离中</p>
 	IsIsolating *bool `json:"IsIsolating,omitnil,omitempty" name:"IsIsolating"`
 
-	// 是否正在数据清理
+	// <p>是否正在数据清理</p>
 	IsDataCleaning *bool `json:"IsDataCleaning,omitnil,omitempty" name:"IsDataCleaning"`
+
+	// <p>集团账号角色（member-普通成员/admin-管理员/delegatedAdmin-委派管理员），非集团账号为空</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>所属部门名称，未分配部门或非集团账号为空</p>
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 }
 
 type UserItem struct {

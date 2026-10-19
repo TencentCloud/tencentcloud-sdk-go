@@ -176,6 +176,124 @@ type AlarmsRules struct {
 	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type AuditDBLogItem struct {
+	// <p>SQL 执行时间点（格式化字符串，yyyy-MM-dd HH:mm:ss）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// <p>集群 ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>影响行数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectRows *int64 `json:"AffectRows,omitnil,omitempty" name:"AffectRows"`
+
+	// <p>扫描行数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckRows *int64 `json:"CheckRows,omitnil,omitempty" name:"CheckRows"`
+
+	// <p>CPU 耗时（微秒）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuTime *int64 `json:"CpuTime,omitnil,omitempty" name:"CpuTime"`
+
+	// <p>后端 Set Host（源字段 dbHost）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetHost *string `json:"SetHost,omitnil,omitempty" name:"SetHost"`
+
+	// <p>SQL 执行所在的数据库名。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBName *string `json:"DBName,omitnil,omitempty" name:"DBName"`
+
+	// <p>SQL 执行返回的错误码，0 表示成功。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *string `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// <p>SQL 执行耗时（微秒）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecTime *int64 `json:"ExecTime,omitnil,omitempty" name:"ExecTime"`
+
+	// <p>客户端来源 IP。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// <p>Set 名称（源字段 instanceId）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetName *string `json:"SetName,omitnil,omitempty" name:"SetName"`
+
+	// <p>IO 等待时间（微秒）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IoWaitTime *int64 `json:"IoWaitTime,omitnil,omitempty" name:"IoWaitTime"`
+
+	// <p>锁等待时间（微秒）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LockWaitTime *int64 `json:"LockWaitTime,omitnil,omitempty" name:"LockWaitTime"`
+
+	// <p>SQL 开始时间（纳秒级时间戳）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlStartTimeNs *int64 `json:"SqlStartTimeNs,omitnil,omitempty" name:"SqlStartTimeNs"`
+
+	// <p>查询 ID（用于关联查询）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryId *string `json:"QueryId,omitnil,omitempty" name:"QueryId"`
+
+	// <p>查询序号（同一事务内 SQL 的序列号）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryNo *int64 `json:"QueryNo,omitnil,omitempty" name:"QueryNo"`
+
+	// <p>返回行数（扫描结果集行数）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SentRows *int64 `json:"SentRows,omitnil,omitempty" name:"SentRows"`
+
+	// <p>执行的 SQL 语句原文。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// <p>SQL 模板 ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlTemplateId *string `json:"SqlTemplateId,omitnil,omitempty" name:"SqlTemplateId"`
+
+	// <p>SQL 类型（如 Select、Insert、Update、Delete 等）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlType *string `json:"SqlType,omitnil,omitempty" name:"SqlType"`
+
+	// <p>涉及的表。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tables *string `json:"Tables,omitnil,omitempty" name:"Tables"`
+
+	// <p>线程 ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThreadId *string `json:"ThreadId,omitnil,omitempty" name:"ThreadId"`
+
+	// <p>SQL 开始时间（毫秒级时间戳）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlStartTime *int64 `json:"SqlStartTime,omitnil,omitempty" name:"SqlStartTime"`
+
+	// <p>事务存活时间（微秒）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrxLivingTime *int64 `json:"TrxLivingTime,omitnil,omitempty" name:"TrxLivingTime"`
+
+	// <p>执行 SQL 的数据库用户名。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// <p>事务 ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrxId *string `json:"TrxId,omitnil,omitempty" name:"TrxId"`
+
+	// <p>内部 XID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalXId *string `json:"InternalXId,omitnil,omitempty" name:"InternalXId"`
+
+	// <p>业务码（由业务侧 SQL 注释中 i/o/p 等 KV 提取）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
+
+	// <p>网关流转耗时（毫秒），仅 LogType=All 时由 Gateway 日志关联后返回；LogType=DB 时该字段不下发。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowTime *int64 `json:"FlowTime,omitnil,omitempty" name:"FlowTime"`
+}
+
 type AuditInstance struct {
 	// 审计状态，已开通审计为：YES，未开通审计为：ON。
 	AuditStatus *string `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
@@ -292,6 +410,203 @@ type AuditLogFilter struct {
 
 	// 执行时间。单位为：µs。表示筛选执行时间大于该值的审计日志。
 	ExecTime *int64 `json:"ExecTime,omitnil,omitempty" name:"ExecTime"`
+}
+
+type AuditLogQueryFilter struct {
+	// <p>SQL 类型列表，取值如 SELECT、INSERT、UPDATE、DELETE 等。</p>
+	SqlType []*string `json:"SqlType,omitnil,omitempty" name:"SqlType"`
+
+	// <p>执行耗时范围（毫秒），长度为 2 的数组：[最小值, 最大值]。</p>
+	ExecTime []*int64 `json:"ExecTime,omitnil,omitempty" name:"ExecTime"`
+
+	// <p>IO 等待耗时范围（毫秒），长度为 2 的数组。</p>
+	IoWaitTime []*int64 `json:"IoWaitTime,omitnil,omitempty" name:"IoWaitTime"`
+
+	// <p>CPU 耗时范围（毫秒），长度为 2 的数组。</p>
+	CpuTime []*int64 `json:"CpuTime,omitnil,omitempty" name:"CpuTime"`
+
+	// <p>锁等待耗时范围（毫秒），长度为 2 的数组。</p>
+	LockWaitTime []*int64 `json:"LockWaitTime,omitnil,omitempty" name:"LockWaitTime"`
+
+	// <p>SQL 执行错误码，例如 0 表示成功。</p>
+	ErrCode *string `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// <p>错误信息。</p>
+	ErrInfo *string `json:"ErrInfo,omitnil,omitempty" name:"ErrInfo"`
+
+	// <p>数据库名列表。</p>
+	DBName []*string `json:"DBName,omitnil,omitempty" name:"DBName"`
+
+	// <p>用户名列表。</p>
+	User []*string `json:"User,omitnil,omitempty" name:"User"`
+
+	// <p>来源 IP 列表。</p>
+	Host []*string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// <p>线程 ID 列表。</p>
+	ThreadId []*string `json:"ThreadId,omitnil,omitempty" name:"ThreadId"`
+
+	// <p>代理节点 Host 列表。</p>
+	ProxyHostList []*string `json:"ProxyHostList,omitnil,omitempty" name:"ProxyHostList"`
+
+	// <p>后端 Set Host 列表。</p>
+	SetHostList []*string `json:"SetHostList,omitnil,omitempty" name:"SetHostList"`
+
+	// <p>后端 Set ID 列表。</p>
+	SetIdList []*string `json:"SetIdList,omitnil,omitempty" name:"SetIdList"`
+
+	// <p>多 SQL 关键词条件，JSON 字符串，内部为二维数组：第一级为 AND，第二级为 OR。注意云 API 平台不支持二维数组，此处用字符串承载，服务端自动解析。</p>
+	MultiSql *string `json:"MultiSql,omitnil,omitempty" name:"MultiSql"`
+
+	// <p>排除的多 SQL 关键词条件，JSON 字符串，结构同 MultiSql。</p>
+	ExcludeMultiSql *string `json:"ExcludeMultiSql,omitnil,omitempty" name:"ExcludeMultiSql"`
+
+	// <p>SQL 模板 ID。</p>
+	SqlTemplateId *string `json:"SqlTemplateId,omitnil,omitempty" name:"SqlTemplateId"`
+
+	// <p>SQL 开始时间，示例：2026-10-10 11:05:06.002211</p><p>参数格式：YYYY-MM-DD hh:mm:ss.SSSSSS</p>
+	SqlStartTime *string `json:"SqlStartTime,omitnil,omitempty" name:"SqlStartTime"`
+
+	// <p>查询 ID，关联查询时使用（LogType=All 时必填）。</p>
+	QueryId *string `json:"QueryId,omitnil,omitempty" name:"QueryId"`
+}
+
+type AuditProxyLogItem struct {
+	// <p>SQL 执行时间点（格式化字符串，yyyy-MM-dd HH:mm:ss）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// <p>集群 ID（dcdb/mariadb 集群标识，与 InstanceId 相同）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>影响行数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectRows *int64 `json:"AffectRows,omitnil,omitempty" name:"AffectRows"`
+
+	// <p>是否自动提交。1 表示开启，0 表示关闭。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Autocommit *string `json:"Autocommit,omitnil,omitempty" name:"Autocommit"`
+
+	// <p>MySQL 网络协议命令类型（如 COM_QUERY、COM_CONNECT 等）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComType *string `json:"ComType,omitnil,omitempty" name:"ComType"`
+
+	// <p>新建连接耗时。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnTc *int64 `json:"ConnTc,omitnil,omitempty" name:"ConnTc"`
+
+	// <p>后端 DB 实例地址（多个用英文逗号分隔）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBHost *string `json:"DBHost,omitnil,omitempty" name:"DBHost"`
+
+	// <p>SQL 执行所在的数据库名。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBName *string `json:"DBName,omitnil,omitempty" name:"DBName"`
+
+	// <p>SQL 执行返回的错误码，0 表示成功。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *string `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// <p>错误信息。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrInfo *string `json:"ErrInfo,omitnil,omitempty" name:"ErrInfo"`
+
+	// <p>SQL 执行耗时（微秒）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecTime *int64 `json:"ExecTime,omitnil,omitempty" name:"ExecTime"`
+
+	// <p>请求结束后仍占用的连接数（非事务请求通常为 0）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HoldConns *string `json:"HoldConns,omitnil,omitempty" name:"HoldConns"`
+
+	// <p>客户端来源 IP。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// <p>是否开启全局一致性读（0 否、1 是）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mc *string `json:"Mc,omitnil,omitempty" name:"Mc"`
+
+	// <p>SQL 开始时间（微秒精度中的微秒部分）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlStartTimeUs *int64 `json:"SqlStartTimeUs,omitnil,omitempty" name:"SqlStartTimeUs"`
+
+	// <p>本次请求新建的连接数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewConnNum *int64 `json:"NewConnNum,omitnil,omitempty" name:"NewConnNum"`
+
+	// <p>Proxy 代理节点地址。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyHost *string `json:"ProxyHost,omitnil,omitempty" name:"ProxyHost"`
+
+	// <p>Proxy ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
+
+	// <p>查询 ID（用于关联查询）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryId *string `json:"QueryId,omitnil,omitempty" name:"QueryId"`
+
+	// <p>返回行数（扫描结果集行数）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SentRows *int64 `json:"SentRows,omitnil,omitempty" name:"SentRows"`
+
+	// <p>是否为 Proxy 改写后的查询：0 原始查询，1 改写后查询。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Splited *int64 `json:"Splited,omitnil,omitempty" name:"Splited"`
+
+	// <p>执行的 SQL 语句原文。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// <p>SQL 模板。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlTemplate *string `json:"SqlTemplate,omitnil,omitempty" name:"SqlTemplate"`
+
+	// <p>SQL 模板 ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlTemplateId *string `json:"SqlTemplateId,omitnil,omitempty" name:"SqlTemplateId"`
+
+	// <p>SQL 类型（如 Select、Insert、Create、Login、Set 等）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlType *string `json:"SqlType,omitnil,omitempty" name:"SqlType"`
+
+	// <p>涉及的表（多表以英文逗号分隔）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tables *string `json:"Tables,omitnil,omitempty" name:"Tables"`
+
+	// <p>线程 ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThreadId *string `json:"ThreadId,omitnil,omitempty" name:"ThreadId"`
+
+	// <p>SQL 开始时间（毫秒级时间戳）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlStartTime *int64 `json:"SqlStartTime,omitnil,omitempty" name:"SqlStartTime"`
+
+	// <p>执行 SQL 的数据库用户名。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// <p>客户端连接的 HostPort。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostPort *string `json:"HostPort,omitnil,omitempty" name:"HostPort"`
+
+	// <p>Proxy 节点处理线程 ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyThread *string `json:"ProxyThread,omitnil,omitempty" name:"ProxyThread"`
+
+	// <p>后端 DB Host 数量。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbHostNum *string `json:"DbHostNum,omitnil,omitempty" name:"DbHostNum"`
+
+	// <p>业务码（由业务侧 SQL 注释中 i/o/p 等 KV 提取）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
+
+	// <p>业务标签（根据业务码后置补齐）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessTag *string `json:"BusinessTag,omitnil,omitempty" name:"BusinessTag"`
 }
 
 type AutonomyActionVo struct {
@@ -3084,6 +3399,151 @@ func (r *DescribeDBAuditLogTopSqlsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBAuditLogsRequestParams struct {
+	// <p>服务产品类型。当前  云 API 仅支持：dcdb、mariadb（cdb、cynosdb 已切至中台）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>开始时间，格式 yyyy-MM-dd HH:mm:ss。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间，格式 yyyy-MM-dd HH:mm:ss。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>实例 ID，必填。dcdb、mariadb 场景以实例维度查询审计日志。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志类型：Proxy 代理日志，DB 数据库日志，All 全部。</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>排序字段，默认 Timestamp。</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>排序方式：ASC 升序，DESC 降序。默认 DESC。</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>偏移量，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，默认 20，最大 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>SQL 开始时间（毫秒级时间戳），根据 QueryId 关联查询时使用。</p>
+	SqlStartTime *int64 `json:"SqlStartTime,omitnil,omitempty" name:"SqlStartTime"`
+
+	// <p>审计日志查询过滤条件集合。</p>
+	Filter *AuditLogQueryFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// <p>集群 ID，dcdb 产品以集群维度查询审计日志</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DescribeDBAuditLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务产品类型。当前  云 API 仅支持：dcdb、mariadb（cdb、cynosdb 已切至中台）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>开始时间，格式 yyyy-MM-dd HH:mm:ss。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间，格式 yyyy-MM-dd HH:mm:ss。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>实例 ID，必填。dcdb、mariadb 场景以实例维度查询审计日志。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志类型：Proxy 代理日志，DB 数据库日志，All 全部。</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>排序字段，默认 Timestamp。</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>排序方式：ASC 升序，DESC 降序。默认 DESC。</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>偏移量，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，默认 20，最大 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>SQL 开始时间（毫秒级时间戳），根据 QueryId 关联查询时使用。</p>
+	SqlStartTime *int64 `json:"SqlStartTime,omitnil,omitempty" name:"SqlStartTime"`
+
+	// <p>审计日志查询过滤条件集合。</p>
+	Filter *AuditLogQueryFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// <p>集群 ID，dcdb 产品以集群维度查询审计日志</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeDBAuditLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBAuditLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "InstanceId")
+	delete(f, "LogType")
+	delete(f, "SortBy")
+	delete(f, "OrderBy")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SqlStartTime")
+	delete(f, "Filter")
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBAuditLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBAuditLogsResponseParams struct {
+	// <p>满足条件的总条数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>过滤后记录数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilteredRecords *int64 `json:"FilteredRecords,omitnil,omitempty" name:"FilteredRecords"`
+
+	// <p>Proxy 层审计日志列表。LogType=Proxy 或 All 时返回，字段结构参见 AuditProxyLogItem。</p>
+	ProxyLogs []*AuditProxyLogItem `json:"ProxyLogs,omitnil,omitempty" name:"ProxyLogs"`
+
+	// <p>DB 层审计日志列表。LogType=DB 或 All 时返回，字段结构参见 AuditDBLogItem。</p>
+	DBLogs []*AuditDBLogItem `json:"DBLogs,omitnil,omitempty" name:"DBLogs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBAuditLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBAuditLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBAuditLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBAuditLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBAutonomyActionRequestParams struct {
 	// 自治任务ID。可通过 [DescribeDBAutonomyActions](https://cloud.tencent.com/document/product/1130/116974) 接口获取。
 	ActionId *int64 `json:"ActionId,omitnil,omitempty" name:"ActionId"`
@@ -4180,6 +4640,103 @@ func (r *DescribeDatabaseAutonomyStatusResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeDatabaseObjectV2RequestParams struct {
+	// <p>服务产品类型。取值：sqlserver（云数据库 Sqlserver）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>查询对象类型。</p><p>枚举值：</p><ul><li>TableDDL： 建表+索引DDL</li><li>TableStatistics： 表空间统计</li></ul>
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// <p>实例 ID。SQLServer: mssql-xxxx。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>库名（catalog）。TableStatistics 时必填；TableDDL 时可选。</p>
+	TableSchema *string `json:"TableSchema,omitnil,omitempty" name:"TableSchema"`
+
+	// <p>当产品为sqlserver时，表名/视图名，支持 schema.table 格式，未带 schema 默认 dbo</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+}
+
+type DescribeDatabaseObjectV2Request struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务产品类型。取值：sqlserver（云数据库 Sqlserver）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>查询对象类型。</p><p>枚举值：</p><ul><li>TableDDL： 建表+索引DDL</li><li>TableStatistics： 表空间统计</li></ul>
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// <p>实例 ID。SQLServer: mssql-xxxx。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>库名（catalog）。TableStatistics 时必填；TableDDL 时可选。</p>
+	TableSchema *string `json:"TableSchema,omitnil,omitempty" name:"TableSchema"`
+
+	// <p>当产品为sqlserver时，表名/视图名，支持 schema.table 格式，未带 schema 默认 dbo</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+}
+
+func (r *DescribeDatabaseObjectV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseObjectV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "ObjectType")
+	delete(f, "InstanceId")
+	delete(f, "TableSchema")
+	delete(f, "TableName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseObjectV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseObjectV2ResponseParams struct {
+	// <p>索引 DDL 列表，每项为一条 CREATE INDEX 语句，无索引时为空数组。</p>
+	IndexDDLs []*IndexDDLInfo `json:"IndexDDLs,omitnil,omitempty" name:"IndexDDLs"`
+
+	// <p>建表 DDL 语句，对象不存在时为空串。</p>
+	TableDDL *string `json:"TableDDL,omitnil,omitempty" name:"TableDDL"`
+
+	// <p>表名。</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>库名。</p>
+	TableSchema *string `json:"TableSchema,omitnil,omitempty" name:"TableSchema"`
+
+	// <p>表空间统计。</p>
+	TableStatistics *TableStatistics `json:"TableStatistics,omitnil,omitempty" name:"TableStatistics"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDatabaseObjectV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatabaseObjectV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatabaseObjectV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseObjectV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDeadLockLogsRequestParams struct {
 	// <p>服务产品类型。取值：sqlserver（云数据库 Sqlserver）。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
@@ -5235,7 +5792,7 @@ func (r *DescribeNoPrimaryKeyTablesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxyProcessStatisticsRequestParams struct {
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 该实例下需要查询的某一个 ProxyID 。
@@ -5251,16 +5808,25 @@ type DescribeProxyProcessStatisticsRequestParams struct {
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 按照某字段排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
+	// 其中：
+	// 
+	// - AllConn ：表示总连接数（活跃连接 + 非活跃连接）
+	// - ActiveConn：表示活跃连接数
+	// - Ip：表示 IP 地址
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
 	// 排序方向。支持值包括："DESC"，"ASC"。
+	// 其中：
+	// 
+	// - DESC：降序
+	// - ASC：升序
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 }
 
 type DescribeProxyProcessStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 该实例下需要查询的某一个 ProxyID 。
@@ -5276,9 +5842,18 @@ type DescribeProxyProcessStatisticsRequest struct {
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 按照某字段排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
+	// 其中：
+	// 
+	// - AllConn ：表示总连接数（活跃连接 + 非活跃连接）
+	// - ActiveConn：表示活跃连接数
+	// - Ip：表示 IP 地址
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
 	// 排序方向。支持值包括："DESC"，"ASC"。
+	// 其中：
+	// 
+	// - DESC：降序
+	// - ASC：升序
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 }
 
@@ -8170,6 +8745,14 @@ type HealthStatus struct {
 	HealthLevelVersion *string `json:"HealthLevelVersion,omitnil,omitempty" name:"HealthLevelVersion"`
 }
 
+type IndexDDLInfo struct {
+	// <p>索引名称。</p>
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
+
+	// <p>创建索引语句。</p>
+	DDL *string `json:"DDL,omitnil,omitempty" name:"DDL"`
+}
+
 type IndexesToBuild struct {
 	// 索引id，唯一标识一个索引。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -10063,6 +10646,44 @@ type TableSpaceTimeSeries struct {
 
 	// 单位时间间隔内的空间指标数据。
 	SeriesData *MonitorFloatMetricSeriesData `json:"SeriesData,omitnil,omitempty" name:"SeriesData"`
+}
+
+type TableStatistics struct {
+	// <p>表名。</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>Schema 名。</p>
+	TableSchema *string `json:"TableSchema,omitnil,omitempty" name:"TableSchema"`
+
+	// <p>库名（catalog）。</p>
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// <p>存储引擎。</p>
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// <p>数据空间。</p><p>单位：MB</p>
+	DataLength *float64 `json:"DataLength,omitnil,omitempty" name:"DataLength"`
+
+	// <p>索引空间。</p><p>单位：MB</p>
+	IndexLength *float64 `json:"IndexLength,omitnil,omitempty" name:"IndexLength"`
+
+	// <p>总分配空间。</p><p>单位：MB</p>
+	TotalLength *float64 `json:"TotalLength,omitnil,omitempty" name:"TotalLength"`
+
+	// <p>已用空间。</p><p>单位：MB</p>
+	UsedLength *float64 `json:"UsedLength,omitnil,omitempty" name:"UsedLength"`
+
+	// <p>碎片空间。</p><p>单位：MB</p>
+	DataFree *float64 `json:"DataFree,omitnil,omitempty" name:"DataFree"`
+
+	// <p>行数。</p>
+	TableRows *int64 `json:"TableRows,omitnil,omitempty" name:"TableRows"`
+
+	// <p>碎片率（%）。</p>
+	FragRatio *float64 `json:"FragRatio,omitnil,omitempty" name:"FragRatio"`
+
+	// <p>物理文件大小。</p><p>单位：MB</p>
+	PhysicalFileSize *float64 `json:"PhysicalFileSize,omitnil,omitempty" name:"PhysicalFileSize"`
 }
 
 type TagFilterGroup struct {

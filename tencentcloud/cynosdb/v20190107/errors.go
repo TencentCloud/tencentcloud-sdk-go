@@ -89,6 +89,9 @@ const (
 	// Proxy校验失败：{{1}}。
 	FAILEDOPERATION_PROXYCHECKERROR = "FailedOperation.ProxyCheckError"
 
+	// 代理组设置只读模式时，集群下必须包含至少一个只读实例
+	FAILEDOPERATION_PROXYGROUPRWSPLITNOROINSTANCEERROR = "FailedOperation.ProxyGroupRwSplitNoRoInstanceError"
+
 	// 查询资源包消耗明细失败
 	FAILEDOPERATION_QUERYSOURCEPACKAGEDETAILERROR = "FailedOperation.QuerySourcePackageDetailError"
 

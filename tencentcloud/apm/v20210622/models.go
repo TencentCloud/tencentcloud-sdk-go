@@ -297,6 +297,12 @@ type ApmAppConfig struct {
 
 	// <p>跨账号关联ID</p>
 	CrossAccountPeerId *string `json:"CrossAccountPeerId,omitnil,omitempty" name:"CrossAccountPeerId"`
+
+	// <p>自定义 Span 状态配置</p>
+	SpanStatusConfig *SpanStatusConfig `json:"SpanStatusConfig,omitnil,omitempty" name:"SpanStatusConfig"`
+
+	// <p>应用级自定义 Span 状态开关</p>
+	EnableSpanStatusConfig *bool `json:"EnableSpanStatusConfig,omitnil,omitempty" name:"EnableSpanStatusConfig"`
 }
 
 type ApmApplicationConfigView struct {
@@ -681,6 +687,9 @@ type ApmInstanceDetail struct {
 
 	// <p>开启Token展示安全保护</p><p>单位：是、否</p>
 	TokenDisplayProtection *int64 `json:"TokenDisplayProtection,omitnil,omitempty" name:"TokenDisplayProtection"`
+
+	// <p>自定义 Span 状态配置</p>
+	SpanStatusConfig *SpanStatusConfig `json:"SpanStatusConfig,omitnil,omitempty" name:"SpanStatusConfig"`
 }
 
 type ApmMetricRecord struct {
@@ -3571,6 +3580,16 @@ type ErrorSpan struct {
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 
+type ErrorSpanConf struct {
+	// <p>错误类型匹配规则列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorObjectPatterns []*string `json:"ErrorObjectPatterns,omitnil,omitempty" name:"ErrorObjectPatterns"`
+
+	// <p>错误码匹配规则列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCodes []*string `json:"ErrorCodes,omitnil,omitempty" name:"ErrorCodes"`
+}
+
 type Filter struct {
 	// <p>过滤方式（=, !=, in）</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -3811,6 +3830,12 @@ type ModifyApmApplicationConfigRequestParams struct {
 
 	// <p>跨账号关联ID</p>
 	CrossAccountPeerId *string `json:"CrossAccountPeerId,omitnil,omitempty" name:"CrossAccountPeerId"`
+
+	// <p>应用级自定义 Span 状态开关</p>
+	EnableSpanStatusConfig *bool `json:"EnableSpanStatusConfig,omitnil,omitempty" name:"EnableSpanStatusConfig"`
+
+	// <p>自定义 Span 状态配置</p>
+	SpanStatusConfig *SpanStatusConfig `json:"SpanStatusConfig,omitnil,omitempty" name:"SpanStatusConfig"`
 }
 
 type ModifyApmApplicationConfigRequest struct {
@@ -4007,6 +4032,12 @@ type ModifyApmApplicationConfigRequest struct {
 
 	// <p>跨账号关联ID</p>
 	CrossAccountPeerId *string `json:"CrossAccountPeerId,omitnil,omitempty" name:"CrossAccountPeerId"`
+
+	// <p>应用级自定义 Span 状态开关</p>
+	EnableSpanStatusConfig *bool `json:"EnableSpanStatusConfig,omitnil,omitempty" name:"EnableSpanStatusConfig"`
+
+	// <p>自定义 Span 状态配置</p>
+	SpanStatusConfig *SpanStatusConfig `json:"SpanStatusConfig,omitnil,omitempty" name:"SpanStatusConfig"`
 }
 
 func (r *ModifyApmApplicationConfigRequest) ToJsonString() string {
@@ -4085,6 +4116,8 @@ func (r *ModifyApmApplicationConfigRequest) FromJsonString(s string) error {
 	delete(f, "HeadSamplerArg")
 	delete(f, "CrossAccountStatus")
 	delete(f, "CrossAccountPeerId")
+	delete(f, "EnableSpanStatusConfig")
+	delete(f, "SpanStatusConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmApplicationConfigRequest has unknown keys!", "")
 	}
@@ -4353,6 +4386,9 @@ type ModifyApmInstanceRequestParams struct {
 
 	// <p>是否开启Token 展示安全保护</p><p>单位：0：不开启，1：开启</p><p>默认值：0</p>
 	TokenDisplayProtection *int64 `json:"TokenDisplayProtection,omitnil,omitempty" name:"TokenDisplayProtection"`
+
+	// <p>自定义 Span 状态配置</p>
+	SpanStatusConfig *SpanStatusConfig `json:"SpanStatusConfig,omitnil,omitempty" name:"SpanStatusConfig"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -4507,6 +4543,9 @@ type ModifyApmInstanceRequest struct {
 
 	// <p>是否开启Token 展示安全保护</p><p>单位：0：不开启，1：开启</p><p>默认值：0</p>
 	TokenDisplayProtection *int64 `json:"TokenDisplayProtection,omitnil,omitempty" name:"TokenDisplayProtection"`
+
+	// <p>自定义 Span 状态配置</p>
+	SpanStatusConfig *SpanStatusConfig `json:"SpanStatusConfig,omitnil,omitempty" name:"SpanStatusConfig"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -4571,6 +4610,7 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CrossAccountStatus")
 	delete(f, "CrossAccountPeerId")
 	delete(f, "TokenDisplayProtection")
+	delete(f, "SpanStatusConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}
@@ -5216,6 +5256,16 @@ type SpanReference struct {
 
 	// Trace ID
 	TraceID *string `json:"TraceID,omitnil,omitempty" name:"TraceID"`
+}
+
+type SpanStatusConfig struct {
+	// <p>标记为错误规则组</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkAsError *ErrorSpanConf `json:"MarkAsError,omitnil,omitempty" name:"MarkAsError"`
+
+	// <p>标记为正常规则组</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarkAsOk *ErrorSpanConf `json:"MarkAsOk,omitnil,omitempty" name:"MarkAsOk"`
 }
 
 type SpanTag struct {

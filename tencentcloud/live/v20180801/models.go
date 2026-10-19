@@ -17035,6 +17035,284 @@ func (r *DescribeStreamDayPlayInfoListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeStreamPackageIngestStatisticsRequestParams struct {
+	// <p>查询起始时间，RFC3339 格式，如2026-08-24T00:00:00+08:00</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00；必须晚于 StartTime</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>频道ID列表，不传则查全部频道</p>
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// <p>频道类型过滤，枚举值：LiveChannel、SSAI、FASTChannel</p>
+	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
+
+	// <p>维度，false(默认): summary 汇总模式；true: detail 明细模式（按时间拆分），当为false时粒度不生效</p>
+	Dimension *bool `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// <p>时间粒度（分钟），支持5（默认）/ 60 / 1440</p>
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeStreamPackageIngestStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>查询起始时间，RFC3339 格式，如2026-08-24T00:00:00+08:00</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00；必须晚于 StartTime</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>频道ID列表，不传则查全部频道</p>
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// <p>频道类型过滤，枚举值：LiveChannel、SSAI、FASTChannel</p>
+	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
+
+	// <p>维度，false(默认): summary 汇总模式；true: detail 明细模式（按时间拆分），当为false时粒度不生效</p>
+	Dimension *bool `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// <p>时间粒度（分钟），支持5（默认）/ 60 / 1440</p>
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeStreamPackageIngestStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageIngestStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ChannelIds")
+	delete(f, "Types")
+	delete(f, "Dimension")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageIngestStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageIngestStatisticsResponseParams struct {
+	// <p>输入流量数据</p>
+	DataInfoList []*IngestStatisticsDataInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
+
+	// <p>总输入用量</p>
+	TotalIngest *int64 `json:"TotalIngest,omitnil,omitempty" name:"TotalIngest"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageIngestStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageIngestStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageIngestStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageIngestStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageOutputStatisticsRequestParams struct {
+	// <p>查询起始时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00；必须晚于 StartTime</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>频道ID列表，不传则查全部频道</p>
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// <p>频道类型过滤，枚举值：LiveChannel</p>
+	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
+
+	// <p>维度，false(默认): summary 汇总模式；true: detail 明细模式（按时间拆分），当为false时粒度不生效</p>
+	Dimension *bool `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// <p>时间粒度（分钟），支持5（默认）/ 60 / 1440</p>
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeStreamPackageOutputStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>查询起始时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00；必须晚于 StartTime</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>频道ID列表，不传则查全部频道</p>
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// <p>频道类型过滤，枚举值：LiveChannel</p>
+	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
+
+	// <p>维度，false(默认): summary 汇总模式；true: detail 明细模式（按时间拆分），当为false时粒度不生效</p>
+	Dimension *bool `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// <p>时间粒度（分钟），支持5（默认）/ 60 / 1440</p>
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeStreamPackageOutputStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageOutputStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ChannelIds")
+	delete(f, "Types")
+	delete(f, "Dimension")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageOutputStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageOutputStatisticsResponseParams struct {
+	// <p>输出流量统计</p>
+	DataInfoList []*OutputStatisticsDataInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
+
+	// <p>输出总用量</p>
+	TotalOutput *int64 `json:"TotalOutput,omitnil,omitempty" name:"TotalOutput"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageOutputStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageOutputStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageOutputStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageOutputStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageRemuxStatisticsRequestParams struct {
+	// <p>查询起始时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00；必须晚于 StartTime</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>频道ID列表，不传则查全部频道</p>
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// <p>维度，false(默认): summary 汇总模式；true: detail 明细模式（按时间拆分），当为false时粒度不生效</p>
+	Dimension *bool `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// <p>时间粒度（分钟），支持5（默认）/ 60 / 1440</p>
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeStreamPackageRemuxStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>查询起始时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00；必须晚于 StartTime</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>频道ID列表，不传则查全部频道</p>
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// <p>维度，false(默认): summary 汇总模式；true: detail 明细模式（按时间拆分），当为false时粒度不生效</p>
+	Dimension *bool `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// <p>时间粒度（分钟），支持5（默认）/ 60 / 1440</p>
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeStreamPackageRemuxStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageRemuxStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ChannelIds")
+	delete(f, "Dimension")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageRemuxStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageRemuxStatisticsResponseParams struct {
+	// <p>封装用量数据</p>
+	DataInfoList []*RemuxStatisticsDataInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
+
+	// <p>封装总用量</p>
+	TotalRemux *int64 `json:"TotalRemux,omitnil,omitempty" name:"TotalRemux"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageRemuxStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageRemuxStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageRemuxStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageRemuxStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeStreamPlayInfoListRequestParams struct {
 	// <p>起始时间点，接口查询支持两种时间格式：<br>1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I<br>2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。<br>开始时间和结束时间的格式需要保持一致。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -18460,6 +18738,20 @@ type HttpStatusInfo struct {
 
 	// 个数。
 	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
+}
+
+type IngestStatisticsDataInfo struct {
+	// <p>输入用量</p>
+	Ingest *int64 `json:"Ingest,omitnil,omitempty" name:"Ingest"`
+
+	// <p>时间</p>
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// <p>频道Id</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>频道类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 // Predefined struct for user
@@ -22108,6 +22400,20 @@ type OriginStreamCustomizationRule struct {
 	KeepHttpHeader []*string `json:"KeepHttpHeader,omitnil,omitempty" name:"KeepHttpHeader"`
 }
 
+type OutputStatisticsDataInfo struct {
+	// <p>输出用量</p>
+	Output *int64 `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>时间</p>
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// <p>频道Id</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
 type PadStreamInfo struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
@@ -22836,6 +23142,17 @@ func (r *ReleaseCasterResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ReleaseCasterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemuxStatisticsDataInfo struct {
+	// <p>转封装用量</p>
+	Remux *int64 `json:"Remux,omitnil,omitempty" name:"Remux"`
+
+	// <p>时间</p>
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// <p>频道Id</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 }
 
 // Predefined struct for user

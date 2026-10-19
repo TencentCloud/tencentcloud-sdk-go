@@ -869,7 +869,7 @@ type CreateListenerRequestParams struct {
 	// <p>连接空闲等待时间。</p><p>1、HTTP/HTTPS监听器，默认值为15，支持范围为1-60；<br>2、TCP监听器，默认值为900，支持范围为10-900；<br>3、UDP监听器，默认值为20，支持范围为10-20；</p>
 	IdleTimeout *uint64 `json:"IdleTimeout,omitnil,omitempty" name:"IdleTimeout"`
 
-	// <p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;, &#39;ProxyProtocolV2&#39;。</p><p>需要开启四层获取源IP方式，才填写此参数。</p>
+	// <p>四层获取源IP方式。</p><p>枚举值：</p><ul><li>TOA： TOA</li><li>ProxyProtocol： ProxyProtocol</li><li>ProxyProtocolV2： ProxyProtocolV2</li></ul><p>需要开启四层获取源IP方式，才填写此参数。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 
 	// <p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul><p>仅支持4层监听器 ，7层不支持修改</p>
@@ -921,7 +921,7 @@ type CreateListenerRequest struct {
 	// <p>连接空闲等待时间。</p><p>1、HTTP/HTTPS监听器，默认值为15，支持范围为1-60；<br>2、TCP监听器，默认值为900，支持范围为10-900；<br>3、UDP监听器，默认值为20，支持范围为10-20；</p>
 	IdleTimeout *uint64 `json:"IdleTimeout,omitnil,omitempty" name:"IdleTimeout"`
 
-	// <p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;, &#39;ProxyProtocolV2&#39;。</p><p>需要开启四层获取源IP方式，才填写此参数。</p>
+	// <p>四层获取源IP方式。</p><p>枚举值：</p><ul><li>TOA： TOA</li><li>ProxyProtocol： ProxyProtocol</li><li>ProxyProtocolV2： ProxyProtocolV2</li></ul><p>需要开启四层获取源IP方式，才填写此参数。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 
 	// <p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul><p>仅支持4层监听器 ，7层不支持修改</p>
@@ -1219,32 +1219,32 @@ func (r *DeleteForwardingPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteForwardingRuleRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 策略ID。
+	// <p>七层转发策略ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// 七层转发规则ID。
+	// <p>七层转发规则ID。</p>
 	ForwardingRuleId *string `json:"ForwardingRuleId,omitnil,omitempty" name:"ForwardingRuleId"`
 }
 
 type DeleteForwardingRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 策略ID。
+	// <p>七层转发策略ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// 七层转发规则ID。
+	// <p>七层转发规则ID。</p>
 	ForwardingRuleId *string `json:"ForwardingRuleId,omitnil,omitempty" name:"ForwardingRuleId"`
 }
 
@@ -1272,7 +1272,7 @@ func (r *DeleteForwardingRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteForwardingRuleResponseParams struct {
-	// 异步任务ID。
+	// <p>异步任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1300,7 +1300,7 @@ type DeleteGlobalAcceleratorAccessLogRequestParams struct {
 	// <p>日志唯一Id</p>
 	LogPushTaskId *string `json:"LogPushTaskId,omitnil,omitempty" name:"LogPushTaskId"`
 
-	// <p>GA实例唯一Id</p>
+	// <p>全球加速实例ID</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 }
 
@@ -1310,7 +1310,7 @@ type DeleteGlobalAcceleratorAccessLogRequest struct {
 	// <p>日志唯一Id</p>
 	LogPushTaskId *string `json:"LogPushTaskId,omitnil,omitempty" name:"LogPushTaskId"`
 
-	// <p>GA实例唯一Id</p>
+	// <p>全球加速实例ID</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 }
 
@@ -1422,26 +1422,26 @@ func (r *DeleteGlobalAcceleratorAclPolicyResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DeleteGlobalAcceleratorAclRuleRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 安全策略ID
+	// <p>访问控制策略ID</p>
 	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
 
-	// Acl规则ID。
+	// <p>访问规则ID</p>
 	GlobalAcceleratorAclRuleIds []*string `json:"GlobalAcceleratorAclRuleIds,omitnil,omitempty" name:"GlobalAcceleratorAclRuleIds"`
 }
 
 type DeleteGlobalAcceleratorAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 安全策略ID
+	// <p>访问控制策略ID</p>
 	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
 
-	// Acl规则ID。
+	// <p>访问规则ID</p>
 	GlobalAcceleratorAclRuleIds []*string `json:"GlobalAcceleratorAclRuleIds,omitnil,omitempty" name:"GlobalAcceleratorAclRuleIds"`
 }
 
@@ -1468,7 +1468,7 @@ func (r *DeleteGlobalAcceleratorAclRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteGlobalAcceleratorAclRuleResponseParams struct {
-	// 异步任务ID。
+	// <p>异步任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1967,7 +1967,7 @@ type DescribeEndpointGroupsRequestParams struct {
 	// <p>返回数量，默认为10，最大值为10。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件。  endpoint-group-id- String -（过滤条件）终端节点组实例ID。endpoint-group-type- String -（过滤条件）终端节点组实例类型。</p>
+	// <p>过滤条件。  endpoint-group-id- String -（过滤条件）终端节点组实例ID。endpoint-group-type- String -（过滤条件）终端节点组实例类型。listener-id- String -（过滤条件）监听器实例ID。endpoint-group-name- String -（过滤条件）终端节点组名称。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -1983,7 +1983,7 @@ type DescribeEndpointGroupsRequest struct {
 	// <p>返回数量，默认为10，最大值为10。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件。  endpoint-group-id- String -（过滤条件）终端节点组实例ID。endpoint-group-type- String -（过滤条件）终端节点组实例类型。</p>
+	// <p>过滤条件。  endpoint-group-id- String -（过滤条件）终端节点组实例ID。endpoint-group-type- String -（过滤条件）终端节点组实例类型。listener-id- String -（过滤条件）监听器实例ID。endpoint-group-name- String -（过滤条件）终端节点组名称。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2464,7 +2464,7 @@ type DescribeGlobalAcceleratorsRequestParams struct {
 	// <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li></p>
+	// <p>过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li><li>global-accelerator-name - String -（过滤条件）全球加速实例名称。</li></p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2477,7 +2477,7 @@ type DescribeGlobalAcceleratorsRequest struct {
 	// <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li></p>
+	// <p>过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li><li>global-accelerator-name - String -（过滤条件）全球加速实例名称。</li></p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2852,7 +2852,7 @@ type Filter struct {
 	// 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。当值类型为布尔类型时，可直接取值为字符串"TRUE"或 "FALSE"。
+	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -3175,7 +3175,7 @@ type ModifyAccessLogStatusRequestParams struct {
 	// <p>状态（启动START， 停止STOP）</p><p>枚举值：</p><ul><li>START： 启动</li><li>STOP： 停止</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// <p>GA实例唯一Id</p>
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 }
 
@@ -3188,7 +3188,7 @@ type ModifyAccessLogStatusRequest struct {
 	// <p>状态（启动START， 停止STOP）</p><p>枚举值：</p><ul><li>START： 启动</li><li>STOP： 停止</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// <p>GA实例唯一Id</p>
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 }
 

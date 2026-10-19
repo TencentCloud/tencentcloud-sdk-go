@@ -1095,6 +1095,62 @@ func (c *Client) CreateWebSocketTokenWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateWorkflowRunRequest() (request *CreateWorkflowRunRequest) {
+    request = &CreateWorkflowRunRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreateWorkflowRun")
+    
+    
+    return
+}
+
+func NewCreateWorkflowRunResponse() (response *CreateWorkflowRunResponse) {
+    response = &CreateWorkflowRunResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateWorkflowRun
+// 本接口用来创建工作流的异步运行实例，创建成功后工作流会在后台异步运行，接口返回工作流运行实例ID（WorkflowRunId）等信息。后面可通过调用DescribeWorkflowRun接口查工作流运行的详情。
+//
+// 注意：工作流的异步运行是基于应用的，需要先把对应的应用配置成“单工作流模式”，才能创建成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateWorkflowRun(request *CreateWorkflowRunRequest) (response *CreateWorkflowRunResponse, err error) {
+    return c.CreateWorkflowRunWithContext(context.Background(), request)
+}
+
+// CreateWorkflowRun
+// 本接口用来创建工作流的异步运行实例，创建成功后工作流会在后台异步运行，接口返回工作流运行实例ID（WorkflowRunId）等信息。后面可通过调用DescribeWorkflowRun接口查工作流运行的详情。
+//
+// 注意：工作流的异步运行是基于应用的，需要先把对应的应用配置成“单工作流模式”，才能创建成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateWorkflowRunWithContext(ctx context.Context, request *CreateWorkflowRunRequest) (response *CreateWorkflowRunResponse, err error) {
+    if request == nil {
+        request = NewCreateWorkflowRunRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateWorkflowRun")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWorkflowRun require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateWorkflowRunResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWorkspaceCredentialRequest() (request *CreateWorkspaceCredentialRequest) {
     request = &CreateWorkspaceCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1119,6 +1175,7 @@ func NewCreateWorkspaceCredentialResponse() (response *CreateWorkspaceCredential
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateWorkspaceCredential(request *CreateWorkspaceCredentialRequest) (response *CreateWorkspaceCredentialResponse, err error) {
     return c.CreateWorkspaceCredentialWithContext(context.Background(), request)
 }
@@ -1128,6 +1185,7 @@ func (c *Client) CreateWorkspaceCredential(request *CreateWorkspaceCredentialReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateWorkspaceCredentialWithContext(ctx context.Context, request *CreateWorkspaceCredentialRequest) (response *CreateWorkspaceCredentialResponse, err error) {
     if request == nil {
         request = NewCreateWorkspaceCredentialRequest()
@@ -1169,6 +1227,7 @@ func NewDeleteAgentResponse() (response *DeleteAgentResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteAgent(request *DeleteAgentRequest) (response *DeleteAgentResponse, err error) {
     return c.DeleteAgentWithContext(context.Background(), request)
 }
@@ -1178,6 +1237,7 @@ func (c *Client) DeleteAgent(request *DeleteAgentRequest) (response *DeleteAgent
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteAgentWithContext(ctx context.Context, request *DeleteAgentRequest) (response *DeleteAgentResponse, err error) {
     if request == nil {
         request = NewDeleteAgentRequest()
@@ -1219,6 +1279,7 @@ func NewDeleteAppResponse() (response *DeleteAppResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteApp(request *DeleteAppRequest) (response *DeleteAppResponse, err error) {
     return c.DeleteAppWithContext(context.Background(), request)
 }
@@ -1228,6 +1289,7 @@ func (c *Client) DeleteApp(request *DeleteAppRequest) (response *DeleteAppRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteAppWithContext(ctx context.Context, request *DeleteAppRequest) (response *DeleteAppResponse, err error) {
     if request == nil {
         request = NewDeleteAppRequest()
@@ -1269,6 +1331,7 @@ func NewDeleteAppTriggerResponse() (response *DeleteAppTriggerResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteAppTrigger(request *DeleteAppTriggerRequest) (response *DeleteAppTriggerResponse, err error) {
     return c.DeleteAppTriggerWithContext(context.Background(), request)
 }
@@ -1278,6 +1341,7 @@ func (c *Client) DeleteAppTrigger(request *DeleteAppTriggerRequest) (response *D
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteAppTriggerWithContext(ctx context.Context, request *DeleteAppTriggerRequest) (response *DeleteAppTriggerResponse, err error) {
     if request == nil {
         request = NewDeleteAppTriggerRequest()
@@ -1319,6 +1383,7 @@ func NewDeleteCategoryResponse() (response *DeleteCategoryResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteCategory(request *DeleteCategoryRequest) (response *DeleteCategoryResponse, err error) {
     return c.DeleteCategoryWithContext(context.Background(), request)
 }
@@ -1328,6 +1393,7 @@ func (c *Client) DeleteCategory(request *DeleteCategoryRequest) (response *Delet
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteCategoryWithContext(ctx context.Context, request *DeleteCategoryRequest) (response *DeleteCategoryResponse, err error) {
     if request == nil {
         request = NewDeleteCategoryRequest()
@@ -1369,6 +1435,7 @@ func NewDeleteChannelResponse() (response *DeleteChannelResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteChannel(request *DeleteChannelRequest) (response *DeleteChannelResponse, err error) {
     return c.DeleteChannelWithContext(context.Background(), request)
 }
@@ -1378,6 +1445,7 @@ func (c *Client) DeleteChannel(request *DeleteChannelRequest) (response *DeleteC
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteChannelWithContext(ctx context.Context, request *DeleteChannelRequest) (response *DeleteChannelResponse, err error) {
     if request == nil {
         request = NewDeleteChannelRequest()
@@ -1419,6 +1487,7 @@ func NewDeleteConversationResponse() (response *DeleteConversationResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteConversation(request *DeleteConversationRequest) (response *DeleteConversationResponse, err error) {
     return c.DeleteConversationWithContext(context.Background(), request)
 }
@@ -1428,6 +1497,7 @@ func (c *Client) DeleteConversation(request *DeleteConversationRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteConversationWithContext(ctx context.Context, request *DeleteConversationRequest) (response *DeleteConversationResponse, err error) {
     if request == nil {
         request = NewDeleteConversationRequest()
@@ -1469,6 +1539,7 @@ func NewDeleteDocListResponse() (response *DeleteDocListResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteDocList(request *DeleteDocListRequest) (response *DeleteDocListResponse, err error) {
     return c.DeleteDocListWithContext(context.Background(), request)
 }
@@ -1478,6 +1549,7 @@ func (c *Client) DeleteDocList(request *DeleteDocListRequest) (response *DeleteD
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteDocListWithContext(ctx context.Context, request *DeleteDocListRequest) (response *DeleteDocListResponse, err error) {
     if request == nil {
         request = NewDeleteDocListRequest()
@@ -1519,6 +1591,7 @@ func NewDeleteKBResponse() (response *DeleteKBResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteKB(request *DeleteKBRequest) (response *DeleteKBResponse, err error) {
     return c.DeleteKBWithContext(context.Background(), request)
 }
@@ -1528,6 +1601,7 @@ func (c *Client) DeleteKB(request *DeleteKBRequest) (response *DeleteKBResponse,
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteKBWithContext(ctx context.Context, request *DeleteKBRequest) (response *DeleteKBResponse, err error) {
     if request == nil {
         request = NewDeleteKBRequest()
@@ -1569,6 +1643,7 @@ func NewDeleteLabelListResponse() (response *DeleteLabelListResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteLabelList(request *DeleteLabelListRequest) (response *DeleteLabelListResponse, err error) {
     return c.DeleteLabelListWithContext(context.Background(), request)
 }
@@ -1578,6 +1653,7 @@ func (c *Client) DeleteLabelList(request *DeleteLabelListRequest) (response *Del
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteLabelListWithContext(ctx context.Context, request *DeleteLabelListRequest) (response *DeleteLabelListResponse, err error) {
     if request == nil {
         request = NewDeleteLabelListRequest()
@@ -3725,6 +3801,110 @@ func (c *Client) DescribeMsgRecordListWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeNodeBatchRunRequest() (request *DescribeNodeBatchRunRequest) {
+    request = &DescribeNodeBatchRunRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeNodeBatchRun")
+    
+    
+    return
+}
+
+func NewDescribeNodeBatchRunResponse() (response *DescribeNodeBatchRunResponse) {
+    response = &DescribeNodeBatchRunResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNodeBatchRun
+// DescribeNodeBatchRun
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNodeBatchRun(request *DescribeNodeBatchRunRequest) (response *DescribeNodeBatchRunResponse, err error) {
+    return c.DescribeNodeBatchRunWithContext(context.Background(), request)
+}
+
+// DescribeNodeBatchRun
+// DescribeNodeBatchRun
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNodeBatchRunWithContext(ctx context.Context, request *DescribeNodeBatchRunRequest) (response *DescribeNodeBatchRunResponse, err error) {
+    if request == nil {
+        request = NewDescribeNodeBatchRunRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeNodeBatchRun")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNodeBatchRun require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNodeBatchRunResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNodeRunDetailRequest() (request *DescribeNodeRunDetailRequest) {
+    request = &DescribeNodeRunDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeNodeRunDetail")
+    
+    
+    return
+}
+
+func NewDescribeNodeRunDetailResponse() (response *DescribeNodeRunDetailResponse) {
+    response = &DescribeNodeRunDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNodeRunDetail
+// 查看工作流节点运行详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeNodeRunDetail(request *DescribeNodeRunDetailRequest) (response *DescribeNodeRunDetailResponse, err error) {
+    return c.DescribeNodeRunDetailWithContext(context.Background(), request)
+}
+
+// DescribeNodeRunDetail
+// 查看工作流节点运行详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeNodeRunDetailWithContext(ctx context.Context, request *DescribeNodeRunDetailRequest) (response *DescribeNodeRunDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeNodeRunDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeNodeRunDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNodeRunDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNodeRunDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePluginRequest() (request *DescribePluginRequest) {
     request = &DescribePluginRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3748,8 +3928,8 @@ func NewDescribePluginResponse() (response *DescribePluginResponse) {
 // 获取插件详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribePlugin(request *DescribePluginRequest) (response *DescribePluginResponse, err error) {
     return c.DescribePluginWithContext(context.Background(), request)
 }
@@ -3758,8 +3938,8 @@ func (c *Client) DescribePlugin(request *DescribePluginRequest) (response *Descr
 // 获取插件详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribePluginWithContext(ctx context.Context, request *DescribePluginRequest) (response *DescribePluginResponse, err error) {
     if request == nil {
         request = NewDescribePluginRequest()
@@ -3800,8 +3980,8 @@ func NewDescribePluginSummaryListResponse() (response *DescribePluginSummaryList
 // 获取插件列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribePluginSummaryList(request *DescribePluginSummaryListRequest) (response *DescribePluginSummaryListResponse, err error) {
     return c.DescribePluginSummaryListWithContext(context.Background(), request)
 }
@@ -3810,8 +3990,8 @@ func (c *Client) DescribePluginSummaryList(request *DescribePluginSummaryListReq
 // 获取插件列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribePluginSummaryListWithContext(ctx context.Context, request *DescribePluginSummaryListRequest) (response *DescribePluginSummaryListResponse, err error) {
     if request == nil {
         request = NewDescribePluginSummaryListRequest()
@@ -3852,8 +4032,8 @@ func NewDescribeQAResponse() (response *DescribeQAResponse) {
 // 查询 QA 详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeQA(request *DescribeQARequest) (response *DescribeQAResponse, err error) {
     return c.DescribeQAWithContext(context.Background(), request)
 }
@@ -3862,8 +4042,8 @@ func (c *Client) DescribeQA(request *DescribeQARequest) (response *DescribeQARes
 // 查询 QA 详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeQAWithContext(ctx context.Context, request *DescribeQARequest) (response *DescribeQAResponse, err error) {
     if request == nil {
         request = NewDescribeQARequest()
@@ -3904,8 +4084,8 @@ func NewDescribeQASummaryListResponse() (response *DescribeQASummaryListResponse
 // 查询 QA 列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeQASummaryList(request *DescribeQASummaryListRequest) (response *DescribeQASummaryListResponse, err error) {
     return c.DescribeQASummaryListWithContext(context.Background(), request)
 }
@@ -3914,8 +4094,8 @@ func (c *Client) DescribeQASummaryList(request *DescribeQASummaryListRequest) (r
 // 查询 QA 列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeQASummaryListWithContext(ctx context.Context, request *DescribeQASummaryListRequest) (response *DescribeQASummaryListResponse, err error) {
     if request == nil {
         request = NewDescribeQASummaryListRequest()
@@ -3956,8 +4136,8 @@ func NewDescribeReleaseListResponse() (response *DescribeReleaseListResponse) {
 // 发布记录列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReleaseList(request *DescribeReleaseListRequest) (response *DescribeReleaseListResponse, err error) {
     return c.DescribeReleaseListWithContext(context.Background(), request)
 }
@@ -3966,8 +4146,8 @@ func (c *Client) DescribeReleaseList(request *DescribeReleaseListRequest) (respo
 // 发布记录列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReleaseListWithContext(ctx context.Context, request *DescribeReleaseListRequest) (response *DescribeReleaseListResponse, err error) {
     if request == nil {
         request = NewDescribeReleaseListRequest()
@@ -4008,8 +4188,8 @@ func NewDescribeReleaseSummaryResponse() (response *DescribeReleaseSummaryRespon
 // 查询发布任务
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReleaseSummary(request *DescribeReleaseSummaryRequest) (response *DescribeReleaseSummaryResponse, err error) {
     return c.DescribeReleaseSummaryWithContext(context.Background(), request)
 }
@@ -4018,8 +4198,8 @@ func (c *Client) DescribeReleaseSummary(request *DescribeReleaseSummaryRequest) 
 // 查询发布任务
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReleaseSummaryWithContext(ctx context.Context, request *DescribeReleaseSummaryRequest) (response *DescribeReleaseSummaryResponse, err error) {
     if request == nil {
         request = NewDescribeReleaseSummaryRequest()
@@ -4060,8 +4240,8 @@ func NewDescribeResourceSummaryResponse() (response *DescribeResourceSummaryResp
 // 获取用户资源套餐和增值包用量信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeResourceSummary(request *DescribeResourceSummaryRequest) (response *DescribeResourceSummaryResponse, err error) {
     return c.DescribeResourceSummaryWithContext(context.Background(), request)
 }
@@ -4070,8 +4250,8 @@ func (c *Client) DescribeResourceSummary(request *DescribeResourceSummaryRequest
 // 获取用户资源套餐和增值包用量信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeResourceSummaryWithContext(ctx context.Context, request *DescribeResourceSummaryRequest) (response *DescribeResourceSummaryResponse, err error) {
     if request == nil {
         request = NewDescribeResourceSummaryRequest()
@@ -4112,8 +4292,8 @@ func NewDescribeSkillCategoryListResponse() (response *DescribeSkillCategoryList
 // 查询 Skill 分类列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSkillCategoryList(request *DescribeSkillCategoryListRequest) (response *DescribeSkillCategoryListResponse, err error) {
     return c.DescribeSkillCategoryListWithContext(context.Background(), request)
 }
@@ -4122,8 +4302,8 @@ func (c *Client) DescribeSkillCategoryList(request *DescribeSkillCategoryListReq
 // 查询 Skill 分类列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSkillCategoryListWithContext(ctx context.Context, request *DescribeSkillCategoryListRequest) (response *DescribeSkillCategoryListResponse, err error) {
     if request == nil {
         request = NewDescribeSkillCategoryListRequest()
@@ -4164,8 +4344,8 @@ func NewDescribeSkillDetailResponse() (response *DescribeSkillDetailResponse) {
 // 查询skill详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSkillDetail(request *DescribeSkillDetailRequest) (response *DescribeSkillDetailResponse, err error) {
     return c.DescribeSkillDetailWithContext(context.Background(), request)
 }
@@ -4174,8 +4354,8 @@ func (c *Client) DescribeSkillDetail(request *DescribeSkillDetailRequest) (respo
 // 查询skill详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSkillDetailWithContext(ctx context.Context, request *DescribeSkillDetailRequest) (response *DescribeSkillDetailResponse, err error) {
     if request == nil {
         request = NewDescribeSkillDetailRequest()
@@ -4216,8 +4396,8 @@ func NewDescribeSkillReferenceListResponse() (response *DescribeSkillReferenceLi
 // 查询某个 Skill 被引用的详情列表（按 SkillRefType 分组：OpenClaw / cloud agent / 企业助手 agent） 鉴权：同 DescribeSkillDetail（能看该 Skill 即可查）
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSkillReferenceList(request *DescribeSkillReferenceListRequest) (response *DescribeSkillReferenceListResponse, err error) {
     return c.DescribeSkillReferenceListWithContext(context.Background(), request)
 }
@@ -4226,8 +4406,8 @@ func (c *Client) DescribeSkillReferenceList(request *DescribeSkillReferenceListR
 // 查询某个 Skill 被引用的详情列表（按 SkillRefType 分组：OpenClaw / cloud agent / 企业助手 agent） 鉴权：同 DescribeSkillDetail（能看该 Skill 即可查）
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSkillReferenceListWithContext(ctx context.Context, request *DescribeSkillReferenceListRequest) (response *DescribeSkillReferenceListResponse, err error) {
     if request == nil {
         request = NewDescribeSkillReferenceListRequest()
@@ -4268,8 +4448,8 @@ func NewDescribeSkillSummaryListResponse() (response *DescribeSkillSummaryListRe
 // 查询 Skill 列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSkillSummaryList(request *DescribeSkillSummaryListRequest) (response *DescribeSkillSummaryListResponse, err error) {
     return c.DescribeSkillSummaryListWithContext(context.Background(), request)
 }
@@ -4278,8 +4458,8 @@ func (c *Client) DescribeSkillSummaryList(request *DescribeSkillSummaryListReque
 // 查询 Skill 列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSkillSummaryListWithContext(ctx context.Context, request *DescribeSkillSummaryListRequest) (response *DescribeSkillSummaryListResponse, err error) {
     if request == nil {
         request = NewDescribeSkillSummaryListRequest()
@@ -4605,6 +4785,110 @@ func (c *Client) DescribeVariableListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeWorkflowRunRequest() (request *DescribeWorkflowRunRequest) {
+    request = &DescribeWorkflowRunRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeWorkflowRun")
+    
+    
+    return
+}
+
+func NewDescribeWorkflowRunResponse() (response *DescribeWorkflowRunResponse) {
+    response = &DescribeWorkflowRunResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkflowRun
+// 查询工作流运行详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeWorkflowRun(request *DescribeWorkflowRunRequest) (response *DescribeWorkflowRunResponse, err error) {
+    return c.DescribeWorkflowRunWithContext(context.Background(), request)
+}
+
+// DescribeWorkflowRun
+// 查询工作流运行详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeWorkflowRunWithContext(ctx context.Context, request *DescribeWorkflowRunRequest) (response *DescribeWorkflowRunResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkflowRunRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeWorkflowRun")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkflowRun require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkflowRunResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWorkflowRunSummaryListRequest() (request *DescribeWorkflowRunSummaryListRequest) {
+    request = &DescribeWorkflowRunSummaryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeWorkflowRunSummaryList")
+    
+    
+    return
+}
+
+func NewDescribeWorkflowRunSummaryListResponse() (response *DescribeWorkflowRunSummaryListResponse) {
+    response = &DescribeWorkflowRunSummaryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkflowRunSummaryList
+// 查询工作流运行实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeWorkflowRunSummaryList(request *DescribeWorkflowRunSummaryListRequest) (response *DescribeWorkflowRunSummaryListResponse, err error) {
+    return c.DescribeWorkflowRunSummaryListWithContext(context.Background(), request)
+}
+
+// DescribeWorkflowRunSummaryList
+// 查询工作流运行实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeWorkflowRunSummaryListWithContext(ctx context.Context, request *DescribeWorkflowRunSummaryListRequest) (response *DescribeWorkflowRunSummaryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkflowRunSummaryListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeWorkflowRunSummaryList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkflowRunSummaryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkflowRunSummaryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportQARequest() (request *ExportQARequest) {
     request = &ExportQARequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4628,8 +4912,8 @@ func NewExportQAResponse() (response *ExportQAResponse) {
 // 异步导出 QA
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ExportQA(request *ExportQARequest) (response *ExportQAResponse, err error) {
     return c.ExportQAWithContext(context.Background(), request)
 }
@@ -4638,8 +4922,8 @@ func (c *Client) ExportQA(request *ExportQARequest) (response *ExportQAResponse,
 // 异步导出 QA
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ExportQAWithContext(ctx context.Context, request *ExportQARequest) (response *ExportQAResponse, err error) {
     if request == nil {
         request = NewExportQARequest()
@@ -4680,8 +4964,8 @@ func NewFavoritePluginResponse() (response *FavoritePluginResponse) {
 // 收藏插件
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) FavoritePlugin(request *FavoritePluginRequest) (response *FavoritePluginResponse, err error) {
     return c.FavoritePluginWithContext(context.Background(), request)
 }
@@ -4690,8 +4974,8 @@ func (c *Client) FavoritePlugin(request *FavoritePluginRequest) (response *Favor
 // 收藏插件
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) FavoritePluginWithContext(ctx context.Context, request *FavoritePluginRequest) (response *FavoritePluginResponse, err error) {
     if request == nil {
         request = NewFavoritePluginRequest()
@@ -4732,8 +5016,8 @@ func NewFavoriteSkillResponse() (response *FavoriteSkillResponse) {
 // 收藏skill
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) FavoriteSkill(request *FavoriteSkillRequest) (response *FavoriteSkillResponse, err error) {
     return c.FavoriteSkillWithContext(context.Background(), request)
 }
@@ -4742,8 +5026,8 @@ func (c *Client) FavoriteSkill(request *FavoriteSkillRequest) (response *Favorit
 // 收藏skill
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) FavoriteSkillWithContext(ctx context.Context, request *FavoriteSkillRequest) (response *FavoriteSkillResponse, err error) {
     if request == nil {
         request = NewFavoriteSkillRequest()
@@ -4784,8 +5068,8 @@ func NewImportDocListResponse() (response *ImportDocListResponse) {
 // 批量导入文档
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ImportDocList(request *ImportDocListRequest) (response *ImportDocListResponse, err error) {
     return c.ImportDocListWithContext(context.Background(), request)
 }
@@ -4794,8 +5078,8 @@ func (c *Client) ImportDocList(request *ImportDocListRequest) (response *ImportD
 // 批量导入文档
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ImportDocListWithContext(ctx context.Context, request *ImportDocListRequest) (response *ImportDocListResponse, err error) {
     if request == nil {
         request = NewImportDocListRequest()
@@ -4836,8 +5120,8 @@ func NewModifyAgentResponse() (response *ModifyAgentResponse) {
 // 修改Agent配置信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAgent(request *ModifyAgentRequest) (response *ModifyAgentResponse, err error) {
     return c.ModifyAgentWithContext(context.Background(), request)
 }
@@ -4846,8 +5130,8 @@ func (c *Client) ModifyAgent(request *ModifyAgentRequest) (response *ModifyAgent
 // 修改Agent配置信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAgentWithContext(ctx context.Context, request *ModifyAgentRequest) (response *ModifyAgentResponse, err error) {
     if request == nil {
         request = NewModifyAgentRequest()
@@ -4888,8 +5172,8 @@ func NewModifyAppResponse() (response *ModifyAppResponse) {
 // 修改应用
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyApp(request *ModifyAppRequest) (response *ModifyAppResponse, err error) {
     return c.ModifyAppWithContext(context.Background(), request)
 }
@@ -4898,8 +5182,8 @@ func (c *Client) ModifyApp(request *ModifyAppRequest) (response *ModifyAppRespon
 // 修改应用
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAppWithContext(ctx context.Context, request *ModifyAppRequest) (response *ModifyAppResponse, err error) {
     if request == nil {
         request = NewModifyAppRequest()
@@ -4940,8 +5224,8 @@ func NewModifyAppTriggerResponse() (response *ModifyAppTriggerResponse) {
 // ModifyAppTrigger
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAppTrigger(request *ModifyAppTriggerRequest) (response *ModifyAppTriggerResponse, err error) {
     return c.ModifyAppTriggerWithContext(context.Background(), request)
 }
@@ -4950,8 +5234,8 @@ func (c *Client) ModifyAppTrigger(request *ModifyAppTriggerRequest) (response *M
 // ModifyAppTrigger
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAppTriggerWithContext(ctx context.Context, request *ModifyAppTriggerRequest) (response *ModifyAppTriggerResponse, err error) {
     if request == nil {
         request = NewModifyAppTriggerRequest()
@@ -4992,8 +5276,8 @@ func NewModifyCategoryResponse() (response *ModifyCategoryResponse) {
 // 修改分类
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyCategory(request *ModifyCategoryRequest) (response *ModifyCategoryResponse, err error) {
     return c.ModifyCategoryWithContext(context.Background(), request)
 }
@@ -5002,8 +5286,8 @@ func (c *Client) ModifyCategory(request *ModifyCategoryRequest) (response *Modif
 // 修改分类
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyCategoryWithContext(ctx context.Context, request *ModifyCategoryRequest) (response *ModifyCategoryResponse, err error) {
     if request == nil {
         request = NewModifyCategoryRequest()
@@ -5044,8 +5328,8 @@ func NewModifyChannelResponse() (response *ModifyChannelResponse) {
 // 修改渠道（支持修改备注与企微机器人渠道回调机器人ID）
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyChannel(request *ModifyChannelRequest) (response *ModifyChannelResponse, err error) {
     return c.ModifyChannelWithContext(context.Background(), request)
 }
@@ -5054,8 +5338,8 @@ func (c *Client) ModifyChannel(request *ModifyChannelRequest) (response *ModifyC
 // 修改渠道（支持修改备注与企微机器人渠道回调机器人ID）
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyChannelWithContext(ctx context.Context, request *ModifyChannelRequest) (response *ModifyChannelResponse, err error) {
     if request == nil {
         request = NewModifyChannelRequest()
@@ -5096,8 +5380,8 @@ func NewModifyConflictQAResponse() (response *ModifyConflictQAResponse) {
 // 修改冲突问
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyConflictQA(request *ModifyConflictQARequest) (response *ModifyConflictQAResponse, err error) {
     return c.ModifyConflictQAWithContext(context.Background(), request)
 }
@@ -5106,8 +5390,8 @@ func (c *Client) ModifyConflictQA(request *ModifyConflictQARequest) (response *M
 // 修改冲突问
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyConflictQAWithContext(ctx context.Context, request *ModifyConflictQARequest) (response *ModifyConflictQAResponse, err error) {
     if request == nil {
         request = NewModifyConflictQARequest()
@@ -5148,8 +5432,8 @@ func NewModifyConversationResponse() (response *ModifyConversationResponse) {
 // 修改会话信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyConversation(request *ModifyConversationRequest) (response *ModifyConversationResponse, err error) {
     return c.ModifyConversationWithContext(context.Background(), request)
 }
@@ -5158,8 +5442,8 @@ func (c *Client) ModifyConversation(request *ModifyConversationRequest) (respons
 // 修改会话信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyConversationWithContext(ctx context.Context, request *ModifyConversationRequest) (response *ModifyConversationResponse, err error) {
     if request == nil {
         request = NewModifyConversationRequest()
@@ -5200,8 +5484,8 @@ func NewModifyDocResponse() (response *ModifyDocResponse) {
 // 修改单个文档
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyDoc(request *ModifyDocRequest) (response *ModifyDocResponse, err error) {
     return c.ModifyDocWithContext(context.Background(), request)
 }
@@ -5210,8 +5494,8 @@ func (c *Client) ModifyDoc(request *ModifyDocRequest) (response *ModifyDocRespon
 // 修改单个文档
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyDocWithContext(ctx context.Context, request *ModifyDocRequest) (response *ModifyDocResponse, err error) {
     if request == nil {
         request = NewModifyDocRequest()
@@ -5252,8 +5536,8 @@ func NewModifyDocListResponse() (response *ModifyDocListResponse) {
 // 批量修改文档
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyDocList(request *ModifyDocListRequest) (response *ModifyDocListResponse, err error) {
     return c.ModifyDocListWithContext(context.Background(), request)
 }
@@ -5262,8 +5546,8 @@ func (c *Client) ModifyDocList(request *ModifyDocListRequest) (response *ModifyD
 // 批量修改文档
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyDocListWithContext(ctx context.Context, request *ModifyDocListRequest) (response *ModifyDocListResponse, err error) {
     if request == nil {
         request = NewModifyDocListRequest()
@@ -5304,8 +5588,8 @@ func NewModifyKBResponse() (response *ModifyKBResponse) {
 // 修改知识库
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyKB(request *ModifyKBRequest) (response *ModifyKBResponse, err error) {
     return c.ModifyKBWithContext(context.Background(), request)
 }
@@ -5314,8 +5598,8 @@ func (c *Client) ModifyKB(request *ModifyKBRequest) (response *ModifyKBResponse,
 // 修改知识库
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyKBWithContext(ctx context.Context, request *ModifyKBRequest) (response *ModifyKBResponse, err error) {
     if request == nil {
         request = NewModifyKBRequest()
@@ -5356,8 +5640,8 @@ func NewModifyLabelResponse() (response *ModifyLabelResponse) {
 // 修改标签
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyLabel(request *ModifyLabelRequest) (response *ModifyLabelResponse, err error) {
     return c.ModifyLabelWithContext(context.Background(), request)
 }
@@ -5366,8 +5650,8 @@ func (c *Client) ModifyLabel(request *ModifyLabelRequest) (response *ModifyLabel
 // 修改标签
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyLabelWithContext(ctx context.Context, request *ModifyLabelRequest) (response *ModifyLabelResponse, err error) {
     if request == nil {
         request = NewModifyLabelRequest()
@@ -5959,6 +6243,58 @@ func (c *Client) ResumeAppTriggerWithContext(ctx context.Context, request *Resum
     return
 }
 
+func NewResumeWorkflowRunRequest() (request *ResumeWorkflowRunRequest) {
+    request = &ResumeWorkflowRunRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ResumeWorkflowRun")
+    
+    
+    return
+}
+
+func NewResumeWorkflowRunResponse() (response *ResumeWorkflowRunResponse) {
+    response = &ResumeWorkflowRunResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResumeWorkflowRun
+// 继续运行等待输入的工作流异步运行实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ResumeWorkflowRun(request *ResumeWorkflowRunRequest) (response *ResumeWorkflowRunResponse, err error) {
+    return c.ResumeWorkflowRunWithContext(context.Background(), request)
+}
+
+// ResumeWorkflowRun
+// 继续运行等待输入的工作流异步运行实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ResumeWorkflowRunWithContext(ctx context.Context, request *ResumeWorkflowRunRequest) (response *ResumeWorkflowRunResponse, err error) {
+    if request == nil {
+        request = NewResumeWorkflowRunRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ResumeWorkflowRun")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeWorkflowRun require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResumeWorkflowRunResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRetryReleaseRequest() (request *RetryReleaseRequest) {
     request = &RetryReleaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5983,6 +6319,7 @@ func NewRetryReleaseResponse() (response *RetryReleaseResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RetryRelease(request *RetryReleaseRequest) (response *RetryReleaseResponse, err error) {
     return c.RetryReleaseWithContext(context.Background(), request)
 }
@@ -5992,6 +6329,7 @@ func (c *Client) RetryRelease(request *RetryReleaseRequest) (response *RetryRele
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RetryReleaseWithContext(ctx context.Context, request *RetryReleaseRequest) (response *RetryReleaseResponse, err error) {
     if request == nil {
         request = NewRetryReleaseRequest()
@@ -6033,6 +6371,7 @@ func NewRollbackReleaseResponse() (response *RollbackReleaseResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RollbackRelease(request *RollbackReleaseRequest) (response *RollbackReleaseResponse, err error) {
     return c.RollbackReleaseWithContext(context.Background(), request)
 }
@@ -6042,6 +6381,7 @@ func (c *Client) RollbackRelease(request *RollbackReleaseRequest) (response *Rol
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RollbackReleaseWithContext(ctx context.Context, request *RollbackReleaseRequest) (response *RollbackReleaseResponse, err error) {
     if request == nil {
         request = NewRollbackReleaseRequest()
@@ -6083,6 +6423,7 @@ func NewRunAppTriggerNowResponse() (response *RunAppTriggerNowResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RunAppTriggerNow(request *RunAppTriggerNowRequest) (response *RunAppTriggerNowResponse, err error) {
     return c.RunAppTriggerNowWithContext(context.Background(), request)
 }
@@ -6092,6 +6433,7 @@ func (c *Client) RunAppTriggerNow(request *RunAppTriggerNowRequest) (response *R
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) RunAppTriggerNowWithContext(ctx context.Context, request *RunAppTriggerNowRequest) (response *RunAppTriggerNowResponse, err error) {
     if request == nil {
         request = NewRunAppTriggerNowRequest()
@@ -6105,6 +6447,110 @@ func (c *Client) RunAppTriggerNowWithContext(ctx context.Context, request *RunAp
     request.SetContext(ctx)
     
     response = NewRunAppTriggerNowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSaveWorkflowDebugContextRequest() (request *SaveWorkflowDebugContextRequest) {
+    request = &SaveWorkflowDebugContextRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "SaveWorkflowDebugContext")
+    
+    
+    return
+}
+
+func NewSaveWorkflowDebugContextResponse() (response *SaveWorkflowDebugContextResponse) {
+    response = &SaveWorkflowDebugContextResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SaveWorkflowDebugContext
+// SaveWorkflowDebugContext
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) SaveWorkflowDebugContext(request *SaveWorkflowDebugContextRequest) (response *SaveWorkflowDebugContextResponse, err error) {
+    return c.SaveWorkflowDebugContextWithContext(context.Background(), request)
+}
+
+// SaveWorkflowDebugContext
+// SaveWorkflowDebugContext
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) SaveWorkflowDebugContextWithContext(ctx context.Context, request *SaveWorkflowDebugContextRequest) (response *SaveWorkflowDebugContextResponse, err error) {
+    if request == nil {
+        request = NewSaveWorkflowDebugContextRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "SaveWorkflowDebugContext")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SaveWorkflowDebugContext require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSaveWorkflowDebugContextResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSaveWorkflowToolNodeOutputRequest() (request *SaveWorkflowToolNodeOutputRequest) {
+    request = &SaveWorkflowToolNodeOutputRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "SaveWorkflowToolNodeOutput")
+    
+    
+    return
+}
+
+func NewSaveWorkflowToolNodeOutputResponse() (response *SaveWorkflowToolNodeOutputResponse) {
+    response = &SaveWorkflowToolNodeOutputResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SaveWorkflowToolNodeOutput
+// SaveWorkflowToolNodeOutput
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) SaveWorkflowToolNodeOutput(request *SaveWorkflowToolNodeOutputRequest) (response *SaveWorkflowToolNodeOutputResponse, err error) {
+    return c.SaveWorkflowToolNodeOutputWithContext(context.Background(), request)
+}
+
+// SaveWorkflowToolNodeOutput
+// SaveWorkflowToolNodeOutput
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) SaveWorkflowToolNodeOutputWithContext(ctx context.Context, request *SaveWorkflowToolNodeOutputRequest) (response *SaveWorkflowToolNodeOutputResponse, err error) {
+    if request == nil {
+        request = NewSaveWorkflowToolNodeOutputRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "SaveWorkflowToolNodeOutput")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SaveWorkflowToolNodeOutput require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSaveWorkflowToolNodeOutputResponse()
     err = c.Send(request, response)
     return
 }
@@ -6133,6 +6579,7 @@ func NewSearchKnowledgeResponse() (response *SearchKnowledgeResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) SearchKnowledge(request *SearchKnowledgeRequest) (response *SearchKnowledgeResponse, err error) {
     return c.SearchKnowledgeWithContext(context.Background(), request)
 }
@@ -6142,6 +6589,7 @@ func (c *Client) SearchKnowledge(request *SearchKnowledgeRequest) (response *Sea
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) SearchKnowledgeWithContext(ctx context.Context, request *SearchKnowledgeRequest) (response *SearchKnowledgeResponse, err error) {
     if request == nil {
         request = NewSearchKnowledgeRequest()
@@ -6155,6 +6603,58 @@ func (c *Client) SearchKnowledgeWithContext(ctx context.Context, request *Search
     request.SetContext(ctx)
     
     response = NewSearchKnowledgeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopWorkflowRunListRequest() (request *StopWorkflowRunListRequest) {
+    request = &StopWorkflowRunListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "StopWorkflowRunList")
+    
+    
+    return
+}
+
+func NewStopWorkflowRunListResponse() (response *StopWorkflowRunListResponse) {
+    response = &StopWorkflowRunListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopWorkflowRunList
+// 批量停止正在进行的工作流运行实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) StopWorkflowRunList(request *StopWorkflowRunListRequest) (response *StopWorkflowRunListResponse, err error) {
+    return c.StopWorkflowRunListWithContext(context.Background(), request)
+}
+
+// StopWorkflowRunList
+// 批量停止正在进行的工作流运行实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) StopWorkflowRunListWithContext(ctx context.Context, request *StopWorkflowRunListRequest) (response *StopWorkflowRunListResponse, err error) {
+    if request == nil {
+        request = NewStopWorkflowRunListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "StopWorkflowRunList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopWorkflowRunList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopWorkflowRunListResponse()
     err = c.Send(request, response)
     return
 }
@@ -6183,6 +6683,7 @@ func NewUnfavoritePluginResponse() (response *UnfavoritePluginResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UnfavoritePlugin(request *UnfavoritePluginRequest) (response *UnfavoritePluginResponse, err error) {
     return c.UnfavoritePluginWithContext(context.Background(), request)
 }
@@ -6192,6 +6693,7 @@ func (c *Client) UnfavoritePlugin(request *UnfavoritePluginRequest) (response *U
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UnfavoritePluginWithContext(ctx context.Context, request *UnfavoritePluginRequest) (response *UnfavoritePluginResponse, err error) {
     if request == nil {
         request = NewUnfavoritePluginRequest()
@@ -6233,6 +6735,7 @@ func NewUnfavoriteSkillResponse() (response *UnfavoriteSkillResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UnfavoriteSkill(request *UnfavoriteSkillRequest) (response *UnfavoriteSkillResponse, err error) {
     return c.UnfavoriteSkillWithContext(context.Background(), request)
 }
@@ -6242,6 +6745,7 @@ func (c *Client) UnfavoriteSkill(request *UnfavoriteSkillRequest) (response *Unf
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UnfavoriteSkillWithContext(ctx context.Context, request *UnfavoriteSkillRequest) (response *UnfavoriteSkillResponse, err error) {
     if request == nil {
         request = NewUnfavoriteSkillRequest()

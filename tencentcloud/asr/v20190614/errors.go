@@ -155,6 +155,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 音频截幅（爆音）
+	INVALIDPARAMETERVALUE_AUDIOCLIPPING = "InvalidParameterValue.AudioClipping"
+
 	// AppId无效。
 	INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = "InvalidParameterValue.ErrorInvalidAppid"
 
@@ -206,8 +209,14 @@ const (
 	// 非法的WordWeightStr。
 	INVALIDPARAMETERVALUE_INVALIDWORDWEIGHTSTR = "InvalidParameterValue.InvalidWordWeightStr"
 
+	// 信噪比过低
+	INVALIDPARAMETERVALUE_LOWSIGNALTONOISE = "InvalidParameterValue.LowSignalToNoise"
+
 	// 模型不存在。
 	INVALIDPARAMETERVALUE_MODELID = "InvalidParameterValue.ModelId"
+
+	// 检测到多个说话人
+	INVALIDPARAMETERVALUE_MULTIPLESPEAKERS = "InvalidParameterValue.MultipleSpeakers"
 
 	// 音频内容没有人声或有效人声小于1秒
 	INVALIDPARAMETERVALUE_NOHUMANVOICE = "InvalidParameterValue.NoHumanVoice"

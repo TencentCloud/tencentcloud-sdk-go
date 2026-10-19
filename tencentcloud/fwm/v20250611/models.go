@@ -469,20 +469,20 @@ func (r *CreateEdgeAclRuleGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEdgeAclRuleRequestParams struct {
-	// 规则组ID
+	// <p>规则组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 规则列表
+	// <p>规则列表</p>
 	Rules []*EdgeAclRuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type CreateEdgeAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则组ID
+	// <p>规则组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 规则列表
+	// <p>规则列表</p>
 	Rules []*EdgeAclRuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
@@ -508,6 +508,9 @@ func (r *CreateEdgeAclRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEdgeAclRuleResponseParams struct {
+	// <p>规则Id列表</p>
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -601,20 +604,20 @@ func (r *CreateNatAclRuleGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNatAclRuleRequestParams struct {
-	// 规则组ID
+	// <p>规则组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 规则列表
+	// <p>规则列表</p>
 	Rules []*NatAclRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type CreateNatAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则组ID
+	// <p>规则组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 规则列表
+	// <p>规则列表</p>
 	Rules []*NatAclRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
@@ -640,6 +643,9 @@ func (r *CreateNatAclRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNatAclRuleResponseParams struct {
+	// <p>规则Id列表</p>
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -657,6 +663,70 @@ func (r *CreateNatAclRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateNatAclRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRuleGroupRequestParams struct {
+	// <p>规则组名称，不可为空，最长50字符（按字符数计，中文按1个字符计）</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>规则组归属产品。enterprise_sg-企业安全组，cfw_vpc_acl-VPC边界防火墙，cfw_nat_acl-NAT边界防火墙，cfw_edge_acl-互联网边界防火墙。必填，不接受 all</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+type CreateRuleGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>规则组名称，不可为空，最长50字符（按字符数计，中文按1个字符计）</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>规则组归属产品。enterprise_sg-企业安全组，cfw_vpc_acl-VPC边界防火墙，cfw_nat_acl-NAT边界防火墙，cfw_edge_acl-互联网边界防火墙。必填，不接受 all</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+func (r *CreateRuleGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRuleGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupName")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRuleGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRuleGroupResponseParams struct {
+	// <p>创建成功的规则组唯一标识，fwmrg- 前缀</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRuleGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRuleGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateRuleGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRuleGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -733,20 +803,20 @@ func (r *CreateSecurityGroupRuleGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSecurityGroupRuleRequestParams struct {
-	// 规则组Id
+	// <p>规则组Id</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 规则列表
+	// <p>规则列表</p>
 	Rules []*SecurityGroupRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type CreateSecurityGroupRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则组Id
+	// <p>规则组Id</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 规则列表
+	// <p>规则列表</p>
 	Rules []*SecurityGroupRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
@@ -772,6 +842,9 @@ func (r *CreateSecurityGroupRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSecurityGroupRuleResponseParams struct {
+	// <p>规则Id列表</p>
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -794,38 +867,38 @@ func (r *CreateSecurityGroupRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateStrategyRequestParams struct {
-	// 产品类型
+	// <p>产品类型</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 下发账号
+	// <p>下发账号</p>
 	ReceiveAccount []*string `json:"ReceiveAccount,omitnil,omitempty" name:"ReceiveAccount"`
 
-	// 前区规则组
+	// <p>前区规则组</p>
 	PreStrategy []*StrategyReq `json:"PreStrategy,omitnil,omitempty" name:"PreStrategy"`
 
-	// 后区规则组
+	// <p>后区规则组</p>
 	PostStrategy []*StrategyReq `json:"PostStrategy,omitnil,omitempty" name:"PostStrategy"`
 
-	// 下发账号组
+	// <p>下发账号组</p>
 	ReceiveGroup []*string `json:"ReceiveGroup,omitnil,omitempty" name:"ReceiveGroup"`
 }
 
 type CreateStrategyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品类型
+	// <p>产品类型</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 下发账号
+	// <p>下发账号</p>
 	ReceiveAccount []*string `json:"ReceiveAccount,omitnil,omitempty" name:"ReceiveAccount"`
 
-	// 前区规则组
+	// <p>前区规则组</p>
 	PreStrategy []*StrategyReq `json:"PreStrategy,omitnil,omitempty" name:"PreStrategy"`
 
-	// 后区规则组
+	// <p>后区规则组</p>
 	PostStrategy []*StrategyReq `json:"PostStrategy,omitnil,omitempty" name:"PostStrategy"`
 
-	// 下发账号组
+	// <p>下发账号组</p>
 	ReceiveGroup []*string `json:"ReceiveGroup,omitnil,omitempty" name:"ReceiveGroup"`
 }
 
@@ -854,6 +927,9 @@ func (r *CreateStrategyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateStrategyResponseParams struct {
+	// <p>策略Id列表</p>
+	StrategyIds []*string `json:"StrategyIds,omitnil,omitempty" name:"StrategyIds"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -947,20 +1023,20 @@ func (r *CreateVpcAclRuleGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVpcAclRuleRequestParams struct {
-	// 规则组ID
+	// <p>规则组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 规则列表
+	// <p>规则列表</p>
 	Rules []*VpcAclRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type CreateVpcAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则组ID
+	// <p>规则组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 规则列表
+	// <p>规则列表</p>
 	Rules []*VpcAclRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
@@ -986,6 +1062,9 @@ func (r *CreateVpcAclRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVpcAclRuleResponseParams struct {
+	// <p>规则Id列表</p>
+	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2803,6 +2882,12 @@ type EdgeAclRuleResp struct {
 
 	// 域名数
 	DnsParseCnt *int64 `json:"DnsParseCnt,omitnil,omitempty" name:"DnsParseCnt"`
+
+	// 命中次数。该规则在所有已下发成员账号下的累计命中次数合计，直接采用云防火墙返回值，不做时间窗口换算；从未命中时为 0
+	HitCount *int64 `json:"HitCount,omitnil,omitempty" name:"HitCount"`
+
+	// 最近命中时间。取该规则在所有已下发成员账号中最新的命中时间；从未命中时为 "-"
+	LastHitTime *string `json:"LastHitTime,omitnil,omitempty" name:"LastHitTime"`
 }
 
 // Predefined struct for user
@@ -3701,6 +3786,12 @@ type NatAclRuleResp struct {
 
 	// 域名数
 	DnsParseCnt *int64 `json:"DnsParseCnt,omitnil,omitempty" name:"DnsParseCnt"`
+
+	// 命中次数。该规则在所有已下发成员账号下的累计命中次数合计，直接采用云防火墙返回值，不做时间窗口换算；从未命中时为 0
+	HitCount *int64 `json:"HitCount,omitnil,omitempty" name:"HitCount"`
+
+	// 最近命中时间。取该规则在所有已下发成员账号中最新的命中时间；从未命中时为 "-"
+	LastHitTime *string `json:"LastHitTime,omitnil,omitempty" name:"LastHitTime"`
 }
 
 type OrganMemberItem struct {
@@ -3784,41 +3875,44 @@ type OrganMemberItem struct {
 }
 
 type OrganSummary struct {
-	// 集团名称
+	// <p>集团名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 管理员账号信息
+	// <p>管理员账号信息</p>
 	AdminInfo *MemberInfo `json:"AdminInfo,omitnil,omitempty" name:"AdminInfo"`
 
-	// 管理员/委派管理员数量
+	// <p>管理员/委派管理员数量</p>
 	AdminCount *int64 `json:"AdminCount,omitnil,omitempty" name:"AdminCount"`
 
-	// 已接入成员数
+	// <p>已接入成员数</p>
 	JoinedMemberCount *int64 `json:"JoinedMemberCount,omitnil,omitempty" name:"JoinedMemberCount"`
 
-	// 接入成员上限（-1表示无上限）
+	// <p>接入成员上限（-1表示无上限）</p>
 	MemberLimit *int64 `json:"MemberLimit,omitnil,omitempty" name:"MemberLimit"`
 
-	// 接入成员上限显示
+	// <p>接入成员上限显示</p>
 	MemberLimitDisplay *string `json:"MemberLimitDisplay,omitnil,omitempty" name:"MemberLimitDisplay"`
 
-	// 规格共享者数量
+	// <p>规格共享者数量</p>
 	CfwSharerCount *int64 `json:"CfwSharerCount,omitnil,omitempty" name:"CfwSharerCount"`
 
-	// 规格使用者数量
+	// <p>规格使用者数量</p>
 	CfwUserCount *int64 `json:"CfwUserCount,omitnil,omitempty" name:"CfwUserCount"`
 
-	// 部门名称列表
+	// <p>部门名称列表</p>
 	Departments []*string `json:"Departments,omitnil,omitempty" name:"Departments"`
 
-	// 纳管账号数
+	// <p>纳管账号数</p>
 	ManagedMemberCount *int64 `json:"ManagedMemberCount,omitnil,omitempty" name:"ManagedMemberCount"`
 
-	// 纳管产品数
+	// <p>纳管产品数</p>
 	ManagedProductCount *int64 `json:"ManagedProductCount,omitnil,omitempty" name:"ManagedProductCount"`
 
-	// 纳管账号数
+	// <p>纳管账号数</p>
 	CfwManageCount *int64 `json:"CfwManageCount,omitnil,omitempty" name:"CfwManageCount"`
+
+	// <p>规格共享总配额</p>
+	FwmShareUserQuota *int64 `json:"FwmShareUserQuota,omitnil,omitempty" name:"FwmShareUserQuota"`
 }
 
 type PolicyRisk struct {
@@ -4020,6 +4114,7 @@ type SecGroupRuleResp struct {
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// <p>域名解析的IP统计</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DnsParseCount *SgDnsParseCount `json:"DnsParseCount,omitnil,omitempty" name:"DnsParseCount"`
 
 	// <p>规则生效范围</p>
@@ -4390,4 +4485,10 @@ type VpcAclRuleResp struct {
 
 	// 防火墙组名称
 	FwGroupName *string `json:"FwGroupName,omitnil,omitempty" name:"FwGroupName"`
+
+	// 命中次数。该规则在所有已下发成员账号下的累计命中次数合计，直接采用云防火墙返回值，不做时间窗口换算；从未命中时为 0
+	HitCount *int64 `json:"HitCount,omitnil,omitempty" name:"HitCount"`
+
+	// 最近命中时间。取该规则在所有已下发成员账号中最新的命中时间；从未命中时为 "-"
+	LastHitTime *string `json:"LastHitTime,omitnil,omitempty" name:"LastHitTime"`
 }

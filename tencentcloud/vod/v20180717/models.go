@@ -2886,16 +2886,16 @@ type AigcVideoTaskUsage struct {
 	// <p>思考产生的 Token 数目。</p><p>仅使用 GV 的 omni 版本时取值有效。</p>
 	ThoughtTokens *int64 `json:"ThoughtTokens,omitnil,omitempty" name:"ThoughtTokens"`
 
-	// <p>输入图片数目。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
+	// <p>输入图片数目。</p><p>仅使用 Hailuo(H3/H3-Max)、wand-vega-video(1.0-lite) 时取值有效。</p>
 	InputImageCount *int64 `json:"InputImageCount,omitnil,omitempty" name:"InputImageCount"`
 
-	// <p>输入视频的时长。</p><p>单位：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
+	// <p>输入视频的时长。</p><p>单位：秒。</p><p> 仅使用 Hailuo(H3/H3-Max)、wand-vega-video(1.0-lite/1.0-pro/1.5-pro)、Wan(3.0/3.0-prime) 时取值有效。</p>
 	InputSeconds *int64 `json:"InputSeconds,omitnil,omitempty" name:"InputSeconds"`
 
-	// <p>输出视频时长。</p><p>单位：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
+	// <p>输出视频时长。</p><p>单位：秒。</p><p>所有模型版本取值均有效。</p>
 	OutputSeconds *int64 `json:"OutputSeconds,omitnil,omitempty" name:"OutputSeconds"`
 
-	// <p>输入输出总时长。</p><p>默认值：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
+	// <p>输入输出总时长。</p><p>默认值：秒。</p><p> 仅使用 Hailuo(H3/H3-Max)、wand-vega-video(1.0-lite/1.0-pro/1.5-pro)、Wan(3.0/3.0-prime) 时取值有效。</p>
 	TotalSeconds *int64 `json:"TotalSeconds,omitnil,omitempty" name:"TotalSeconds"`
 }
 
@@ -17853,7 +17853,7 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskDetailResponseParams struct {
-	// <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>AigcAudioTask：AIGC 生音频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li><li>WandAsrTask：WAND 语音识别</li><li>AigcHunyuan3DTask：AIGC 混元 3D 任务</li><li>DesignVoiceAsync：音色设计</li><li>CloneVoiceAsync：音色克隆</li><li>TextToSpeechAsync：语音生成</li><li>VideoDubbingAsync：视频翻译配音</li></p>
+	// <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>AigcAudioTask：AIGC 生音频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li><li>WandAsrTask：WAND 语音识别</li><li>AigcHunyuan3DTask：AIGC 混元 3D 任务</li><li>DesignVoiceAsync：音色设计</li><li>CloneVoiceAsync：音色克隆</li><li>TextToSpeechAsync：语音生成</li><li>VideoDubbingAsync：视频翻译配音</li><li>VideoDepthEstimation: 视频深度估计任务</li></p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// <p>任务状态，取值：</p><li>WAITING：等待中；</li><li>PROCESSING：处理中；</li><li>FINISH：已完成；</li><li>ABORTED：已终止。</li>
@@ -18015,6 +18015,9 @@ type DescribeTaskDetailResponseParams struct {
 
 	// <p>视频翻译配音，仅当 TaskType 为VideoDubbingAsync，该字段有值。</p>
 	VideoDubbingAsyncTask *VideoDubbingAsyncTask `json:"VideoDubbingAsyncTask,omitnil,omitempty" name:"VideoDubbingAsyncTask"`
+
+	// <p>视频深度估算任务，仅当 TaskType 为VideoDepthEstimation，该字段有值。</p>
+	VideoDepthEstimationTask *VideoDepthEstimationTask `json:"VideoDepthEstimationTask,omitnil,omitempty" name:"VideoDepthEstimationTask"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -35006,6 +35009,69 @@ type VideoDenoiseInfo struct {
 	// <li>strong：强视频降噪。</li>
 	// 默认值：weak。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type VideoDepthEstimationInput struct {
+	// <p>输入视频的 URL，支持以下三种形式：</p><li>以 <code>http://</code> 或 <code>https://</code> 开头的网络地址；</li><li><code>vod://</code> 开头的点播媒体文件 ID，例如 <code>vod://5285890815916760123</code>；</li><li><code>data:video/&lt;ext&gt;;base64,</code> 开头的 base64 编码视频数据。</li>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>输入视频的媒体文件 ID，仅当 Url 以 <code>vod://</code> 开头时有值。</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+}
+
+type VideoDepthEstimationOutput struct {
+	// <p>输出文件的存储模式，取值：</p><li>Temporary：临时存储，文件默认 7 天后删除；</li><li>Permanent：永久存储，保存到点播媒资库。</li>
+	StorageMode *string `json:"StorageMode,omitnil,omitempty" name:"StorageMode"`
+
+	// <p>输出文件的媒体名称，仅 StorageMode 为 Permanent 时有值。</p>
+	MediaName *string `json:"MediaName,omitnil,omitempty" name:"MediaName"`
+
+	// <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601 标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。<br><font color="red">注意：</font>StorageMode 为 Temporary 时，该字段为文件生成时间加 7 天。</p>
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>输出文件的类型，取值 mp4。</p>
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// <p>输出文件的媒体文件 ID，仅 StorageMode 为 Permanent 时有值。</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>输出文件的播放地址。</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// <p>输出视频的元信息。</p>
+	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
+}
+
+type VideoDepthEstimationTask struct {
+	// <p>任务 ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务状态，取值：</p><li>WAITING：等待中；</li><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li><p></p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// <p>错误信息。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>任务进度，取值范围 [0-100] 。</p>
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// <p>视频深度估计任务的输入信息。</p>
+	Input *VideoDepthEstimationInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>视频深度估计任务的输出信息。</p>
+	Output *VideoDepthEstimationOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 type VideoDubbingAsyncInput struct {

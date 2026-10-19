@@ -7825,7 +7825,7 @@ func NewDescribeClusterSecurityResponse() (response *DescribeClusterSecurityResp
 }
 
 // DescribeClusterSecurity
-// DescribeClusterSecurity 是 TKE 早期获取集群访问凭证的接口。该接口被纳入 QcloudTKEReadOnlyAccess 只读策略；在具备相应集群访问权限的条件下，子账号可能通过它取得集群 admin Token，获得超出只读授权预期的集群内管理权限。\\n\\n  根据本次提供的内部沟通记录，9 月有客户反馈：其只读子账号的 AK/SK 泄露后，被他人用于调用该接口并获取集群 admin Token。事件的实际影响范围及处置结果，仍以安全团队的核查结论为准。\\n\\n  后续计划先建立接口访问白名单：允许当前确实在使用该接口的账号暂时继续调用，拦截大部分当前未使用该接口的账号请求，并推动存量用户迁移。接口计划自 2026 年 10 月 31 日起逐步下线，预计 12 月 31 日全部下线。白名单仅限制后续接口调用；已经泄露的 AK/SK 或已取得的集群凭证仍需单独处置。
+// This API has been retired and is no longer available. To obtain cluster access credentials (Kubeconfig), use DescribeClusterKubeconfig. To query the cluster API Server\\\'s access addresses, domain names, and other connection information, use DescribeClusterEndpoints. Update your integration to accommodate the replacement APIs\\\' request parameters and response fields. DescribeClusterKubeconfig returns credentials specific to the calling account. A cluster administrator must configure the required Kubernetes RBAC permissions for that account under \\\"Authorization Management\\\" in TKE. Select the private or public network access configuration based on your network environment. If you rely on other information returned by the retired API, submit a support ticket for assistance.
 //
 // 
 //
@@ -7870,7 +7870,7 @@ func (c *Client) DescribeClusterSecurity(request *DescribeClusterSecurityRequest
 }
 
 // DescribeClusterSecurity
-// DescribeClusterSecurity 是 TKE 早期获取集群访问凭证的接口。该接口被纳入 QcloudTKEReadOnlyAccess 只读策略；在具备相应集群访问权限的条件下，子账号可能通过它取得集群 admin Token，获得超出只读授权预期的集群内管理权限。\\n\\n  根据本次提供的内部沟通记录，9 月有客户反馈：其只读子账号的 AK/SK 泄露后，被他人用于调用该接口并获取集群 admin Token。事件的实际影响范围及处置结果，仍以安全团队的核查结论为准。\\n\\n  后续计划先建立接口访问白名单：允许当前确实在使用该接口的账号暂时继续调用，拦截大部分当前未使用该接口的账号请求，并推动存量用户迁移。接口计划自 2026 年 10 月 31 日起逐步下线，预计 12 月 31 日全部下线。白名单仅限制后续接口调用；已经泄露的 AK/SK 或已取得的集群凭证仍需单独处置。
+// This API has been retired and is no longer available. To obtain cluster access credentials (Kubeconfig), use DescribeClusterKubeconfig. To query the cluster API Server\\\'s access addresses, domain names, and other connection information, use DescribeClusterEndpoints. Update your integration to accommodate the replacement APIs\\\' request parameters and response fields. DescribeClusterKubeconfig returns credentials specific to the calling account. A cluster administrator must configure the required Kubernetes RBAC permissions for that account under \\\"Authorization Management\\\" in TKE. Select the private or public network access configuration based on your network environment. If you rely on other information returned by the retired API, submit a support ticket for assistance.
 //
 // 
 //

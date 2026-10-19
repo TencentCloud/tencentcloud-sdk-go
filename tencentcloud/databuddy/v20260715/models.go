@@ -25,7 +25,7 @@ type AddConsoleUsersRequestParams struct {
 	// <p>用户 UIN 列表，单次最多100个</p>
 	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
 
-	// <p>角色 ID 列表</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul>
+	// <p>角色 ID 列表</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul><p>可通过 ListConsoleRoles 接口获取</p>
 	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
@@ -35,7 +35,7 @@ type AddConsoleUsersRequest struct {
 	// <p>用户 UIN 列表，单次最多100个</p>
 	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
 
-	// <p>角色 ID 列表</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul>
+	// <p>角色 ID 列表</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul><p>可通过 ListConsoleRoles 接口获取</p>
 	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
@@ -91,26 +91,26 @@ type AddConsoleUsersRsp struct {
 
 // Predefined struct for user
 type AddWorkspaceGroupsRequestParams struct {
-	// 用户组ID，可通过 ListWorkspaceGroups 接口获取
+	// <p>用户组ID，可通过 ListConsoleGroups 接口获取</p>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 工作空间ID
+	// <p>工作空间ID</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 角色ID，可通过 ListWorkspaceRoles 接口获取
+	// <p>角色ID，可通过 ListWorkspaceRoles 接口获取</p>
 	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
 type AddWorkspaceGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组ID，可通过 ListWorkspaceGroups 接口获取
+	// <p>用户组ID，可通过 ListConsoleGroups 接口获取</p>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 工作空间ID
+	// <p>工作空间ID</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 角色ID，可通过 ListWorkspaceRoles 接口获取
+	// <p>角色ID，可通过 ListWorkspaceRoles 接口获取</p>
 	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
@@ -137,7 +137,7 @@ func (r *AddWorkspaceGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddWorkspaceGroupsResponseParams struct {
-	// 添加结果
+	// <p>添加结果</p>
 	Data *PlatformStatusRsp `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4407,14 +4407,14 @@ type ListSchemasRequestParams struct {
 	// <p>数据目录名</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
 	// <p>最大结果条数</p>
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
 	// <p>分页token</p>
 	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
-
-	// <p>调用时所在workspace唯一id</p>
-	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
@@ -4432,14 +4432,14 @@ type ListSchemasRequest struct {
 	// <p>数据目录名</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
 	// <p>最大结果条数</p>
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
 	// <p>分页token</p>
 	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
-
-	// <p>调用时所在workspace唯一id</p>
-	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
@@ -4464,9 +4464,9 @@ func (r *ListSchemasRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CatalogName")
+	delete(f, "WorkspaceId")
 	delete(f, "MaxResults")
 	delete(f, "PageToken")
-	delete(f, "WorkspaceId")
 	delete(f, "FetchOption")
 	delete(f, "ConnectionId")
 	delete(f, "CatalogSource")
@@ -4520,14 +4520,14 @@ type ListTablesRequestParams struct {
 	// <p>数据库名</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
 	// <p>最大结果条数</p>
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
 	// <p>分页token</p>
 	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
-
-	// <p>调用时所在workspace唯一id</p>
-	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
@@ -4548,14 +4548,14 @@ type ListTablesRequest struct {
 	// <p>数据库名</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
 	// <p>最大结果条数</p>
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
 	// <p>分页token</p>
 	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
-
-	// <p>调用时所在workspace唯一id</p>
-	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
@@ -4581,9 +4581,9 @@ func (r *ListTablesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CatalogName")
 	delete(f, "SchemaName")
+	delete(f, "WorkspaceId")
 	delete(f, "MaxResults")
 	delete(f, "PageToken")
-	delete(f, "WorkspaceId")
 	delete(f, "FetchOption")
 	delete(f, "ConnectionId")
 	delete(f, "CatalogSource")

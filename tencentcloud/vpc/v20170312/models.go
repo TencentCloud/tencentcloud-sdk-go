@@ -2924,12 +2924,6 @@ type CcnPolicyBasedRoutingRule struct {
 	// <p>策略路由下一跳ID</p>
 	PolicyBasedRoutingNextHopId *string `json:"PolicyBasedRoutingNextHopId,omitnil,omitempty" name:"PolicyBasedRoutingNextHopId"`
 
-	// <p>实例类型[VPC,DIRECTCONNECT,VPNGW]</p>
-	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
-
-	// <p>实例ID</p>
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
 	// <p>源地址CIDR</p>
 	SourceCidrBlock *string `json:"SourceCidrBlock,omitnil,omitempty" name:"SourceCidrBlock"`
 
@@ -2938,6 +2932,15 @@ type CcnPolicyBasedRoutingRule struct {
 
 	// <p>优先级</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// <p>实例类型[VPC,DIRECTCONNECT,VPNGW]</p>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例所在地域</p>
+	InstanceRegion *string `json:"InstanceRegion,omitnil,omitempty" name:"InstanceRegion"`
 
 	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`

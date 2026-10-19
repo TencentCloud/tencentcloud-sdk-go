@@ -299,15 +299,21 @@ type CheckResult struct {
 
 // Predefined struct for user
 type CreateAccessCertRequestParams struct {
-	// 证书描述，不超过64字符
+	// <p>证书描述，不超过64字符</p>
 	CertDesc *string `json:"CertDesc,omitnil,omitempty" name:"CertDesc"`
+
+	// <p>凭证类型</p><p>枚举值：</p><ul><li>ssh： 通用系列文件系统凭证</li><li>gss： Turbo系列文件系统凭证</li></ul><p>默认值：ssh</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type CreateAccessCertRequest struct {
 	*tchttp.BaseRequest
 	
-	// 证书描述，不超过64字符
+	// <p>证书描述，不超过64字符</p>
 	CertDesc *string `json:"CertDesc,omitnil,omitempty" name:"CertDesc"`
+
+	// <p>凭证类型</p><p>枚举值：</p><ul><li>ssh： 通用系列文件系统凭证</li><li>gss： Turbo系列文件系统凭证</li></ul><p>默认值：ssh</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *CreateAccessCertRequest) ToJsonString() string {
@@ -323,6 +329,7 @@ func (r *CreateAccessCertRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CertDesc")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccessCertRequest has unknown keys!", "")
 	}
@@ -331,7 +338,7 @@ func (r *CreateAccessCertRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAccessCertResponseParams struct {
-	// 凭证唯一标识
+	// <p>凭证唯一标识</p>
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

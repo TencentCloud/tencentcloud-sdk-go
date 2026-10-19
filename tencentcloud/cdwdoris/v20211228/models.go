@@ -1024,7 +1024,7 @@ type CreateInstanceNewRequestParams struct {
 	// <p>缓存盘大小</p>
 	CacheDataDiskSize *int64 `json:"CacheDataDiskSize,omitnil,omitempty" name:"CacheDataDiskSize"`
 
-	// <p>磁盘加密</p>
+	// <p>磁盘加密</p><p>默认为0不加密，1表示加密</p>
 	DiskEncrypt *int64 `json:"DiskEncrypt,omitnil,omitempty" name:"DiskEncrypt"`
 }
 
@@ -1091,7 +1091,7 @@ type CreateInstanceNewRequest struct {
 	// <p>缓存盘大小</p>
 	CacheDataDiskSize *int64 `json:"CacheDataDiskSize,omitnil,omitempty" name:"CacheDataDiskSize"`
 
-	// <p>磁盘加密</p>
+	// <p>磁盘加密</p><p>默认为0不加密，1表示加密</p>
 	DiskEncrypt *int64 `json:"DiskEncrypt,omitnil,omitempty" name:"DiskEncrypt"`
 }
 
@@ -4386,205 +4386,200 @@ type InstanceDetail struct {
 }
 
 type InstanceInfo struct {
-	// 集群实例ID, "cdwdoris-xxxx" 字符串类型
+	// <p>集群实例ID, &quot;cdwdoris-xxxx&quot; 字符串类型</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集群实例名称
+	// <p>集群实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 状态,
-	// Init  创建中
-	// Serving   运行中
-	// Isolated   已隔离
-	// Changing  变更中
+	// <p>状态,<br>Init  创建中<br>Serving   运行中<br>Isolated   已隔离<br>Changing  变更中</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 版本
+	// <p>版本</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 地域, ap-guangzhou
+	// <p>地域, ap-guangzhou</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 可用区， ap-guangzhou-3
+	// <p>可用区， ap-guangzhou-3</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 私有网络名称
+	// <p>私有网络名称</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网名称
+	// <p>子网名称</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 付费类型，"hour", "prepay"
+	// <p>付费类型，&quot;hour&quot;, &quot;prepay&quot;</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 过期时间
+	// <p>过期时间</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 数据节点描述信息
+	// <p>数据节点描述信息</p>
 	MasterSummary *NodesSummary `json:"MasterSummary,omitnil,omitempty" name:"MasterSummary"`
 
-	// zookeeper节点描述信息
+	// <p>zookeeper节点描述信息</p>
 	CoreSummary *NodesSummary `json:"CoreSummary,omitnil,omitempty" name:"CoreSummary"`
 
-	// 高可用，"true" "false"
+	// <p>高可用，&quot;true&quot; &quot;false&quot;</p>
 	HA *string `json:"HA,omitnil,omitempty" name:"HA"`
 
-	// 高可用类型：
-	// 0：非高可用
-	// 1：读高可用
-	// 2：读写高可用。
+	// <p>高可用类型：<br>0：非高可用<br>1：读高可用<br>2：读写高可用。</p>
 	HaType *int64 `json:"HaType,omitnil,omitempty" name:"HaType"`
 
-	// 访问地址，例如 "10.0.0.1:9000"
+	// <p>访问地址，例如 &quot;10.0.0.1:9000&quot;</p>
 	AccessInfo *string `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
 
-	// 记录ID，数值型
+	// <p>记录ID，数值型</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// regionId, 表示地域
+	// <p>regionId, 表示地域</p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 可用区说明，例如 "广州三区"
+	// <p>可用区说明，例如 &quot;广州三区&quot;</p>
 	ZoneDesc *string `json:"ZoneDesc,omitnil,omitempty" name:"ZoneDesc"`
 
-	// 错误流程说明信息
+	// <p>错误流程说明信息</p>
 	FlowMsg *string `json:"FlowMsg,omitnil,omitempty" name:"FlowMsg"`
 
-	// 状态描述，例如“运行中”等
+	// <p>状态描述，例如“运行中”等</p>
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
-	// 自动续费标记
+	// <p>自动续费标记</p>
 	RenewFlag *bool `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 监控信息
+	// <p>监控信息</p>
 	Monitor *string `json:"Monitor,omitnil,omitempty" name:"Monitor"`
 
-	// 是否开通日志
+	// <p>是否开通日志</p>
 	HasClsTopic *bool `json:"HasClsTopic,omitnil,omitempty" name:"HasClsTopic"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
 
-	// 日志集ID
+	// <p>日志集ID</p>
 	ClsLogSetId *string `json:"ClsLogSetId,omitnil,omitempty" name:"ClsLogSetId"`
 
-	// 是否支持xml配置管理
+	// <p>是否支持xml配置管理</p>
 	EnableXMLConfig *int64 `json:"EnableXMLConfig,omitnil,omitempty" name:"EnableXMLConfig"`
 
-	// 区域
+	// <p>区域</p>
 	RegionDesc *string `json:"RegionDesc,omitnil,omitempty" name:"RegionDesc"`
 
-	// 弹性网卡地址
+	// <p>弹性网卡地址</p>
 	Eip *string `json:"Eip,omitnil,omitempty" name:"Eip"`
 
-	// 冷热分层系数
+	// <p>冷热分层系数</p>
 	CosMoveFactor *int64 `json:"CosMoveFactor,omitnil,omitempty" name:"CosMoveFactor"`
 
-	// external/local/yunti
+	// <p>external/local/yunti</p>
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// cos桶
+	// <p>cos桶</p>
 	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
 
-	// cbs
+	// <p>cbs</p>
 	CanAttachCbs *bool `json:"CanAttachCbs,omitnil,omitempty" name:"CanAttachCbs"`
 
-	// 小版本
+	// <p>小版本</p>
 	BuildVersion *string `json:"BuildVersion,omitnil,omitempty" name:"BuildVersion"`
 
-	// 组件信息
-	// 注：这里返回类型实际为map[string]struct类型，并非显示的string类型，可以参考“示例值”进行数据的解析。
+	// <p>组件信息<br>注：这里返回类型实际为map[string]struct类型，并非显示的string类型，可以参考“示例值”进行数据的解析。</p>
 	Components *string `json:"Components,omitnil,omitempty" name:"Components"`
 
-	// 判断审计日志表是否有catalog字段
+	// <p>判断审计日志表是否有catalog字段</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: IfExistCatalog is deprecated.
 	IfExistCatalog *int64 `json:"IfExistCatalog,omitnil,omitempty" name:"IfExistCatalog"`
 
-	// 页面特性，用于前端屏蔽一些页面入口
+	// <p>页面特性，用于前端屏蔽一些页面入口</p>
 	Characteristic []*string `json:"Characteristic,omitnil,omitempty" name:"Characteristic"`
 
-	// 超时时间 单位s
+	// <p>超时时间 单位s</p>
 	RestartTimeout *string `json:"RestartTimeout,omitnil,omitempty" name:"RestartTimeout"`
 
-	// 内核优雅重启超时时间，如果为-1说明未设置
+	// <p>内核优雅重启超时时间，如果为-1说明未设置</p>
 	GraceShutdownWaitSeconds *string `json:"GraceShutdownWaitSeconds,omitnil,omitempty" name:"GraceShutdownWaitSeconds"`
 
-	// 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
+	// <p>表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储</p>
 	CaseSensitive *int64 `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
 
-	// 用户是否可以绑定安全组
+	// <p>用户是否可以绑定安全组</p>
 	IsWhiteSGs *bool `json:"IsWhiteSGs,omitnil,omitempty" name:"IsWhiteSGs"`
 
-	// 已绑定的安全组信息
+	// <p>已绑定的安全组信息</p>
 	BindSGs []*string `json:"BindSGs,omitnil,omitempty" name:"BindSGs"`
 
-	// 是否为多可用区
+	// <p>是否为多可用区</p>
 	EnableMultiZones *bool `json:"EnableMultiZones,omitnil,omitempty" name:"EnableMultiZones"`
 
-	// 用户可用区和子网信息
+	// <p>用户可用区和子网信息</p>
 	UserNetworkInfos *string `json:"UserNetworkInfos,omitnil,omitempty" name:"UserNetworkInfos"`
 
-	// 是否启用冷热分层。0：未开启 1：已开启
+	// <p>是否启用冷热分层。0：未开启 1：已开启</p>
 	EnableCoolDown *int64 `json:"EnableCoolDown,omitnil,omitempty" name:"EnableCoolDown"`
 
-	// 冷热分层使用COS桶
+	// <p>冷热分层使用COS桶</p>
 	CoolDownBucket *string `json:"CoolDownBucket,omitnil,omitempty" name:"CoolDownBucket"`
 
-	// 实例扩展信息
+	// <p>实例扩展信息</p>
 	Details *InstanceDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
-	// 是否启用DLC 0:关闭 1:开启
+	// <p>是否启用DLC 0:关闭 1:开启</p>
 	EnableDlc *int64 `json:"EnableDlc,omitnil,omitempty" name:"EnableDlc"`
 
-	// 账户类型 0:普通用户 1:CAM用户
+	// <p>账户类型 0:普通用户 1:CAM用户</p>
 	AccountType *int64 `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
-	// 监控模式 0: 老监控 1：新监控
+	// <p>监控模式 0: 老监控 1：新监控</p>
 	MonitorMode *int64 `json:"MonitorMode,omitnil,omitempty" name:"MonitorMode"`
 
-	// cn节点信息
+	// <p>cn节点信息</p>
 	CNSummary *NodesSummary `json:"CNSummary,omitnil,omitempty" name:"CNSummary"`
 
-	// 计算组个数
+	// <p>计算组个数</p>
 	ComputeGroupCount *int64 `json:"ComputeGroupCount,omitnil,omitempty" name:"ComputeGroupCount"`
 
-	// 存算分离cos存储数据
+	// <p>存算分离cos存储数据</p>
 	CosStorageSize *float64 `json:"CosStorageSize,omitnil,omitempty" name:"CosStorageSize"`
 
-	// 存算分离的指标 当是true 不支持新建计算组
+	// <p>存算分离的指标 当是true 不支持新建计算组</p>
 	IsMasterNonVM *bool `json:"IsMasterNonVM,omitnil,omitempty" name:"IsMasterNonVM"`
 
-	// Cos容量包大小
+	// <p>Cos容量包大小</p>
 	CosPkgCapacity *int64 `json:"CosPkgCapacity,omitnil,omitempty" name:"CosPkgCapacity"`
 
-	// 集群是否使用托管桶
+	// <p>集群是否使用托管桶</p>
 	UseManagedBucket *bool `json:"UseManagedBucket,omitnil,omitempty" name:"UseManagedBucket"`
 
-	// 集群类型
+	// <p>集群类型</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 对应主集群
+	// <p>对应主集群</p>
 	MasterInstance *string `json:"MasterInstance,omitnil,omitempty" name:"MasterInstance"`
 
-	// 对应备集群
+	// <p>对应备集群</p>
 	SlaveInstances []*string `json:"SlaveInstances,omitnil,omitempty" name:"SlaveInstances"`
 
-	// ccr服务部署节点ip
+	// <p>ccr服务部署节点ip</p>
 	SyncerIp *string `json:"SyncerIp,omitnil,omitempty" name:"SyncerIp"`
 
-	// 是否支持sql convertor
+	// <p>是否支持sql convertor</p>
 	EnableSqlConv *int64 `json:"EnableSqlConv,omitnil,omitempty" name:"EnableSqlConv"`
 
-	// 集群时区，默认+08:00
+	// <p>集群时区，默认+08:00</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// <p>缓存盘介质：任一计算组为单副本SSD即ELASTIC_REMOTE_SSD（不支持变配多可用区部署等），否则为默认计算组介质；非存算分离为空</p>
+	CacheDiskType *string `json:"CacheDiskType,omitnil,omitempty" name:"CacheDiskType"`
 }
 
 type InstanceNode struct {
@@ -6136,35 +6131,38 @@ func (r *ResizeDiskResponse) FromJsonString(s string) error {
 }
 
 type ResourceSpec struct {
-	// 规格名称，例如“SCH1"
+	// <p>规格名称，例如“SCH1&quot;</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// cpu核数
+	// <p>cpu核数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存大小，单位G
+	// <p>内存大小，单位G</p>
 	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
-	// 分类标记，STANDARD/BIGDATA/HIGHIO分别表示标准型/大数据型/高IO
+	// <p>分类标记，STANDARD/BIGDATA/HIGHIO分别表示标准型/大数据型/高IO</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 系统盘描述信息
+	// <p>系统盘描述信息</p>
 	SystemDisk *DiskSpec `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
-	// 数据盘描述信息
+	// <p>数据盘描述信息</p>
 	DataDisk *DiskSpec `json:"DataDisk,omitnil,omitempty" name:"DataDisk"`
 
-	// 最大节点数目限制
+	// <p>最大节点数目限制</p>
 	MaxNodeSize *int64 `json:"MaxNodeSize,omitnil,omitempty" name:"MaxNodeSize"`
 
-	// 是否可用，false代表售罄
+	// <p>是否可用，false代表售罄</p>
 	Available *bool `json:"Available,omitnil,omitempty" name:"Available"`
 
-	// 规格描述信息
+	// <p>规格描述信息</p>
 	ComputeSpecDesc *string `json:"ComputeSpecDesc,omitnil,omitempty" name:"ComputeSpecDesc"`
 
-	// cvm库存
+	// <p>cvm库存</p>
 	InstanceQuota *int64 `json:"InstanceQuota,omitnil,omitempty" name:"InstanceQuota"`
+
+	// <p>计算组ID自定义后缀。1到8位小写字母、数字或连字符，首尾须为字母或数字；不传则随机生成8位后缀。最终计算组ID格式为实例ID-后缀，同时作为内核计算组名</p>
+	ComputeGroupSuffix *string `json:"ComputeGroupSuffix,omitnil,omitempty" name:"ComputeGroupSuffix"`
 }
 
 // Predefined struct for user

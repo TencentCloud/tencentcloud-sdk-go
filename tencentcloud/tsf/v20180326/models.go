@@ -2791,108 +2791,108 @@ func (r *CreateApiRateLimitRuleWithDetailRespResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type CreateApplicationRequestParams struct {
-	// 应用名称，最长60字符
+	// <p>应用名称，最长60字符</p>
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
-	// 应用类型，V：虚拟机应用；C：容器应用；S：serverless应用
+	// <p>应用类型，V：虚拟机应用；C：容器应用；S：serverless应用</p>
 	ApplicationType *string `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
-	// 应用微服务类型，M：service mesh应用；N：普通应用；G：网关应用
+	// <p>应用微服务类型，M：service mesh应用；N：普通应用；G：网关应用</p>
 	MicroserviceType *string `json:"MicroserviceType,omitnil,omitempty" name:"MicroserviceType"`
 
-	// 应用描述
+	// <p>应用描述</p>
 	ApplicationDesc *string `json:"ApplicationDesc,omitnil,omitempty" name:"ApplicationDesc"`
 
-	// 应用日志配置项，废弃参数
+	// <p>应用日志配置项，废弃参数</p>
 	//
 	// Deprecated: ApplicationLogConfig is deprecated.
 	ApplicationLogConfig *string `json:"ApplicationLogConfig,omitnil,omitempty" name:"ApplicationLogConfig"`
 
-	// 应用资源类型，废弃参数
+	// <p>应用资源类型，废弃参数</p>
 	//
 	// Deprecated: ApplicationResourceType is deprecated.
 	ApplicationResourceType *string `json:"ApplicationResourceType,omitnil,omitempty" name:"ApplicationResourceType"`
 
-	// 应用runtime类型
+	// <p>应用runtime类型</p>
 	ApplicationRuntimeType *string `json:"ApplicationRuntimeType,omitnil,omitempty" name:"ApplicationRuntimeType"`
 
-	// 【数据集ID】。可通过调用[DescribePrograms](https://cloud.tencent.com/document/product/649/73477)查询已创建的数据集列表或登录[控制台](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program&roleId=role-a26486wy)进行查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
+	// <p>【数据集ID】。可通过调用<a href="https://cloud.tencent.com/document/product/649/73477">DescribePrograms</a>查询已创建的数据集列表或登录<a href="https://console.cloud.tencent.com/tsf/privilege?rid=1&amp;tab=program&amp;roleId=role-a26486wy">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/108544">CreateProgram</a>创建新的数据集。</p>
 	ProgramId *string `json:"ProgramId,omitnil,omitempty" name:"ProgramId"`
 
-	// 服务配置信息列表
+	// <p>服务配置信息列表</p>
 	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitnil,omitempty" name:"ServiceConfigList"`
 
-	// 忽略创建镜像仓库
+	// <p>忽略创建镜像仓库</p>
 	IgnoreCreateImageRepository *bool `json:"IgnoreCreateImageRepository,omitnil,omitempty" name:"IgnoreCreateImageRepository"`
 
-	// 数据集id列表
+	// <p>数据集id列表</p>
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 
-	// apm业务系统id
+	// <p>apm业务系统id</p>
 	ApmInstanceId *string `json:"ApmInstanceId,omitnil,omitempty" name:"ApmInstanceId"`
 
-	// 编程语言:  Java；C/C++；Python；Go；Other
+	// <p>编程语言:  Java；C/C++；Python；Go；Other</p>
 	ProgramLanguage *string `json:"ProgramLanguage,omitnil,omitempty" name:"ProgramLanguage"`
 
-	// 开发框架-SpringCloud/Dubbo/Go-GRPC/Other
+	// <p>开发框架-SpringCloud/Dubbo/Go-GRPC/Other</p>
 	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
 
-	// 注册配置治理
+	// <p>注册配置治理，关闭注册配置治理或者使用北极星注册中心时必须传值</p>
 	ServiceGovernanceConfig *ServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
 
-	// 是否创建并关联同名镜像仓库
+	// <p>是否创建并关联同名镜像仓库</p>
 	CreateSameNameImageRepository *bool `json:"CreateSameNameImageRepository,omitnil,omitempty" name:"CreateSameNameImageRepository"`
 }
 
 type CreateApplicationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用名称，最长60字符
+	// <p>应用名称，最长60字符</p>
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
-	// 应用类型，V：虚拟机应用；C：容器应用；S：serverless应用
+	// <p>应用类型，V：虚拟机应用；C：容器应用；S：serverless应用</p>
 	ApplicationType *string `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
-	// 应用微服务类型，M：service mesh应用；N：普通应用；G：网关应用
+	// <p>应用微服务类型，M：service mesh应用；N：普通应用；G：网关应用</p>
 	MicroserviceType *string `json:"MicroserviceType,omitnil,omitempty" name:"MicroserviceType"`
 
-	// 应用描述
+	// <p>应用描述</p>
 	ApplicationDesc *string `json:"ApplicationDesc,omitnil,omitempty" name:"ApplicationDesc"`
 
-	// 应用日志配置项，废弃参数
+	// <p>应用日志配置项，废弃参数</p>
 	ApplicationLogConfig *string `json:"ApplicationLogConfig,omitnil,omitempty" name:"ApplicationLogConfig"`
 
-	// 应用资源类型，废弃参数
+	// <p>应用资源类型，废弃参数</p>
 	ApplicationResourceType *string `json:"ApplicationResourceType,omitnil,omitempty" name:"ApplicationResourceType"`
 
-	// 应用runtime类型
+	// <p>应用runtime类型</p>
 	ApplicationRuntimeType *string `json:"ApplicationRuntimeType,omitnil,omitempty" name:"ApplicationRuntimeType"`
 
-	// 【数据集ID】。可通过调用[DescribePrograms](https://cloud.tencent.com/document/product/649/73477)查询已创建的数据集列表或登录[控制台](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program&roleId=role-a26486wy)进行查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
+	// <p>【数据集ID】。可通过调用<a href="https://cloud.tencent.com/document/product/649/73477">DescribePrograms</a>查询已创建的数据集列表或登录<a href="https://console.cloud.tencent.com/tsf/privilege?rid=1&amp;tab=program&amp;roleId=role-a26486wy">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/108544">CreateProgram</a>创建新的数据集。</p>
 	ProgramId *string `json:"ProgramId,omitnil,omitempty" name:"ProgramId"`
 
-	// 服务配置信息列表
+	// <p>服务配置信息列表</p>
 	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitnil,omitempty" name:"ServiceConfigList"`
 
-	// 忽略创建镜像仓库
+	// <p>忽略创建镜像仓库</p>
 	IgnoreCreateImageRepository *bool `json:"IgnoreCreateImageRepository,omitnil,omitempty" name:"IgnoreCreateImageRepository"`
 
-	// 数据集id列表
+	// <p>数据集id列表</p>
 	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
 
-	// apm业务系统id
+	// <p>apm业务系统id</p>
 	ApmInstanceId *string `json:"ApmInstanceId,omitnil,omitempty" name:"ApmInstanceId"`
 
-	// 编程语言:  Java；C/C++；Python；Go；Other
+	// <p>编程语言:  Java；C/C++；Python；Go；Other</p>
 	ProgramLanguage *string `json:"ProgramLanguage,omitnil,omitempty" name:"ProgramLanguage"`
 
-	// 开发框架-SpringCloud/Dubbo/Go-GRPC/Other
+	// <p>开发框架-SpringCloud/Dubbo/Go-GRPC/Other</p>
 	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
 
-	// 注册配置治理
+	// <p>注册配置治理，关闭注册配置治理或者使用北极星注册中心时必须传值</p>
 	ServiceGovernanceConfig *ServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
 
-	// 是否创建并关联同名镜像仓库
+	// <p>是否创建并关联同名镜像仓库</p>
 	CreateSameNameImageRepository *bool `json:"CreateSameNameImageRepository,omitnil,omitempty" name:"CreateSameNameImageRepository"`
 }
 
@@ -2932,7 +2932,7 @@ func (r *CreateApplicationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateApplicationResponseParams struct {
-	// 应用ID
+	// <p>应用ID</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20473,13 +20473,13 @@ type ServiceConfig struct {
 }
 
 type ServiceGovernanceConfig struct {
-	// 是否开启服务注册治理
+	// <p>是否开启服务注册治理</p><p>枚举值：</p><ul><li>true： 使用Consul或者北极星服务注册治理</li><li>false： 不使用服务注册治理</li></ul>
 	EnableGovernance *bool `json:"EnableGovernance,omitnil,omitempty" name:"EnableGovernance"`
 
-	// 服务治理类型（枚举：SHARE表示共享型、EXCLUSIVE表示独占型）
+	// <p>服务治理类型</p><p>枚举值：</p><ul><li>SHARE： 使用Consul注册中心</li><li>EXCLUSIVE： 使用北极星注册中心</li></ul>
 	GovernanceType *string `json:"GovernanceType,omitnil,omitempty" name:"GovernanceType"`
 
-	// 独享实例列表
+	// <p>北极星实例列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExclusiveInstances []*ExclusiveInstance `json:"ExclusiveInstances,omitnil,omitempty" name:"ExclusiveInstances"`
 }

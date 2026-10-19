@@ -62,6 +62,9 @@ const (
 	// 翻页超过1万条，建议重新选择日志查询时间
 	FAILEDOPERATION_CONTEXTLIMITERROR = "FailedOperation.ContextLimitError"
 
+	// 导出Notebook镜像失败
+	FAILEDOPERATION_CREATEIMAGEFAILED = "FailedOperation.CreateImageFailed"
+
 	// cos client 内部错误。
 	FAILEDOPERATION_DCCOSCLIENTERR = "FailedOperation.DCCosClientErr"
 
@@ -145,6 +148,9 @@ const (
 
 	// 操作不允许。
 	FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+
+	// 该Notebook实例不支持保存镜像，如果您使用的是自定义镜像请重启Notebook实例后再执行保存操作
+	FAILEDOPERATION_NOTSUPPORTEDTOCREATEIMAGE = "FailedOperation.NotSupportedToCreateImage"
 
 	// 未找到Notebook实例相关容器，无法生成访问地址。
 	FAILEDOPERATION_PODIPNOTFOUND = "FailedOperation.PodIpNotFound"

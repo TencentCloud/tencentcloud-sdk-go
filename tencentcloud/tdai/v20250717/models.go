@@ -159,6 +159,9 @@ type AgentInstance struct {
 
 	// <p>agent memory 服务详情</p>
 	AgentMem *AgentMemInfo `json:"AgentMem,omitnil,omitempty" name:"AgentMem"`
+
+	// <p>关联的 memory（AGM）实例ID（仅免部署实例有值）</p>
+	MemInstanceId *string `json:"MemInstanceId,omitnil,omitempty" name:"MemInstanceId"`
 }
 
 type AgentMemInfo struct {
@@ -1545,6 +1548,9 @@ type DescribeMemoryPlusSpaceResponseParams struct {
 	// <p>Memory 实例 Credit 的最大使用数量。</p>
 	CreditLimit *float64 `json:"CreditLimit,omitnil,omitempty" name:"CreditLimit"`
 
+	// <p>是否开启压缩</p>
+	Compressed *bool `json:"Compressed,omitnil,omitempty" name:"Compressed"`
+
 	// <p>Memory 实例的内网访问地址。</p>
 	AccessUrl *string `json:"AccessUrl,omitnil,omitempty" name:"AccessUrl"`
 
@@ -2014,6 +2020,9 @@ type MemoryPlusInfo struct {
 	// <p>当月积分数</p>
 	CreditUsage *float64 `json:"CreditUsage,omitnil,omitempty" name:"CreditUsage"`
 
+	// <p>是否开启压缩</p>
+	Compressed *bool `json:"Compressed,omitnil,omitempty" name:"Compressed"`
+
 	// <p>资源标签</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
@@ -2186,6 +2195,9 @@ type ModifyMemoryPlusSpaceRequestParams struct {
 
 	// <p>指定修改后的实例描述。最多支持 200 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否开启压缩</p>
+	Compressed *bool `json:"Compressed,omitnil,omitempty" name:"Compressed"`
 }
 
 type ModifyMemoryPlusSpaceRequest struct {
@@ -2199,6 +2211,9 @@ type ModifyMemoryPlusSpaceRequest struct {
 
 	// <p>指定修改后的实例描述。最多支持 200 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否开启压缩</p>
+	Compressed *bool `json:"Compressed,omitnil,omitempty" name:"Compressed"`
 }
 
 func (r *ModifyMemoryPlusSpaceRequest) ToJsonString() string {
@@ -2216,6 +2231,7 @@ func (r *ModifyMemoryPlusSpaceRequest) FromJsonString(s string) error {
 	delete(f, "SpaceId")
 	delete(f, "Name")
 	delete(f, "Description")
+	delete(f, "Compressed")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMemoryPlusSpaceRequest has unknown keys!", "")
 	}

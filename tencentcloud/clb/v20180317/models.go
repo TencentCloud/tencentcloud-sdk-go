@@ -1734,6 +1734,9 @@ type Coefficient struct {
 
 	// <p>输出视频每秒系数</p>
 	OutputVideoSecondCoefficient *float64 `json:"OutputVideoSecondCoefficient,omitnil,omitempty" name:"OutputVideoSecondCoefficient"`
+
+	// <p>输出图片系数</p>
+	OutputImageCoefficient *float64 `json:"OutputImageCoefficient,omitnil,omitempty" name:"OutputImageCoefficient"`
 }
 
 type CoefficientScheduleRule struct {
@@ -3143,6 +3146,9 @@ type CreateModelRouterRequestParams struct {
 
 	// <p>Decisions 调度配置</p>
 	DecisionsConfig *DecisionsConfig `json:"DecisionsConfig,omitnil,omitempty" name:"DecisionsConfig"`
+
+	// <p>Images 生图配置</p>
+	ImageConfig *ImageConfig `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
 }
 
 type CreateModelRouterRequest struct {
@@ -3210,6 +3216,9 @@ type CreateModelRouterRequest struct {
 
 	// <p>Decisions 调度配置</p>
 	DecisionsConfig *DecisionsConfig `json:"DecisionsConfig,omitnil,omitempty" name:"DecisionsConfig"`
+
+	// <p>Images 生图配置</p>
+	ImageConfig *ImageConfig `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
 }
 
 func (r *CreateModelRouterRequest) ToJsonString() string {
@@ -3245,6 +3254,7 @@ func (r *CreateModelRouterRequest) FromJsonString(s string) error {
 	delete(f, "VideoConfig")
 	delete(f, "RerankConfig")
 	delete(f, "DecisionsConfig")
+	delete(f, "ImageConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRouterRequest has unknown keys!", "")
 	}
@@ -9940,6 +9950,23 @@ type IdleLoadBalancer struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
+type ImageConfig struct {
+	// <p>模型内路由策略</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoutingStrategy *string `json:"RoutingStrategy,omitnil,omitempty" name:"RoutingStrategy"`
+
+	// <p>路由参数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoutingStrategyArgs *RoutingStrategyArgs `json:"RoutingStrategyArgs,omitnil,omitempty" name:"RoutingStrategyArgs"`
+
+	// <p>同一模型请求重试次数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumRetries *uint64 `json:"NumRetries,omitnil,omitempty" name:"NumRetries"`
+
+	// <p>同步超时时间</p><p>取值范围：[0, 60]</p><p>单位：秒</p>
+	WaitSeconds *uint64 `json:"WaitSeconds,omitnil,omitempty" name:"WaitSeconds"`
+}
+
 type InputKeyInfo struct {
 	// <p>Key的名称</p>
 	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
@@ -11644,6 +11671,9 @@ type ModelRouterDetail struct {
 
 	// <p>决策模型设置</p>
 	DecisionsConfig *DecisionsConfig `json:"DecisionsConfig,omitnil,omitempty" name:"DecisionsConfig"`
+
+	// <p>Images 生图配置</p>
+	ImageConfig *ImageConfig `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
 }
 
 type ModelRouterLog struct {
@@ -13395,6 +13425,9 @@ type ModifyModelRouterAttributesRequestParams struct {
 
 	// <p>Decisions 调度配置</p>
 	DecisionsConfig *DecisionsConfig `json:"DecisionsConfig,omitnil,omitempty" name:"DecisionsConfig"`
+
+	// <p>Images 生图配置</p>
+	ImageConfig *ImageConfig `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
 }
 
 type ModifyModelRouterAttributesRequest struct {
@@ -13432,6 +13465,9 @@ type ModifyModelRouterAttributesRequest struct {
 
 	// <p>Decisions 调度配置</p>
 	DecisionsConfig *DecisionsConfig `json:"DecisionsConfig,omitnil,omitempty" name:"DecisionsConfig"`
+
+	// <p>Images 生图配置</p>
+	ImageConfig *ImageConfig `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
 }
 
 func (r *ModifyModelRouterAttributesRequest) ToJsonString() string {
@@ -13457,6 +13493,7 @@ func (r *ModifyModelRouterAttributesRequest) FromJsonString(s string) error {
 	delete(f, "VideoConfig")
 	delete(f, "RerankConfig")
 	delete(f, "DecisionsConfig")
+	delete(f, "ImageConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelRouterAttributesRequest has unknown keys!", "")
 	}
@@ -15620,6 +15657,9 @@ type ServiceProviderHealthCheckConfigItemInput struct {
 
 	// <p>健康检查方式。</p><p>枚举值：</p><ul><li>Service： 探测服务可用性</li><li>Model： 探测模型可用性</li></ul>
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitnil,omitempty" name:"HealthCheckMethod"`
+
+	// <p>健康检查超时时间</p><p>取值范围：[1, 60]</p><p>单位：秒</p>
+	HealthCheckTimeout *uint64 `json:"HealthCheckTimeout,omitnil,omitempty" name:"HealthCheckTimeout"`
 }
 
 type ServiceProviderHealthCheckConfigItemOutput struct {
@@ -15645,6 +15685,9 @@ type ServiceProviderHealthCheckConfigItemOutput struct {
 
 	// <p>健康检查方式。</p>
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitnil,omitempty" name:"HealthCheckMethod"`
+
+	// <p>健康检查超时时间</p><p>单位：秒</p><p>默认值：15</p>
+	HealthCheckTimeout *uint64 `json:"HealthCheckTimeout,omitnil,omitempty" name:"HealthCheckTimeout"`
 }
 
 type ServiceProviderHealthCheckConfigOutput struct {

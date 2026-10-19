@@ -230,6 +230,9 @@ const (
 	// 无效的边缘HTTPS证书配置，证书与域名不匹配。
 	INVALIDPARAMETER_CERTNOTMATCHDOMAIN = "InvalidParameter.CertNotMatchDomain"
 
+	// 证书 SAN 域名总长度超过限制（最大 4096 字节）。
+	INVALIDPARAMETER_CERTSANTOOLONG = "InvalidParameter.CertSANTooLong"
+
 	// 内部错误。
 	INVALIDPARAMETER_CERTSYSTEMERROR = "InvalidParameter.CertSystemError"
 

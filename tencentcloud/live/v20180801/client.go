@@ -14751,6 +14751,198 @@ func (c *Client) DescribeStreamDayPlayInfoListWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeStreamPackageIngestStatisticsRequest() (request *DescribeStreamPackageIngestStatisticsRequest) {
+    request = &DescribeStreamPackageIngestStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeStreamPackageIngestStatistics")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageIngestStatisticsResponse() (response *DescribeStreamPackageIngestStatisticsResponse) {
+    response = &DescribeStreamPackageIngestStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageIngestStatistics
+// DescribeStreamPackageIngestStatistics
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeStreamPackageIngestStatistics(request *DescribeStreamPackageIngestStatisticsRequest) (response *DescribeStreamPackageIngestStatisticsResponse, err error) {
+    return c.DescribeStreamPackageIngestStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageIngestStatistics
+// DescribeStreamPackageIngestStatistics
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeStreamPackageIngestStatisticsWithContext(ctx context.Context, request *DescribeStreamPackageIngestStatisticsRequest) (response *DescribeStreamPackageIngestStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageIngestStatisticsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeStreamPackageIngestStatistics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageIngestStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageIngestStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageOutputStatisticsRequest() (request *DescribeStreamPackageOutputStatisticsRequest) {
+    request = &DescribeStreamPackageOutputStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeStreamPackageOutputStatistics")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageOutputStatisticsResponse() (response *DescribeStreamPackageOutputStatisticsResponse) {
+    response = &DescribeStreamPackageOutputStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageOutputStatistics
+// 查询媒体包装输出用量信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeStreamPackageOutputStatistics(request *DescribeStreamPackageOutputStatisticsRequest) (response *DescribeStreamPackageOutputStatisticsResponse, err error) {
+    return c.DescribeStreamPackageOutputStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageOutputStatistics
+// 查询媒体包装输出用量信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeStreamPackageOutputStatisticsWithContext(ctx context.Context, request *DescribeStreamPackageOutputStatisticsRequest) (response *DescribeStreamPackageOutputStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageOutputStatisticsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeStreamPackageOutputStatistics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageOutputStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageOutputStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageRemuxStatisticsRequest() (request *DescribeStreamPackageRemuxStatisticsRequest) {
+    request = &DescribeStreamPackageRemuxStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeStreamPackageRemuxStatistics")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageRemuxStatisticsResponse() (response *DescribeStreamPackageRemuxStatisticsResponse) {
+    response = &DescribeStreamPackageRemuxStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageRemuxStatistics
+// DescribeStreamPackageRemuxStatistics
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeStreamPackageRemuxStatistics(request *DescribeStreamPackageRemuxStatisticsRequest) (response *DescribeStreamPackageRemuxStatisticsResponse, err error) {
+    return c.DescribeStreamPackageRemuxStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageRemuxStatistics
+// DescribeStreamPackageRemuxStatistics
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeStreamPackageRemuxStatisticsWithContext(ctx context.Context, request *DescribeStreamPackageRemuxStatisticsRequest) (response *DescribeStreamPackageRemuxStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageRemuxStatisticsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeStreamPackageRemuxStatistics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageRemuxStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageRemuxStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStreamPlayInfoListRequest() (request *DescribeStreamPlayInfoListRequest) {
     request = &DescribeStreamPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},

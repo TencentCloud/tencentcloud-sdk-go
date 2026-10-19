@@ -4694,113 +4694,117 @@ func (r *DescribeDeviceGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDevicesRequestParams struct {
-	// 资产ID集合
+	// <p>资产ID集合</p>
 	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
 
-	// 资产名或资产IP，模糊查询
+	// <p>资产名或资产IP，模糊查询</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 暂未使用
+	// <p>暂未使用</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 地域码集合
+	// <p>地域码集合</p>
 	ApCodeSet []*string `json:"ApCodeSet,omitnil,omitempty" name:"ApCodeSet"`
 
-	// 操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+	// <p>操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer</p>
 	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// 分页偏移位置，默认值为0
+	// <p>分页偏移位置，默认值为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条目数量，默认20
+	// <p>每页条目数量</p><p>取值范围：[0, 500]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 有该资产访问权限的用户ID集合
+	// <p>有该资产访问权限的用户ID集合</p>
 	AuthorizedUserIdSet []*uint64 `json:"AuthorizedUserIdSet,omitnil,omitempty" name:"AuthorizedUserIdSet"`
 
-	// 过滤条件，资产绑定的堡垒机服务ID集合
+	// <p>过滤条件，资产绑定的堡垒机服务ID集合</p>
 	ResourceIdSet []*string `json:"ResourceIdSet,omitnil,omitempty" name:"ResourceIdSet"`
 
-	// 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+	// <p>可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer</p>
 	KindSet []*uint64 `json:"KindSet,omitnil,omitempty" name:"KindSet"`
 
-	// 资产是否包含托管账号。1，包含；0，不包含
+	// <p>资产是否包含托管账号。1，包含；0，不包含</p>
 	ManagedAccount *string `json:"ManagedAccount,omitnil,omitempty" name:"ManagedAccount"`
 
-	// 过滤条件，可按照部门ID进行过滤
+	// <p>过滤条件，可按照部门ID进行过滤</p>
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
-	// 资产所属云账号id
+	// <p>资产所属云账号id</p>
 	AccountIdSet []*uint64 `json:"AccountIdSet,omitnil,omitempty" name:"AccountIdSet"`
 
-	// 云厂商类型，1-腾讯云，2-阿里云
+	// <p>云厂商类型，1-腾讯云，2-阿里云</p>
 	ProviderTypeSet []*uint64 `json:"ProviderTypeSet,omitnil,omitempty" name:"ProviderTypeSet"`
 
-	// 同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+	// <p>同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期</p>
 	CloudDeviceStatusSet []*uint64 `json:"CloudDeviceStatusSet,omitnil,omitempty" name:"CloudDeviceStatusSet"`
 
-	// 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
+	// <p>过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
-	// 过滤数组。支持的Name：
-	// BindingStatus 绑定状态
+	// <p>过滤数组。支持的Name：<br>BindingStatus 绑定状态</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>所属成员 AppId</p>
+	OwnerAppIds []*uint64 `json:"OwnerAppIds,omitnil,omitempty" name:"OwnerAppIds"`
 }
 
 type DescribeDevicesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资产ID集合
+	// <p>资产ID集合</p>
 	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
 
-	// 资产名或资产IP，模糊查询
+	// <p>资产名或资产IP，模糊查询</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 暂未使用
+	// <p>暂未使用</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 地域码集合
+	// <p>地域码集合</p>
 	ApCodeSet []*string `json:"ApCodeSet,omitnil,omitempty" name:"ApCodeSet"`
 
-	// 操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+	// <p>操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer</p>
 	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// 分页偏移位置，默认值为0
+	// <p>分页偏移位置，默认值为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条目数量，默认20
+	// <p>每页条目数量</p><p>取值范围：[0, 500]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 有该资产访问权限的用户ID集合
+	// <p>有该资产访问权限的用户ID集合</p>
 	AuthorizedUserIdSet []*uint64 `json:"AuthorizedUserIdSet,omitnil,omitempty" name:"AuthorizedUserIdSet"`
 
-	// 过滤条件，资产绑定的堡垒机服务ID集合
+	// <p>过滤条件，资产绑定的堡垒机服务ID集合</p>
 	ResourceIdSet []*string `json:"ResourceIdSet,omitnil,omitempty" name:"ResourceIdSet"`
 
-	// 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+	// <p>可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer</p>
 	KindSet []*uint64 `json:"KindSet,omitnil,omitempty" name:"KindSet"`
 
-	// 资产是否包含托管账号。1，包含；0，不包含
+	// <p>资产是否包含托管账号。1，包含；0，不包含</p>
 	ManagedAccount *string `json:"ManagedAccount,omitnil,omitempty" name:"ManagedAccount"`
 
-	// 过滤条件，可按照部门ID进行过滤
+	// <p>过滤条件，可按照部门ID进行过滤</p>
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
-	// 资产所属云账号id
+	// <p>资产所属云账号id</p>
 	AccountIdSet []*uint64 `json:"AccountIdSet,omitnil,omitempty" name:"AccountIdSet"`
 
-	// 云厂商类型，1-腾讯云，2-阿里云
+	// <p>云厂商类型，1-腾讯云，2-阿里云</p>
 	ProviderTypeSet []*uint64 `json:"ProviderTypeSet,omitnil,omitempty" name:"ProviderTypeSet"`
 
-	// 同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+	// <p>同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期</p>
 	CloudDeviceStatusSet []*uint64 `json:"CloudDeviceStatusSet,omitnil,omitempty" name:"CloudDeviceStatusSet"`
 
-	// 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
+	// <p>过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
-	// 过滤数组。支持的Name：
-	// BindingStatus 绑定状态
+	// <p>过滤数组。支持的Name：<br>BindingStatus 绑定状态</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>所属成员 AppId</p>
+	OwnerAppIds []*uint64 `json:"OwnerAppIds,omitnil,omitempty" name:"OwnerAppIds"`
 }
 
 func (r *DescribeDevicesRequest) ToJsonString() string {
@@ -4832,6 +4836,7 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 	delete(f, "CloudDeviceStatusSet")
 	delete(f, "TagFilters")
 	delete(f, "Filters")
+	delete(f, "OwnerAppIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicesRequest has unknown keys!", "")
 	}
@@ -4840,10 +4845,10 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDevicesResponseParams struct {
-	// 资产总数
+	// <p>资产总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 资产信息列表
+	// <p>资产信息列表</p>
 	DeviceSet []*Device `json:"DeviceSet,omitnil,omitempty" name:"DeviceSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5410,38 +5415,38 @@ func (r *DescribeOperationTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourcesRequestParams struct {
-	// 地域码, 如: ap-guangzhou
+	// <p>地域码, 如: ap-guangzhou</p>
 	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
 
-	// 按照堡垒机开通的 VPC 实例ID查询
+	// <p>按照堡垒机开通的 VPC 实例ID查询</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId
+	// <p>资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId</p>
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 每页条目数量
+	// <p>每页条目数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移位置
+	// <p>分页偏移位置</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeResourcesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 地域码, 如: ap-guangzhou
+	// <p>地域码, 如: ap-guangzhou</p>
 	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
 
-	// 按照堡垒机开通的 VPC 实例ID查询
+	// <p>按照堡垒机开通的 VPC 实例ID查询</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId
+	// <p>资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId</p>
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 每页条目数量
+	// <p>每页条目数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移位置
+	// <p>分页偏移位置</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5470,10 +5475,10 @@ func (r *DescribeResourcesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourcesResponseParams struct {
-	// 堡垒机资源列表
+	// <p>堡垒机资源列表</p>
 	ResourceSet []*Resource `json:"ResourceSet,omitnil,omitempty" name:"ResourceSet"`
 
-	// 堡垒机资源数量
+	// <p>堡垒机资源数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6166,6 +6171,15 @@ type Device struct {
 
 	// <p>同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期</p>
 	SyncCloudDeviceStatus *uint64 `json:"SyncCloudDeviceStatus,omitnil,omitempty" name:"SyncCloudDeviceStatus"`
+
+	// <p>所属账号 AppId</p>
+	OwnerAppId *uint64 `json:"OwnerAppId,omitnil,omitempty" name:"OwnerAppId"`
+
+	// <p>所属账号 UIN</p>
+	OwnerAccountUin *string `json:"OwnerAccountUin,omitnil,omitempty" name:"OwnerAccountUin"`
+
+	// <p>所属账号展示名</p>
+	OwnerAccountName *string `json:"OwnerAccountName,omitnil,omitempty" name:"OwnerAccountName"`
 }
 
 type DeviceAccount struct {
@@ -9354,6 +9368,9 @@ type Resource struct {
 
 	// <p>堡垒机实例的可用区信息</p>
 	ResourceZoneSet []*ResourceDeployZone `json:"ResourceZoneSet,omitnil,omitempty" name:"ResourceZoneSet"`
+
+	// <p>多账号额度</p>
+	OrgAccountQuota *uint64 `json:"OrgAccountQuota,omitnil,omitempty" name:"OrgAccountQuota"`
 }
 
 type ResourceDeployZone struct {

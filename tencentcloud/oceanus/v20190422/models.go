@@ -6583,6 +6583,10 @@ type Setats struct {
 	// <p>网络信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CCNs []*CCN `json:"CCNs,omitnil,omitempty" name:"CCNs"`
+
+	// <p>挂靠的宿主集群</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterGroupSerialId *string `json:"ClusterGroupSerialId,omitnil,omitempty" name:"ClusterGroupSerialId"`
 }
 
 type SetatsCvmInfo struct {

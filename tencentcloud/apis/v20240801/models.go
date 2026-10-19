@@ -86,15 +86,23 @@ type AgentAppModelServiceDTO struct {
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 是否开启流量控制
+	//
+	// Deprecated: InvokeLimitConfigStatus is deprecated.
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
 	// 流量控制
+	//
+	// Deprecated: InvokeLimitConfig is deprecated.
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
 	// 是否开启token控制
+	//
+	// Deprecated: TokenLimitStatus is deprecated.
 	TokenLimitStatus *bool `json:"TokenLimitStatus,omitnil,omitempty" name:"TokenLimitStatus"`
 
 	// token控制
+	//
+	// Deprecated: TokenLimitConfig is deprecated.
 	TokenLimitConfig *TokenLimitConfigDTO `json:"TokenLimitConfig,omitnil,omitempty" name:"TokenLimitConfig"`
 }
 
@@ -111,9 +119,13 @@ type AgentAppServiceDTO struct {
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// <p>是否限流</p>
+	//
+	// Deprecated: InvokeLimitConfigStatus is deprecated.
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
 	// <p>限流配置</p>
+	//
+	// Deprecated: InvokeLimitConfig is deprecated.
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
 	// <p>是否要认证（已废弃，请勿使用）</p>
@@ -647,9 +659,13 @@ type CreateMcpServerRequestParams struct {
 	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 
 	// <p>流量控制开启状态</p>
+	//
+	// Deprecated: InvokeLimitConfigStatus is deprecated.
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
 	// <p>流量控制配置</p>
+	//
+	// Deprecated: InvokeLimitConfig is deprecated.
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
 	// <p>IP白名单开启状态</p>
@@ -1012,15 +1028,23 @@ type CreateModelServiceRequestParams struct {
 	PathMatchType *string `json:"PathMatchType,omitnil,omitempty" name:"PathMatchType"`
 
 	// <p>是否开启限流</p>
+	//
+	// Deprecated: InvokeLimitConfigStatus is deprecated.
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
 	// <p>限流配置</p>
+	//
+	// Deprecated: InvokeLimitConfig is deprecated.
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
 	// <p>是否开启token控制</p>
+	//
+	// Deprecated: TokenLimitStatus is deprecated.
 	TokenLimitStatus *bool `json:"TokenLimitStatus,omitnil,omitempty" name:"TokenLimitStatus"`
 
 	// <p>token控制</p>
+	//
+	// Deprecated: TokenLimitConfig is deprecated.
 	TokenLimitConfig *TokenLimitConfigDTO `json:"TokenLimitConfig,omitnil,omitempty" name:"TokenLimitConfig"`
 
 	// <p>是否开启内容安全</p>
@@ -2193,11 +2217,11 @@ func (r *DescribeAgentAppResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAgentAppServicesRequestParams struct {
-	// <p>实例ID</p>
-	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
-
 	// <p>数据量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// <p>IDs</p>
 	IDs []*string `json:"IDs,omitnil,omitempty" name:"IDs"`
@@ -2224,11 +2248,11 @@ type DescribeAgentAppServicesRequestParams struct {
 type DescribeAgentAppServicesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>实例ID</p>
-	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
-
 	// <p>数据量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// <p>IDs</p>
 	IDs []*string `json:"IDs,omitnil,omitempty" name:"IDs"`
@@ -2264,8 +2288,8 @@ func (r *DescribeAgentAppServicesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "InstanceID")
 	delete(f, "Limit")
+	delete(f, "InstanceID")
 	delete(f, "IDs")
 	delete(f, "AgentAppIDs")
 	delete(f, "ServiceIDs")
@@ -2711,10 +2735,14 @@ type DescribeMcpServerResponseVO struct {
 
 	// <p>流量控制状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: InvokeLimitConfigStatus is deprecated.
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
 	// <p>流量控制配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: InvokeLimitConfig is deprecated.
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
 	// <p>IP白名单开启状态</p>
@@ -3190,9 +3218,13 @@ type DescribeModelServiceResponseVO struct {
 	ModelNames []*string `json:"ModelNames,omitnil,omitempty" name:"ModelNames"`
 
 	// <p>是否开启限流</p>
+	//
+	// Deprecated: InvokeLimitConfigStatus is deprecated.
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
 	// <p>限流配置</p>
+	//
+	// Deprecated: InvokeLimitConfig is deprecated.
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
 	// <p>创建时间</p>
@@ -3202,9 +3234,13 @@ type DescribeModelServiceResponseVO struct {
 	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 
 	// <p>是否开启token控制</p>
+	//
+	// Deprecated: TokenLimitStatus is deprecated.
 	TokenLimitStatus *bool `json:"TokenLimitStatus,omitnil,omitempty" name:"TokenLimitStatus"`
 
 	// <p>token控制</p>
+	//
+	// Deprecated: TokenLimitConfig is deprecated.
 	TokenLimitConfig *TokenLimitConfigDTO `json:"TokenLimitConfig,omitnil,omitempty" name:"TokenLimitConfig"`
 
 	// <p>是否开启tms配置</p>
@@ -4186,9 +4222,13 @@ type ModifyMcpServerRequestParams struct {
 	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 
 	// <p>流量控制开启状态</p>
+	//
+	// Deprecated: InvokeLimitConfigStatus is deprecated.
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
 	// <p>流量控制配置</p>
+	//
+	// Deprecated: InvokeLimitConfig is deprecated.
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
 	// <p>IP白名单开启状态</p>
@@ -4552,15 +4592,23 @@ type ModifyModelServiceRequestParams struct {
 	TargetModels []*TargetModelDTO `json:"TargetModels,omitnil,omitempty" name:"TargetModels"`
 
 	// <p>是否开启限流</p>
+	//
+	// Deprecated: InvokeLimitConfigStatus is deprecated.
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
 	// <p>限流配置</p>
+	//
+	// Deprecated: InvokeLimitConfig is deprecated.
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
 	// <p>是否开启token控制</p>
+	//
+	// Deprecated: TokenLimitStatus is deprecated.
 	TokenLimitStatus *bool `json:"TokenLimitStatus,omitnil,omitempty" name:"TokenLimitStatus"`
 
 	// <p>token控制</p>
+	//
+	// Deprecated: TokenLimitConfig is deprecated.
 	TokenLimitConfig *TokenLimitConfigDTO `json:"TokenLimitConfig,omitnil,omitempty" name:"TokenLimitConfig"`
 
 	// <p>是否开启内容安全</p>
@@ -4889,9 +4937,13 @@ type ModifyServiceRequestParams struct {
 	ResponseParamsValidatorJsonInfoT *string `json:"ResponseParamsValidatorJsonInfoT,omitnil,omitempty" name:"ResponseParamsValidatorJsonInfoT"`
 
 	// <p>流量控制</p>
+	//
+	// Deprecated: InvokeLimitConfigStatus is deprecated.
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
 	// <p>流量控制</p>
+	//
+	// Deprecated: InvokeLimitConfig is deprecated.
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
 	// <p>健康检查</p>
@@ -5322,10 +5374,14 @@ type ServiceVO struct {
 
 	// <p>流量控制</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: InvokeLimitConfigStatus is deprecated.
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
 	// <p>流量控制</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: InvokeLimitConfig is deprecated.
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
 	// <p>健康检查</p>
@@ -5720,9 +5776,13 @@ type ToolConfigDTO struct {
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
 
 	// 是否开启限流配置
+	//
+	// Deprecated: InvokeLimitConfigStatus is deprecated.
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
 	// 限流配置
+	//
+	// Deprecated: InvokeLimitConfig is deprecated.
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
 	// 绑定安全规则

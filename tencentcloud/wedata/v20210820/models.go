@@ -42236,6 +42236,10 @@ type TaskDsDTO struct {
 	// <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
+
+	// <p>分钟任务相位偏移</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinuteOffset *uint64 `json:"MinuteOffset,omitnil,omitempty" name:"MinuteOffset"`
 }
 
 type TaskExtDsVO struct {
@@ -45720,6 +45724,10 @@ type WorkflowScheduleDtoDs struct {
 	// <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
+
+	// <p>分钟任务相位偏移</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinuteOffset *uint64 `json:"MinuteOffset,omitnil,omitempty" name:"MinuteOffset"`
 }
 
 type WorkflowSchedulerOpsDto struct {

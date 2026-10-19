@@ -244,6 +244,18 @@ type ArtifactInfo struct {
 	// <p>用于解析调用下载接口</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StoragePath *string `json:"StoragePath,omitnil,omitempty" name:"StoragePath"`
+
+	// <p>来源类型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// <p>来源名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// <p>预览摘要</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionSummary *string `json:"ExecutionSummary,omitnil,omitempty" name:"ExecutionSummary"`
 }
 
 // Predefined struct for user
@@ -2527,6 +2539,12 @@ type ListAIWorkbenchArtifactsRequestParams struct {
 
 	// <p>排序</p><p>枚举值：</p><ul><li>ASC： 正序</li><li>DESC： 倒序</li></ul>
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// <p>数字分身ID</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>模糊搜索制品信息</p>
+	NameKeyword *string `json:"NameKeyword,omitnil,omitempty" name:"NameKeyword"`
 }
 
 type ListAIWorkbenchArtifactsRequest struct {
@@ -2546,6 +2564,12 @@ type ListAIWorkbenchArtifactsRequest struct {
 
 	// <p>排序</p><p>枚举值：</p><ul><li>ASC： 正序</li><li>DESC： 倒序</li></ul>
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// <p>数字分身ID</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>模糊搜索制品信息</p>
+	NameKeyword *string `json:"NameKeyword,omitnil,omitempty" name:"NameKeyword"`
 }
 
 func (r *ListAIWorkbenchArtifactsRequest) ToJsonString() string {
@@ -2565,6 +2589,8 @@ func (r *ListAIWorkbenchArtifactsRequest) FromJsonString(s string) error {
 	delete(f, "SessionIds")
 	delete(f, "MimeTypes")
 	delete(f, "OrderDirection")
+	delete(f, "AgentId")
+	delete(f, "NameKeyword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIWorkbenchArtifactsRequest has unknown keys!", "")
 	}

@@ -2017,27 +2017,39 @@ func (r *CreateUserPersonalResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateWebhookTriggerRequestParams struct {
-	// 实例 Id
+	// <p>实例 Id</p>
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
-	// 触发器参数
+	// <p>触发器参数</p>
 	Trigger *WebhookTrigger `json:"Trigger,omitnil,omitempty" name:"Trigger"`
 
-	// 命名空间
+	// <p>命名空间</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>产品名称，非空时创建的 webhook 将被隐藏</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>预热目标地域，AGS 镜像预热的目标地域，非 AGS 触发器为空</p>
+	PreheatRegion *string `json:"PreheatRegion,omitnil,omitempty" name:"PreheatRegion"`
 }
 
 type CreateWebhookTriggerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 Id
+	// <p>实例 Id</p>
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
-	// 触发器参数
+	// <p>触发器参数</p>
 	Trigger *WebhookTrigger `json:"Trigger,omitnil,omitempty" name:"Trigger"`
 
-	// 命名空间
+	// <p>命名空间</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>产品名称，非空时创建的 webhook 将被隐藏</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>预热目标地域，AGS 镜像预热的目标地域，非 AGS 触发器为空</p>
+	PreheatRegion *string `json:"PreheatRegion,omitnil,omitempty" name:"PreheatRegion"`
 }
 
 func (r *CreateWebhookTriggerRequest) ToJsonString() string {
@@ -2055,6 +2067,8 @@ func (r *CreateWebhookTriggerRequest) FromJsonString(s string) error {
 	delete(f, "RegistryId")
 	delete(f, "Trigger")
 	delete(f, "Namespace")
+	delete(f, "Product")
+	delete(f, "PreheatRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWebhookTriggerRequest has unknown keys!", "")
 	}
@@ -2063,7 +2077,7 @@ func (r *CreateWebhookTriggerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateWebhookTriggerResponseParams struct {
-	// 新建的触发器
+	// <p>新建的触发器</p>
 	Trigger *WebhookTrigger `json:"Trigger,omitnil,omitempty" name:"Trigger"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9483,6 +9497,12 @@ type ModifyWebhookTriggerRequestParams struct {
 
 	// <p>命名空间</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>产品名称，非空时创建的 webhook 将被隐藏</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>预热目标地域，AGS 镜像预热的目标地域，非 AGS 触发器为空</p>
+	PreheatRegion *string `json:"PreheatRegion,omitnil,omitempty" name:"PreheatRegion"`
 }
 
 type ModifyWebhookTriggerRequest struct {
@@ -9496,6 +9516,12 @@ type ModifyWebhookTriggerRequest struct {
 
 	// <p>命名空间</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>产品名称，非空时创建的 webhook 将被隐藏</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>预热目标地域，AGS 镜像预热的目标地域，非 AGS 触发器为空</p>
+	PreheatRegion *string `json:"PreheatRegion,omitnil,omitempty" name:"PreheatRegion"`
 }
 
 func (r *ModifyWebhookTriggerRequest) ToJsonString() string {
@@ -9513,6 +9539,8 @@ func (r *ModifyWebhookTriggerRequest) FromJsonString(s string) error {
 	delete(f, "RegistryId")
 	delete(f, "Trigger")
 	delete(f, "Namespace")
+	delete(f, "Product")
+	delete(f, "PreheatRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWebhookTriggerRequest has unknown keys!", "")
 	}
@@ -10786,6 +10814,14 @@ type WebhookTrigger struct {
 	// <p>触发器所属命名空间名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
+
+	// <p>触发器所属产品类型：ags 为镜像预热，apparate 为镜像加速，普通 webhook 为空</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>预热目标地域，AGS 镜像预热的目标地域，非 AGS 触发器为空</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreheatRegion *string `json:"PreheatRegion,omitnil,omitempty" name:"PreheatRegion"`
 }
 
 type WebhookTriggerLog struct {

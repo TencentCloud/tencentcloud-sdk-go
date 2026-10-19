@@ -69,8 +69,6 @@ type AdminChangeInvitationInfo struct {
 
 type Agent struct {
 	// <p>CA-API应用编号，用于同平台企业下标识不同的CA-API应用</p>
-	//
-	// Deprecated: AppId is deprecated.
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// <p>被代理机构的应用号，一般不用传</p>
@@ -3433,39 +3431,45 @@ func (r *CreateDocumentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDraftContractByPromptsTaskRequestParams struct {
-	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	// <p>执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 起草要求，范围要求 5-1000 字
+	// <p>起草要求，范围要求 5-1000 字</p>
 	Requirement *string `json:"Requirement,omitnil,omitempty" name:"Requirement"`
 
-	// 参考模板文件资源id（PDF/Word格式），大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
+	// <p>参考模板文件资源id（PDF/Word格式），大小不超过1M，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles">上传文件</a>接口来获取。</p>
 	ReferenceTemplateId *string `json:"ReferenceTemplateId,omitnil,omitempty" name:"ReferenceTemplateId"`
 
-	// 相关规定文件资源id列表（PDF/Word格式），最多3个文件，每个大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
+	// <p>相关规定文件资源id列表（PDF/Word格式），最多3个文件，每个大小不超过1M，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles">上传文件</a>接口来获取。</p>
 	RequirementFileIds []*string `json:"RequirementFileIds,omitnil,omitempty" name:"RequirementFileIds"`
 
-	// 起草合同的语言要求（zh，en）默认zh
+	// <p>起草合同的语言要求（zh，en）默认zh</p>
 	ContractLanguage *string `json:"ContractLanguage,omitnil,omitempty" name:"ContractLanguage"`
+
+	// <p>审查任务id，仅支持传入1个，通过<a href="https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchContractReviewTask/">批量创建合同审查任务</a>接口来获取。</p>
+	ReviewTaskId *string `json:"ReviewTaskId,omitnil,omitempty" name:"ReviewTaskId"`
 }
 
 type CreateDraftContractByPromptsTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	// <p>执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 起草要求，范围要求 5-1000 字
+	// <p>起草要求，范围要求 5-1000 字</p>
 	Requirement *string `json:"Requirement,omitnil,omitempty" name:"Requirement"`
 
-	// 参考模板文件资源id（PDF/Word格式），大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
+	// <p>参考模板文件资源id（PDF/Word格式），大小不超过1M，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles">上传文件</a>接口来获取。</p>
 	ReferenceTemplateId *string `json:"ReferenceTemplateId,omitnil,omitempty" name:"ReferenceTemplateId"`
 
-	// 相关规定文件资源id列表（PDF/Word格式），最多3个文件，每个大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
+	// <p>相关规定文件资源id列表（PDF/Word格式），最多3个文件，每个大小不超过1M，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles">上传文件</a>接口来获取。</p>
 	RequirementFileIds []*string `json:"RequirementFileIds,omitnil,omitempty" name:"RequirementFileIds"`
 
-	// 起草合同的语言要求（zh，en）默认zh
+	// <p>起草合同的语言要求（zh，en）默认zh</p>
 	ContractLanguage *string `json:"ContractLanguage,omitnil,omitempty" name:"ContractLanguage"`
+
+	// <p>审查任务id，仅支持传入1个，通过<a href="https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchContractReviewTask/">批量创建合同审查任务</a>接口来获取。</p>
+	ReviewTaskId *string `json:"ReviewTaskId,omitnil,omitempty" name:"ReviewTaskId"`
 }
 
 func (r *CreateDraftContractByPromptsTaskRequest) ToJsonString() string {
@@ -3485,6 +3489,7 @@ func (r *CreateDraftContractByPromptsTaskRequest) FromJsonString(s string) error
 	delete(f, "ReferenceTemplateId")
 	delete(f, "RequirementFileIds")
 	delete(f, "ContractLanguage")
+	delete(f, "ReviewTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDraftContractByPromptsTaskRequest has unknown keys!", "")
 	}
@@ -3493,7 +3498,7 @@ func (r *CreateDraftContractByPromptsTaskRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateDraftContractByPromptsTaskResponseParams struct {
-	// 起草任务id
+	// <p>起草任务id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 

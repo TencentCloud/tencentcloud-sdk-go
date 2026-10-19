@@ -4301,6 +4301,60 @@ func (c *Client) DescribeFOOMReportListWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeFileCertificateRequest() (request *DescribeFileCertificateRequest) {
+    request = &DescribeFileCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeFileCertificate")
+    
+    
+    return
+}
+
+func NewDescribeFileCertificateResponse() (response *DescribeFileCertificateResponse) {
+    response = &DescribeFileCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFileCertificate
+// 获取COS存储的临时密钥，具体到ProjectId
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFileCertificate(request *DescribeFileCertificateRequest) (response *DescribeFileCertificateResponse, err error) {
+    return c.DescribeFileCertificateWithContext(context.Background(), request)
+}
+
+// DescribeFileCertificate
+// 获取COS存储的临时密钥，具体到ProjectId
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFileCertificateWithContext(ctx context.Context, request *DescribeFileCertificateRequest) (response *DescribeFileCertificateResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileCertificateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeFileCertificate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileCertificate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFileCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIssuesDistributionRequest() (request *DescribeIssuesDistributionRequest) {
     request = &DescribeIssuesDistributionRequest{
         BaseRequest: &tchttp.BaseRequest{},

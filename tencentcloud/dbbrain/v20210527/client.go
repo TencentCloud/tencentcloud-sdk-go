@@ -2409,6 +2409,118 @@ func (c *Client) DescribeDBAuditLogTopSqlsWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeDBAuditLogsRequest() (request *DescribeDBAuditLogsRequest) {
+    request = &DescribeDBAuditLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBAuditLogs")
+    
+    
+    return
+}
+
+func NewDescribeDBAuditLogsResponse() (response *DescribeDBAuditLogsResponse) {
+    response = &DescribeDBAuditLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBAuditLogs
+// 查询指定实例在时间窗口内的审计日志明细，支持按 SQL 类型、执行耗时、错误码、关键词等多条件过滤。当前仅支持 dcdb、mariadb 产品（cdb、cynosdb 已切至中台）。注意 Filter.MultiSql 与 Filter.ExcludeMultiSql 需以 JSON 字符串形式传递二维数组内容，例如 [["a","b"]] 表示 (a OR b)，服务端会自动解析。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+//  FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
+func (c *Client) DescribeDBAuditLogs(request *DescribeDBAuditLogsRequest) (response *DescribeDBAuditLogsResponse, err error) {
+    return c.DescribeDBAuditLogsWithContext(context.Background(), request)
+}
+
+// DescribeDBAuditLogs
+// 查询指定实例在时间窗口内的审计日志明细，支持按 SQL 类型、执行耗时、错误码、关键词等多条件过滤。当前仅支持 dcdb、mariadb 产品（cdb、cynosdb 已切至中台）。注意 Filter.MultiSql 与 Filter.ExcludeMultiSql 需以 JSON 字符串形式传递二维数组内容，例如 [["a","b"]] 表示 (a OR b)，服务端会自动解析。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+//  FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
+func (c *Client) DescribeDBAuditLogsWithContext(ctx context.Context, request *DescribeDBAuditLogsRequest) (response *DescribeDBAuditLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBAuditLogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDBAuditLogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBAuditLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBAuditLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBAutonomyActionRequest() (request *DescribeDBAutonomyActionRequest) {
     request = &DescribeDBAutonomyActionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3339,6 +3451,86 @@ func (c *Client) DescribeDatabaseAutonomyStatusWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeDatabaseAutonomyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDatabaseObjectV2Request() (request *DescribeDatabaseObjectV2Request) {
+    request = &DescribeDatabaseObjectV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDatabaseObjectV2")
+    
+    
+    return
+}
+
+func NewDescribeDatabaseObjectV2Response() (response *DescribeDatabaseObjectV2Response) {
+    response = &DescribeDatabaseObjectV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDatabaseObjectV2
+// 查询指定 SELECT SQL 在实例上的执行计划，常用于慢 SQL 分析、SQL 优化等场景。仅支持 SELECT 类语句
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDatabaseObjectV2(request *DescribeDatabaseObjectV2Request) (response *DescribeDatabaseObjectV2Response, err error) {
+    return c.DescribeDatabaseObjectV2WithContext(context.Background(), request)
+}
+
+// DescribeDatabaseObjectV2
+// 查询指定 SELECT SQL 在实例上的执行计划，常用于慢 SQL 分析、SQL 优化等场景。仅支持 SELECT 类语句
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDatabaseObjectV2WithContext(ctx context.Context, request *DescribeDatabaseObjectV2Request) (response *DescribeDatabaseObjectV2Response, err error) {
+    if request == nil {
+        request = NewDescribeDatabaseObjectV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDatabaseObjectV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatabaseObjectV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatabaseObjectV2Response()
     err = c.Send(request, response)
     return
 }
