@@ -1888,6 +1888,60 @@ func (r *CancelClusterServerlessScalePlanResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type CancelTaskRequestParams struct {
+	// <p>任务ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type CancelTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *CancelTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CancelTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelTaskResponseParams `json:"Response"`
+}
+
+func (r *CancelTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CheckCreateLibraDBInstanceRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -2462,19 +2516,29 @@ type ClusterInstanceDetail struct {
 	// <p>引擎类型</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
+	// <p>实例状态</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>running： 运行中</li><li>isolating： 隔离中</li><li>isolated： 已隔离</li><li>activating： 恢复中</li><li>offlining： 下线中</li><li>offlined： 已下线</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
 	// <p>实例状态</p>
+	//
+	// Deprecated: InstanceStatus is deprecated.
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
+	// <p>实例状态中文描述</p>
+	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
+
 	// <p>实例状态描述</p>
+	//
+	// Deprecated: InstanceStatusDesc is deprecated.
 	InstanceStatusDesc *string `json:"InstanceStatusDesc,omitnil,omitempty" name:"InstanceStatusDesc"`
+
+	// <p>Cpu</p><p>单位：核</p>
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// <p>cpu核数</p>
 	//
 	// Deprecated: InstanceCpu is deprecated.
 	InstanceCpu *int64 `json:"InstanceCpu,omitnil,omitempty" name:"InstanceCpu"`
-
-	// <p>Cpu</p><p>单位：核</p>
-	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// <p>serverless实例cpu下限</p><p>单位：核</p>
 	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
@@ -2486,6 +2550,8 @@ type ClusterInstanceDetail struct {
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// <p>内存</p>
+	//
+	// Deprecated: InstanceMemory is deprecated.
 	InstanceMemory *int64 `json:"InstanceMemory,omitnil,omitempty" name:"InstanceMemory"`
 
 	// <p>硬盘</p>
@@ -2506,7 +2572,12 @@ type ClusterInstanceDetail struct {
 	// <p>实例任务信息</p>
 	InstanceTasks []*ObjectTask `json:"InstanceTasks,omitnil,omitempty" name:"InstanceTasks"`
 
+	// <p>实例机器类型</p><p>枚举值：</p><ul><li>common： 通用型</li><li>exclusive： 独享型</li></ul>
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
 	// <p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
+	//
+	// Deprecated: InstanceDeviceType is deprecated.
 	InstanceDeviceType *string `json:"InstanceDeviceType,omitnil,omitempty" name:"InstanceDeviceType"`
 
 	// <p>实例存储类型<br>说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。</p>
@@ -2535,12 +2606,6 @@ type ClusterInstanceDetail struct {
 
 	// <p>实例所在的物理可用区</p>
 	PhysicalZone *string `json:"PhysicalZone,omitnil,omitempty" name:"PhysicalZone"`
-
-	// <p>实例状态</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>running： 运行中</li><li>isolating： 隔离中</li><li>isolated： 已隔离</li><li>activating： 恢复中</li><li>offlining： 下线中</li><li>offlined： 已下线</li></ul>
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// <p>实例状态中文描述</p>
-	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
 	// <p>数据库类型</p>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
@@ -2626,9 +2691,6 @@ type ClusterInstanceDetail struct {
 
 	// <p>当前实例支持的能力</p>
 	InstanceAbility *InstanceAbility `json:"InstanceAbility,omitnil,omitempty" name:"InstanceAbility"`
-
-	// <p>实例机器类型</p><p>枚举值：</p><ul><li>common： 通用型</li><li>exclusive： 独享型</li></ul>
-	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// <p>全球数据库唯一标识</p>
 	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
@@ -12850,6 +12912,63 @@ func (r *DescribeProxySpecsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeProxyZoneStocksRequestParams struct {
+	// <p>可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
+type DescribeProxyZoneStocksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
+func (r *DescribeProxyZoneStocksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProxyZoneStocksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProxyZoneStocksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProxyZoneStocksResponseParams struct {
+	// <p>数据库代理地域库存列表</p>
+	ProxyZoneStockInfos []*ProxyZoneStockInfo `json:"ProxyZoneStockInfos,omitnil,omitempty" name:"ProxyZoneStockInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProxyZoneStocksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProxyZoneStocksResponseParams `json:"Response"`
+}
+
+func (r *DescribeProxyZoneStocksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProxyZoneStocksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRedoLogListByVaultItem struct {
 	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -22301,6 +22420,20 @@ type ProxyZone struct {
 
 	// proxy节点数量
 	ProxyNodeCount *int64 `json:"ProxyNodeCount,omitnil,omitempty" name:"ProxyNodeCount"`
+}
+
+type ProxyZoneStockInfo struct {
+	// <p>地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// <p>CPU库存</p><p>该字段不作为发货是否有资源的判断标准，资源请参考CheckProxyStockInfos</p>
+	CpuStock *int64 `json:"CpuStock,omitnil,omitempty" name:"CpuStock"`
+
+	// <p>内存库存</p><p>该字段不作为发货是否有资源的判断标准，资源请参考CheckProxyStockInfos</p>
+	MemStock *int64 `json:"MemStock,omitnil,omitempty" name:"MemStock"`
 }
 
 type QueryFilter struct {

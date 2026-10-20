@@ -6057,6 +6057,64 @@ func (c *Client) ListTablesWithContext(ctx context.Context, request *ListTablesR
     return
 }
 
+func NewModifyAIModelStatusRequest() (request *ModifyAIModelStatusRequest) {
+    request = &ModifyAIModelStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyAIModelStatus")
+    
+    
+    return
+}
+
+func NewModifyAIModelStatusResponse() (response *ModifyAIModelStatusResponse) {
+    response = &ModifyAIModelStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAIModelStatus
+// 启停AI模型，只支持内置分组 cloudbase 和 hunyuan-image
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PACKAGEUNSUPPORTED = "FailedOperation.PackageUnsupported"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+func (c *Client) ModifyAIModelStatus(request *ModifyAIModelStatusRequest) (response *ModifyAIModelStatusResponse, err error) {
+    return c.ModifyAIModelStatusWithContext(context.Background(), request)
+}
+
+// ModifyAIModelStatus
+// 启停AI模型，只支持内置分组 cloudbase 和 hunyuan-image
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PACKAGEUNSUPPORTED = "FailedOperation.PackageUnsupported"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+func (c *Client) ModifyAIModelStatusWithContext(ctx context.Context, request *ModifyAIModelStatusRequest) (response *ModifyAIModelStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyAIModelStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyAIModelStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAIModelStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAIModelStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClientRequest() (request *ModifyClientRequest) {
     request = &ModifyClientRequest{
         BaseRequest: &tchttp.BaseRequest{},

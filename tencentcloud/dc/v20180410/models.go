@@ -234,89 +234,98 @@ type BgpPeer struct {
 }
 
 type CloudAttachInfo struct {
-	// 敏捷上云实例id
+	// <p>敏捷上云实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 敏捷上云名称
+	// <p>敏捷上云名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 合作伙伴的AppId
+	// <p>合作伙伴的AppId</p>
 	IapId *string `json:"IapId,omitnil,omitempty" name:"IapId"`
 
-	// 需要接入敏捷上云的IDC的地址
+	// <p>需要接入敏捷上云的IDC的地址</p>
 	IdcAddress *string `json:"IdcAddress,omitnil,omitempty" name:"IdcAddress"`
 
-	// 需要接入敏捷上云的IDC的互联网服务提供商类型
+	// <p>需要接入敏捷上云的IDC的互联网服务提供商类型</p>
 	IdcType *string `json:"IdcType,omitnil,omitempty" name:"IdcType"`
 
-	// 敏捷上云的带宽，单位为MB
+	// <p>敏捷上云的带宽，单位为MB</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 联系电话
+	// <p>联系电话</p>
 	Telephone *string `json:"Telephone,omitnil,omitempty" name:"Telephone"`
 
-	// 敏捷上云的状态
-	// available：就绪状态
-	// applying：申请，待审核状态
-	// pendingpay：代付款状态
-	// building：建设中状态
-	// confirming：待确认状态
-	// isolate: 隔离状态
-	// stoped：终止状态
+	// <p>敏捷上云的状态<br>available：就绪状态<br>applying：申请，待审核状态<br>pendingpay：代付款状态<br>building：建设中状态<br>confirming：待确认状态<br>isolate: 隔离状态<br>stoped：终止状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 敏捷上云申请的时间
+	// <p>敏捷上云申请的时间</p>
 	ApplyTime *string `json:"ApplyTime,omitnil,omitempty" name:"ApplyTime"`
 
-	// 敏捷上云建设完成的时间
+	// <p>敏捷上云建设完成的时间</p>
 	ReadyTime *string `json:"ReadyTime,omitnil,omitempty" name:"ReadyTime"`
 
-	// 敏捷上云过期时间
+	// <p>敏捷上云过期时间</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 备注信息
+	// <p>备注信息</p>
 	Remarks *string `json:"Remarks,omitnil,omitempty" name:"Remarks"`
 
-	// 敏捷上云的地域状态。
-	// same-region：同地域
-	// cross-region：跨地域
+	// <p>敏捷上云的地域状态。<br>same-region：同地域<br>cross-region：跨地域</p>
 	RegionStatus *string `json:"RegionStatus,omitnil,omitempty" name:"RegionStatus"`
 
-	// 用户的AppId
+	// <p>用户的AppId</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 用户的Uin
+	// <p>用户的Uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 用户注册名称
+	// <p>用户注册名称</p>
 	CustomerAuthName *string `json:"CustomerAuthName,omitnil,omitempty" name:"CustomerAuthName"`
 
-	// 物理专线实例ID
+	// <p>物理专线实例ID</p>
 	DirectConnectId *string `json:"DirectConnectId,omitnil,omitempty" name:"DirectConnectId"`
 
-	// 敏捷上云是否支持创建高速上云专线网关
+	// <p>敏捷上云是否支持创建高速上云专线网关</p>
 	CloudAttachServiceGatewaysSupport *bool `json:"CloudAttachServiceGatewaysSupport,omitnil,omitempty" name:"CloudAttachServiceGatewaysSupport"`
 
-	// 敏捷上云服务是否处于升降配中
+	// <p>敏捷上云服务是否处于升降配中</p>
 	BUpdateBandwidth *bool `json:"BUpdateBandwidth,omitnil,omitempty" name:"BUpdateBandwidth"`
 
-	// 接入地域
+	// <p>接入地域</p>
 	ArRegion *string `json:"ArRegion,omitnil,omitempty" name:"ArRegion"`
 
-	// 运营商代码
+	// <p>运营商代码</p>
 	IapCode *string `json:"IapCode,omitnil,omitempty" name:"IapCode"`
 
-	// IDC侧类型。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方
+	// <p>IDC侧类型。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方</p>
 	IdcPointType *string `json:"IdcPointType,omitnil,omitempty" name:"IdcPointType"`
 
-	// 运营商链路是否有保护
+	// <p>运营商链路是否有保护</p>
 	BIapLinkProtected *bool `json:"BIapLinkProtected,omitnil,omitempty" name:"BIapLinkProtected"`
 
-	// 服务类型：SHARE-共享型，EXCLUSIVE-独占型
+	// <p>服务类型：SHARE-共享型，EXCLUSIVE-独占型</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// VLAN范围
+	// <p>VLAN范围</p>
 	VlanRange *string `json:"VlanRange,omitnil,omitempty" name:"VlanRange"`
+
+	// <p>裁撤状态</p><p>枚举值：</p><ul><li>APPLYING： 申请裁撤</li><li>EXECUTING： 裁撤执行中</li><li>FAILED： 裁撤失败</li></ul>
+	RepealStatus *string `json:"RepealStatus,omitnil,omitempty" name:"RepealStatus"`
+
+	// <p>计划裁撤时间</p>
+	PlanRepealTime *string `json:"PlanRepealTime,omitnil,omitempty" name:"PlanRepealTime"`
+
+	// <p>续费标记</p><p>枚举值：</p><ul><li>MANUAL_RENEW： 手动续费</li><li>AUTO_RENEW： 自动续费</li><li>NO_RENEW： 到期不续</li></ul>
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// <p>接入点ID</p>
+	AccessPointId *string `json:"AccessPointId,omitnil,omitempty" name:"AccessPointId"`
+
+	// <p>接入点名称</p>
+	AccessPointName *string `json:"AccessPointName,omitnil,omitempty" name:"AccessPointName"`
+
+	// <p>计费阶梯带宽(Mbps)</p>
+	BillStairBandwidth *uint64 `json:"BillStairBandwidth,omitnil,omitempty" name:"BillStairBandwidth"`
 }
 
 type Coordinate struct {
@@ -357,6 +366,9 @@ type CreateCasInput struct {
 
 	// <p>服务类型，SHARE-共享型，EXCLUSIVE-独占型</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>接入点ID</p>
+	AccessPointId *string `json:"AccessPointId,omitnil,omitempty" name:"AccessPointId"`
 }
 
 // Predefined struct for user

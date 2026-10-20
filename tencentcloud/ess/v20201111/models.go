@@ -9934,102 +9934,62 @@ func (r *CreateUserNameChangeUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserVerifyUrlRequestParams struct {
-	// 操作人信息
+	// <p>操作人信息</p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 要实名的姓名
+	// <p>要实名的姓名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 要实名的身份证号码，
-	// 身份证号码如果有x的话，统一传大写X
+	// <p>要实名的身份证号码，<br>身份证号码如果有x的话，统一传大写X</p>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
-	// 证件类型，目前只支持身份证类型：ID_CARD
+	// <p>证件类型，支持以下类型，样式可以参考<a href="https://qian.tencent.com/developers/partner/id_card_support/" target="_blank">常见个人证件类型介绍</a></p><ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li></ul><p>注:  港澳居民来往内地通行证 和  港澳台居民居住证 类型的签署人<b>至少要过一次大陆的海关</b>才能使用。</p>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
-	// 要实名的手机号，兼容带+86的格式
+	// <p>要实名的手机号，兼容带+86的格式</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 实名完之后的跳转链接，最大长度1000个字符。
-	// 链接类型请参考 <a href="https://qian.tencent.com/developers/company/openqianh5" target="_blank">跳转电子签H5</a>。
-	// 
-	// 注：此参数仅支持 Endpoint 为 <font color="red">H5 或 H5_SHORT_URL </font>的时候传递
+	// <p>实名完之后的跳转链接，最大长度1000个字符。<br>链接类型请参考 <a href="https://qian.tencent.com/developers/company/openqianh5" target="_blank">跳转电子签H5</a>。</p><p>注：此参数仅支持 Endpoint 为 <font color="red">H5 或 H5_SHORT_URL </font>的时候传递</p>
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
-	// 要跳转的链接类型
-	// 
-	// <ul>
-	// <li><strong>HTTP</strong>：适用于短信通知或H5跳转的电子签小程序HTTP长链接</li>
-	// <li><strong>HTTP_SHORT_URL</strong>：适用于短信通知或H5跳转的电子签小程序HTTP短链接</li>
-	// <li><strong>APP</strong>：（默认类型）适用于第三方APP或小程序跳转的电子签小程序路径</li>
-	// <li><strong>H5</strong>：适用于跳转至电子签H5实名页面的长链接</li>
-	// <li><strong>H5_SHORT_URL</strong>：适用于跳转至电子签H5实名页面的短链接</li>
-	// </ul>
-	// 
-	// 注：如果不传递，默认值是 <font color="red"> APP </font>
+	// <p>要跳转的链接类型</p><ul><li><strong>HTTP</strong>：适用于短信通知或H5跳转的电子签小程序HTTP长链接</li><li><strong>HTTP_SHORT_URL</strong>：适用于短信通知或H5跳转的电子签小程序HTTP短链接</li><li><strong>APP</strong>：（默认类型）适用于第三方APP或小程序跳转的电子签小程序路径</li><li><strong>H5</strong>：适用于跳转至电子签H5实名页面的长链接</li><li><strong>H5_SHORT_URL</strong>：适用于跳转至电子签H5实名页面的短链接</li></ul><p>注：如果不传递，默认值是 <font color="red"> APP </font></p>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
-	// 签署完成后是否自动回跳
-	// <ul><li>false：否, 实名完成不会自动跳转回来(默认)</li><li>true：是, 实名完成会自动跳转回来</li></ul>
-	// 
-	// 注: 
-	// 1. 该参数<font color="red">只针对APP类型（第三方APP或小程序跳转电子签小程序）场景</font> 的实名链接有效
-	// 2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
-	// 3. <font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font> 
+	// <p>签署完成后是否自动回跳</p><ul><li>false：否, 实名完成不会自动跳转回来(默认)</li><li>true：是, 实名完成会自动跳转回来</li></ul><p>注: </p><ol><li>该参数<font color="red">只针对APP类型（第三方APP或小程序跳转电子签小程序）场景</font> 的实名链接有效</li><li><font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object">这个</a></li><li><font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font></li></ol>
 	AutoJumpBack *bool `json:"AutoJumpBack,omitnil,omitempty" name:"AutoJumpBack"`
 
-	// 在用户完成实名认证后，其自定义数据将通过[企业引导个人实名认证后回调](https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E4%BA%8C-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%B8%AA%E4%BA%BA%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%90%8E%E5%9B%9E%E8%B0%83)返回，以便用户确认其个人数据信息。请注意，自定义数据的字符长度上限为1000，且必须采用base64编码格式。
+	// <p>在用户完成实名认证后，其自定义数据将通过<a href="https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E4%BA%8C-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%B8%AA%E4%BA%BA%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%90%8E%E5%9B%9E%E8%B0%83">企业引导个人实名认证后回调</a>返回，以便用户确认其个人数据信息。请注意，自定义数据的字符长度上限为1000，且必须采用base64编码格式。</p>
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
 type CreateUserVerifyUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息
+	// <p>操作人信息</p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 要实名的姓名
+	// <p>要实名的姓名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 要实名的身份证号码，
-	// 身份证号码如果有x的话，统一传大写X
+	// <p>要实名的身份证号码，<br>身份证号码如果有x的话，统一传大写X</p>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
-	// 证件类型，目前只支持身份证类型：ID_CARD
+	// <p>证件类型，支持以下类型，样式可以参考<a href="https://qian.tencent.com/developers/partner/id_card_support/" target="_blank">常见个人证件类型介绍</a></p><ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li></ul><p>注:  港澳居民来往内地通行证 和  港澳台居民居住证 类型的签署人<b>至少要过一次大陆的海关</b>才能使用。</p>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
-	// 要实名的手机号，兼容带+86的格式
+	// <p>要实名的手机号，兼容带+86的格式</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 实名完之后的跳转链接，最大长度1000个字符。
-	// 链接类型请参考 <a href="https://qian.tencent.com/developers/company/openqianh5" target="_blank">跳转电子签H5</a>。
-	// 
-	// 注：此参数仅支持 Endpoint 为 <font color="red">H5 或 H5_SHORT_URL </font>的时候传递
+	// <p>实名完之后的跳转链接，最大长度1000个字符。<br>链接类型请参考 <a href="https://qian.tencent.com/developers/company/openqianh5" target="_blank">跳转电子签H5</a>。</p><p>注：此参数仅支持 Endpoint 为 <font color="red">H5 或 H5_SHORT_URL </font>的时候传递</p>
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 
-	// 要跳转的链接类型
-	// 
-	// <ul>
-	// <li><strong>HTTP</strong>：适用于短信通知或H5跳转的电子签小程序HTTP长链接</li>
-	// <li><strong>HTTP_SHORT_URL</strong>：适用于短信通知或H5跳转的电子签小程序HTTP短链接</li>
-	// <li><strong>APP</strong>：（默认类型）适用于第三方APP或小程序跳转的电子签小程序路径</li>
-	// <li><strong>H5</strong>：适用于跳转至电子签H5实名页面的长链接</li>
-	// <li><strong>H5_SHORT_URL</strong>：适用于跳转至电子签H5实名页面的短链接</li>
-	// </ul>
-	// 
-	// 注：如果不传递，默认值是 <font color="red"> APP </font>
+	// <p>要跳转的链接类型</p><ul><li><strong>HTTP</strong>：适用于短信通知或H5跳转的电子签小程序HTTP长链接</li><li><strong>HTTP_SHORT_URL</strong>：适用于短信通知或H5跳转的电子签小程序HTTP短链接</li><li><strong>APP</strong>：（默认类型）适用于第三方APP或小程序跳转的电子签小程序路径</li><li><strong>H5</strong>：适用于跳转至电子签H5实名页面的长链接</li><li><strong>H5_SHORT_URL</strong>：适用于跳转至电子签H5实名页面的短链接</li></ul><p>注：如果不传递，默认值是 <font color="red"> APP </font></p>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
-	// 签署完成后是否自动回跳
-	// <ul><li>false：否, 实名完成不会自动跳转回来(默认)</li><li>true：是, 实名完成会自动跳转回来</li></ul>
-	// 
-	// 注: 
-	// 1. 该参数<font color="red">只针对APP类型（第三方APP或小程序跳转电子签小程序）场景</font> 的实名链接有效
-	// 2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
-	// 3. <font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font> 
+	// <p>签署完成后是否自动回跳</p><ul><li>false：否, 实名完成不会自动跳转回来(默认)</li><li>true：是, 实名完成会自动跳转回来</li></ul><p>注: </p><ol><li>该参数<font color="red">只针对APP类型（第三方APP或小程序跳转电子签小程序）场景</font> 的实名链接有效</li><li><font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object">这个</a></li><li><font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font></li></ol>
 	AutoJumpBack *bool `json:"AutoJumpBack,omitnil,omitempty" name:"AutoJumpBack"`
 
-	// 在用户完成实名认证后，其自定义数据将通过[企业引导个人实名认证后回调](https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E4%BA%8C-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%B8%AA%E4%BA%BA%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%90%8E%E5%9B%9E%E8%B0%83)返回，以便用户确认其个人数据信息。请注意，自定义数据的字符长度上限为1000，且必须采用base64编码格式。
+	// <p>在用户完成实名认证后，其自定义数据将通过<a href="https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E4%BA%8C-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%B8%AA%E4%BA%BA%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%90%8E%E5%9B%9E%E8%B0%83">企业引导个人实名认证后回调</a>返回，以便用户确认其个人数据信息。请注意，自定义数据的字符长度上限为1000，且必须采用base64编码格式。</p>
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
@@ -10062,33 +10022,13 @@ func (r *CreateUserVerifyUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserVerifyUrlResponseParams struct {
-	// 腾讯电子签小程序的实名认证链接。
-	// 如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。
-	// 
-	// <strong>1.如果EndPoint是APP</strong>：
-	// 得到的链接类似于<a href="">pages/guide/index?to=MP_PERSONAL_VERIFY&shortKey=yDCZHUyOcExAlcOvNod0</a>, 用法可以参考描述中的"跳转到小程序的实现"
-	// 
-	// <strong>2.如果EndPoint是HTTP</strong>：
-	// 得到的链接类似于 <a href="">https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=TAG_VERIFY&shortKey=yDCZHUyOcChrfpaswT0d</a>，点击后会跳转到腾讯电子签小程序进行签署
-	// 
-	// <strong>3.如果EndPoint是HTTP_SHORT_URL</strong>：
-	// 得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签小程序进行签署
-	// 
-	// <strong>4.如果EndPoint是H5</strong>：
-	// 得到的链接类似于 <a href="">https://quick.test.qian.tencent.cn/guide?Code=yDU****VJhsS5q&CodeType=xxx&shortKey=yD*****frcb</a>，点击后会跳转到腾讯电子签H5页面进行签署
-	// 
-	// <strong>5.如果EndPoint是H5_SHORT_URL</strong>：
-	// 得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签H5页面进行签署
-	// 
-	// 
-	// `注：` <font color="red">生成的链路后面不能再增加参数，防止出错重复参数覆盖原有的参数</font>
-	// 示例值：https://essurl.cn/2n**42Nd
+	// <p>腾讯电子签小程序的实名认证链接。<br>如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。</p><p><strong>1.如果EndPoint是APP</strong>：<br>得到的链接类似于<a href="">pages/guide/index?to=MP_PERSONAL_VERIFY&amp;shortKey=yDCZHUyOcExAlcOvNod0</a>, 用法可以参考描述中的&quot;跳转到小程序的实现&quot;</p><p><strong>2.如果EndPoint是HTTP</strong>：<br>得到的链接类似于 <a href="">https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=TAG_VERIFY&amp;shortKey=yDCZHUyOcChrfpaswT0d</a>，点击后会跳转到腾讯电子签小程序进行签署</p><p><strong>3.如果EndPoint是HTTP_SHORT_URL</strong>：<br>得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签小程序进行签署</p><p><strong>4.如果EndPoint是H5</strong>：<br>得到的链接类似于 <a href="">https://quick.test.qian.tencent.cn/guide?Code=yDU<strong><strong>VJhsS5q&amp;CodeType=xxx&amp;shortKey=yD*</strong></strong>frcb</a>，点击后会跳转到腾讯电子签H5页面进行签署</p><p><strong>5.如果EndPoint是H5_SHORT_URL</strong>：<br>得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签H5页面进行签署</p><p><code>注：</code> <font color="red">生成的链路后面不能再增加参数，防止出错重复参数覆盖原有的参数</font><br>示例值：https://essurl.cn/2n**42Nd</p>
 	UserVerifyUrl *string `json:"UserVerifyUrl,omitnil,omitempty" name:"UserVerifyUrl"`
 
-	// 链接过期时间，为Unix时间戳（单位为秒）。
+	// <p>链接过期时间，为Unix时间戳（单位为秒）。</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 小程序appid，用于半屏拉起电子签小程序， 仅在 Endpoint 设置为 APP 的时候返回
+	// <p>小程序appid，用于半屏拉起电子签小程序， 仅在 Endpoint 设置为 APP 的时候返回</p>
 	MiniAppId *string `json:"MiniAppId,omitnil,omitempty" name:"MiniAppId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

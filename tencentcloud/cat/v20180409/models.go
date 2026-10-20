@@ -22,96 +22,92 @@ import (
 
 // Predefined struct for user
 type CreateProbeTasksRequestParams struct {
-	// 批量任务名-地址
+	// <p>批量任务名-地址</p>
 	BatchTasks []*ProbeTaskBasicConfiguration `json:"BatchTasks,omitnil,omitempty" name:"BatchTasks"`
 
-	// 任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois
+	// <p>任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois</p>
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 拨测节点，如10001，具体拨测地域运营商对应的拨测点编号可联系云拨测确认。
+	// <p>拨测节点，如10001，具体拨测地域运营商对应的拨测点编号可联系云拨测确认。</p>
 	Nodes []*string `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 拨测间隔，单位为分钟
+	// <p>拨测间隔，单位为分钟</p>
 	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 拨测参数，详细可参考云拨测官方文档,链接:https://cloud.tencent.com/document/product/248/87308#createprobetasks。
+	// <p>拨测参数，详细可参考云拨测官方文档,链接:https://cloud.tencent.com/document/product/248/87308#createprobetasks。</p>
 	Parameters *string `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 
-	// 任务分类
-	// <li>1 = PC</li>
-	// <li> 2 = Mobile </li>
+	// <p>任务分类</p><li>1 = PC</li><li> 2 = Mobile </li>
 	TaskCategory *int64 `json:"TaskCategory,omitnil,omitempty" name:"TaskCategory"`
 
-	// 定时任务cron表达式
+	// <p>定时任务cron表达式</p>
 	Cron *string `json:"Cron,omitnil,omitempty" name:"Cron"`
 
-	// 资源标签值
+	// <p>资源标签值</p>
 	Tag []*Tag `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+	// <p>测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。</p>
 	ProbeType *uint64 `json:"ProbeType,omitnil,omitempty" name:"ProbeType"`
 
-	// 插件类型，如CDN，详情参考云拨测官方文档。
+	// <p>插件类型，如CDN，详情参考云拨测官方文档。</p>
 	PluginSource *string `json:"PluginSource,omitnil,omitempty" name:"PluginSource"`
 
-	// 客户端ID
+	// <p>客户端ID</p>
 	ClientNum *string `json:"ClientNum,omitnil,omitempty" name:"ClientNum"`
 
-	// 拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6
+	// <p>拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6</p>
 	NodeIpType *int64 `json:"NodeIpType,omitnil,omitempty" name:"NodeIpType"`
 
-	// 供应商子账户同步标志
+	// <p>供应商子账户同步标志</p>
 	SubSyncFlag *int64 `json:"SubSyncFlag,omitnil,omitempty" name:"SubSyncFlag"`
 
-	// 创建者名称
+	// <p>创建者名称</p>
 	RtxName *string `json:"RtxName,omitnil,omitempty" name:"RtxName"`
 }
 
 type CreateProbeTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 批量任务名-地址
+	// <p>批量任务名-地址</p>
 	BatchTasks []*ProbeTaskBasicConfiguration `json:"BatchTasks,omitnil,omitempty" name:"BatchTasks"`
 
-	// 任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois
+	// <p>任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois</p>
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 拨测节点，如10001，具体拨测地域运营商对应的拨测点编号可联系云拨测确认。
+	// <p>拨测节点，如10001，具体拨测地域运营商对应的拨测点编号可联系云拨测确认。</p>
 	Nodes []*string `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 拨测间隔，单位为分钟
+	// <p>拨测间隔，单位为分钟</p>
 	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 拨测参数，详细可参考云拨测官方文档,链接:https://cloud.tencent.com/document/product/248/87308#createprobetasks。
+	// <p>拨测参数，详细可参考云拨测官方文档,链接:https://cloud.tencent.com/document/product/248/87308#createprobetasks。</p>
 	Parameters *string `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 
-	// 任务分类
-	// <li>1 = PC</li>
-	// <li> 2 = Mobile </li>
+	// <p>任务分类</p><li>1 = PC</li><li> 2 = Mobile </li>
 	TaskCategory *int64 `json:"TaskCategory,omitnil,omitempty" name:"TaskCategory"`
 
-	// 定时任务cron表达式
+	// <p>定时任务cron表达式</p>
 	Cron *string `json:"Cron,omitnil,omitempty" name:"Cron"`
 
-	// 资源标签值
+	// <p>资源标签值</p>
 	Tag []*Tag `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+	// <p>测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。</p>
 	ProbeType *uint64 `json:"ProbeType,omitnil,omitempty" name:"ProbeType"`
 
-	// 插件类型，如CDN，详情参考云拨测官方文档。
+	// <p>插件类型，如CDN，详情参考云拨测官方文档。</p>
 	PluginSource *string `json:"PluginSource,omitnil,omitempty" name:"PluginSource"`
 
-	// 客户端ID
+	// <p>客户端ID</p>
 	ClientNum *string `json:"ClientNum,omitnil,omitempty" name:"ClientNum"`
 
-	// 拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6
+	// <p>拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6</p>
 	NodeIpType *int64 `json:"NodeIpType,omitnil,omitempty" name:"NodeIpType"`
 
-	// 供应商子账户同步标志
+	// <p>供应商子账户同步标志</p>
 	SubSyncFlag *int64 `json:"SubSyncFlag,omitnil,omitempty" name:"SubSyncFlag"`
 
-	// 创建者名称
+	// <p>创建者名称</p>
 	RtxName *string `json:"RtxName,omitnil,omitempty" name:"RtxName"`
 }
 
@@ -149,7 +145,7 @@ func (r *CreateProbeTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProbeTasksResponseParams struct {
-	// 任务ID列表
+	// <p>任务ID列表</p>
 	TaskIDs []*string `json:"TaskIDs,omitnil,omitempty" name:"TaskIDs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -400,20 +396,20 @@ func (r *DescribeDetailedSingleProbeDataResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeInstantTasksRequestParams struct {
-	// 数量
+	// <p>数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 起始位置
+	// <p>起始位置</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeInstantTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数量
+	// <p>数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 起始位置
+	// <p>起始位置</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -439,11 +435,11 @@ func (r *DescribeInstantTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstantTasksResponseParams struct {
-	// 任务
+	// <p>任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tasks []*SingleInstantTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 总数
+	// <p>总数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -468,68 +464,68 @@ func (r *DescribeInstantTasksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNodeGroupsRequestParams struct {
-	// 节点类型。0: 全部 1: IDC 2: LastMile 3: Mobile，不填默认为0
+	// <p>节点类型。0: 全部 1: IDC 2: LastMile 3: Mobile，不填默认为0</p>
 	NodeType []*int64 `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// 节点分类。0: 全部 1: PC 2：Mobile，不填默认为0。PC分类包括IDC和LM节点类型，Mobile分类包括Mobile节点类型。与NodeType参数取交集。
+	// <p>节点分类。0: 全部 1: PC 2：Mobile，不填默认为0。PC分类包括IDC和LM节点类型，Mobile分类包括Mobile节点类型。与NodeType参数取交集。</p>
 	TaskCategory *int64 `json:"TaskCategory,omitnil,omitempty" name:"TaskCategory"`
 
-	// IP类型。0: 全部 1: IPv4 2: IPv6，不填默认为0
+	// <p>IP类型。0: 全部 1: IPv4 2: IPv6，不填默认为0</p>
 	IPType *int64 `json:"IPType,omitnil,omitempty" name:"IPType"`
 
-	// 拨测点描述关键词。
+	// <p>拨测点描述关键词。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 地域ID。0: 精选拨测点 1: 国内 2: 港澳台 3: 亚太 4: 欧洲与美洲 5: 非洲与大洋洲，不填默认为0
+	// <p>地域ID。0: 精选拨测点 1: 国内 2: 港澳台 3: 亚太 4: 欧洲与美洲 5: 非洲与大洋洲，不填默认为0</p>
 	RegionID *int64 `json:"RegionID,omitnil,omitempty" name:"RegionID"`
 
-	// 省份或国家ID。0表示全部，不填默认为0
+	// <p>省份或国家ID。0表示全部，不填默认为0</p>
 	DistrictID *int64 `json:"DistrictID,omitnil,omitempty" name:"DistrictID"`
 
-	// 运营商ID。0: 全部 1: 中国电信 2: 中国联通 3: 中国移动 99: 其他，不填默认为0
+	// <p>运营商ID。0: 全部 1: 中国电信 2: 中国联通 3: 中国移动 99: 其他，不填默认为0</p>
 	NetServiceID *int64 `json:"NetServiceID,omitnil,omitempty" name:"NetServiceID"`
 
-	// 节点组类型。0: 高级拨测点组 1: 可用性节点 2: 我的拨测点组，不填默认为0
+	// <p>节点组类型。0: 高级拨测点组 1: 可用性节点 2: 我的拨测点组，不填默认为0</p>
 	NodeGroupType *int64 `json:"NodeGroupType,omitnil,omitempty" name:"NodeGroupType"`
 
-	// 任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois，不填默认为0，不对任务类型做过滤
+	// <p>任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois，不填默认为0，不对任务类型做过滤</p>
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+	// <p>测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。</p>
 	ProbeType *uint64 `json:"ProbeType,omitnil,omitempty" name:"ProbeType"`
 }
 
 type DescribeNodeGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 节点类型。0: 全部 1: IDC 2: LastMile 3: Mobile，不填默认为0
+	// <p>节点类型。0: 全部 1: IDC 2: LastMile 3: Mobile，不填默认为0</p>
 	NodeType []*int64 `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// 节点分类。0: 全部 1: PC 2：Mobile，不填默认为0。PC分类包括IDC和LM节点类型，Mobile分类包括Mobile节点类型。与NodeType参数取交集。
+	// <p>节点分类。0: 全部 1: PC 2：Mobile，不填默认为0。PC分类包括IDC和LM节点类型，Mobile分类包括Mobile节点类型。与NodeType参数取交集。</p>
 	TaskCategory *int64 `json:"TaskCategory,omitnil,omitempty" name:"TaskCategory"`
 
-	// IP类型。0: 全部 1: IPv4 2: IPv6，不填默认为0
+	// <p>IP类型。0: 全部 1: IPv4 2: IPv6，不填默认为0</p>
 	IPType *int64 `json:"IPType,omitnil,omitempty" name:"IPType"`
 
-	// 拨测点描述关键词。
+	// <p>拨测点描述关键词。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 地域ID。0: 精选拨测点 1: 国内 2: 港澳台 3: 亚太 4: 欧洲与美洲 5: 非洲与大洋洲，不填默认为0
+	// <p>地域ID。0: 精选拨测点 1: 国内 2: 港澳台 3: 亚太 4: 欧洲与美洲 5: 非洲与大洋洲，不填默认为0</p>
 	RegionID *int64 `json:"RegionID,omitnil,omitempty" name:"RegionID"`
 
-	// 省份或国家ID。0表示全部，不填默认为0
+	// <p>省份或国家ID。0表示全部，不填默认为0</p>
 	DistrictID *int64 `json:"DistrictID,omitnil,omitempty" name:"DistrictID"`
 
-	// 运营商ID。0: 全部 1: 中国电信 2: 中国联通 3: 中国移动 99: 其他，不填默认为0
+	// <p>运营商ID。0: 全部 1: 中国电信 2: 中国联通 3: 中国移动 99: 其他，不填默认为0</p>
 	NetServiceID *int64 `json:"NetServiceID,omitnil,omitempty" name:"NetServiceID"`
 
-	// 节点组类型。0: 高级拨测点组 1: 可用性节点 2: 我的拨测点组，不填默认为0
+	// <p>节点组类型。0: 高级拨测点组 1: 可用性节点 2: 我的拨测点组，不填默认为0</p>
 	NodeGroupType *int64 `json:"NodeGroupType,omitnil,omitempty" name:"NodeGroupType"`
 
-	// 任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois，不填默认为0，不对任务类型做过滤
+	// <p>任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois，不填默认为0，不对任务类型做过滤</p>
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+	// <p>测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。</p>
 	ProbeType *uint64 `json:"ProbeType,omitnil,omitempty" name:"ProbeType"`
 }
 
@@ -563,15 +559,15 @@ func (r *DescribeNodeGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNodeGroupsResponseParams struct {
-	// 树状节点列表，总共两级
+	// <p>树状节点列表，总共两级</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeList []*NodeTree `json:"NodeList,omitnil,omitempty" name:"NodeList"`
 
-	// 省份或国家列表
+	// <p>省份或国家列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DistrictList []*DistinctOrNetServiceInfo `json:"DistrictList,omitnil,omitempty" name:"DistrictList"`
 
-	// 运营商列表
+	// <p>运营商列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetServiceList []*DistinctOrNetServiceInfo `json:"NetServiceList,omitnil,omitempty" name:"NetServiceList"`
 
@@ -810,58 +806,38 @@ func (r *DescribeProbeMetricDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProbeMetricTagValuesRequestParams struct {
-	// 分析任务类型，支持以下几种类型：
-	// AnalyzeTaskType_Network：网络质量
-	// AnalyzeTaskType_Browse：页面性能 
-	// AnalyzeTaskType_Transport：端口性能
-	// AnalyzeTaskType_UploadDownload：文件传输
-	// AnalyzeTaskType_MediaStream：音视频体验
+	// <p>分析任务类型，支持以下几种类型：<br>AnalyzeTaskType_Network：网络质量<br>AnalyzeTaskType_Browse：页面性能<br>AnalyzeTaskType_Transport：端口性能<br>AnalyzeTaskType_UploadDownload：文件传输<br>AnalyzeTaskType_MediaStream：音视频体验</p>
 	AnalyzeTaskType *string `json:"AnalyzeTaskType,omitnil,omitempty" name:"AnalyzeTaskType"`
 
-	// 维度标签值，参考：
-	// host：任务域名
-	// errorInfo：状态类型
-	// area：拨测点地区
-	// operator：拨测点运营商
-	// taskId：任务ID
+	// <p>维度标签值，参考：<br>host：任务域名<br>errorInfo：状态类型<br>area：拨测点地区<br>operator：拨测点运营商<br>taskId：任务ID</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 过滤条件，可以传单个过滤条件也可以拼接多个参数，支持正则匹配
+	// <p>过滤条件，可以传单个过滤条件也可以拼接多个参数，支持正则匹配</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 过滤条件数组
+	// <p>过滤条件数组</p>
 	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 时间范围
+	// <p>时间范围</p>
 	TimeRange *string `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
 }
 
 type DescribeProbeMetricTagValuesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分析任务类型，支持以下几种类型：
-	// AnalyzeTaskType_Network：网络质量
-	// AnalyzeTaskType_Browse：页面性能 
-	// AnalyzeTaskType_Transport：端口性能
-	// AnalyzeTaskType_UploadDownload：文件传输
-	// AnalyzeTaskType_MediaStream：音视频体验
+	// <p>分析任务类型，支持以下几种类型：<br>AnalyzeTaskType_Network：网络质量<br>AnalyzeTaskType_Browse：页面性能<br>AnalyzeTaskType_Transport：端口性能<br>AnalyzeTaskType_UploadDownload：文件传输<br>AnalyzeTaskType_MediaStream：音视频体验</p>
 	AnalyzeTaskType *string `json:"AnalyzeTaskType,omitnil,omitempty" name:"AnalyzeTaskType"`
 
-	// 维度标签值，参考：
-	// host：任务域名
-	// errorInfo：状态类型
-	// area：拨测点地区
-	// operator：拨测点运营商
-	// taskId：任务ID
+	// <p>维度标签值，参考：<br>host：任务域名<br>errorInfo：状态类型<br>area：拨测点地区<br>operator：拨测点运营商<br>taskId：任务ID</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 过滤条件，可以传单个过滤条件也可以拼接多个参数，支持正则匹配
+	// <p>过滤条件，可以传单个过滤条件也可以拼接多个参数，支持正则匹配</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 过滤条件数组
+	// <p>过滤条件数组</p>
 	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 时间范围
+	// <p>时间范围</p>
 	TimeRange *string `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
 }
 
@@ -890,7 +866,7 @@ func (r *DescribeProbeMetricTagValuesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProbeMetricTagValuesResponseParams struct {
-	// 标签值序列化后的字符串
+	// <p>标签值序列化后的字符串</p>
 	TagValueSet *string `json:"TagValueSet,omitnil,omitempty" name:"TagValueSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1017,130 +993,86 @@ func (r *DescribeProbeNodesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProbeTasksRequestParams struct {
-	// 任务 ID  列表
+	// <p>任务 ID  列表</p>
 	TaskIDs []*string `json:"TaskIDs,omitnil,omitempty" name:"TaskIDs"`
 
-	// 任务名
+	// <p>任务名</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 拨测目标
+	// <p>拨测目标</p>
 	TargetAddress *string `json:"TargetAddress,omitnil,omitempty" name:"TargetAddress"`
 
-	// 任务状态列表
-	// <li>1 = 创建中</li>
-	// <li> 2 = 运行中 </li>
-	// <li> 3 = 运行异常 </li>
-	// <li> 4 = 暂停中 </li>
-	// <li> 5 = 暂停异常 </li>
-	// <li> 6 = 任务暂停 </li>
-	// <li> 7 = 任务删除中 </li>
-	// <li> 8 = 任务删除异常 </li>
-	// <li> 9 = 任务删除</li>
-	// <li> 10 = 定时任务暂停中 </li>
+	// <p>任务状态列表</p><li>1 = 创建中</li><li> 2 = 运行中 </li><li> 3 = 运行异常 </li><li> 4 = 暂停中 </li><li> 5 = 暂停异常 </li><li> 6 = 任务暂停 </li><li> 7 = 任务删除中 </li><li> 8 = 任务删除异常 </li><li> 9 = 任务删除</li><li> 10 = 定时任务暂停中 </li>
 	TaskStatus []*int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100
+	// <p>返回数量，默认为20，最大值为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 付费模式
-	// <li>1 = 试用版本</li>
-	// <li> 2 = 付费版本 </li>
+	// <p>付费模式</p><li>1 = 试用版本</li><li> 2 = 付费版本 </li>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 订单状态
-	// <li>1 = 正常</li>
-	// <li> 2 = 欠费 </li>
+	// <p>订单状态</p><li>1 = 正常</li><li> 2 = 欠费 </li>
 	OrderState *int64 `json:"OrderState,omitnil,omitempty" name:"OrderState"`
 
-	// 拨测类型
-	// <li>1 = 页面浏览</li>
-	// <li> 2 =文件上传 </li>
-	// <li> 3 = 文件下载</li>
-	// <li> 4 = 端口性能 </li>
-	// <li> 5 = 网络质量 </li>
-	// <li> 6 =流媒体 </li>
-	// 
-	// 即使拨测只支持页面浏览，网络质量，文件下载
+	// <p>拨测类型</p><li>1 = 页面浏览</li><li> 2 =文件上传 </li><li> 3 = 文件下载</li><li> 4 = 端口性能 </li><li> 5 = 网络质量 </li><li> 6 =流媒体 </li><p>即使拨测只支持页面浏览，网络质量，文件下载</p>
 	TaskType []*int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 节点类型
+	// <p>节点类型</p>
 	TaskCategory []*int64 `json:"TaskCategory,omitnil,omitempty" name:"TaskCategory"`
 
-	// 排序的列
+	// <p>排序的列</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 是否正序
+	// <p>是否正序</p>
 	Ascend *bool `json:"Ascend,omitnil,omitempty" name:"Ascend"`
 
-	// 资源标签值
+	// <p>资源标签值</p>
 	TagFilters []*KeyValuePair `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 type DescribeProbeTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务 ID  列表
+	// <p>任务 ID  列表</p>
 	TaskIDs []*string `json:"TaskIDs,omitnil,omitempty" name:"TaskIDs"`
 
-	// 任务名
+	// <p>任务名</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 拨测目标
+	// <p>拨测目标</p>
 	TargetAddress *string `json:"TargetAddress,omitnil,omitempty" name:"TargetAddress"`
 
-	// 任务状态列表
-	// <li>1 = 创建中</li>
-	// <li> 2 = 运行中 </li>
-	// <li> 3 = 运行异常 </li>
-	// <li> 4 = 暂停中 </li>
-	// <li> 5 = 暂停异常 </li>
-	// <li> 6 = 任务暂停 </li>
-	// <li> 7 = 任务删除中 </li>
-	// <li> 8 = 任务删除异常 </li>
-	// <li> 9 = 任务删除</li>
-	// <li> 10 = 定时任务暂停中 </li>
+	// <p>任务状态列表</p><li>1 = 创建中</li><li> 2 = 运行中 </li><li> 3 = 运行异常 </li><li> 4 = 暂停中 </li><li> 5 = 暂停异常 </li><li> 6 = 任务暂停 </li><li> 7 = 任务删除中 </li><li> 8 = 任务删除异常 </li><li> 9 = 任务删除</li><li> 10 = 定时任务暂停中 </li>
 	TaskStatus []*int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100
+	// <p>返回数量，默认为20，最大值为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 付费模式
-	// <li>1 = 试用版本</li>
-	// <li> 2 = 付费版本 </li>
+	// <p>付费模式</p><li>1 = 试用版本</li><li> 2 = 付费版本 </li>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 订单状态
-	// <li>1 = 正常</li>
-	// <li> 2 = 欠费 </li>
+	// <p>订单状态</p><li>1 = 正常</li><li> 2 = 欠费 </li>
 	OrderState *int64 `json:"OrderState,omitnil,omitempty" name:"OrderState"`
 
-	// 拨测类型
-	// <li>1 = 页面浏览</li>
-	// <li> 2 =文件上传 </li>
-	// <li> 3 = 文件下载</li>
-	// <li> 4 = 端口性能 </li>
-	// <li> 5 = 网络质量 </li>
-	// <li> 6 =流媒体 </li>
-	// 
-	// 即使拨测只支持页面浏览，网络质量，文件下载
+	// <p>拨测类型</p><li>1 = 页面浏览</li><li> 2 =文件上传 </li><li> 3 = 文件下载</li><li> 4 = 端口性能 </li><li> 5 = 网络质量 </li><li> 6 =流媒体 </li><p>即使拨测只支持页面浏览，网络质量，文件下载</p>
 	TaskType []*int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 节点类型
+	// <p>节点类型</p>
 	TaskCategory []*int64 `json:"TaskCategory,omitnil,omitempty" name:"TaskCategory"`
 
-	// 排序的列
+	// <p>排序的列</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 是否正序
+	// <p>是否正序</p>
 	Ascend *bool `json:"Ascend,omitnil,omitempty" name:"Ascend"`
 
-	// 资源标签值
+	// <p>资源标签值</p>
 	TagFilters []*KeyValuePair `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
@@ -1177,11 +1109,11 @@ func (r *DescribeProbeTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProbeTasksResponseParams struct {
-	// 任务列表
+	// <p>任务列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskSet []*ProbeTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
 
-	// 任务总数
+	// <p>任务总数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1372,86 +1304,60 @@ type NodeTree struct {
 }
 
 type ProbeTask struct {
-	// 任务名
+	// <p>任务名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 任务 ID
+	// <p>任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 拨测类型
-	// <li>1 = 页面浏览</li>
-	// <li> 2 =文件上传 </li>
-	// <li> 3 = 文件下载</li>
-	// <li> 4 = 端口性能 </li>
-	// <li> 5 = 网络质量 </li>
-	// <li> 6 =流媒体 </li>
-	// 
-	// 即时拨测只支持页面浏览，网络质量，文件下载
+	// <p>拨测类型</p><li>1 = 页面浏览</li><li> 2 =文件上传 </li><li> 3 = 文件下载</li><li> 4 = 端口性能 </li><li> 5 = 网络质量 </li><li> 6 =流媒体 </li><p>即时拨测只支持页面浏览，网络质量，文件下载</p>
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 拨测节点列表
+	// <p>拨测节点列表</p>
 	Nodes []*string `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 拨测任务所选的拨测点IP类型，0-不限，1-IPv4，2-IPv6
+	// <p>拨测任务所选的拨测点IP类型，0-不限，1-IPv4，2-IPv6</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeIpType *int64 `json:"NodeIpType,omitnil,omitempty" name:"NodeIpType"`
 
-	// 拨测间隔，单位为分钟
+	// <p>拨测间隔，单位为分钟</p>
 	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 拨测参数
+	// <p>拨测参数</p>
 	Parameters *string `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 
-	// 任务状态
-	// <li>1 = 创建中</li>
-	// <li> 2 = 运行中 </li>
-	// <li> 3 = 运行异常 </li>
-	// <li> 4 = 暂停中 </li>
-	// <li> 5 = 暂停异常 </li>
-	// <li> 6 = 任务暂停 </li>
-	// <li> 7 = 任务删除中 </li>
-	// <li> 8 = 任务删除异常 </li>
-	// <li> 9 = 任务删除</li>
-	// <li> 10 = 定时任务暂停中 </li>
+	// <p>任务状态</p><li>1 = 创建中</li><li> 2 = 运行中 </li><li> 3 = 运行异常 </li><li> 4 = 暂停中 </li><li> 5 = 暂停异常 </li><li> 6 = 任务暂停 </li><li> 7 = 任务删除中 </li><li> 8 = 任务删除异常 </li><li> 9 = 任务删除</li><li> 10 = 定时任务暂停中 </li>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 目标地址
+	// <p>目标地址</p>
 	TargetAddress *string `json:"TargetAddress,omitnil,omitempty" name:"TargetAddress"`
 
-	// 付费模式
-	// <li>1 = 试用版本</li>
-	// <li> 2 = 付费版本 </li>
+	// <p>付费模式</p><li>1 = 试用版本</li><li> 2 = 付费版本 </li>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 订单状态
-	// <li>1 = 正常</li>
-	// <li> 2 = 欠费 </li>
+	// <p>订单状态</p><li>1 = 正常</li><li> 2 = 欠费 </li>
 	OrderState *int64 `json:"OrderState,omitnil,omitempty" name:"OrderState"`
 
-	// 任务分类
-	// <li>1 = PC</li>
-	// <li> 2 = Mobile </li>
+	// <p>任务分类</p><li>1 = PC</li><li> 2 = Mobile </li>
 	TaskCategory *int64 `json:"TaskCategory,omitnil,omitempty" name:"TaskCategory"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 定时任务cron表达式
+	// <p>定时任务cron表达式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cron *string `json:"Cron,omitnil,omitempty" name:"Cron"`
 
-	// 定时任务启动状态
-	// <li>1 = 定时任务表达式生效</li>
-	// <li> 2 = 定时任务表达式未生效（一般为任务手动暂停）</li>
+	// <p>定时任务启动状态</p><li>1 = 定时任务表达式生效</li><li> 2 = 定时任务表达式未生效（一般为任务手动暂停）</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronState *int64 `json:"CronState,omitnil,omitempty" name:"CronState"`
 
-	// 任务当前绑定的标签
+	// <p>任务当前绑定的标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagInfoList []*KeyValuePair `json:"TagInfoList,omitnil,omitempty" name:"TagInfoList"`
 
-	// 是否为同步账号
+	// <p>是否为同步账号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubSyncFlag *int64 `json:"SubSyncFlag,omitnil,omitempty" name:"SubSyncFlag"`
 }
@@ -1704,58 +1610,56 @@ func (r *UpdateProbeTaskAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateProbeTaskConfigurationListRequestParams struct {
-	// 任务 ID，如task-n1wchki8
+	// <p>任务 ID，如task-n1wchki8</p>
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 
-	// 拨测节点，如10001，详细地区运营商拨测编号请联系云拨测。
+	// <p>拨测节点，如10001，详细地区运营商拨测编号请联系云拨测。</p>
 	Nodes []*string `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 拨测间隔，如30，单位为分钟。
+	// <p>拨测间隔，如30，单位为分钟。</p>
 	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 拨测参数，详细参数配置可参考云拨测官网文档。
+	// <p>拨测参数，详细参数配置可参考云拨测官网文档。</p>
 	Parameters *string `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 
-	// 定时任务cron表达式
+	// <p>定时任务cron表达式</p>
 	Cron *string `json:"Cron,omitnil,omitempty" name:"Cron"`
 
-	// 预付费套餐id
-	// 需要与taskId对应
+	// <p>预付费套餐id<br>需要与taskId对应</p>
 	ResourceIDs []*string `json:"ResourceIDs,omitnil,omitempty" name:"ResourceIDs"`
 
-	// 拨测节点的IP类型，0-不限，1-IPv4，2-IPv6
+	// <p>拨测节点的IP类型，0-不限，1-IPv4，2-IPv6</p>
 	NodeIpType *int64 `json:"NodeIpType,omitnil,omitempty" name:"NodeIpType"`
 
-	// 批量任务名-地址
+	// <p>批量任务名-地址</p>
 	BatchTasks []*ProbeTaskBasicConfiguration `json:"BatchTasks,omitnil,omitempty" name:"BatchTasks"`
 }
 
 type UpdateProbeTaskConfigurationListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务 ID，如task-n1wchki8
+	// <p>任务 ID，如task-n1wchki8</p>
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 
-	// 拨测节点，如10001，详细地区运营商拨测编号请联系云拨测。
+	// <p>拨测节点，如10001，详细地区运营商拨测编号请联系云拨测。</p>
 	Nodes []*string `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 拨测间隔，如30，单位为分钟。
+	// <p>拨测间隔，如30，单位为分钟。</p>
 	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 拨测参数，详细参数配置可参考云拨测官网文档。
+	// <p>拨测参数，详细参数配置可参考云拨测官网文档。</p>
 	Parameters *string `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 
-	// 定时任务cron表达式
+	// <p>定时任务cron表达式</p>
 	Cron *string `json:"Cron,omitnil,omitempty" name:"Cron"`
 
-	// 预付费套餐id
-	// 需要与taskId对应
+	// <p>预付费套餐id<br>需要与taskId对应</p>
 	ResourceIDs []*string `json:"ResourceIDs,omitnil,omitempty" name:"ResourceIDs"`
 
-	// 拨测节点的IP类型，0-不限，1-IPv4，2-IPv6
+	// <p>拨测节点的IP类型，0-不限，1-IPv4，2-IPv6</p>
 	NodeIpType *int64 `json:"NodeIpType,omitnil,omitempty" name:"NodeIpType"`
 
-	// 批量任务名-地址
+	// <p>批量任务名-地址</p>
 	BatchTasks []*ProbeTaskBasicConfiguration `json:"BatchTasks,omitnil,omitempty" name:"BatchTasks"`
 }
 

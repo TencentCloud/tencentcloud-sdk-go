@@ -809,6 +809,58 @@ func (c *Client) CancelClusterServerlessScalePlanWithContext(ctx context.Context
     return
 }
 
+func NewCancelTaskRequest() (request *CancelTaskRequest) {
+    request = &CancelTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CancelTask")
+    
+    
+    return
+}
+
+func NewCancelTaskResponse() (response *CancelTaskResponse) {
+    response = &CancelTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelTask
+// 取消等待执行的任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
+    return c.CancelTaskWithContext(context.Background(), request)
+}
+
+// CancelTask
+// 取消等待执行的任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CancelTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckCreateLibraDBInstanceRequest() (request *CheckCreateLibraDBInstanceRequest) {
     request = &CheckCreateLibraDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8301,6 +8353,58 @@ func (c *Client) DescribeProxySpecsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeProxyZoneStocksRequest() (request *DescribeProxyZoneStocksRequest) {
+    request = &DescribeProxyZoneStocksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeProxyZoneStocks")
+    
+    
+    return
+}
+
+func NewDescribeProxyZoneStocksResponse() (response *DescribeProxyZoneStocksResponse) {
+    response = &DescribeProxyZoneStocksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProxyZoneStocks
+// 该接口(DescribeProxyZoneStocks)查询数据库代理地域库存
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+func (c *Client) DescribeProxyZoneStocks(request *DescribeProxyZoneStocksRequest) (response *DescribeProxyZoneStocksResponse, err error) {
+    return c.DescribeProxyZoneStocksWithContext(context.Background(), request)
+}
+
+// DescribeProxyZoneStocks
+// 该接口(DescribeProxyZoneStocks)查询数据库代理地域库存
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+func (c *Client) DescribeProxyZoneStocksWithContext(ctx context.Context, request *DescribeProxyZoneStocksRequest) (response *DescribeProxyZoneStocksResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyZoneStocksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeProxyZoneStocks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxyZoneStocks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProxyZoneStocksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRedoLogListByVaultRequest() (request *DescribeRedoLogListByVaultRequest) {
     request = &DescribeRedoLogListByVaultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8324,8 +8428,8 @@ func NewDescribeRedoLogListByVaultResponse() (response *DescribeRedoLogListByVau
 // 查询RedoLog备份
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 func (c *Client) DescribeRedoLogListByVault(request *DescribeRedoLogListByVaultRequest) (response *DescribeRedoLogListByVaultResponse, err error) {
     return c.DescribeRedoLogListByVaultWithContext(context.Background(), request)
 }
@@ -8334,8 +8438,8 @@ func (c *Client) DescribeRedoLogListByVault(request *DescribeRedoLogListByVaultR
 // 查询RedoLog备份
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 func (c *Client) DescribeRedoLogListByVaultWithContext(ctx context.Context, request *DescribeRedoLogListByVaultRequest) (response *DescribeRedoLogListByVaultResponse, err error) {
     if request == nil {
         request = NewDescribeRedoLogListByVaultRequest()

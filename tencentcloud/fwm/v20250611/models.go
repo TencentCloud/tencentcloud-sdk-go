@@ -2155,6 +2155,101 @@ func (r *DescribeRiskListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRuleGroupsRequestParams struct {
+	// 产品类型
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 产品类型
+	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeRuleGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品类型
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 产品类型
+	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRuleGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRuleGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRuleGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRuleGroupsResponseParams struct {
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 规则组列表
+	RuleGroups []*RuleGroupResp `json:"RuleGroups,omitnil,omitempty" name:"RuleGroups"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRuleGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRuleGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRuleGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRuleGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSecurityGroupRuleRequestParams struct {
 	// 规则组Id
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
@@ -4035,6 +4130,50 @@ type RiskCategoryItem struct {
 	// Incomplete： 未整改完成（整改率 < 100%）
 	// -：未体检/无数据
 	RemediationStatus *string `json:"RemediationStatus,omitnil,omitempty" name:"RemediationStatus"`
+}
+
+type RuleGroupResp struct {
+	// 租户Id
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 规则组Id
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 规则组名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 规则数量
+	RuleCount *int64 `json:"RuleCount,omitnil,omitempty" name:"RuleCount"`
+
+	// 产品类型
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 创建人SubUin
+	CreateBy *string `json:"CreateBy,omitnil,omitempty" name:"CreateBy"`
+
+	// 创建人名称
+	CreateName *string `json:"CreateName,omitnil,omitempty" name:"CreateName"`
+
+	// 更新人SubUin
+	UpdateBy *string `json:"UpdateBy,omitnil,omitempty" name:"UpdateBy"`
+
+	// 更新人名称
+	UpdateName *string `json:"UpdateName,omitnil,omitempty" name:"UpdateName"`
+
+	// 下发关联账号
+	ReceiveAccount []*ReceiveAccount `json:"ReceiveAccount,omitnil,omitempty" name:"ReceiveAccount"`
+
+	//  所属阶段
+	ExecAreas []*string `json:"ExecAreas,omitnil,omitempty" name:"ExecAreas"`
+
+	// 规则方向：1-入站规则，0-出站规则，-1 表示无方向
+	Direction *int64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
 type SecGroupRuleResp struct {

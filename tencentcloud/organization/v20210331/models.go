@@ -747,6 +747,17 @@ func (r *AddUserToGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ApplyRoleConfiguration struct {
+	// <p>权限配置 ID</p>
+	RoleConfigurationId *string `json:"RoleConfigurationId,omitnil,omitempty" name:"RoleConfigurationId"`
+
+	// <p>权限配置名称</p>
+	RoleConfigurationName *string `json:"RoleConfigurationName,omitnil,omitempty" name:"RoleConfigurationName"`
+
+	// <p>说明</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
 // Predefined struct for user
 type AttachPolicyRequestParams struct {
 	// <p>绑定策略目标ID。成员Uin或部门ID</p>
@@ -2075,6 +2086,70 @@ func (r *CreateRoleAssignmentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRoleConfigurationApplyScopeRequestParams struct {
+	// <p>用户目录</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>申请范围条目</p>
+	ApplyScopeInfo []*RoleAssignmentInfo `json:"ApplyScopeInfo,omitnil,omitempty" name:"ApplyScopeInfo"`
+}
+
+type CreateRoleConfigurationApplyScopeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>用户目录</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>申请范围条目</p>
+	ApplyScopeInfo []*RoleAssignmentInfo `json:"ApplyScopeInfo,omitnil,omitempty" name:"ApplyScopeInfo"`
+}
+
+func (r *CreateRoleConfigurationApplyScopeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRoleConfigurationApplyScopeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "ApplyScopeInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoleConfigurationApplyScopeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRoleConfigurationApplyScopeResponseParams struct {
+	// <p>成功 upsert 的条目数</p>
+	SuccessCount *int64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRoleConfigurationApplyScopeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRoleConfigurationApplyScopeResponseParams `json:"Response"`
+}
+
+func (r *CreateRoleConfigurationApplyScopeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRoleConfigurationApplyScopeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRoleConfigurationRequestParams struct {
 	// 空间 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -3093,6 +3168,88 @@ func (r *DeleteRoleAssignmentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteRoleAssignmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRoleConfigurationApplyScopeRequestParams struct {
+	// <p>空间ID</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>权限配置 ID 列表</p>
+	RoleConfigurationIds []*string `json:"RoleConfigurationIds,omitnil,omitempty" name:"RoleConfigurationIds"`
+
+	// <p>目标账号 UIN</p>
+	TargetUin *int64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// <p>身份 ID</p>
+	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
+
+	// <p>身份类型</p><p>枚举值：</p><ul><li>User： 用户</li><li>Group： 用户组</li></ul>
+	PrincipalType *string `json:"PrincipalType,omitnil,omitempty" name:"PrincipalType"`
+}
+
+type DeleteRoleConfigurationApplyScopeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>空间ID</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>权限配置 ID 列表</p>
+	RoleConfigurationIds []*string `json:"RoleConfigurationIds,omitnil,omitempty" name:"RoleConfigurationIds"`
+
+	// <p>目标账号 UIN</p>
+	TargetUin *int64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// <p>身份 ID</p>
+	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
+
+	// <p>身份类型</p><p>枚举值：</p><ul><li>User： 用户</li><li>Group： 用户组</li></ul>
+	PrincipalType *string `json:"PrincipalType,omitnil,omitempty" name:"PrincipalType"`
+}
+
+func (r *DeleteRoleConfigurationApplyScopeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRoleConfigurationApplyScopeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "RoleConfigurationIds")
+	delete(f, "TargetUin")
+	delete(f, "PrincipalId")
+	delete(f, "PrincipalType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRoleConfigurationApplyScopeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRoleConfigurationApplyScopeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteRoleConfigurationApplyScopeResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRoleConfigurationApplyScopeResponseParams `json:"Response"`
+}
+
+func (r *DeleteRoleConfigurationApplyScopeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRoleConfigurationApplyScopeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7300,6 +7457,103 @@ func (r *ListOrganizationServiceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListPermissionApplyOrdersRequestParams struct {
+	// <p>空间 ID</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>搜索字段</p><p>按用户名 / 用户 ID 搜索</p>
+	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
+
+	// <p>状态值</p><p>枚举值：</p><ul><li>1： 待审核</li><li>2： 已通过 - 同步中</li><li>3： 已通过 - 同步成功</li><li>4： 已通过 - 同步失败</li><li>5： 已拒绝</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>每页条数</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>翻页游标</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+}
+
+type ListPermissionApplyOrdersRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>空间 ID</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>搜索字段</p><p>按用户名 / 用户 ID 搜索</p>
+	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
+
+	// <p>状态值</p><p>枚举值：</p><ul><li>1： 待审核</li><li>2： 已通过 - 同步中</li><li>3： 已通过 - 同步成功</li><li>4： 已通过 - 同步失败</li><li>5： 已拒绝</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>每页条数</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>翻页游标</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+}
+
+func (r *ListPermissionApplyOrdersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPermissionApplyOrdersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "SearchValue")
+	delete(f, "Status")
+	delete(f, "MaxResults")
+	delete(f, "NextToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListPermissionApplyOrdersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListPermissionApplyOrdersResponseParams struct {
+	// <p>申请单列表</p>
+	ApplyOrders []*PermissionApplyOrder `json:"ApplyOrders,omitnil,omitempty" name:"ApplyOrders"`
+
+	// <p>总数</p>
+	TotalCounts *int64 `json:"TotalCounts,omitnil,omitempty" name:"TotalCounts"`
+
+	// <p>翻页游标</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>是否还有下一页</p>
+	IsTruncated *bool `json:"IsTruncated,omitnil,omitempty" name:"IsTruncated"`
+
+	// <p>每页条数</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListPermissionApplyOrdersResponse struct {
+	*tchttp.BaseResponse
+	Response *ListPermissionApplyOrdersResponseParams `json:"Response"`
+}
+
+func (r *ListPermissionApplyOrdersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPermissionApplyOrdersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListPermissionPoliciesInRoleConfigurationRequestParams struct {
 	// 空间 ID
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -7730,6 +7984,117 @@ func (r *ListRoleAssignmentsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListRoleAssignmentsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListRoleConfigurationApplyScopesRequestParams struct {
+	// <p>空间 ID</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>身份 ID</p>
+	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
+
+	// <p>身份类型</p><p>枚举值：</p><ul><li>User： 用户</li><li>Group： 用户组</li></ul>
+	PrincipalType *string `json:"PrincipalType,omitnil,omitempty" name:"PrincipalType"`
+
+	// <p>目标账号 UIN</p>
+	TargetUin *int64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// <p>过滤条件</p>
+	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// <p>每页条数</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>翻页游标</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+}
+
+type ListRoleConfigurationApplyScopesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>空间 ID</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>身份 ID</p>
+	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
+
+	// <p>身份类型</p><p>枚举值：</p><ul><li>User： 用户</li><li>Group： 用户组</li></ul>
+	PrincipalType *string `json:"PrincipalType,omitnil,omitempty" name:"PrincipalType"`
+
+	// <p>目标账号 UIN</p>
+	TargetUin *int64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// <p>过滤条件</p>
+	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// <p>每页条数</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>翻页游标</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+}
+
+func (r *ListRoleConfigurationApplyScopesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListRoleConfigurationApplyScopesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "PrincipalId")
+	delete(f, "PrincipalType")
+	delete(f, "TargetUin")
+	delete(f, "Filter")
+	delete(f, "MaxResults")
+	delete(f, "NextToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListRoleConfigurationApplyScopesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListRoleConfigurationApplyScopesResponseParams struct {
+	// <p>申请范围列表</p>
+	ApplyScopes []*RoleAssignments `json:"ApplyScopes,omitnil,omitempty" name:"ApplyScopes"`
+
+	// <p>总数</p>
+	TotalCounts *int64 `json:"TotalCounts,omitnil,omitempty" name:"TotalCounts"`
+
+	// <p>每页条数</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>翻页游标</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>是否被截断</p>
+	IsTruncated *bool `json:"IsTruncated,omitnil,omitempty" name:"IsTruncated"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListRoleConfigurationApplyScopesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListRoleConfigurationApplyScopesResponseParams `json:"Response"`
+}
+
+func (r *ListRoleConfigurationApplyScopesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListRoleConfigurationApplyScopesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9089,6 +9454,38 @@ type OrganizationServiceAssignMember struct {
 
 	// 管理的部门ID列表。ManagementScope值为2时该参数有效
 	ManagementScopeNodes []*NodeMainInfo `json:"ManagementScopeNodes,omitnil,omitempty" name:"ManagementScopeNodes"`
+}
+
+type PermissionApplyOrder struct {
+	// <p>申请单 ID</p>
+	ApplyId *string `json:"ApplyId,omitnil,omitempty" name:"ApplyId"`
+
+	// <p>申请人用户 ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>申请人用户名</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>目标成员账号 UIN</p>
+	TargetUin *int64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// <p>目标成员账号名称</p>
+	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
+
+	// <p>申请的权限配置</p>
+	RoleConfigurations []*ApplyRoleConfiguration `json:"RoleConfigurations,omitnil,omitempty" name:"RoleConfigurations"`
+
+	// <p>申请单状态</p><p>枚举值：</p><ul><li>1： 待审核</li><li>2： 已通过 - 同步中</li><li>3： 已通过 - 同步成功</li><li>4： 已通过 - 同步失败</li><li>5： 已拒绝</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>创建时间</p><p>参数格式：YYYY-M-DD hh:mm:ss</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>审批意见</p>
+	AuditOpinion *string `json:"AuditOpinion,omitnil,omitempty" name:"AuditOpinion"`
+
+	// <p>审批时间</p><p>参数格式：YYYY-M-DD hh:mm:ss</p><p>未审批为空</p>
+	AuditTime *string `json:"AuditTime,omitnil,omitempty" name:"AuditTime"`
 }
 
 type PolicyDetail struct {

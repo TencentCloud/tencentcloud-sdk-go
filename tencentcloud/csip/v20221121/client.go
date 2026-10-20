@@ -44088,8 +44088,10 @@ func NewModifyEdrAlertIsolationResponse() (response *ModifyEdrAlertIsolationResp
 // EDR告警隔离和恢复
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyEdrAlertIsolation(request *ModifyEdrAlertIsolationRequest) (response *ModifyEdrAlertIsolationResponse, err error) {
     return c.ModifyEdrAlertIsolationWithContext(context.Background(), request)
 }
@@ -44098,8 +44100,10 @@ func (c *Client) ModifyEdrAlertIsolation(request *ModifyEdrAlertIsolationRequest
 // EDR告警隔离和恢复
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyEdrAlertIsolationWithContext(ctx context.Context, request *ModifyEdrAlertIsolationRequest) (response *ModifyEdrAlertIsolationResponse, err error) {
     if request == nil {
         request = NewModifyEdrAlertIsolationRequest()

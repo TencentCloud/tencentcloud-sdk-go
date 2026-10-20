@@ -2051,6 +2051,64 @@ func (c *Client) CreateRoleConfigurationWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateRoleConfigurationApplyScopeRequest() (request *CreateRoleConfigurationApplyScopeRequest) {
+    request = &CreateRoleConfigurationApplyScopeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "CreateRoleConfigurationApplyScope")
+    
+    
+    return
+}
+
+func NewCreateRoleConfigurationApplyScopeResponse() (response *CreateRoleConfigurationApplyScopeResponse) {
+    response = &CreateRoleConfigurationApplyScopeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRoleConfigurationApplyScope
+// 创建权限申请范围，支持批量upsert
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateRoleConfigurationApplyScope(request *CreateRoleConfigurationApplyScopeRequest) (response *CreateRoleConfigurationApplyScopeResponse, err error) {
+    return c.CreateRoleConfigurationApplyScopeWithContext(context.Background(), request)
+}
+
+// CreateRoleConfigurationApplyScope
+// 创建权限申请范围，支持批量upsert
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateRoleConfigurationApplyScopeWithContext(ctx context.Context, request *CreateRoleConfigurationApplyScopeRequest) (response *CreateRoleConfigurationApplyScopeResponse, err error) {
+    if request == nil {
+        request = NewCreateRoleConfigurationApplyScopeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "CreateRoleConfigurationApplyScope")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRoleConfigurationApplyScope require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRoleConfigurationApplyScopeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSCIMCredentialRequest() (request *CreateSCIMCredentialRequest) {
     request = &CreateSCIMCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3007,6 +3065,58 @@ func (c *Client) DeleteRoleConfigurationWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteRoleConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRoleConfigurationApplyScopeRequest() (request *DeleteRoleConfigurationApplyScopeRequest) {
+    request = &DeleteRoleConfigurationApplyScopeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DeleteRoleConfigurationApplyScope")
+    
+    
+    return
+}
+
+func NewDeleteRoleConfigurationApplyScopeResponse() (response *DeleteRoleConfigurationApplyScopeResponse) {
+    response = &DeleteRoleConfigurationApplyScopeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRoleConfigurationApplyScope
+// 删除权限申请范围
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  RESOURCENOTFOUND_PERMISSIONAPPLYSCOPENOTFOUND = "ResourceNotFound.PermissionApplyScopeNotFound"
+func (c *Client) DeleteRoleConfigurationApplyScope(request *DeleteRoleConfigurationApplyScopeRequest) (response *DeleteRoleConfigurationApplyScopeResponse, err error) {
+    return c.DeleteRoleConfigurationApplyScopeWithContext(context.Background(), request)
+}
+
+// DeleteRoleConfigurationApplyScope
+// 删除权限申请范围
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  RESOURCENOTFOUND_PERMISSIONAPPLYSCOPENOTFOUND = "ResourceNotFound.PermissionApplyScopeNotFound"
+func (c *Client) DeleteRoleConfigurationApplyScopeWithContext(ctx context.Context, request *DeleteRoleConfigurationApplyScopeRequest) (response *DeleteRoleConfigurationApplyScopeResponse, err error) {
+    if request == nil {
+        request = NewDeleteRoleConfigurationApplyScopeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "DeleteRoleConfigurationApplyScope")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRoleConfigurationApplyScope require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRoleConfigurationApplyScopeResponse()
     err = c.Send(request, response)
     return
 }
@@ -6223,6 +6333,58 @@ func (c *Client) ListOrganizationServiceWithContext(ctx context.Context, request
     return
 }
 
+func NewListPermissionApplyOrdersRequest() (request *ListPermissionApplyOrdersRequest) {
+    request = &ListPermissionApplyOrdersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListPermissionApplyOrders")
+    
+    
+    return
+}
+
+func NewListPermissionApplyOrdersResponse() (response *ListPermissionApplyOrdersResponse) {
+    response = &ListPermissionApplyOrdersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListPermissionApplyOrders
+// 管理员审批列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+func (c *Client) ListPermissionApplyOrders(request *ListPermissionApplyOrdersRequest) (response *ListPermissionApplyOrdersResponse, err error) {
+    return c.ListPermissionApplyOrdersWithContext(context.Background(), request)
+}
+
+// ListPermissionApplyOrders
+// 管理员审批列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+func (c *Client) ListPermissionApplyOrdersWithContext(ctx context.Context, request *ListPermissionApplyOrdersRequest) (response *ListPermissionApplyOrdersResponse, err error) {
+    if request == nil {
+        request = NewListPermissionApplyOrdersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "ListPermissionApplyOrders")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListPermissionApplyOrders require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListPermissionApplyOrdersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListPermissionPoliciesInRoleConfigurationRequest() (request *ListPermissionPoliciesInRoleConfigurationRequest) {
     request = &ListPermissionPoliciesInRoleConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6555,6 +6717,60 @@ func (c *Client) ListRoleAssignmentsWithContext(ctx context.Context, request *Li
     request.SetContext(ctx)
     
     response = NewListRoleAssignmentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListRoleConfigurationApplyScopesRequest() (request *ListRoleConfigurationApplyScopesRequest) {
+    request = &ListRoleConfigurationApplyScopesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "ListRoleConfigurationApplyScopes")
+    
+    
+    return
+}
+
+func NewListRoleConfigurationApplyScopesResponse() (response *ListRoleConfigurationApplyScopesResponse) {
+    response = &ListRoleConfigurationApplyScopesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListRoleConfigurationApplyScopes
+// 权限申请范围列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+func (c *Client) ListRoleConfigurationApplyScopes(request *ListRoleConfigurationApplyScopesRequest) (response *ListRoleConfigurationApplyScopesResponse, err error) {
+    return c.ListRoleConfigurationApplyScopesWithContext(context.Background(), request)
+}
+
+// ListRoleConfigurationApplyScopes
+// 权限申请范围列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  INVALIDPARAMETER_NEXTTOKENINVALID = "InvalidParameter.NextTokenInvalid"
+func (c *Client) ListRoleConfigurationApplyScopesWithContext(ctx context.Context, request *ListRoleConfigurationApplyScopesRequest) (response *ListRoleConfigurationApplyScopesResponse, err error) {
+    if request == nil {
+        request = NewListRoleConfigurationApplyScopesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "organization", APIVersion, "ListRoleConfigurationApplyScopes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListRoleConfigurationApplyScopes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListRoleConfigurationApplyScopesResponse()
     err = c.Send(request, response)
     return
 }

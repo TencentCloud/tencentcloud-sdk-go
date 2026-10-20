@@ -356,7 +356,7 @@ type ConnectorInfo struct {
 	// 上游服务地址
 	ServiceUrl *string `json:"ServiceUrl,omitnil,omitempty" name:"ServiceUrl"`
 
-	// 授权方式列表：NONE / ONEID / OAUTH2_IDP
+	// 授权方式列表：NONE / ONEID / OAUTH2_IDP / API_KEY
 	AuthModes []*string `json:"AuthModes,omitnil,omitempty" name:"AuthModes"`
 
 	// 最新版本号
@@ -373,6 +373,9 @@ type ConnectorInfo struct {
 
 	// 最后修改时间（ISO8601，UTC）
 	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// VPC 网络配置 ID。为空表示该连接器通过公网访问 ServiceUrl。仅绑定 VPC 网络配置时本字段有值。
+	VpcConfigId *string `json:"VpcConfigId,omitnil,omitempty" name:"VpcConfigId"`
 }
 
 type ConnectorRefInput struct {

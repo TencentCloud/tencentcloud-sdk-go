@@ -741,6 +741,138 @@ func (c *Client) DeleteAccountGroupResourcesWithContext(ctx context.Context, req
     return
 }
 
+func NewDeleteDeliveryServerRequest() (request *DeleteDeliveryServerRequest) {
+    request = &DeleteDeliveryServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DeleteDeliveryServer")
+    
+    
+    return
+}
+
+func NewDeleteDeliveryServerResponse() (response *DeleteDeliveryServerResponse) {
+    response = &DeleteDeliveryServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDeliveryServer
+// 删除转发服务器，私有化调用path为：capi/LogCenter/DeliveryLog/DeleteDeliveryServer
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteDeliveryServer(request *DeleteDeliveryServerRequest) (response *DeleteDeliveryServerResponse, err error) {
+    return c.DeleteDeliveryServerWithContext(context.Background(), request)
+}
+
+// DeleteDeliveryServer
+// 删除转发服务器，私有化调用path为：capi/LogCenter/DeliveryLog/DeleteDeliveryServer
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteDeliveryServerWithContext(ctx context.Context, request *DeleteDeliveryServerRequest) (response *DeleteDeliveryServerResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeliveryServerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DeleteDeliveryServer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeliveryServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeliveryServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDeliveryStrategyRequest() (request *DeleteDeliveryStrategyRequest) {
+    request = &DeleteDeliveryStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DeleteDeliveryStrategy")
+    
+    
+    return
+}
+
+func NewDeleteDeliveryStrategyResponse() (response *DeleteDeliveryStrategyResponse) {
+    response = &DeleteDeliveryStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDeliveryStrategy
+// 删除转发策略，私有化调用path为：capi/LogCenter/DeliveryLog/DeleteDeliveryStrategy
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteDeliveryStrategy(request *DeleteDeliveryStrategyRequest) (response *DeleteDeliveryStrategyResponse, err error) {
+    return c.DeleteDeliveryStrategyWithContext(context.Background(), request)
+}
+
+// DeleteDeliveryStrategy
+// 删除转发策略，私有化调用path为：capi/LogCenter/DeliveryLog/DeleteDeliveryStrategy
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteDeliveryStrategyWithContext(ctx context.Context, request *DeleteDeliveryStrategyRequest) (response *DeleteDeliveryStrategyResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeliveryStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DeleteDeliveryStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeliveryStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeliveryStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDeviceVirtualGroupRequest() (request *DeleteDeviceVirtualGroupRequest) {
     request = &DeleteDeviceVirtualGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1415,6 +1547,138 @@ func (c *Client) DescribeDLPFileDetectTaskResultWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeDeliveryServerRequest() (request *DescribeDeliveryServerRequest) {
+    request = &DescribeDeliveryServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDeliveryServer")
+    
+    
+    return
+}
+
+func NewDescribeDeliveryServerResponse() (response *DescribeDeliveryServerResponse) {
+    response = &DescribeDeliveryServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeliveryServer
+// 转发服务器详情，私有化调用path为：capi/LogCenter/DescribeDeliveryServer
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDeliveryServer(request *DescribeDeliveryServerRequest) (response *DescribeDeliveryServerResponse, err error) {
+    return c.DescribeDeliveryServerWithContext(context.Background(), request)
+}
+
+// DescribeDeliveryServer
+// 转发服务器详情，私有化调用path为：capi/LogCenter/DescribeDeliveryServer
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDeliveryServerWithContext(ctx context.Context, request *DescribeDeliveryServerRequest) (response *DescribeDeliveryServerResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeliveryServerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDeliveryServer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeliveryServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeliveryServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeliveryStrategyRequest() (request *DescribeDeliveryStrategyRequest) {
+    request = &DescribeDeliveryStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDeliveryStrategy")
+    
+    
+    return
+}
+
+func NewDescribeDeliveryStrategyResponse() (response *DescribeDeliveryStrategyResponse) {
+    response = &DescribeDeliveryStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeliveryStrategy
+// 转发策略详情，私有化调用path为：capi/LogCenter/DeliveryLog/DescribeDeliveryStrategy
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDeliveryStrategy(request *DescribeDeliveryStrategyRequest) (response *DescribeDeliveryStrategyResponse, err error) {
+    return c.DescribeDeliveryStrategyWithContext(context.Background(), request)
+}
+
+// DescribeDeliveryStrategy
+// 转发策略详情，私有化调用path为：capi/LogCenter/DeliveryLog/DescribeDeliveryStrategy
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDeliveryStrategyWithContext(ctx context.Context, request *DescribeDeliveryStrategyRequest) (response *DescribeDeliveryStrategyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeliveryStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDeliveryStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeliveryStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeliveryStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceChildGroupsRequest() (request *DescribeDeviceChildGroupsRequest) {
     request = &DescribeDeviceChildGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2009,6 +2273,56 @@ func (c *Client) DescribeProfileFieldsMenuWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeProfileFieldsMenuResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePublicEncryptKeyRequest() (request *DescribePublicEncryptKeyRequest) {
+    request = &DescribePublicEncryptKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribePublicEncryptKey")
+    
+    
+    return
+}
+
+func NewDescribePublicEncryptKeyResponse() (response *DescribePublicEncryptKeyResponse) {
+    response = &DescribePublicEncryptKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePublicEncryptKey
+// 获取用于RSA加密的公钥，对敏感数据进行加密传输。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) DescribePublicEncryptKey(request *DescribePublicEncryptKeyRequest) (response *DescribePublicEncryptKeyResponse, err error) {
+    return c.DescribePublicEncryptKeyWithContext(context.Background(), request)
+}
+
+// DescribePublicEncryptKey
+// 获取用于RSA加密的公钥，对敏感数据进行加密传输。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) DescribePublicEncryptKeyWithContext(ctx context.Context, request *DescribePublicEncryptKeyRequest) (response *DescribePublicEncryptKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicEncryptKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribePublicEncryptKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePublicEncryptKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePublicEncryptKeyResponse()
     err = c.Send(request, response)
     return
 }
@@ -2853,6 +3167,138 @@ func (c *Client) ModifyCompanyDirectoryConfigWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewModifyCompanyDirectoryConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDeliveryServerRequest() (request *ModifyDeliveryServerRequest) {
+    request = &ModifyDeliveryServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "ModifyDeliveryServer")
+    
+    
+    return
+}
+
+func NewModifyDeliveryServerResponse() (response *ModifyDeliveryServerResponse) {
+    response = &ModifyDeliveryServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDeliveryServer
+// 创建或编辑日志转发服务器，私有化调用path为：capi/LogCenter/DeliveryLog/ModifyDeliveryServer
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDeliveryServer(request *ModifyDeliveryServerRequest) (response *ModifyDeliveryServerResponse, err error) {
+    return c.ModifyDeliveryServerWithContext(context.Background(), request)
+}
+
+// ModifyDeliveryServer
+// 创建或编辑日志转发服务器，私有化调用path为：capi/LogCenter/DeliveryLog/ModifyDeliveryServer
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDeliveryServerWithContext(ctx context.Context, request *ModifyDeliveryServerRequest) (response *ModifyDeliveryServerResponse, err error) {
+    if request == nil {
+        request = NewModifyDeliveryServerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "ModifyDeliveryServer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeliveryServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDeliveryServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDeliveryStrategyRequest() (request *ModifyDeliveryStrategyRequest) {
+    request = &ModifyDeliveryStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "ModifyDeliveryStrategy")
+    
+    
+    return
+}
+
+func NewModifyDeliveryStrategyResponse() (response *ModifyDeliveryStrategyResponse) {
+    response = &ModifyDeliveryStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDeliveryStrategy
+// 创建或编辑日志转发策略，私有化调用path为：capi/LogCenter/DeliveryLog/ModifyDeliveryStrategy
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDeliveryStrategy(request *ModifyDeliveryStrategyRequest) (response *ModifyDeliveryStrategyResponse, err error) {
+    return c.ModifyDeliveryStrategyWithContext(context.Background(), request)
+}
+
+// ModifyDeliveryStrategy
+// 创建或编辑日志转发策略，私有化调用path为：capi/LogCenter/DeliveryLog/ModifyDeliveryStrategy
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDeliveryStrategyWithContext(ctx context.Context, request *ModifyDeliveryStrategyRequest) (response *ModifyDeliveryStrategyResponse, err error) {
+    if request == nil {
+        request = NewModifyDeliveryStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "ModifyDeliveryStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeliveryStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDeliveryStrategyResponse()
     err = c.Send(request, response)
     return
 }

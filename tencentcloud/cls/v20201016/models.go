@@ -1275,6 +1275,47 @@ type CloudProductLogTaskInfo struct {
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
+type CloudProductTopicConfig struct {
+	// <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。</p><p>枚举值：</p><ul><li>0： 不加密</li><li>1： kms-cls 云产品密钥加密</li></ul><p>默认值：0</p>
+	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// <p>主题分区个数。默认创建1个，最大支持创建10个分区。</p>
+	PartitionCount *int64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
+
+	// <p>是否开启自动分裂，默认值为true</p>
+	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
+
+	// <p>开启自动分裂后，每个主题能够允许的最大分区数</p><p>默认值：50</p>
+	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
+
+	// <p>日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）。指标主题不支持该配置。</p><p>默认值：hot</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// <p>存储时间，单位天。</p><ul><li>日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。</li><li>日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。</li><li>指标主题：支持1至3600天，值为3640时代表永久保存。</li></ul>
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// <p>0：日志主题关闭日志沉降。<br>非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。<br>仅在StorageType为 hot 时生效，指标主题不支持该配置。</p>
+	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
+
+	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul>
+	BillingMode *uint64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
+
+	// <p>主题描述</p>
+	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
+
+	// <p>开启记录公网来源ip和服务端接收时间</p>
+	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
+
+	// <p>免鉴权开关。 false：关闭； true：开启。默认为false。 开启后将支持指定操作匿名访问该日志主题。</p>
+	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
+
+	// <p>用户自定义 KMS 密钥信息；为空则使用默认密钥（别名 KMS-CLS）<br>当参数 Encryption为 1 时有效。</p>
+	CustomKmsInfo *CustomKmsInfo `json:"CustomKmsInfo,omitnil,omitempty" name:"CustomKmsInfo"`
+
+	// <p>主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。</p><ul><li>用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符</li><li>尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。</li><li>如果指定该字段，需保证全地域唯一</li></ul>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
 type CollectConfig struct {
 	// 指定采集类型的采集配置名称信息。
 	// <li>当CollectInfo中Type为0：表示元数据配置，name为元数据名称。
@@ -1993,6 +2034,9 @@ type CreateAgentApplicationRequestParams struct {
 
 	// <p>日志集Id。通过 <a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到应用创建的主题和日志集。</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateAgentApplicationRequest struct {
@@ -2006,6 +2050,9 @@ type CreateAgentApplicationRequest struct {
 
 	// <p>日志集Id。通过 <a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到应用创建的主题和日志集。</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateAgentApplicationRequest) ToJsonString() string {
@@ -2023,6 +2070,7 @@ func (r *CreateAgentApplicationRequest) FromJsonString(s string) error {
 	delete(f, "ApplicationName")
 	delete(f, "AccessType")
 	delete(f, "LogsetId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAgentApplicationRequest has unknown keys!", "")
 	}
@@ -2604,6 +2652,9 @@ type CreateCloudProductLogCollectionRequestParams struct {
 
 	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>日志主题信息。当创建云产品投递任务并传递TopicName时，会创建具备这些属性的日志主题。</p>
+	TopicConfig *CloudProductTopicConfig `json:"TopicConfig,omitnil,omitempty" name:"TopicConfig"`
 }
 
 type CreateCloudProductLogCollectionRequest struct {
@@ -2641,6 +2692,9 @@ type CreateCloudProductLogCollectionRequest struct {
 
 	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>日志主题信息。当创建云产品投递任务并传递TopicName时，会创建具备这些属性的日志主题。</p>
+	TopicConfig *CloudProductTopicConfig `json:"TopicConfig,omitnil,omitempty" name:"TopicConfig"`
 }
 
 func (r *CreateCloudProductLogCollectionRequest) ToJsonString() string {
@@ -2666,6 +2720,7 @@ func (r *CreateCloudProductLogCollectionRequest) FromJsonString(s string) error 
 	delete(f, "LogsetId")
 	delete(f, "TopicId")
 	delete(f, "Tags")
+	delete(f, "TopicConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudProductLogCollectionRequest has unknown keys!", "")
 	}

@@ -1456,7 +1456,7 @@ type AddSpartaProtectionRequestParams struct {
 	// <p>GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
 	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 
-	// <p>回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源</p>
+	// <p>回源策略。<br>枚举值：<br>0：负载均衡回源（默认值）<br>1：分流回源<br>2：五元组精准回源，每个服务端口通过 UpstreamIps 单独配置回源 IP。仅高级版及以上可用，且仅支持 IP 回源</p>
 	UpstreamPolicy *int64 `json:"UpstreamPolicy,omitnil,omitempty" name:"UpstreamPolicy"`
 
 	// <p>分流回源时生效，分流回源的规则。</p>
@@ -1613,7 +1613,7 @@ type AddSpartaProtectionRequest struct {
 	// <p>GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
 	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 
-	// <p>回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源</p>
+	// <p>回源策略。<br>枚举值：<br>0：负载均衡回源（默认值）<br>1：分流回源<br>2：五元组精准回源，每个服务端口通过 UpstreamIps 单独配置回源 IP。仅高级版及以上可用，且仅支持 IP 回源</p>
 	UpstreamPolicy *int64 `json:"UpstreamPolicy,omitnil,omitempty" name:"UpstreamPolicy"`
 
 	// <p>分流回源时生效，分流回源的规则。</p>
@@ -1789,6 +1789,126 @@ type AfterPayInstanceInfo struct {
 
 	// <p>LLM实例当天4个计费模块token消耗量及近7天趋势（仅后付费llm-sdk-waf实例返回）</p>
 	LLMTokenUsage *LLMTokenUsage `json:"LLMTokenUsage,omitnil,omitempty" name:"LLMTokenUsage"`
+
+	// <p>弹性计费开关。<br>0：关闭<br>1：开启</p>
+	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>已配置域名个数。</p><p>按量后付费基础安全实例（Edition为sparta-waf或clb-waf）返回实时去重后的接入域名数，统计范围覆盖SaaS接入域名、云原生防护对象（含默认虚拟域名）与四层REIP接入域名，同一域名多条接入记录只计一次。</p>
+	DomainCount *uint64 `json:"DomainCount,omitnil,omitempty" name:"DomainCount"`
+
+	// <p>已配置主域名个数。</p><p>按接入域名归属的主域名去重统计；未接入任何域名时为0。</p>
+	MainDomainCount *uint64 `json:"MainDomainCount,omitnil,omitempty" name:"MainDomainCount"`
+
+	// <p>实例当前实时开启的专家规则数量。统计口径：接入一个防护对象（域名）即默认计1个专家规则，即等于该实例的实时接入域名数DomainCount；未接入任何对象时为0。</p><p>仅按量后付费基础安全实例（Edition为sparta-waf或clb-waf）返回，其余实例类型固定为0。</p><p>该值为实时快照，与账单接口DescribeWafPostpaidBillDetail返回的小时计量值ExpertUsage可能存在差异。</p>
+	ExpertRuleCount *uint64 `json:"ExpertRuleCount,omitnil,omitempty" name:"ExpertRuleCount"`
+
+	// <p>实例下所有接入域名的实时自定义规则条数之和。统计范围包含自定义策略、规则白名单、IP封禁、自定义CC、紧急CC、地域封禁、防信息泄露、防篡改、IP黑白名单等模块；同一条批量规则命中该实例下N个域名时计N条。</p><p>仅按量后付费基础安全实例（Edition为sparta-waf或clb-waf）返回，其余实例类型固定为0。</p><p>该值为实时快照且不做多实例平分，与账单接口DescribeWafPostpaidBillDetail返回的小时计量值CustomUsage可能存在差异。</p>
+	CustomRuleCount *uint64 `json:"CustomRuleCount,omitnil,omitempty" name:"CustomRuleCount"`
+
+	// <p>实例30天内QPS峰值</p>
+	MaxQPS *uint64 `json:"MaxQPS,omitnil,omitempty" name:"MaxQPS"`
+
+	// <p>qps扩展包信息</p>
+	QPS *QPSPackageNew `json:"QPS,omitnil,omitempty" name:"QPS"`
+
+	// <p>域名扩展包信息</p>
+	DomainPkg *DomainPackageNew `json:"DomainPkg,omitnil,omitempty" name:"DomainPkg"`
+
+	// <p>业务安全包</p>
+	FraudPkg *FraudPkg `json:"FraudPkg,omitnil,omitempty" name:"FraudPkg"`
+
+	// <p>Bot资源包</p>
+	BotPkg *BotPkg `json:"BotPkg,omitnil,omitempty" name:"BotPkg"`
+
+	// <p>bot的qps详情</p>
+	BotQPS *BotQPS `json:"BotQPS,omitnil,omitempty" name:"BotQPS"`
+
+	// <p>带宽峰值，单位为B/s(字节每秒)</p>
+	MaxBandwidth *uint64 `json:"MaxBandwidth,omitnil,omitempty" name:"MaxBandwidth"`
+
+	// <p>购买的qps规格</p>
+	QpsStandard *uint64 `json:"QpsStandard,omitnil,omitempty" name:"QpsStandard"`
+
+	// <p>购买的带宽规格</p>
+	BandwidthStandard *uint64 `json:"BandwidthStandard,omitnil,omitempty" name:"BandwidthStandard"`
+
+	// <p>实例状态</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>实例沙箱qps值</p>
+	SandboxQps *uint64 `json:"SandboxQps,omitnil,omitempty" name:"SandboxQps"`
+
+	// <p>重保包</p>
+	MajorEventsPkg *MajorEventsPkg `json:"MajorEventsPkg,omitnil,omitempty" name:"MajorEventsPkg"`
+
+	// <p>混合云子节点包</p>
+	HybridPkg *HybridPkg `json:"HybridPkg,omitnil,omitempty" name:"HybridPkg"`
+
+	// <p>API安全资源包</p>
+	ApiPkg *ApiPkg `json:"ApiPkg,omitnil,omitempty" name:"ApiPkg"`
+
+	// <p>小程序安全加速包</p>
+	MiniPkg *MiniPkg `json:"MiniPkg,omitnil,omitempty" name:"MiniPkg"`
+
+	// <p>小程序qps规格</p>
+	MiniQpsStandard *uint64 `json:"MiniQpsStandard,omitnil,omitempty" name:"MiniQpsStandard"`
+
+	// <p>小程序qps峰值</p>
+	MiniMaxQPS *uint64 `json:"MiniMaxQPS,omitnil,omitempty" name:"MiniMaxQPS"`
+
+	// <p>最近一次超量时间</p>
+	LastQpsExceedTime *string `json:"LastQpsExceedTime,omitnil,omitempty" name:"LastQpsExceedTime"`
+
+	// <p>小程序安全接入ID数量扩张包</p>
+	MiniExtendPkg *MiniExtendPkg `json:"MiniExtendPkg,omitnil,omitempty" name:"MiniExtendPkg"`
+
+	// <p>最近3天最大qps</p>
+	Last3MaxQPS *uint64 `json:"Last3MaxQPS,omitnil,omitempty" name:"Last3MaxQPS"`
+
+	// <p>最近3天最大带宽</p>
+	Last3MaxBandwidth *uint64 `json:"Last3MaxBandwidth,omitnil,omitempty" name:"Last3MaxBandwidth"`
+
+	// <p>过去7天小程序流量最大带宽，单位Byte/s，仅开启小程序安全时有值。转换为Mbps请使用 *8/1000/1000（十进制），不要使用MaxBandwidth所用的*8/1024/1024（二进制），否则会有约4.63%的偏差</p>
+	Last7MaxMiniBandwidth *uint64 `json:"Last7MaxMiniBandwidth,omitnil,omitempty" name:"Last7MaxMiniBandwidth"`
+
+	// <p>小程序带宽上限，单位Mbps，仅开启小程序安全时有值</p>
+	MiniBandwidthStandard *uint64 `json:"MiniBandwidthStandard,omitnil,omitempty" name:"MiniBandwidthStandard"`
+
+	// <p>重保增强包</p>
+	MajorEventsProPkg *MajorEventsProPkg `json:"MajorEventsProPkg,omitnil,omitempty" name:"MajorEventsProPkg"`
+
+	// <p>实例的网络配置</p>
+	NetworkConfig *NetworkConfig `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
+	// <p>RCE设备安全信息包</p>
+	RCEPkg *RCEPkg `json:"RCEPkg,omitnil,omitempty" name:"RCEPkg"`
+
+	// <p>超量策略。0：超量沙箱<br>1：超量限流</p>
+	ExceedPolicy *int64 `json:"ExceedPolicy,omitnil,omitempty" name:"ExceedPolicy"`
+
+	// <p>弹性资源Id</p>
+	ElasticResourceId *string `json:"ElasticResourceId,omitnil,omitempty" name:"ElasticResourceId"`
+
+	// <p>预付费大模型安全信息包</p>
+	LLMMonPkg *LLMMonPkg `json:"LLMMonPkg,omitnil,omitempty" name:"LLMMonPkg"`
+
+	// <p>地域id</p>
+	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// <p>BOT安全护航信息</p>
+	BotSecurityPkg *BotSecurityPkg `json:"BotSecurityPkg,omitnil,omitempty" name:"BotSecurityPkg"`
+
+	// <p>BOT安全监测资源信息</p>
+	BotMonitorPkg *BotMonitorPkg `json:"BotMonitorPkg,omitnil,omitempty" name:"BotMonitorPkg"`
+
+	// <p>独享ip资源信息</p>
+	DedicatedIPPkg *DedicatedIPPkg `json:"DedicatedIPPkg,omitnil,omitempty" name:"DedicatedIPPkg"`
+
+	// <p>已经配置独享ip的数量</p>
+	DedicatedIPCount *int64 `json:"DedicatedIPCount,omitnil,omitempty" name:"DedicatedIPCount"`
+
+	// <p>标签结构体</p>
+	TagInfos []*TagInfo `json:"TagInfos,omitnil,omitempty" name:"TagInfos"`
 }
 
 type AnonymousInfo struct {
@@ -1983,7 +2103,7 @@ type ApiPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
@@ -2001,7 +2121,7 @@ type ApiPkg struct {
 	// 使用数量
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
-	// 续费标志
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费项
@@ -2767,7 +2887,7 @@ type BotMonitorPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
@@ -2785,7 +2905,7 @@ type BotMonitorPkg struct {
 	// 使用数量
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
-	// 续费标志
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费项
@@ -2796,7 +2916,7 @@ type BotPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
@@ -2817,7 +2937,7 @@ type BotPkg struct {
 	// 子产品code
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 续费标志	
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 购买页bot6折
@@ -2846,7 +2966,7 @@ type BotQPS struct {
 	// 使用qps的最大值
 	MaxBotQPS *uint64 `json:"MaxBotQPS,omitnil,omitempty" name:"MaxBotQPS"`
 
-	// 续费标志
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
@@ -3021,7 +3141,7 @@ type BotSecurityPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
@@ -3039,7 +3159,7 @@ type BotSecurityPkg struct {
 	// 使用数量
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
-	// 续费标志
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费项
@@ -3442,8 +3562,59 @@ type ClbObject struct {
 	// <p>对象类型：CLB:负载均衡器，TSE:云原生网关</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// <p>对象地域</p>
+	// <p>对象地域<br>对象地域，地域缩写，例如 gz。与 ApRegion 表达同一含义、格式不同</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 对象所在地域，腾讯云标准地域格式
+	// 参数格式：形如 ap-guangzhou
+	// 与 Region 表达同一含义、格式不同。对象恒为单地域，数组长度恒为 0 或 1
+	// 出参在可识别时填充，无法识别时为空
+	// 枚举值：
+	// ap-guangzhou：广州
+	// ap-shanghai：上海
+	// ap-beijing：北京
+	// ap-chengdu：成都
+	// ap-chongqing：重庆
+	// ap-hongkong：中国香港
+	// ap-nanjing：南京
+	// ap-tianjin：天津
+	// ap-shenzhen：深圳
+	// ap-qingyuan：清远
+	// ap-guangzhou-open：广州Open
+	// ap-shenzhen-fsi：深圳金融
+	// ap-beijing-fsi：北京金融
+	// ap-shanghai-fsi：上海金融
+	// ap-hangzhou-ec：杭州
+	// ap-fuzhou-ec：福州
+	// ap-jinan-ec：济南
+	// ap-wuhan-ec：武汉
+	// ap-changsha-ec：长沙
+	// ap-hefei-ec：合肥
+	// ap-shenyang-ec：沈阳
+	// ap-xian-ec：西安
+	// ap-xibei-ec：西北
+	// ap-shijiazhuang-ec：石家庄
+	// ap-zhengzhou-ec：郑州
+	// ap-qingyuan-xinan：清远信安
+	// ap-shanghai-adc：上海ADC
+	// ap-shanghai-wxp-ops：上海无线城市运营
+	// ap-singapore：新加坡
+	// ap-seoul：首尔
+	// ap-tokyo：东京
+	// ap-osaka：大阪
+	// ap-mumbai：孟买
+	// ap-bangkok：曼谷
+	// ap-jakarta：雅加达
+	// ap-taipei：台北
+	// ap-johorbahru：柔佛巴鲁
+	// eu-frankfurt：法兰克福
+	// eu-moscow：莫斯科
+	// na-ashburn：弗吉尼亚
+	// na-siliconvalley：硅谷
+	// na-toronto：多伦多
+	// sa-saopaulo：圣保罗
+	// me-saudi-arabia：沙特阿拉伯
+	ApRegion []*string `json:"ApRegion,omitnil,omitempty" name:"ApRegion"`
 
 	// <p>代理状态: 0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出</p>
 	Proxy *uint64 `json:"Proxy,omitnil,omitempty" name:"Proxy"`
@@ -7296,7 +7467,7 @@ type DescribeAfterPayInstancesResponseParams struct {
 	// 总数
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 后付费实例列表
+	// 后付费实例列表（结构与 DescribeInstances 的 InstanceInfo 一致，全量返回实例字段含各类套餐包信息，额外填充 LLMTokenUsage）
 	Instances []*AfterPayInstanceInfo `json:"Instances,omitnil,omitempty" name:"Instances"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10301,26 +10472,26 @@ func (r *DescribeDomainCountInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainDetailsClbRequestParams struct {
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名id
+	// <p>域名id</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeDomainDetailsClbRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名id
+	// <p>域名id</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -10347,7 +10518,7 @@ func (r *DescribeDomainDetailsClbRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainDetailsClbResponseParams struct {
-	// clb域名详情
+	// <p>clb域名详情</p>
 	DomainsClbPartInfo *ClbDomainsInfo `json:"DomainsClbPartInfo,omitnil,omitempty" name:"DomainsClbPartInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11321,7 +11492,7 @@ type DescribeInstancesRequestParams struct {
 	// 过滤数组
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 释放延期标识
+	// 释放延期标识，0表示不延期，1表示延期释放
 	FreeDelayFlag *uint64 `json:"FreeDelayFlag,omitnil,omitempty" name:"FreeDelayFlag"`
 }
 
@@ -11337,7 +11508,7 @@ type DescribeInstancesRequest struct {
 	// 过滤数组
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 释放延期标识
+	// 释放延期标识，0表示不延期，1表示延期释放
 	FreeDelayFlag *uint64 `json:"FreeDelayFlag,omitnil,omitempty" name:"FreeDelayFlag"`
 }
 
@@ -11817,6 +11988,14 @@ type DescribeLLMContentSecCheckRequestParams struct {
 
 	// <p>客户端来源IP地址，用于白名单匹配等场景，支持IPv4和IPv6格式</p>
 	ClientIP *string `json:"ClientIP,omitnil,omitempty" name:"ClientIP"`
+
+	// 多轮历史用户输入，按时间旧到新排列，仅用于提示词注入检测
+	// 入参限制：最多10条，超出保留最新10条；History + Content 拼接后不超过6K字符，超限从最早History开始丢弃
+	History []*string `json:"History,omitnil,omitempty" name:"History"`
+
+	// 待检测的URL列表，用于恶意URL检测
+	// 入参限制：最多50个，单个URL长度不超过2048字符，超出截断
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 }
 
 type DescribeLLMContentSecCheckRequest struct {
@@ -11860,6 +12039,14 @@ type DescribeLLMContentSecCheckRequest struct {
 
 	// <p>客户端来源IP地址，用于白名单匹配等场景，支持IPv4和IPv6格式</p>
 	ClientIP *string `json:"ClientIP,omitnil,omitempty" name:"ClientIP"`
+
+	// 多轮历史用户输入，按时间旧到新排列，仅用于提示词注入检测
+	// 入参限制：最多10条，超出保留最新10条；History + Content 拼接后不超过6K字符，超限从最早History开始丢弃
+	History []*string `json:"History,omitnil,omitempty" name:"History"`
+
+	// 待检测的URL列表，用于恶意URL检测
+	// 入参限制：最多50个，单个URL长度不超过2048字符，超出截断
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 }
 
 func (r *DescribeLLMContentSecCheckRequest) ToJsonString() string {
@@ -11887,6 +12074,8 @@ func (r *DescribeLLMContentSecCheckRequest) FromJsonString(s string) error {
 	delete(f, "SessionId")
 	delete(f, "IntentContent")
 	delete(f, "ClientIP")
+	delete(f, "History")
+	delete(f, "Urls")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMContentSecCheckRequest has unknown keys!", "")
 	}
@@ -12139,21 +12328,39 @@ func (r *DescribeLLMSdkAccessResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLLMWafDLPRulesRequestParams struct {
-	// <p>服务ID</p>
+	// <p>SDK 模式传 ServiceId（与 Domain 二选一）</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>排序字段，当前仅支持 UpdateTime；为空则按规则默认顺序返回</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// <p>排序方向：asc(升序)/desc(降序)，默认 desc</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>域名模式传 Domain（与 ServiceId 二选一）</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 type DescribeLLMWafDLPRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>服务ID</p>
+	// <p>SDK 模式传 ServiceId（与 Domain 二选一）</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>排序字段，当前仅支持 UpdateTime；为空则按规则默认顺序返回</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// <p>排序方向：asc(升序)/desc(降序)，默认 desc</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>域名模式传 Domain（与 ServiceId 二选一）</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 func (r *DescribeLLMWafDLPRulesRequest) ToJsonString() string {
@@ -12170,6 +12377,9 @@ func (r *DescribeLLMWafDLPRulesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ServiceId")
 	delete(f, "InstanceId")
+	delete(f, "By")
+	delete(f, "Order")
+	delete(f, "Domain")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMWafDLPRulesRequest has unknown keys!", "")
 	}
@@ -12203,7 +12413,7 @@ func (r *DescribeLLMWafDLPRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLLMWafProtectRulesRequestParams struct {
-	// <p>服务ID</p>
+	// <p>SDK 模式传 ServiceId（与 Domain 二选一）</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// <p>实例id</p>
@@ -12211,12 +12421,15 @@ type DescribeLLMWafProtectRulesRequestParams struct {
 
 	// <p>规则类型</p>
 	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>域名模式传 Domain（与 ServiceId 二选一）</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 type DescribeLLMWafProtectRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>服务ID</p>
+	// <p>SDK 模式传 ServiceId（与 Domain 二选一）</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// <p>实例id</p>
@@ -12224,6 +12437,9 @@ type DescribeLLMWafProtectRulesRequest struct {
 
 	// <p>规则类型</p>
 	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>域名模式传 Domain（与 ServiceId 二选一）</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 func (r *DescribeLLMWafProtectRulesRequest) ToJsonString() string {
@@ -12241,6 +12457,7 @@ func (r *DescribeLLMWafProtectRulesRequest) FromJsonString(s string) error {
 	delete(f, "ServiceId")
 	delete(f, "InstanceId")
 	delete(f, "RuleType")
+	delete(f, "Domain")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMWafProtectRulesRequest has unknown keys!", "")
 	}
@@ -15243,7 +15460,7 @@ type DomainInfo struct {
 	// <p>域名所属实例类型。<br>sparta-waf：SaaS型WAF实例<br>clb-waf：负载均衡型WAF实例<br>cdc-clb-waf：CDC环境下负载均衡型WAF实例</p>
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// <p>地域。<br>&quot;多伦多&quot;: &quot;ca&quot;<br>&quot;广州&quot;: &quot;gz&quot;<br>&quot;成都&quot;: &quot;cd&quot;<br>&quot;福州&quot;: &quot;fzec&quot;<br>&quot;深圳&quot;: &quot;szx&quot;<br>&quot;印度&quot;: &quot;in&quot;<br>&quot;济南&quot;: &quot;jnec&quot;<br>&quot;重庆&quot;: &quot;cq&quot;<br>&quot;天津&quot;: &quot;tsn&quot;<br>&quot;欧洲东北&quot;: &quot;ru&quot;<br>&quot;南京&quot;: &quot;nj&quot;<br>&quot;美国硅谷&quot;: &quot;usw&quot;<br>&quot;泰国&quot;: &quot;th&quot;<br>&quot;广州Open&quot;: &quot;gzopen&quot;<br>&quot;深圳金融&quot;: &quot;szjr&quot;<br>&quot;法兰克福&quot;: &quot;de&quot;<br>&quot;日本&quot;: &quot;jp&quot;<br>&quot;弗吉尼亚&quot;: &quot;use&quot;<br>&quot;北京&quot;: &quot;bj&quot;<br>&quot;中国香港&quot;: &quot;hk&quot;<br>&quot;杭州&quot;: &quot;hzec&quot;<br>&quot;北京金融&quot;: &quot;bjjr&quot;<br>&quot;上海金融&quot;: &quot;shjr&quot;<br>&quot;台北&quot;: &quot;tpe&quot;<br>&quot;首尔&quot;: &quot;kr&quot;<br>&quot;上海&quot;: &quot;sh&quot;<br>&quot;新加坡&quot;: &quot;sg&quot;<br>&quot;清远&quot;: &quot;qy&quot;</p>
+	// <p>地域。<br>&quot;多伦多&quot;: &quot;ca&quot;<br>&quot;广州&quot;: &quot;gz&quot;<br>&quot;成都&quot;: &quot;cd&quot;<br>&quot;福州&quot;: &quot;fzec&quot;<br>&quot;深圳&quot;: &quot;szx&quot;<br>&quot;印度&quot;: &quot;in&quot;<br>&quot;济南&quot;: &quot;jnec&quot;<br>&quot;重庆&quot;: &quot;cq&quot;<br>&quot;天津&quot;: &quot;tsn&quot;<br>&quot;欧洲东北&quot;: &quot;ru&quot;<br>&quot;南京&quot;: &quot;nj&quot;<br>&quot;美国硅谷&quot;: &quot;usw&quot;<br>&quot;泰国&quot;: &quot;th&quot;<br>&quot;广州Open&quot;: &quot;gzopen&quot;<br>&quot;深圳金融&quot;: &quot;szjr&quot;<br>&quot;法兰克福&quot;: &quot;de&quot;<br>&quot;日本&quot;: &quot;jp&quot;<br>&quot;弗吉尼亚&quot;: &quot;use&quot;<br>&quot;北京&quot;: &quot;bj&quot;<br>&quot;中国香港&quot;: &quot;hk&quot;<br>&quot;杭州&quot;: &quot;hzec&quot;<br>&quot;北京金融&quot;: &quot;bjjr&quot;<br>&quot;上海金融&quot;: &quot;shjr&quot;<br>&quot;台北&quot;: &quot;tpe&quot;<br>&quot;首尔&quot;: &quot;kr&quot;<br>&quot;上海&quot;: &quot;sh&quot;<br>&quot;新加坡&quot;: &quot;sg&quot;<br>&quot;清远&quot;: &quot;qy&quot;<br>与 ApRegion 表达同一含义、格式不同：本字段为地域缩写，ApRegion 为腾讯云标准 ap-xxx 格式</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// <p>实例名</p>
@@ -15281,6 +15498,61 @@ type DomainInfo struct {
 
 	// <p>SAAS型WAF域名状态：<br>-2：配置下发失败<br>-1：配置下发中<br>0：DNS解析中<br>1：无DNS解析记录，请接入WAF<br>10：DNS解析未知，域名启用了代理<br>11：DNS解析异常，使用A记录接入WAF IP<br>200：检测源站不可达<br>220：源站不支持长连接<br>311：证书过期<br>312：证书即将过期<br>310：证书异常<br>316：备案异常<br>5：WAF回源已变更<br>负载均衡型WAF域名LB监听器状态：<br>0：操作成功<br>4：正在绑定LB<br>6：正在解绑LB<br>7：解绑LB失败<br>8：绑定LB失败<br>10：内部错误</p>
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 域名所在地域，腾讯云标准地域格式
+	// 参数格式：形如 ap-guangzhou
+	// 与 Region 表达同一含义、格式不同：Region 为地域缩写，本字段为标准地域名数组。负载均衡型多地域接入时数组可含多个元素
+	// 出参在可识别时填充，无法识别的地域不返回对应元素
+	// 枚举值：
+	// ap-guangzhou：广州
+	// ap-shanghai：上海
+	// ap-beijing：北京
+	// ap-chengdu：成都
+	// ap-chongqing：重庆
+	// ap-hongkong：中国香港
+	// ap-nanjing：南京
+	// ap-tianjin：天津
+	// ap-shenzhen：深圳
+	// ap-qingyuan：清远
+	// ap-guangzhou-open：广州Open
+	// ap-shenzhen-fsi：深圳金融
+	// ap-beijing-fsi：北京金融
+	// ap-shanghai-fsi：上海金融
+	// ap-hangzhou-ec：杭州
+	// ap-fuzhou-ec：福州
+	// ap-jinan-ec：济南
+	// ap-wuhan-ec：武汉
+	// ap-changsha-ec：长沙
+	// ap-hefei-ec：合肥
+	// ap-shenyang-ec：沈阳
+	// ap-xian-ec：西安
+	// ap-xibei-ec：西北
+	// ap-shijiazhuang-ec：石家庄
+	// ap-zhengzhou-ec：郑州
+	// ap-qingyuan-xinan：清远信安
+	// ap-shanghai-adc：上海ADC
+	// ap-shanghai-wxp-ops：上海无线城市运营
+	// ap-singapore：新加坡
+	// ap-seoul：首尔
+	// ap-tokyo：东京
+	// ap-osaka：大阪
+	// ap-mumbai：孟买
+	// ap-bangkok：曼谷
+	// ap-jakarta：雅加达
+	// ap-taipei：台北
+	// ap-johorbahru：柔佛巴鲁
+	// eu-frankfurt：法兰克福
+	// eu-moscow：莫斯科
+	// na-ashburn：弗吉尼亚
+	// na-siliconvalley：硅谷
+	// na-toronto：多伦多
+	// sa-saopaulo：圣保罗
+	// me-saudi-arabia：沙特阿拉伯
+	ApRegion []*string `json:"ApRegion,omitnil,omitempty" name:"ApRegion"`
+
+	// DNSSEC CNAME 地址。客户开启 DNSSEC CNAME 校验后，将业务域名 CNAME 到该地址即可接入。开关关闭、非 SaaS CNAME 接入或无法映射时为空字符串。
+	// 默认值：""
+	DnssecCname *string `json:"DnssecCname,omitnil,omitempty" name:"DnssecCname"`
 
 	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
@@ -15474,6 +15746,9 @@ type DomainsPartInfo struct {
 
 	// <p>接入Cname，SaaS型域名使用此Cname进行接入</p>
 	Cname *string `json:"Cname,omitnil,omitempty" name:"Cname"`
+
+	// <p>DNSSEC CNAME 地址。客户开启 DNSSEC CNAME 校验后，将业务域名 CNAME 到该地址即可接入。开关关闭、非 SaaS CNAME 接入或无法映射时为空字符串。<br>默认值：&quot;&quot;</p>
+	DnssecCname *string `json:"DnssecCname,omitnil,omitempty" name:"DnssecCname"`
 
 	// <p>是否开启长连接。<br>0： 短连接<br>1： 长连接</p>
 	IsKeepAlive *uint64 `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
@@ -15904,6 +16179,15 @@ type FieldWriteConfig struct {
 
 	// <p>响应方向body<br>1:开启 0:不开启</p>
 	EnableResponse *int64 `json:"EnableResponse,omitnil,omitempty" name:"EnableResponse"`
+
+	// <p>是否投递 response_headers（响应头，完整键值对，原样投递不做过滤/脱敏，超过2KB截断）。1:开启 0/不填:不开启。与 EnableResponse（响应体）完全独立，互不影响。</p>
+	EnableResponseHeaders *int64 `json:"EnableResponseHeaders,omitnil,omitempty" name:"EnableResponseHeaders"`
+
+	// <p>是否投递 response_length（响应包长度，单位字节）。1:开启 0/不填:不开启。与 EnableResponse 完全独立，互不影响。</p>
+	EnableResponseLength *int64 `json:"EnableResponseLength,omitnil,omitempty" name:"EnableResponseLength"`
+
+	// <p>是否投递 response_status_line（客户端可见 HTTP 状态行，如 HTTP/1.1 200 OK，超过1KB截断）。1:开启 0/不填:不开启。与 EnableResponse 完全独立，互不影响。拦截/未回源时也会有值，记录的是 WAF 返回给客户端的状态行。</p>
+	EnableResponseStatusLine *int64 `json:"EnableResponseStatusLine,omitnil,omitempty" name:"EnableResponseStatusLine"`
 }
 
 type FilterCls struct {
@@ -15956,7 +16240,7 @@ type FraudPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
@@ -15974,7 +16258,7 @@ type FraudPkg struct {
 	// 使用数量
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
-	// 续费标志
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
@@ -16762,6 +17046,7 @@ type HostRecord struct {
 	LoadBalancerSet []*LoadBalancer `json:"LoadBalancerSet,omitnil,omitempty" name:"LoadBalancerSet"`
 
 	// 域名绑定的LB的地域，以逗号分割多个地域
+	// 与 ApRegion 表达同一含义、格式不同。本字段为地域缩写，多个地域以英文逗号拼接；入参与 ApRegion 同时传入时以 ApRegion 为准
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 域名所属实例类型。负载均衡型WAF为"clb-waf"
@@ -16776,6 +17061,58 @@ type HostRecord struct {
 	// 1：开启
 	// 0：关闭
 	ClsStatus *uint64 `json:"ClsStatus,omitnil,omitempty" name:"ClsStatus"`
+
+	// 域名绑定的负载均衡所在地域，腾讯云标准地域格式
+	// 参数格式：形如 ap-guangzhou
+	// 与 Region 表达同一含义、格式不同：Region 为地域缩写且多个地域以英文逗号拼接，本字段为标准地域名数组
+	// 入参可选；与 Region 同时传入时以本字段为准；取值不在枚举范围内时返回 UnsupportedRegion
+	// 出参在可识别时填充，无法识别的地域不返回对应元素
+	// 枚举值：
+	// ap-guangzhou：广州
+	// ap-shanghai：上海
+	// ap-beijing：北京
+	// ap-chengdu：成都
+	// ap-chongqing：重庆
+	// ap-hongkong：中国香港
+	// ap-nanjing：南京
+	// ap-tianjin：天津
+	// ap-shenzhen：深圳
+	// ap-qingyuan：清远
+	// ap-guangzhou-open：广州Open
+	// ap-shenzhen-fsi：深圳金融
+	// ap-beijing-fsi：北京金融
+	// ap-shanghai-fsi：上海金融
+	// ap-hangzhou-ec：杭州
+	// ap-fuzhou-ec：福州
+	// ap-jinan-ec：济南
+	// ap-wuhan-ec：武汉
+	// ap-changsha-ec：长沙
+	// ap-hefei-ec：合肥
+	// ap-shenyang-ec：沈阳
+	// ap-xian-ec：西安
+	// ap-xibei-ec：西北
+	// ap-shijiazhuang-ec：石家庄
+	// ap-zhengzhou-ec：郑州
+	// ap-qingyuan-xinan：清远信安
+	// ap-shanghai-adc：上海ADC
+	// ap-shanghai-wxp-ops：上海无线城市运营
+	// ap-singapore：新加坡
+	// ap-seoul：首尔
+	// ap-tokyo：东京
+	// ap-osaka：大阪
+	// ap-mumbai：孟买
+	// ap-bangkok：曼谷
+	// ap-jakarta：雅加达
+	// ap-taipei：台北
+	// ap-johorbahru：柔佛巴鲁
+	// eu-frankfurt：法兰克福
+	// eu-moscow：莫斯科
+	// na-ashburn：弗吉尼亚
+	// na-siliconvalley：硅谷
+	// na-toronto：多伦多
+	// sa-saopaulo：圣保罗
+	// me-saudi-arabia：沙特阿拉伯
+	ApRegion []*string `json:"ApRegion,omitnil,omitempty" name:"ApRegion"`
 
 	// 防护等级，可选值100,200,300
 	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
@@ -16826,7 +17163,7 @@ type HybridPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
@@ -16844,8 +17181,11 @@ type HybridPkg struct {
 	// 使用数量
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
-	// 续费标志
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 可接入弹性节点数。仅 Edition 为 clb-waf 的实例有混合云接入节点；弹性关闭或不满足版本、已购混合云节点条件时为 0；满足时为 1 + floor(弹性计费 QPS 上限 / 5000)，不含已购买节点数
+	ElasticNodeNum *int64 `json:"ElasticNodeNum,omitnil,omitempty" name:"ElasticNodeNum"`
 }
 
 type ImageResult struct {
@@ -17075,7 +17415,7 @@ type InstanceInfo struct {
 	// <p>实例所属地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// <p>付费模式</p>
+	// 付费模式，0表示后付费（按量计费），1表示预付费（包年包月）
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// <p>自动续费标识。<br>0：关闭<br>1：开启</p>
@@ -17144,10 +17484,10 @@ type InstanceInfo struct {
 	// <p>购买的qps规格</p>
 	QpsStandard *uint64 `json:"QpsStandard,omitnil,omitempty" name:"QpsStandard"`
 
-	// <p>购买的带宽规格</p>
+	// 购买的带宽规格上限，单位：Mbps
 	BandwidthStandard *uint64 `json:"BandwidthStandard,omitnil,omitempty" name:"BandwidthStandard"`
 
-	// <p>实例状态</p>
+	// 实例状态，0表示正常，1表示正常使用，2表示隔离期，3表示已销毁
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// <p>实例沙箱qps值</p>
@@ -17165,7 +17505,7 @@ type InstanceInfo struct {
 	// <p>API安全资源包</p>
 	ApiPkg *ApiPkg `json:"ApiPkg,omitnil,omitempty" name:"ApiPkg"`
 
-	// <p>小程序安全加速包</p>
+	// <p>小程序安全防护包</p>
 	MiniPkg *MiniPkg `json:"MiniPkg,omitnil,omitempty" name:"MiniPkg"`
 
 	// <p>小程序qps规格</p>
@@ -17183,7 +17523,7 @@ type InstanceInfo struct {
 	// <p>计费项</p>
 	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 
-	// <p>实例延期释放标识</p>
+	// 实例延期释放标识，0表示不延期，1表示延期释放
 	FreeDelayFlag *uint64 `json:"FreeDelayFlag,omitnil,omitempty" name:"FreeDelayFlag"`
 
 	// <p>最近3天最大qps</p>
@@ -17191,6 +17531,12 @@ type InstanceInfo struct {
 
 	// <p>最近3天最大带宽</p>
 	Last3MaxBandwidth *uint64 `json:"Last3MaxBandwidth,omitnil,omitempty" name:"Last3MaxBandwidth"`
+
+	// <p>过去7天小程序流量最大带宽，单位Byte/s，仅开启小程序安全时有值。转换为Mbps请使用 *8/1000/1000（十进制），不要使用MaxBandwidth所用的*8/1024/1024（二进制），否则会有约4.63%的偏差</p>
+	Last7MaxMiniBandwidth *uint64 `json:"Last7MaxMiniBandwidth,omitnil,omitempty" name:"Last7MaxMiniBandwidth"`
+
+	// <p>小程序带宽上限，单位Mbps，仅开启小程序安全时有值</p>
+	MiniBandwidthStandard *uint64 `json:"MiniBandwidthStandard,omitnil,omitempty" name:"MiniBandwidthStandard"`
 
 	// <p>重保增强包</p>
 	MajorEventsProPkg *MajorEventsProPkg `json:"MajorEventsProPkg,omitnil,omitempty" name:"MajorEventsProPkg"`
@@ -17203,6 +17549,9 @@ type InstanceInfo struct {
 
 	// <p>RCE设备安全信息包</p>
 	RCEPkg *RCEPkg `json:"RCEPkg,omitnil,omitempty" name:"RCEPkg"`
+
+	// <p>RCE QPS扩展包</p>
+	RCEExtendPkg *RCEExtendPkg `json:"RCEExtendPkg,omitnil,omitempty" name:"RCEExtendPkg"`
 
 	// <p>超量策略。0：超量沙箱<br>1：超量限流</p>
 	ExceedPolicy *int64 `json:"ExceedPolicy,omitnil,omitempty" name:"ExceedPolicy"`
@@ -17411,6 +17760,9 @@ type LLMDetectResult struct {
 	// <p>攻击payload</p>
 	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
 
+	// <p>脱敏后的内容。Action为mask时返回；如果未生成脱敏证据，则返回原文。</p>
+	Desensitization *string `json:"Desensitization,omitnil,omitempty" name:"Desensitization"`
+
 	// <p>图片检测结果</p>
 	ImageResult []*ImageResult `json:"ImageResult,omitnil,omitempty" name:"ImageResult"`
 
@@ -17422,6 +17774,9 @@ type LLMDetectResult struct {
 
 	// <p>意图检测结果</p>
 	IntentDetectResult *IntentDetectResult `json:"IntentDetectResult,omitnil,omitempty" name:"IntentDetectResult"`
+
+	// <p>恶意URL检测结果</p>
+	UrlDetectResult *UrlDetectResult `json:"UrlDetectResult,omitnil,omitempty" name:"UrlDetectResult"`
 }
 
 type LLMImageTrendItem struct {
@@ -17462,7 +17817,7 @@ type LLMMonPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
@@ -17509,7 +17864,7 @@ type LLMPkg struct {
 	// <p>资源id</p>
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// <p>状态</p>
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// <p>地域</p>
@@ -17773,46 +18128,49 @@ type LimitWindow struct {
 }
 
 type LoadBalancer struct {
-	// 负载均衡LD的ID
+	// <p>负载均衡LD的ID</p>
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡LD的名称
+	// <p>负载均衡LD的名称</p>
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
-	// 负载均衡监听器的ID
+	// <p>负载均衡监听器的ID</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 负载均衡监听器的名称
+	// <p>负载均衡监听器的名称</p>
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
-	// 负载均衡实例的端口
+	// <p>负载均衡实例的端口</p>
 	Vport *uint64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 负载均衡LD的地域
+	// <p>负载均衡LD的地域<br>与 ApRegion 表达同一含义、格式不同。本字段为地域缩写；入参与 ApRegion 同时传入时以 ApRegion 为准</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 监听器协议，http、https
+	// <p>监听器协议，http、https</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 负载均衡监听器所在的zone
+	// <p>负载均衡监听器所在的zone</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 负载均衡实例的IP。域名化CLB VIP可填空。
+	// <p>负载均衡实例所在地域，腾讯云标准地域格式<br>参数格式：形如 ap-guangzhou<br>与 Region 表达同一含义、格式不同。监听器恒为单地域，数组长度恒为 0 或 1<br>入参可选；与 Region 同时传入时以本字段为准；取值不在枚举范围内时返回 UnsupportedRegion<br>出参在可识别时填充，无法识别时为空数组<br>枚举值：<br>ap-guangzhou：广州<br>ap-shanghai：上海<br>ap-beijing：北京<br>ap-chengdu：成都<br>ap-chongqing：重庆<br>ap-hongkong：中国香港<br>ap-nanjing：南京<br>ap-tianjin：天津<br>ap-shenzhen：深圳<br>ap-qingyuan：清远<br>ap-guangzhou-open：广州Open<br>ap-shenzhen-fsi：深圳金融<br>ap-beijing-fsi：北京金融<br>ap-shanghai-fsi：上海金融<br>ap-hangzhou-ec：杭州<br>ap-fuzhou-ec：福州<br>ap-jinan-ec：济南<br>ap-wuhan-ec：武汉<br>ap-changsha-ec：长沙<br>ap-hefei-ec：合肥<br>ap-shenyang-ec：沈阳<br>ap-xian-ec：西安<br>ap-xibei-ec：西北<br>ap-shijiazhuang-ec：石家庄<br>ap-zhengzhou-ec：郑州<br>ap-qingyuan-xinan：清远信安<br>ap-shanghai-adc：上海ADC<br>ap-shanghai-wxp-ops：上海无线城市运营<br>ap-singapore：新加坡<br>ap-seoul：首尔<br>ap-tokyo：东京<br>ap-osaka：大阪<br>ap-mumbai：孟买<br>ap-bangkok：曼谷<br>ap-jakarta：雅加达<br>ap-taipei：台北<br>ap-johorbahru：柔佛巴鲁<br>eu-frankfurt：法兰克福<br>eu-moscow：莫斯科<br>na-ashburn：弗吉尼亚<br>na-siliconvalley：硅谷<br>na-toronto：多伦多<br>sa-saopaulo：圣保罗<br>me-saudi-arabia：沙特阿拉伯</p>
+	ApRegion []*string `json:"ApRegion,omitnil,omitempty" name:"ApRegion"`
+
+	// <p>负载均衡实例的IP。域名化CLB VIP可填空。</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 负载均衡的VPCID，公网为-1，内网按实际填写
+	// <p>负载均衡的VPCID，公网为-1，内网按实际填写</p>
 	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
 
-	// 负载均衡的网络类型。OPEN： 公网 INTERNAL ：内网
+	// <p>负载均衡的网络类型。OPEN： 公网 INTERNAL ：内网</p>
 	LoadBalancerType *string `json:"LoadBalancerType,omitnil,omitempty" name:"LoadBalancerType"`
 
-	// 负载均衡的域名
+	// <p>负载均衡的域名</p>
 	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil,omitempty" name:"LoadBalancerDomain"`
 
-	// 监听器所属成员id
+	// <p>监听器所属成员id</p>
 	MemberAppId *uint64 `json:"MemberAppId,omitnil,omitempty" name:"MemberAppId"`
 
-	// 监听器所属成员的uin
+	// <p>监听器所属成员的uin</p>
 	MemberUin *string `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 }
 
@@ -17862,6 +18220,7 @@ type LoadBalancerPackageNew struct {
 	//     "新加坡": "sg",
 	//     "清远": "qy",
 	//     "雅加达": "jkt"
+	// 与 ApRegion 表达同一含义、格式不同：本字段为地域缩写，ApRegion 为腾讯云标准 ap-xxx 格式
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 接入IP
@@ -17878,6 +18237,57 @@ type LoadBalancerPackageNew struct {
 
 	// CLB类型
 	LoadBalancerType *string `json:"LoadBalancerType,omitnil,omitempty" name:"LoadBalancerType"`
+
+	// 负载均衡实例所在地域，腾讯云标准地域格式
+	// 参数格式：形如 ap-guangzhou
+	// 与 Region 表达同一含义、格式不同。监听器恒为单地域，数组长度恒为 0 或 1
+	// 出参在可识别时填充，无法识别时为空数组
+	// 枚举值：
+	// ap-guangzhou：广州
+	// ap-shanghai：上海
+	// ap-beijing：北京
+	// ap-chengdu：成都
+	// ap-chongqing：重庆
+	// ap-hongkong：中国香港
+	// ap-nanjing：南京
+	// ap-tianjin：天津
+	// ap-shenzhen：深圳
+	// ap-qingyuan：清远
+	// ap-guangzhou-open：广州Open
+	// ap-shenzhen-fsi：深圳金融
+	// ap-beijing-fsi：北京金融
+	// ap-shanghai-fsi：上海金融
+	// ap-hangzhou-ec：杭州
+	// ap-fuzhou-ec：福州
+	// ap-jinan-ec：济南
+	// ap-wuhan-ec：武汉
+	// ap-changsha-ec：长沙
+	// ap-hefei-ec：合肥
+	// ap-shenyang-ec：沈阳
+	// ap-xian-ec：西安
+	// ap-xibei-ec：西北
+	// ap-shijiazhuang-ec：石家庄
+	// ap-zhengzhou-ec：郑州
+	// ap-qingyuan-xinan：清远信安
+	// ap-shanghai-adc：上海ADC
+	// ap-shanghai-wxp-ops：上海无线城市运营
+	// ap-singapore：新加坡
+	// ap-seoul：首尔
+	// ap-tokyo：东京
+	// ap-osaka：大阪
+	// ap-mumbai：孟买
+	// ap-bangkok：曼谷
+	// ap-jakarta：雅加达
+	// ap-taipei：台北
+	// ap-johorbahru：柔佛巴鲁
+	// eu-frankfurt：法兰克福
+	// eu-moscow：莫斯科
+	// na-ashburn：弗吉尼亚
+	// na-siliconvalley：硅谷
+	// na-toronto：多伦多
+	// sa-saopaulo：圣保罗
+	// me-saudi-arabia：沙特阿拉伯
+	ApRegion []*string `json:"ApRegion,omitnil,omitempty" name:"ApRegion"`
 
 	// 负载均衡器的域名
 	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil,omitempty" name:"LoadBalancerDomain"`
@@ -17959,7 +18369,7 @@ type MajorEventsPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
@@ -17977,7 +18387,7 @@ type MajorEventsPkg struct {
 	// 使用数量
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
-	// 续费标志
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费项
@@ -17991,7 +18401,7 @@ type MajorEventsProPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
@@ -18009,7 +18419,7 @@ type MajorEventsProPkg struct {
 	// 使用数量
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
-	// 续费标志
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费项
@@ -18034,7 +18444,7 @@ type MiniExtendPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
@@ -18049,7 +18459,7 @@ type MiniExtendPkg struct {
 	// 购买数量
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 续费标志
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费项
@@ -18060,7 +18470,7 @@ type MiniPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
@@ -18075,7 +18485,7 @@ type MiniPkg struct {
 	// 购买数量
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 续费标志
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费项
@@ -21551,7 +21961,7 @@ type ModifyLLMContentRuleRequestParams struct {
 	// <p>实例id，必填项</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// <p>代答类型：1-内置可信模型安全代答，2-自定义代答（ActionType=reply时生效</p><p>枚举值：</p><ul><li>1： 内置可信模型安全代答</li><li>2： 自定义代答ActionType=reply时生效</li></ul>
+	// <p>代答类型：1-内置可信模型安全代答，2-自定义代答(ActionType=reply)时生效</p><p>枚举值：</p><ul><li>1： 内置可信模型安全代答</li><li>2： 自定义代答(ActionType=reply)时生效</li></ul>
 	ReplyType *uint64 `json:"ReplyType,omitnil,omitempty" name:"ReplyType"`
 
 	// <p>自定义回答模板</p>
@@ -21568,6 +21978,9 @@ type ModifyLLMContentRuleRequestParams struct {
 
 	// <p>加白生效模块type列表（Category=white时使用），表示该白名单规则命中后对哪些防护模块生效(放行)。取值：2-算力消耗规则，3-自定义防护规则，4-ToolCall防护，5-提示词攻击防护，6-内容合规检测，7-敏感数据检测。</p>
 	AppliedModules []*uint64 `json:"AppliedModules,omitnil,omitempty" name:"AppliedModules"`
+
+	// <p>严重程度：critical-超高危，high-高危，medium-中危(默认)，low-低危。命中该规则时攻击日志按此展示风险等级；不传或空值按medium处理。</p><p>枚举值：</p><ul><li>critical： 超高危</li><li>high： 高危</li><li>medium： 中危(默认)</li><li>low： 低危</li></ul>
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 }
 
 type ModifyLLMContentRuleRequest struct {
@@ -21615,7 +22028,7 @@ type ModifyLLMContentRuleRequest struct {
 	// <p>实例id，必填项</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// <p>代答类型：1-内置可信模型安全代答，2-自定义代答（ActionType=reply时生效</p><p>枚举值：</p><ul><li>1： 内置可信模型安全代答</li><li>2： 自定义代答ActionType=reply时生效</li></ul>
+	// <p>代答类型：1-内置可信模型安全代答，2-自定义代答(ActionType=reply)时生效</p><p>枚举值：</p><ul><li>1： 内置可信模型安全代答</li><li>2： 自定义代答(ActionType=reply)时生效</li></ul>
 	ReplyType *uint64 `json:"ReplyType,omitnil,omitempty" name:"ReplyType"`
 
 	// <p>自定义回答模板</p>
@@ -21632,6 +22045,9 @@ type ModifyLLMContentRuleRequest struct {
 
 	// <p>加白生效模块type列表（Category=white时使用），表示该白名单规则命中后对哪些防护模块生效(放行)。取值：2-算力消耗规则，3-自定义防护规则，4-ToolCall防护，5-提示词攻击防护，6-内容合规检测，7-敏感数据检测。</p>
 	AppliedModules []*uint64 `json:"AppliedModules,omitnil,omitempty" name:"AppliedModules"`
+
+	// <p>严重程度：critical-超高危，high-高危，medium-中危(默认)，low-低危。命中该规则时攻击日志按此展示风险等级；不传或空值按medium处理。</p><p>枚举值：</p><ul><li>critical： 超高危</li><li>high： 高危</li><li>medium： 中危(默认)</li><li>low： 低危</li></ul>
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 }
 
 func (r *ModifyLLMContentRuleRequest) ToJsonString() string {
@@ -21666,6 +22082,7 @@ func (r *ModifyLLMContentRuleRequest) FromJsonString(s string) error {
 	delete(f, "Category")
 	delete(f, "Domains")
 	delete(f, "AppliedModules")
+	delete(f, "RiskLevel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLLMContentRuleRequest has unknown keys!", "")
 	}
@@ -23291,7 +23708,11 @@ type ModifySpartaProtectionRequestParams struct {
 	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
 	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 
-	// 回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+	// 回源策略。
+	// 枚举值：
+	// 0：负载均衡回源（默认值）
+	// 1：分流回源
+	// 2：五元组精准回源，每个服务端口通过 UpstreamIps 单独配置回源 IP。仅高级版及以上可用，且仅支持 IP 回源
 	UpstreamPolicy *int64 `json:"UpstreamPolicy,omitnil,omitempty" name:"UpstreamPolicy"`
 
 	// 分流回源时生效，分流回源的规则。
@@ -23448,7 +23869,11 @@ type ModifySpartaProtectionRequest struct {
 	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
 	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 
-	// 回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+	// 回源策略。
+	// 枚举值：
+	// 0：负载均衡回源（默认值）
+	// 1：分流回源
+	// 2：五元组精准回源，每个服务端口通过 UpstreamIps 单独配置回源 IP。仅高级版及以上可用，且仅支持 IP 回源
 	UpstreamPolicy *int64 `json:"UpstreamPolicy,omitnil,omitempty" name:"UpstreamPolicy"`
 
 	// 分流回源时生效，分流回源的规则。
@@ -24682,11 +25107,37 @@ func (r *QueryClientMsgResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RCEExtendPkg struct {
+	// 资源id
+	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 状态，0表示关闭，1表示开启
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 地域
+	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 扩展包个数，每个包1000 QPS
+	InquireNum *int64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
+
+	// 计费项
+	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
+
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
+	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+}
+
 type RCEPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// 状态，0表示关闭，1表示开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地域
@@ -24704,11 +25155,17 @@ type RCEPkg struct {
 	// 使用数量
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
-	// 续费标志
+	// 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费项
 	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
+
+	// 弹性开关。0表示关闭，1表示开启。没有弹性资源时为0
+	ElasticMode *int64 `json:"ElasticMode,omitnil,omitempty" name:"ElasticMode"`
+
+	// 弹性QPS上限，单位QPS。合法区间为10000到300000。开关关闭时仍保留上次设置的上限
+	ElasticBilling *int64 `json:"ElasticBilling,omitnil,omitempty" name:"ElasticBilling"`
 }
 
 type RateLimitCommonRsp struct {
@@ -24915,6 +25372,9 @@ type RuleDetail struct {
 
 	// <p>检测方向</p><p>取值范围：[0, 3]</p>
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// <p>规则修改时间（秒级时间戳）：租户对该规则的最近一次修改时间，从未修改则为0</p>
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type RuleItem struct {
@@ -24929,6 +25389,9 @@ type RuleItem struct {
 
 	// 信息类
 	Levels []*ValueLevel `json:"Levels,omitnil,omitempty" name:"Levels"`
+
+	// Toolcall工具参数名，支持多层路径(如apiData.operate_op)，仅tool_args信息类型使用
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type RuleList struct {
@@ -27232,6 +27695,22 @@ type UpstreamRule struct {
 	// 0：轮询
 	// 1：IP_HASH
 	BalanceType *uint64 `json:"BalanceType,omitnil,omitempty" name:"BalanceType"`
+}
+
+type UrlDetectResult struct {
+	// <p>命中的恶意URL列表</p>
+	HitUrls []*UrlHitInfo `json:"HitUrls,omitnil,omitempty" name:"HitUrls"`
+}
+
+type UrlHitInfo struct {
+	// <p>命中的URL</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>命中的规则ID</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>命中的规则名称</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 }
 
 type UserDomainInfo struct {

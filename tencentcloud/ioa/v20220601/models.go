@@ -1157,6 +1157,114 @@ func (r *DeleteAccountGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteDeliveryServerRequestParams struct {
+	// <p>服务器id</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type DeleteDeliveryServerRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务器id</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *DeleteDeliveryServerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeliveryServerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeliveryServerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDeliveryServerResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDeliveryServerResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDeliveryServerResponseParams `json:"Response"`
+}
+
+func (r *DeleteDeliveryServerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeliveryServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDeliveryStrategyRequestParams struct {
+	// <p>转发策略id</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type DeleteDeliveryStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>转发策略id</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *DeleteDeliveryStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeliveryStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeliveryStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDeliveryStrategyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDeliveryStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDeliveryStrategyResponseParams `json:"Response"`
+}
+
+func (r *DeleteDeliveryStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeliveryStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteDeviceVirtualGroupRequestParams struct {
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
@@ -1232,6 +1340,118 @@ type DeleteResourceData struct {
 	// 资源或资源组Id(只支持32位)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type DeliverServerItem struct {
+	// <p>服务器id  (创建时忽略)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>服务器名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>转发服务器地址类型 4:syslog, 2:kafka, 3:http(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>服务器描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>syslog服务器地址</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetSyslogAddress *string `json:"TargetSyslogAddress,omitnil,omitempty" name:"TargetSyslogAddress"`
+
+	// <p>syslog协议类型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetSyslogProtocol *string `json:"TargetSyslogProtocol,omitnil,omitempty" name:"TargetSyslogProtocol"`
+
+	// <p>syslog协议端口(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetSyslogPort *uint64 `json:"TargetSyslogPort,omitnil,omitempty" name:"TargetSyslogPort"`
+
+	// <p>syslog设备/Facility</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyslogFacility *string `json:"SyslogFacility,omitnil,omitempty" name:"SyslogFacility"`
+
+	// <p>Kafka服务器地址</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetKafkaAddress *string `json:"TargetKafkaAddress,omitnil,omitempty" name:"TargetKafkaAddress"`
+
+	// <p>Kafka主题</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetKafkaTopic *string `json:"TargetKafkaTopic,omitnil,omitempty" name:"TargetKafkaTopic"`
+
+	// <p>Kafka版本</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
+
+	// <p>Kafka sasl用户名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaSaslUserName *string `json:"KafkaSaslUserName,omitnil,omitempty" name:"KafkaSaslUserName"`
+
+	// <p>Kafka sasl密码</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaSaslPassword *string `json:"KafkaSaslPassword,omitnil,omitempty" name:"KafkaSaslPassword"`
+
+	// <p>http服务器地址</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetHttpUrl *string `json:"TargetHttpUrl,omitnil,omitempty" name:"TargetHttpUrl"`
+
+	// <p>http服务超时时间(只支持32位)</p><p>单位：毫秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetHttpTimeout *uint64 `json:"TargetHttpTimeout,omitnil,omitempty" name:"TargetHttpTimeout"`
+
+	// <p>连接器分组ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectorGroupId *string `json:"ConnectorGroupId,omitnil,omitempty" name:"ConnectorGroupId"`
+
+	// <p>连接器分组名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectorGroupName *string `json:"ConnectorGroupName,omitnil,omitempty" name:"ConnectorGroupName"`
+
+	// <p>KAFKA是否启用SSL</p>
+	KafkaSSLEnable *bool `json:"KafkaSSLEnable,omitnil,omitempty" name:"KafkaSSLEnable"`
+
+	// <p>跳过证书检查</p>
+	SSLSkipVerify *bool `json:"SSLSkipVerify,omitnil,omitempty" name:"SSLSkipVerify"`
+}
+
+type DeliveryStrategyData struct {
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DeliveryStrategyItem `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type DeliveryStrategyItem struct {
+	// <p>策略名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>转发方式 0:syslog, 2:kafka, 3:http(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>转发日志类型列表 身份安全:&quot;040201000000&quot;,资源访问日志:&quot;040203000000&quot;,客户端操作日志:&quot;040202000000&quot;,终端安全日志:&quot;040205000000&quot;,终端管控日志:&quot;040206000000&quot;,终端合规日志:&quot;040207000000&quot;,license授权日志:&quot;040212000000&quot;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogTypes []*string `json:"LogTypes,omitnil,omitempty" name:"LogTypes"`
+
+	// <p>转发配置服务器名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
+
+	// <p>策略描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>转发策略id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>转发服务器id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigId *uint64 `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 }
 
 type DescribeAccountAccountGroupsData struct {
@@ -2693,6 +2913,122 @@ func (r *DescribeDLPFileDetectTaskResultResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type DescribeDeliveryServerRequestParams struct {
+	// <p>服务器id</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type DescribeDeliveryServerRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务器id</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *DescribeDeliveryServerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeliveryServerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeliveryServerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeliveryServerResponseParams struct {
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DeliverServerItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeliveryServerResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeliveryServerResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeliveryServerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeliveryServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeliveryStrategyRequestParams struct {
+	// <p>转发策略id</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type DescribeDeliveryStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>转发策略id</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *DescribeDeliveryStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeliveryStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeliveryStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeliveryStrategyResponseParams struct {
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DeliveryStrategyData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeliveryStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeliveryStrategyResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeliveryStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeliveryStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDeviceChildGroupsRequestParams struct {
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
@@ -3799,6 +4135,65 @@ type DescribeProfileFieldsRspData struct {
 
 	// <p>profile开关配置</p>
 	ProfileTips *ProfileTips `json:"ProfileTips,omitnil,omitempty" name:"ProfileTips"`
+}
+
+type DescribePublicEncryptKeyData struct {
+	// <p>返回公钥，base64编码后返回，使用需要base64解码</p>
+	PublicEncryptKey *string `json:"PublicEncryptKey,omitnil,omitempty" name:"PublicEncryptKey"`
+}
+
+// Predefined struct for user
+type DescribePublicEncryptKeyRequestParams struct {
+
+}
+
+type DescribePublicEncryptKeyRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribePublicEncryptKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublicEncryptKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePublicEncryptKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePublicEncryptKeyResponseParams struct {
+	// 获取公钥加密的key数据
+	Data *DescribePublicEncryptKeyData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePublicEncryptKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePublicEncryptKeyResponseParams `json:"Response"`
+}
+
+func (r *DescribePublicEncryptKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublicEncryptKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeResourceGrantedAccountGroupsData struct {
@@ -5755,6 +6150,172 @@ func (r *ModifyCompanyDirectoryConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCompanyDirectoryConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDeliveryServerData struct {
+	// <p>服务器ID</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+// Predefined struct for user
+type ModifyDeliveryServerRequestParams struct {
+	// <p>编辑的数据内容</p>
+	Data *DeliverServerItem `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type ModifyDeliveryServerRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>编辑的数据内容</p>
+	Data *DeliverServerItem `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+func (r *ModifyDeliveryServerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeliveryServerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Data")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeliveryServerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeliveryServerResponseParams struct {
+	// <p>转发服务器返回内容</p>
+	Data *ModifyDeliveryServerData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDeliveryServerResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDeliveryServerResponseParams `json:"Response"`
+}
+
+func (r *ModifyDeliveryServerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeliveryServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDeliveryStrategyData struct {
+	// <p>策略ID</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+// Predefined struct for user
+type ModifyDeliveryStrategyRequestParams struct {
+	// <p>策略名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>转发日志类型列表 身份安全:&quot;040201000000&quot;,资源访问日志:&quot;040203000000&quot;,客户端操作日志:&quot;040202000000&quot;,终端安全日志:&quot;040205000000&quot;,终端管控日志:&quot;040206000000&quot;,终端合规日志:&quot;040207000000&quot;,license授权日志:&quot;040212000000&quot;</p>
+	LogTypes []*string `json:"LogTypes,omitnil,omitempty" name:"LogTypes"`
+
+	// <p>转发方式 0:syslog, 2:kafka, 3:http(只支持32位)</p>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>转发服务器id(只支持32位)</p>
+	ConfigId *int64 `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// <p>转发策略描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否开启</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>转发策略id 创建时传递 编辑时候无需传递(只支持32位)</p>
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type ModifyDeliveryStrategyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>策略名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>转发日志类型列表 身份安全:&quot;040201000000&quot;,资源访问日志:&quot;040203000000&quot;,客户端操作日志:&quot;040202000000&quot;,终端安全日志:&quot;040205000000&quot;,终端管控日志:&quot;040206000000&quot;,终端合规日志:&quot;040207000000&quot;,license授权日志:&quot;040212000000&quot;</p>
+	LogTypes []*string `json:"LogTypes,omitnil,omitempty" name:"LogTypes"`
+
+	// <p>转发方式 0:syslog, 2:kafka, 3:http(只支持32位)</p>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>转发服务器id(只支持32位)</p>
+	ConfigId *int64 `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// <p>转发策略描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否开启</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>转发策略id 创建时传递 编辑时候无需传递(只支持32位)</p>
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *ModifyDeliveryStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeliveryStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "LogTypes")
+	delete(f, "Type")
+	delete(f, "ConfigId")
+	delete(f, "Description")
+	delete(f, "Enabled")
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeliveryStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeliveryStrategyResponseParams struct {
+	// <p>策略返回内容</p>
+	Data *ModifyDeliveryStrategyData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDeliveryStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDeliveryStrategyResponseParams `json:"Response"`
+}
+
+func (r *ModifyDeliveryStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeliveryStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

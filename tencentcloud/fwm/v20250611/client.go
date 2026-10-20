@@ -1459,6 +1459,56 @@ func (c *Client) DescribeRiskListWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeRuleGroupsRequest() (request *DescribeRuleGroupsRequest) {
+    request = &DescribeRuleGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("fwm", APIVersion, "DescribeRuleGroups")
+    
+    
+    return
+}
+
+func NewDescribeRuleGroupsResponse() (response *DescribeRuleGroupsResponse) {
+    response = &DescribeRuleGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRuleGroups
+// 查询规则组列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DescribeRuleGroups(request *DescribeRuleGroupsRequest) (response *DescribeRuleGroupsResponse, err error) {
+    return c.DescribeRuleGroupsWithContext(context.Background(), request)
+}
+
+// DescribeRuleGroups
+// 查询规则组列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DescribeRuleGroupsWithContext(ctx context.Context, request *DescribeRuleGroupsRequest) (response *DescribeRuleGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "fwm", APIVersion, "DescribeRuleGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityGroupRuleRequest() (request *DescribeSecurityGroupRuleRequest) {
     request = &DescribeSecurityGroupRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -6226,21 +6226,27 @@ type StandardUserInfo struct {
 
 // Predefined struct for user
 type StartComputeRequestParams struct {
-	// 计算资源 ID
-	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
-
 	// 工作空间 ID
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）。替代已废弃的 ResourceId；过渡期 ComputeResourceId 与 ResourceId 至少传一个，同时传时必须一致
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// [已废弃，请使用 ComputeResourceId] 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type StartComputeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算资源 ID
-	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
-
 	// 工作空间 ID
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）。替代已废弃的 ResourceId；过渡期 ComputeResourceId 与 ResourceId 至少传一个，同时传时必须一致
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// [已废弃，请使用 ComputeResourceId] 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 func (r *StartComputeRequest) ToJsonString() string {
@@ -6255,8 +6261,9 @@ func (r *StartComputeRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ResourceId")
 	delete(f, "WorkspaceId")
+	delete(f, "ComputeResourceId")
+	delete(f, "ResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartComputeRequest has unknown keys!", "")
 	}
@@ -6295,21 +6302,27 @@ type StartComputeRsp struct {
 
 // Predefined struct for user
 type StopComputeRequestParams struct {
-	// 计算资源 ID
-	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
-
 	// 工作空间 ID
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）。替代已废弃的 ResourceId；过渡期 ComputeResourceId 与 ResourceId 至少传一个，同时传时必须一致
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// [已废弃，请使用 ComputeResourceId] 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type StopComputeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算资源 ID
-	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
-
 	// 工作空间 ID
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）。替代已废弃的 ResourceId；过渡期 ComputeResourceId 与 ResourceId 至少传一个，同时传时必须一致
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// [已废弃，请使用 ComputeResourceId] 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 func (r *StopComputeRequest) ToJsonString() string {
@@ -6324,8 +6337,9 @@ func (r *StopComputeRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ResourceId")
 	delete(f, "WorkspaceId")
+	delete(f, "ComputeResourceId")
+	delete(f, "ResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopComputeRequest has unknown keys!", "")
 	}

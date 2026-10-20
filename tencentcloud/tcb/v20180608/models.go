@@ -79,6 +79,14 @@ type AIModelSecret struct {
 	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
 }
 
+type AIModelStatus struct {
+	// <p>模型名称</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>开关状态</p><p>枚举值：</p><ul><li>ENABLE： 打开模型</li><li>DISABLE： 关闭模型</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 // Predefined struct for user
 type AddProviderRequestParams struct {
 	// 云开发环境 ID，用于唯一标识当前操作所属的云开发环境。
@@ -9628,6 +9636,77 @@ type MigrationSummary struct {
 
 	// <p>migration 创建时间</p><p>deprecated</p>
 	CreatedBy *string `json:"CreatedBy,omitnil,omitempty" name:"CreatedBy"`
+}
+
+// Predefined struct for user
+type ModifyAIModelStatusRequestParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>分组名</p><p>枚举值：</p><ul><li>cloudbase： 生文系列内置模型</li><li>hunyuan-image： 生图系列内置模型</li></ul><p>系统内置分组固定标识</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>模型设置</p><p>空数组表示无操作</p>
+	Models []*AIModelStatus `json:"Models,omitnil,omitempty" name:"Models"`
+}
+
+type ModifyAIModelStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>分组名</p><p>枚举值：</p><ul><li>cloudbase： 生文系列内置模型</li><li>hunyuan-image： 生图系列内置模型</li></ul><p>系统内置分组固定标识</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>模型设置</p><p>空数组表示无操作</p>
+	Models []*AIModelStatus `json:"Models,omitnil,omitempty" name:"Models"`
+}
+
+func (r *ModifyAIModelStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAIModelStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GroupName")
+	delete(f, "Models")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAIModelStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAIModelStatusResponseParams struct {
+	// <p>影响的分组数</p>
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAIModelStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAIModelStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyAIModelStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAIModelStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

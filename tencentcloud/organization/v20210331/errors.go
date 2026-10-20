@@ -818,6 +818,9 @@ const (
 	// 权限申请单不存在
 	RESOURCENOTFOUND_PERMISSIONAPPLYORDERNOTFOUND = "ResourceNotFound.PermissionApplyOrderNotFound"
 
+	// 权限申请范围不存在
+	RESOURCENOTFOUND_PERMISSIONAPPLYSCOPENOTFOUND = "ResourceNotFound.PermissionApplyScopeNotFound"
+
 	// 策略不存在。
 	RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
 

@@ -20829,6 +20829,254 @@ func (r *PublishRRPCMessageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PurchaseImagePackageRequestParams struct {
+	// <p>存储天数</p><p>枚举值：</p><ul><li>3： 存储3天</li><li>7： 存储7天</li><li>15： 存储15天</li><li>30： 存储30天</li></ul>
+	RetentionDays *uint64 `json:"RetentionDays,omitnil,omitempty" name:"RetentionDays"`
+
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>卡有效期类型：monthly_card=月卡（12 个月有效期），annual_card=年卡（24 个月有效期）</p>
+	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
+
+	// <p>图片档位：每日可上传的图片张数上限，&quot;300&quot;=300 张/日，&quot;1000&quot;=1000 张/日</p>
+	ImageCapacity *string `json:"ImageCapacity,omitnil,omitempty" name:"ImageCapacity"`
+
+	// <p>同规格资源包个数（默认 1）</p>
+	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// <p>通道 ID</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>套餐生效策略：&quot;&quot;=默认语义，front=插队生效，end=排队末尾</p>
+	PackageQueue *string `json:"PackageQueue,omitnil,omitempty" name:"PackageQueue"`
+
+	// <p>覆盖当前生效套餐：0=否，1=是</p>
+	Override *uint64 `json:"Override,omitnil,omitempty" name:"Override"`
+
+	// <p>订单id</p>
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+}
+
+type PurchaseImagePackageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>存储天数</p><p>枚举值：</p><ul><li>3： 存储3天</li><li>7： 存储7天</li><li>15： 存储15天</li><li>30： 存储30天</li></ul>
+	RetentionDays *uint64 `json:"RetentionDays,omitnil,omitempty" name:"RetentionDays"`
+
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>卡有效期类型：monthly_card=月卡（12 个月有效期），annual_card=年卡（24 个月有效期）</p>
+	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
+
+	// <p>图片档位：每日可上传的图片张数上限，&quot;300&quot;=300 张/日，&quot;1000&quot;=1000 张/日</p>
+	ImageCapacity *string `json:"ImageCapacity,omitnil,omitempty" name:"ImageCapacity"`
+
+	// <p>同规格资源包个数（默认 1）</p>
+	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// <p>通道 ID</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>套餐生效策略：&quot;&quot;=默认语义，front=插队生效，end=排队末尾</p>
+	PackageQueue *string `json:"PackageQueue,omitnil,omitempty" name:"PackageQueue"`
+
+	// <p>覆盖当前生效套餐：0=否，1=是</p>
+	Override *uint64 `json:"Override,omitnil,omitempty" name:"Override"`
+
+	// <p>订单id</p>
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+}
+
+func (r *PurchaseImagePackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PurchaseImagePackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RetentionDays")
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ValidityPeriod")
+	delete(f, "ImageCapacity")
+	delete(f, "GoodsNum")
+	delete(f, "ChannelId")
+	delete(f, "PackageQueue")
+	delete(f, "Override")
+	delete(f, "OrderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PurchaseImagePackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PurchaseImagePackageResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PurchaseImagePackageResponse struct {
+	*tchttp.BaseResponse
+	Response *PurchaseImagePackageResponseParams `json:"Response"`
+}
+
+func (r *PurchaseImagePackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PurchaseImagePackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PurchaseVideoPackageRequestParams struct {
+	// <p>存储天数（每份录像保留的天数）</p><p>枚举值：</p><ul><li>3： 存储3天</li><li>7： 存储7天</li><li>15： 存储15天</li><li>30： 存储30天</li></ul>
+	RetentionDays *uint64 `json:"RetentionDays,omitnil,omitempty" name:"RetentionDays"`
+
+	// <p>录制模式：low_power=2 / event=8 / full_time=24，单位：小时/日</p><p>枚举值：</p><ul><li>low_power： 2小时/日</li><li>event： 8小时/日</li><li>full_time： 24小时/日</li></ul>
+	RecordingMode *string `json:"RecordingMode,omitnil,omitempty" name:"RecordingMode"`
+
+	// <p>码率（视频必填）</p><p>枚举值：</p><ul><li>0.5m： 0.5Mbps</li><li>1m： 1Mbps</li><li>1.5m： 1.5Mbps</li><li>2m： 2Mbps</li></ul>
+	Bitrate *string `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
+
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>卡有效期类型：monthly_card=月卡（12 个月有效期），annual_card=年卡（24 个月有效期）</p>
+	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
+
+	// <p>同规格资源包个数（默认 1）</p>
+	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// <p>通道 ID（多通道场景必填，否则填 0）</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>存储地域（可选）</p>
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
+
+	// <p>套餐生效策略：&quot;&quot;=默认语义，front=插队生效，end=排队末尾</p>
+	PackageQueue *string `json:"PackageQueue,omitnil,omitempty" name:"PackageQueue"`
+
+	// <p>覆盖当前生效套餐：0=否，1=是</p>
+	Override *uint64 `json:"Override,omitnil,omitempty" name:"Override"`
+
+	// <p>订单id</p>
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+}
+
+type PurchaseVideoPackageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>存储天数（每份录像保留的天数）</p><p>枚举值：</p><ul><li>3： 存储3天</li><li>7： 存储7天</li><li>15： 存储15天</li><li>30： 存储30天</li></ul>
+	RetentionDays *uint64 `json:"RetentionDays,omitnil,omitempty" name:"RetentionDays"`
+
+	// <p>录制模式：low_power=2 / event=8 / full_time=24，单位：小时/日</p><p>枚举值：</p><ul><li>low_power： 2小时/日</li><li>event： 8小时/日</li><li>full_time： 24小时/日</li></ul>
+	RecordingMode *string `json:"RecordingMode,omitnil,omitempty" name:"RecordingMode"`
+
+	// <p>码率（视频必填）</p><p>枚举值：</p><ul><li>0.5m： 0.5Mbps</li><li>1m： 1Mbps</li><li>1.5m： 1.5Mbps</li><li>2m： 2Mbps</li></ul>
+	Bitrate *string `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
+
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>卡有效期类型：monthly_card=月卡（12 个月有效期），annual_card=年卡（24 个月有效期）</p>
+	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
+
+	// <p>同规格资源包个数（默认 1）</p>
+	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// <p>通道 ID（多通道场景必填，否则填 0）</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>存储地域（可选）</p>
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
+
+	// <p>套餐生效策略：&quot;&quot;=默认语义，front=插队生效，end=排队末尾</p>
+	PackageQueue *string `json:"PackageQueue,omitnil,omitempty" name:"PackageQueue"`
+
+	// <p>覆盖当前生效套餐：0=否，1=是</p>
+	Override *uint64 `json:"Override,omitnil,omitempty" name:"Override"`
+
+	// <p>订单id</p>
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+}
+
+func (r *PurchaseVideoPackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PurchaseVideoPackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RetentionDays")
+	delete(f, "RecordingMode")
+	delete(f, "Bitrate")
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ValidityPeriod")
+	delete(f, "GoodsNum")
+	delete(f, "ChannelId")
+	delete(f, "StorageRegion")
+	delete(f, "PackageQueue")
+	delete(f, "Override")
+	delete(f, "OrderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PurchaseVideoPackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PurchaseVideoPackageResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PurchaseVideoPackageResponse struct {
+	*tchttp.BaseResponse
+	Response *PurchaseVideoPackageResponseParams `json:"Response"`
+}
+
+func (r *PurchaseVideoPackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PurchaseVideoPackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RegisteredDeviceNetTypeInfo struct {
 	// 普通设备数
 	NormalDeviceNum *int64 `json:"NormalDeviceNum,omitnil,omitempty" name:"NormalDeviceNum"`
@@ -22457,6 +22705,190 @@ func (r *ShareDeviceToUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ShareDeviceToUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartPackageUsageReportRequestParams struct {
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>预付费 resourceId（ncs- 前缀，必填）</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>通道 ID（无通道填 0）</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>操作者</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>备注（可选）</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type StartPackageUsageReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>预付费 resourceId（ncs- 前缀，必填）</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>通道 ID（无通道填 0）</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>操作者</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>备注（可选）</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *StartPackageUsageReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartPackageUsageReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ResourceId")
+	delete(f, "ChannelId")
+	delete(f, "Operator")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartPackageUsageReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartPackageUsageReportResponseParams struct {
+	// <p>启停后状态（0 停用 / 1 启用）</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartPackageUsageReportResponse struct {
+	*tchttp.BaseResponse
+	Response *StartPackageUsageReportResponseParams `json:"Response"`
+}
+
+func (r *StartPackageUsageReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartPackageUsageReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopPackageUsageReportRequestParams struct {
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>区分停用的云存类别，必填</p><p>枚举值：</p><ul><li>image： 图片云存</li><li>video： 视频云存</li></ul>
+	MediaType *string `json:"MediaType,omitnil,omitempty" name:"MediaType"`
+
+	// <p>通道 ID</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>操作者</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>备注（可选）</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type StopPackageUsageReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>区分停用的云存类别，必填</p><p>枚举值：</p><ul><li>image： 图片云存</li><li>video： 视频云存</li></ul>
+	MediaType *string `json:"MediaType,omitnil,omitempty" name:"MediaType"`
+
+	// <p>通道 ID</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>操作者</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>备注（可选）</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *StopPackageUsageReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopPackageUsageReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "MediaType")
+	delete(f, "ChannelId")
+	delete(f, "Operator")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopPackageUsageReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopPackageUsageReportResponseParams struct {
+	// <p>启停后状态</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopPackageUsageReportResponse struct {
+	*tchttp.BaseResponse
+	Response *StopPackageUsageReportResponseParams `json:"Response"`
+}
+
+func (r *StopPackageUsageReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopPackageUsageReportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -83,6 +83,9 @@ const (
 	// 请求参数错误。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
+	// 参数验证失败。
+	INVALIDPARAMETER_PARAMETERVALIDATIONFAILED = "InvalidParameter.ParameterValidationFailed"
+
 	// 用户组父目录非法
 	INVALIDPARAMETER_PARENTACCOUNTGROUPINVALID = "InvalidParameter.ParentAccountGroupInvalid"
 

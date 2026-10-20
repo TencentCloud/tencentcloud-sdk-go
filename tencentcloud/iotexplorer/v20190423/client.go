@@ -14809,6 +14809,114 @@ func (c *Client) PublishRRPCMessageWithContext(ctx context.Context, request *Pub
     return
 }
 
+func NewPurchaseImagePackageRequest() (request *PurchaseImagePackageRequest) {
+    request = &PurchaseImagePackageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "PurchaseImagePackage")
+    
+    
+    return
+}
+
+func NewPurchaseImagePackageResponse() (response *PurchaseImagePackageResponse) {
+    response = &PurchaseImagePackageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PurchaseImagePackage
+// 新购图片云存资源包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PurchaseImagePackage(request *PurchaseImagePackageRequest) (response *PurchaseImagePackageResponse, err error) {
+    return c.PurchaseImagePackageWithContext(context.Background(), request)
+}
+
+// PurchaseImagePackage
+// 新购图片云存资源包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PurchaseImagePackageWithContext(ctx context.Context, request *PurchaseImagePackageRequest) (response *PurchaseImagePackageResponse, err error) {
+    if request == nil {
+        request = NewPurchaseImagePackageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "PurchaseImagePackage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PurchaseImagePackage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPurchaseImagePackageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPurchaseVideoPackageRequest() (request *PurchaseVideoPackageRequest) {
+    request = &PurchaseVideoPackageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "PurchaseVideoPackage")
+    
+    
+    return
+}
+
+func NewPurchaseVideoPackageResponse() (response *PurchaseVideoPackageResponse) {
+    response = &PurchaseVideoPackageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PurchaseVideoPackage
+// 新购视频云存资源包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PurchaseVideoPackage(request *PurchaseVideoPackageRequest) (response *PurchaseVideoPackageResponse, err error) {
+    return c.PurchaseVideoPackageWithContext(context.Background(), request)
+}
+
+// PurchaseVideoPackage
+// 新购视频云存资源包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PurchaseVideoPackageWithContext(ctx context.Context, request *PurchaseVideoPackageRequest) (response *PurchaseVideoPackageResponse, err error) {
+    if request == nil {
+        request = NewPurchaseVideoPackageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "PurchaseVideoPackage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PurchaseVideoPackage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPurchaseVideoPackageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReleaseStudioProductRequest() (request *ReleaseStudioProductRequest) {
     request = &ReleaseStudioProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15691,6 +15799,114 @@ func (c *Client) ShareDeviceToUserWithContext(ctx context.Context, request *Shar
     request.SetContext(ctx)
     
     response = NewShareDeviceToUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartPackageUsageReportRequest() (request *StartPackageUsageReportRequest) {
+    request = &StartPackageUsageReportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "StartPackageUsageReport")
+    
+    
+    return
+}
+
+func NewStartPackageUsageReportResponse() (response *StartPackageUsageReportResponse) {
+    response = &StartPackageUsageReportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartPackageUsageReport
+// 启用套餐用量上报
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StartPackageUsageReport(request *StartPackageUsageReportRequest) (response *StartPackageUsageReportResponse, err error) {
+    return c.StartPackageUsageReportWithContext(context.Background(), request)
+}
+
+// StartPackageUsageReport
+// 启用套餐用量上报
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StartPackageUsageReportWithContext(ctx context.Context, request *StartPackageUsageReportRequest) (response *StartPackageUsageReportResponse, err error) {
+    if request == nil {
+        request = NewStartPackageUsageReportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "StartPackageUsageReport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartPackageUsageReport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartPackageUsageReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopPackageUsageReportRequest() (request *StopPackageUsageReportRequest) {
+    request = &StopPackageUsageReportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "StopPackageUsageReport")
+    
+    
+    return
+}
+
+func NewStopPackageUsageReportResponse() (response *StopPackageUsageReportResponse) {
+    response = &StopPackageUsageReportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopPackageUsageReport
+// 停用套餐用量上报
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StopPackageUsageReport(request *StopPackageUsageReportRequest) (response *StopPackageUsageReportResponse, err error) {
+    return c.StopPackageUsageReportWithContext(context.Background(), request)
+}
+
+// StopPackageUsageReport
+// 停用套餐用量上报
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StopPackageUsageReportWithContext(ctx context.Context, request *StopPackageUsageReportRequest) (response *StopPackageUsageReportResponse, err error) {
+    if request == nil {
+        request = NewStopPackageUsageReportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "StopPackageUsageReport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopPackageUsageReport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopPackageUsageReportResponse()
     err = c.Send(request, response)
     return
 }
