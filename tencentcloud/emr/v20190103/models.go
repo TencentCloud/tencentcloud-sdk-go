@@ -1487,6 +1487,9 @@ type CreateCloudInstanceRequestParams struct {
 
 	// <p>airflow源凭证</p>
 	AirflowGitCredential *AirflowGitCredentialInput `json:"AirflowGitCredential,omitnil,omitempty" name:"AirflowGitCredential"`
+
+	// <p>多安全组绑定</p>
+	SgIds []*string `json:"SgIds,omitnil,omitempty" name:"SgIds"`
 }
 
 type CreateCloudInstanceRequest struct {
@@ -1572,6 +1575,9 @@ type CreateCloudInstanceRequest struct {
 
 	// <p>airflow源凭证</p>
 	AirflowGitCredential *AirflowGitCredentialInput `json:"AirflowGitCredential,omitnil,omitempty" name:"AirflowGitCredential"`
+
+	// <p>多安全组绑定</p>
+	SgIds []*string `json:"SgIds,omitnil,omitempty" name:"SgIds"`
 }
 
 func (r *CreateCloudInstanceRequest) ToJsonString() string {
@@ -1613,6 +1619,7 @@ func (r *CreateCloudInstanceRequest) FromJsonString(s string) error {
 	delete(f, "LogStoreID")
 	delete(f, "AirflowDagSource")
 	delete(f, "AirflowGitCredential")
+	delete(f, "SgIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudInstanceRequest has unknown keys!", "")
 	}

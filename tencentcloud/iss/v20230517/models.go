@@ -697,78 +697,87 @@ func (r *AddRecordTemplateResponse) FromJsonString(s string) error {
 }
 
 type AddStreamAuthData struct {
-	// 鉴权配置ID（uuid）
+	// <p>鉴权配置ID（uuid）</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 是否开播放鉴权（1:开启,0:关闭）
+	// <p>是否开播放鉴权（1:开启,0:关闭）</p>
 	PullState *int64 `json:"PullState,omitnil,omitempty" name:"PullState"`
 
-	// 播放密钥（仅支持字母数字，长度0-10位）
+	// <p>播放密钥（仅支持字母数字，长度0-10位）</p>
 	PullSecret *string `json:"PullSecret,omitnil,omitempty" name:"PullSecret"`
 
-	// 播放过期时间（单位：分钟）
+	// <p>播放过期时间（单位：分钟）</p>
 	PullExpired *int64 `json:"PullExpired,omitnil,omitempty" name:"PullExpired"`
 
-	// 是否开启推流鉴权（1:开启,0:关闭）
+	// <p>是否开启推流鉴权（1:开启,0:关闭）</p>
 	PushState *int64 `json:"PushState,omitnil,omitempty" name:"PushState"`
 
-	// 推流密钥（仅支持字母数字，长度0-10位）
+	// <p>推流密钥（仅支持字母数字，长度0-10位）</p>
 	PushSecret *string `json:"PushSecret,omitnil,omitempty" name:"PushSecret"`
 
-	// 推流过期时间（单位：分钟）
+	// <p>推流过期时间（单位：分钟）</p>
 	PushExpired *int64 `json:"PushExpired,omitnil,omitempty" name:"PushExpired"`
 
-	// 用户ID
+	// <p>用户ID</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>不生效推流鉴权的域名 ID 列表</p>
+	ExcludePushDomainIds []*string `json:"ExcludePushDomainIds,omitnil,omitempty" name:"ExcludePushDomainIds"`
 }
 
 // Predefined struct for user
 type AddStreamAuthRequestParams struct {
-	// 鉴权配置ID（uuid）
+	// <p>鉴权配置ID（uuid）</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 是否开播放鉴权（1:开启,0:关闭）
+	// <p>是否开播放鉴权（1:开启,0:关闭）</p>
 	PullState *int64 `json:"PullState,omitnil,omitempty" name:"PullState"`
 
-	// 播放密钥（仅支持字母数字，长度0-10位）
+	// <p>播放密钥（仅支持字母数字，长度0-10位）</p>
 	PullSecret *string `json:"PullSecret,omitnil,omitempty" name:"PullSecret"`
 
-	// 播放过期时间（单位：分钟）
+	// <p>播放过期时间（单位：分钟）</p>
 	PullExpired *int64 `json:"PullExpired,omitnil,omitempty" name:"PullExpired"`
 
-	// 是否开启推流鉴权（1:开启,0:关闭）
+	// <p>是否开启推流鉴权（1:开启,0:关闭）</p>
 	PushState *int64 `json:"PushState,omitnil,omitempty" name:"PushState"`
 
-	// 推流密钥（仅支持字母数字，长度0-10位）
+	// <p>推流密钥（仅支持字母数字，长度0-10位）</p>
 	PushSecret *string `json:"PushSecret,omitnil,omitempty" name:"PushSecret"`
 
-	// 推流过期时间（单位：分钟）
+	// <p>推流过期时间（单位：分钟）</p>
 	PushExpired *int64 `json:"PushExpired,omitnil,omitempty" name:"PushExpired"`
+
+	// <p>不生效推流鉴权的域名 ID 列表</p>
+	ExcludePushDomainIds []*string `json:"ExcludePushDomainIds,omitnil,omitempty" name:"ExcludePushDomainIds"`
 }
 
 type AddStreamAuthRequest struct {
 	*tchttp.BaseRequest
 	
-	// 鉴权配置ID（uuid）
+	// <p>鉴权配置ID（uuid）</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 是否开播放鉴权（1:开启,0:关闭）
+	// <p>是否开播放鉴权（1:开启,0:关闭）</p>
 	PullState *int64 `json:"PullState,omitnil,omitempty" name:"PullState"`
 
-	// 播放密钥（仅支持字母数字，长度0-10位）
+	// <p>播放密钥（仅支持字母数字，长度0-10位）</p>
 	PullSecret *string `json:"PullSecret,omitnil,omitempty" name:"PullSecret"`
 
-	// 播放过期时间（单位：分钟）
+	// <p>播放过期时间（单位：分钟）</p>
 	PullExpired *int64 `json:"PullExpired,omitnil,omitempty" name:"PullExpired"`
 
-	// 是否开启推流鉴权（1:开启,0:关闭）
+	// <p>是否开启推流鉴权（1:开启,0:关闭）</p>
 	PushState *int64 `json:"PushState,omitnil,omitempty" name:"PushState"`
 
-	// 推流密钥（仅支持字母数字，长度0-10位）
+	// <p>推流密钥（仅支持字母数字，长度0-10位）</p>
 	PushSecret *string `json:"PushSecret,omitnil,omitempty" name:"PushSecret"`
 
-	// 推流过期时间（单位：分钟）
+	// <p>推流过期时间（单位：分钟）</p>
 	PushExpired *int64 `json:"PushExpired,omitnil,omitempty" name:"PushExpired"`
+
+	// <p>不生效推流鉴权的域名 ID 列表</p>
+	ExcludePushDomainIds []*string `json:"ExcludePushDomainIds,omitnil,omitempty" name:"ExcludePushDomainIds"`
 }
 
 func (r *AddStreamAuthRequest) ToJsonString() string {
@@ -790,6 +799,7 @@ func (r *AddStreamAuthRequest) FromJsonString(s string) error {
 	delete(f, "PushState")
 	delete(f, "PushSecret")
 	delete(f, "PushExpired")
+	delete(f, "ExcludePushDomainIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddStreamAuthRequest has unknown keys!", "")
 	}
@@ -798,7 +808,7 @@ func (r *AddStreamAuthRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddStreamAuthResponseParams struct {
-	// 设置推拉流鉴权返回数据
+	// <p>设置推拉流鉴权返回数据</p>
 	Data *AddStreamAuthData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4422,29 +4432,32 @@ func (r *DescribeRecordTemplateResponse) FromJsonString(s string) error {
 }
 
 type DescribeStreamAuthData struct {
-	// 鉴权配置ID（uuid）
+	// <p>鉴权配置ID（uuid）</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 是否开播放鉴权（1:开启,0:关闭）
+	// <p>是否开播放鉴权（1:开启,0:关闭）</p>
 	PullState *int64 `json:"PullState,omitnil,omitempty" name:"PullState"`
 
-	// 播放密钥（仅支持字母数字，长度0-10位）
+	// <p>播放密钥（仅支持字母数字，长度0-10位）</p>
 	PullSecret *string `json:"PullSecret,omitnil,omitempty" name:"PullSecret"`
 
-	// 播放过期时间（单位：分钟）
+	// <p>播放过期时间（单位：分钟）</p>
 	PullExpired *int64 `json:"PullExpired,omitnil,omitempty" name:"PullExpired"`
 
-	// 是否开启推流鉴权（1:开启,0:关闭）
+	// <p>是否开启推流鉴权（1:开启,0:关闭）</p>
 	PushState *int64 `json:"PushState,omitnil,omitempty" name:"PushState"`
 
-	// 推流密钥（仅支持字母数字，长度0-10位）
+	// <p>推流密钥（仅支持字母数字，长度0-10位）</p>
 	PushSecret *string `json:"PushSecret,omitnil,omitempty" name:"PushSecret"`
 
-	// 推流过期时间（单位：分钟）
+	// <p>推流过期时间（单位：分钟）</p>
 	PushExpired *int64 `json:"PushExpired,omitnil,omitempty" name:"PushExpired"`
 
-	// 用户ID
+	// <p>用户ID</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>不生效推流鉴权的域名 ID 列表</p>
+	ExcludePushDomainIds []*string `json:"ExcludePushDomainIds,omitnil,omitempty" name:"ExcludePushDomainIds"`
 }
 
 // Predefined struct for user

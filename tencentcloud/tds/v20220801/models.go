@@ -70,7 +70,7 @@ type DescribeFinanceFraudUltimateRequestParams struct {
 	// <p>微信的OpenId</p>
 	WeChatOpenId *string `json:"WeChatOpenId,omitnil,omitempty" name:"WeChatOpenId"`
 
-	// <p>手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5</p>
+	// <p>手机号码（注：不需要带国家代码 例如：15xxxxxxxxx）。可以传入原文、MD5或SHA256</p>
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// <p>业务客户端IP</p>
@@ -104,7 +104,7 @@ type DescribeFinanceFraudUltimateRequest struct {
 	// <p>微信的OpenId</p>
 	WeChatOpenId *string `json:"WeChatOpenId,omitnil,omitempty" name:"WeChatOpenId"`
 
-	// <p>手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5</p>
+	// <p>手机号码（注：不需要带国家代码 例如：15xxxxxxxxx）。可以传入原文、MD5或SHA256</p>
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// <p>业务客户端IP</p>
@@ -427,7 +427,7 @@ type DescribeFraudUltimateRequestParams struct {
 	// <p>微信的OpenId</p>
 	WeChatOpenId *string `json:"WeChatOpenId,omitnil,omitempty" name:"WeChatOpenId"`
 
-	// <p>手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5</p>
+	// <p>手机号码（注：不需要带国家代码 例如：15xxxxxxxxx）。可以传入原文、MD5或SHA256</p>
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// <p>客户端IP</p>
@@ -461,7 +461,7 @@ type DescribeFraudUltimateRequest struct {
 	// <p>微信的OpenId</p>
 	WeChatOpenId *string `json:"WeChatOpenId,omitnil,omitempty" name:"WeChatOpenId"`
 
-	// <p>手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5</p>
+	// <p>手机号码（注：不需要带国家代码 例如：15xxxxxxxxx）。可以传入原文、MD5或SHA256</p>
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// <p>客户端IP</p>

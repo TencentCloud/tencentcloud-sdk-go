@@ -105,6 +105,58 @@ func (c *Client) CancelIgnorePolicyRiskWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateAccountGroupRequest() (request *CreateAccountGroupRequest) {
+    request = &CreateAccountGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("fwm", APIVersion, "CreateAccountGroup")
+    
+    
+    return
+}
+
+func NewCreateAccountGroupResponse() (response *CreateAccountGroupResponse) {
+    response = &CreateAccountGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAccountGroup
+// 创建账户组
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAccountGroup(request *CreateAccountGroupRequest) (response *CreateAccountGroupResponse, err error) {
+    return c.CreateAccountGroupWithContext(context.Background(), request)
+}
+
+// CreateAccountGroup
+// 创建账户组
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAccountGroupWithContext(ctx context.Context, request *CreateAccountGroupRequest) (response *CreateAccountGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateAccountGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "fwm", APIVersion, "CreateAccountGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccountGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAccountGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAnalyzePolicyTaskRequest() (request *CreateAnalyzePolicyTaskRequest) {
     request = &CreateAnalyzePolicyTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -697,6 +749,58 @@ func (c *Client) CreateVpcAclRuleGroupWithContext(ctx context.Context, request *
     return
 }
 
+func NewDeleteAccountGroupRequest() (request *DeleteAccountGroupRequest) {
+    request = &DeleteAccountGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("fwm", APIVersion, "DeleteAccountGroup")
+    
+    
+    return
+}
+
+func NewDeleteAccountGroupResponse() (response *DeleteAccountGroupResponse) {
+    response = &DeleteAccountGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAccountGroup
+// 删除账户组，账户组下有成员时不可删除
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteAccountGroup(request *DeleteAccountGroupRequest) (response *DeleteAccountGroupResponse, err error) {
+    return c.DeleteAccountGroupWithContext(context.Background(), request)
+}
+
+// DeleteAccountGroup
+// 删除账户组，账户组下有成员时不可删除
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteAccountGroupWithContext(ctx context.Context, request *DeleteAccountGroupRequest) (response *DeleteAccountGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccountGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "fwm", APIVersion, "DeleteAccountGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccountGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAccountGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEdgeAclRuleRequest() (request *DeleteEdgeAclRuleRequest) {
     request = &DeleteEdgeAclRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1031,6 +1135,56 @@ func (c *Client) DeleteVpcAclRuleWithContext(ctx context.Context, request *Delet
     request.SetContext(ctx)
     
     response = NewDeleteVpcAclRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccountGroupsRequest() (request *DescribeAccountGroupsRequest) {
+    request = &DescribeAccountGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("fwm", APIVersion, "DescribeAccountGroups")
+    
+    
+    return
+}
+
+func NewDescribeAccountGroupsResponse() (response *DescribeAccountGroupsResponse) {
+    response = &DescribeAccountGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccountGroups
+// 获取账户组列表，支持分页和关键词搜索
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAccountGroups(request *DescribeAccountGroupsRequest) (response *DescribeAccountGroupsResponse, err error) {
+    return c.DescribeAccountGroupsWithContext(context.Background(), request)
+}
+
+// DescribeAccountGroups
+// 获取账户组列表，支持分页和关键词搜索
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAccountGroupsWithContext(ctx context.Context, request *DescribeAccountGroupsRequest) (response *DescribeAccountGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "fwm", APIVersion, "DescribeAccountGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccountGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2029,6 +2183,156 @@ func (c *Client) IgnorePolicyRiskWithContext(ctx context.Context, request *Ignor
     return
 }
 
+func NewModifyAccountGroupRequest() (request *ModifyAccountGroupRequest) {
+    request = &ModifyAccountGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("fwm", APIVersion, "ModifyAccountGroup")
+    
+    
+    return
+}
+
+func NewModifyAccountGroupResponse() (response *ModifyAccountGroupResponse) {
+    response = &ModifyAccountGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAccountGroup
+// 修改账户组名称
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyAccountGroup(request *ModifyAccountGroupRequest) (response *ModifyAccountGroupResponse, err error) {
+    return c.ModifyAccountGroupWithContext(context.Background(), request)
+}
+
+// ModifyAccountGroup
+// 修改账户组名称
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyAccountGroupWithContext(ctx context.Context, request *ModifyAccountGroupRequest) (response *ModifyAccountGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyAccountGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "fwm", APIVersion, "ModifyAccountGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccountGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAccountGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCfwManagedRequest() (request *ModifyCfwManagedRequest) {
+    request = &ModifyCfwManagedRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("fwm", APIVersion, "ModifyCfwManaged")
+    
+    
+    return
+}
+
+func NewModifyCfwManagedResponse() (response *ModifyCfwManagedResponse) {
+    response = &ModifyCfwManagedResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCfwManaged
+// 设置成员账号的云防火墙纳管状态
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyCfwManaged(request *ModifyCfwManagedRequest) (response *ModifyCfwManagedResponse, err error) {
+    return c.ModifyCfwManagedWithContext(context.Background(), request)
+}
+
+// ModifyCfwManaged
+// 设置成员账号的云防火墙纳管状态
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyCfwManagedWithContext(ctx context.Context, request *ModifyCfwManagedRequest) (response *ModifyCfwManagedResponse, err error) {
+    if request == nil {
+        request = NewModifyCfwManagedRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "fwm", APIVersion, "ModifyCfwManaged")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCfwManaged require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCfwManagedResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCfwShareRoleRequest() (request *ModifyCfwShareRoleRequest) {
+    request = &ModifyCfwShareRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("fwm", APIVersion, "ModifyCfwShareRole")
+    
+    
+    return
+}
+
+func NewModifyCfwShareRoleResponse() (response *ModifyCfwShareRoleResponse) {
+    response = &ModifyCfwShareRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCfwShareRole
+// 设置集团成员的云防火墙共享角色（sharer/user/none）。共享者全集团唯一；共享者→使用者禁止直接变更，需先将角色改为 none；设为使用者时必须指定共享者 SharerAppId。仅管理员可操作。
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyCfwShareRole(request *ModifyCfwShareRoleRequest) (response *ModifyCfwShareRoleResponse, err error) {
+    return c.ModifyCfwShareRoleWithContext(context.Background(), request)
+}
+
+// ModifyCfwShareRole
+// 设置集团成员的云防火墙共享角色（sharer/user/none）。共享者全集团唯一；共享者→使用者禁止直接变更，需先将角色改为 none；设为使用者时必须指定共享者 SharerAppId。仅管理员可操作。
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyCfwShareRoleWithContext(ctx context.Context, request *ModifyCfwShareRoleRequest) (response *ModifyCfwShareRoleResponse, err error) {
+    if request == nil {
+        request = NewModifyCfwShareRoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "fwm", APIVersion, "ModifyCfwShareRole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCfwShareRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCfwShareRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEdgeAclRuleRequest() (request *ModifyEdgeAclRuleRequest) {
     request = &ModifyEdgeAclRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2137,6 +2441,56 @@ func (c *Client) ModifyEdgeAclRuleSequenceWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyEdgeAclRuleSequenceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMemberGroupRequest() (request *ModifyMemberGroupRequest) {
+    request = &ModifyMemberGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("fwm", APIVersion, "ModifyMemberGroup")
+    
+    
+    return
+}
+
+func NewModifyMemberGroupResponse() (response *ModifyMemberGroupResponse) {
+    response = &ModifyMemberGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMemberGroup
+// 设置成员所属账户组，GroupId为空字符串表示移出账户组
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyMemberGroup(request *ModifyMemberGroupRequest) (response *ModifyMemberGroupResponse, err error) {
+    return c.ModifyMemberGroupWithContext(context.Background(), request)
+}
+
+// ModifyMemberGroup
+// 设置成员所属账户组，GroupId为空字符串表示移出账户组
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyMemberGroupWithContext(ctx context.Context, request *ModifyMemberGroupRequest) (response *ModifyMemberGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyMemberGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "fwm", APIVersion, "ModifyMemberGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMemberGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMemberGroupResponse()
     err = c.Send(request, response)
     return
 }

@@ -3689,6 +3689,12 @@ type CreateUserGroupRequestParams struct {
 	// <p>建组时直接关联的预算 ID（须为已存在的 Budget）。关联后由该 Budget 统一管理本组的消费上限与限速。不传表示不关联预算，可建组后再用 AssociateBudget 关联。</p>
 	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
 
+	// <p>建组时绑定的 Prompt 资源 ID（pmt-xxx，须为该实例下已存在的 Prompt）。与 PromptVersion 必须成对传入，仅传其一将返回错误。不传表示默认不绑定 Prompt，可建组后再调用 ModifyUserGroupPrompt 绑定或更换版本。绑定后，组内 Key 的请求将按该版本 Prompt 的 Content 与 RewriteStrategy 注入或改写 system 内容。</p>
+	PromptId *string `json:"PromptId,omitnil,omitempty" name:"PromptId"`
+
+	// <p>绑定的 Prompt 版本号（如 v1、v2，由 CreatePrompt / CreatePromptVersion 生成，长度不超过16个字符），与 PromptId 必须成对传入，须为该 Prompt 下已存在的版本。版本为不可变快照，Prompt 后续新增版本不会自动生效于已绑定的用户组，需显式重新绑定新版本。一个用户组同时只关联一份 Prompt 的一个版本，重复绑定即为替换。</p>
+	PromptVersion *string `json:"PromptVersion,omitnil,omitempty" name:"PromptVersion"`
+
 	// <p>用户组意图路由白名单（ir-xxx）。每一项须为该实例已创建的意图路由名。命中意图路由名时其内部真实模型自动豁免白名单。为空表示不授权任何意图路由。</p>
 	IntentRouters []*string `json:"IntentRouters,omitnil,omitempty" name:"IntentRouters"`
 
@@ -3713,6 +3719,12 @@ type CreateUserGroupRequest struct {
 
 	// <p>建组时直接关联的预算 ID（须为已存在的 Budget）。关联后由该 Budget 统一管理本组的消费上限与限速。不传表示不关联预算，可建组后再用 AssociateBudget 关联。</p>
 	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>建组时绑定的 Prompt 资源 ID（pmt-xxx，须为该实例下已存在的 Prompt）。与 PromptVersion 必须成对传入，仅传其一将返回错误。不传表示默认不绑定 Prompt，可建组后再调用 ModifyUserGroupPrompt 绑定或更换版本。绑定后，组内 Key 的请求将按该版本 Prompt 的 Content 与 RewriteStrategy 注入或改写 system 内容。</p>
+	PromptId *string `json:"PromptId,omitnil,omitempty" name:"PromptId"`
+
+	// <p>绑定的 Prompt 版本号（如 v1、v2，由 CreatePrompt / CreatePromptVersion 生成，长度不超过16个字符），与 PromptId 必须成对传入，须为该 Prompt 下已存在的版本。版本为不可变快照，Prompt 后续新增版本不会自动生效于已绑定的用户组，需显式重新绑定新版本。一个用户组同时只关联一份 Prompt 的一个版本，重复绑定即为替换。</p>
+	PromptVersion *string `json:"PromptVersion,omitnil,omitempty" name:"PromptVersion"`
 
 	// <p>用户组意图路由白名单（ir-xxx）。每一项须为该实例已创建的意图路由名。命中意图路由名时其内部真实模型自动豁免白名单。为空表示不授权任何意图路由。</p>
 	IntentRouters []*string `json:"IntentRouters,omitnil,omitempty" name:"IntentRouters"`
@@ -3742,6 +3754,8 @@ func (r *CreateUserGroupRequest) FromJsonString(s string) error {
 	delete(f, "ModelRouterId")
 	delete(f, "UserGroupName")
 	delete(f, "BudgetId")
+	delete(f, "PromptId")
+	delete(f, "PromptVersion")
 	delete(f, "IntentRouters")
 	delete(f, "KeyIds")
 	delete(f, "Models")

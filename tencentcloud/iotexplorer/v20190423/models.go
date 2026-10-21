@@ -3895,27 +3895,39 @@ func (r *CreateTRTCSignaturesWithRoomIdResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateTWeSeeCallbackRequestParams struct {
-	// 回调类型。可选值：\n- `http` HTTP 回调
+	// <p>回调类型</p><p>枚举值：</p><ul><li>none： 不回调</li><li>http： HTTP 回调</li><li>ckafka： 投递 CKafka Topic</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 回调 URL。要求 http 或 https 协议，仅支持 80 或 443 端口
+	// <p>回调 URL。要求 http 或 https 协议，仅支持 80 或 443 端口</p>
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
-	// 回调签名 Token。最大长度 128
+	// <p>回调签名 Token。最大长度 128</p>
 	CallbackToken *string `json:"CallbackToken,omitnil,omitempty" name:"CallbackToken"`
+
+	// <p>回调 CKafka 配置</p>
+	CallbackCKafka *SeeCallbackCKafkaConfig `json:"CallbackCKafka,omitnil,omitempty" name:"CallbackCKafka"`
+
+	// <p>要创建回调目标的产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 }
 
 type CreateTWeSeeCallbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 回调类型。可选值：\n- `http` HTTP 回调
+	// <p>回调类型</p><p>枚举值：</p><ul><li>none： 不回调</li><li>http： HTTP 回调</li><li>ckafka： 投递 CKafka Topic</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 回调 URL。要求 http 或 https 协议，仅支持 80 或 443 端口
+	// <p>回调 URL。要求 http 或 https 协议，仅支持 80 或 443 端口</p>
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
-	// 回调签名 Token。最大长度 128
+	// <p>回调签名 Token。最大长度 128</p>
 	CallbackToken *string `json:"CallbackToken,omitnil,omitempty" name:"CallbackToken"`
+
+	// <p>回调 CKafka 配置</p>
+	CallbackCKafka *SeeCallbackCKafkaConfig `json:"CallbackCKafka,omitnil,omitempty" name:"CallbackCKafka"`
+
+	// <p>要创建回调目标的产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 }
 
 func (r *CreateTWeSeeCallbackRequest) ToJsonString() string {
@@ -3933,6 +3945,8 @@ func (r *CreateTWeSeeCallbackRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "CallbackUrl")
 	delete(f, "CallbackToken")
+	delete(f, "CallbackCKafka")
+	delete(f, "ProductId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTWeSeeCallbackRequest has unknown keys!", "")
 	}
@@ -3941,7 +3955,7 @@ func (r *CreateTWeSeeCallbackRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTWeSeeCallbackResponseParams struct {
-	// 回调目标 ID
+	// <p>回调目标 ID</p>
 	CallbackId *string `json:"CallbackId,omitnil,omitempty" name:"CallbackId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6071,14 +6085,14 @@ func (r *DeleteStudioProductResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTWeSeeCallbackRequestParams struct {
-	// 回调目标 ID，格式为 `callback-` + 8 位小写字母数字
+	// <p>回调目标 ID</p>
 	CallbackId *string `json:"CallbackId,omitnil,omitempty" name:"CallbackId"`
 }
 
 type DeleteTWeSeeCallbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 回调目标 ID，格式为 `callback-` + 8 位小写字母数字
+	// <p>回调目标 ID</p>
 	CallbackId *string `json:"CallbackId,omitnil,omitempty" name:"CallbackId"`
 }
 
@@ -19024,33 +19038,39 @@ func (r *ModifyStudioProductResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTWeSeeCallbackRequestParams struct {
-	// 回调目标 ID，格式为 `callback-` + 8 位小写字母数字
+	// <p>回调目标 ID</p>
 	CallbackId *string `json:"CallbackId,omitnil,omitempty" name:"CallbackId"`
 
-	// 回调 URL，需要可访问并通过 Echo 校验
-	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
-
-	// 回调类型。当前仅支持：`http`
+	// <p>回调类型</p><p>枚举值：</p><ul><li>none： 不回调</li><li>http： HTTP 回调</li><li>ckafka： 投递 CKafka Topic</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 回调签名 token，最大长度 128
+	// <p>回调 URL，需要可访问并通过 Echo 校验</p>
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// <p>回调签名 token，最大长度 128</p>
 	CallbackToken *string `json:"CallbackToken,omitnil,omitempty" name:"CallbackToken"`
+
+	// <p>回调 CKafka 配置</p>
+	CallbackCKafka *SeeCallbackCKafkaConfig `json:"CallbackCKafka,omitnil,omitempty" name:"CallbackCKafka"`
 }
 
 type ModifyTWeSeeCallbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 回调目标 ID，格式为 `callback-` + 8 位小写字母数字
+	// <p>回调目标 ID</p>
 	CallbackId *string `json:"CallbackId,omitnil,omitempty" name:"CallbackId"`
 
-	// 回调 URL，需要可访问并通过 Echo 校验
-	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
-
-	// 回调类型。当前仅支持：`http`
+	// <p>回调类型</p><p>枚举值：</p><ul><li>none： 不回调</li><li>http： HTTP 回调</li><li>ckafka： 投递 CKafka Topic</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 回调签名 token，最大长度 128
+	// <p>回调 URL，需要可访问并通过 Echo 校验</p>
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// <p>回调签名 token，最大长度 128</p>
 	CallbackToken *string `json:"CallbackToken,omitnil,omitempty" name:"CallbackToken"`
+
+	// <p>回调 CKafka 配置</p>
+	CallbackCKafka *SeeCallbackCKafkaConfig `json:"CallbackCKafka,omitnil,omitempty" name:"CallbackCKafka"`
 }
 
 func (r *ModifyTWeSeeCallbackRequest) ToJsonString() string {
@@ -19066,9 +19086,10 @@ func (r *ModifyTWeSeeCallbackRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CallbackId")
-	delete(f, "CallbackUrl")
 	delete(f, "Type")
+	delete(f, "CallbackUrl")
 	delete(f, "CallbackToken")
+	delete(f, "CallbackCKafka")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeSeeCallbackRequest has unknown keys!", "")
 	}
@@ -22094,23 +22115,37 @@ func (r *SearchTopicRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SeeCallbackCKafkaConfig struct {
+	// <p>CKafka 实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>CKafka 实例中的 Topic 名</p>
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// <p>CKafka 实例所在的地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
 type SeeCallbackInfo struct {
-	// 回调目标 ID
+	// <p>回调目标 ID</p>
 	CallbackId *string `json:"CallbackId,omitnil,omitempty" name:"CallbackId"`
 
-	// 回调签名 token
-	CallbackToken *string `json:"CallbackToken,omitnil,omitempty" name:"CallbackToken"`
-
-	// 回调 URL
-	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
-
-	// 创建时间（秒级时间戳）
-	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
-
-	// 回调类型
+	// <p>回调类型</p><p>枚举值：</p><ul><li>none： 不回调</li><li>http： HTTP 回调</li><li>ckafka： 投递 CKafka Topic</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 更新时间（秒级时间戳）
+	// <p>回调 URL</p>
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// <p>回调签名 token</p>
+	CallbackToken *string `json:"CallbackToken,omitnil,omitempty" name:"CallbackToken"`
+
+	// <p>回调 CKafka 配置</p>
+	CallbackCKafka *SeeCallbackCKafkaConfig `json:"CallbackCKafka,omitnil,omitempty" name:"CallbackCKafka"`
+
+	// <p>创建时间（秒级时间戳）</p>
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间（秒级时间戳）</p>
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 

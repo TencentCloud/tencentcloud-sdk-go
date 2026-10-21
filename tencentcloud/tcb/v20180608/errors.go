@@ -20,6 +20,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 鉴权失败，请在权限模块设置合理权限。
+	AUTHFAILURE_DATASOURCEOPERATIONAUTHFAILURE = "AuthFailure.DataSourceOperationAuthFailure"
+
 	// 您没有查看该资源的权限。
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 
@@ -322,6 +325,9 @@ const (
 
 	// 表不存在。
 	RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
+
+	// 未找到指定任务。
+	RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 
 	// 主题不存在
 	RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"

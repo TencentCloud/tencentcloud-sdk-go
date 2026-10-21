@@ -96,6 +96,9 @@ type ComputeDetail struct {
 
 	// <p>该套餐是否支持按量计费</p>
 	PostpaidEnable *bool `json:"PostpaidEnable,omitnil,omitempty" name:"PostpaidEnable"`
+
+	// <p>该算力套餐支持的计费模式列表：POSTPAID_BY_HOUR（按量）、PREPAID（包年包月）、SPOT（竞价）</p>
+	SupportedChargeTypes []*string `json:"SupportedChargeTypes,omitnil,omitempty" name:"SupportedChargeTypes"`
 }
 
 type ComputeInfo struct {
@@ -216,7 +219,7 @@ type CreateInferServiceByTemplateRequestParams struct {
 	// <p>副本数</p>
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 
-	// <p>付费方式，POSTPAID_BY_HOUR按量后付费</p>
+	// <p>付费方式：POSTPAID_BY_HOUR 按量后付费，PREPAID_BY_MONTH 包年包月，SPOT 竞价售卖（竞价需先调用 BidSpotInferService 对套餐出价）</p>
 	ServiceChargeType *string `json:"ServiceChargeType,omitnil,omitempty" name:"ServiceChargeType"`
 
 	// <p>描述了服务的超参数配置</p>
@@ -244,7 +247,7 @@ type CreateInferServiceByTemplateRequest struct {
 	// <p>副本数</p>
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 
-	// <p>付费方式，POSTPAID_BY_HOUR按量后付费</p>
+	// <p>付费方式：POSTPAID_BY_HOUR 按量后付费，PREPAID_BY_MONTH 包年包月，SPOT 竞价售卖（竞价需先调用 BidSpotInferService 对套餐出价）</p>
 	ServiceChargeType *string `json:"ServiceChargeType,omitnil,omitempty" name:"ServiceChargeType"`
 
 	// <p>描述了服务的超参数配置</p>
@@ -2237,7 +2240,7 @@ type ServiceMetaData struct {
 	// 服务名称
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 收费类型
+	// <p>付费方式：POSTPAID_BY_HOUR 按量后付费，PREPAID_BY_MONTH 包年包月，SPOT 竞价售卖（竞价需先调用 BidSpotInferService 对套餐出价）</p>
 	ServiceChargeType *string `json:"ServiceChargeType,omitnil,omitempty" name:"ServiceChargeType"`
 }
 

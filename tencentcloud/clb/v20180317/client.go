@@ -2107,41 +2107,23 @@ func NewCreateUserGroupResponse() (response *CreateUserGroupResponse) {
 }
 
 // CreateUserGroup
-// 在指定模型路由实例下创建一个用户组。用户组是介于模型路由实例与 Key 之间的一层可选分组，可为组内 Key 统一配置模型白名单，并通过关联 Budget 统一管理额度。创建为异步操作，接口会同步返回用户组ID，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询创建进度。
+// 在指定模型路由实例下创建一个用户组。用户组是介于模型路由实例与 Key 之间的一层可选分组，可为组内 Key 统一配置模型白名单，并通过关联 Budget 统一管理额度。创建为异步操作，接口会同步返回用户组ID，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询创建进度。支持建组时绑定 Prompt：传入 PromptId 与 PromptVersion 后，组内 Key 的请求将按该版本 Prompt 的 Content 与 RewriteStrategy 注入或改写 system 内容，并受该版本 MaxTokens 约束；不传则默认不绑定 Prompt，建组后可通过 ModifyUserGroupPrompt 绑定、更换版本或解绑。仅传入 PromptId 或 PromptVersion 其一时返回 InvalidParameter；PromptId 不存在时返回 ResourceNotFound.Prompt；PromptVersion 不存在于该 Prompt 的历史版本中时返回 ResourceNotFound.PromptVersion。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_PROMPT = "ResourceNotFound.Prompt"
+//  RESOURCENOTFOUND_PROMPTVERSION = "ResourceNotFound.PromptVersion"
 func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
     return c.CreateUserGroupWithContext(context.Background(), request)
 }
 
 // CreateUserGroup
-// 在指定模型路由实例下创建一个用户组。用户组是介于模型路由实例与 Key 之间的一层可选分组，可为组内 Key 统一配置模型白名单，并通过关联 Budget 统一管理额度。创建为异步操作，接口会同步返回用户组ID，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询创建进度。
+// 在指定模型路由实例下创建一个用户组。用户组是介于模型路由实例与 Key 之间的一层可选分组，可为组内 Key 统一配置模型白名单，并通过关联 Budget 统一管理额度。创建为异步操作，接口会同步返回用户组ID，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询创建进度。支持建组时绑定 Prompt：传入 PromptId 与 PromptVersion 后，组内 Key 的请求将按该版本 Prompt 的 Content 与 RewriteStrategy 注入或改写 system 内容，并受该版本 MaxTokens 约束；不传则默认不绑定 Prompt，建组后可通过 ModifyUserGroupPrompt 绑定、更换版本或解绑。仅传入 PromptId 或 PromptVersion 其一时返回 InvalidParameter；PromptId 不存在时返回 ResourceNotFound.Prompt；PromptVersion 不存在于该 Prompt 的历史版本中时返回 ResourceNotFound.PromptVersion。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_PROMPT = "ResourceNotFound.Prompt"
+//  RESOURCENOTFOUND_PROMPTVERSION = "ResourceNotFound.PromptVersion"
 func (c *Client) CreateUserGroupWithContext(ctx context.Context, request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
     if request == nil {
         request = NewCreateUserGroupRequest()
@@ -2182,18 +2164,9 @@ func NewDeleteBudgetsResponse() (response *DeleteBudgetsResponse) {
 // 删除Budget对象。Budget存在任何关联资源时不允许删除，需要先调用DisassociateBudget解除关联。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_PROMPT = "ResourceNotFound.Prompt"
+//  RESOURCENOTFOUND_PROMPTVERSION = "ResourceNotFound.PromptVersion"
 func (c *Client) DeleteBudgets(request *DeleteBudgetsRequest) (response *DeleteBudgetsResponse, err error) {
     return c.DeleteBudgetsWithContext(context.Background(), request)
 }
@@ -2202,18 +2175,9 @@ func (c *Client) DeleteBudgets(request *DeleteBudgetsRequest) (response *DeleteB
 // 删除Budget对象。Budget存在任何关联资源时不允许删除，需要先调用DisassociateBudget解除关联。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_PROMPT = "ResourceNotFound.Prompt"
+//  RESOURCENOTFOUND_PROMPTVERSION = "ResourceNotFound.PromptVersion"
 func (c *Client) DeleteBudgetsWithContext(ctx context.Context, request *DeleteBudgetsRequest) (response *DeleteBudgetsResponse, err error) {
     if request == nil {
         request = NewDeleteBudgetsRequest()
@@ -2254,18 +2218,9 @@ func NewDeleteIntentRouterResponse() (response *DeleteIntentRouterResponse) {
 // 删除模型路由实例下的一个意图路由（Intent Router）。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_PROMPT = "ResourceNotFound.Prompt"
+//  RESOURCENOTFOUND_PROMPTVERSION = "ResourceNotFound.PromptVersion"
 func (c *Client) DeleteIntentRouter(request *DeleteIntentRouterRequest) (response *DeleteIntentRouterResponse, err error) {
     return c.DeleteIntentRouterWithContext(context.Background(), request)
 }
@@ -2274,18 +2229,9 @@ func (c *Client) DeleteIntentRouter(request *DeleteIntentRouterRequest) (respons
 // 删除模型路由实例下的一个意图路由（Intent Router）。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_PROMPT = "ResourceNotFound.Prompt"
+//  RESOURCENOTFOUND_PROMPTVERSION = "ResourceNotFound.PromptVersion"
 func (c *Client) DeleteIntentRouterWithContext(ctx context.Context, request *DeleteIntentRouterRequest) (response *DeleteIntentRouterResponse, err error) {
     if request == nil {
         request = NewDeleteIntentRouterRequest()
@@ -2326,18 +2272,9 @@ func NewDeleteKeysResponse() (response *DeleteKeysResponse) {
 // 批量删除 API Key。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_PROMPT = "ResourceNotFound.Prompt"
+//  RESOURCENOTFOUND_PROMPTVERSION = "ResourceNotFound.PromptVersion"
 func (c *Client) DeleteKeys(request *DeleteKeysRequest) (response *DeleteKeysResponse, err error) {
     return c.DeleteKeysWithContext(context.Background(), request)
 }
@@ -2346,18 +2283,9 @@ func (c *Client) DeleteKeys(request *DeleteKeysRequest) (response *DeleteKeysRes
 // 批量删除 API Key。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_PROMPT = "ResourceNotFound.Prompt"
+//  RESOURCENOTFOUND_PROMPTVERSION = "ResourceNotFound.PromptVersion"
 func (c *Client) DeleteKeysWithContext(ctx context.Context, request *DeleteKeysRequest) (response *DeleteKeysResponse, err error) {
     if request == nil {
         request = NewDeleteKeysRequest()

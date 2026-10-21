@@ -323,6 +323,9 @@ const (
 	// 审计任务冲突。
 	OPERATIONDENIED_AUDITTASKCONFLICTERROR = "OperationDenied.AuditTaskConflictError"
 
+	// 操作拒绝，请重试
+	OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+
 	// 资源未找到。
 	OPERATIONDENIED_RESOURCENOTFUNDERROR = "OperationDenied.ResourceNotFundError"
 

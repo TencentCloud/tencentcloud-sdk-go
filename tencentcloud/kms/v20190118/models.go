@@ -3228,6 +3228,12 @@ type GetServiceStatusResponseParams struct {
 	// <p>资源的地域可用区信息</p>
 	ResourceRegion *uint64 `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
+	// <p>多账号开通额度</p><p>单位：个数</p>
+	MultiAccountLimit *uint64 `json:"MultiAccountLimit,omitnil,omitempty" name:"MultiAccountLimit"`
+
+	// <p>多账号启用个数</p><p>单位：个数</p>
+	MultiAccountUsedCount *uint64 `json:"MultiAccountUsedCount,omitnil,omitempty" name:"MultiAccountUsedCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

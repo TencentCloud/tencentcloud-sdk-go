@@ -35,6 +35,15 @@ const (
 	// 广播任务正在执行。
 	FAILEDOPERATION_BROADCASTTASKISRUNNING = "FailedOperation.BroadcastTaskIsRunning"
 
+	// 创建 CKafka 接入点失败
+	FAILEDOPERATION_CKAFKACREATEROUTEFAILED = "FailedOperation.CKafkaCreateRouteFailed"
+
+	// 创建 CKafka 接入点超时，请稍后重试
+	FAILEDOPERATION_CKAFKACREATEROUTETIMEOUT = "FailedOperation.CKafkaCreateRouteTimeout"
+
+	// 尚未授权 CKafka 投递
+	FAILEDOPERATION_CKAFKADELIVERYNOTAUTHORIZED = "FailedOperation.CKafkaDeliveryNotAuthorized"
+
 	// 云存 AI 套餐生效时长不能超过当前云存套餐生效时长
 	FAILEDOPERATION_CLOUDSTORAGEAIPACKAGEEXPIRETIMEEXCEEDED = "FailedOperation.CloudStorageAIPackageExpireTimeExceeded"
 
@@ -100,6 +109,9 @@ const (
 
 	// 该规则已被启用。
 	FAILEDOPERATION_RULEALREADYENABLED = "FailedOperation.RuleAlreadyEnabled"
+
+	// 指定产品的回调配置已存在，不能重复创建
+	FAILEDOPERATION_SEECALLBACKALREADYEXISTS = "FailedOperation.SeeCallbackAlreadyExists"
 
 	// 该人员仍有关联人脸，无法删除
 	FAILEDOPERATION_SEEPERSONHASFACES = "FailedOperation.SeePersonHasFaces"
@@ -484,6 +496,12 @@ const (
 
 	// 量产不存在。
 	RESOURCENOTFOUND_BATCHPRODUCTIONNOTEXIST = "ResourceNotFound.BatchProductionNotExist"
+
+	// CKafka 实例不存在
+	RESOURCENOTFOUND_CKAFKAINSTANCENOTEXIST = "ResourceNotFound.CKafkaInstanceNotExist"
+
+	// CKafka Topic 不存在
+	RESOURCENOTFOUND_CKAFKATOPICNOTEXIST = "ResourceNotFound.CKafkaTopicNotExist"
 
 	// 上传URL无法获取。
 	RESOURCENOTFOUND_CANNOTGETFROMURL = "ResourceNotFound.CannotGetFromUrl"

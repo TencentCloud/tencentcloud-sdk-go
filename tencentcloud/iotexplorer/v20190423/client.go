@@ -2912,12 +2912,18 @@ func NewCreateTWeSeeCallbackResponse() (response *CreateTWeSeeCallbackResponse) 
 // 创建 TWeSee 回调目标
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CKAFKACREATEROUTEFAILED = "FailedOperation.CKafkaCreateRouteFailed"
+//  FAILEDOPERATION_CKAFKACREATEROUTETIMEOUT = "FailedOperation.CKafkaCreateRouteTimeout"
+//  FAILEDOPERATION_CKAFKADELIVERYNOTAUTHORIZED = "FailedOperation.CKafkaDeliveryNotAuthorized"
+//  FAILEDOPERATION_SEECALLBACKALREADYEXISTS = "FailedOperation.SeeCallbackAlreadyExists"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
 //  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+//  RESOURCENOTFOUND_CKAFKAINSTANCENOTEXIST = "ResourceNotFound.CKafkaInstanceNotExist"
+//  RESOURCENOTFOUND_CKAFKATOPICNOTEXIST = "ResourceNotFound.CKafkaTopicNotExist"
 func (c *Client) CreateTWeSeeCallback(request *CreateTWeSeeCallbackRequest) (response *CreateTWeSeeCallbackResponse, err error) {
     return c.CreateTWeSeeCallbackWithContext(context.Background(), request)
 }
@@ -2926,12 +2932,18 @@ func (c *Client) CreateTWeSeeCallback(request *CreateTWeSeeCallbackRequest) (res
 // 创建 TWeSee 回调目标
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CKAFKACREATEROUTEFAILED = "FailedOperation.CKafkaCreateRouteFailed"
+//  FAILEDOPERATION_CKAFKACREATEROUTETIMEOUT = "FailedOperation.CKafkaCreateRouteTimeout"
+//  FAILEDOPERATION_CKAFKADELIVERYNOTAUTHORIZED = "FailedOperation.CKafkaDeliveryNotAuthorized"
+//  FAILEDOPERATION_SEECALLBACKALREADYEXISTS = "FailedOperation.SeeCallbackAlreadyExists"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
 //  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+//  RESOURCENOTFOUND_CKAFKAINSTANCENOTEXIST = "ResourceNotFound.CKafkaInstanceNotExist"
+//  RESOURCENOTFOUND_CKAFKATOPICNOTEXIST = "ResourceNotFound.CKafkaTopicNotExist"
 func (c *Client) CreateTWeSeeCallbackWithContext(ctx context.Context, request *CreateTWeSeeCallbackRequest) (response *CreateTWeSeeCallbackResponse, err error) {
     if request == nil {
         request = NewCreateTWeSeeCallbackRequest()
@@ -13684,12 +13696,17 @@ func NewModifyTWeSeeCallbackResponse() (response *ModifyTWeSeeCallbackResponse) 
 // 修改 TWeSee 回调目标
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CKAFKACREATEROUTEFAILED = "FailedOperation.CKafkaCreateRouteFailed"
+//  FAILEDOPERATION_CKAFKACREATEROUTETIMEOUT = "FailedOperation.CKafkaCreateRouteTimeout"
+//  FAILEDOPERATION_CKAFKADELIVERYNOTAUTHORIZED = "FailedOperation.CKafkaDeliveryNotAuthorized"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
 //  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+//  RESOURCENOTFOUND_CKAFKAINSTANCENOTEXIST = "ResourceNotFound.CKafkaInstanceNotExist"
+//  RESOURCENOTFOUND_CKAFKATOPICNOTEXIST = "ResourceNotFound.CKafkaTopicNotExist"
 //  RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
 func (c *Client) ModifyTWeSeeCallback(request *ModifyTWeSeeCallbackRequest) (response *ModifyTWeSeeCallbackResponse, err error) {
     return c.ModifyTWeSeeCallbackWithContext(context.Background(), request)
@@ -13699,12 +13716,17 @@ func (c *Client) ModifyTWeSeeCallback(request *ModifyTWeSeeCallbackRequest) (res
 // 修改 TWeSee 回调目标
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CKAFKACREATEROUTEFAILED = "FailedOperation.CKafkaCreateRouteFailed"
+//  FAILEDOPERATION_CKAFKACREATEROUTETIMEOUT = "FailedOperation.CKafkaCreateRouteTimeout"
+//  FAILEDOPERATION_CKAFKADELIVERYNOTAUTHORIZED = "FailedOperation.CKafkaDeliveryNotAuthorized"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
 //  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+//  RESOURCENOTFOUND_CKAFKAINSTANCENOTEXIST = "ResourceNotFound.CKafkaInstanceNotExist"
+//  RESOURCENOTFOUND_CKAFKATOPICNOTEXIST = "ResourceNotFound.CKafkaTopicNotExist"
 //  RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
 func (c *Client) ModifyTWeSeeCallbackWithContext(ctx context.Context, request *ModifyTWeSeeCallbackRequest) (response *ModifyTWeSeeCallbackResponse, err error) {
     if request == nil {

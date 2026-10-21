@@ -5278,8 +5278,10 @@ func NewDescribeTaskResultResponse() (response *DescribeTaskResultResponse) {
 // 本接口（DescribeTaskResult）用于查询任务结果。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_DATASOURCEOPERATIONAUTHFAILURE = "AuthFailure.DataSourceOperationAuthFailure"
 //  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
 //  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
     return c.DescribeTaskResultWithContext(context.Background(), request)
 }
@@ -5288,8 +5290,10 @@ func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (respons
 // 本接口（DescribeTaskResult）用于查询任务结果。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_DATASOURCEOPERATIONAUTHFAILURE = "AuthFailure.DataSourceOperationAuthFailure"
 //  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
 //  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) DescribeTaskResultWithContext(ctx context.Context, request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
     if request == nil {
         request = NewDescribeTaskResultRequest()

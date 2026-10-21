@@ -176,6 +176,12 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
+	// 提示词未找到
+	RESOURCENOTFOUND_PROMPT = "ResourceNotFound.Prompt"
+
+	// ResourceNotFound.PromptVersion
+	RESOURCENOTFOUND_PROMPTVERSION = "ResourceNotFound.PromptVersion"
+
 	// BYOK 实例（ServiceProvider）未找到或不属于当前用户。
 	RESOURCENOTFOUND_SERVICEPROVIDER = "ResourceNotFound.ServiceProvider"
 

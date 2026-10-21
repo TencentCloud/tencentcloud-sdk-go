@@ -17111,41 +17111,53 @@ func (r *SwitchCDBProxyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SwitchDBInstanceMasterSlaveRequestParams struct {
-	// 实例 ID。
+	// <p>实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 目标从实例。可选值："first" - 第一备机；"second" - 第二备机。默认值为 "first"，仅多可用区实例支持设置为 "second"。
+	// <p>目标从实例。可选值：&quot;first&quot; - 第一备机；&quot;second&quot; - 第二备机；&quot;third&quot; - 第三备机。默认值为 &quot;first&quot;，仅多可用区实例支持设置为 &quot;second&quot;。</p>
 	DstSlave *string `json:"DstSlave,omitnil,omitempty" name:"DstSlave"`
 
-	// 是否强制切换。默认为 False。注意，若设置强制切换为 True，实例存在丢失数据的风险，请谨慎使用。
+	// <p>是否强制切换。默认为 False。注意，若设置强制切换为 True，实例存在丢失数据的风险，请谨慎使用。</p>
 	//
 	// Deprecated: ForceSwitch is deprecated.
 	ForceSwitch *bool `json:"ForceSwitch,omitnil,omitempty" name:"ForceSwitch"`
 
-	// 是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。
+	// <p>是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。</p>
 	WaitSwitch *bool `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
 
-	// 集群版实例指定节点 ID 发起主从切换。
+	// <p>集群版实例指定节点 ID 发起主从切换。</p>
 	DstNodeId *string `json:"DstNodeId,omitnil,omitempty" name:"DstNodeId"`
+
+	// <p>等待主备位点差收敛到阈值以内的最长时间,范围：30s-3600s</p>
+	SyncTimeout *int64 `json:"SyncTimeout,omitnil,omitempty" name:"SyncTimeout"`
+
+	// <p>slave 执行位点和读到位点差值，在最长等待时间内，位点差需小于该值才启动切换</p>
+	SyncDistance *string `json:"SyncDistance,omitnil,omitempty" name:"SyncDistance"`
 }
 
 type SwitchDBInstanceMasterSlaveRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// <p>实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 目标从实例。可选值："first" - 第一备机；"second" - 第二备机。默认值为 "first"，仅多可用区实例支持设置为 "second"。
+	// <p>目标从实例。可选值：&quot;first&quot; - 第一备机；&quot;second&quot; - 第二备机；&quot;third&quot; - 第三备机。默认值为 &quot;first&quot;，仅多可用区实例支持设置为 &quot;second&quot;。</p>
 	DstSlave *string `json:"DstSlave,omitnil,omitempty" name:"DstSlave"`
 
-	// 是否强制切换。默认为 False。注意，若设置强制切换为 True，实例存在丢失数据的风险，请谨慎使用。
+	// <p>是否强制切换。默认为 False。注意，若设置强制切换为 True，实例存在丢失数据的风险，请谨慎使用。</p>
 	ForceSwitch *bool `json:"ForceSwitch,omitnil,omitempty" name:"ForceSwitch"`
 
-	// 是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。
+	// <p>是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。</p>
 	WaitSwitch *bool `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
 
-	// 集群版实例指定节点 ID 发起主从切换。
+	// <p>集群版实例指定节点 ID 发起主从切换。</p>
 	DstNodeId *string `json:"DstNodeId,omitnil,omitempty" name:"DstNodeId"`
+
+	// <p>等待主备位点差收敛到阈值以内的最长时间,范围：30s-3600s</p>
+	SyncTimeout *int64 `json:"SyncTimeout,omitnil,omitempty" name:"SyncTimeout"`
+
+	// <p>slave 执行位点和读到位点差值，在最长等待时间内，位点差需小于该值才启动切换</p>
+	SyncDistance *string `json:"SyncDistance,omitnil,omitempty" name:"SyncDistance"`
 }
 
 func (r *SwitchDBInstanceMasterSlaveRequest) ToJsonString() string {
@@ -17165,6 +17177,8 @@ func (r *SwitchDBInstanceMasterSlaveRequest) FromJsonString(s string) error {
 	delete(f, "ForceSwitch")
 	delete(f, "WaitSwitch")
 	delete(f, "DstNodeId")
+	delete(f, "SyncTimeout")
+	delete(f, "SyncDistance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchDBInstanceMasterSlaveRequest has unknown keys!", "")
 	}
@@ -17173,7 +17187,7 @@ func (r *SwitchDBInstanceMasterSlaveRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SwitchDBInstanceMasterSlaveResponseParams struct {
-	// 异步任务 ID。
+	// <p>异步任务 ID。</p>
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
