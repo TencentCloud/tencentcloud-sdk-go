@@ -46,6 +46,8 @@ func get(url string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
+	// close response body
+	defer rsp.Body.Close()
 
 	if rsp.StatusCode == http.StatusNotFound {
 		return nil, roleNotBound
@@ -74,10 +76,10 @@ func (r *CvmRoleProvider) GetCredential() (CredentialIface, error) {
 	// get the cvm role name by accessing the metadata api
 	// https://cloud.tencent.com/document/product/213/4934
 	body, err := get(roleUrl + roleName)
-
 	if err != nil {
 		return nil, err
 	}
+
 	rspSt := new(roleRsp)
 	if err = json.Unmarshal(body, rspSt); err != nil {
 		return nil, tcerr.NewTencentCloudSDKError(creErr, err.Error(), "")
