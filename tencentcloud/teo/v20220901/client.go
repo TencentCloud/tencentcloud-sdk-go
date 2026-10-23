@@ -8969,6 +8969,58 @@ func (c *Client) DescribeLogAnalysisDownloadTasksWithContext(ctx context.Context
     return
 }
 
+func NewDescribeLogAnalysisStatisticsRequest() (request *DescribeLogAnalysisStatisticsRequest) {
+    request = &DescribeLogAnalysisStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeLogAnalysisStatistics")
+    
+    
+    return
+}
+
+func NewDescribeLogAnalysisStatisticsResponse() (response *DescribeLogAnalysisStatisticsResponse) {
+    response = &DescribeLogAnalysisStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLogAnalysisStatistics
+// 本接口用于日志分析统计结果查询。用户在检索语句后追加 SQL 聚合语句（[检索条件] | [SQL语句]），后端执行聚合并返回列式统计结果（列定义 + 数据行）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REALTIMELOGLOGANALYSISNOTSUPPORT = "FailedOperation.RealtimeLogLogAnalysisNotSupport"
+//  INVALIDPARAMETER_INVALIDLOGANALYSISCONDITION = "InvalidParameter.InvalidLogAnalysisCondition"
+func (c *Client) DescribeLogAnalysisStatistics(request *DescribeLogAnalysisStatisticsRequest) (response *DescribeLogAnalysisStatisticsResponse, err error) {
+    return c.DescribeLogAnalysisStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeLogAnalysisStatistics
+// 本接口用于日志分析统计结果查询。用户在检索语句后追加 SQL 聚合语句（[检索条件] | [SQL语句]），后端执行聚合并返回列式统计结果（列定义 + 数据行）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REALTIMELOGLOGANALYSISNOTSUPPORT = "FailedOperation.RealtimeLogLogAnalysisNotSupport"
+//  INVALIDPARAMETER_INVALIDLOGANALYSISCONDITION = "InvalidParameter.InvalidLogAnalysisCondition"
+func (c *Client) DescribeLogAnalysisStatisticsWithContext(ctx context.Context, request *DescribeLogAnalysisStatisticsRequest) (response *DescribeLogAnalysisStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogAnalysisStatisticsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeLogAnalysisStatistics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogAnalysisStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogAnalysisStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMultiPathGatewayRequest() (request *DescribeMultiPathGatewayRequest) {
     request = &DescribeMultiPathGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},

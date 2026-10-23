@@ -5571,7 +5571,7 @@ type ClusterListItem struct {
 	// Deprecated: DefendCoresCount is deprecated.
 	DefendCoresCount *int64 `json:"DefendCoresCount,omitnil,omitempty" name:"DefendCoresCount"`
 
-	// <p>审计日志开关<br>(0:关闭 1:开启 2:开启失败 3:关闭失败)</p>
+	// <p>审计日志状态<br>0：已关闭<br>1：已开启<br>2：开启失败（失败原因见 AuditLogFailedInfo）<br>3：关闭失败（失败原因见 AuditLogFailedInfo）<br>4：开启中<br>5：关闭中<br>6：不支持（当前集群类型不支持读取审计状态，如边缘集群）<br>7：未知（集群未接入或接入异常，无法判断审计状态）</p><p>枚举值：</p><ul><li>0： 已关闭</li><li>1： 已开启</li><li>2： 开启失败</li><li>3： 关闭失败</li><li>4： 开启中</li><li>5： 关闭中</li><li>6： 不支持</li><li>7： 未知</li></ul>
 	AuditLogSwitchStatus *int64 `json:"AuditLogSwitchStatus,omitnil,omitempty" name:"AuditLogSwitchStatus"`
 
 	// <p>防护状态<br>已防护: Defended</p>
@@ -5637,6 +5637,12 @@ type ClusterListItem struct {
 
 	// <p>未绑定旗舰版的节点数量</p>
 	UnboundUltimateNodeCount *uint64 `json:"UnboundUltimateNodeCount,omitnil,omitempty" name:"UnboundUltimateNodeCount"`
+
+	// <p>资产标签列表</p>
+	TagItems []*MiniTagItem `json:"TagItems,omitnil,omitempty" name:"TagItems"`
+
+	// <p>标签修改信息</p>
+	TagModifyInfo *AssetTagModifyAssetItem `json:"TagModifyInfo,omitnil,omitempty" name:"TagModifyInfo"`
 }
 
 type ClusterNamespaceListItem struct {

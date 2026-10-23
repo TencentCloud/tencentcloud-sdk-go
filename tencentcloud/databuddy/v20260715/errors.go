@@ -89,10 +89,10 @@ const (
 	// 参数不合法
 	INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
 
-	// InternalError.PermissionDenied
+	// 当前账号无权限操作该资源：不在工作空间内，或缺少该资源的查看/运行/删除权限
 	INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
 
-	// InternalError.ResourceNotFound
+	// 资源不存在或不可见：ID 不存在、不属于当前工作空间或已删除；TaskRunId 传入非执行层 JobId（如调度实例 WorkflowTaskRunId）时返回其 JobNotFound 子码
 	INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
 
 	// 未知错误

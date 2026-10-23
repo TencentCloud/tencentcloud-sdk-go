@@ -437,152 +437,128 @@ func (r *CreateCloudAttachServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDirectConnectRequestParams struct {
-	// 物理专线的名称。
+	// <p>物理专线的名称。</p>
 	DirectConnectName *string `json:"DirectConnectName,omitnil,omitempty" name:"DirectConnectName"`
 
-	// 物理专线所在的接入点。
-	// 您可以通过调用[DescribeAccessPoints](https://cloud.tencent.com/document/product/216/34827)接口获取接入点ID。
+	// <p>物理专线所在的接入点。<br>您可以通过调用<a href="https://cloud.tencent.com/document/product/216/34827">DescribeAccessPoints</a>接口获取接入点ID。</p>
 	AccessPointId *string `json:"AccessPointId,omitnil,omitempty" name:"AccessPointId"`
 
-	// 提供接入物理专线的运营商。
-	// ChinaTelecom：中国电信； 
-	// ChinaMobile：中国移动；
-	// ChinaUnicom：中国联通；
-	//  In-houseWiring：楼内线；
-	// ChinaOther：中国其他；
-	//  InternationalOperator：境外其他。
+	// <p>提供接入物理专线的运营商。<br>ChinaTelecom：中国电信；<br>ChinaMobile：中国移动；<br>ChinaUnicom：中国联通；<br> In-houseWiring：楼内线；<br>ChinaOther：中国其他；<br> InternationalOperator：境外其他。</p>
 	LineOperator *string `json:"LineOperator,omitnil,omitempty" name:"LineOperator"`
 
-	// 物理专线接入端口类型，取值：
-	// 100Base-T：百兆电口；
-	// 1000Base-T（默认值）：千兆电口；
-	// 1000Base-LX：千兆单模光口（10千米）；
-	// 10GBase-T：万兆电口；
-	// 10GBase-LR（默认值）：万兆单模光口（10千米）。
+	// <p>物理专线接入端口类型，取值：<br>100Base-T：百兆电口；<br>1000Base-T（默认值）：千兆电口；<br>1000Base-LX：千兆单模光口（10千米）；<br>10GBase-T：万兆电口；<br>10GBase-LR（默认值）：万兆单模光口（10千米）。</p>
 	PortType *string `json:"PortType,omitnil,omitempty" name:"PortType"`
 
-	// 运营商或者服务商为物理专线提供的电路编码。
+	// <p>运营商或者服务商为物理专线提供的电路编码。</p>
 	CircuitCode *string `json:"CircuitCode,omitnil,omitempty" name:"CircuitCode"`
 
-	// 本地数据中心的地理位置。
+	// <p>本地数据中心的地理位置。</p>
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 
-	// 物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。
+	// <p>物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。</p>
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 冗余物理专线的ID。
+	// <p>冗余物理专线的ID。</p>
 	RedundantDirectConnectId *string `json:"RedundantDirectConnectId,omitnil,omitempty" name:"RedundantDirectConnectId"`
 
-	// 物理专线调试VLAN。默认开启VLAN，自动分配VLAN。
+	// <p>物理专线调试VLAN。默认开启VLAN，自动分配VLAN。</p>
 	Vlan *int64 `json:"Vlan,omitnil,omitempty" name:"Vlan"`
 
-	// 物理专线调试腾讯侧互联 IP。默认自动分配。
+	// <p>物理专线调试腾讯侧互联 IP。默认自动分配。</p>
 	TencentAddress *string `json:"TencentAddress,omitnil,omitempty" name:"TencentAddress"`
 
-	// 物理专线调试用户侧互联 IP。默认自动分配。
+	// <p>物理专线调试用户侧互联 IP。默认自动分配。</p>
 	CustomerAddress *string `json:"CustomerAddress,omitnil,omitempty" name:"CustomerAddress"`
 
-	// 物理专线申请者姓名。默认从账户体系获取。
+	// <p>物理专线申请者姓名。默认从账户体系获取。</p>
 	CustomerName *string `json:"CustomerName,omitnil,omitempty" name:"CustomerName"`
 
-	// 物理专线申请者联系邮箱。默认从账户体系获取。
+	// <p>物理专线申请者联系邮箱。默认从账户体系获取。</p>
 	CustomerContactMail *string `json:"CustomerContactMail,omitnil,omitempty" name:"CustomerContactMail"`
 
-	// 物理专线申请者联系号码。默认从账户体系获取。
+	// <p>物理专线申请者联系号码。默认从账户体系获取。</p>
 	CustomerContactNumber *string `json:"CustomerContactNumber,omitnil,omitempty" name:"CustomerContactNumber"`
 
-	// 报障联系人。
+	// <p>报障联系人。</p>
 	FaultReportContactPerson *string `json:"FaultReportContactPerson,omitnil,omitempty" name:"FaultReportContactPerson"`
 
-	// 报障联系电话。
+	// <p>报障联系电话。</p>
 	FaultReportContactNumber *string `json:"FaultReportContactNumber,omitnil,omitempty" name:"FaultReportContactNumber"`
 
-	// 报障联系邮箱。
+	// <p>报障联系邮箱。</p>
 	FaultReportContactEmail *string `json:"FaultReportContactEmail,omitnil,omitempty" name:"FaultReportContactEmail"`
 
-	// 物理专线申请者是否签署了用户使用协议。默认已签署。
+	// <p>物理专线申请者是否签署了用户使用协议。默认已签署。</p>
 	SignLaw *bool `json:"SignLaw,omitnil,omitempty" name:"SignLaw"`
 
-	// 标签键值对
+	// <p>标签键值对</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否MACsec需求
+	// <p>是否MACsec需求</p>
 	IsMacSec *bool `json:"IsMacSec,omitnil,omitempty" name:"IsMacSec"`
 }
 
 type CreateDirectConnectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 物理专线的名称。
+	// <p>物理专线的名称。</p>
 	DirectConnectName *string `json:"DirectConnectName,omitnil,omitempty" name:"DirectConnectName"`
 
-	// 物理专线所在的接入点。
-	// 您可以通过调用[DescribeAccessPoints](https://cloud.tencent.com/document/product/216/34827)接口获取接入点ID。
+	// <p>物理专线所在的接入点。<br>您可以通过调用<a href="https://cloud.tencent.com/document/product/216/34827">DescribeAccessPoints</a>接口获取接入点ID。</p>
 	AccessPointId *string `json:"AccessPointId,omitnil,omitempty" name:"AccessPointId"`
 
-	// 提供接入物理专线的运营商。
-	// ChinaTelecom：中国电信； 
-	// ChinaMobile：中国移动；
-	// ChinaUnicom：中国联通；
-	//  In-houseWiring：楼内线；
-	// ChinaOther：中国其他；
-	//  InternationalOperator：境外其他。
+	// <p>提供接入物理专线的运营商。<br>ChinaTelecom：中国电信；<br>ChinaMobile：中国移动；<br>ChinaUnicom：中国联通；<br> In-houseWiring：楼内线；<br>ChinaOther：中国其他；<br> InternationalOperator：境外其他。</p>
 	LineOperator *string `json:"LineOperator,omitnil,omitempty" name:"LineOperator"`
 
-	// 物理专线接入端口类型，取值：
-	// 100Base-T：百兆电口；
-	// 1000Base-T（默认值）：千兆电口；
-	// 1000Base-LX：千兆单模光口（10千米）；
-	// 10GBase-T：万兆电口；
-	// 10GBase-LR（默认值）：万兆单模光口（10千米）。
+	// <p>物理专线接入端口类型，取值：<br>100Base-T：百兆电口；<br>1000Base-T（默认值）：千兆电口；<br>1000Base-LX：千兆单模光口（10千米）；<br>10GBase-T：万兆电口；<br>10GBase-LR（默认值）：万兆单模光口（10千米）。</p>
 	PortType *string `json:"PortType,omitnil,omitempty" name:"PortType"`
 
-	// 运营商或者服务商为物理专线提供的电路编码。
+	// <p>运营商或者服务商为物理专线提供的电路编码。</p>
 	CircuitCode *string `json:"CircuitCode,omitnil,omitempty" name:"CircuitCode"`
 
-	// 本地数据中心的地理位置。
+	// <p>本地数据中心的地理位置。</p>
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 
-	// 物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。
+	// <p>物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。</p>
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 冗余物理专线的ID。
+	// <p>冗余物理专线的ID。</p>
 	RedundantDirectConnectId *string `json:"RedundantDirectConnectId,omitnil,omitempty" name:"RedundantDirectConnectId"`
 
-	// 物理专线调试VLAN。默认开启VLAN，自动分配VLAN。
+	// <p>物理专线调试VLAN。默认开启VLAN，自动分配VLAN。</p>
 	Vlan *int64 `json:"Vlan,omitnil,omitempty" name:"Vlan"`
 
-	// 物理专线调试腾讯侧互联 IP。默认自动分配。
+	// <p>物理专线调试腾讯侧互联 IP。默认自动分配。</p>
 	TencentAddress *string `json:"TencentAddress,omitnil,omitempty" name:"TencentAddress"`
 
-	// 物理专线调试用户侧互联 IP。默认自动分配。
+	// <p>物理专线调试用户侧互联 IP。默认自动分配。</p>
 	CustomerAddress *string `json:"CustomerAddress,omitnil,omitempty" name:"CustomerAddress"`
 
-	// 物理专线申请者姓名。默认从账户体系获取。
+	// <p>物理专线申请者姓名。默认从账户体系获取。</p>
 	CustomerName *string `json:"CustomerName,omitnil,omitempty" name:"CustomerName"`
 
-	// 物理专线申请者联系邮箱。默认从账户体系获取。
+	// <p>物理专线申请者联系邮箱。默认从账户体系获取。</p>
 	CustomerContactMail *string `json:"CustomerContactMail,omitnil,omitempty" name:"CustomerContactMail"`
 
-	// 物理专线申请者联系号码。默认从账户体系获取。
+	// <p>物理专线申请者联系号码。默认从账户体系获取。</p>
 	CustomerContactNumber *string `json:"CustomerContactNumber,omitnil,omitempty" name:"CustomerContactNumber"`
 
-	// 报障联系人。
+	// <p>报障联系人。</p>
 	FaultReportContactPerson *string `json:"FaultReportContactPerson,omitnil,omitempty" name:"FaultReportContactPerson"`
 
-	// 报障联系电话。
+	// <p>报障联系电话。</p>
 	FaultReportContactNumber *string `json:"FaultReportContactNumber,omitnil,omitempty" name:"FaultReportContactNumber"`
 
-	// 报障联系邮箱。
+	// <p>报障联系邮箱。</p>
 	FaultReportContactEmail *string `json:"FaultReportContactEmail,omitnil,omitempty" name:"FaultReportContactEmail"`
 
-	// 物理专线申请者是否签署了用户使用协议。默认已签署。
+	// <p>物理专线申请者是否签署了用户使用协议。默认已签署。</p>
 	SignLaw *bool `json:"SignLaw,omitnil,omitempty" name:"SignLaw"`
 
-	// 标签键值对
+	// <p>标签键值对</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否MACsec需求
+	// <p>是否MACsec需求</p>
 	IsMacSec *bool `json:"IsMacSec,omitnil,omitempty" name:"IsMacSec"`
 }
 
@@ -626,7 +602,7 @@ func (r *CreateDirectConnectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDirectConnectResponseParams struct {
-	// 物理专线的ID。
+	// <p>物理专线的ID。</p>
 	DirectConnectIdSet []*string `json:"DirectConnectIdSet,omitnil,omitempty" name:"DirectConnectIdSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

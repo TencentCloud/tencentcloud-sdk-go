@@ -2373,6 +2373,12 @@ type NativeNodeInfo struct {
 	// <p>原生节点云标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>是否是迁移的节点</p><p>默认值：false</p>
+	IsMigrated *bool `json:"IsMigrated,omitnil,omitempty" name:"IsMigrated"`
+
+	// <p>资源 ID</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type NativeNodePoolInfo struct {

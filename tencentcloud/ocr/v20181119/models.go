@@ -12803,6 +12803,15 @@ type VerifyGeneralCardWarnRequestParams struct {
 
 	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// <p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–3000 字符</p>
+	ReasoningPrompt *string `json:"ReasoningPrompt,omitnil,omitempty" name:"ReasoningPrompt"`
+
+	// <p>推理输出配置。当 ReasoningPrompt 传入时建议同步传入，未传入时使用默认配置（OutputMode=enum, EnumValues=[&quot;true&quot;,&quot;false&quot;], EnableImageInput=true）。</p>
+	ReasoningConfig *ReasoningConfig `json:"ReasoningConfig,omitnil,omitempty" name:"ReasoningConfig"`
+
+	// <p>水印提示排除类型，选择出参“水印提示”排除掉的水印类型，不传的话即代表任意水印都会提示。 PhoneCam：手机相机水印  WatermarkCam：水印相机水印</p>
+	IgnoreWatermarkCategories []*string `json:"IgnoreWatermarkCategories,omitnil,omitempty" name:"IgnoreWatermarkCategories"`
 }
 
 type VerifyGeneralCardWarnRequest struct {
@@ -12816,6 +12825,15 @@ type VerifyGeneralCardWarnRequest struct {
 
 	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// <p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–3000 字符</p>
+	ReasoningPrompt *string `json:"ReasoningPrompt,omitnil,omitempty" name:"ReasoningPrompt"`
+
+	// <p>推理输出配置。当 ReasoningPrompt 传入时建议同步传入，未传入时使用默认配置（OutputMode=enum, EnumValues=[&quot;true&quot;,&quot;false&quot;], EnableImageInput=true）。</p>
+	ReasoningConfig *ReasoningConfig `json:"ReasoningConfig,omitnil,omitempty" name:"ReasoningConfig"`
+
+	// <p>水印提示排除类型，选择出参“水印提示”排除掉的水印类型，不传的话即代表任意水印都会提示。 PhoneCam：手机相机水印  WatermarkCam：水印相机水印</p>
+	IgnoreWatermarkCategories []*string `json:"IgnoreWatermarkCategories,omitnil,omitempty" name:"IgnoreWatermarkCategories"`
 }
 
 func (r *VerifyGeneralCardWarnRequest) ToJsonString() string {
@@ -12833,6 +12851,9 @@ func (r *VerifyGeneralCardWarnRequest) FromJsonString(s string) error {
 	delete(f, "CardType")
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
+	delete(f, "ReasoningPrompt")
+	delete(f, "ReasoningConfig")
+	delete(f, "IgnoreWatermarkCategories")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyGeneralCardWarnRequest has unknown keys!", "")
 	}
@@ -12882,6 +12903,12 @@ type VerifyGeneralCardWarnResponseParams struct {
 
 	// <p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
 	WatermarkContent *string `json:"WatermarkContent,omitnil,omitempty" name:"WatermarkContent"`
+
+	// <p>VLM 推理结果。仅当请求中传入 ReasoningPrompt 时返回，否则不返回此字段。</p>
+	ReasoningResult *ReasoningResult `json:"ReasoningResult,omitnil,omitempty" name:"ReasoningResult"`
+
+	// <p>是否关键字段被篡改（用于排除卡证背景等非字段区域篡改），目前支持的卡证类型：行驶证、驾驶证。<br>枚举值：<br>是<br>否<br>暂不支持</p>
+	IsKeyFieldTamper *string `json:"IsKeyFieldTamper,omitnil,omitempty" name:"IsKeyFieldTamper"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

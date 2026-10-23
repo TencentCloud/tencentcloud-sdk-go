@@ -5879,6 +5879,14 @@ func (r *EnablePolicyTypeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FailedAccount struct {
+	// <p>下发失败的成员账号 UIN</p>
+	TargetUin *int64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// <p>下发失败的成员账号名</p>
+	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
+}
+
 // Predefined struct for user
 type GetExternalSAMLIdentityProviderRequestParams struct {
 	// 空间ID。
@@ -9970,30 +9978,41 @@ type RoleAssignments struct {
 }
 
 type RoleConfiguration struct {
-	// 权限配置配置ID。
+	// <p>权限配置配置ID。</p>
 	RoleConfigurationId *string `json:"RoleConfigurationId,omitnil,omitempty" name:"RoleConfigurationId"`
 
-	// 权限配置配名称。
+	// <p>权限配置配名称。</p>
 	RoleConfigurationName *string `json:"RoleConfigurationName,omitnil,omitempty" name:"RoleConfigurationName"`
 
-	// 权限配置的描述。
+	// <p>权限配置的描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 会话持续时间。CIC 用户使用访问配置访问成员账号时，会话最多保持的时间。
-	// 单位：秒。
+	// <p>会话持续时间。CIC 用户使用访问配置访问成员账号时，会话最多保持的时间。<br>单位：秒。</p>
 	SessionDuration *int64 `json:"SessionDuration,omitnil,omitempty" name:"SessionDuration"`
 
-	// 初始访问页面。CIC 用户使用访问配置访问成员账号时，初始访问的页面地址。
+	// <p>初始访问页面。CIC 用户使用访问配置访问成员账号时，初始访问的页面地址。</p>
 	RelayState *string `json:"RelayState,omitnil,omitempty" name:"RelayState"`
 
-	// 权限配置的创建时间。
+	// <p>权限配置的创建时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 权限配置的更新时间。
+	// <p>权限配置的更新时间。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 如果有入参FilterTargets查询成员账号是否配置过权限，配置了返回true，否则返回false。
+	// <p>如果有入参FilterTargets查询成员账号是否配置过权限，配置了返回true，否则返回false。</p>
 	IsSelected *bool `json:"IsSelected,omitnil,omitempty" name:"IsSelected"`
+
+	// <p>会话时长应用状态</p><p>枚举值：</p><ul><li>Success： 全部账号应用成功</li><li>Failed： 存在失败账号</li><li>Applying： 任务在途</li><li>Unknown： 已部署账号超查询上限</li></ul>
+	ApplyStatus *string `json:"ApplyStatus,omitnil,omitempty" name:"ApplyStatus"`
+
+	// <p>当前已真实下发到 CAM 的会话时长</p><p>取值范围：[900, 43200]</p><p>单位：秒</p>
+	AppliedSessionDuration *uint64 `json:"AppliedSessionDuration,omitnil,omitempty" name:"AppliedSessionDuration"`
+
+	// <p>最近一次成功下发时间</p><p>参数格式： YYYY-MM-DD hh:mm:ss</p>
+	SessionDurationUpdateTime *string `json:"SessionDurationUpdateTime,omitnil,omitempty" name:"SessionDurationUpdateTime"`
+
+	// <p>未成功应用的账号明细</p><p>仅 Failed 态返回</p>
+	FailedAccounts []*FailedAccount `json:"FailedAccounts,omitnil,omitempty" name:"FailedAccounts"`
 }
 
 type RoleConfigurationProvisionings struct {
@@ -11170,39 +11189,45 @@ func (r *UpdatePolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateRoleConfigurationRequestParams struct {
-	// 空间 ID
+	// <p>空间 ID</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 权限配置 ID
+	// <p>权限配置 ID</p>
 	RoleConfigurationId *string `json:"RoleConfigurationId,omitnil,omitempty" name:"RoleConfigurationId"`
 
-	// 新的权限配置描述。  长度：最大 1024 个字符。
+	// <p>新的权限配置描述。  长度：最大 1024 个字符。</p>
 	NewDescription *string `json:"NewDescription,omitnil,omitempty" name:"NewDescription"`
 
-	// 新的会话持续时间。  CIC 用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。
+	// <p>新的会话持续时间。  CIC 用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。</p>
 	NewSessionDuration *int64 `json:"NewSessionDuration,omitnil,omitempty" name:"NewSessionDuration"`
 
-	// 新的初始访问页面。  CIC 用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。
+	// <p>新的初始访问页面。  CIC 用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。</p>
 	NewRelayState *string `json:"NewRelayState,omitnil,omitempty" name:"NewRelayState"`
+
+	// <p>true=保存并应用（立即下发）；false/缺省=仅保存</p>
+	IsApply *bool `json:"IsApply,omitnil,omitempty" name:"IsApply"`
 }
 
 type UpdateRoleConfigurationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 空间 ID
+	// <p>空间 ID</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 权限配置 ID
+	// <p>权限配置 ID</p>
 	RoleConfigurationId *string `json:"RoleConfigurationId,omitnil,omitempty" name:"RoleConfigurationId"`
 
-	// 新的权限配置描述。  长度：最大 1024 个字符。
+	// <p>新的权限配置描述。  长度：最大 1024 个字符。</p>
 	NewDescription *string `json:"NewDescription,omitnil,omitempty" name:"NewDescription"`
 
-	// 新的会话持续时间。  CIC 用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。
+	// <p>新的会话持续时间。  CIC 用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。</p>
 	NewSessionDuration *int64 `json:"NewSessionDuration,omitnil,omitempty" name:"NewSessionDuration"`
 
-	// 新的初始访问页面。  CIC 用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。
+	// <p>新的初始访问页面。  CIC 用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。</p>
 	NewRelayState *string `json:"NewRelayState,omitnil,omitempty" name:"NewRelayState"`
+
+	// <p>true=保存并应用（立即下发）；false/缺省=仅保存</p>
+	IsApply *bool `json:"IsApply,omitnil,omitempty" name:"IsApply"`
 }
 
 func (r *UpdateRoleConfigurationRequest) ToJsonString() string {
@@ -11222,6 +11247,7 @@ func (r *UpdateRoleConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "NewDescription")
 	delete(f, "NewSessionDuration")
 	delete(f, "NewRelayState")
+	delete(f, "IsApply")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRoleConfigurationRequest has unknown keys!", "")
 	}
@@ -11230,7 +11256,7 @@ func (r *UpdateRoleConfigurationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateRoleConfigurationResponseParams struct {
-	// 权限配置详情
+	// <p>权限配置详情</p>
 	RoleConfigurationInfo *RoleConfiguration `json:"RoleConfigurationInfo,omitnil,omitempty" name:"RoleConfigurationInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

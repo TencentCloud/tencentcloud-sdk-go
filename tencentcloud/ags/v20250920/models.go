@@ -3505,6 +3505,63 @@ func (r *DescribeSandboxInstanceListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSandboxInstancesRequestParams struct {
+	// <p>沙箱实例ID列表，指定要查询的实例。如果为空则查询所有实例。最大支持100个ID</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+type DescribeSandboxInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>沙箱实例ID列表，指定要查询的实例。如果为空则查询所有实例。最大支持100个ID</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+func (r *DescribeSandboxInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSandboxInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSandboxInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSandboxInstancesResponseParams struct {
+	// <p>沙箱实例列表</p>
+	InstanceSet []*SandboxInstance `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSandboxInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSandboxInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeSandboxInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSandboxInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSandboxSnapshotListRequestParams struct {
 	// <p>待查询的沙箱快照 ID 列表</p>
 	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
@@ -5898,11 +5955,11 @@ type VPCConfig struct {
 }
 
 type VolumeRef struct {
-	// Volume 名称；服务端在当前认证 AppId 下解析为稳定 VolumeId
+	// <p>Volume 名称；服务端在当前认证 AppId 下解析为稳定 VolumeId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
 
-	// 稳定 Volume ID，格式 vol-xxxxxxxx
+	// <p>稳定 Volume ID，格式 vol-xxxxxxxx</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeId *string `json:"VolumeId,omitnil,omitempty" name:"VolumeId"`
 }

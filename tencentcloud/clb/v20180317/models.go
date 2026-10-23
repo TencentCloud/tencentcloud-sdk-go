@@ -13339,6 +13339,21 @@ type ModifyModelAttributesRequestParams struct {
 
 	// <p>非chat输出模态的请求后缀</p>
 	EndpointPath *string `json:"EndpointPath,omitnil,omitempty" name:"EndpointPath"`
+
+	// <p>所属厂商</p>
+	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
+
+	// <p>协议</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>所使用的CMR 私网管道 ID</p>
+	CMRPrivateNetworkTunnelId *string `json:"CMRPrivateNetworkTunnelId,omitnil,omitempty" name:"CMRPrivateNetworkTunnelId"`
+
+	// <p>携带的Host Header</p>
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
+
+	// <p>是否需要进行ssl校验</p>
+	VerifySSL *bool `json:"VerifySSL,omitnil,omitempty" name:"VerifySSL"`
 }
 
 type ModifyModelAttributesRequest struct {
@@ -13358,6 +13373,21 @@ type ModifyModelAttributesRequest struct {
 
 	// <p>非chat输出模态的请求后缀</p>
 	EndpointPath *string `json:"EndpointPath,omitnil,omitempty" name:"EndpointPath"`
+
+	// <p>所属厂商</p>
+	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
+
+	// <p>协议</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>所使用的CMR 私网管道 ID</p>
+	CMRPrivateNetworkTunnelId *string `json:"CMRPrivateNetworkTunnelId,omitnil,omitempty" name:"CMRPrivateNetworkTunnelId"`
+
+	// <p>携带的Host Header</p>
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
+
+	// <p>是否需要进行ssl校验</p>
+	VerifySSL *bool `json:"VerifySSL,omitnil,omitempty" name:"VerifySSL"`
 }
 
 func (r *ModifyModelAttributesRequest) ToJsonString() string {
@@ -13377,6 +13407,11 @@ func (r *ModifyModelAttributesRequest) FromJsonString(s string) error {
 	delete(f, "ApiBases")
 	delete(f, "ApiBase")
 	delete(f, "EndpointPath")
+	delete(f, "ModelProvider")
+	delete(f, "Protocol")
+	delete(f, "CMRPrivateNetworkTunnelId")
+	delete(f, "HostHeader")
+	delete(f, "VerifySSL")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelAttributesRequest has unknown keys!", "")
 	}
@@ -13803,6 +13838,12 @@ type ModifyServiceProviderModelAttributesRequestParams struct {
 
 	// <p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
 	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
+
+	// <p>新的上游模型名称</p>
+	NewModelName *string `json:"NewModelName,omitnil,omitempty" name:"NewModelName"`
+
+	// <p>新的对外模型名称</p>
+	NewModelAlias *string `json:"NewModelAlias,omitnil,omitempty" name:"NewModelAlias"`
 }
 
 type ModifyServiceProviderModelAttributesRequest struct {
@@ -13816,6 +13857,12 @@ type ModifyServiceProviderModelAttributesRequest struct {
 
 	// <p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
 	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
+
+	// <p>新的上游模型名称</p>
+	NewModelName *string `json:"NewModelName,omitnil,omitempty" name:"NewModelName"`
+
+	// <p>新的对外模型名称</p>
+	NewModelAlias *string `json:"NewModelAlias,omitnil,omitempty" name:"NewModelAlias"`
 }
 
 func (r *ModifyServiceProviderModelAttributesRequest) ToJsonString() string {
@@ -13833,6 +13880,8 @@ func (r *ModifyServiceProviderModelAttributesRequest) FromJsonString(s string) e
 	delete(f, "ServiceProviderId")
 	delete(f, "ModelName")
 	delete(f, "InputModalities")
+	delete(f, "NewModelName")
+	delete(f, "NewModelAlias")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServiceProviderModelAttributesRequest has unknown keys!", "")
 	}
@@ -16186,6 +16235,9 @@ type SpecAvailability struct {
 type StickyConfig struct {
 	// <p>是否开启粘连路由</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>会话粘性的超时时间（秒），取值范围 1–86400。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[1, 86400]</p><p>单位：秒</p><p>默认值：1800</p>
+	TimeoutSeconds *uint64 `json:"TimeoutSeconds,omitnil,omitempty" name:"TimeoutSeconds"`
 }
 
 type TagInfo struct {

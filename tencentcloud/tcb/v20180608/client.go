@@ -1671,6 +1671,70 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     return
 }
 
+func NewCreateUserKeyRequest() (request *CreateUserKeyRequest) {
+    request = &CreateUserKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateUserKey")
+    
+    
+    return
+}
+
+func NewCreateUserKeyResponse() (response *CreateUserKeyResponse) {
+    response = &CreateUserKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserKey
+// 用户创建集成
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateUserKey(request *CreateUserKeyRequest) (response *CreateUserKeyResponse, err error) {
+    return c.CreateUserKeyWithContext(context.Background(), request)
+}
+
+// CreateUserKey
+// 用户创建集成
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateUserKeyWithContext(ctx context.Context, request *CreateUserKeyRequest) (response *CreateUserKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateUserKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateUserKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAIModelRequest() (request *DeleteAIModelRequest) {
     request = &DeleteAIModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2303,6 +2367,68 @@ func (c *Client) DeleteTableWithContext(ctx context.Context, request *DeleteTabl
     request.SetContext(ctx)
     
     response = NewDeleteTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUserKeyRequest() (request *DeleteUserKeyRequest) {
+    request = &DeleteUserKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteUserKey")
+    
+    
+    return
+}
+
+func NewDeleteUserKeyResponse() (response *DeleteUserKeyResponse) {
+    response = &DeleteUserKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUserKey
+// 用户删除集成
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteUserKey(request *DeleteUserKeyRequest) (response *DeleteUserKeyResponse, err error) {
+    return c.DeleteUserKeyWithContext(context.Background(), request)
+}
+
+// DeleteUserKey
+// 用户删除集成
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteUserKeyWithContext(ctx context.Context, request *DeleteUserKeyRequest) (response *DeleteUserKeyResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteUserKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserKeyResponse()
     err = c.Send(request, response)
     return
 }
@@ -5803,6 +5929,68 @@ func (c *Client) GetFunctionWithContext(ctx context.Context, request *GetFunctio
     return
 }
 
+func NewGetOneUserKeyRequest() (request *GetOneUserKeyRequest) {
+    request = &GetOneUserKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "GetOneUserKey")
+    
+    
+    return
+}
+
+func NewGetOneUserKeyResponse() (response *GetOneUserKeyResponse) {
+    response = &GetOneUserKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetOneUserKey
+// 用户获取集成详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) GetOneUserKey(request *GetOneUserKeyRequest) (response *GetOneUserKeyResponse, err error) {
+    return c.GetOneUserKeyWithContext(context.Background(), request)
+}
+
+// GetOneUserKey
+// 用户获取集成详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) GetOneUserKeyWithContext(ctx context.Context, request *GetOneUserKeyRequest) (response *GetOneUserKeyResponse, err error) {
+    if request == nil {
+        request = NewGetOneUserKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "GetOneUserKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetOneUserKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetOneUserKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetProvidersRequest() (request *GetProvidersRequest) {
     request = &GetProvidersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5861,6 +6049,68 @@ func (c *Client) GetProvidersWithContext(ctx context.Context, request *GetProvid
     request.SetContext(ctx)
     
     response = NewGetProvidersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetUserKeyListRequest() (request *GetUserKeyListRequest) {
+    request = &GetUserKeyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "GetUserKeyList")
+    
+    
+    return
+}
+
+func NewGetUserKeyListResponse() (response *GetUserKeyListResponse) {
+    response = &GetUserKeyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetUserKeyList
+// 用户获取集成列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) GetUserKeyList(request *GetUserKeyListRequest) (response *GetUserKeyListResponse, err error) {
+    return c.GetUserKeyListWithContext(context.Background(), request)
+}
+
+// GetUserKeyList
+// 用户获取集成列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) GetUserKeyListWithContext(ctx context.Context, request *GetUserKeyListRequest) (response *GetUserKeyListResponse, err error) {
+    if request == nil {
+        request = NewGetUserKeyListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "GetUserKeyList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUserKeyList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetUserKeyListResponse()
     err = c.Send(request, response)
     return
 }
@@ -8133,6 +8383,70 @@ func (c *Client) UpdateTableWithContext(ctx context.Context, request *UpdateTabl
     request.SetContext(ctx)
     
     response = NewUpdateTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateUserKeyRequest() (request *UpdateUserKeyRequest) {
+    request = &UpdateUserKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "UpdateUserKey")
+    
+    
+    return
+}
+
+func NewUpdateUserKeyResponse() (response *UpdateUserKeyResponse) {
+    response = &UpdateUserKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateUserKey
+// 用户更新集成信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) UpdateUserKey(request *UpdateUserKeyRequest) (response *UpdateUserKeyResponse, err error) {
+    return c.UpdateUserKeyWithContext(context.Background(), request)
+}
+
+// UpdateUserKey
+// 用户更新集成信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) UpdateUserKeyWithContext(ctx context.Context, request *UpdateUserKeyRequest) (response *UpdateUserKeyResponse, err error) {
+    if request == nil {
+        request = NewUpdateUserKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "UpdateUserKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateUserKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateUserKeyResponse()
     err = c.Send(request, response)
     return
 }

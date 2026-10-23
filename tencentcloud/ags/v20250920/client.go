@@ -2593,6 +2593,62 @@ func (c *Client) DescribeSandboxInstanceListWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeSandboxInstancesRequest() (request *DescribeSandboxInstancesRequest) {
+    request = &DescribeSandboxInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "DescribeSandboxInstances")
+    
+    
+    return
+}
+
+func NewDescribeSandboxInstancesResponse() (response *DescribeSandboxInstancesResponse) {
+    response = &DescribeSandboxInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSandboxInstances
+// 查询沙箱实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeSandboxInstances(request *DescribeSandboxInstancesRequest) (response *DescribeSandboxInstancesResponse, err error) {
+    return c.DescribeSandboxInstancesWithContext(context.Background(), request)
+}
+
+// DescribeSandboxInstances
+// 查询沙箱实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeSandboxInstancesWithContext(ctx context.Context, request *DescribeSandboxInstancesRequest) (response *DescribeSandboxInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSandboxInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "DescribeSandboxInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSandboxInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSandboxInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSandboxSnapshotListRequest() (request *DescribeSandboxSnapshotListRequest) {
     request = &DescribeSandboxSnapshotListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2619,9 +2675,8 @@ func NewDescribeSandboxSnapshotListResponse() (response *DescribeSandboxSnapshot
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
-//  INVALIDPARAMETERVALUE_OFFSETTOOLARGE = "InvalidParameterValue.OffsetTooLarge"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSandboxSnapshotList(request *DescribeSandboxSnapshotListRequest) (response *DescribeSandboxSnapshotListResponse, err error) {
     return c.DescribeSandboxSnapshotListWithContext(context.Background(), request)
@@ -2634,9 +2689,8 @@ func (c *Client) DescribeSandboxSnapshotList(request *DescribeSandboxSnapshotLis
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
-//  INVALIDPARAMETERVALUE_OFFSETTOOLARGE = "InvalidParameterValue.OffsetTooLarge"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSandboxSnapshotListWithContext(ctx context.Context, request *DescribeSandboxSnapshotListRequest) (response *DescribeSandboxSnapshotListResponse, err error) {
     if request == nil {

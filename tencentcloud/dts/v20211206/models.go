@@ -5675,44 +5675,44 @@ func (r *ModifyMigrateNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMigrateRateLimitRequestParams struct {
-	// 迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+	// <p>迁移任务 Id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 迁移任务全量导出线程数、有效值为 1-16
+	// <p>迁移任务全量导出线程数、有效值为 1-16</p>
 	DumpThread *int64 `json:"DumpThread,omitnil,omitempty" name:"DumpThread"`
 
-	// 迁移全量导出的 Rps 限制、需要大于 0
+	// <p>迁移全量导出的 Rps 限制、需要大于 0</p>
 	DumpRps *int64 `json:"DumpRps,omitnil,omitempty" name:"DumpRps"`
 
-	// 迁移任务全量导入线程数、有效值为 1-16
+	// <p>迁移任务全量导入线程数、有效值为 1-16</p>
 	LoadThread *int64 `json:"LoadThread,omitnil,omitempty" name:"LoadThread"`
 
-	// 迁移任务增量导入线程数、有效值为 1-128
+	// <p>迁移任务增量导入线程数、有效值为 1-128</p>
 	SinkerThread *int64 `json:"SinkerThread,omitnil,omitempty" name:"SinkerThread"`
 
-	// 全量导入Rps限制
+	// <p>全量导入Rps限制</p>
 	LoadRps *int64 `json:"LoadRps,omitnil,omitempty" name:"LoadRps"`
 }
 
 type ModifyMigrateRateLimitRequest struct {
 	*tchttp.BaseRequest
 	
-	// 迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+	// <p>迁移任务 Id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 迁移任务全量导出线程数、有效值为 1-16
+	// <p>迁移任务全量导出线程数、有效值为 1-16</p>
 	DumpThread *int64 `json:"DumpThread,omitnil,omitempty" name:"DumpThread"`
 
-	// 迁移全量导出的 Rps 限制、需要大于 0
+	// <p>迁移全量导出的 Rps 限制、需要大于 0</p>
 	DumpRps *int64 `json:"DumpRps,omitnil,omitempty" name:"DumpRps"`
 
-	// 迁移任务全量导入线程数、有效值为 1-16
+	// <p>迁移任务全量导入线程数、有效值为 1-16</p>
 	LoadThread *int64 `json:"LoadThread,omitnil,omitempty" name:"LoadThread"`
 
-	// 迁移任务增量导入线程数、有效值为 1-128
+	// <p>迁移任务增量导入线程数、有效值为 1-128</p>
 	SinkerThread *int64 `json:"SinkerThread,omitnil,omitempty" name:"SinkerThread"`
 
-	// 全量导入Rps限制
+	// <p>全量导入Rps限制</p>
 	LoadRps *int64 `json:"LoadRps,omitnil,omitempty" name:"LoadRps"`
 }
 

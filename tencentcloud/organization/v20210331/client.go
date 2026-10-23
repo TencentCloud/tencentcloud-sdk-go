@@ -2020,6 +2020,7 @@ func NewCreateRoleConfigurationResponse() (response *CreateRoleConfigurationResp
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  INVALIDPARAMETER_CONFIGURATIONNAMEALREADYEXISTS = "InvalidParameter.ConfigurationNameAlreadyExists"
 //  INVALIDPARAMETER_CONFIGURATIONNAMEFORMATERROR = "InvalidParameter.ConfigurationNameFormatError"
+//  INVALIDPARAMETER_RELAYSTATEFORMATERROR = "InvalidParameter.RelayStateFormatError"
 func (c *Client) CreateRoleConfiguration(request *CreateRoleConfigurationRequest) (response *CreateRoleConfigurationResponse, err error) {
     return c.CreateRoleConfigurationWithContext(context.Background(), request)
 }
@@ -2034,6 +2035,7 @@ func (c *Client) CreateRoleConfiguration(request *CreateRoleConfigurationRequest
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  INVALIDPARAMETER_CONFIGURATIONNAMEALREADYEXISTS = "InvalidParameter.ConfigurationNameAlreadyExists"
 //  INVALIDPARAMETER_CONFIGURATIONNAMEFORMATERROR = "InvalidParameter.ConfigurationNameFormatError"
+//  INVALIDPARAMETER_RELAYSTATEFORMATERROR = "InvalidParameter.RelayStateFormatError"
 func (c *Client) CreateRoleConfigurationWithContext(ctx context.Context, request *CreateRoleConfigurationRequest) (response *CreateRoleConfigurationResponse, err error) {
     if request == nil {
         request = NewCreateRoleConfigurationRequest()
@@ -8543,8 +8545,10 @@ func NewUpdateRoleConfigurationResponse() (response *UpdateRoleConfigurationResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_DELEGATEDADMINCANNOTMODIFYDEPLOYEDCONFIG = "FailedOperation.DelegatedAdminCannotModifyDeployedConfig"
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_RELAYSTATEFORMATERROR = "InvalidParameter.RelayStateFormatError"
 //  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
 func (c *Client) UpdateRoleConfiguration(request *UpdateRoleConfigurationRequest) (response *UpdateRoleConfigurationResponse, err error) {
     return c.UpdateRoleConfigurationWithContext(context.Background(), request)
@@ -8555,8 +8559,10 @@ func (c *Client) UpdateRoleConfiguration(request *UpdateRoleConfigurationRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_DELEGATEDADMINCANNOTMODIFYDEPLOYEDCONFIG = "FailedOperation.DelegatedAdminCannotModifyDeployedConfig"
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
+//  INVALIDPARAMETER_RELAYSTATEFORMATERROR = "InvalidParameter.RelayStateFormatError"
 //  INVALIDPARAMETER_ROLECONFIGURATIONNOTEXIST = "InvalidParameter.RoleConfigurationNotExist"
 func (c *Client) UpdateRoleConfigurationWithContext(ctx context.Context, request *UpdateRoleConfigurationRequest) (response *UpdateRoleConfigurationResponse, err error) {
     if request == nil {
