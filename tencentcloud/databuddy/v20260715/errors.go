@@ -227,14 +227,32 @@ const (
 	// 数据目录已存在
 	RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 
+	// 存储位置已存在
+	RESOURCEINUSE_LOCATIONALREADYEXISTS = "ResourceInUse.LocationAlreadyExists"
+
+	// 模型已存在
+	RESOURCEINUSE_MODELALREADYEXISTS = "ResourceInUse.ModelAlreadyExists"
+
+	// 模型版本已存在
+	RESOURCEINUSE_MODELVERSIONALREADYEXISTS = "ResourceInUse.ModelVersionAlreadyExists"
+
 	// Schema 已存在
 	RESOURCEINUSE_SCHEMAALREADYEXISTS = "ResourceInUse.SchemaAlreadyExists"
+
+	// 数据卷已存在
+	RESOURCEINUSE_VOLUMEALREADYEXISTS = "ResourceInUse.VolumeAlreadyExists"
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
 	// 指定的 Catalog 不存在
 	RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+
+	// 指定的模型不存在
+	RESOURCENOTFOUND_MODELNOTFOUND = "ResourceNotFound.ModelNotFound"
+
+	// 指定的模型版本不存在
+	RESOURCENOTFOUND_MODELVERSIONNOTFOUND = "ResourceNotFound.ModelVersionNotFound"
 
 	// 资源不存在或已被删除
 	RESOURCENOTFOUND_ONEFLOWRESOURCENOEXISTERROR = "ResourceNotFound.OneFlowResourceNoExistError"
@@ -247,6 +265,12 @@ const (
 
 	// 任务运行不存在
 	RESOURCENOTFOUND_TASKEXECUTIONNOTEXIST = "ResourceNotFound.TaskExecutionNotExist"
+
+	// 指定的视图不存在
+	RESOURCENOTFOUND_VIEWNOTFOUND = "ResourceNotFound.ViewNotFound"
+
+	// 指定的数据卷不存在
+	RESOURCENOTFOUND_VOLUMENOTFOUND = "ResourceNotFound.VolumeNotFound"
 
 	// 工作流运行不存在
 	RESOURCENOTFOUND_WORKFLOWEXECUTIONNOTEXIST = "ResourceNotFound.WorkflowExecutionNotExist"

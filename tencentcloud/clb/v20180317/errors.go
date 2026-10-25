@@ -209,6 +209,9 @@ const (
 	// 无效的状态转换。
 	UNSUPPORTEDOPERATION_INVALIDSTATETRANSITION = "UnsupportedOperation.InvalidStateTransition"
 
+	// ServiceProvider有关联的CMR实例，操作拒绝
+	UNSUPPORTEDOPERATION_MODELASSOCIATEDWITHMODELROUTER = "UnsupportedOperation.ModelAssociatedWithModelRouter"
+
 	// 模型路由资源包已开启自动续订，请先关闭自动续订后再发起退款。
 	UNSUPPORTEDOPERATION_MODELROUTERRESOURCEPACKAGEAUTOPURCHASEENABLED = "UnsupportedOperation.ModelRouterResourcePackageAutoPurchaseEnabled"
 

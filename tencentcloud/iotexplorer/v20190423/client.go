@@ -2639,6 +2639,66 @@ func (c *Client) CreatePositionSpaceWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreatePrivateCARequest() (request *CreatePrivateCARequest) {
+    request = &CreatePrivateCARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreatePrivateCA")
+    
+    
+    return
+}
+
+func NewCreatePrivateCAResponse() (response *CreatePrivateCAResponse) {
+    response = &CreatePrivateCAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePrivateCA
+// 创建私有CA证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
+//  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
+//  LIMITEXCEEDED_CACERTALREADYEXIST = "LimitExceeded.CACertAlreadyExist"
+//  LIMITEXCEEDED_CACERTLIMIT = "LimitExceeded.CACertLimit"
+//  LIMITEXCEEDED_CACERTNAMEREPEAT = "LimitExceeded.CACertNameRepeat"
+//  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
+func (c *Client) CreatePrivateCA(request *CreatePrivateCARequest) (response *CreatePrivateCAResponse, err error) {
+    return c.CreatePrivateCAWithContext(context.Background(), request)
+}
+
+// CreatePrivateCA
+// 创建私有CA证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
+//  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
+//  LIMITEXCEEDED_CACERTALREADYEXIST = "LimitExceeded.CACertAlreadyExist"
+//  LIMITEXCEEDED_CACERTLIMIT = "LimitExceeded.CACertLimit"
+//  LIMITEXCEEDED_CACERTNAMEREPEAT = "LimitExceeded.CACertNameRepeat"
+//  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
+func (c *Client) CreatePrivateCAWithContext(ctx context.Context, request *CreatePrivateCARequest) (response *CreatePrivateCAResponse, err error) {
+    if request == nil {
+        request = NewCreatePrivateCARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreatePrivateCA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrivateCA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrivateCAResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateProjectRequest() (request *CreateProjectRequest) {
     request = &CreateProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4409,6 +4469,110 @@ func (c *Client) DeletePositionSpaceWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeletePositionSpaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrivateCARequest() (request *DeletePrivateCARequest) {
+    request = &DeletePrivateCARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeletePrivateCA")
+    
+    
+    return
+}
+
+func NewDeletePrivateCAResponse() (response *DeletePrivateCAResponse) {
+    response = &DeletePrivateCAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeletePrivateCA
+// 删除私有CA证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  LIMITEXCEEDED_CAALREADYBINDPRODUCT = "LimitExceeded.CAAlreadyBindProduct"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
+func (c *Client) DeletePrivateCA(request *DeletePrivateCARequest) (response *DeletePrivateCAResponse, err error) {
+    return c.DeletePrivateCAWithContext(context.Background(), request)
+}
+
+// DeletePrivateCA
+// 删除私有CA证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  LIMITEXCEEDED_CAALREADYBINDPRODUCT = "LimitExceeded.CAAlreadyBindProduct"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
+func (c *Client) DeletePrivateCAWithContext(ctx context.Context, request *DeletePrivateCARequest) (response *DeletePrivateCAResponse, err error) {
+    if request == nil {
+        request = NewDeletePrivateCARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DeletePrivateCA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePrivateCA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePrivateCAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteProductPrivateCARequest() (request *DeleteProductPrivateCARequest) {
+    request = &DeleteProductPrivateCARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteProductPrivateCA")
+    
+    
+    return
+}
+
+func NewDeleteProductPrivateCAResponse() (response *DeleteProductPrivateCAResponse) {
+    response = &DeleteProductPrivateCAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteProductPrivateCA
+// 删除产品绑定的CA证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
+func (c *Client) DeleteProductPrivateCA(request *DeleteProductPrivateCARequest) (response *DeleteProductPrivateCAResponse, err error) {
+    return c.DeleteProductPrivateCAWithContext(context.Background(), request)
+}
+
+// DeleteProductPrivateCA
+// 删除产品绑定的CA证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
+func (c *Client) DeleteProductPrivateCAWithContext(ctx context.Context, request *DeleteProductPrivateCARequest) (response *DeleteProductPrivateCAResponse, err error) {
+    if request == nil {
+        request = NewDeleteProductPrivateCARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DeleteProductPrivateCA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProductPrivateCA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteProductPrivateCAResponse()
     err = c.Send(request, response)
     return
 }
@@ -8125,6 +8289,208 @@ func (c *Client) DescribePositionFenceListWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribePositionFenceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrivateCARequest() (request *DescribePrivateCARequest) {
+    request = &DescribePrivateCARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribePrivateCA")
+    
+    
+    return
+}
+
+func NewDescribePrivateCAResponse() (response *DescribePrivateCAResponse) {
+    response = &DescribePrivateCAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrivateCA
+// 查询私有化CA信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
+func (c *Client) DescribePrivateCA(request *DescribePrivateCARequest) (response *DescribePrivateCAResponse, err error) {
+    return c.DescribePrivateCAWithContext(context.Background(), request)
+}
+
+// DescribePrivateCA
+// 查询私有化CA信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
+func (c *Client) DescribePrivateCAWithContext(ctx context.Context, request *DescribePrivateCARequest) (response *DescribePrivateCAResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateCARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribePrivateCA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrivateCA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrivateCAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrivateCABindedProductsRequest() (request *DescribePrivateCABindedProductsRequest) {
+    request = &DescribePrivateCABindedProductsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribePrivateCABindedProducts")
+    
+    
+    return
+}
+
+func NewDescribePrivateCABindedProductsResponse() (response *DescribePrivateCABindedProductsResponse) {
+    response = &DescribePrivateCABindedProductsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrivateCABindedProducts
+// 查询私有CA绑定的产品列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+func (c *Client) DescribePrivateCABindedProducts(request *DescribePrivateCABindedProductsRequest) (response *DescribePrivateCABindedProductsResponse, err error) {
+    return c.DescribePrivateCABindedProductsWithContext(context.Background(), request)
+}
+
+// DescribePrivateCABindedProducts
+// 查询私有CA绑定的产品列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+func (c *Client) DescribePrivateCABindedProductsWithContext(ctx context.Context, request *DescribePrivateCABindedProductsRequest) (response *DescribePrivateCABindedProductsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateCABindedProductsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribePrivateCABindedProducts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrivateCABindedProducts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrivateCABindedProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrivateCAsRequest() (request *DescribePrivateCAsRequest) {
+    request = &DescribePrivateCAsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribePrivateCAs")
+    
+    
+    return
+}
+
+func NewDescribePrivateCAsResponse() (response *DescribePrivateCAsResponse) {
+    response = &DescribePrivateCAsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrivateCAs
+// 查询私有CA证书列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+func (c *Client) DescribePrivateCAs(request *DescribePrivateCAsRequest) (response *DescribePrivateCAsResponse, err error) {
+    return c.DescribePrivateCAsWithContext(context.Background(), request)
+}
+
+// DescribePrivateCAs
+// 查询私有CA证书列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+func (c *Client) DescribePrivateCAsWithContext(ctx context.Context, request *DescribePrivateCAsRequest) (response *DescribePrivateCAsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateCAsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribePrivateCAs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrivateCAs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrivateCAsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProductCARequest() (request *DescribeProductCARequest) {
+    request = &DescribeProductCARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeProductCA")
+    
+    
+    return
+}
+
+func NewDescribeProductCAResponse() (response *DescribeProductCAResponse) {
+    response = &DescribeProductCAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProductCA
+// 查询产品绑定的CA证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+func (c *Client) DescribeProductCA(request *DescribeProductCARequest) (response *DescribeProductCAResponse, err error) {
+    return c.DescribeProductCAWithContext(context.Background(), request)
+}
+
+// DescribeProductCA
+// 查询产品绑定的CA证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+func (c *Client) DescribeProductCAWithContext(ctx context.Context, request *DescribeProductCARequest) (response *DescribeProductCAResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductCARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeProductCA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProductCA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProductCAResponse()
     err = c.Send(request, response)
     return
 }
@@ -16627,6 +16993,114 @@ func (c *Client) UpdateOtaTaskStatusWithContext(ctx context.Context, request *Up
     request.SetContext(ctx)
     
     response = NewUpdateOtaTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdatePrivateCARequest() (request *UpdatePrivateCARequest) {
+    request = &UpdatePrivateCARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "UpdatePrivateCA")
+    
+    
+    return
+}
+
+func NewUpdatePrivateCAResponse() (response *UpdatePrivateCAResponse) {
+    response = &UpdatePrivateCAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdatePrivateCA
+// 更新私有CA证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
+//  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
+//  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
+func (c *Client) UpdatePrivateCA(request *UpdatePrivateCARequest) (response *UpdatePrivateCAResponse, err error) {
+    return c.UpdatePrivateCAWithContext(context.Background(), request)
+}
+
+// UpdatePrivateCA
+// 更新私有CA证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
+//  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
+//  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
+func (c *Client) UpdatePrivateCAWithContext(ctx context.Context, request *UpdatePrivateCARequest) (response *UpdatePrivateCAResponse, err error) {
+    if request == nil {
+        request = NewUpdatePrivateCARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "UpdatePrivateCA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdatePrivateCA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdatePrivateCAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateProductPrivateCARequest() (request *UpdateProductPrivateCARequest) {
+    request = &UpdateProductPrivateCARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "UpdateProductPrivateCA")
+    
+    
+    return
+}
+
+func NewUpdateProductPrivateCAResponse() (response *UpdateProductPrivateCAResponse) {
+    response = &UpdateProductPrivateCAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateProductPrivateCA
+// 更新产品的私有CA
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED_CACERTNOTSUPPORT = "LimitExceeded.CACertNotSupport"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) UpdateProductPrivateCA(request *UpdateProductPrivateCARequest) (response *UpdateProductPrivateCAResponse, err error) {
+    return c.UpdateProductPrivateCAWithContext(context.Background(), request)
+}
+
+// UpdateProductPrivateCA
+// 更新产品的私有CA
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED_CACERTNOTSUPPORT = "LimitExceeded.CACertNotSupport"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) UpdateProductPrivateCAWithContext(ctx context.Context, request *UpdateProductPrivateCARequest) (response *UpdateProductPrivateCAResponse, err error) {
+    if request == nil {
+        request = NewUpdateProductPrivateCARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "UpdateProductPrivateCA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateProductPrivateCA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateProductPrivateCAResponse()
     err = c.Send(request, response)
     return
 }

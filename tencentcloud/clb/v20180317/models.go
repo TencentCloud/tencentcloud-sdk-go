@@ -7669,7 +7669,7 @@ type DescribeModelNamesRequestParams struct {
 	// <p>过滤PrivateCustom类型自建模型。如果传递了此参数，则只返回具有相同VPC Id的模型。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// <p>过滤器，Name取值：</p><ul><li>ModelName：按照模型名称过滤。</li><li>ServiceProviderId：按照BYOK ID过滤。</li><li>InputModalitiesUnion：按照模态过滤。</li></ul>
+	// <p>过滤器，Name取值：</p><ul><li>ModelName：按照模型名称过滤。</li><li>ServiceProviderId：按照BYOK ID过滤。</li><li>InputModalitiesUnion：按照输入模态过滤。</li><li>Capability：按照输出模态过滤。</li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -7685,7 +7685,7 @@ type DescribeModelNamesRequest struct {
 	// <p>过滤PrivateCustom类型自建模型。如果传递了此参数，则只返回具有相同VPC Id的模型。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// <p>过滤器，Name取值：</p><ul><li>ModelName：按照模型名称过滤。</li><li>ServiceProviderId：按照BYOK ID过滤。</li><li>InputModalitiesUnion：按照模态过滤。</li></ul>
+	// <p>过滤器，Name取值：</p><ul><li>ModelName：按照模型名称过滤。</li><li>ServiceProviderId：按照BYOK ID过滤。</li><li>InputModalitiesUnion：按照输入模态过滤。</li><li>Capability：按照输出模态过滤。</li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -10411,6 +10411,9 @@ func (r *InquiryPriceRenewLoadBalancerResponse) FromJsonString(s string) error {
 type IntentRouterDecisionModelConfig struct {
 	// <p>是否开启使用决策模型</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>选定的分类决策模型名，不传递表示随机选用。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 }
 
 type IntentRouterItem struct {
@@ -11419,7 +11422,7 @@ type ModelAlias struct {
 }
 
 type ModelAssociation struct {
-	// <p>该模型最大可支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+	// <p>该模型最大可支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
 	InputModalitiesUnion []*string `json:"InputModalitiesUnion,omitnil,omitempty" name:"InputModalitiesUnion"`
 
 	// <p>模型名称</p>
@@ -11436,7 +11439,7 @@ type ModelAssociation struct {
 }
 
 type ModelAvailability struct {
-	// <p>该模型所有健康BYOK实例下支持的输入多模态能力的并集。模型不健康时返回空列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+	// <p>该模型所有健康BYOK实例下支持的输入多模态能力的并集。模型不健康时返回空列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
 	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
 
 	// <p>模型</p>
@@ -11461,7 +11464,7 @@ type ModelItem struct {
 	// <p>模型唯一标识, 用于实际访问</p>
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
-	// <p>该模型当前支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>默认值：text</p>
+	// <p>该模型当前支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul><p>默认值：text</p>
 	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
 
 	// <p>模型别名, 可以用于实际访问</p>
@@ -11560,7 +11563,7 @@ type ModelNameAggregatedItem struct {
 	// <p>关联的服务商列表</p>
 	ServiceProviders []*ServiceProviderItem `json:"ServiceProviders,omitnil,omitempty" name:"ServiceProviders"`
 
-	// <p>该模型最大可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+	// <p>该模型最大可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
 	InputModalitiesUnion []*string `json:"InputModalitiesUnion,omitnil,omitempty" name:"InputModalitiesUnion"`
 }
 
@@ -11688,6 +11691,9 @@ type ModelRouterDetail struct {
 
 	// <p>Images 生图配置</p>
 	ImageConfig *ImageConfig `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
+
+	// <p>实例重定向配置</p>
+	RedirectConfig *RedirectConfig `json:"RedirectConfig,omitnil,omitempty" name:"RedirectConfig"`
 }
 
 type ModelRouterLog struct {
@@ -11919,6 +11925,9 @@ type ModelRouterSet struct {
 
 	// <p>计费信息</p>
 	BillingConfig *ModelRouterBillingConfigOutput `json:"BillingConfig,omitnil,omitempty" name:"BillingConfig"`
+
+	// <p>实例重定向配置</p>
+	RedirectConfig *RedirectConfig `json:"RedirectConfig,omitnil,omitempty" name:"RedirectConfig"`
 }
 
 type ModelTestResult struct {
@@ -13477,6 +13486,15 @@ type ModifyModelRouterAttributesRequestParams struct {
 
 	// <p>Images 生图配置</p>
 	ImageConfig *ImageConfig `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
+
+	// <p>实例重定向配置</p>
+	RedirectConfig *RedirectConfig `json:"RedirectConfig,omitnil,omitempty" name:"RedirectConfig"`
+
+	// <p>网络协议</p>
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// <p>监听端口</p><p>取值范围：[1, 65535]</p>
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
 type ModifyModelRouterAttributesRequest struct {
@@ -13517,6 +13535,15 @@ type ModifyModelRouterAttributesRequest struct {
 
 	// <p>Images 生图配置</p>
 	ImageConfig *ImageConfig `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
+
+	// <p>实例重定向配置</p>
+	RedirectConfig *RedirectConfig `json:"RedirectConfig,omitnil,omitempty" name:"RedirectConfig"`
+
+	// <p>网络协议</p>
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// <p>监听端口</p><p>取值范围：[1, 65535]</p>
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
 func (r *ModifyModelRouterAttributesRequest) ToJsonString() string {
@@ -13543,6 +13570,9 @@ func (r *ModifyModelRouterAttributesRequest) FromJsonString(s string) error {
 	delete(f, "RerankConfig")
 	delete(f, "DecisionsConfig")
 	delete(f, "ImageConfig")
+	delete(f, "RedirectConfig")
+	delete(f, "Schema")
+	delete(f, "Port")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelRouterAttributesRequest has unknown keys!", "")
 	}
@@ -14438,7 +14468,7 @@ type MultiModalityAttachments struct {
 	// <p>base64 url编码的文件内容</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// <p>附件类型</p><p>枚举值：</p><ul><li>image： 图像</li><li>pdf： pdf（文件）</li></ul>
+	// <p>附件类型</p><p>枚举值：</p><ul><li>image： 图像</li><li>pdf： pdf（文件）</li><li>video： 视频</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -14539,6 +14569,14 @@ type RateLimitConfigForModelRouter struct {
 
 	// <p>每分钟限制的Token数量</p><p>单位：个/分钟</p>
 	TPM *uint64 `json:"TPM,omitnil,omitempty" name:"TPM"`
+}
+
+type RedirectConfig struct {
+	// <p>重定向状态码</p><p>枚举值：</p><ul><li>301： 永久重定向</li><li>302： 临时重定向</li><li>303： 查看其他位置</li><li>307： 临时重定向（保留请求方法）</li><li>308： 永久重定向（保留请求方法）</li></ul>
+	StatusCode *uint64 `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
+
+	// <p>目标地址，填写为空表示关闭重定向。不支持路径填写。</p>
+	TargetUrl *string `json:"TargetUrl,omitnil,omitempty" name:"TargetUrl"`
 }
 
 // Predefined struct for user
@@ -15651,7 +15689,7 @@ type ServiceProvider struct {
 	// <p>BYOK类型</p>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// <p>单个byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul>
+	// <p>单个byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li><li>video： 支持视频输入</li></ul>
 	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
 
 	// <p>模型协议</p>
@@ -15769,7 +15807,7 @@ type ServiceProviderItem struct {
 	// <p>模型供应商</p>
 	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
 
-	// <p>该byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul>
+	// <p>该byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li><li>video： 支持视频输入</li></ul>
 	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
 }
 
@@ -16236,7 +16274,7 @@ type StickyConfig struct {
 	// <p>是否开启粘连路由</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
-	// <p>会话粘性的超时时间（秒），取值范围 1–86400。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[1, 86400]</p><p>单位：秒</p><p>默认值：1800</p>
+	// <p>会话粘性的超时时间（秒），取值范围 180–86400。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[180, 21600]</p><p>单位：秒</p><p>默认值：1800</p>
 	TimeoutSeconds *uint64 `json:"TimeoutSeconds,omitnil,omitempty" name:"TimeoutSeconds"`
 }
 
@@ -16656,7 +16694,7 @@ type TestModelInputModalitiesResponseParams struct {
 	// <p>探测的模型</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// <p>该模型确认支持的输入模态列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>收到上游大模型对于输入模态的响应即为“确认支持”</p>
+	// <p>该模型确认支持的输入模态列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul><p>收到上游大模型对于输入模态的响应即为“确认支持”</p>
 	SupportedModalities []*string `json:"SupportedModalities,omitnil,omitempty" name:"SupportedModalities"`
 
 	// <p>每个待探测模态的详细请求结果</p>

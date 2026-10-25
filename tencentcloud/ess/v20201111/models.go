@@ -11094,6 +11094,9 @@ type DescribeBillUsageRequestParams struct {
 
 	// <p>是否展示集团子企业的明细，默认否</p>
 	DisplaySubEnterprise *bool `json:"DisplaySubEnterprise,omitnil,omitempty" name:"DisplaySubEnterprise"`
+
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type DescribeBillUsageRequest struct {
@@ -11110,6 +11113,9 @@ type DescribeBillUsageRequest struct {
 
 	// <p>是否展示集团子企业的明细，默认否</p>
 	DisplaySubEnterprise *bool `json:"DisplaySubEnterprise,omitnil,omitempty" name:"DisplaySubEnterprise"`
+
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 func (r *DescribeBillUsageRequest) ToJsonString() string {
@@ -11128,6 +11134,7 @@ func (r *DescribeBillUsageRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "QuotaType")
 	delete(f, "DisplaySubEnterprise")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillUsageRequest has unknown keys!", "")
 	}

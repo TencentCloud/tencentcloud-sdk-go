@@ -1586,6 +1586,32 @@ type CamTag struct {
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
+type CertInfo struct {
+	// <p>证书名称</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+
+	// <p>证书序列号</p>
+	CertSN *string `json:"CertSN,omitnil,omitempty" name:"CertSN"`
+
+	// <p>证书颁发者名称（颁发机构的 CN）</p>
+	IssuerName *string `json:"IssuerName,omitnil,omitempty" name:"IssuerName"`
+
+	// <p>证书主题，即证书持有者信息</p>
+	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
+
+	// <p>证书创建时间，Unix 时间戳，</p><p>单位：秒</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>证书生效时间，Unix 时间戳，</p><p>单位：秒</p>
+	EffectiveTime *uint64 `json:"EffectiveTime,omitnil,omitempty" name:"EffectiveTime"`
+
+	// <p>证书过期时间，Unix 时间戳，</p><p>单位：秒</p>
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>证书内容，PEM 格式文本</p>
+	CertText *string `json:"CertText,omitnil,omitempty" name:"CertText"`
+}
+
 // Predefined struct for user
 type ChangeP2PRouteRequestParams struct {
 	// 产品ID
@@ -2574,57 +2600,63 @@ func (r *CreateDevicePublishSDPAnswerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDeviceRequestParams struct {
-	// 产品ID。
+	// <p>产品ID。</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。
+	// <p>设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// LoRaWAN 设备地址
+	// <p>LoRaWAN 设备地址</p>
 	DevAddr *string `json:"DevAddr,omitnil,omitempty" name:"DevAddr"`
 
-	// LoRaWAN 应用密钥
+	// <p>LoRaWAN 应用密钥</p>
 	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
 
-	// LoRaWAN 设备唯一标识
+	// <p>LoRaWAN 设备唯一标识</p>
 	DevEUI *string `json:"DevEUI,omitnil,omitempty" name:"DevEUI"`
 
-	// LoRaWAN 应用会话密钥
+	// <p>LoRaWAN 应用会话密钥</p>
 	AppSKey *string `json:"AppSKey,omitnil,omitempty" name:"AppSKey"`
 
-	// LoRaWAN 网络会话密钥
+	// <p>LoRaWAN 网络会话密钥</p>
 	NwkSKey *string `json:"NwkSKey,omitnil,omitempty" name:"NwkSKey"`
 
-	// 手动指定设备的PSK密钥
+	// <p>手动指定设备的PSK密钥</p>
 	DefinedPsk *string `json:"DefinedPsk,omitnil,omitempty" name:"DefinedPsk"`
+
+	// <p>设备证书。第三方CA证书认证的产品下必填；腾讯云CA证书产品传入会报错；非证书认证产品传入会被忽略</p>
+	TlsCrt *string `json:"TlsCrt,omitnil,omitempty" name:"TlsCrt"`
 }
 
 type CreateDeviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品ID。
+	// <p>产品ID。</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。
+	// <p>设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// LoRaWAN 设备地址
+	// <p>LoRaWAN 设备地址</p>
 	DevAddr *string `json:"DevAddr,omitnil,omitempty" name:"DevAddr"`
 
-	// LoRaWAN 应用密钥
+	// <p>LoRaWAN 应用密钥</p>
 	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
 
-	// LoRaWAN 设备唯一标识
+	// <p>LoRaWAN 设备唯一标识</p>
 	DevEUI *string `json:"DevEUI,omitnil,omitempty" name:"DevEUI"`
 
-	// LoRaWAN 应用会话密钥
+	// <p>LoRaWAN 应用会话密钥</p>
 	AppSKey *string `json:"AppSKey,omitnil,omitempty" name:"AppSKey"`
 
-	// LoRaWAN 网络会话密钥
+	// <p>LoRaWAN 网络会话密钥</p>
 	NwkSKey *string `json:"NwkSKey,omitnil,omitempty" name:"NwkSKey"`
 
-	// 手动指定设备的PSK密钥
+	// <p>手动指定设备的PSK密钥</p>
 	DefinedPsk *string `json:"DefinedPsk,omitnil,omitempty" name:"DefinedPsk"`
+
+	// <p>设备证书。第三方CA证书认证的产品下必填；腾讯云CA证书产品传入会报错；非证书认证产品传入会被忽略</p>
+	TlsCrt *string `json:"TlsCrt,omitnil,omitempty" name:"TlsCrt"`
 }
 
 func (r *CreateDeviceRequest) ToJsonString() string {
@@ -2647,6 +2679,7 @@ func (r *CreateDeviceRequest) FromJsonString(s string) error {
 	delete(f, "AppSKey")
 	delete(f, "NwkSKey")
 	delete(f, "DefinedPsk")
+	delete(f, "TlsCrt")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceRequest has unknown keys!", "")
 	}
@@ -2655,7 +2688,7 @@ func (r *CreateDeviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDeviceResponseParams struct {
-	// 设备参数描述。
+	// <p>设备参数描述。</p>
 	Data *DeviceData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3639,6 +3672,74 @@ func (r *CreatePositionSpaceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePrivateCARequestParams struct {
+	// <p>证书名称，长度 1~32 个字符。</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+
+	// <p>证书内容，PEM 格式文本，需为 CA 证书。</p>
+	CertText *string `json:"CertText,omitnil,omitempty" name:"CertText"`
+
+	// <p>验证证书内容，PEM 格式文本。须由所上传的 CA 签发，且 CN 为 sha256(&quot;iothub_主账号Uin&quot;) 的小写十六进制值，用于验证您持有 CA 私钥。</p>
+	VerifyCertText *string `json:"VerifyCertText,omitnil,omitempty" name:"VerifyCertText"`
+}
+
+type CreatePrivateCARequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>证书名称，长度 1~32 个字符。</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+
+	// <p>证书内容，PEM 格式文本，需为 CA 证书。</p>
+	CertText *string `json:"CertText,omitnil,omitempty" name:"CertText"`
+
+	// <p>验证证书内容，PEM 格式文本。须由所上传的 CA 签发，且 CN 为 sha256(&quot;iothub_主账号Uin&quot;) 的小写十六进制值，用于验证您持有 CA 私钥。</p>
+	VerifyCertText *string `json:"VerifyCertText,omitnil,omitempty" name:"VerifyCertText"`
+}
+
+func (r *CreatePrivateCARequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateCARequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertName")
+	delete(f, "CertText")
+	delete(f, "VerifyCertText")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateCARequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrivateCAResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePrivateCAResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrivateCAResponseParams `json:"Response"`
+}
+
+func (r *CreatePrivateCAResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateCAResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateProjectRequestParams struct {
 	// 项目名称
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
@@ -3711,69 +3812,75 @@ func (r *CreateProjectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateStudioProductRequestParams struct {
-	// 产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}
+	// <p>产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}</p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)
+	// <p>产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)</p>
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
-	// 产品类型 填写 ( 0 普通产品 ， 5 网关产品)
+	// <p>产品类型 填写 ( 0 普通产品 ， 5 网关产品)</p>
 	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// 加密类型 ，1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+	// <p>设备认证方式 ，1表示证书认证，2表示密钥认证</p><p>枚举值：</p><ul><li>1： 证书认证(X.509证书认证)</li><li>2： 密钥认证</li></ul>
 	EncryptionType *string `json:"EncryptionType,omitnil,omitempty" name:"EncryptionType"`
 
-	// 连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
+	// <p>连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh</p>
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 数据协议 (1 使用物模型 2 为自定义)
+	// <p>数据协议 (1 使用物模型，即使用腾讯云物联网开发平台制定的物模型协议 2 自定义透传，即用户自由定义MQTT协议Payload部分)</p>
 	DataProtocol *int64 `json:"DataProtocol,omitnil,omitempty" name:"DataProtocol"`
 
-	// 产品描述
+	// <p>产品描述</p>
 	ProductDesc *string `json:"ProductDesc,omitnil,omitempty" name:"ProductDesc"`
 
-	// 产品的项目ID
+	// <p>产品所在的项目ID，可从产品管理页的当前URL中获取project_id的值</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 平均传输速率
+	// <p>平均传输速率</p>
 	Rate *string `json:"Rate,omitnil,omitempty" name:"Rate"`
 
-	// 期限
+	// <p>期限</p>
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// <p>第三方CA证书名称。空/不传 = 腾讯云默认CA证书；非空 = 使用该证书（须为当前账号已上传的 CA，不存在会报错）</p>
+	PrivateCAName *string `json:"PrivateCAName,omitnil,omitempty" name:"PrivateCAName"`
 }
 
 type CreateStudioProductRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}
+	// <p>产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}</p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)
+	// <p>产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)</p>
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
-	// 产品类型 填写 ( 0 普通产品 ， 5 网关产品)
+	// <p>产品类型 填写 ( 0 普通产品 ， 5 网关产品)</p>
 	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// 加密类型 ，1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+	// <p>设备认证方式 ，1表示证书认证，2表示密钥认证</p><p>枚举值：</p><ul><li>1： 证书认证(X.509证书认证)</li><li>2： 密钥认证</li></ul>
 	EncryptionType *string `json:"EncryptionType,omitnil,omitempty" name:"EncryptionType"`
 
-	// 连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
+	// <p>连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh</p>
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 数据协议 (1 使用物模型 2 为自定义)
+	// <p>数据协议 (1 使用物模型，即使用腾讯云物联网开发平台制定的物模型协议 2 自定义透传，即用户自由定义MQTT协议Payload部分)</p>
 	DataProtocol *int64 `json:"DataProtocol,omitnil,omitempty" name:"DataProtocol"`
 
-	// 产品描述
+	// <p>产品描述</p>
 	ProductDesc *string `json:"ProductDesc,omitnil,omitempty" name:"ProductDesc"`
 
-	// 产品的项目ID
+	// <p>产品所在的项目ID，可从产品管理页的当前URL中获取project_id的值</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 平均传输速率
+	// <p>平均传输速率</p>
 	Rate *string `json:"Rate,omitnil,omitempty" name:"Rate"`
 
-	// 期限
+	// <p>期限</p>
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// <p>第三方CA证书名称。空/不传 = 腾讯云默认CA证书；非空 = 使用该证书（须为当前账号已上传的 CA，不存在会报错）</p>
+	PrivateCAName *string `json:"PrivateCAName,omitnil,omitempty" name:"PrivateCAName"`
 }
 
 func (r *CreateStudioProductRequest) ToJsonString() string {
@@ -3798,6 +3905,7 @@ func (r *CreateStudioProductRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "Rate")
 	delete(f, "Period")
+	delete(f, "PrivateCAName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStudioProductRequest has unknown keys!", "")
 	}
@@ -3806,7 +3914,7 @@ func (r *CreateStudioProductRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateStudioProductResponseParams struct {
-	// 产品描述
+	// <p>产品描述</p>
 	Product *ProductEntry `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5972,6 +6080,114 @@ func (r *DeletePositionSpaceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePositionSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrivateCARequestParams struct {
+	// <p>证书名称。</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+}
+
+type DeletePrivateCARequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>证书名称。</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+}
+
+func (r *DeletePrivateCARequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrivateCARequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrivateCARequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrivateCAResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePrivateCAResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePrivateCAResponseParams `json:"Response"`
+}
+
+func (r *DeletePrivateCAResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrivateCAResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProductPrivateCARequestParams struct {
+	// <p>产品ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+}
+
+type DeleteProductPrivateCARequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+}
+
+func (r *DeleteProductPrivateCARequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProductPrivateCARequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteProductPrivateCARequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProductPrivateCAResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteProductPrivateCAResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteProductPrivateCAResponseParams `json:"Response"`
+}
+
+func (r *DeleteProductPrivateCAResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProductPrivateCAResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10796,6 +11012,245 @@ func (r *DescribePositionFenceListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePositionFenceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateCABindedProductsRequestParams struct {
+	// <p>证书名称，长度 1~32 个字符。</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+
+	// <p>分页偏移量。</p><p>取值范围：[0, 5000000]</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单次返回的数量。</p><p>取值范围：[1, 200]</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribePrivateCABindedProductsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>证书名称，长度 1~32 个字符。</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+
+	// <p>分页偏移量。</p><p>取值范围：[0, 5000000]</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单次返回的数量。</p><p>取值范围：[1, 200]</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribePrivateCABindedProductsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateCABindedProductsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertName")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateCABindedProductsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateCABindedProductsResponseParams struct {
+	// <p>绑定了该 CA 证书的产品列表。</p>
+	Products []*PrivateCABindProductInfo `json:"Products,omitnil,omitempty" name:"Products"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrivateCABindedProductsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrivateCABindedProductsResponseParams `json:"Response"`
+}
+
+func (r *DescribePrivateCABindedProductsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateCABindedProductsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateCARequestParams struct {
+	// <p>证书名称。</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+}
+
+type DescribePrivateCARequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>证书名称。</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+}
+
+func (r *DescribePrivateCARequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateCARequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateCARequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateCAResponseParams struct {
+	// <p>CA 证书信息。</p>
+	CA *CertInfo `json:"CA,omitnil,omitempty" name:"CA"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrivateCAResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrivateCAResponseParams `json:"Response"`
+}
+
+func (r *DescribePrivateCAResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateCAResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateCAsRequestParams struct {
+
+}
+
+type DescribePrivateCAsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribePrivateCAsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateCAsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateCAsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivateCAsResponseParams struct {
+	// <p>产品绑定的 CA 证书信息列表。产品绑定了第三方 CA 时,返回该 CA 的证书信息;产品未绑定第三方 CA 时,返回平台默认 CA;产品未绑定 CA 时为空数组。</p>
+	CAs []*CertInfo `json:"CAs,omitnil,omitempty" name:"CAs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrivateCAsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrivateCAsResponseParams `json:"Response"`
+}
+
+func (r *DescribePrivateCAsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateCAsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProductCARequestParams struct {
+	// <p>产品ID。</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+}
+
+type DescribeProductCARequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品ID。</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+}
+
+func (r *DescribeProductCARequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProductCARequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductCARequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProductCAResponseParams struct {
+	// <p>产品绑定的 CA 证书信息列表。产品绑定了第三方 CA 时,返回该 CA 的证书信息;产品未绑定第三方 CA 时,返回平台默认 CA;产品未绑定 CA 时为空数组。</p>
+	CAs []*CertInfo `json:"CAs,omitnil,omitempty" name:"CAs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProductCAResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProductCAResponseParams `json:"Response"`
+}
+
+func (r *DescribeProductCAResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProductCAResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -20381,6 +20836,17 @@ type PositionSpaceInfo struct {
 	Zoom *uint64 `json:"Zoom,omitnil,omitempty" name:"Zoom"`
 }
 
+type PrivateCABindProductInfo struct {
+	// <p>产品ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>产品名</p>
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// <p>产品创建时间</p><p>单位：秒</p>
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
 type ProductDevicesPositionItem struct {
 	// 设备位置列表
 	Items []*DevicePositionItem `json:"Items,omitnil,omitempty" name:"Items"`
@@ -20393,72 +20859,104 @@ type ProductDevicesPositionItem struct {
 }
 
 type ProductEntry struct {
-	// 产品ID
+	// <p>产品ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 产品名称
+	// <p>产品名称</p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 产品分组模板ID
+	// <p>产品分组模板ID</p>
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
-	// 加密类型。1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+	// <p>加密类型。1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式</p>
 	EncryptionType *string `json:"EncryptionType,omitnil,omitempty" name:"EncryptionType"`
 
-	// 连接类型。如：
-	// wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
+	// <p>连接类型。如：<br>wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh</p>
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 数据协议 (1 使用物模型 2 为自定义类型)
+	// <p>数据协议 (1 使用物模型 2 为自定义类型)</p>
 	DataProtocol *int64 `json:"DataProtocol,omitnil,omitempty" name:"DataProtocol"`
 
-	// 产品描述
+	// <p>产品描述</p>
 	ProductDesc *string `json:"ProductDesc,omitnil,omitempty" name:"ProductDesc"`
 
-	// 状态 如：all 全部, dev 开发中, audit 审核中 released 已发布
+	// <p>状态 如：all 全部, dev 开发中, audit 审核中 released 已发布</p>
 	DevStatus *string `json:"DevStatus,omitnil,omitempty" name:"DevStatus"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 区域
+	// <p>区域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 产品类型。如： 0 普通产品 ， 5 网关产品
+	// <p>产品类型。如： 0 普通产品 ， 5 网关产品</p>
 	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 产品ModuleId
+	// <p>产品ModuleId</p>
 	ModuleId *int64 `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
 
-	// 是否使用脚本进行二进制转json功能 可以取值 true / false
+	// <p>是否使用脚本进行二进制转json功能 可以取值 true / false</p>
 	EnableProductScript *string `json:"EnableProductScript,omitnil,omitempty" name:"EnableProductScript"`
 
-	// 创建人 UinId
+	// <p>创建人 UinId</p>
 	CreateUserId *int64 `json:"CreateUserId,omitnil,omitempty" name:"CreateUserId"`
 
-	// 创建者昵称
+	// <p>创建者昵称</p>
 	CreatorNickName *string `json:"CreatorNickName,omitnil,omitempty" name:"CreatorNickName"`
 
-	// 绑定策略（1：强踢；2：非强踢；0：表示无意义）
+	// <p>绑定策略（1：强踢；2：非强踢；0：表示无意义）</p>
 	BindStrategy *uint64 `json:"BindStrategy,omitnil,omitempty" name:"BindStrategy"`
 
-	// 设备数量
+	// <p>设备数量</p>
 	DeviceCount *int64 `json:"DeviceCount,omitnil,omitempty" name:"DeviceCount"`
 
-	// 平均传输速率
+	// <p>平均传输速率</p>
 	Rate *string `json:"Rate,omitnil,omitempty" name:"Rate"`
 
-	// 有效期
+	// <p>有效期</p>
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 互联互通标识
+	// <p>互联互通标识</p>
 	IsInterconnection *int64 `json:"IsInterconnection,omitnil,omitempty" name:"IsInterconnection"`
+
+	// <p>UIN</p>
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>AppID</p>
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>绑定的第三方CA名称；空 = 腾讯云CA证书</p>
+	PrivateCAName *string `json:"PrivateCAName,omitnil,omitempty" name:"PrivateCAName"`
+
+	// <p>true = 第三方CA</p>
+	IsPrivateCA *bool `json:"IsPrivateCA,omitnil,omitempty" name:"IsPrivateCA"`
+
+	// <p>CA 证书名称</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+
+	// <p>证书序列号</p>
+	CertSN *string `json:"CertSN,omitnil,omitempty" name:"CertSN"`
+
+	// <p>颁发者</p>
+	IssuerName *string `json:"IssuerName,omitnil,omitempty" name:"IssuerName"`
+
+	// <p>证书主题</p>
+	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
+
+	// <p>生效时间（Unix 秒）</p><p>单位：秒</p>
+	EffectiveTime *int64 `json:"EffectiveTime,omitnil,omitempty" name:"EffectiveTime"`
+
+	// <p>过期时间（Unix 秒）</p><p>单位：秒</p>
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>CA 证书 PEM 全文</p>
+	CertText *string `json:"CertText,omitnil,omitempty" name:"CertText"`
 }
 
 type ProductModelDefinition struct {
@@ -24517,6 +25015,135 @@ func (r *UpdateOtaTaskStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateOtaTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePrivateCARequestParams struct {
+	// <p>证书名称。</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+
+	// <p>证书内容，PEM 格式文本，需为 CA 证书。</p>
+	CertText *string `json:"CertText,omitnil,omitempty" name:"CertText"`
+
+	// <p>验证证书内容，PEM 格式文本。须由所上传的 CA 签发，且 CN 为 sha256(&quot;iothub_主账号Uin&quot;) 的小写十六进制值，用于验证您持有 CA 私钥。</p>
+	VerifyCertText *string `json:"VerifyCertText,omitnil,omitempty" name:"VerifyCertText"`
+}
+
+type UpdatePrivateCARequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>证书名称。</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+
+	// <p>证书内容，PEM 格式文本，需为 CA 证书。</p>
+	CertText *string `json:"CertText,omitnil,omitempty" name:"CertText"`
+
+	// <p>验证证书内容，PEM 格式文本。须由所上传的 CA 签发，且 CN 为 sha256(&quot;iothub_主账号Uin&quot;) 的小写十六进制值，用于验证您持有 CA 私钥。</p>
+	VerifyCertText *string `json:"VerifyCertText,omitnil,omitempty" name:"VerifyCertText"`
+}
+
+func (r *UpdatePrivateCARequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePrivateCARequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertName")
+	delete(f, "CertText")
+	delete(f, "VerifyCertText")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdatePrivateCARequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePrivateCAResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdatePrivateCAResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdatePrivateCAResponseParams `json:"Response"`
+}
+
+func (r *UpdatePrivateCAResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePrivateCAResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateProductPrivateCARequestParams struct {
+	// <p>产品ID。</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>证书名称，长度 1~32 个字符。</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+}
+
+type UpdateProductPrivateCARequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品ID。</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>证书名称，长度 1~32 个字符。</p>
+	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
+}
+
+func (r *UpdateProductPrivateCARequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateProductPrivateCARequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "CertName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateProductPrivateCARequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateProductPrivateCAResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateProductPrivateCAResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateProductPrivateCAResponseParams `json:"Response"`
+}
+
+func (r *UpdateProductPrivateCAResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateProductPrivateCAResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

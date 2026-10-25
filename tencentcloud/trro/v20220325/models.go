@@ -2723,6 +2723,9 @@ type Job struct {
 
 	// <p>完成时间，Unix 时间戳（秒），未完成为 0</p>
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// <p>任务下各状态处理项的数量分布，JSON 格式字符串</p>
+	TaskStatusCount *string `json:"TaskStatusCount,omitnil,omitempty" name:"TaskStatusCount"`
 }
 
 type License struct {
@@ -3226,6 +3229,12 @@ type PolicyInfo struct {
 type ProcessParams struct {
 	// <p>标注处理模式，预留字段</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>标注档位</p>
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// <p>通用扩展参数，json格式字符串</p>
+	ExtraParams *string `json:"ExtraParams,omitnil,omitempty" name:"ExtraParams"`
 }
 
 type ProjectInfo struct {

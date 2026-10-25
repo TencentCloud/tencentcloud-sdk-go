@@ -493,6 +493,184 @@ func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFol
     return
 }
 
+func NewCreateLocationRequest() (request *CreateLocationRequest) {
+    request = &CreateLocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "CreateLocation")
+    
+    
+    return
+}
+
+func NewCreateLocationResponse() (response *CreateLocationResponse) {
+    response = &CreateLocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLocation
+// 创建存储位置
+//
+// 使用场景：在数据湖仓库中创建新的存储位置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCEINUSE_LOCATIONALREADYEXISTS = "ResourceInUse.LocationAlreadyExists"
+func (c *Client) CreateLocation(request *CreateLocationRequest) (response *CreateLocationResponse, err error) {
+    return c.CreateLocationWithContext(context.Background(), request)
+}
+
+// CreateLocation
+// 创建存储位置
+//
+// 使用场景：在数据湖仓库中创建新的存储位置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCEINUSE_LOCATIONALREADYEXISTS = "ResourceInUse.LocationAlreadyExists"
+func (c *Client) CreateLocationWithContext(ctx context.Context, request *CreateLocationRequest) (response *CreateLocationResponse, err error) {
+    if request == nil {
+        request = NewCreateLocationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "CreateLocation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLocation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateModelRequest() (request *CreateModelRequest) {
+    request = &CreateModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "CreateModel")
+    
+    
+    return
+}
+
+func NewCreateModelResponse() (response *CreateModelResponse) {
+    response = &CreateModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateModel
+// 创建模型接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCEINUSE_MODELALREADYEXISTS = "ResourceInUse.ModelAlreadyExists"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) CreateModel(request *CreateModelRequest) (response *CreateModelResponse, err error) {
+    return c.CreateModelWithContext(context.Background(), request)
+}
+
+// CreateModel
+// 创建模型接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCEINUSE_MODELALREADYEXISTS = "ResourceInUse.ModelAlreadyExists"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) CreateModelWithContext(ctx context.Context, request *CreateModelRequest) (response *CreateModelResponse, err error) {
+    if request == nil {
+        request = NewCreateModelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "CreateModel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateModel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateModelVersionRequest() (request *CreateModelVersionRequest) {
+    request = &CreateModelVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "CreateModelVersion")
+    
+    
+    return
+}
+
+func NewCreateModelVersionResponse() (response *CreateModelVersionResponse) {
+    response = &CreateModelVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateModelVersion
+// 创建模型版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCEINUSE_MODELVERSIONALREADYEXISTS = "ResourceInUse.ModelVersionAlreadyExists"
+//  RESOURCENOTFOUND_MODELNOTFOUND = "ResourceNotFound.ModelNotFound"
+func (c *Client) CreateModelVersion(request *CreateModelVersionRequest) (response *CreateModelVersionResponse, err error) {
+    return c.CreateModelVersionWithContext(context.Background(), request)
+}
+
+// CreateModelVersion
+// 创建模型版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCEINUSE_MODELVERSIONALREADYEXISTS = "ResourceInUse.ModelVersionAlreadyExists"
+//  RESOURCENOTFOUND_MODELNOTFOUND = "ResourceNotFound.ModelNotFound"
+func (c *Client) CreateModelVersionWithContext(ctx context.Context, request *CreateModelVersionRequest) (response *CreateModelVersionResponse, err error) {
+    if request == nil {
+        request = NewCreateModelVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "CreateModelVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateModelVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateModelVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSchemaRequest() (request *CreateSchemaRequest) {
     request = &CreateSchemaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -543,6 +721,66 @@ func (c *Client) CreateSchemaWithContext(ctx context.Context, request *CreateSch
     request.SetContext(ctx)
     
     response = NewCreateSchemaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVolumeRequest() (request *CreateVolumeRequest) {
+    request = &CreateVolumeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "CreateVolume")
+    
+    
+    return
+}
+
+func NewCreateVolumeResponse() (response *CreateVolumeResponse) {
+    response = &CreateVolumeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVolume
+// 创建数据卷接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCEINUSE_VOLUMEALREADYEXISTS = "ResourceInUse.VolumeAlreadyExists"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) CreateVolume(request *CreateVolumeRequest) (response *CreateVolumeResponse, err error) {
+    return c.CreateVolumeWithContext(context.Background(), request)
+}
+
+// CreateVolume
+// 创建数据卷接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCEINUSE_VOLUMEALREADYEXISTS = "ResourceInUse.VolumeAlreadyExists"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) CreateVolumeWithContext(ctx context.Context, request *CreateVolumeRequest) (response *CreateVolumeResponse, err error) {
+    if request == nil {
+        request = NewCreateVolumeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "CreateVolume")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVolume require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVolumeResponse()
     err = c.Send(request, response)
     return
 }
@@ -1053,6 +1291,126 @@ func (c *Client) DeleteFolderWithContext(ctx context.Context, request *DeleteFol
     return
 }
 
+func NewDeleteLocationRequest() (request *DeleteLocationRequest) {
+    request = &DeleteLocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "DeleteLocation")
+    
+    
+    return
+}
+
+func NewDeleteLocationResponse() (response *DeleteLocationResponse) {
+    response = &DeleteLocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLocation
+// 删除存储位置
+//
+// 使用场景：删除指定的存储位置
+//
+// 前置条件：存储位置名称必须存在
+//
+// 错误码：MetaLakeNotFound - 存储位置不存在
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+func (c *Client) DeleteLocation(request *DeleteLocationRequest) (response *DeleteLocationResponse, err error) {
+    return c.DeleteLocationWithContext(context.Background(), request)
+}
+
+// DeleteLocation
+// 删除存储位置
+//
+// 使用场景：删除指定的存储位置
+//
+// 前置条件：存储位置名称必须存在
+//
+// 错误码：MetaLakeNotFound - 存储位置不存在
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+func (c *Client) DeleteLocationWithContext(ctx context.Context, request *DeleteLocationRequest) (response *DeleteLocationResponse, err error) {
+    if request == nil {
+        request = NewDeleteLocationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "DeleteLocation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLocation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteModelRequest() (request *DeleteModelRequest) {
+    request = &DeleteModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "DeleteModel")
+    
+    
+    return
+}
+
+func NewDeleteModelResponse() (response *DeleteModelResponse) {
+    response = &DeleteModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteModel
+// 删除模型
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_MODELNOTFOUND = "ResourceNotFound.ModelNotFound"
+func (c *Client) DeleteModel(request *DeleteModelRequest) (response *DeleteModelResponse, err error) {
+    return c.DeleteModelWithContext(context.Background(), request)
+}
+
+// DeleteModel
+// 删除模型
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_MODELNOTFOUND = "ResourceNotFound.ModelNotFound"
+func (c *Client) DeleteModelWithContext(ctx context.Context, request *DeleteModelRequest) (response *DeleteModelResponse, err error) {
+    if request == nil {
+        request = NewDeleteModelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "DeleteModel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteModel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSchemaRequest() (request *DeleteSchemaRequest) {
     request = &DeleteSchemaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1153,6 +1511,118 @@ func (c *Client) DeleteTableWithContext(ctx context.Context, request *DeleteTabl
     request.SetContext(ctx)
     
     response = NewDeleteTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteViewRequest() (request *DeleteViewRequest) {
+    request = &DeleteViewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "DeleteView")
+    
+    
+    return
+}
+
+func NewDeleteViewResponse() (response *DeleteViewResponse) {
+    response = &DeleteViewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteView
+// 删除view
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_VIEWNOTFOUND = "ResourceNotFound.ViewNotFound"
+func (c *Client) DeleteView(request *DeleteViewRequest) (response *DeleteViewResponse, err error) {
+    return c.DeleteViewWithContext(context.Background(), request)
+}
+
+// DeleteView
+// 删除view
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_VIEWNOTFOUND = "ResourceNotFound.ViewNotFound"
+func (c *Client) DeleteViewWithContext(ctx context.Context, request *DeleteViewRequest) (response *DeleteViewResponse, err error) {
+    if request == nil {
+        request = NewDeleteViewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "DeleteView")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteView require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteViewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVolumeRequest() (request *DeleteVolumeRequest) {
+    request = &DeleteVolumeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "DeleteVolume")
+    
+    
+    return
+}
+
+func NewDeleteVolumeResponse() (response *DeleteVolumeResponse) {
+    response = &DeleteVolumeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVolume
+// 删除数据卷
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_VOLUMENOTFOUND = "ResourceNotFound.VolumeNotFound"
+func (c *Client) DeleteVolume(request *DeleteVolumeRequest) (response *DeleteVolumeResponse, err error) {
+    return c.DeleteVolumeWithContext(context.Background(), request)
+}
+
+// DeleteVolume
+// 删除数据卷
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_VOLUMENOTFOUND = "ResourceNotFound.VolumeNotFound"
+func (c *Client) DeleteVolumeWithContext(ctx context.Context, request *DeleteVolumeRequest) (response *DeleteVolumeResponse, err error) {
+    if request == nil {
+        request = NewDeleteVolumeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "DeleteVolume")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVolume require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVolumeResponse()
     err = c.Send(request, response)
     return
 }
@@ -1573,6 +2043,182 @@ func (c *Client) GetFolderWithContext(ctx context.Context, request *GetFolderReq
     return
 }
 
+func NewGetLocationRequest() (request *GetLocationRequest) {
+    request = &GetLocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "GetLocation")
+    
+    
+    return
+}
+
+func NewGetLocationResponse() (response *GetLocationResponse) {
+    response = &GetLocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetLocation
+// 查询存储位置详情
+//
+// 使用场景：根据存储位置名获取单个存储位置的详细信息
+//
+// 前置条件：存储位置名称必须存在
+//
+// 错误码：MetaLakeNotFound - 存储位置不存在
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+func (c *Client) GetLocation(request *GetLocationRequest) (response *GetLocationResponse, err error) {
+    return c.GetLocationWithContext(context.Background(), request)
+}
+
+// GetLocation
+// 查询存储位置详情
+//
+// 使用场景：根据存储位置名获取单个存储位置的详细信息
+//
+// 前置条件：存储位置名称必须存在
+//
+// 错误码：MetaLakeNotFound - 存储位置不存在
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+func (c *Client) GetLocationWithContext(ctx context.Context, request *GetLocationRequest) (response *GetLocationResponse, err error) {
+    if request == nil {
+        request = NewGetLocationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "GetLocation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetLocation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetModelRequest() (request *GetModelRequest) {
+    request = &GetModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "GetModel")
+    
+    
+    return
+}
+
+func NewGetModelResponse() (response *GetModelResponse) {
+    response = &GetModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetModel
+// 获取模型详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_MODELNOTFOUND = "ResourceNotFound.ModelNotFound"
+func (c *Client) GetModel(request *GetModelRequest) (response *GetModelResponse, err error) {
+    return c.GetModelWithContext(context.Background(), request)
+}
+
+// GetModel
+// 获取模型详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_MODELNOTFOUND = "ResourceNotFound.ModelNotFound"
+func (c *Client) GetModelWithContext(ctx context.Context, request *GetModelRequest) (response *GetModelResponse, err error) {
+    if request == nil {
+        request = NewGetModelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "GetModel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetModel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetModelVersionRequest() (request *GetModelVersionRequest) {
+    request = &GetModelVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "GetModelVersion")
+    
+    
+    return
+}
+
+func NewGetModelVersionResponse() (response *GetModelVersionResponse) {
+    response = &GetModelVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetModelVersion
+// 获取模型版本详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_MODELVERSIONNOTFOUND = "ResourceNotFound.ModelVersionNotFound"
+func (c *Client) GetModelVersion(request *GetModelVersionRequest) (response *GetModelVersionResponse, err error) {
+    return c.GetModelVersionWithContext(context.Background(), request)
+}
+
+// GetModelVersion
+// 获取模型版本详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_MODELVERSIONNOTFOUND = "ResourceNotFound.ModelVersionNotFound"
+func (c *Client) GetModelVersionWithContext(ctx context.Context, request *GetModelVersionRequest) (response *GetModelVersionResponse, err error) {
+    if request == nil {
+        request = NewGetModelVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "GetModelVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetModelVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetModelVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetSchemaRequest() (request *GetSchemaRequest) {
     request = &GetSchemaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1743,6 +2389,122 @@ func (c *Client) GetTablesWithContext(ctx context.Context, request *GetTablesReq
     request.SetContext(ctx)
     
     response = NewGetTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetViewRequest() (request *GetViewRequest) {
+    request = &GetViewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "GetView")
+    
+    
+    return
+}
+
+func NewGetViewResponse() (response *GetViewResponse) {
+    response = &GetViewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetView
+// 查询view详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+//  RESOURCENOTFOUND_VIEWNOTFOUND = "ResourceNotFound.ViewNotFound"
+func (c *Client) GetView(request *GetViewRequest) (response *GetViewResponse, err error) {
+    return c.GetViewWithContext(context.Background(), request)
+}
+
+// GetView
+// 查询view详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+//  RESOURCENOTFOUND_VIEWNOTFOUND = "ResourceNotFound.ViewNotFound"
+func (c *Client) GetViewWithContext(ctx context.Context, request *GetViewRequest) (response *GetViewResponse, err error) {
+    if request == nil {
+        request = NewGetViewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "GetView")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetView require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetViewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetVolumeRequest() (request *GetVolumeRequest) {
+    request = &GetVolumeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "GetVolume")
+    
+    
+    return
+}
+
+func NewGetVolumeResponse() (response *GetVolumeResponse) {
+    response = &GetVolumeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetVolume
+// 获取模型详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_VOLUMENOTFOUND = "ResourceNotFound.VolumeNotFound"
+func (c *Client) GetVolume(request *GetVolumeRequest) (response *GetVolumeResponse, err error) {
+    return c.GetVolumeWithContext(context.Background(), request)
+}
+
+// GetVolume
+// 获取模型详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_VOLUMENOTFOUND = "ResourceNotFound.VolumeNotFound"
+func (c *Client) GetVolumeWithContext(ctx context.Context, request *GetVolumeRequest) (response *GetVolumeResponse, err error) {
+    if request == nil {
+        request = NewGetVolumeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "GetVolume")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetVolume require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetVolumeResponse()
     err = c.Send(request, response)
     return
 }
@@ -2083,6 +2845,88 @@ func (c *Client) KillWorkflowRunWithContext(ctx context.Context, request *KillWo
     return
 }
 
+func NewListCatalogNamesRequest() (request *ListCatalogNamesRequest) {
+    request = &ListCatalogNamesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListCatalogNames")
+    
+    
+    return
+}
+
+func NewListCatalogNamesResponse() (response *ListCatalogNamesResponse) {
+    response = &ListCatalogNamesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListCatalogNames
+// 分页查询数据目录名称列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
+//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
+//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEENDELETED = "FailedOperation.WorkflowExecutionHasBeenDeleted"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMGROUPMISSINGERROR = "InvalidParameterValue.ParamGroupMissingError"
+//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+func (c *Client) ListCatalogNames(request *ListCatalogNamesRequest) (response *ListCatalogNamesResponse, err error) {
+    return c.ListCatalogNamesWithContext(context.Background(), request)
+}
+
+// ListCatalogNames
+// 分页查询数据目录名称列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
+//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
+//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEENDELETED = "FailedOperation.WorkflowExecutionHasBeenDeleted"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMGROUPMISSINGERROR = "InvalidParameterValue.ParamGroupMissingError"
+//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+func (c *Client) ListCatalogNamesWithContext(ctx context.Context, request *ListCatalogNamesRequest) (response *ListCatalogNamesResponse, err error) {
+    if request == nil {
+        request = NewListCatalogNamesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListCatalogNames")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListCatalogNames require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListCatalogNamesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListCatalogsRequest() (request *ListCatalogsRequest) {
     request = &ListCatalogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2353,6 +3197,64 @@ func (c *Client) ListConsoleUsersWithContext(ctx context.Context, request *ListC
     return
 }
 
+func NewListFeatureTablesRequest() (request *ListFeatureTablesRequest) {
+    request = &ListFeatureTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListFeatureTables")
+    
+    
+    return
+}
+
+func NewListFeatureTablesResponse() (response *ListFeatureTablesResponse) {
+    response = &ListFeatureTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListFeatureTables
+// 查询特征表列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListFeatureTables(request *ListFeatureTablesRequest) (response *ListFeatureTablesResponse, err error) {
+    return c.ListFeatureTablesWithContext(context.Background(), request)
+}
+
+// ListFeatureTables
+// 查询特征表列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListFeatureTablesWithContext(ctx context.Context, request *ListFeatureTablesRequest) (response *ListFeatureTablesResponse, err error) {
+    if request == nil {
+        request = NewListFeatureTablesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListFeatureTables")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListFeatureTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListFeatureTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListFilesRequest() (request *ListFilesRequest) {
     request = &ListFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2379,6 +3281,8 @@ func NewListFilesResponse() (response *ListFilesResponse) {
 //  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
 //  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
 func (c *Client) ListFiles(request *ListFilesRequest) (response *ListFilesResponse, err error) {
     return c.ListFilesWithContext(context.Background(), request)
 }
@@ -2390,6 +3294,8 @@ func (c *Client) ListFiles(request *ListFilesRequest) (response *ListFilesRespon
 //  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
 //  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
 func (c *Client) ListFilesWithContext(ctx context.Context, request *ListFilesRequest) (response *ListFilesResponse, err error) {
     if request == nil {
         request = NewListFilesRequest()
@@ -2403,6 +3309,184 @@ func (c *Client) ListFilesWithContext(ctx context.Context, request *ListFilesReq
     request.SetContext(ctx)
     
     response = NewListFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListLocationsRequest() (request *ListLocationsRequest) {
+    request = &ListLocationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListLocations")
+    
+    
+    return
+}
+
+func NewListLocationsResponse() (response *ListLocationsResponse) {
+    response = &ListLocationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListLocations
+// 分页查询存储位置列表
+//
+// 使用场景：分页查询数据湖仓库中的存储位置详情列表，支持模式匹配和快照分页
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListLocations(request *ListLocationsRequest) (response *ListLocationsResponse, err error) {
+    return c.ListLocationsWithContext(context.Background(), request)
+}
+
+// ListLocations
+// 分页查询存储位置列表
+//
+// 使用场景：分页查询数据湖仓库中的存储位置详情列表，支持模式匹配和快照分页
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListLocationsWithContext(ctx context.Context, request *ListLocationsRequest) (response *ListLocationsResponse, err error) {
+    if request == nil {
+        request = NewListLocationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListLocations")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListLocations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListLocationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListModelsRequest() (request *ListModelsRequest) {
+    request = &ListModelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListModels")
+    
+    
+    return
+}
+
+func NewListModelsResponse() (response *ListModelsResponse) {
+    response = &ListModelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListModels
+// 分页获取模型信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListModels(request *ListModelsRequest) (response *ListModelsResponse, err error) {
+    return c.ListModelsWithContext(context.Background(), request)
+}
+
+// ListModels
+// 分页获取模型信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListModelsWithContext(ctx context.Context, request *ListModelsRequest) (response *ListModelsResponse, err error) {
+    if request == nil {
+        request = NewListModelsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListModels")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListModels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListModelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListSchemaNamesRequest() (request *ListSchemaNamesRequest) {
+    request = &ListSchemaNamesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListSchemaNames")
+    
+    
+    return
+}
+
+func NewListSchemaNamesResponse() (response *ListSchemaNamesResponse) {
+    response = &ListSchemaNamesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListSchemaNames
+// 分页查询数据库名称列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListSchemaNames(request *ListSchemaNamesRequest) (response *ListSchemaNamesResponse, err error) {
+    return c.ListSchemaNamesWithContext(context.Background(), request)
+}
+
+// ListSchemaNames
+// 分页查询数据库名称列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListSchemaNamesWithContext(ctx context.Context, request *ListSchemaNamesRequest) (response *ListSchemaNamesResponse, err error) {
+    if request == nil {
+        request = NewListSchemaNamesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListSchemaNames")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListSchemaNames require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListSchemaNamesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2463,6 +3547,62 @@ func (c *Client) ListSchemasWithContext(ctx context.Context, request *ListSchema
     return
 }
 
+func NewListTableNamesRequest() (request *ListTableNamesRequest) {
+    request = &ListTableNamesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListTableNames")
+    
+    
+    return
+}
+
+func NewListTableNamesResponse() (response *ListTableNamesResponse) {
+    response = &ListTableNamesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListTableNames
+// 分页查询数据表名称列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+func (c *Client) ListTableNames(request *ListTableNamesRequest) (response *ListTableNamesResponse, err error) {
+    return c.ListTableNamesWithContext(context.Background(), request)
+}
+
+// ListTableNames
+// 分页查询数据表名称列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+func (c *Client) ListTableNamesWithContext(ctx context.Context, request *ListTableNamesRequest) (response *ListTableNamesResponse, err error) {
+    if request == nil {
+        request = NewListTableNamesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListTableNames")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTableNames require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTableNamesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListTablesRequest() (request *ListTablesRequest) {
     request = &ListTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2517,6 +3657,180 @@ func (c *Client) ListTablesWithContext(ctx context.Context, request *ListTablesR
     request.SetContext(ctx)
     
     response = NewListTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListViewNamesRequest() (request *ListViewNamesRequest) {
+    request = &ListViewNamesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListViewNames")
+    
+    
+    return
+}
+
+func NewListViewNamesResponse() (response *ListViewNamesResponse) {
+    response = &ListViewNamesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListViewNames
+// 分页查询视图名称列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListViewNames(request *ListViewNamesRequest) (response *ListViewNamesResponse, err error) {
+    return c.ListViewNamesWithContext(context.Background(), request)
+}
+
+// ListViewNames
+// 分页查询视图名称列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListViewNamesWithContext(ctx context.Context, request *ListViewNamesRequest) (response *ListViewNamesResponse, err error) {
+    if request == nil {
+        request = NewListViewNamesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListViewNames")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListViewNames require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListViewNamesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListViewsRequest() (request *ListViewsRequest) {
+    request = &ListViewsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListViews")
+    
+    
+    return
+}
+
+func NewListViewsResponse() (response *ListViewsResponse) {
+    response = &ListViewsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListViews
+// 获取view列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListViews(request *ListViewsRequest) (response *ListViewsResponse, err error) {
+    return c.ListViewsWithContext(context.Background(), request)
+}
+
+// ListViews
+// 获取view列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListViewsWithContext(ctx context.Context, request *ListViewsRequest) (response *ListViewsResponse, err error) {
+    if request == nil {
+        request = NewListViewsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListViews")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListViews require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListViewsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListVolumesRequest() (request *ListVolumesRequest) {
+    request = &ListVolumesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListVolumes")
+    
+    
+    return
+}
+
+func NewListVolumesResponse() (response *ListVolumesResponse) {
+    response = &ListVolumesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListVolumes
+// 分页获取数据卷信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListVolumes(request *ListVolumesRequest) (response *ListVolumesResponse, err error) {
+    return c.ListVolumesWithContext(context.Background(), request)
+}
+
+// ListVolumes
+// 分页获取数据卷信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListVolumesWithContext(ctx context.Context, request *ListVolumesRequest) (response *ListVolumesResponse, err error) {
+    if request == nil {
+        request = NewListVolumesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListVolumes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListVolumes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListVolumesResponse()
     err = c.Send(request, response)
     return
 }
@@ -3231,6 +4545,60 @@ func (c *Client) RunWorkflowWithContext(ctx context.Context, request *RunWorkflo
     return
 }
 
+func NewSearchAssetRequest() (request *SearchAssetRequest) {
+    request = &SearchAssetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "SearchAsset")
+    
+    
+    return
+}
+
+func NewSearchAssetResponse() (response *SearchAssetResponse) {
+    response = &SearchAssetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SearchAsset
+// 资产统一搜索
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) SearchAsset(request *SearchAssetRequest) (response *SearchAssetResponse, err error) {
+    return c.SearchAssetWithContext(context.Background(), request)
+}
+
+// SearchAsset
+// 资产统一搜索
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) SearchAssetWithContext(ctx context.Context, request *SearchAssetRequest) (response *SearchAssetResponse, err error) {
+    if request == nil {
+        request = NewSearchAssetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "SearchAsset")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchAsset require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchAssetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartComputeRequest() (request *StartComputeRequest) {
     request = &StartComputeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3415,6 +4783,82 @@ func (c *Client) UnbindWorkflowBundleWithContext(ctx context.Context, request *U
     request.SetContext(ctx)
     
     response = NewUnbindWorkflowBundleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateCatalogRequest() (request *UpdateCatalogRequest) {
+    request = &UpdateCatalogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateCatalog")
+    
+    
+    return
+}
+
+func NewUpdateCatalogResponse() (response *UpdateCatalogResponse) {
+    response = &UpdateCatalogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateCatalog
+// 修改数据目录信息
+//
+// 使用场景：修改数据目录的注释，按需传入NewComment字段
+//
+// 前置条件：数据目录必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateCatalog(request *UpdateCatalogRequest) (response *UpdateCatalogResponse, err error) {
+    return c.UpdateCatalogWithContext(context.Background(), request)
+}
+
+// UpdateCatalog
+// 修改数据目录信息
+//
+// 使用场景：修改数据目录的注释，按需传入NewComment字段
+//
+// 前置条件：数据目录必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateCatalogWithContext(ctx context.Context, request *UpdateCatalogRequest) (response *UpdateCatalogResponse, err error) {
+    if request == nil {
+        request = NewUpdateCatalogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateCatalog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCatalog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateCatalogResponse()
     err = c.Send(request, response)
     return
 }
@@ -3763,6 +5207,694 @@ func (c *Client) UpdateFolderWithContext(ctx context.Context, request *UpdateFol
     request.SetContext(ctx)
     
     response = NewUpdateFolderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateFunctionRequest() (request *UpdateFunctionRequest) {
+    request = &UpdateFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateFunction")
+    
+    
+    return
+}
+
+func NewUpdateFunctionResponse() (response *UpdateFunctionResponse) {
+    response = &UpdateFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateFunction
+// 修改函数信息
+//
+// 使用场景：修改函数的注释，按需传入NewComment字段
+//
+// 前置条件：函数必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateFunction(request *UpdateFunctionRequest) (response *UpdateFunctionResponse, err error) {
+    return c.UpdateFunctionWithContext(context.Background(), request)
+}
+
+// UpdateFunction
+// 修改函数信息
+//
+// 使用场景：修改函数的注释，按需传入NewComment字段
+//
+// 前置条件：函数必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateFunctionWithContext(ctx context.Context, request *UpdateFunctionRequest) (response *UpdateFunctionResponse, err error) {
+    if request == nil {
+        request = NewUpdateFunctionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateFunction")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateFunction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateLocationRequest() (request *UpdateLocationRequest) {
+    request = &UpdateLocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateLocation")
+    
+    
+    return
+}
+
+func NewUpdateLocationResponse() (response *UpdateLocationResponse) {
+    response = &UpdateLocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateLocation
+// 修改存储位置
+//
+// 使用场景：修改存储位置的名称、描述或属性信息
+//
+// 前置条件：存储位置名称必须存在
+//
+// 错误码：MetaLakeNotFound - 存储位置不存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateLocation(request *UpdateLocationRequest) (response *UpdateLocationResponse, err error) {
+    return c.UpdateLocationWithContext(context.Background(), request)
+}
+
+// UpdateLocation
+// 修改存储位置
+//
+// 使用场景：修改存储位置的名称、描述或属性信息
+//
+// 前置条件：存储位置名称必须存在
+//
+// 错误码：MetaLakeNotFound - 存储位置不存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateLocationWithContext(ctx context.Context, request *UpdateLocationRequest) (response *UpdateLocationResponse, err error) {
+    if request == nil {
+        request = NewUpdateLocationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateLocation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateLocation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateModelRequest() (request *UpdateModelRequest) {
+    request = &UpdateModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateModel")
+    
+    
+    return
+}
+
+func NewUpdateModelResponse() (response *UpdateModelResponse) {
+    response = &UpdateModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateModel
+// 修改模型信息
+//
+// 使用场景：修改模型的名称或注释，按需传入NewName/NewComment字段
+//
+// 前置条件：模型必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateModel(request *UpdateModelRequest) (response *UpdateModelResponse, err error) {
+    return c.UpdateModelWithContext(context.Background(), request)
+}
+
+// UpdateModel
+// 修改模型信息
+//
+// 使用场景：修改模型的名称或注释，按需传入NewName/NewComment字段
+//
+// 前置条件：模型必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateModelWithContext(ctx context.Context, request *UpdateModelRequest) (response *UpdateModelResponse, err error) {
+    if request == nil {
+        request = NewUpdateModelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateModel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateModel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateModelVersionRequest() (request *UpdateModelVersionRequest) {
+    request = &UpdateModelVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateModelVersion")
+    
+    
+    return
+}
+
+func NewUpdateModelVersionResponse() (response *UpdateModelVersionResponse) {
+    response = &UpdateModelVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateModelVersion
+// 修改模型版本信息
+//
+// 使用场景：修改模型版本的别名或注释，按需传入对应字段
+//
+// 前置条件：模型版本必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateModelVersion(request *UpdateModelVersionRequest) (response *UpdateModelVersionResponse, err error) {
+    return c.UpdateModelVersionWithContext(context.Background(), request)
+}
+
+// UpdateModelVersion
+// 修改模型版本信息
+//
+// 使用场景：修改模型版本的别名或注释，按需传入对应字段
+//
+// 前置条件：模型版本必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateModelVersionWithContext(ctx context.Context, request *UpdateModelVersionRequest) (response *UpdateModelVersionResponse, err error) {
+    if request == nil {
+        request = NewUpdateModelVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateModelVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateModelVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateModelVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateSchemaRequest() (request *UpdateSchemaRequest) {
+    request = &UpdateSchemaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateSchema")
+    
+    
+    return
+}
+
+func NewUpdateSchemaResponse() (response *UpdateSchemaResponse) {
+    response = &UpdateSchemaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateSchema
+// 修改schema信息
+//
+// 使用场景：修改schema的注释，按需传入NewComment字段
+//
+// 前置条件：schema必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateSchema(request *UpdateSchemaRequest) (response *UpdateSchemaResponse, err error) {
+    return c.UpdateSchemaWithContext(context.Background(), request)
+}
+
+// UpdateSchema
+// 修改schema信息
+//
+// 使用场景：修改schema的注释，按需传入NewComment字段
+//
+// 前置条件：schema必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateSchemaWithContext(ctx context.Context, request *UpdateSchemaRequest) (response *UpdateSchemaResponse, err error) {
+    if request == nil {
+        request = NewUpdateSchemaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateSchema")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateSchema require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateSchemaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateTableRequest() (request *UpdateTableRequest) {
+    request = &UpdateTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateTable")
+    
+    
+    return
+}
+
+func NewUpdateTableResponse() (response *UpdateTableResponse) {
+    response = &UpdateTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateTable
+// 修改表信息
+//
+// 使用场景：修改表的名称或注释，按需传入NewName/NewComment字段
+//
+// 前置条件：表必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateTable(request *UpdateTableRequest) (response *UpdateTableResponse, err error) {
+    return c.UpdateTableWithContext(context.Background(), request)
+}
+
+// UpdateTable
+// 修改表信息
+//
+// 使用场景：修改表的名称或注释，按需传入NewName/NewComment字段
+//
+// 前置条件：表必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateTableWithContext(ctx context.Context, request *UpdateTableRequest) (response *UpdateTableResponse, err error) {
+    if request == nil {
+        request = NewUpdateTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateTableColumnRequest() (request *UpdateTableColumnRequest) {
+    request = &UpdateTableColumnRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateTableColumn")
+    
+    
+    return
+}
+
+func NewUpdateTableColumnResponse() (response *UpdateTableColumnResponse) {
+    response = &UpdateTableColumnResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateTableColumn
+// 修改表字段描述
+//
+// 使用场景：修改表中一个或多个字段的注释
+//
+// 前置条件：用户需对目标表有写权限；字段名必须存在于目标表中
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateTableColumn(request *UpdateTableColumnRequest) (response *UpdateTableColumnResponse, err error) {
+    return c.UpdateTableColumnWithContext(context.Background(), request)
+}
+
+// UpdateTableColumn
+// 修改表字段描述
+//
+// 使用场景：修改表中一个或多个字段的注释
+//
+// 前置条件：用户需对目标表有写权限；字段名必须存在于目标表中
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateTableColumnWithContext(ctx context.Context, request *UpdateTableColumnRequest) (response *UpdateTableColumnResponse, err error) {
+    if request == nil {
+        request = NewUpdateTableColumnRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateTableColumn")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateTableColumn require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateTableColumnResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateViewRequest() (request *UpdateViewRequest) {
+    request = &UpdateViewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateView")
+    
+    
+    return
+}
+
+func NewUpdateViewResponse() (response *UpdateViewResponse) {
+    response = &UpdateViewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateView
+// 修改视图信息
+//
+// 使用场景：修改视图的名称或注释，按需传入NewName/NewComment字段
+//
+// 前置条件：视图必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateView(request *UpdateViewRequest) (response *UpdateViewResponse, err error) {
+    return c.UpdateViewWithContext(context.Background(), request)
+}
+
+// UpdateView
+// 修改视图信息
+//
+// 使用场景：修改视图的名称或注释，按需传入NewName/NewComment字段
+//
+// 前置条件：视图必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateViewWithContext(ctx context.Context, request *UpdateViewRequest) (response *UpdateViewResponse, err error) {
+    if request == nil {
+        request = NewUpdateViewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateView")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateView require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateViewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateVolumeRequest() (request *UpdateVolumeRequest) {
+    request = &UpdateVolumeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateVolume")
+    
+    
+    return
+}
+
+func NewUpdateVolumeResponse() (response *UpdateVolumeResponse) {
+    response = &UpdateVolumeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateVolume
+// 修改数据卷信息
+//
+// 使用场景：修改数据卷的名称或注释，按需传入NewName/NewComment字段
+//
+// 前置条件：数据卷必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateVolume(request *UpdateVolumeRequest) (response *UpdateVolumeResponse, err error) {
+    return c.UpdateVolumeWithContext(context.Background(), request)
+}
+
+// UpdateVolume
+// 修改数据卷信息
+//
+// 使用场景：修改数据卷的名称或注释，按需传入NewName/NewComment字段
+//
+// 前置条件：数据卷必须存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateVolumeWithContext(ctx context.Context, request *UpdateVolumeRequest) (response *UpdateVolumeResponse, err error) {
+    if request == nil {
+        request = NewUpdateVolumeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateVolume")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateVolume require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateVolumeResponse()
     err = c.Send(request, response)
     return
 }

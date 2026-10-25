@@ -695,6 +695,174 @@ type AutonomyUserProfileInfo struct {
 	EnabledItems []*string `json:"EnabledItems,omitnil,omitempty" name:"EnabledItems"`
 }
 
+type BlockingChainNode struct {
+	// <p>被阻塞会话 ID（对应 SQL Server sys.dm_exec_sessions.session_id，即 SPID）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedSessionId *int64 `json:"BlockedSessionId,omitnil,omitempty" name:"BlockedSessionId"`
+
+	// <p>被阻塞会话事务ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedTransactionId *int64 `json:"BlockedTransactionId,omitnil,omitempty" name:"BlockedTransactionId"`
+
+	// <p>被阻塞会话等待时长（毫秒）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedWaitTimeMs *int64 `json:"BlockedWaitTimeMs,omitnil,omitempty" name:"BlockedWaitTimeMs"`
+
+	// <p>被阻塞会话正在等待的锁模式（SQL Server原生lock_mode枚举，常见取值：S、U、X、IS、IU、IX、SIU、SIX、UIX、Sch-S、Sch-M）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedLockMode *string `json:"BlockedLockMode,omitnil,omitempty" name:"BlockedLockMode"`
+
+	// <p>被阻塞会话等待资源。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedWaitResource *string `json:"BlockedWaitResource,omitnil,omitempty" name:"BlockedWaitResource"`
+
+	// <p>被阻塞会话数据库用户。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedLoginName *string `json:"BlockedLoginName,omitnil,omitempty" name:"BlockedLoginName"`
+
+	// <p>被阻塞会话客户端主机。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedHostName *string `json:"BlockedHostName,omitnil,omitempty" name:"BlockedHostName"`
+
+	// <p>被阻塞会话客户端应用名。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedClientApp *string `json:"BlockedClientApp,omitnil,omitempty" name:"BlockedClientApp"`
+
+	// <p>被阻塞会话运行时状态（SQL Server sys.dm_exec_sessions.status 文本），常见取值：running / sleeping / suspended / background。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedStatus *string `json:"BlockedStatus,omitnil,omitempty" name:"BlockedStatus"`
+
+	// <p>被阻塞会话事务隔离级别（SQL Server 原生取值：read uncommitted / read committed / repeatable read / serializable / snapshot）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedIsolationLevel *string `json:"BlockedIsolationLevel,omitnil,omitempty" name:"BlockedIsolationLevel"`
+
+	// <p>被阻塞会话当前显式事务名（XEvent transactionname）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedTransactionName *string `json:"BlockedTransactionName,omitnil,omitempty" name:"BlockedTransactionName"`
+
+	// <p>被阻塞会话当前显式事务嵌套层数（XEvent trancount）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedTranCount *int64 `json:"BlockedTranCount,omitnil,omitempty" name:"BlockedTranCount"`
+
+	// <p>被阻塞会话显式事务 BEGIN TRAN 时刻（XEvent lasttranstarted，SQL Server 服务端本地时区的 ISO 8601 字符串，无时区后缀）。多语句事务场景下比 lastbatchstarted 更稳定。咨视值 1900-01-01T00:00:00 表示未知。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedLastTranStarted *string `json:"BlockedLastTranStarted,omitnil,omitempty" name:"BlockedLastTranStarted"`
+
+	// <p>被阻塞会话正在执行的 SQL 原文（对应 DBCC INPUTBUFFER 返回内容，单条最长 16KB，超长截断）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedInputBuffer *string `json:"BlockedInputBuffer,omitnil,omitempty" name:"BlockedInputBuffer"`
+
+	// <p>被阻塞SQL归一化模板。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedSqlTemplate *string `json:"BlockedSqlTemplate,omitnil,omitempty" name:"BlockedSqlTemplate"`
+
+	// <p>被阻塞SQL模板MD5。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedSqlMd5 *string `json:"BlockedSqlMd5,omitnil,omitempty" name:"BlockedSqlMd5"`
+
+	// <p>根因分类（继承自所属报告的rootCause）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RootCause *string `json:"RootCause,omitnil,omitempty" name:"RootCause"`
+
+	// <p>本节点上报事件时间（__time），格式：yyyy-MM-dd HH:mm:ss。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportTime *string `json:"ReportTime,omitnil,omitempty" name:"ReportTime"`
+
+	// <p>本节点又阻塞的下级会话（可能为空）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Children []*BlockingChainNode `json:"Children,omitnil,omitempty" name:"Children"`
+}
+
+type BlockingChainTree struct {
+	// <p>监控轮次ID（同一实例内唯一标识一次采集快照，同一快照可包含多棵独立阻塞树）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorLoop *string `json:"MonitorLoop,omitnil,omitempty" name:"MonitorLoop"`
+
+	// <p>阻塞发生所在的数据库名称（整条链路隶属同一 database，放在树级返回一次即可）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// <p>头阻塞会话ID（对应 SQL Server sys.dm_exec_sessions.session_id，即 SPID）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockingSessionId *int64 `json:"BlockingSessionId,omitnil,omitempty" name:"BlockingSessionId"`
+
+	// <p>头阻塞会话事务ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockingTransactionId *int64 `json:"BlockingTransactionId,omitnil,omitempty" name:"BlockingTransactionId"`
+
+	// <p>头阻塞会话数据库用户。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockingLoginName *string `json:"BlockingLoginName,omitnil,omitempty" name:"BlockingLoginName"`
+
+	// <p>头阻塞会话客户端主机。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockingHostName *string `json:"BlockingHostName,omitnil,omitempty" name:"BlockingHostName"`
+
+	// <p>头阻塞会话客户端应用名。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockingClientApp *string `json:"BlockingClientApp,omitnil,omitempty" name:"BlockingClientApp"`
+
+	// <p>头阻塞会话运行时状态（SQL Server sys.dm_exec_sessions.status 文本），常见取值：running / sleeping / suspended / background。sleeping + BlockingTranCount&gt;0 是 C2_SLEEPING_UNCOMMITTED（休眠会话持未提交事务）的直接证据。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockingStatus *string `json:"BlockingStatus,omitnil,omitempty" name:"BlockingStatus"`
+
+	// <p>头阻塞会话事务隔离级别（SQL Server 原生取值：read uncommitted / read committed / repeatable read / serializable / snapshot）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockingIsolationLevel *string `json:"BlockingIsolationLevel,omitnil,omitempty" name:"BlockingIsolationLevel"`
+
+	// <p>头阻塞会话当前显式事务嵌套层数（XEvent trancount）。&gt;0 表示持有显式事务；与 BlockingStatus=sleeping 组合是 C2_SLEEPING_UNCOMMITTED（休眠会话持未提交事务）的直接证据。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockingTranCount *int64 `json:"BlockingTranCount,omitnil,omitempty" name:"BlockingTranCount"`
+
+	// <p>头阻塞会话正在执行的 SQL 原文（对应 DBCC INPUTBUFFER 返回内容，单条最长 16KB，超长截断）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockingInputBuffer *string `json:"BlockingInputBuffer,omitnil,omitempty" name:"BlockingInputBuffer"`
+
+	// <p>头阻塞SQL归一化模板。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockingSqlTemplate *string `json:"BlockingSqlTemplate,omitnil,omitempty" name:"BlockingSqlTemplate"`
+
+	// <p>头阻塞SQL模板MD5。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockingSqlMd5 *string `json:"BlockingSqlMd5,omitnil,omitempty" name:"BlockingSqlMd5"`
+
+	// <p>头阻塞会话自身的等待时长（毫秒，来自XML blocking-process/process的waittime属性）。多数场景为0。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockingWaitTimeMs *int64 `json:"BlockingWaitTimeMs,omitnil,omitempty" name:"BlockingWaitTimeMs"`
+
+	// <p>根因分类。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RootCause *string `json:"RootCause,omitnil,omitempty" name:"RootCause"`
+
+	// <p>根因分类的可读中文描述（服务端已完成中文化，前端可直接展示；与 RootCause 代号一一对应；未识别或空值统一返回“未识别”）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RootCauseDesc *string `json:"RootCauseDesc,omitnil,omitempty" name:"RootCauseDesc"`
+
+	// <p>该链路阻塞事件的起始时间（该树内__time最小值），格式：yyyy-MM-dd HH:mm:ss。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>该链路阻塞事件的结束时间（该树内__time最大值），格式：yyyy-MM-dd HH:mm:ss。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>该链路最长等待时长（毫秒），作为链路影响时长。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DurationMs *int64 `json:"DurationMs,omitnil,omitempty" name:"DurationMs"`
+
+	// <p>该链路被阻塞会话数（等价于树节点数-1，即受影响会话数）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChainLength *int64 `json:"ChainLength,omitnil,omitempty" name:"ChainLength"`
+
+	// <p>树深度（根节点为0，最长路径的深度）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChainDepth *int64 `json:"ChainDepth,omitnil,omitempty" name:"ChainDepth"`
+
+	// <p>被阻塞节点子树（可能为空，也可能多叉或多层）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Details []*BlockingChainNode `json:"Details,omitnil,omitempty" name:"Details"`
+}
+
 type BlockingLogItem struct {
 	// <p>本条明细行上报时间（事件时间，__time；时区UTC+8），格式：yyyy-MM-dd HH:mm:ss。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -855,6 +1023,24 @@ type BlockingLogItem struct {
 	// <p>被阻塞方 blocked_process_report 原始 XML 文本（含完整执行计划、等待链、死锁明细等原始现场；字段体积较大，KB 级起步）。仅当请求参数 WithXml=true 时才返回；默认 false 时该字段省略，不出现在响应体中。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockedProcessXml *string `json:"BlockedProcessXml,omitnil,omitempty" name:"BlockedProcessXml"`
+}
+
+type BlockingTrendPoint struct {
+	// <p>该 bucket 的实际聚合区间左端（含），格式：yyyy-MM-dd HH:mm:ss。聚合区间为前闭后开 [StartTime, EndTime)。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>该 bucket 的实际聚合区间右端（不含），格式：yyyy-MM-dd HH:mm:ss。即 StartTime + GranularityMs。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>该 bucket 内的阻塞 report 行数（底层 blocked_process_report 事件数），无数据 bucket 返回 0。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LockCount *int64 `json:"LockCount,omitnil,omitempty" name:"LockCount"`
+
+	// <p>该 bucket 内观测到的不同 monitorLoop 数量（lock monitor 扫描快照数），无数据 bucket 返回 0。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorLoopCount *int64 `json:"MonitorLoopCount,omitnil,omitempty" name:"MonitorLoopCount"`
 }
 
 // Predefined struct for user
@@ -3417,6 +3603,84 @@ func (r *DescribeAuditLogFilesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBlockingLockTreeRequestParams struct {
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型，固定为sqlserver。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>lock monitor 扫描轮次 ID（可从 DescribeBlockingTimeRange 返回的 MonitorLoops 列表选择，也可从 DescribeBlockingLogs / DescribeBlockingTrees 返回的 MonitorLoop 字段获取）。与 BlockingTime 二选一，MonitorLoop 优先。</p>
+	MonitorLoop *string `json:"MonitorLoop,omitnil,omitempty" name:"MonitorLoop"`
+
+	// <p>阻塞时间点，格式：yyyy-MM-dd HH:mm:ss。当 MonitorLoop 为空时使用该字段定位：后端会在该时间点±1分钟范围内寻找最接近的 MonitorLoop 并下钻其阻塞树。与 MonitorLoop 二选一。BlockingTime 必须在最近 30 天内，否则返回 InvalidParameterValue。</p>
+	BlockingTime *string `json:"BlockingTime,omitnil,omitempty" name:"BlockingTime"`
+}
+
+type DescribeBlockingLockTreeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型，固定为sqlserver。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>lock monitor 扫描轮次 ID（可从 DescribeBlockingTimeRange 返回的 MonitorLoops 列表选择，也可从 DescribeBlockingLogs / DescribeBlockingTrees 返回的 MonitorLoop 字段获取）。与 BlockingTime 二选一，MonitorLoop 优先。</p>
+	MonitorLoop *string `json:"MonitorLoop,omitnil,omitempty" name:"MonitorLoop"`
+
+	// <p>阻塞时间点，格式：yyyy-MM-dd HH:mm:ss。当 MonitorLoop 为空时使用该字段定位：后端会在该时间点±1分钟范围内寻找最接近的 MonitorLoop 并下钻其阻塞树。与 MonitorLoop 二选一。BlockingTime 必须在最近 30 天内，否则返回 InvalidParameterValue。</p>
+	BlockingTime *string `json:"BlockingTime,omitnil,omitempty" name:"BlockingTime"`
+}
+
+func (r *DescribeBlockingLockTreeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlockingLockTreeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "MonitorLoop")
+	delete(f, "BlockingTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlockingLockTreeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlockingLockTreeResponseParams struct {
+	// <p>阻塞树列表（同一 MonitorLoop 下可能存在多棵独立阻塞树，按链路影响时长倒序）。若按 BlockingTime 定位时未找到附近 MonitorLoop，返回空列表。</p>
+	Items []*BlockingChainTree `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBlockingLockTreeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBlockingLockTreeResponseParams `json:"Response"`
+}
+
+func (r *DescribeBlockingLockTreeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlockingLockTreeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBlockingLogsRequestParams struct {
 	// <p>实例ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3634,6 +3898,90 @@ func (r *DescribeBlockingLogsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBlockingLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlockingTrendRequestParams struct {
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型，固定为sqlserver。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>查询起始时间（服务端时区 UTC+8），格式：yyyy-MM-dd HH:mm:ss。必须在最近 30 天内，否则返回 InvalidParameterValue。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间（服务端时区 UTC+8），格式：yyyy-MM-dd HH:mm:ss，需大于 StartTime。单次查询跨度必须 ≤ 7 天（Trend 走 Druid 原生聚合，跨度比明细类接口更宽泛），否则返回 InvalidParameterValue。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeBlockingTrendRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型，固定为sqlserver。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>查询起始时间（服务端时区 UTC+8），格式：yyyy-MM-dd HH:mm:ss。必须在最近 30 天内，否则返回 InvalidParameterValue。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间（服务端时区 UTC+8），格式：yyyy-MM-dd HH:mm:ss，需大于 StartTime。单次查询跨度必须 ≤ 7 天（Trend 走 Druid 原生聚合，跨度比明细类接口更宽泛），否则返回 InvalidParameterValue。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeBlockingTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlockingTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlockingTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlockingTrendResponseParams struct {
+	// <p>使用的粒度名称，取值：SECONDS / MINUTES / FIVE_MINUTES / TEN_MINUTES / FIFTEEN_MINUTES / THIRTY_MINUTES / HOUR。时间窗口 ≤ 1 分钟时自动采用 SECONDS（1 秒）粒度。</p>
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// <p>粒度对应的毫秒值（SECONDS=1000，MINUTES=60000，... HOUR=3600000）。</p>
+	GranularityMs *int64 `json:"GranularityMs,omitnil,omitempty" name:"GranularityMs"`
+
+	// <p>阻塞趋势时序点列表（按 ReportTime 升序，稠密时序：窗口内每个 bucket 都返回一个点，无数据 bucket 补零）。</p>
+	DataPoints []*BlockingTrendPoint `json:"DataPoints,omitnil,omitempty" name:"DataPoints"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBlockingTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBlockingTrendResponseParams `json:"Response"`
+}
+
+func (r *DescribeBlockingTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlockingTrendResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8295,6 +8643,136 @@ func (r *DescribeSqlTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTableSpaceDataV2RequestParams struct {
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型（用于云 API 平台路由到对应产品后端）。取值：mysql / cynosdb / mariadb / postgres / mongodb / sqlserver 等。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>数据库名（PG 系产品的 schema 名；MongoDB 为 database 名；MySQL / CynosDB / SqlServer 为库名）。PostgreSQL / MySQL / CynosDB / SqlServer 必传；MongoDB 可不传（底层使用 optString(&quot;&quot;), 不传时按空库名查询）。</p>
+	TableSchema *string `json:"TableSchema,omitnil,omitempty" name:"TableSchema"`
+
+	// <p>表名（MongoDB 场景下为 collection 名，如 oplog.rs）。PostgreSQL / MySQL / CynosDB / SqlServer 必传；MongoDB 可不传（底层对该字段为空时直接返回空列表而非报错）。</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>表所在的 Catalog（数据库目录）名。PostgreSQL / TBase 等 PG 系产品必传（例如 postgres），用于唯一定位 (catalog, schema, name) 三元组；MySQL / CynosDB / MongoDB / SqlServer 等非 PG 系产品可不传。</p>
+	TableCatalog *string `json:"TableCatalog,omitnil,omitempty" name:"TableCatalog"`
+
+	// <p>查询日期，格式：yyyy-MM-dd。MySQL / CynosDB / PostgreSQL / SqlServer 可选（默认当天）；MongoDB 本接口不读取该字段（底层通过 dbbrain.collInfo 直接查询实时集合空间，不区分日期）。</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>排序字段。本接口（单表/单集合明细查询）均为可选：MySQL / CynosDB 可选，默认按 total_length 排序；PostgreSQL 可选，默认按 relation_size 排序；SqlServer 本接口不消费该字段的值；MongoDB 本接口完全不读取该字段。如需在 Top 表/库场景使用排序，请改用 DescribeTopSpaceTablesV2 / DescribeTopSpaceSchemasV2 接口。</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>返回条数上限，默认 20，最大 100。MySQL / CynosDB / PostgreSQL 本接口会读取该参数控制明细条数；MongoDB 本接口不读取该字段（底层按入参 TableName 精确匹配返回集合明细，不受 Limit 控制）；SqlServer 本接口会校验但不消费其值。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>MongoDB 专用——表名/集合名是否按正则模糊匹配。默认 true。其他产品忽略该字段。</p>
+	Regex *bool `json:"Regex,omitnil,omitempty" name:"Regex"`
+}
+
+type DescribeTableSpaceDataV2Request struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型（用于云 API 平台路由到对应产品后端）。取值：mysql / cynosdb / mariadb / postgres / mongodb / sqlserver 等。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>数据库名（PG 系产品的 schema 名；MongoDB 为 database 名；MySQL / CynosDB / SqlServer 为库名）。PostgreSQL / MySQL / CynosDB / SqlServer 必传；MongoDB 可不传（底层使用 optString(&quot;&quot;), 不传时按空库名查询）。</p>
+	TableSchema *string `json:"TableSchema,omitnil,omitempty" name:"TableSchema"`
+
+	// <p>表名（MongoDB 场景下为 collection 名，如 oplog.rs）。PostgreSQL / MySQL / CynosDB / SqlServer 必传；MongoDB 可不传（底层对该字段为空时直接返回空列表而非报错）。</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>表所在的 Catalog（数据库目录）名。PostgreSQL / TBase 等 PG 系产品必传（例如 postgres），用于唯一定位 (catalog, schema, name) 三元组；MySQL / CynosDB / MongoDB / SqlServer 等非 PG 系产品可不传。</p>
+	TableCatalog *string `json:"TableCatalog,omitnil,omitempty" name:"TableCatalog"`
+
+	// <p>查询日期，格式：yyyy-MM-dd。MySQL / CynosDB / PostgreSQL / SqlServer 可选（默认当天）；MongoDB 本接口不读取该字段（底层通过 dbbrain.collInfo 直接查询实时集合空间，不区分日期）。</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>排序字段。本接口（单表/单集合明细查询）均为可选：MySQL / CynosDB 可选，默认按 total_length 排序；PostgreSQL 可选，默认按 relation_size 排序；SqlServer 本接口不消费该字段的值；MongoDB 本接口完全不读取该字段。如需在 Top 表/库场景使用排序，请改用 DescribeTopSpaceTablesV2 / DescribeTopSpaceSchemasV2 接口。</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>返回条数上限，默认 20，最大 100。MySQL / CynosDB / PostgreSQL 本接口会读取该参数控制明细条数；MongoDB 本接口不读取该字段（底层按入参 TableName 精确匹配返回集合明细，不受 Limit 控制）；SqlServer 本接口会校验但不消费其值。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>MongoDB 专用——表名/集合名是否按正则模糊匹配。默认 true。其他产品忽略该字段。</p>
+	Regex *bool `json:"Regex,omitnil,omitempty" name:"Regex"`
+}
+
+func (r *DescribeTableSpaceDataV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableSpaceDataV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "TableSchema")
+	delete(f, "TableName")
+	delete(f, "TableCatalog")
+	delete(f, "Date")
+	delete(f, "SortBy")
+	delete(f, "Limit")
+	delete(f, "Regex")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableSpaceDataV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableSpaceDataV2ResponseParams struct {
+	// <p>MySQL 系列产品表空间数据。当产品为 mysql/cynosdb/tdsql/dcdb/mariadb 时返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MysqlTableSpaceData *MysqlSpaceObjectItem `json:"MysqlTableSpaceData,omitnil,omitempty" name:"MysqlTableSpaceData"`
+
+	// <p>PostgreSQL 产品表空间数据。当产品为 postgres 时返回。字段语义与 MySQL 不同：使用 RelationSize / TableSize / IndexSize / TotalRelationSize / TableBloat 等 PG 特有指标。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostgresTableSpaceData *PostgresSpaceObjectItem `json:"PostgresTableSpaceData,omitnil,omitempty" name:"PostgresTableSpaceData"`
+
+	// <p>MongoDB 产品表空间数据。当产品为 mongodb 时返回。包含集合级明细数组 SpaceSchemas 以及外层采集时间戳 Timestamp（秒级）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MongodbTableSpaceData *MongodbSpaceObjectItem `json:"MongodbTableSpaceData,omitnil,omitempty" name:"MongodbTableSpaceData"`
+
+	// <p>SQL Server 产品表空间数据。当产品为 sqlserver 时返回。字段结构与 MysqlSpaceObjectItem 同构，无 FragRatio / PhysicalFileSize。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlServerTableSpaceData *SqlServerSpaceObjectItem `json:"SqlServerTableSpaceData,omitnil,omitempty" name:"SqlServerTableSpaceData"`
+
+	// <p>数据采集时间戳（秒）。可能为空（部分产品分支/异常场景下不保证返回），调用方请做空值兼容。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTableSpaceDataV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableSpaceDataV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableSpaceDataV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableSpaceDataV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTopSpaceSchemaTimeSeriesRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -9979,51 +10457,51 @@ func (r *ModifyUserAutonomyProfileResponse) FromJsonString(s string) error {
 }
 
 type MongoCollectionDetail struct {
-	// <p>集合命名空间，格式为 db.collection。</p>
+	// 集合命名空间，格式为 db.collection。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CollStats *string `json:"CollStats,omitnil,omitempty" name:"CollStats"`
 
-	// <p>集合逻辑大小（字节，未压缩）。</p>
+	// 集合逻辑大小（字节，未压缩）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CollectionSize *int64 `json:"CollectionSize,omitnil,omitempty" name:"CollectionSize"`
 
-	// <p>集合已分配但未使用的空间（字节）。</p>
+	// 集合已分配但未使用的空间（字节）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataFree *int64 `json:"DataFree,omitnil,omitempty" name:"DataFree"`
 
-	// <p>空间利用率（百分比字符串）。</p>
+	// 空间利用率（百分比字符串）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpaceRatio *string `json:"SpaceRatio,omitnil,omitempty" name:"SpaceRatio"`
 
-	// <p>碎片率（百分比字符串）。</p>
+	// 碎片率（百分比字符串）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FragRatio *string `json:"FragRatio,omitnil,omitempty" name:"FragRatio"`
 
-	// <p>集合数据大小（字节）。</p>
+	// 集合数据大小（字节）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// <p>所有索引占用大小（字节）。</p>
+	// 所有索引占用大小（字节）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalIndexSize *int64 `json:"TotalIndexSize,omitnil,omitempty" name:"TotalIndexSize"`
 
-	// <p>平均文档大小（字节）。</p>
+	// 平均文档大小（字节）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AvgObjSize *int64 `json:"AvgObjSize,omitnil,omitempty" name:"AvgObjSize"`
 
-	// <p>集合实际占用存储大小（字节，压缩后）。</p>
+	// 集合实际占用存储大小（字节，压缩后）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
 
-	// <p>文档数量。</p>
+	// 文档数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// <p>压缩率（百分比字符串）。</p>
+	// 压缩率（百分比字符串）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompressionRatio *string `json:"CompressionRatio,omitnil,omitempty" name:"CompressionRatio"`
 
-	// <p>可复用文件空间（字节）。</p>
+	// 可复用文件空间（字节）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileReuseBytes *int64 `json:"FileReuseBytes,omitnil,omitempty" name:"FileReuseBytes"`
 }
@@ -10105,29 +10583,39 @@ type MongoDBProcessList struct {
 }
 
 type MongoDBTableSpaceItem struct {
-	// <p>应用 Id（AppId）。</p>
+	// 应用 Id（AppId）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// <p>实例 Id。</p>
+	// 实例 Id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// <p>数据库名。</p>
+	// 数据库名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
-	// <p>数据采集时间戳（毫秒）。</p>
+	// 数据采集时间戳（毫秒）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
-	// <p>磁盘占用大小（字节）。</p>
+	// 磁盘占用大小（字节）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SizeOnDisk *int64 `json:"SizeOnDisk,omitnil,omitempty" name:"SizeOnDisk"`
 
-	// <p>集合级空间使用明细。</p>
+	// 集合级空间使用明细。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Collection *MongoCollectionDetail `json:"Collection,omitnil,omitempty" name:"Collection"`
+}
+
+type MongodbSpaceObjectItem struct {
+	// <p>集合级空间明细数组。每项含顶层标识字段（AppId/InstanceId/Db/Timestamp/SizeOnDisk）与嵌套 Collection 明细。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpaceSchemas []*MongoDBTableSpaceItem `json:"SpaceSchemas,omitnil,omitempty" name:"SpaceSchemas"`
+
+	// <p>数据采集时间戳（秒）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 }
 
 type MonitorFloatMetric struct {
@@ -10210,6 +10698,10 @@ type MysqlSpaceObjectItem struct {
 	// <p>存储引擎（Level=TABLE时返回）。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// <p>表状态（仅单表查询 DescribeTableSpaceDataV2 返回；取值：-1 表示库表最新一次采集不到或实例超限不拉取，0 正在拉取，1 拉取完成；该字段仅针对实例级别）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableStatus *int64 `json:"TableStatus,omitnil,omitempty" name:"TableStatus"`
 
 	// <p>行数。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10351,6 +10843,10 @@ type PostgresSpaceObjectItem struct {
 	// <p>表名（Level=TABLE 时返回）。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>表状态（仅单表查询 DescribeTableSpaceDataV2 返回；取值：-1 表示库表最新一次采集不到或实例超限不拉取，0 正在拉取，1 拉取完成；该字段仅针对实例级别）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableStatus *int64 `json:"TableStatus,omitnil,omitempty" name:"TableStatus"`
 
 	// <p>表本身大小（MB），对应 pg_relation_size。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10927,6 +11423,44 @@ type SqlCostDistribution struct {
 
 	// 耗时占比。单位（%）
 	Ratio *float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+}
+
+type SqlServerSpaceObjectItem struct {
+	// <p>数据库名。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableSchema *string `json:"TableSchema,omitnil,omitempty" name:"TableSchema"`
+
+	// <p>表名（库内限定名 schema.table，如 dbo.users）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>存储引擎标识，固定为 SqlServer。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// <p>表状态（仅单表查询 DescribeTableSpaceDataV2 返回；取值：-1 表示库表最新一次采集不到或实例超限不拉取，0 正在拉取，1 拉取完成；该字段仅针对实例级别）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableStatus *int64 `json:"TableStatus,omitnil,omitempty" name:"TableStatus"`
+
+	// <p>行数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableRows *int64 `json:"TableRows,omitnil,omitempty" name:"TableRows"`
+
+	// <p>总使用空间（MB）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalLength *float64 `json:"TotalLength,omitnil,omitempty" name:"TotalLength"`
+
+	// <p>数据空间（MB）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataLength *float64 `json:"DataLength,omitnil,omitempty" name:"DataLength"`
+
+	// <p>索引空间（MB）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexLength *float64 `json:"IndexLength,omitnil,omitempty" name:"IndexLength"`
+
+	// <p>碎片空间（MB），对应保留空洞 reserved-used。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataFree *float64 `json:"DataFree,omitnil,omitempty" name:"DataFree"`
 }
 
 type StatDimension struct {

@@ -45,6 +45,110 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateFieldTransformRuleRequest() (request *CreateFieldTransformRuleRequest) {
+    request = &CreateFieldTransformRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "CreateFieldTransformRule")
+    
+    
+    return
+}
+
+func NewCreateFieldTransformRuleResponse() (response *CreateFieldTransformRuleResponse) {
+    response = &CreateFieldTransformRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFieldTransformRule
+// 创建字段配置规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateFieldTransformRule(request *CreateFieldTransformRuleRequest) (response *CreateFieldTransformRuleResponse, err error) {
+    return c.CreateFieldTransformRuleWithContext(context.Background(), request)
+}
+
+// CreateFieldTransformRule
+// 创建字段配置规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateFieldTransformRuleWithContext(ctx context.Context, request *CreateFieldTransformRuleRequest) (response *CreateFieldTransformRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateFieldTransformRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "CreateFieldTransformRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFieldTransformRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFieldTransformRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateReleaseFileRequest() (request *CreateReleaseFileRequest) {
     request = &CreateReleaseFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -223,6 +327,426 @@ func (c *Client) CreateStarProjectWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateTDEMApplicationRequest() (request *CreateTDEMApplicationRequest) {
+    request = &CreateTDEMApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "CreateTDEMApplication")
+    
+    
+    return
+}
+
+func NewCreateTDEMApplicationResponse() (response *CreateTDEMApplicationResponse) {
+    response = &CreateTDEMApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTDEMApplication
+// 在指定业务系统下创建应用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateTDEMApplication(request *CreateTDEMApplicationRequest) (response *CreateTDEMApplicationResponse, err error) {
+    return c.CreateTDEMApplicationWithContext(context.Background(), request)
+}
+
+// CreateTDEMApplication
+// 在指定业务系统下创建应用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateTDEMApplicationWithContext(ctx context.Context, request *CreateTDEMApplicationRequest) (response *CreateTDEMApplicationResponse, err error) {
+    if request == nil {
+        request = NewCreateTDEMApplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "CreateTDEMApplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTDEMApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTDEMApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTDEMBusinessSystemRequest() (request *CreateTDEMBusinessSystemRequest) {
+    request = &CreateTDEMBusinessSystemRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "CreateTDEMBusinessSystem")
+    
+    
+    return
+}
+
+func NewCreateTDEMBusinessSystemResponse() (response *CreateTDEMBusinessSystemResponse) {
+    response = &CreateTDEMBusinessSystemResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTDEMBusinessSystem
+// 创建业务系统。InstanceId 由后端生成，格式 rum-<12 位随机字母数字>。重名返回 InvalidParameterValue。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateTDEMBusinessSystem(request *CreateTDEMBusinessSystemRequest) (response *CreateTDEMBusinessSystemResponse, err error) {
+    return c.CreateTDEMBusinessSystemWithContext(context.Background(), request)
+}
+
+// CreateTDEMBusinessSystem
+// 创建业务系统。InstanceId 由后端生成，格式 rum-<12 位随机字母数字>。重名返回 InvalidParameterValue。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateTDEMBusinessSystemWithContext(ctx context.Context, request *CreateTDEMBusinessSystemRequest) (response *CreateTDEMBusinessSystemResponse, err error) {
+    if request == nil {
+        request = NewCreateTDEMBusinessSystemRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "CreateTDEMBusinessSystem")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTDEMBusinessSystem require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTDEMBusinessSystemResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTDEMDialTaskRequest() (request *CreateTDEMDialTaskRequest) {
+    request = &CreateTDEMDialTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "CreateTDEMDialTask")
+    
+    
+    return
+}
+
+func NewCreateTDEMDialTaskResponse() (response *CreateTDEMDialTaskResponse) {
+    response = &CreateTDEMDialTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTDEMDialTask
+// 创建一条移动拨测任务。同一应用处于 active 的任务最多 50 条。四项启动范围都为空时不限制启动；填写多项时必须同时满足，同一项多个值命中任意一个即可。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTDEMDialTask(request *CreateTDEMDialTaskRequest) (response *CreateTDEMDialTaskResponse, err error) {
+    return c.CreateTDEMDialTaskWithContext(context.Background(), request)
+}
+
+// CreateTDEMDialTask
+// 创建一条移动拨测任务。同一应用处于 active 的任务最多 50 条。四项启动范围都为空时不限制启动；填写多项时必须同时满足，同一项多个值命中任意一个即可。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTDEMDialTaskWithContext(ctx context.Context, request *CreateTDEMDialTaskRequest) (response *CreateTDEMDialTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateTDEMDialTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "CreateTDEMDialTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTDEMDialTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTDEMDialTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTDEMFieldTransformRuleRequest() (request *CreateTDEMFieldTransformRuleRequest) {
+    request = &CreateTDEMFieldTransformRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "CreateTDEMFieldTransformRule")
+    
+    
+    return
+}
+
+func NewCreateTDEMFieldTransformRuleResponse() (response *CreateTDEMFieldTransformRuleResponse) {
+    response = &CreateTDEMFieldTransformRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTDEMFieldTransformRule
+// 为应用创建字段值替换规则，单应用上限 50 条。替代已废弃的 CreateFieldTransformRule；AppId 为 string。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateTDEMFieldTransformRule(request *CreateTDEMFieldTransformRuleRequest) (response *CreateTDEMFieldTransformRuleResponse, err error) {
+    return c.CreateTDEMFieldTransformRuleWithContext(context.Background(), request)
+}
+
+// CreateTDEMFieldTransformRule
+// 为应用创建字段值替换规则，单应用上限 50 条。替代已废弃的 CreateFieldTransformRule；AppId 为 string。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateTDEMFieldTransformRuleWithContext(ctx context.Context, request *CreateTDEMFieldTransformRuleRequest) (response *CreateTDEMFieldTransformRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateTDEMFieldTransformRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "CreateTDEMFieldTransformRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTDEMFieldTransformRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTDEMFieldTransformRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTDEMFunnelRequest() (request *CreateTDEMFunnelRequest) {
+    request = &CreateTDEMFunnelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "CreateTDEMFunnel")
+    
+    
+    return
+}
+
+func NewCreateTDEMFunnelResponse() (response *CreateTDEMFunnelResponse) {
+    response = &CreateTDEMFunnelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTDEMFunnel
+// 创建漏斗
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTDEMFunnel(request *CreateTDEMFunnelRequest) (response *CreateTDEMFunnelResponse, err error) {
+    return c.CreateTDEMFunnelWithContext(context.Background(), request)
+}
+
+// CreateTDEMFunnel
+// 创建漏斗
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTDEMFunnelWithContext(ctx context.Context, request *CreateTDEMFunnelRequest) (response *CreateTDEMFunnelResponse, err error) {
+    if request == nil {
+        request = NewCreateTDEMFunnelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "CreateTDEMFunnel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTDEMFunnel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTDEMFunnelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWhitelistRequest() (request *CreateWhitelistRequest) {
     request = &CreateWhitelistRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -311,6 +835,110 @@ func (c *Client) CreateWhitelistWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewDeleteFieldTransformRuleRequest() (request *DeleteFieldTransformRuleRequest) {
+    request = &DeleteFieldTransformRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DeleteFieldTransformRule")
+    
+    
+    return
+}
+
+func NewDeleteFieldTransformRuleResponse() (response *DeleteFieldTransformRuleResponse) {
+    response = &DeleteFieldTransformRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteFieldTransformRule
+// 删除字段配置规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteFieldTransformRule(request *DeleteFieldTransformRuleRequest) (response *DeleteFieldTransformRuleResponse, err error) {
+    return c.DeleteFieldTransformRuleWithContext(context.Background(), request)
+}
+
+// DeleteFieldTransformRule
+// 删除字段配置规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteFieldTransformRuleWithContext(ctx context.Context, request *DeleteFieldTransformRuleRequest) (response *DeleteFieldTransformRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteFieldTransformRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DeleteFieldTransformRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFieldTransformRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteFieldTransformRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
     request = &DeleteInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -381,6 +1009,112 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
     request.SetContext(ctx)
     
     response = NewDeleteInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMiniProgramReplayPackRequest() (request *DeleteMiniProgramReplayPackRequest) {
+    request = &DeleteMiniProgramReplayPackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DeleteMiniProgramReplayPack")
+    
+    
+    return
+}
+
+func NewDeleteMiniProgramReplayPackResponse() (response *DeleteMiniProgramReplayPackResponse) {
+    response = &DeleteMiniProgramReplayPackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMiniProgramReplayPack
+// 删除回放包元数据，并尽力删除COS上回放包与源码zip。不存在返回ResourceNotFound。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteMiniProgramReplayPack(request *DeleteMiniProgramReplayPackRequest) (response *DeleteMiniProgramReplayPackResponse, err error) {
+    return c.DeleteMiniProgramReplayPackWithContext(context.Background(), request)
+}
+
+// DeleteMiniProgramReplayPack
+// 删除回放包元数据，并尽力删除COS上回放包与源码zip。不存在返回ResourceNotFound。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteMiniProgramReplayPackWithContext(ctx context.Context, request *DeleteMiniProgramReplayPackRequest) (response *DeleteMiniProgramReplayPackResponse, err error) {
+    if request == nil {
+        request = NewDeleteMiniProgramReplayPackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DeleteMiniProgramReplayPack")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMiniProgramReplayPack require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMiniProgramReplayPackResponse()
     err = c.Send(request, response)
     return
 }
@@ -611,6 +1345,532 @@ func (c *Client) DeleteStarProjectWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteStarProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSymbolArtifactRequest() (request *DeleteSymbolArtifactRequest) {
+    request = &DeleteSymbolArtifactRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DeleteSymbolArtifact")
+    
+    
+    return
+}
+
+func NewDeleteSymbolArtifactResponse() (response *DeleteSymbolArtifactResponse) {
+    response = &DeleteSymbolArtifactResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSymbolArtifact
+// 删除指定的符号制品。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSymbolArtifact(request *DeleteSymbolArtifactRequest) (response *DeleteSymbolArtifactResponse, err error) {
+    return c.DeleteSymbolArtifactWithContext(context.Background(), request)
+}
+
+// DeleteSymbolArtifact
+// 删除指定的符号制品。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSymbolArtifactWithContext(ctx context.Context, request *DeleteSymbolArtifactRequest) (response *DeleteSymbolArtifactResponse, err error) {
+    if request == nil {
+        request = NewDeleteSymbolArtifactRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DeleteSymbolArtifact")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSymbolArtifact require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSymbolArtifactResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTDEMApplicationRequest() (request *DeleteTDEMApplicationRequest) {
+    request = &DeleteTDEMApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DeleteTDEMApplication")
+    
+    
+    return
+}
+
+func NewDeleteTDEMApplicationResponse() (response *DeleteTDEMApplicationResponse) {
+    response = &DeleteTDEMApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTDEMApplication
+// 逻辑删除应用，ProjectKey 即刻失效。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteTDEMApplication(request *DeleteTDEMApplicationRequest) (response *DeleteTDEMApplicationResponse, err error) {
+    return c.DeleteTDEMApplicationWithContext(context.Background(), request)
+}
+
+// DeleteTDEMApplication
+// 逻辑删除应用，ProjectKey 即刻失效。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteTDEMApplicationWithContext(ctx context.Context, request *DeleteTDEMApplicationRequest) (response *DeleteTDEMApplicationResponse, err error) {
+    if request == nil {
+        request = NewDeleteTDEMApplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DeleteTDEMApplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTDEMApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTDEMApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTDEMBusinessSystemRequest() (request *DeleteTDEMBusinessSystemRequest) {
+    request = &DeleteTDEMBusinessSystemRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DeleteTDEMBusinessSystem")
+    
+    
+    return
+}
+
+func NewDeleteTDEMBusinessSystemResponse() (response *DeleteTDEMBusinessSystemResponse) {
+    response = &DeleteTDEMBusinessSystemResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTDEMBusinessSystem
+// 删除业务系统。名下存在未删除应用时返回 ResourceInUse。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteTDEMBusinessSystem(request *DeleteTDEMBusinessSystemRequest) (response *DeleteTDEMBusinessSystemResponse, err error) {
+    return c.DeleteTDEMBusinessSystemWithContext(context.Background(), request)
+}
+
+// DeleteTDEMBusinessSystem
+// 删除业务系统。名下存在未删除应用时返回 ResourceInUse。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteTDEMBusinessSystemWithContext(ctx context.Context, request *DeleteTDEMBusinessSystemRequest) (response *DeleteTDEMBusinessSystemResponse, err error) {
+    if request == nil {
+        request = NewDeleteTDEMBusinessSystemRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DeleteTDEMBusinessSystem")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTDEMBusinessSystem require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTDEMBusinessSystemResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTDEMDialTaskRequest() (request *DeleteTDEMDialTaskRequest) {
+    request = &DeleteTDEMDialTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DeleteTDEMDialTask")
+    
+    
+    return
+}
+
+func NewDeleteTDEMDialTaskResponse() (response *DeleteTDEMDialTaskResponse) {
+    response = &DeleteTDEMDialTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTDEMDialTask
+// 将拨测任务标记为已删除。已删除的任务再次删除视为成功。不物理删除任务行，也不删除历史拨测结果。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteTDEMDialTask(request *DeleteTDEMDialTaskRequest) (response *DeleteTDEMDialTaskResponse, err error) {
+    return c.DeleteTDEMDialTaskWithContext(context.Background(), request)
+}
+
+// DeleteTDEMDialTask
+// 将拨测任务标记为已删除。已删除的任务再次删除视为成功。不物理删除任务行，也不删除历史拨测结果。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteTDEMDialTaskWithContext(ctx context.Context, request *DeleteTDEMDialTaskRequest) (response *DeleteTDEMDialTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteTDEMDialTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DeleteTDEMDialTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTDEMDialTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTDEMDialTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTDEMFieldTransformRuleRequest() (request *DeleteTDEMFieldTransformRuleRequest) {
+    request = &DeleteTDEMFieldTransformRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DeleteTDEMFieldTransformRule")
+    
+    
+    return
+}
+
+func NewDeleteTDEMFieldTransformRuleResponse() (response *DeleteTDEMFieldTransformRuleResponse) {
+    response = &DeleteTDEMFieldTransformRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTDEMFieldTransformRule
+// 按规则 Id 删除字段值替换规则。替代已废弃的 DeleteFieldTransformRule；AppId 为 string。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteTDEMFieldTransformRule(request *DeleteTDEMFieldTransformRuleRequest) (response *DeleteTDEMFieldTransformRuleResponse, err error) {
+    return c.DeleteTDEMFieldTransformRuleWithContext(context.Background(), request)
+}
+
+// DeleteTDEMFieldTransformRule
+// 按规则 Id 删除字段值替换规则。替代已废弃的 DeleteFieldTransformRule；AppId 为 string。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteTDEMFieldTransformRuleWithContext(ctx context.Context, request *DeleteTDEMFieldTransformRuleRequest) (response *DeleteTDEMFieldTransformRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteTDEMFieldTransformRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DeleteTDEMFieldTransformRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTDEMFieldTransformRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTDEMFieldTransformRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTDEMFunnelRequest() (request *DeleteTDEMFunnelRequest) {
+    request = &DeleteTDEMFunnelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DeleteTDEMFunnel")
+    
+    
+    return
+}
+
+func NewDeleteTDEMFunnelResponse() (response *DeleteTDEMFunnelResponse) {
+    response = &DeleteTDEMFunnelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTDEMFunnel
+// 删除漏斗
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteTDEMFunnel(request *DeleteTDEMFunnelRequest) (response *DeleteTDEMFunnelResponse, err error) {
+    return c.DeleteTDEMFunnelWithContext(context.Background(), request)
+}
+
+// DeleteTDEMFunnel
+// 删除漏斗
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteTDEMFunnelWithContext(ctx context.Context, request *DeleteTDEMFunnelRequest) (response *DeleteTDEMFunnelResponse, err error) {
+    if request == nil {
+        request = NewDeleteTDEMFunnelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DeleteTDEMFunnel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTDEMFunnel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTDEMFunnelResponse()
     err = c.Send(request, response)
     return
 }
@@ -4301,6 +5561,216 @@ func (c *Client) DescribeFOOMReportListWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeFieldTransformRulesRequest() (request *DescribeFieldTransformRulesRequest) {
+    request = &DescribeFieldTransformRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeFieldTransformRules")
+    
+    
+    return
+}
+
+func NewDescribeFieldTransformRulesResponse() (response *DescribeFieldTransformRulesResponse) {
+    response = &DescribeFieldTransformRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFieldTransformRules
+// 获取字段配置规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFieldTransformRules(request *DescribeFieldTransformRulesRequest) (response *DescribeFieldTransformRulesResponse, err error) {
+    return c.DescribeFieldTransformRulesWithContext(context.Background(), request)
+}
+
+// DescribeFieldTransformRules
+// 获取字段配置规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFieldTransformRulesWithContext(ctx context.Context, request *DescribeFieldTransformRulesRequest) (response *DescribeFieldTransformRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFieldTransformRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeFieldTransformRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFieldTransformRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFieldTransformRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFieldValuesRequest() (request *DescribeFieldValuesRequest) {
+    request = &DescribeFieldValuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeFieldValues")
+    
+    
+    return
+}
+
+func NewDescribeFieldValuesResponse() (response *DescribeFieldValuesResponse) {
+    response = &DescribeFieldValuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFieldValues
+// 获取TDEM字段值列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFieldValues(request *DescribeFieldValuesRequest) (response *DescribeFieldValuesResponse, err error) {
+    return c.DescribeFieldValuesWithContext(context.Background(), request)
+}
+
+// DescribeFieldValues
+// 获取TDEM字段值列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFieldValuesWithContext(ctx context.Context, request *DescribeFieldValuesRequest) (response *DescribeFieldValuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFieldValuesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeFieldValues")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFieldValues require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFieldValuesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFileCertificateRequest() (request *DescribeFileCertificateRequest) {
     request = &DescribeFileCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4324,9 +5794,35 @@ func NewDescribeFileCertificateResponse() (response *DescribeFileCertificateResp
 // 获取COS存储的临时密钥，具体到ProjectId
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFileCertificate(request *DescribeFileCertificateRequest) (response *DescribeFileCertificateResponse, err error) {
     return c.DescribeFileCertificateWithContext(context.Background(), request)
 }
@@ -4335,9 +5831,35 @@ func (c *Client) DescribeFileCertificate(request *DescribeFileCertificateRequest
 // 获取COS存储的临时密钥，具体到ProjectId
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFileCertificateWithContext(ctx context.Context, request *DescribeFileCertificateRequest) (response *DescribeFileCertificateResponse, err error) {
     if request == nil {
         request = NewDescribeFileCertificateRequest()
@@ -4351,6 +5873,820 @@ func (c *Client) DescribeFileCertificateWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeFileCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIssueAffectedUsersRequest() (request *DescribeIssueAffectedUsersRequest) {
+    request = &DescribeIssueAffectedUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeIssueAffectedUsers")
+    
+    
+    return
+}
+
+func NewDescribeIssueAffectedUsersResponse() (response *DescribeIssueAffectedUsersResponse) {
+    response = &DescribeIssueAffectedUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIssueAffectedUsers
+// 按用户维度聚合某问题的受影响用户清单，服务端分页。AppId 与 IssueId 必填；AppVersion / StartTime / EndTime / Keyword 用于收窄范围，同时作用于清单与 Total，因此 Total 为当前条件下去重后的用户数， 条件全空时等于问题详情的影响用户数。OrderKey / OrderBy 只改变行序、不改变结果集合；排序一律由服务端执行， 并保留 uid 作为次级键以保证翻页不重不漏。接口只读。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeIssueAffectedUsers(request *DescribeIssueAffectedUsersRequest) (response *DescribeIssueAffectedUsersResponse, err error) {
+    return c.DescribeIssueAffectedUsersWithContext(context.Background(), request)
+}
+
+// DescribeIssueAffectedUsers
+// 按用户维度聚合某问题的受影响用户清单，服务端分页。AppId 与 IssueId 必填；AppVersion / StartTime / EndTime / Keyword 用于收窄范围，同时作用于清单与 Total，因此 Total 为当前条件下去重后的用户数， 条件全空时等于问题详情的影响用户数。OrderKey / OrderBy 只改变行序、不改变结果集合；排序一律由服务端执行， 并保留 uid 作为次级键以保证翻页不重不漏。接口只读。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeIssueAffectedUsersWithContext(ctx context.Context, request *DescribeIssueAffectedUsersRequest) (response *DescribeIssueAffectedUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeIssueAffectedUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeIssueAffectedUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIssueAffectedUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIssueAffectedUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIssueBreadcrumbsRequest() (request *DescribeIssueBreadcrumbsRequest) {
+    request = &DescribeIssueBreadcrumbsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeIssueBreadcrumbs")
+    
+    
+    return
+}
+
+func NewDescribeIssueBreadcrumbsResponse() (response *DescribeIssueBreadcrumbsResponse) {
+    response = &DescribeIssueBreadcrumbsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIssueBreadcrumbs
+// 获取指定 Issue 当前事件或最新事件之前的 Breadcrumbs 面包屑序列
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssueBreadcrumbs(request *DescribeIssueBreadcrumbsRequest) (response *DescribeIssueBreadcrumbsResponse, err error) {
+    return c.DescribeIssueBreadcrumbsWithContext(context.Background(), request)
+}
+
+// DescribeIssueBreadcrumbs
+// 获取指定 Issue 当前事件或最新事件之前的 Breadcrumbs 面包屑序列
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssueBreadcrumbsWithContext(ctx context.Context, request *DescribeIssueBreadcrumbsRequest) (response *DescribeIssueBreadcrumbsResponse, err error) {
+    if request == nil {
+        request = NewDescribeIssueBreadcrumbsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeIssueBreadcrumbs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIssueBreadcrumbs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIssueBreadcrumbsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIssueCrashLogDownloadURLRequest() (request *DescribeIssueCrashLogDownloadURLRequest) {
+    request = &DescribeIssueCrashLogDownloadURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeIssueCrashLogDownloadURL")
+    
+    
+    return
+}
+
+func NewDescribeIssueCrashLogDownloadURLResponse() (response *DescribeIssueCrashLogDownloadURLResponse) {
+    response = &DescribeIssueCrashLogDownloadURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIssueCrashLogDownloadURL
+// 获取日志下载链接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssueCrashLogDownloadURL(request *DescribeIssueCrashLogDownloadURLRequest) (response *DescribeIssueCrashLogDownloadURLResponse, err error) {
+    return c.DescribeIssueCrashLogDownloadURLWithContext(context.Background(), request)
+}
+
+// DescribeIssueCrashLogDownloadURL
+// 获取日志下载链接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssueCrashLogDownloadURLWithContext(ctx context.Context, request *DescribeIssueCrashLogDownloadURLRequest) (response *DescribeIssueCrashLogDownloadURLResponse, err error) {
+    if request == nil {
+        request = NewDescribeIssueCrashLogDownloadURLRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeIssueCrashLogDownloadURL")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIssueCrashLogDownloadURL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIssueCrashLogDownloadURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIssueDetailRequest() (request *DescribeIssueDetailRequest) {
+    request = &DescribeIssueDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeIssueDetail")
+    
+    
+    return
+}
+
+func NewDescribeIssueDetailResponse() (response *DescribeIssueDetailResponse) {
+    response = &DescribeIssueDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIssueDetail
+// 获取指定 Issue 的摘要信息以及默认选中的最新事件详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssueDetail(request *DescribeIssueDetailRequest) (response *DescribeIssueDetailResponse, err error) {
+    return c.DescribeIssueDetailWithContext(context.Background(), request)
+}
+
+// DescribeIssueDetail
+// 获取指定 Issue 的摘要信息以及默认选中的最新事件详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssueDetailWithContext(ctx context.Context, request *DescribeIssueDetailRequest) (response *DescribeIssueDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeIssueDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeIssueDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIssueDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIssueDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIssueEventDetailRequest() (request *DescribeIssueEventDetailRequest) {
+    request = &DescribeIssueEventDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeIssueEventDetail")
+    
+    
+    return
+}
+
+func NewDescribeIssueEventDetailResponse() (response *DescribeIssueEventDetailResponse) {
+    response = &DescribeIssueEventDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIssueEventDetail
+// 获取指定 Issue 下单个事件的完整详情，包括栈信息、上下文和符号化状态等字段
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssueEventDetail(request *DescribeIssueEventDetailRequest) (response *DescribeIssueEventDetailResponse, err error) {
+    return c.DescribeIssueEventDetailWithContext(context.Background(), request)
+}
+
+// DescribeIssueEventDetail
+// 获取指定 Issue 下单个事件的完整详情，包括栈信息、上下文和符号化状态等字段
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssueEventDetailWithContext(ctx context.Context, request *DescribeIssueEventDetailRequest) (response *DescribeIssueEventDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeIssueEventDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeIssueEventDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIssueEventDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIssueEventDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIssueEventsRequest() (request *DescribeIssueEventsRequest) {
+    request = &DescribeIssueEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeIssueEvents")
+    
+    
+    return
+}
+
+func NewDescribeIssueEventsResponse() (response *DescribeIssueEventsResponse) {
+    response = &DescribeIssueEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIssueEvents
+// 根据条件获取指定 Issue 的错误事件列表，支持按时间范围、关键字和扩展过滤器查询，返回分页事件数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssueEvents(request *DescribeIssueEventsRequest) (response *DescribeIssueEventsResponse, err error) {
+    return c.DescribeIssueEventsWithContext(context.Background(), request)
+}
+
+// DescribeIssueEvents
+// 根据条件获取指定 Issue 的错误事件列表，支持按时间范围、关键字和扩展过滤器查询，返回分页事件数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssueEventsWithContext(ctx context.Context, request *DescribeIssueEventsRequest) (response *DescribeIssueEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeIssueEventsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeIssueEvents")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIssueEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIssueEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIssueTrendRequest() (request *DescribeIssueTrendRequest) {
+    request = &DescribeIssueTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeIssueTrend")
+    
+    
+    return
+}
+
+func NewDescribeIssueTrendResponse() (response *DescribeIssueTrendResponse) {
+    response = &DescribeIssueTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIssueTrend
+// 获取指定 Issue 在给定时间范围内的趋势分桶统计数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssueTrend(request *DescribeIssueTrendRequest) (response *DescribeIssueTrendResponse, err error) {
+    return c.DescribeIssueTrendWithContext(context.Background(), request)
+}
+
+// DescribeIssueTrend
+// 获取指定 Issue 在给定时间范围内的趋势分桶统计数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssueTrendWithContext(ctx context.Context, request *DescribeIssueTrendRequest) (response *DescribeIssueTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeIssueTrendRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeIssueTrend")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIssueTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIssueTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIssuesRequest() (request *DescribeIssuesRequest) {
+    request = &DescribeIssuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeIssues")
+    
+    
+    return
+}
+
+func NewDescribeIssuesResponse() (response *DescribeIssuesResponse) {
+    response = &DescribeIssuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIssues
+// 根据筛选条件分页查询 Issue 列表，支持环境、Issue 类型、状态、关键字、扩展过滤器和排序条件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssues(request *DescribeIssuesRequest) (response *DescribeIssuesResponse, err error) {
+    return c.DescribeIssuesWithContext(context.Background(), request)
+}
+
+// DescribeIssues
+// 根据筛选条件分页查询 Issue 列表，支持环境、Issue 类型、状态、关键字、扩展过滤器和排序条件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIssuesWithContext(ctx context.Context, request *DescribeIssuesRequest) (response *DescribeIssuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeIssuesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeIssues")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIssues require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIssuesResponse()
     err = c.Send(request, response)
     return
 }
@@ -4675,6 +7011,324 @@ func (c *Client) DescribeLagANRProblemListWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeLagANRProblemListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMiniProgramReplayPackRequest() (request *DescribeMiniProgramReplayPackRequest) {
+    request = &DescribeMiniProgramReplayPackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeMiniProgramReplayPack")
+    
+    
+    return
+}
+
+func NewDescribeMiniProgramReplayPackResponse() (response *DescribeMiniProgramReplayPackResponse) {
+    response = &DescribeMiniProgramReplayPackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMiniProgramReplayPack
+// 按AppId+BundleHash取已编译回放包正文。成功含Pack（tmpl/css/js/manifest/hash），不返回WXML/WXSS源码。不存在返回ResourceNotFound。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMiniProgramReplayPack(request *DescribeMiniProgramReplayPackRequest) (response *DescribeMiniProgramReplayPackResponse, err error) {
+    return c.DescribeMiniProgramReplayPackWithContext(context.Background(), request)
+}
+
+// DescribeMiniProgramReplayPack
+// 按AppId+BundleHash取已编译回放包正文。成功含Pack（tmpl/css/js/manifest/hash），不返回WXML/WXSS源码。不存在返回ResourceNotFound。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMiniProgramReplayPackWithContext(ctx context.Context, request *DescribeMiniProgramReplayPackRequest) (response *DescribeMiniProgramReplayPackResponse, err error) {
+    if request == nil {
+        request = NewDescribeMiniProgramReplayPackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeMiniProgramReplayPack")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMiniProgramReplayPack require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMiniProgramReplayPackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMiniProgramReplayPacksRequest() (request *DescribeMiniProgramReplayPacksRequest) {
+    request = &DescribeMiniProgramReplayPacksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeMiniProgramReplayPacks")
+    
+    
+    return
+}
+
+func NewDescribeMiniProgramReplayPacksResponse() (response *DescribeMiniProgramReplayPacksResponse) {
+    response = &DescribeMiniProgramReplayPacksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMiniProgramReplayPacks
+// 按AppId列出回放包元数据，不含Pack正文。可按Status过滤。Limit默认20、最大100。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMiniProgramReplayPacks(request *DescribeMiniProgramReplayPacksRequest) (response *DescribeMiniProgramReplayPacksResponse, err error) {
+    return c.DescribeMiniProgramReplayPacksWithContext(context.Background(), request)
+}
+
+// DescribeMiniProgramReplayPacks
+// 按AppId列出回放包元数据，不含Pack正文。可按Status过滤。Limit默认20、最大100。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMiniProgramReplayPacksWithContext(ctx context.Context, request *DescribeMiniProgramReplayPacksRequest) (response *DescribeMiniProgramReplayPacksResponse, err error) {
+    if request == nil {
+        request = NewDescribeMiniProgramReplayPacksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeMiniProgramReplayPacks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMiniProgramReplayPacks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMiniProgramReplayPacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePerformanceMetricsRequest() (request *DescribePerformanceMetricsRequest) {
+    request = &DescribePerformanceMetricsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribePerformanceMetrics")
+    
+    
+    return
+}
+
+func NewDescribePerformanceMetricsResponse() (response *DescribePerformanceMetricsResponse) {
+    response = &DescribePerformanceMetricsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePerformanceMetrics
+// 获取TDEM性能指标数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePerformanceMetrics(request *DescribePerformanceMetricsRequest) (response *DescribePerformanceMetricsResponse, err error) {
+    return c.DescribePerformanceMetricsWithContext(context.Background(), request)
+}
+
+// DescribePerformanceMetrics
+// 获取TDEM性能指标数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePerformanceMetricsWithContext(ctx context.Context, request *DescribePerformanceMetricsRequest) (response *DescribePerformanceMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribePerformanceMetricsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribePerformanceMetrics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePerformanceMetrics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePerformanceMetricsResponse()
     err = c.Send(request, response)
     return
 }
@@ -5103,6 +7757,318 @@ func (c *Client) DescribeReleaseFilesWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeReleaseFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReplayDataRequest() (request *DescribeReplayDataRequest) {
+    request = &DescribeReplayDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeReplayData")
+    
+    
+    return
+}
+
+func NewDescribeReplayDataResponse() (response *DescribeReplayDataResponse) {
+    response = &DescribeReplayDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReplayData
+// 从对象存储读取录屏帧数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplayData(request *DescribeReplayDataRequest) (response *DescribeReplayDataResponse, err error) {
+    return c.DescribeReplayDataWithContext(context.Background(), request)
+}
+
+// DescribeReplayData
+// 从对象存储读取录屏帧数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplayDataWithContext(ctx context.Context, request *DescribeReplayDataRequest) (response *DescribeReplayDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplayDataRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeReplayData")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReplayData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReplayDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReplayDetailsRequest() (request *DescribeReplayDetailsRequest) {
+    request = &DescribeReplayDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeReplayDetails")
+    
+    
+    return
+}
+
+func NewDescribeReplayDetailsResponse() (response *DescribeReplayDetailsResponse) {
+    response = &DescribeReplayDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReplayDetails
+// 获取回放日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplayDetails(request *DescribeReplayDetailsRequest) (response *DescribeReplayDetailsResponse, err error) {
+    return c.DescribeReplayDetailsWithContext(context.Background(), request)
+}
+
+// DescribeReplayDetails
+// 获取回放日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplayDetailsWithContext(ctx context.Context, request *DescribeReplayDetailsRequest) (response *DescribeReplayDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplayDetailsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeReplayDetails")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReplayDetails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReplayDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReplayMetaRequest() (request *DescribeReplayMetaRequest) {
+    request = &DescribeReplayMetaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeReplayMeta")
+    
+    
+    return
+}
+
+func NewDescribeReplayMetaResponse() (response *DescribeReplayMetaResponse) {
+    response = &DescribeReplayMetaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReplayMeta
+// 获取回放元数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplayMeta(request *DescribeReplayMetaRequest) (response *DescribeReplayMetaResponse, err error) {
+    return c.DescribeReplayMetaWithContext(context.Background(), request)
+}
+
+// DescribeReplayMeta
+// 获取回放元数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplayMetaWithContext(ctx context.Context, request *DescribeReplayMetaRequest) (response *DescribeReplayMetaResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplayMetaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeReplayMeta")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReplayMeta require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReplayMetaResponse()
     err = c.Send(request, response)
     return
 }
@@ -6163,6 +9129,110 @@ func (c *Client) DescribeRumStatsLogListV2WithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeSampleRateRequest() (request *DescribeSampleRateRequest) {
+    request = &DescribeSampleRateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeSampleRate")
+    
+    
+    return
+}
+
+func NewDescribeSampleRateResponse() (response *DescribeSampleRateResponse) {
+    response = &DescribeSampleRateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSampleRate
+// 获取应用的采样率
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSampleRate(request *DescribeSampleRateRequest) (response *DescribeSampleRateResponse, err error) {
+    return c.DescribeSampleRateWithContext(context.Background(), request)
+}
+
+// DescribeSampleRate
+// 获取应用的采样率
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSampleRateWithContext(ctx context.Context, request *DescribeSampleRateRequest) (response *DescribeSampleRateResponse, err error) {
+    if request == nil {
+        request = NewDescribeSampleRateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeSampleRate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSampleRate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSampleRateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScoresRequest() (request *DescribeScoresRequest) {
     request = &DescribeScoresRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6335,6 +9405,3294 @@ func (c *Client) DescribeScoresV2WithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeScoresV2Response()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSessionListRequest() (request *DescribeSessionListRequest) {
+    request = &DescribeSessionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeSessionList")
+    
+    
+    return
+}
+
+func NewDescribeSessionListResponse() (response *DescribeSessionListResponse) {
+    response = &DescribeSessionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSessionList
+// 查询会话列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSessionList(request *DescribeSessionListRequest) (response *DescribeSessionListResponse, err error) {
+    return c.DescribeSessionListWithContext(context.Background(), request)
+}
+
+// DescribeSessionList
+// 查询会话列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSessionListWithContext(ctx context.Context, request *DescribeSessionListRequest) (response *DescribeSessionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSessionListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeSessionList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSessionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSessionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStruggleDistributionRequest() (request *DescribeStruggleDistributionRequest) {
+    request = &DescribeStruggleDistributionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeStruggleDistribution")
+    
+    
+    return
+}
+
+func NewDescribeStruggleDistributionResponse() (response *DescribeStruggleDistributionResponse) {
+    response = &DescribeStruggleDistributionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStruggleDistribution
+// 获取挣扎事件分布数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeStruggleDistribution(request *DescribeStruggleDistributionRequest) (response *DescribeStruggleDistributionResponse, err error) {
+    return c.DescribeStruggleDistributionWithContext(context.Background(), request)
+}
+
+// DescribeStruggleDistribution
+// 获取挣扎事件分布数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeStruggleDistributionWithContext(ctx context.Context, request *DescribeStruggleDistributionRequest) (response *DescribeStruggleDistributionResponse, err error) {
+    if request == nil {
+        request = NewDescribeStruggleDistributionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeStruggleDistribution")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStruggleDistribution require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStruggleDistributionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSymbolArtifactUploadCredentialRequest() (request *DescribeSymbolArtifactUploadCredentialRequest) {
+    request = &DescribeSymbolArtifactUploadCredentialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeSymbolArtifactUploadCredential")
+    
+    
+    return
+}
+
+func NewDescribeSymbolArtifactUploadCredentialResponse() (response *DescribeSymbolArtifactUploadCredentialResponse) {
+    response = &DescribeSymbolArtifactUploadCredentialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSymbolArtifactUploadCredential
+// 获取符号制品上传临时凭证。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSymbolArtifactUploadCredential(request *DescribeSymbolArtifactUploadCredentialRequest) (response *DescribeSymbolArtifactUploadCredentialResponse, err error) {
+    return c.DescribeSymbolArtifactUploadCredentialWithContext(context.Background(), request)
+}
+
+// DescribeSymbolArtifactUploadCredential
+// 获取符号制品上传临时凭证。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSymbolArtifactUploadCredentialWithContext(ctx context.Context, request *DescribeSymbolArtifactUploadCredentialRequest) (response *DescribeSymbolArtifactUploadCredentialResponse, err error) {
+    if request == nil {
+        request = NewDescribeSymbolArtifactUploadCredentialRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeSymbolArtifactUploadCredential")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSymbolArtifactUploadCredential require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSymbolArtifactUploadCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSymbolArtifactsRequest() (request *DescribeSymbolArtifactsRequest) {
+    request = &DescribeSymbolArtifactsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeSymbolArtifacts")
+    
+    
+    return
+}
+
+func NewDescribeSymbolArtifactsResponse() (response *DescribeSymbolArtifactsResponse) {
+    response = &DescribeSymbolArtifactsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSymbolArtifacts
+// 分页查询指定类型的符号制品。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSymbolArtifacts(request *DescribeSymbolArtifactsRequest) (response *DescribeSymbolArtifactsResponse, err error) {
+    return c.DescribeSymbolArtifactsWithContext(context.Background(), request)
+}
+
+// DescribeSymbolArtifacts
+// 分页查询指定类型的符号制品。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSymbolArtifactsWithContext(ctx context.Context, request *DescribeSymbolArtifactsRequest) (response *DescribeSymbolArtifactsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSymbolArtifactsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeSymbolArtifacts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSymbolArtifacts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSymbolArtifactsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMApplicationsRequest() (request *DescribeTDEMApplicationsRequest) {
+    request = &DescribeTDEMApplicationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMApplications")
+    
+    
+    return
+}
+
+func NewDescribeTDEMApplicationsResponse() (response *DescribeTDEMApplicationsResponse) {
+    response = &DescribeTDEMApplicationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMApplications
+// 查询应用列表，默认仅当前用户名下有权限的应用；可按业务系统 InstanceId 筛选。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMApplications(request *DescribeTDEMApplicationsRequest) (response *DescribeTDEMApplicationsResponse, err error) {
+    return c.DescribeTDEMApplicationsWithContext(context.Background(), request)
+}
+
+// DescribeTDEMApplications
+// 查询应用列表，默认仅当前用户名下有权限的应用；可按业务系统 InstanceId 筛选。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMApplicationsWithContext(ctx context.Context, request *DescribeTDEMApplicationsRequest) (response *DescribeTDEMApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMApplicationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMApplications")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMApplications require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMBusinessSystemsRequest() (request *DescribeTDEMBusinessSystemsRequest) {
+    request = &DescribeTDEMBusinessSystemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMBusinessSystems")
+    
+    
+    return
+}
+
+func NewDescribeTDEMBusinessSystemsResponse() (response *DescribeTDEMBusinessSystemsResponse) {
+    response = &DescribeTDEMBusinessSystemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMBusinessSystems
+// 查询当前用户名下业务系统列表（超管返回全部）。分页 Offset/Limit，默认 Limit=20 上限 100。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMBusinessSystems(request *DescribeTDEMBusinessSystemsRequest) (response *DescribeTDEMBusinessSystemsResponse, err error) {
+    return c.DescribeTDEMBusinessSystemsWithContext(context.Background(), request)
+}
+
+// DescribeTDEMBusinessSystems
+// 查询当前用户名下业务系统列表（超管返回全部）。分页 Offset/Limit，默认 Limit=20 上限 100。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMBusinessSystemsWithContext(ctx context.Context, request *DescribeTDEMBusinessSystemsRequest) (response *DescribeTDEMBusinessSystemsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMBusinessSystemsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMBusinessSystems")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMBusinessSystems require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMBusinessSystemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMDialDimensionsRequest() (request *DescribeTDEMDialDimensionsRequest) {
+    request = &DescribeTDEMDialDimensionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMDialDimensions")
+    
+    
+    return
+}
+
+func NewDescribeTDEMDialDimensionsResponse() (response *DescribeTDEMDialDimensionsResponse) {
+    response = &DescribeTDEMDialDimensionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMDialDimensions
+// 按一个维度拆分拨测指标。Dimension 取值说明：platform、app_version、device、net_type、operator、region、country、target_ip。target_region 不是合法值。region 对应客户端省份，country 对应国家。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMDialDimensions(request *DescribeTDEMDialDimensionsRequest) (response *DescribeTDEMDialDimensionsResponse, err error) {
+    return c.DescribeTDEMDialDimensionsWithContext(context.Background(), request)
+}
+
+// DescribeTDEMDialDimensions
+// 按一个维度拆分拨测指标。Dimension 取值说明：platform、app_version、device、net_type、operator、region、country、target_ip。target_region 不是合法值。region 对应客户端省份，country 对应国家。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMDialDimensionsWithContext(ctx context.Context, request *DescribeTDEMDialDimensionsRequest) (response *DescribeTDEMDialDimensionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMDialDimensionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMDialDimensions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMDialDimensions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMDialDimensionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMDialExecutionDetailRequest() (request *DescribeTDEMDialExecutionDetailRequest) {
+    request = &DescribeTDEMDialExecutionDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMDialExecutionDetail")
+    
+    
+    return
+}
+
+func NewDescribeTDEMDialExecutionDetailResponse() (response *DescribeTDEMDialExecutionDetailResponse) {
+    response = &DescribeTDEMDialExecutionDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMDialExecutionDetail
+// 返回一个拨测批次的探测结果和路由追踪。Probes 的 Region、Operator 是目标 IP 归属。逐跳归属同时写在 Probes.MTR.Hops 和顶层 MTR.Hops。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMDialExecutionDetail(request *DescribeTDEMDialExecutionDetailRequest) (response *DescribeTDEMDialExecutionDetailResponse, err error) {
+    return c.DescribeTDEMDialExecutionDetailWithContext(context.Background(), request)
+}
+
+// DescribeTDEMDialExecutionDetail
+// 返回一个拨测批次的探测结果和路由追踪。Probes 的 Region、Operator 是目标 IP 归属。逐跳归属同时写在 Probes.MTR.Hops 和顶层 MTR.Hops。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMDialExecutionDetailWithContext(ctx context.Context, request *DescribeTDEMDialExecutionDetailRequest) (response *DescribeTDEMDialExecutionDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMDialExecutionDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMDialExecutionDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMDialExecutionDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMDialExecutionDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMDialExecutionListRequest() (request *DescribeTDEMDialExecutionListRequest) {
+    request = &DescribeTDEMDialExecutionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMDialExecutionList")
+    
+    
+    return
+}
+
+func NewDescribeTDEMDialExecutionListResponse() (response *DescribeTDEMDialExecutionListResponse) {
+    response = &DescribeTDEMDialExecutionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMDialExecutionList
+// 按批次返回拨测执行记录，一批次一行。TargetIps 是目标地址，TargetIpGeo 是这些地址的地区和运营商。行上的 Region 和 Operator 仍是客户端地区和运营商。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMDialExecutionList(request *DescribeTDEMDialExecutionListRequest) (response *DescribeTDEMDialExecutionListResponse, err error) {
+    return c.DescribeTDEMDialExecutionListWithContext(context.Background(), request)
+}
+
+// DescribeTDEMDialExecutionList
+// 按批次返回拨测执行记录，一批次一行。TargetIps 是目标地址，TargetIpGeo 是这些地址的地区和运营商。行上的 Region 和 Operator 仍是客户端地区和运营商。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMDialExecutionListWithContext(ctx context.Context, request *DescribeTDEMDialExecutionListRequest) (response *DescribeTDEMDialExecutionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMDialExecutionListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMDialExecutionList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMDialExecutionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMDialExecutionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMDialOverviewRequest() (request *DescribeTDEMDialOverviewRequest) {
+    request = &DescribeTDEMDialOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMDialOverview")
+    
+    
+    return
+}
+
+func NewDescribeTDEMDialOverviewResponse() (response *DescribeTDEMDialOverviewResponse) {
+    response = &DescribeTDEMDialOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMDialOverview
+// 按时间窗汇总拨测批次。一次多 IP 探测计为 1 个批次。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMDialOverview(request *DescribeTDEMDialOverviewRequest) (response *DescribeTDEMDialOverviewResponse, err error) {
+    return c.DescribeTDEMDialOverviewWithContext(context.Background(), request)
+}
+
+// DescribeTDEMDialOverview
+// 按时间窗汇总拨测批次。一次多 IP 探测计为 1 个批次。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMDialOverviewWithContext(ctx context.Context, request *DescribeTDEMDialOverviewRequest) (response *DescribeTDEMDialOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMDialOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMDialOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMDialOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMDialOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMDialTasksRequest() (request *DescribeTDEMDialTasksRequest) {
+    request = &DescribeTDEMDialTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMDialTasks")
+    
+    
+    return
+}
+
+func NewDescribeTDEMDialTasksResponse() (response *DescribeTDEMDialTasksResponse) {
+    response = &DescribeTDEMDialTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMDialTasks
+// 查询应用下未删除的拨测任务，包含启动范围。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMDialTasks(request *DescribeTDEMDialTasksRequest) (response *DescribeTDEMDialTasksResponse, err error) {
+    return c.DescribeTDEMDialTasksWithContext(context.Background(), request)
+}
+
+// DescribeTDEMDialTasks
+// 查询应用下未删除的拨测任务，包含启动范围。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMDialTasksWithContext(ctx context.Context, request *DescribeTDEMDialTasksRequest) (response *DescribeTDEMDialTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMDialTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMDialTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMDialTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMDialTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMDialTrendRequest() (request *DescribeTDEMDialTrendRequest) {
+    request = &DescribeTDEMDialTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMDialTrend")
+    
+    
+    return
+}
+
+func NewDescribeTDEMDialTrendResponse() (response *DescribeTDEMDialTrendResponse) {
+    response = &DescribeTDEMDialTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMDialTrend
+// 按小时或天返回拨测趋势。Granularity 不传时按小时。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMDialTrend(request *DescribeTDEMDialTrendRequest) (response *DescribeTDEMDialTrendResponse, err error) {
+    return c.DescribeTDEMDialTrendWithContext(context.Background(), request)
+}
+
+// DescribeTDEMDialTrend
+// 按小时或天返回拨测趋势。Granularity 不传时按小时。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMDialTrendWithContext(ctx context.Context, request *DescribeTDEMDialTrendRequest) (response *DescribeTDEMDialTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMDialTrendRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMDialTrend")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMDialTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMDialTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMEventDetailRequest() (request *DescribeTDEMEventDetailRequest) {
+    request = &DescribeTDEMEventDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMEventDetail")
+    
+    
+    return
+}
+
+func NewDescribeTDEMEventDetailResponse() (response *DescribeTDEMEventDetailResponse) {
+    response = &DescribeTDEMEventDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMEventDetail
+// 按 AppId+EventId 查询事件详情，含主表字段与可选符号化结果。Date 推荐传以命中分区；或用 StartDate+EndDate（<=2 天）。越权与不存在统一 ResourceNotFound。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMEventDetail(request *DescribeTDEMEventDetailRequest) (response *DescribeTDEMEventDetailResponse, err error) {
+    return c.DescribeTDEMEventDetailWithContext(context.Background(), request)
+}
+
+// DescribeTDEMEventDetail
+// 按 AppId+EventId 查询事件详情，含主表字段与可选符号化结果。Date 推荐传以命中分区；或用 StartDate+EndDate（<=2 天）。越权与不存在统一 ResourceNotFound。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMEventDetailWithContext(ctx context.Context, request *DescribeTDEMEventDetailRequest) (response *DescribeTDEMEventDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMEventDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMEventDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMEventDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMEventDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMEventRankRequest() (request *DescribeTDEMEventRankRequest) {
+    request = &DescribeTDEMEventRankRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMEventRank")
+    
+    
+    return
+}
+
+func NewDescribeTDEMEventRankResponse() (response *DescribeTDEMEventRankResponse) {
+    response = &DescribeTDEMEventRankResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMEventRank
+// 错误指纹或 API/资源 URL（含按访问页、状态、标签）排行。读 tdem_events，不走主分析立方 GroupBy。Kind：error/api/resource/api_page/resource_page/api_status/api_status_top/resource_status/tag。 Kind=exception_dimension返回当前普通维度或标签值的同批完整分类计数；展开不另行取数。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMEventRank(request *DescribeTDEMEventRankRequest) (response *DescribeTDEMEventRankResponse, err error) {
+    return c.DescribeTDEMEventRankWithContext(context.Background(), request)
+}
+
+// DescribeTDEMEventRank
+// 错误指纹或 API/资源 URL（含按访问页、状态、标签）排行。读 tdem_events，不走主分析立方 GroupBy。Kind：error/api/resource/api_page/resource_page/api_status/api_status_top/resource_status/tag。 Kind=exception_dimension返回当前普通维度或标签值的同批完整分类计数；展开不另行取数。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMEventRankWithContext(ctx context.Context, request *DescribeTDEMEventRankRequest) (response *DescribeTDEMEventRankResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMEventRankRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMEventRank")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMEventRank require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMEventRankResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMEventSearchRequest() (request *DescribeTDEMEventSearchRequest) {
+    request = &DescribeTDEMEventSearchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMEventSearch")
+    
+    
+    return
+}
+
+func NewDescribeTDEMEventSearchResponse() (response *DescribeTDEMEventSearchResponse) {
+    response = &DescribeTDEMEventSearchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMEventSearch
+// 数据探索事件明细分页。会话分类不得调用本接口（Category 禁止 session）。时间单位 Unix 毫秒。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMEventSearch(request *DescribeTDEMEventSearchRequest) (response *DescribeTDEMEventSearchResponse, err error) {
+    return c.DescribeTDEMEventSearchWithContext(context.Background(), request)
+}
+
+// DescribeTDEMEventSearch
+// 数据探索事件明细分页。会话分类不得调用本接口（Category 禁止 session）。时间单位 Unix 毫秒。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMEventSearchWithContext(ctx context.Context, request *DescribeTDEMEventSearchRequest) (response *DescribeTDEMEventSearchResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMEventSearchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMEventSearch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMEventSearch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMEventSearchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMEventSearchSummaryRequest() (request *DescribeTDEMEventSearchSummaryRequest) {
+    request = &DescribeTDEMEventSearchSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMEventSearchSummary")
+    
+    
+    return
+}
+
+func NewDescribeTDEMEventSearchSummaryResponse() (response *DescribeTDEMEventSearchSummaryResponse) {
+    response = &DescribeTDEMEventSearchSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMEventSearchSummary
+// 同一筛选下的分类计数、访问用户、业务用户、窗口合计与分桶趋势。Category 可含 session。空窗返回 0 与空 Series。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMEventSearchSummary(request *DescribeTDEMEventSearchSummaryRequest) (response *DescribeTDEMEventSearchSummaryResponse, err error) {
+    return c.DescribeTDEMEventSearchSummaryWithContext(context.Background(), request)
+}
+
+// DescribeTDEMEventSearchSummary
+// 同一筛选下的分类计数、访问用户、业务用户、窗口合计与分桶趋势。Category 可含 session。空窗返回 0 与空 Series。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMEventSearchSummaryWithContext(ctx context.Context, request *DescribeTDEMEventSearchSummaryRequest) (response *DescribeTDEMEventSearchSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMEventSearchSummaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMEventSearchSummary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMEventSearchSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMEventSearchSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMFieldTransformRulesRequest() (request *DescribeTDEMFieldTransformRulesRequest) {
+    request = &DescribeTDEMFieldTransformRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMFieldTransformRules")
+    
+    
+    return
+}
+
+func NewDescribeTDEMFieldTransformRulesResponse() (response *DescribeTDEMFieldTransformRulesResponse) {
+    response = &DescribeTDEMFieldTransformRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMFieldTransformRules
+// 查询应用下字段值替换规则列表。替代已废弃的 DescribeFieldTransformRules；AppId 为 string。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMFieldTransformRules(request *DescribeTDEMFieldTransformRulesRequest) (response *DescribeTDEMFieldTransformRulesResponse, err error) {
+    return c.DescribeTDEMFieldTransformRulesWithContext(context.Background(), request)
+}
+
+// DescribeTDEMFieldTransformRules
+// 查询应用下字段值替换规则列表。替代已废弃的 DescribeFieldTransformRules；AppId 为 string。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMFieldTransformRulesWithContext(ctx context.Context, request *DescribeTDEMFieldTransformRulesRequest) (response *DescribeTDEMFieldTransformRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMFieldTransformRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMFieldTransformRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMFieldTransformRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMFieldTransformRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMFunnelDetailRequest() (request *DescribeTDEMFunnelDetailRequest) {
+    request = &DescribeTDEMFunnelDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMFunnelDetail")
+    
+    
+    return
+}
+
+func NewDescribeTDEMFunnelDetailResponse() (response *DescribeTDEMFunnelDetailResponse) {
+    response = &DescribeTDEMFunnelDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMFunnelDetail
+// 获取漏斗详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMFunnelDetail(request *DescribeTDEMFunnelDetailRequest) (response *DescribeTDEMFunnelDetailResponse, err error) {
+    return c.DescribeTDEMFunnelDetailWithContext(context.Background(), request)
+}
+
+// DescribeTDEMFunnelDetail
+// 获取漏斗详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMFunnelDetailWithContext(ctx context.Context, request *DescribeTDEMFunnelDetailRequest) (response *DescribeTDEMFunnelDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMFunnelDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMFunnelDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMFunnelDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMFunnelDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMFunnelDimensionsRequest() (request *DescribeTDEMFunnelDimensionsRequest) {
+    request = &DescribeTDEMFunnelDimensionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMFunnelDimensions")
+    
+    
+    return
+}
+
+func NewDescribeTDEMFunnelDimensionsResponse() (response *DescribeTDEMFunnelDimensionsResponse) {
+    response = &DescribeTDEMFunnelDimensionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMFunnelDimensions
+// 获取漏斗分析报告维度数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMFunnelDimensions(request *DescribeTDEMFunnelDimensionsRequest) (response *DescribeTDEMFunnelDimensionsResponse, err error) {
+    return c.DescribeTDEMFunnelDimensionsWithContext(context.Background(), request)
+}
+
+// DescribeTDEMFunnelDimensions
+// 获取漏斗分析报告维度数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMFunnelDimensionsWithContext(ctx context.Context, request *DescribeTDEMFunnelDimensionsRequest) (response *DescribeTDEMFunnelDimensionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMFunnelDimensionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMFunnelDimensions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMFunnelDimensions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMFunnelDimensionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMFunnelListRequest() (request *DescribeTDEMFunnelListRequest) {
+    request = &DescribeTDEMFunnelListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMFunnelList")
+    
+    
+    return
+}
+
+func NewDescribeTDEMFunnelListResponse() (response *DescribeTDEMFunnelListResponse) {
+    response = &DescribeTDEMFunnelListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMFunnelList
+// 获取漏斗列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMFunnelList(request *DescribeTDEMFunnelListRequest) (response *DescribeTDEMFunnelListResponse, err error) {
+    return c.DescribeTDEMFunnelListWithContext(context.Background(), request)
+}
+
+// DescribeTDEMFunnelList
+// 获取漏斗列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMFunnelListWithContext(ctx context.Context, request *DescribeTDEMFunnelListRequest) (response *DescribeTDEMFunnelListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMFunnelListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMFunnelList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMFunnelList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMFunnelListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMFunnelReportRequest() (request *DescribeTDEMFunnelReportRequest) {
+    request = &DescribeTDEMFunnelReportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMFunnelReport")
+    
+    
+    return
+}
+
+func NewDescribeTDEMFunnelReportResponse() (response *DescribeTDEMFunnelReportResponse) {
+    response = &DescribeTDEMFunnelReportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMFunnelReport
+// 获取漏斗报告
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMFunnelReport(request *DescribeTDEMFunnelReportRequest) (response *DescribeTDEMFunnelReportResponse, err error) {
+    return c.DescribeTDEMFunnelReportWithContext(context.Background(), request)
+}
+
+// DescribeTDEMFunnelReport
+// 获取漏斗报告
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMFunnelReportWithContext(ctx context.Context, request *DescribeTDEMFunnelReportRequest) (response *DescribeTDEMFunnelReportResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMFunnelReportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMFunnelReport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMFunnelReport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMFunnelReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMFunnelStepSessionListRequest() (request *DescribeTDEMFunnelStepSessionListRequest) {
+    request = &DescribeTDEMFunnelStepSessionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMFunnelStepSessionList")
+    
+    
+    return
+}
+
+func NewDescribeTDEMFunnelStepSessionListResponse() (response *DescribeTDEMFunnelStepSessionListResponse) {
+    response = &DescribeTDEMFunnelStepSessionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMFunnelStepSessionList
+// 获取漏斗步骤会话
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMFunnelStepSessionList(request *DescribeTDEMFunnelStepSessionListRequest) (response *DescribeTDEMFunnelStepSessionListResponse, err error) {
+    return c.DescribeTDEMFunnelStepSessionListWithContext(context.Background(), request)
+}
+
+// DescribeTDEMFunnelStepSessionList
+// 获取漏斗步骤会话
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMFunnelStepSessionListWithContext(ctx context.Context, request *DescribeTDEMFunnelStepSessionListRequest) (response *DescribeTDEMFunnelStepSessionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMFunnelStepSessionListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMFunnelStepSessionList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMFunnelStepSessionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMFunnelStepSessionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMFunnelTrendRequest() (request *DescribeTDEMFunnelTrendRequest) {
+    request = &DescribeTDEMFunnelTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMFunnelTrend")
+    
+    
+    return
+}
+
+func NewDescribeTDEMFunnelTrendResponse() (response *DescribeTDEMFunnelTrendResponse) {
+    response = &DescribeTDEMFunnelTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMFunnelTrend
+// 获取漏斗趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMFunnelTrend(request *DescribeTDEMFunnelTrendRequest) (response *DescribeTDEMFunnelTrendResponse, err error) {
+    return c.DescribeTDEMFunnelTrendWithContext(context.Background(), request)
+}
+
+// DescribeTDEMFunnelTrend
+// 获取漏斗趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMFunnelTrendWithContext(ctx context.Context, request *DescribeTDEMFunnelTrendRequest) (response *DescribeTDEMFunnelTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMFunnelTrendRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMFunnelTrend")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMFunnelTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMFunnelTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMMetricDistributionRequest() (request *DescribeTDEMMetricDistributionRequest) {
+    request = &DescribeTDEMMetricDistributionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMMetricDistribution")
+    
+    
+    return
+}
+
+func NewDescribeTDEMMetricDistributionResponse() (response *DescribeTDEMMetricDistributionResponse) {
+    response = &DescribeTDEMMetricDistributionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMMetricDistribution
+// 按单维度 GroupBy 查询分析指标分布。读 tdem_metric_agg。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMMetricDistribution(request *DescribeTDEMMetricDistributionRequest) (response *DescribeTDEMMetricDistributionResponse, err error) {
+    return c.DescribeTDEMMetricDistributionWithContext(context.Background(), request)
+}
+
+// DescribeTDEMMetricDistribution
+// 按单维度 GroupBy 查询分析指标分布。读 tdem_metric_agg。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMMetricDistributionWithContext(ctx context.Context, request *DescribeTDEMMetricDistributionRequest) (response *DescribeTDEMMetricDistributionResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMMetricDistributionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMMetricDistribution")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMMetricDistribution require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMMetricDistributionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMMetricSummaryRequest() (request *DescribeTDEMMetricSummaryRequest) {
+    request = &DescribeTDEMMetricSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMMetricSummary")
+    
+    
+    return
+}
+
+func NewDescribeTDEMMetricSummaryResponse() (response *DescribeTDEMMetricSummaryResponse) {
+    response = &DescribeTDEMMetricSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMMetricSummary
+// 查询指定应用与时间窗内的分析指标区间合计。单查返回 Metrics；传 Queries 时返回 Results。读 tdem_metric_agg。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMMetricSummary(request *DescribeTDEMMetricSummaryRequest) (response *DescribeTDEMMetricSummaryResponse, err error) {
+    return c.DescribeTDEMMetricSummaryWithContext(context.Background(), request)
+}
+
+// DescribeTDEMMetricSummary
+// 查询指定应用与时间窗内的分析指标区间合计。单查返回 Metrics；传 Queries 时返回 Results。读 tdem_metric_agg。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMMetricSummaryWithContext(ctx context.Context, request *DescribeTDEMMetricSummaryRequest) (response *DescribeTDEMMetricSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMMetricSummaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMMetricSummary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMMetricSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMMetricSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMMetricTrendRequest() (request *DescribeTDEMMetricTrendRequest) {
+    request = &DescribeTDEMMetricTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMMetricTrend")
+    
+    
+    return
+}
+
+func NewDescribeTDEMMetricTrendResponse() (response *DescribeTDEMMetricTrendResponse) {
+    response = &DescribeTDEMMetricTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMMetricTrend
+// 查询分析指标时序。可传 CompareStartTime/CompareEndTime 做对比窗（仅批量）。读 tdem_metric_agg。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMMetricTrend(request *DescribeTDEMMetricTrendRequest) (response *DescribeTDEMMetricTrendResponse, err error) {
+    return c.DescribeTDEMMetricTrendWithContext(context.Background(), request)
+}
+
+// DescribeTDEMMetricTrend
+// 查询分析指标时序。可传 CompareStartTime/CompareEndTime 做对比窗（仅批量）。读 tdem_metric_agg。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMMetricTrendWithContext(ctx context.Context, request *DescribeTDEMMetricTrendRequest) (response *DescribeTDEMMetricTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMMetricTrendRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMMetricTrend")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMMetricTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMMetricTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMOverviewScoresRequest() (request *DescribeTDEMOverviewScoresRequest) {
+    request = &DescribeTDEMOverviewScoresRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMOverviewScores")
+    
+    
+    return
+}
+
+func NewDescribeTDEMOverviewScoresResponse() (response *DescribeTDEMOverviewScoresResponse) {
+    response = &DescribeTDEMOverviewScoresResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMOverviewScores
+// 客户端总览列表批量评分。按应用列表一次返回各计分项单项分与加权总分。AppIds 1-200；不归属当前用户的应用不出现在响应中。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMOverviewScores(request *DescribeTDEMOverviewScoresRequest) (response *DescribeTDEMOverviewScoresResponse, err error) {
+    return c.DescribeTDEMOverviewScoresWithContext(context.Background(), request)
+}
+
+// DescribeTDEMOverviewScores
+// 客户端总览列表批量评分。按应用列表一次返回各计分项单项分与加权总分。AppIds 1-200；不归属当前用户的应用不出现在响应中。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMOverviewScoresWithContext(ctx context.Context, request *DescribeTDEMOverviewScoresRequest) (response *DescribeTDEMOverviewScoresResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMOverviewScoresRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMOverviewScores")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMOverviewScores require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMOverviewScoresResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMRelatedEventsRequest() (request *DescribeTDEMRelatedEventsRequest) {
+    request = &DescribeTDEMRelatedEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMRelatedEvents")
+    
+    
+    return
+}
+
+func NewDescribeTDEMRelatedEventsResponse() (response *DescribeTDEMRelatedEventsResponse) {
+    response = &DescribeTDEMRelatedEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMRelatedEvents
+// 会话时间线 / 页面子事件 / 错误前轨迹。Mode：timeline / page / breadcrumb。Limit 默认 200，上限 200。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMRelatedEvents(request *DescribeTDEMRelatedEventsRequest) (response *DescribeTDEMRelatedEventsResponse, err error) {
+    return c.DescribeTDEMRelatedEventsWithContext(context.Background(), request)
+}
+
+// DescribeTDEMRelatedEvents
+// 会话时间线 / 页面子事件 / 错误前轨迹。Mode：timeline / page / breadcrumb。Limit 默认 200，上限 200。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMRelatedEventsWithContext(ctx context.Context, request *DescribeTDEMRelatedEventsRequest) (response *DescribeTDEMRelatedEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMRelatedEventsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMRelatedEvents")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMRelatedEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMRelatedEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMSSEDimensionsRequest() (request *DescribeTDEMSSEDimensionsRequest) {
+    request = &DescribeTDEMSSEDimensionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMSSEDimensions")
+    
+    
+    return
+}
+
+func NewDescribeTDEMSSEDimensionsResponse() (response *DescribeTDEMSSEDimensionsResponse) {
+    response = &DescribeTDEMSSEDimensionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMSSEDimensions
+// 按一个维度返回大模型对话次数和当前指标值，按指标值降序，最多 200 行。region 由 country 与 province 拼接。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSSEDimensions(request *DescribeTDEMSSEDimensionsRequest) (response *DescribeTDEMSSEDimensionsResponse, err error) {
+    return c.DescribeTDEMSSEDimensionsWithContext(context.Background(), request)
+}
+
+// DescribeTDEMSSEDimensions
+// 按一个维度返回大模型对话次数和当前指标值，按指标值降序，最多 200 行。region 由 country 与 province 拼接。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSSEDimensionsWithContext(ctx context.Context, request *DescribeTDEMSSEDimensionsRequest) (response *DescribeTDEMSSEDimensionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMSSEDimensionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMSSEDimensions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMSSEDimensions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMSSEDimensionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMSSEDistributionRequest() (request *DescribeTDEMSSEDistributionRequest) {
+    request = &DescribeTDEMSSEDistributionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMSSEDistribution")
+    
+    
+    return
+}
+
+func NewDescribeTDEMSSEDistributionResponse() (response *DescribeTDEMSSEDistributionResponse) {
+    response = &DescribeTDEMSSEDistributionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMSSEDistribution
+// 返回吞吐率、首次消息时延或流畅度的分档分布。档位左闭右开，最后一档有限区间右端闭合，超出右端的样本进入溢出档。错误率与卡死率返回 InvalidParameter。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSSEDistribution(request *DescribeTDEMSSEDistributionRequest) (response *DescribeTDEMSSEDistributionResponse, err error) {
+    return c.DescribeTDEMSSEDistributionWithContext(context.Background(), request)
+}
+
+// DescribeTDEMSSEDistribution
+// 返回吞吐率、首次消息时延或流畅度的分档分布。档位左闭右开，最后一档有限区间右端闭合，超出右端的样本进入溢出档。错误率与卡死率返回 InvalidParameter。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSSEDistributionWithContext(ctx context.Context, request *DescribeTDEMSSEDistributionRequest) (response *DescribeTDEMSSEDistributionResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMSSEDistributionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMSSEDistribution")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMSSEDistribution require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMSSEDistributionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMSSEPercentileRequest() (request *DescribeTDEMSSEPercentileRequest) {
+    request = &DescribeTDEMSSEPercentileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMSSEPercentile")
+    
+    
+    return
+}
+
+func NewDescribeTDEMSSEPercentileResponse() (response *DescribeTDEMSSEPercentileResponse) {
+    response = &DescribeTDEMSSEPercentileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMSSEPercentile
+// 返回吞吐率、首次消息时延或流畅度在整个时间窗及各时间桶上的平均值和 P50、P75、P95、P99。错误率与卡死率返回 InvalidParameter。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSSEPercentile(request *DescribeTDEMSSEPercentileRequest) (response *DescribeTDEMSSEPercentileResponse, err error) {
+    return c.DescribeTDEMSSEPercentileWithContext(context.Background(), request)
+}
+
+// DescribeTDEMSSEPercentile
+// 返回吞吐率、首次消息时延或流畅度在整个时间窗及各时间桶上的平均值和 P50、P75、P95、P99。错误率与卡死率返回 InvalidParameter。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSSEPercentileWithContext(ctx context.Context, request *DescribeTDEMSSEPercentileRequest) (response *DescribeTDEMSSEPercentileResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMSSEPercentileRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMSSEPercentile")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMSSEPercentile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMSSEPercentileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMSSESummaryRequest() (request *DescribeTDEMSSESummaryRequest) {
+    request = &DescribeTDEMSSESummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMSSESummary")
+    
+    
+    return
+}
+
+func NewDescribeTDEMSSESummaryResponse() (response *DescribeTDEMSSESummaryResponse) {
+    response = &DescribeTDEMSSESummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMSSESummary
+// 查询指定应用与时间窗内的大模型对话汇总，包含对话次数、token 总数、吞吐率、首次消息时延、错误率、卡死率和流畅度。只读 tdem.tdem_events 中 event_type 为 sse_call 的事件。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSSESummary(request *DescribeTDEMSSESummaryRequest) (response *DescribeTDEMSSESummaryResponse, err error) {
+    return c.DescribeTDEMSSESummaryWithContext(context.Background(), request)
+}
+
+// DescribeTDEMSSESummary
+// 查询指定应用与时间窗内的大模型对话汇总，包含对话次数、token 总数、吞吐率、首次消息时延、错误率、卡死率和流畅度。只读 tdem.tdem_events 中 event_type 为 sse_call 的事件。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSSESummaryWithContext(ctx context.Context, request *DescribeTDEMSSESummaryRequest) (response *DescribeTDEMSSESummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMSSESummaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMSSESummary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMSSESummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMSSESummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMSSETrendRequest() (request *DescribeTDEMSSETrendRequest) {
+    request = &DescribeTDEMSSETrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMSSETrend")
+    
+    
+    return
+}
+
+func NewDescribeTDEMSSETrendResponse() (response *DescribeTDEMSSETrendResponse) {
+    response = &DescribeTDEMSSETrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMSSETrend
+// 按时间桶返回大模型对话趋势。overall 填充 Points，其他维度按整个窗口的指标值从高到低取 TopN 并填充 Series。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSSETrend(request *DescribeTDEMSSETrendRequest) (response *DescribeTDEMSSETrendResponse, err error) {
+    return c.DescribeTDEMSSETrendWithContext(context.Background(), request)
+}
+
+// DescribeTDEMSSETrend
+// 按时间桶返回大模型对话趋势。overall 填充 Points，其他维度按整个窗口的指标值从高到低取 TopN 并填充 Series。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSSETrendWithContext(ctx context.Context, request *DescribeTDEMSSETrendRequest) (response *DescribeTDEMSSETrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMSSETrendRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMSSETrend")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMSSETrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMSSETrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMSampleConfigRequest() (request *DescribeTDEMSampleConfigRequest) {
+    request = &DescribeTDEMSampleConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMSampleConfig")
+    
+    
+    return
+}
+
+func NewDescribeTDEMSampleConfigResponse() (response *DescribeTDEMSampleConfigResponse) {
+    response = &DescribeTDEMSampleConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMSampleConfig
+// 读取当前生效的 Web 规则化采样文档。ProjectId 必填且 > 0。无行则返回内置缺省（Event.Enabled=true、Types 空、Replay 关闭且体验率 0），不自动插库。SnapshotId 无快照为 0。query handler 做 PascalCase ↔ 存储 snake_case 映射。非 Web 应用不得走本接口，继续 DescribeSampleRate。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSampleConfig(request *DescribeTDEMSampleConfigRequest) (response *DescribeTDEMSampleConfigResponse, err error) {
+    return c.DescribeTDEMSampleConfigWithContext(context.Background(), request)
+}
+
+// DescribeTDEMSampleConfig
+// 读取当前生效的 Web 规则化采样文档。ProjectId 必填且 > 0。无行则返回内置缺省（Event.Enabled=true、Types 空、Replay 关闭且体验率 0），不自动插库。SnapshotId 无快照为 0。query handler 做 PascalCase ↔ 存储 snake_case 映射。非 Web 应用不得走本接口，继续 DescribeSampleRate。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSampleConfigWithContext(ctx context.Context, request *DescribeTDEMSampleConfigRequest) (response *DescribeTDEMSampleConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMSampleConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMSampleConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMSampleConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMSampleConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMSampleRateRequest() (request *DescribeTDEMSampleRateRequest) {
+    request = &DescribeTDEMSampleRateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMSampleRate")
+    
+    
+    return
+}
+
+func NewDescribeTDEMSampleRateResponse() (response *DescribeTDEMSampleRateResponse) {
+    response = &DescribeTDEMSampleRateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMSampleRate
+// 查询单个应用的采集采样率与会话回放采样率。替代已废弃的 DescribeSampleRate；AppId 为 string。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSampleRate(request *DescribeTDEMSampleRateRequest) (response *DescribeTDEMSampleRateResponse, err error) {
+    return c.DescribeTDEMSampleRateWithContext(context.Background(), request)
+}
+
+// DescribeTDEMSampleRate
+// 查询单个应用的采集采样率与会话回放采样率。替代已废弃的 DescribeSampleRate；AppId 为 string。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMSampleRateWithContext(ctx context.Context, request *DescribeTDEMSampleRateRequest) (response *DescribeTDEMSampleRateResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMSampleRateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMSampleRate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMSampleRate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMSampleRateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMSessionReplayTimelineRequest() (request *DescribeTDEMSessionReplayTimelineRequest) {
+    request = &DescribeTDEMSessionReplayTimelineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMSessionReplayTimeline")
+    
+    
+    return
+}
+
+func NewDescribeTDEMSessionReplayTimelineResponse() (response *DescribeTDEMSessionReplayTimelineResponse) {
+    response = &DescribeTDEMSessionReplayTimelineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMSessionReplayTimeline
+// 获取回放时间线数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMSessionReplayTimeline(request *DescribeTDEMSessionReplayTimelineRequest) (response *DescribeTDEMSessionReplayTimelineResponse, err error) {
+    return c.DescribeTDEMSessionReplayTimelineWithContext(context.Background(), request)
+}
+
+// DescribeTDEMSessionReplayTimeline
+// 获取回放时间线数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTDEMSessionReplayTimelineWithContext(ctx context.Context, request *DescribeTDEMSessionReplayTimelineRequest) (response *DescribeTDEMSessionReplayTimelineResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMSessionReplayTimelineRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMSessionReplayTimeline")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMSessionReplayTimeline require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMSessionReplayTimelineResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMUsageDetailRequest() (request *DescribeTDEMUsageDetailRequest) {
+    request = &DescribeTDEMUsageDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMUsageDetail")
+    
+    
+    return
+}
+
+func NewDescribeTDEMUsageDetailResponse() (response *DescribeTDEMUsageDetailResponse) {
+    response = &DescribeTDEMUsageDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMUsageDetail
+// 按业务系统/应用查询用量明细（含行趋势、端类型、删除/停用标记）。Keyword 匹配业务系统名、应用名或应用 ID。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMUsageDetail(request *DescribeTDEMUsageDetailRequest) (response *DescribeTDEMUsageDetailResponse, err error) {
+    return c.DescribeTDEMUsageDetailWithContext(context.Background(), request)
+}
+
+// DescribeTDEMUsageDetail
+// 按业务系统/应用查询用量明细（含行趋势、端类型、删除/停用标记）。Keyword 匹配业务系统名、应用名或应用 ID。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMUsageDetailWithContext(ctx context.Context, request *DescribeTDEMUsageDetailRequest) (response *DescribeTDEMUsageDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMUsageDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMUsageDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMUsageDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMUsageDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTDEMUsageSummaryRequest() (request *DescribeTDEMUsageSummaryRequest) {
+    request = &DescribeTDEMUsageSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTDEMUsageSummary")
+    
+    
+    return
+}
+
+func NewDescribeTDEMUsageSummaryResponse() (response *DescribeTDEMUsageSummaryResponse) {
+    response = &DescribeTDEMUsageSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTDEMUsageSummary
+// 查询当前使用者名下（超管为全部）上报总量与趋势。时间 StartTime/EndTime 为 YYYY-MM-DD HH:00:00 小时对齐。不要求请求体带 AppId。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMUsageSummary(request *DescribeTDEMUsageSummaryRequest) (response *DescribeTDEMUsageSummaryResponse, err error) {
+    return c.DescribeTDEMUsageSummaryWithContext(context.Background(), request)
+}
+
+// DescribeTDEMUsageSummary
+// 查询当前使用者名下（超管为全部）上报总量与趋势。时间 StartTime/EndTime 为 YYYY-MM-DD HH:00:00 小时对齐。不要求请求体带 AppId。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTDEMUsageSummaryWithContext(ctx context.Context, request *DescribeTDEMUsageSummaryRequest) (response *DescribeTDEMUsageSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeTDEMUsageSummaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTDEMUsageSummary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTDEMUsageSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTDEMUsageSummaryResponse()
     err = c.Send(request, response)
     return
 }
@@ -6561,6 +12919,112 @@ func (c *Client) DescribeTopIssuesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeUserJourneySanKeyRequest() (request *DescribeUserJourneySanKeyRequest) {
+    request = &DescribeUserJourneySanKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeUserJourneySanKey")
+    
+    
+    return
+}
+
+func NewDescribeUserJourneySanKeyResponse() (response *DescribeUserJourneySanKeyResponse) {
+    response = &DescribeUserJourneySanKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserJourneySanKey
+// 获取用户旅程数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserJourneySanKey(request *DescribeUserJourneySanKeyRequest) (response *DescribeUserJourneySanKeyResponse, err error) {
+    return c.DescribeUserJourneySanKeyWithContext(context.Background(), request)
+}
+
+// DescribeUserJourneySanKey
+// 获取用户旅程数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserJourneySanKeyWithContext(ctx context.Context, request *DescribeUserJourneySanKeyRequest) (response *DescribeUserJourneySanKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserJourneySanKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeUserJourneySanKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserJourneySanKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserJourneySanKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUvListRequest() (request *DescribeUvListRequest) {
     request = &DescribeUvListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6735,6 +13199,110 @@ func (c *Client) DescribeWhitelistsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewModifyFieldTransformRuleRequest() (request *ModifyFieldTransformRuleRequest) {
+    request = &ModifyFieldTransformRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "ModifyFieldTransformRule")
+    
+    
+    return
+}
+
+func NewModifyFieldTransformRuleResponse() (response *ModifyFieldTransformRuleResponse) {
+    response = &ModifyFieldTransformRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyFieldTransformRule
+// 修改字段配置规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyFieldTransformRule(request *ModifyFieldTransformRuleRequest) (response *ModifyFieldTransformRuleResponse, err error) {
+    return c.ModifyFieldTransformRuleWithContext(context.Background(), request)
+}
+
+// ModifyFieldTransformRule
+// 修改字段配置规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyFieldTransformRuleWithContext(ctx context.Context, request *ModifyFieldTransformRuleRequest) (response *ModifyFieldTransformRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyFieldTransformRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "ModifyFieldTransformRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyFieldTransformRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyFieldTransformRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
     request = &ModifyInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6803,6 +13371,218 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     request.SetContext(ctx)
     
     response = NewModifyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyIssueStatusRequest() (request *ModifyIssueStatusRequest) {
+    request = &ModifyIssueStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "ModifyIssueStatus")
+    
+    
+    return
+}
+
+func NewModifyIssueStatusResponse() (response *ModifyIssueStatusResponse) {
+    response = &ModifyIssueStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyIssueStatus
+// 更新 Issue 状态，支持 resolve、ignore、reopen 等状态流转动作
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyIssueStatus(request *ModifyIssueStatusRequest) (response *ModifyIssueStatusResponse, err error) {
+    return c.ModifyIssueStatusWithContext(context.Background(), request)
+}
+
+// ModifyIssueStatus
+// 更新 Issue 状态，支持 resolve、ignore、reopen 等状态流转动作
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyIssueStatusWithContext(ctx context.Context, request *ModifyIssueStatusRequest) (response *ModifyIssueStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyIssueStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "ModifyIssueStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyIssueStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyIssueStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMiniProgramReplayPackRequest() (request *ModifyMiniProgramReplayPackRequest) {
+    request = &ModifyMiniProgramReplayPackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "ModifyMiniProgramReplayPack")
+    
+    
+    return
+}
+
+func NewModifyMiniProgramReplayPackResponse() (response *ModifyMiniProgramReplayPackResponse) {
+    response = &ModifyMiniProgramReplayPackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMiniProgramReplayPack
+// 更新回放包元数据，仅支持改Release，不重编译。换源码请再调UploadMiniProgramSource。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyMiniProgramReplayPack(request *ModifyMiniProgramReplayPackRequest) (response *ModifyMiniProgramReplayPackResponse, err error) {
+    return c.ModifyMiniProgramReplayPackWithContext(context.Background(), request)
+}
+
+// ModifyMiniProgramReplayPack
+// 更新回放包元数据，仅支持改Release，不重编译。换源码请再调UploadMiniProgramSource。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyMiniProgramReplayPackWithContext(ctx context.Context, request *ModifyMiniProgramReplayPackRequest) (response *ModifyMiniProgramReplayPackResponse, err error) {
+    if request == nil {
+        request = NewModifyMiniProgramReplayPackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "ModifyMiniProgramReplayPack")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMiniProgramReplayPack require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMiniProgramReplayPackResponse()
     err = c.Send(request, response)
     return
 }
@@ -6951,6 +13731,794 @@ func (c *Client) ModifyProjectLimitWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifySampleRateRequest() (request *ModifySampleRateRequest) {
+    request = &ModifySampleRateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "ModifySampleRate")
+    
+    
+    return
+}
+
+func NewModifySampleRateResponse() (response *ModifySampleRateResponse) {
+    response = &ModifySampleRateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySampleRate
+// 配置tdem采样率
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySampleRate(request *ModifySampleRateRequest) (response *ModifySampleRateResponse, err error) {
+    return c.ModifySampleRateWithContext(context.Background(), request)
+}
+
+// ModifySampleRate
+// 配置tdem采样率
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySampleRateWithContext(ctx context.Context, request *ModifySampleRateRequest) (response *ModifySampleRateResponse, err error) {
+    if request == nil {
+        request = NewModifySampleRateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "ModifySampleRate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySampleRate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySampleRateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTDEMApplicationRequest() (request *ModifyTDEMApplicationRequest) {
+    request = &ModifyTDEMApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "ModifyTDEMApplication")
+    
+    
+    return
+}
+
+func NewModifyTDEMApplicationResponse() (response *ModifyTDEMApplicationResponse) {
+    response = &ModifyTDEMApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTDEMApplication
+// 修改应用，仅传需修改字段。AppId 必填。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyTDEMApplication(request *ModifyTDEMApplicationRequest) (response *ModifyTDEMApplicationResponse, err error) {
+    return c.ModifyTDEMApplicationWithContext(context.Background(), request)
+}
+
+// ModifyTDEMApplication
+// 修改应用，仅传需修改字段。AppId 必填。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyTDEMApplicationWithContext(ctx context.Context, request *ModifyTDEMApplicationRequest) (response *ModifyTDEMApplicationResponse, err error) {
+    if request == nil {
+        request = NewModifyTDEMApplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "ModifyTDEMApplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTDEMApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTDEMApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTDEMBusinessSystemRequest() (request *ModifyTDEMBusinessSystemRequest) {
+    request = &ModifyTDEMBusinessSystemRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "ModifyTDEMBusinessSystem")
+    
+    
+    return
+}
+
+func NewModifyTDEMBusinessSystemResponse() (response *ModifyTDEMBusinessSystemResponse) {
+    response = &ModifyTDEMBusinessSystemResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTDEMBusinessSystem
+// 修改业务系统名称或描述。越权 UnauthorizedOperation；不存在或已删除 ResourceNotFound。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyTDEMBusinessSystem(request *ModifyTDEMBusinessSystemRequest) (response *ModifyTDEMBusinessSystemResponse, err error) {
+    return c.ModifyTDEMBusinessSystemWithContext(context.Background(), request)
+}
+
+// ModifyTDEMBusinessSystem
+// 修改业务系统名称或描述。越权 UnauthorizedOperation；不存在或已删除 ResourceNotFound。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyTDEMBusinessSystemWithContext(ctx context.Context, request *ModifyTDEMBusinessSystemRequest) (response *ModifyTDEMBusinessSystemResponse, err error) {
+    if request == nil {
+        request = NewModifyTDEMBusinessSystemRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "ModifyTDEMBusinessSystem")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTDEMBusinessSystem require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTDEMBusinessSystemResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTDEMDialTaskRequest() (request *ModifyTDEMDialTaskRequest) {
+    request = &ModifyTDEMDialTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "ModifyTDEMDialTask")
+    
+    
+    return
+}
+
+func NewModifyTDEMDialTaskResponse() (response *ModifyTDEMDialTaskResponse) {
+    response = &ModifyTDEMDialTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTDEMDialTask
+// 修改拨测任务。未出现在请求中的字段保持原值。启动范围传空字符串表示清空该项。Type 和 ExecutionTime 创建后不可修改。暂停和恢复通过 Status 完成，不提供单独的状态接口。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyTDEMDialTask(request *ModifyTDEMDialTaskRequest) (response *ModifyTDEMDialTaskResponse, err error) {
+    return c.ModifyTDEMDialTaskWithContext(context.Background(), request)
+}
+
+// ModifyTDEMDialTask
+// 修改拨测任务。未出现在请求中的字段保持原值。启动范围传空字符串表示清空该项。Type 和 ExecutionTime 创建后不可修改。暂停和恢复通过 Status 完成，不提供单独的状态接口。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyTDEMDialTaskWithContext(ctx context.Context, request *ModifyTDEMDialTaskRequest) (response *ModifyTDEMDialTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyTDEMDialTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "ModifyTDEMDialTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTDEMDialTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTDEMDialTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTDEMFieldTransformRuleRequest() (request *ModifyTDEMFieldTransformRuleRequest) {
+    request = &ModifyTDEMFieldTransformRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "ModifyTDEMFieldTransformRule")
+    
+    
+    return
+}
+
+func NewModifyTDEMFieldTransformRuleResponse() (response *ModifyTDEMFieldTransformRuleResponse) {
+    response = &ModifyTDEMFieldTransformRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTDEMFieldTransformRule
+// 按规则 Id 修改字段值替换规则。替代已废弃的 ModifyFieldTransformRule；AppId 为 string。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyTDEMFieldTransformRule(request *ModifyTDEMFieldTransformRuleRequest) (response *ModifyTDEMFieldTransformRuleResponse, err error) {
+    return c.ModifyTDEMFieldTransformRuleWithContext(context.Background(), request)
+}
+
+// ModifyTDEMFieldTransformRule
+// 按规则 Id 修改字段值替换规则。替代已废弃的 ModifyFieldTransformRule；AppId 为 string。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyTDEMFieldTransformRuleWithContext(ctx context.Context, request *ModifyTDEMFieldTransformRuleRequest) (response *ModifyTDEMFieldTransformRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyTDEMFieldTransformRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "ModifyTDEMFieldTransformRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTDEMFieldTransformRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTDEMFieldTransformRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTDEMFunnelRequest() (request *ModifyTDEMFunnelRequest) {
+    request = &ModifyTDEMFunnelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "ModifyTDEMFunnel")
+    
+    
+    return
+}
+
+func NewModifyTDEMFunnelResponse() (response *ModifyTDEMFunnelResponse) {
+    response = &ModifyTDEMFunnelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTDEMFunnel
+// 修改漏斗
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyTDEMFunnel(request *ModifyTDEMFunnelRequest) (response *ModifyTDEMFunnelResponse, err error) {
+    return c.ModifyTDEMFunnelWithContext(context.Background(), request)
+}
+
+// ModifyTDEMFunnel
+// 修改漏斗
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyTDEMFunnelWithContext(ctx context.Context, request *ModifyTDEMFunnelRequest) (response *ModifyTDEMFunnelResponse, err error) {
+    if request == nil {
+        request = NewModifyTDEMFunnelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "ModifyTDEMFunnel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTDEMFunnel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTDEMFunnelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTDEMSampleConfigRequest() (request *ModifyTDEMSampleConfigRequest) {
+    request = &ModifyTDEMSampleConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "ModifyTDEMSampleConfig")
+    
+    
+    return
+}
+
+func NewModifyTDEMSampleConfigResponse() (response *ModifyTDEMSampleConfigResponse) {
+    response = &ModifyTDEMSampleConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTDEMSampleConfig
+// 整页保存 Web 规则化采样文档：校验 → INSERT 快照 → UPSERT 当前行 → 刷新 Redis 下发缓存。不写 tdem_sample_rate。采样率 0–100、最多两位小数；规则 Conditions 不可为空；Types 含非闭集 key 返回 InvalidParameter。校验失败不写库。无 Restore/Import/Export/Diff。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyTDEMSampleConfig(request *ModifyTDEMSampleConfigRequest) (response *ModifyTDEMSampleConfigResponse, err error) {
+    return c.ModifyTDEMSampleConfigWithContext(context.Background(), request)
+}
+
+// ModifyTDEMSampleConfig
+// 整页保存 Web 规则化采样文档：校验 → INSERT 快照 → UPSERT 当前行 → 刷新 Redis 下发缓存。不写 tdem_sample_rate。采样率 0–100、最多两位小数；规则 Conditions 不可为空；Types 含非闭集 key 返回 InvalidParameter。校验失败不写库。无 Restore/Import/Export/Diff。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyTDEMSampleConfigWithContext(ctx context.Context, request *ModifyTDEMSampleConfigRequest) (response *ModifyTDEMSampleConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyTDEMSampleConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "ModifyTDEMSampleConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTDEMSampleConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTDEMSampleConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTDEMSampleRateRequest() (request *ModifyTDEMSampleRateRequest) {
+    request = &ModifyTDEMSampleRateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "ModifyTDEMSampleRate")
+    
+    
+    return
+}
+
+func NewModifyTDEMSampleRateResponse() (response *ModifyTDEMSampleRateResponse) {
+    response = &ModifyTDEMSampleRateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTDEMSampleRate
+// 设置或更新应用采集采样率；ReplaySampleRate 可选。替代已废弃的 ModifySampleRate；AppId 为 string。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyTDEMSampleRate(request *ModifyTDEMSampleRateRequest) (response *ModifyTDEMSampleRateResponse, err error) {
+    return c.ModifyTDEMSampleRateWithContext(context.Background(), request)
+}
+
+// ModifyTDEMSampleRate
+// 设置或更新应用采集采样率；ReplaySampleRate 可选。替代已废弃的 ModifySampleRate；AppId 为 string。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyTDEMSampleRateWithContext(ctx context.Context, request *ModifyTDEMSampleRateRequest) (response *ModifyTDEMSampleRateResponse, err error) {
+    if request == nil {
+        request = NewModifyTDEMSampleRateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "ModifyTDEMSampleRate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTDEMSampleRate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTDEMSampleRateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPreviewTDEMFunnelReportRequest() (request *PreviewTDEMFunnelReportRequest) {
+    request = &PreviewTDEMFunnelReportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "PreviewTDEMFunnelReport")
+    
+    
+    return
+}
+
+func NewPreviewTDEMFunnelReportResponse() (response *PreviewTDEMFunnelReportResponse) {
+    response = &PreviewTDEMFunnelReportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PreviewTDEMFunnelReport
+// 根据步骤配置直接生成漏斗预览报告（不保存漏斗，不需要FunnelId）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PreviewTDEMFunnelReport(request *PreviewTDEMFunnelReportRequest) (response *PreviewTDEMFunnelReportResponse, err error) {
+    return c.PreviewTDEMFunnelReportWithContext(context.Background(), request)
+}
+
+// PreviewTDEMFunnelReport
+// 根据步骤配置直接生成漏斗预览报告（不保存漏斗，不需要FunnelId）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PreviewTDEMFunnelReportWithContext(ctx context.Context, request *PreviewTDEMFunnelReportRequest) (response *PreviewTDEMFunnelReportResponse, err error) {
+    if request == nil {
+        request = NewPreviewTDEMFunnelReportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "PreviewTDEMFunnelReport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PreviewTDEMFunnelReport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPreviewTDEMFunnelReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResumeInstanceRequest() (request *ResumeInstanceRequest) {
     request = &ResumeInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7071,6 +14639,88 @@ func (c *Client) ResumeProjectWithContext(ctx context.Context, request *ResumePr
     request.SetContext(ctx)
     
     response = NewResumeProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResumeTDEMApplicationRequest() (request *ResumeTDEMApplicationRequest) {
+    request = &ResumeTDEMApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "ResumeTDEMApplication")
+    
+    
+    return
+}
+
+func NewResumeTDEMApplicationResponse() (response *ResumeTDEMApplicationResponse) {
+    response = &ResumeTDEMApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResumeTDEMApplication
+// 恢复已停止的应用，Status 变为 2。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ResumeTDEMApplication(request *ResumeTDEMApplicationRequest) (response *ResumeTDEMApplicationResponse, err error) {
+    return c.ResumeTDEMApplicationWithContext(context.Background(), request)
+}
+
+// ResumeTDEMApplication
+// 恢复已停止的应用，Status 变为 2。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ResumeTDEMApplicationWithContext(ctx context.Context, request *ResumeTDEMApplicationRequest) (response *ResumeTDEMApplicationResponse, err error) {
+    if request == nil {
+        request = NewResumeTDEMApplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "ResumeTDEMApplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeTDEMApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResumeTDEMApplicationResponse()
     err = c.Send(request, response)
     return
 }
@@ -7199,6 +14849,300 @@ func (c *Client) StopProjectWithContext(ctx context.Context, request *StopProjec
     request.SetContext(ctx)
     
     response = NewStopProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopTDEMApplicationRequest() (request *StopTDEMApplicationRequest) {
+    request = &StopTDEMApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "StopTDEMApplication")
+    
+    
+    return
+}
+
+func NewStopTDEMApplicationResponse() (response *StopTDEMApplicationResponse) {
+    response = &StopTDEMApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopTDEMApplication
+// 停止应用采集，Status 变为 6。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StopTDEMApplication(request *StopTDEMApplicationRequest) (response *StopTDEMApplicationResponse, err error) {
+    return c.StopTDEMApplicationWithContext(context.Background(), request)
+}
+
+// StopTDEMApplication
+// 停止应用采集，Status 变为 6。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StopTDEMApplicationWithContext(ctx context.Context, request *StopTDEMApplicationRequest) (response *StopTDEMApplicationResponse, err error) {
+    if request == nil {
+        request = NewStopTDEMApplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "StopTDEMApplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopTDEMApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopTDEMApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadMiniProgramSourceRequest() (request *UploadMiniProgramSourceRequest) {
+    request = &UploadMiniProgramSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "UploadMiniProgramSource")
+    
+    
+    return
+}
+
+func NewUploadMiniProgramSourceResponse() (response *UploadMiniProgramSourceResponse) {
+    response = &UploadMiniProgramSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UploadMiniProgramSource
+// 上传微信小程序源码zip并同步编译回放包。控制台传FileBase64；zip需含app.json，跳过node_modules。同AppId+BundleHash且已ready则幂等。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UploadMiniProgramSource(request *UploadMiniProgramSourceRequest) (response *UploadMiniProgramSourceResponse, err error) {
+    return c.UploadMiniProgramSourceWithContext(context.Background(), request)
+}
+
+// UploadMiniProgramSource
+// 上传微信小程序源码zip并同步编译回放包。控制台传FileBase64；zip需含app.json，跳过node_modules。同AppId+BundleHash且已ready则幂等。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UploadMiniProgramSourceWithContext(ctx context.Context, request *UploadMiniProgramSourceRequest) (response *UploadMiniProgramSourceResponse, err error) {
+    if request == nil {
+        request = NewUploadMiniProgramSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "UploadMiniProgramSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadMiniProgramSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUploadMiniProgramSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadSymbolArtifactRequest() (request *UploadSymbolArtifactRequest) {
+    request = &UploadSymbolArtifactRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "UploadSymbolArtifact")
+    
+    
+    return
+}
+
+func NewUploadSymbolArtifactResponse() (response *UploadSymbolArtifactResponse) {
+    response = &UploadSymbolArtifactResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UploadSymbolArtifact
+// 登记已上传的符号制品。请先获取上传凭证并将文件上传到 COS。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UploadSymbolArtifact(request *UploadSymbolArtifactRequest) (response *UploadSymbolArtifactResponse, err error) {
+    return c.UploadSymbolArtifactWithContext(context.Background(), request)
+}
+
+// UploadSymbolArtifact
+// 登记已上传的符号制品。请先获取上传凭证并将文件上传到 COS。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UploadSymbolArtifactWithContext(ctx context.Context, request *UploadSymbolArtifactRequest) (response *UploadSymbolArtifactResponse, err error) {
+    if request == nil {
+        request = NewUploadSymbolArtifactRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "UploadSymbolArtifact")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadSymbolArtifact require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUploadSymbolArtifactResponse()
     err = c.Send(request, response)
     return
 }

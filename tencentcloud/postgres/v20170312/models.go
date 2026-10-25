@@ -441,176 +441,128 @@ type ClassInfo struct {
 
 // Predefined struct for user
 type CloneDBInstanceRequestParams struct {
-	// 克隆的源实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>克隆的源实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
+	// <p>售卖规格码。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/409/89019">DescribeClasses</a>的返回值中的SpecCode字段来获取。</p>
 	SpecCode *string `json:"SpecCode,omitnil,omitempty" name:"SpecCode"`
 
-	// 实例磁盘容量大小，设置步长限制为10。单位：GB。
+	// <p>实例磁盘容量大小，设置步长限制为10。单位：GB。</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 购买时长，单位：月。
-	// 
-	// - 预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-	// - 后付费：只支持1
+	// <p>购买时长，单位：月。</p><ul><li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li><li>后付费：只支持1</li></ul>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 续费标记。仅当计费模式为预付费时生效。
-	// 枚举值：
-	// 
-	// - 0：手动续费
-	// - 1：自动续费
-	// 
-	// 默认值：0
+	// <p>续费标记。仅当计费模式为预付费时生效。<br>枚举值：</p><ul><li>0：手动续费</li><li>1：自动续费</li></ul><p>默认值：0</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
+	// <p>私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/1372">DescribeVpcEx</a> ，从接口返回中的unVpcId字段获取。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
+	// <p>私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets </a>，从接口返回中的unSubnetId字段获取。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 新购的实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"，不指定实例名称则默认显示"源实例名-Copy"。
+	// <p>新购的实例名称，仅支持长度小于60的中文/英文/数字/&quot;_&quot;/&quot;-&quot;，不指定实例名称则默认显示&quot;源实例名-Copy&quot;。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例计费类型，目前支持：
-	// 
-	// - PREPAID：预付费，即包年包月
-	// - POSTPAID_BY_HOUR：后付费，即按量计费
-	// 
-	// 默认值：PREPAID
+	// <p>实例计费类型，目前支持：</p><ul><li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：后付费，即按量计费</li></ul><p>默认值：PREPAID</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 实例所属安全组。该参数可以通过调用[DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)的返回值中的SecurityGroupId字段来获取。若不指定该参数，则绑定默认安全组。
+	// <p>实例所属安全组。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a>的返回值中的SecurityGroupId字段来获取。若不指定该参数，则绑定默认安全组。</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 项目ID。默认值为0，表示所属默认项目。
+	// <p>项目ID。默认值为0，表示所属默认项目。</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
+	// <p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p>
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 实例节点部署信息，必须填写主备节点可用区。支持多可用区部署时需要指定每个节点的部署可用区信息。
-	// 可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
+	// <p>实例节点部署信息，必须填写主备节点可用区。支持多可用区部署时需要指定每个节点的部署可用区信息。<br>可用区信息可以通过调用 <a href="https://cloud.tencent.com/document/api/409/16769">DescribeZones</a> 接口的返回值中的Zone字段来获取。</p>
 	DBNodeSet []*DBNode `json:"DBNodeSet,omitnil,omitempty" name:"DBNodeSet"`
 
-	// 是否自动使用代金券：
-	// 
-	// - 0：否
-	// - 1：是
-	// 
-	// 默认值：0
+	// <p>是否自动使用代金券：</p><ul><li>0：否</li><li>1：是</li></ul><p>默认值：0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID列表。
+	// <p>代金券ID列表。</p>
 	VoucherIds *string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// 活动ID。
+	// <p>活动ID。</p>
 	ActivityId *int64 `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
 
-	// 基础备份集ID。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。
+	// <p>基础备份集ID。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。</p>
 	BackupSetId *string `json:"BackupSetId,omitnil,omitempty" name:"BackupSetId"`
 
-	// 恢复时间点。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。
+	// <p>恢复时间点。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。</p>
 	RecoveryTargetTime *string `json:"RecoveryTargetTime,omitnil,omitempty" name:"RecoveryTargetTime"`
 
-	// 主从同步方式，支持： 
-	// <li>Semi-sync：半同步</li>
-	// <li>Async：异步</li>
-	// 主实例默认值：Semi-sync
-	// 只读实例默认值：Async
+	// <p>主从同步方式，支持： </p><li>Semi-sync：半同步</li><li>Async：异步</li>主实例默认值：Semi-sync只读实例默认值：Async
 	SyncMode *string `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
 
-	// 实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。
+	// <p>实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 }
 
 type CloneDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 克隆的源实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>克隆的源实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
+	// <p>售卖规格码。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/409/89019">DescribeClasses</a>的返回值中的SpecCode字段来获取。</p>
 	SpecCode *string `json:"SpecCode,omitnil,omitempty" name:"SpecCode"`
 
-	// 实例磁盘容量大小，设置步长限制为10。单位：GB。
+	// <p>实例磁盘容量大小，设置步长限制为10。单位：GB。</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 购买时长，单位：月。
-	// 
-	// - 预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-	// - 后付费：只支持1
+	// <p>购买时长，单位：月。</p><ul><li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li><li>后付费：只支持1</li></ul>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 续费标记。仅当计费模式为预付费时生效。
-	// 枚举值：
-	// 
-	// - 0：手动续费
-	// - 1：自动续费
-	// 
-	// 默认值：0
+	// <p>续费标记。仅当计费模式为预付费时生效。<br>枚举值：</p><ul><li>0：手动续费</li><li>1：自动续费</li></ul><p>默认值：0</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
+	// <p>私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/1372">DescribeVpcEx</a> ，从接口返回中的unVpcId字段获取。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
+	// <p>私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets </a>，从接口返回中的unSubnetId字段获取。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 新购的实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"，不指定实例名称则默认显示"源实例名-Copy"。
+	// <p>新购的实例名称，仅支持长度小于60的中文/英文/数字/&quot;_&quot;/&quot;-&quot;，不指定实例名称则默认显示&quot;源实例名-Copy&quot;。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例计费类型，目前支持：
-	// 
-	// - PREPAID：预付费，即包年包月
-	// - POSTPAID_BY_HOUR：后付费，即按量计费
-	// 
-	// 默认值：PREPAID
+	// <p>实例计费类型，目前支持：</p><ul><li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：后付费，即按量计费</li></ul><p>默认值：PREPAID</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 实例所属安全组。该参数可以通过调用[DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)的返回值中的SecurityGroupId字段来获取。若不指定该参数，则绑定默认安全组。
+	// <p>实例所属安全组。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a>的返回值中的SecurityGroupId字段来获取。若不指定该参数，则绑定默认安全组。</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 项目ID。默认值为0，表示所属默认项目。
+	// <p>项目ID。默认值为0，表示所属默认项目。</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
+	// <p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p>
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 实例节点部署信息，必须填写主备节点可用区。支持多可用区部署时需要指定每个节点的部署可用区信息。
-	// 可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
+	// <p>实例节点部署信息，必须填写主备节点可用区。支持多可用区部署时需要指定每个节点的部署可用区信息。<br>可用区信息可以通过调用 <a href="https://cloud.tencent.com/document/api/409/16769">DescribeZones</a> 接口的返回值中的Zone字段来获取。</p>
 	DBNodeSet []*DBNode `json:"DBNodeSet,omitnil,omitempty" name:"DBNodeSet"`
 
-	// 是否自动使用代金券：
-	// 
-	// - 0：否
-	// - 1：是
-	// 
-	// 默认值：0
+	// <p>是否自动使用代金券：</p><ul><li>0：否</li><li>1：是</li></ul><p>默认值：0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID列表。
+	// <p>代金券ID列表。</p>
 	VoucherIds *string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// 活动ID。
+	// <p>活动ID。</p>
 	ActivityId *int64 `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
 
-	// 基础备份集ID。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。
+	// <p>基础备份集ID。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。</p>
 	BackupSetId *string `json:"BackupSetId,omitnil,omitempty" name:"BackupSetId"`
 
-	// 恢复时间点。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。
+	// <p>恢复时间点。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。</p>
 	RecoveryTargetTime *string `json:"RecoveryTargetTime,omitnil,omitempty" name:"RecoveryTargetTime"`
 
-	// 主从同步方式，支持： 
-	// <li>Semi-sync：半同步</li>
-	// <li>Async：异步</li>
-	// 主实例默认值：Semi-sync
-	// 只读实例默认值：Async
+	// <p>主从同步方式，支持： </p><li>Semi-sync：半同步</li><li>Async：异步</li>主实例默认值：Semi-sync只读实例默认值：Async
 	SyncMode *string `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
 
-	// 实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。
+	// <p>实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 }
 
@@ -654,13 +606,13 @@ func (r *CloneDBInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CloneDBInstanceResponseParams struct {
-	// 订单号。
+	// <p>订单号。</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
-	// 订单流水号。
+	// <p>订单流水号。</p>
 	BillId *string `json:"BillId,omitnil,omitempty" name:"BillId"`
 
-	// 克隆出的新实例ID，当前只支持后付费返回该值。
+	// <p>克隆出的新实例ID，当前只支持后付费返回该值。</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4715,26 +4667,26 @@ func (r *DescribeClassesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloneDBInstanceSpecRequestParams struct {
-	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 基础备份集ID，可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
+	// <p>基础备份集ID，可通过<a href="https://cloud.tencent.com/document/api/409/89022">DescribeBaseBackups</a>接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。</p>
 	BackupSetId *string `json:"BackupSetId,omitnil,omitempty" name:"BackupSetId"`
 
-	// 恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。
+	// <p>恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。</p>
 	RecoveryTargetTime *string `json:"RecoveryTargetTime,omitnil,omitempty" name:"RecoveryTargetTime"`
 }
 
 type DescribeCloneDBInstanceSpecRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 基础备份集ID，可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
+	// <p>基础备份集ID，可通过<a href="https://cloud.tencent.com/document/api/409/89022">DescribeBaseBackups</a>接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。</p>
 	BackupSetId *string `json:"BackupSetId,omitnil,omitempty" name:"BackupSetId"`
 
-	// 恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。
+	// <p>恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。</p>
 	RecoveryTargetTime *string `json:"RecoveryTargetTime,omitnil,omitempty" name:"RecoveryTargetTime"`
 }
 
@@ -4761,10 +4713,10 @@ func (r *DescribeCloneDBInstanceSpecRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloneDBInstanceSpecResponseParams struct {
-	// 可购买的最小规格码。
+	// <p>可购买的最小规格码。</p>
 	MinSpecCode *string `json:"MinSpecCode,omitnil,omitempty" name:"MinSpecCode"`
 
-	// 可购买的最小磁盘容量，单位GB。
+	// <p>可购买的最小磁盘容量，单位GB。</p>
 	MinStorage *int64 `json:"MinStorage,omitnil,omitempty" name:"MinStorage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

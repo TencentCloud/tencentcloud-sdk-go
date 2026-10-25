@@ -299,6 +299,50 @@ type AlarmGroup struct {
 	ChannelType *int64 `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
 }
 
+type AssetTagVote struct {
+	// 主键ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 资产类型，取值参考AssetType定义，如CATALOG、SCHEMA、TABLE、VIEW、MODEL、VOLUME、FUNCTION等
+	PropertyType *string `json:"PropertyType,omitnil,omitempty" name:"PropertyType"`
+
+	// 资产ID
+	PropertyId *string `json:"PropertyId,omitnil,omitempty" name:"PropertyId"`
+
+	// 标签ID
+	LabelId *string `json:"LabelId,omitnil,omitempty" name:"LabelId"`
+
+	// 标签名称
+	LabelName *string `json:"LabelName,omitnil,omitempty" name:"LabelName"`
+
+	// 标签值ID
+	LabelValueId *string `json:"LabelValueId,omitnil,omitempty" name:"LabelValueId"`
+
+	// 标签值
+	LabelValue *string `json:"LabelValue,omitnil,omitempty" name:"LabelValue"`
+
+	// 创建人
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 修改者
+	Modifier *string `json:"Modifier,omitnil,omitempty" name:"Modifier"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// 所有者账号
+	OwnerAccount *string `json:"OwnerAccount,omitnil,omitempty" name:"OwnerAccount"`
+
+	// 标签类型，取值：0=未知，1=治理标签，2=自定义标签，3=属性标签，4=脱敏标签
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 是否删除
+	Deleted *bool `json:"Deleted,omitnil,omitempty" name:"Deleted"`
+}
+
 type AsyncActionRsp struct {
 	// 多个操作项的结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -419,6 +463,25 @@ type Catalog struct {
 	// <p>连接侧数据目录名或数据库名（仅分析版三段式数据源有值，二段式数据源为空字符串）。Doris/StarRocks/TChouse-D 等 MySQL 内核三段式数据源：external catalog 名称；PostgreSQL/Tencent PG/GaussDB/Hologres 等 PG 内核三段式数据源：databaseName；MySQL 等二段式数据源：空字符串。注意：此字段仅分析版（CatalogSource=CONNECTION）有效，专业版（METALAKE）不填充。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectionCatalogName *string `json:"ConnectionCatalogName,omitnil,omitempty" name:"ConnectionCatalogName"`
+}
+
+type ColumnBrief struct {
+	// 字段名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 字段类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 描述配置
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+type ColumnErrorMessages struct {
+	// 字段名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 错误原因
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 
 type ColumnInfo struct {
@@ -569,50 +632,50 @@ type ConsoleUserInfo struct {
 
 // Predefined struct for user
 type CreateCatalogRequestParams struct {
-	// catalog名称
+	// <p>catalog名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// catalog类型, 可选值TABLE、MODEL、VOLUME
+	// <p>catalog类型, 可选值TABLE、MODEL、VOLUME</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 工作空间唯一id
+	// <p>工作空间唯一id</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 描述
+	// <p>描述</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// connection 的 ID
+	// <p>connection 的 ID，通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（融合版新增字段），取值参考 CatalogSourceEnum：METALAKE（专业版）/ CONNECTION（分析版），不传时默认按 METALAKE 处理
+	// <p>数据目录来源，可选（融合版新增字段），取值参考 CatalogSourceEnum：METALAKE（专业版）/ CONNECTION（分析版），不传时默认按 METALAKE 处理</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 
-	// 连接侧数据目录名或数据库名，三段式数据源必填，二段式数据源（如 MySQL）不填。Doris/StarRocks/TChouse-D 等 MySQL 内核三段式数据源填写 external catalog 名称；PostgreSQL/Tencent PG/GaussDB/Hologres 等 PG 内核三段式数据源填写 databaseName；MySQL 等二段式数据源不填。
+	// <p>连接侧数据目录名或数据库名，三段式数据源必填，二段式数据源（如 MySQL）不填。Doris/StarRocks/TChouse-D 等 MySQL 内核三段式数据源填写 external catalog 名称；PostgreSQL/Tencent PG/GaussDB/Hologres 等 PG 内核三段式数据源填写 databaseName；MySQL 等二段式数据源不填。</p>
 	ConnectionCatalogName *string `json:"ConnectionCatalogName,omitnil,omitempty" name:"ConnectionCatalogName"`
 }
 
 type CreateCatalogRequest struct {
 	*tchttp.BaseRequest
 	
-	// catalog名称
+	// <p>catalog名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// catalog类型, 可选值TABLE、MODEL、VOLUME
+	// <p>catalog类型, 可选值TABLE、MODEL、VOLUME</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 工作空间唯一id
+	// <p>工作空间唯一id</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 描述
+	// <p>描述</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// connection 的 ID
+	// <p>connection 的 ID，通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（融合版新增字段），取值参考 CatalogSourceEnum：METALAKE（专业版）/ CONNECTION（分析版），不传时默认按 METALAKE 处理
+	// <p>数据目录来源，可选（融合版新增字段），取值参考 CatalogSourceEnum：METALAKE（专业版）/ CONNECTION（分析版），不传时默认按 METALAKE 处理</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 
-	// 连接侧数据目录名或数据库名，三段式数据源必填，二段式数据源（如 MySQL）不填。Doris/StarRocks/TChouse-D 等 MySQL 内核三段式数据源填写 external catalog 名称；PostgreSQL/Tencent PG/GaussDB/Hologres 等 PG 内核三段式数据源填写 databaseName；MySQL 等二段式数据源不填。
+	// <p>连接侧数据目录名或数据库名，三段式数据源必填，二段式数据源（如 MySQL）不填。Doris/StarRocks/TChouse-D 等 MySQL 内核三段式数据源填写 external catalog 名称；PostgreSQL/Tencent PG/GaussDB/Hologres 等 PG 内核三段式数据源填写 databaseName；MySQL 等二段式数据源不填。</p>
 	ConnectionCatalogName *string `json:"ConnectionCatalogName,omitnil,omitempty" name:"ConnectionCatalogName"`
 }
 
@@ -643,7 +706,7 @@ func (r *CreateCatalogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCatalogResponseParams struct {
-	// 创建catalog响应
+	// <p>创建catalog响应</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CreateCatalogRsp `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -954,45 +1017,304 @@ type CreateFolderRsp struct {
 }
 
 // Predefined struct for user
-type CreateSchemaRequestParams struct {
-	// catalog名称
+type CreateLocationRequestParams struct {
+
+}
+
+type CreateLocationRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLocationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLocationResponseParams `json:"Response"`
+}
+
+func (r *CreateLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateModelRequestParams struct {
+	// catalog 信息
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 
-	// schema名称
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+	// schema 信息
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 模型名称
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// 调用时所在workspace唯一id
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 描述
+	// 描述信息
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 数据源连接ID，可选（融合版新增字段）。分析版catalog不支持创建schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误
+	// 扩展参数
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+}
+
+type CreateModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// catalog 信息
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// schema 信息
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 模型名称
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 调用时所在workspace唯一id
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 描述信息
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 扩展参数
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+}
+
+func (r *CreateModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "ModelName")
+	delete(f, "WorkspaceId")
+	delete(f, "Comment")
+	delete(f, "Properties")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateModelResponseParams struct {
+	// 创建返回模型信息
+	Data *CreateModelRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateModelResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateModelResponseParams `json:"Response"`
+}
+
+func (r *CreateModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateModelRsp struct {
+	// 模型信息
+	Model *ModelInfo `json:"Model,omitnil,omitempty" name:"Model"`
+}
+
+// Predefined struct for user
+type CreateModelVersionRequestParams struct {
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>地址</p>
+	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>别名列表</p>
+	Aliases []*string `json:"Aliases,omitnil,omitempty" name:"Aliases"`
+
+	// <p>描述</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>扩展信息</p>
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+}
+
+type CreateModelVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>地址</p>
+	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>别名列表</p>
+	Aliases []*string `json:"Aliases,omitnil,omitempty" name:"Aliases"`
+
+	// <p>描述</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>扩展信息</p>
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+}
+
+func (r *CreateModelVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "ModelName")
+	delete(f, "Uri")
+	delete(f, "WorkspaceId")
+	delete(f, "Aliases")
+	delete(f, "Comment")
+	delete(f, "Properties")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateModelVersionResponseParams struct {
+	// <p>创建返回结果</p>
+	Data *CreateModelVersionRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateModelVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateModelVersionResponseParams `json:"Response"`
+}
+
+func (r *CreateModelVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateModelVersionRsp struct {
+	// 创建成功
+	Created *bool `json:"Created,omitnil,omitempty" name:"Created"`
+}
+
+// Predefined struct for user
+type CreateSchemaRequestParams struct {
+	// <p>catalog名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>描述</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>数据源连接ID，可选（融合版新增字段）。分析版catalog不支持创建schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
 type CreateSchemaRequest struct {
 	*tchttp.BaseRequest
 	
-	// catalog名称
+	// <p>catalog名称</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 
-	// schema名称
+	// <p>schema名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 调用时所在workspace唯一id
+	// <p>调用时所在workspace唯一id</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 描述
+	// <p>描述</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 数据源连接ID，可选（融合版新增字段）。分析版catalog不支持创建schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误
+	// <p>数据源连接ID，可选（融合版新增字段）。分析版catalog不支持创建schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
@@ -1022,7 +1344,7 @@ func (r *CreateSchemaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSchemaResponseParams struct {
-	// schema信息
+	// <p>schema信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CreateSchemaRsp `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -1050,6 +1372,117 @@ type CreateSchemaRsp struct {
 	// schema信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Schema *Schema `json:"Schema,omitnil,omitempty" name:"Schema"`
+}
+
+// Predefined struct for user
+type CreateVolumeRequestParams struct {
+	// catalog 信息
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// schema 信息
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 数据卷名称
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// 调用时所在workspace唯一id
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 描述信息
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 扩展参数
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// 存储位置
+	StorageLocation *string `json:"StorageLocation,omitnil,omitempty" name:"StorageLocation"`
+
+	// 数据卷类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type CreateVolumeRequest struct {
+	*tchttp.BaseRequest
+	
+	// catalog 信息
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// schema 信息
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 数据卷名称
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// 调用时所在workspace唯一id
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 描述信息
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 扩展参数
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// 存储位置
+	StorageLocation *string `json:"StorageLocation,omitnil,omitempty" name:"StorageLocation"`
+
+	// 数据卷类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *CreateVolumeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVolumeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "VolumeName")
+	delete(f, "WorkspaceId")
+	delete(f, "Comment")
+	delete(f, "Properties")
+	delete(f, "StorageLocation")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVolumeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVolumeResponseParams struct {
+	// 创建返回数据卷信息
+	Data *CreateVolumeRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVolumeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVolumeResponseParams `json:"Response"`
+}
+
+func (r *CreateVolumeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVolumeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVolumeRsp struct {
+	// 数据卷信息
+	Volume *Volume `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
 // Predefined struct for user
@@ -1405,32 +1838,32 @@ type DataMaskStrategyInfo struct {
 
 // Predefined struct for user
 type DeleteCatalogRequestParams struct {
-	// 数据目录名
+	// <p>数据目录名</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 
-	// 调用时所在workspace唯一id
+	// <p>调用时所在workspace唯一id</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
 type DeleteCatalogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据目录名
+	// <p>数据目录名</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 
-	// 调用时所在workspace唯一id
+	// <p>调用时所在workspace唯一id</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
@@ -1458,7 +1891,7 @@ func (r *DeleteCatalogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCatalogResponseParams struct {
-	// 操作结果
+	// <p>操作结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DeleteCatalogRsp `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -1709,39 +2142,191 @@ type DeleteFolderRsp struct {
 }
 
 // Predefined struct for user
-type DeleteSchemaRequestParams struct {
-	// 数据目录名
+type DeleteLocationRequestParams struct {
+	// 存储位置名，必填
+	LocationName *string `json:"LocationName,omitnil,omitempty" name:"LocationName"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+type DeleteLocationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 存储位置名，必填
+	LocationName *string `json:"LocationName,omitnil,omitempty" name:"LocationName"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+func (r *DeleteLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LocationName")
+	delete(f, "WorkspaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLocationResponseParams struct {
+	// 返回结果
+	Data *DeleteLocationRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLocationResponseParams `json:"Response"`
+}
+
+func (r *DeleteLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLocationRsp struct {
+	// 是否成功删除
+	Deleted *bool `json:"Deleted,omitnil,omitempty" name:"Deleted"`
+}
+
+// Predefined struct for user
+type DeleteModelRequestParams struct {
+	// <p>数据目录名称</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 
-	// 数据库名
+	// <p>schema名称</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 调用时所在workspace唯一id
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+type DeleteModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+func (r *DeleteModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "ModelName")
+	delete(f, "WorkspaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteModelResponseParams struct {
+	// <p>删除结果</p>
+	Data *DeleteModelRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteModelResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteModelResponseParams `json:"Response"`
+}
+
+func (r *DeleteModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteModelRsp struct {
+	// 是否删除成功
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+}
+
+// Predefined struct for user
+type DeleteSchemaRequestParams struct {
+	// <p>数据目录名</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>调用时所在workspace唯一id</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误
+	// <p>数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
 type DeleteSchemaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据目录名
+	// <p>数据目录名</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 
-	// 数据库名
+	// <p>数据库名</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 调用时所在workspace唯一id
+	// <p>调用时所在workspace唯一id</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误
+	// <p>数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
@@ -1770,7 +2355,7 @@ func (r *DeleteSchemaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteSchemaResponseParams struct {
-	// 操作结果
+	// <p>操作结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DeleteSchemaRsp `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -1802,44 +2387,44 @@ type DeleteSchemaRsp struct {
 
 // Predefined struct for user
 type DeleteTableRequestParams struct {
-	// 数据目录名
+	// <p>数据目录名</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 
-	// 数据库名
+	// <p>数据库名</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 表名
+	// <p>表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 调用时所在workspace唯一id
+	// <p>调用时所在workspace唯一id</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除表，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误
+	// <p>数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除表，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
 type DeleteTableRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据目录名
+	// <p>数据目录名</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 
-	// 数据库名
+	// <p>数据库名</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 表名
+	// <p>表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 调用时所在workspace唯一id
+	// <p>调用时所在workspace唯一id</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除表，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误
+	// <p>数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除表，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
@@ -1869,7 +2454,7 @@ func (r *DeleteTableRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTableResponseParams struct {
-	// 操作结果
+	// <p>操作结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DeleteTableRsp `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -1896,6 +2481,174 @@ func (r *DeleteTableResponse) FromJsonString(s string) error {
 type DeleteTableRsp struct {
 	// 操作结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+}
+
+// Predefined struct for user
+type DeleteViewRequestParams struct {
+	// 数据目录名
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 数据库名
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// View名称
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// 调用时所在workspace唯一id
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+type DeleteViewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据目录名
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 数据库名
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// View名称
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// 调用时所在workspace唯一id
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+func (r *DeleteViewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteViewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "ViewName")
+	delete(f, "WorkspaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteViewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteViewResponseParams struct {
+	// 操作结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DeleteViewRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteViewResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteViewResponseParams `json:"Response"`
+}
+
+func (r *DeleteViewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteViewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteViewRsp struct {
+	// 操作结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+}
+
+// Predefined struct for user
+type DeleteVolumeRequestParams struct {
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>数据卷名称</p>
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+type DeleteVolumeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>数据卷名称</p>
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+func (r *DeleteVolumeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVolumeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "VolumeName")
+	delete(f, "WorkspaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVolumeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVolumeResponseParams struct {
+	// <p>删除结果</p>
+	Data *DeleteVolumeRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVolumeResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVolumeResponseParams `json:"Response"`
+}
+
+func (r *DeleteVolumeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVolumeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVolumeRsp struct {
+	// 是否删除成功
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 }
 
@@ -2128,21 +2881,67 @@ type DictItem struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type FeatureTable struct {
+	// 表名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 全称
+	FullName *string `json:"FullName,omitnil,omitempty" name:"FullName"`
+
+	// 资产描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 修改时间，iso8601格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// 创建时间，iso8601格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 责任人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Owner *Owner `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 工作空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 资产ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetGuid *string `json:"AssetGuid,omitnil,omitempty" name:"AssetGuid"`
+}
+
 type FeatureTableDetail struct {
-	// 特征表主键字段列表
+	// <p>特征表主键字段列表</p>
 	PrimaryKeys []*string `json:"PrimaryKeys,omitnil,omitempty" name:"PrimaryKeys"`
 
-	// 特征表时间戳字段名称
+	// <p>特征表时间戳字段名称</p>
 	TimestampField *string `json:"TimestampField,omitnil,omitempty" name:"TimestampField"`
 
-	// 在线特征表对应的来源表名称（离线表）
+	// <p>在线特征表对应的来源表名称（离线表）</p>
 	SourceTableName *string `json:"SourceTableName,omitnil,omitempty" name:"SourceTableName"`
 
-	// 在线特征表关联的工作流ID
+	// <p>在线特征表关联的工作流ID</p>
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 离线特征表对应生成的在线特征表名称
+	// <p>离线特征表对应生成的在线特征表名称</p>
 	OnlineTableName *string `json:"OnlineTableName,omitnil,omitempty" name:"OnlineTableName"`
+
+	// <p>离线特征表对应生成的在线特征表类型，取值：TENCENT_POSTGRESQL | REDIS），缺省 TENCENT_POSTGRESQL</p>
+	OnlineTableType *string `json:"OnlineTableType,omitnil,omitempty" name:"OnlineTableType"`
+
+	// <p>离线特征表对应生成的在线特征表ConnectionId</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 }
 
 type FetchOption struct {
@@ -2169,6 +2968,49 @@ type FetchOption struct {
 
 	// <p>是否返回字段关联的字典维度信息，默认不传，不返回</p>
 	FetchDimensions *bool `json:"FetchDimensions,omitnil,omitempty" name:"FetchDimensions"`
+}
+
+type FieldInfo struct {
+	// <p>字段名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>字段描述</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>字段类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>语言类型</p>
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+
+	// <p>字段内容或代码片段</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>字段采样值</p>
+	SampleValues []*string `json:"SampleValues,omitnil,omitempty" name:"SampleValues"`
+}
+
+type FieldTagInfo struct {
+	// 字段名称（必填）；清除标记场景（LabelId=-1）下为待清除字段名
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+
+	// <p>标签ID</p><p>特殊值：-1 表示「清除标记」，仅在 BatchAttachAssetTag 接口中生效：服务端会清除该 FieldName 下所有已有字段标签。使用 -1 时 FieldName 必填，其余字段可留空。</p>
+	LabelId *string `json:"LabelId,omitnil,omitempty" name:"LabelId"`
+
+	// 标签名称（可选）
+	LabelName *string `json:"LabelName,omitnil,omitempty" name:"LabelName"`
+
+	// <p>标签类型</p><p>枚举值：</p><ul><li>1：GOVERNANCE_LABEL：治理标签</li><li>2：CUSTOM_LABEL：自定义标签</li><li>3：PROPERTY_LABEL：属性标签</li><li>4：DESENSITIZATION_LABEL：脱敏标签</li></ul><p>字段打标规则：非脱敏标签（1/2/3）时 LabelValue 必填；脱敏标签（4）时 LabelValue 可为空</p>
+	LabelType *int64 `json:"LabelType,omitnil,omitempty" name:"LabelType"`
+
+	// 字段类型（可选），如 string、int、bigint 等
+	FieldType *string `json:"FieldType,omitnil,omitempty" name:"FieldType"`
+
+	// 标签值ID（可选）；非脱敏标签（LabelType!=4）建议填充；属性标签（LabelType=3）可为0；脱敏标签（LabelType=4）及清除标记（LabelId=-1）场景可留空
+	LabelValueId *string `json:"LabelValueId,omitnil,omitempty" name:"LabelValueId"`
+
+	// 标签值；非脱敏标签（LabelType!=4）必填，例如治理/自定义/属性标签均需携带业务语义值；脱敏标签（LabelType=4）及清除标记（LabelId=-1）场景可为空
+	LabelValue *string `json:"LabelValue,omitnil,omitempty" name:"LabelValue"`
 }
 
 type FileConfig struct {
@@ -2389,6 +3231,69 @@ type FolderLocator struct {
 	PathName *string `json:"PathName,omitnil,omitempty" name:"PathName"`
 }
 
+type Fragment struct {
+	// 字段名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 字段类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 表字段描述
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 片段内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 片段语言
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+}
+
+type FunctionInfo struct {
+	// <p>函数名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 函数类型，取值如JAVA、SCALA、PYTHON、SQL等
+	FunctionType *string `json:"FunctionType,omitnil,omitempty" name:"FunctionType"`
+
+	// 引擎类型，取值如SPARK、HIVE、PRESTO等
+	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// <p>类名</p>
+	ClassName *string `json:"ClassName,omitnil,omitempty" name:"ClassName"`
+
+	// <p>函数依赖的资源</p>
+	Resources []*FunctionResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// <p>描述</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>属性</p>
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// <p>审计信息</p>
+	Audit *Audit `json:"Audit,omitnil,omitempty" name:"Audit"`
+
+	// <p>owner信息</p>
+	MetaOwner *MetaOwner `json:"MetaOwner,omitnil,omitempty" name:"MetaOwner"`
+
+	// <p>资产全局唯一ID</p>
+	AssetGuid *string `json:"AssetGuid,omitnil,omitempty" name:"AssetGuid"`
+
+	// <p>当前用户对该实体的权限信息</p>
+	PermissionDetail *PermissionDetail `json:"PermissionDetail,omitnil,omitempty" name:"PermissionDetail"`
+
+	// <p>标签信息列表。注意：仅当请求中 FetchTags=true 时返回，默认不返回</p>
+	Tags []*CommonTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type FunctionResource struct {
+	// 资源类型，取值如file(文件)、jar(jar包)、archive(归档文件)等
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源路径
+	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+}
+
 // Predefined struct for user
 type GetCatalogRequestParams struct {
 	// <p>数据目录名</p>
@@ -2403,7 +3308,7 @@ type GetCatalogRequestParams struct {
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
 
-	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径</p>
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
 	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
@@ -2425,7 +3330,7 @@ type GetCatalogRequest struct {
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
 
-	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径</p>
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
 	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
@@ -2502,7 +3407,7 @@ type GetFileRequestParams struct {
 	// <p>是否返回文件内容。true 时 Storage.Content 返回 base64 内容，默认 false</p>
 	IncludeContent *bool `json:"IncludeContent,omitnil,omitempty" name:"IncludeContent"`
 
-	// <p>文件版本 ID。来源：ListFileVersions 接口返回的 VersionId。不传则读取最新版本</p>
+	// <p>文件版本 ID。来源：ListCodeFileVersions 接口返回的 VersionId。不传则读取最新版本</p>
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
 	// <p>文件完整路径，以 / 开头，如 /etl/daily/demo.ipynb。与 FileId 二选一</p>
@@ -2524,7 +3429,7 @@ type GetFileRequest struct {
 	// <p>是否返回文件内容。true 时 Storage.Content 返回 base64 内容，默认 false</p>
 	IncludeContent *bool `json:"IncludeContent,omitnil,omitempty" name:"IncludeContent"`
 
-	// <p>文件版本 ID。来源：ListFileVersions 接口返回的 VersionId。不传则读取最新版本</p>
+	// <p>文件版本 ID。来源：ListCodeFileVersions 接口返回的 VersionId。不传则读取最新版本</p>
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
 	// <p>文件完整路径，以 / 开头，如 /etl/daily/demo.ipynb。与 FileId 二选一</p>
@@ -2651,6 +3556,255 @@ type GetFolderRsp struct {
 }
 
 // Predefined struct for user
+type GetLocationRequestParams struct {
+	// 存储位置名，必填
+	LocationName *string `json:"LocationName,omitnil,omitempty" name:"LocationName"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+type GetLocationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 存储位置名，必填
+	LocationName *string `json:"LocationName,omitnil,omitempty" name:"LocationName"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+func (r *GetLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LocationName")
+	delete(f, "WorkspaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetLocationResponseParams struct {
+	// 返回结果
+	Data *GetLocationRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *GetLocationResponseParams `json:"Response"`
+}
+
+func (r *GetLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetLocationRsp struct {
+	// 存储位置详情
+	Location *LocationInfo `json:"Location,omitnil,omitempty" name:"Location"`
+}
+
+// Predefined struct for user
+type GetModelRequestParams struct {
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
+}
+
+type GetModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
+}
+
+func (r *GetModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "ModelName")
+	delete(f, "WorkspaceId")
+	delete(f, "FetchOption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetModelResponseParams struct {
+	// <p>获取模型结果</p>
+	Data *GetModelRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetModelResponse struct {
+	*tchttp.BaseResponse
+	Response *GetModelResponseParams `json:"Response"`
+}
+
+func (r *GetModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetModelRsp struct {
+	// 模型详情
+	Model *ModelInfo `json:"Model,omitnil,omitempty" name:"Model"`
+}
+
+// Predefined struct for user
+type GetModelVersionRequestParams struct {
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本号</p>
+	ModelVersion *int64 `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+type GetModelVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本号</p>
+	ModelVersion *int64 `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+func (r *GetModelVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetModelVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "ModelName")
+	delete(f, "ModelVersion")
+	delete(f, "WorkspaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetModelVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetModelVersionResponseParams struct {
+	// <p>获取模型结果</p>
+	Data *GetModelVersionRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetModelVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *GetModelVersionResponseParams `json:"Response"`
+}
+
+func (r *GetModelVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetModelVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetModelVersionRsp struct {
+	// 模型详情
+	ModelVersion *ModelVersionInfo `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+}
+
+// Predefined struct for user
 type GetSchemaRequestParams struct {
 	// <p>数据目录名</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
@@ -2664,10 +3818,10 @@ type GetSchemaRequestParams struct {
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
 
-	// 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
@@ -2686,10 +3840,10 @@ type GetSchemaRequest struct {
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
 
-	// 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
@@ -2766,10 +3920,10 @@ type GetTableRequestParams struct {
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
 
-	// 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
@@ -2791,10 +3945,10 @@ type GetTableRequest struct {
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
 
-	// 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
@@ -2866,10 +4020,10 @@ type GetTablesRequestParams struct {
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
 
-	// 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，要求所有FullNames属于同一catalog（分析版额外约束）；空/缺省→走专业版TcLake路径
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，要求所有FullNames属于同一catalog（分析版额外约束）；空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
@@ -2885,10 +4039,10 @@ type GetTablesRequest struct {
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
 
-	// 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，要求所有FullNames属于同一catalog（分析版额外约束）；空/缺省→走专业版TcLake路径
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，要求所有FullNames属于同一catalog（分析版额外约束）；空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
@@ -2944,6 +4098,188 @@ type GetTablesRsp struct {
 	// 表信息列表。注意：仅返回当前workspace有权限的catalog下的表，无权限的表会被静默跳过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*TableInfo `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
+type GetViewRequestParams struct {
+	// <p>数据目录名</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>View名称</p>
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
+}
+
+type GetViewRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>View名称</p>
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
+}
+
+func (r *GetViewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetViewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "ViewName")
+	delete(f, "WorkspaceId")
+	delete(f, "FetchOption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetViewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetViewResponseParams struct {
+	// <p>view详情</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *GetViewRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetViewResponse struct {
+	*tchttp.BaseResponse
+	Response *GetViewResponseParams `json:"Response"`
+}
+
+func (r *GetViewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetViewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetViewRsp struct {
+	// view详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	View *ViewInfo `json:"View,omitnil,omitempty" name:"View"`
+}
+
+// Predefined struct for user
+type GetVolumeRequestParams struct {
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>数据卷名称</p>
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
+}
+
+type GetVolumeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>数据卷名称</p>
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
+}
+
+func (r *GetVolumeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVolumeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "VolumeName")
+	delete(f, "WorkspaceId")
+	delete(f, "FetchOption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVolumeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetVolumeResponseParams struct {
+	// <p>获取volume详情</p>
+	Data *GetVolumeRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetVolumeResponse struct {
+	*tchttp.BaseResponse
+	Response *GetVolumeResponseParams `json:"Response"`
+}
+
+func (r *GetVolumeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVolumeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetVolumeRsp struct {
+	// volume详情
+	Volume *Volume `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
 // Predefined struct for user
@@ -3460,6 +4796,51 @@ type GroupUserInfo struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type Highlighting struct {
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 描述
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 片段
+	TextFragments []*Fragment `json:"TextFragments,omitnil,omitempty" name:"TextFragments"`
+}
+
+type HighlightingInfo struct {
+	// <p>资产名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
+
+	// <p>资产全名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullName *string `json:"FullName,omitnil,omitempty" name:"FullName"`
+
+	// <p>描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>代码片段</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeFragments []*Fragment `json:"CodeFragments,omitnil,omitempty" name:"CodeFragments"`
+
+	// <p>文本片段</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextFragments []*Fragment `json:"TextFragments,omitnil,omitempty" name:"TextFragments"`
+
+	// <p>标签(废弃)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>标签</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagFragments []*TagInfo `json:"TagFragments,omitnil,omitempty" name:"TagFragments"`
+
+	// <p>别名高亮片段列表。使用场景：资产别名命中关键词时，返回带 <em></em> 标签的高亮片段供前端渲染</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasFragments []*string `json:"AliasFragments,omitnil,omitempty" name:"AliasFragments"`
+}
+
 type Index struct {
 	// 字段键值类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3736,6 +5117,102 @@ type LabelBrief struct {
 	// 标签值ID，可通过标签相关接口获取
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelValueId *string `json:"LabelValueId,omitnil,omitempty" name:"LabelValueId"`
+}
+
+// Predefined struct for user
+type ListCatalogNamesRequestParams struct {
+	// <p>workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>最大结果条数，可选，默认10</p>
+	MaxResults *string `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>catalog类型，参考CatalogType(当前支持：TABLE、MODEL、VOLUME)，可选，不填默认查询所有类型</p>
+	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
+
+	// <p>数据目录来源筛选，取值参考CatalogSourceEnum(METALAKE/CONNECTION/SETATS)</p>
+	CatalogSources []*string `json:"CatalogSources,omitnil,omitempty" name:"CatalogSources"`
+}
+
+type ListCatalogNamesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>最大结果条数，可选，默认10</p>
+	MaxResults *string `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>catalog类型，参考CatalogType(当前支持：TABLE、MODEL、VOLUME)，可选，不填默认查询所有类型</p>
+	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
+
+	// <p>数据目录来源筛选，取值参考CatalogSourceEnum(METALAKE/CONNECTION/SETATS)</p>
+	CatalogSources []*string `json:"CatalogSources,omitnil,omitempty" name:"CatalogSources"`
+}
+
+func (r *ListCatalogNamesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListCatalogNamesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "MaxResults")
+	delete(f, "PageToken")
+	delete(f, "Types")
+	delete(f, "CatalogSources")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListCatalogNamesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListCatalogNamesResponseParams struct {
+	// <p>返回结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ListCatalogNamesRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListCatalogNamesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListCatalogNamesResponseParams `json:"Response"`
+}
+
+func (r *ListCatalogNamesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListCatalogNamesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListCatalogNamesRsp struct {
+	// 数据目录名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*NameIdentifier `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 下页分页token信息(base64编码，包含offset、snapshotId等)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextPageToken *string `json:"NextPageToken,omitnil,omitempty" name:"NextPageToken"`
 }
 
 // Predefined struct for user
@@ -4253,6 +5730,127 @@ type ListConsoleUsersRsp struct {
 	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
 }
 
+type ListFeatureTableResp struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 返回列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*FeatureTable `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 下一页token，为空表示没有更多数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextPageToken *string `json:"NextPageToken,omitnil,omitempty" name:"NextPageToken"`
+}
+
+// Predefined struct for user
+type ListFeatureTablesRequestParams struct {
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>关键字</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>Catalog目录列表</p>
+	CatalogNames []*string `json:"CatalogNames,omitnil,omitempty" name:"CatalogNames"`
+
+	// <p>标签列表</p>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>我负责的</p>
+	OwnerMe *bool `json:"OwnerMe,omitnil,omitempty" name:"OwnerMe"`
+
+	// <p>最大结果条数，可选，取值1～50</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>分页token信息(base64编码)，可选</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>排序，Name(CreateTime/ModifiedTime), Direction(Desc/Asc)</p>
+	OrderBys []*OrderBy `json:"OrderBys,omitnil,omitempty" name:"OrderBys"`
+}
+
+type ListFeatureTablesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>关键字</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>Catalog目录列表</p>
+	CatalogNames []*string `json:"CatalogNames,omitnil,omitempty" name:"CatalogNames"`
+
+	// <p>标签列表</p>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>我负责的</p>
+	OwnerMe *bool `json:"OwnerMe,omitnil,omitempty" name:"OwnerMe"`
+
+	// <p>最大结果条数，可选，取值1～50</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>分页token信息(base64编码)，可选</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>排序，Name(CreateTime/ModifiedTime), Direction(Desc/Asc)</p>
+	OrderBys []*OrderBy `json:"OrderBys,omitnil,omitempty" name:"OrderBys"`
+}
+
+func (r *ListFeatureTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListFeatureTablesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "Keyword")
+	delete(f, "CatalogNames")
+	delete(f, "Tags")
+	delete(f, "OwnerMe")
+	delete(f, "MaxResults")
+	delete(f, "PageToken")
+	delete(f, "OrderBys")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListFeatureTablesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListFeatureTablesResponseParams struct {
+	// <p>返回信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ListFeatureTableResp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListFeatureTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListFeatureTablesResponseParams `json:"Response"`
+}
+
+func (r *ListFeatureTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListFeatureTablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type ListFilesRequestParams struct {
 	// <p>工作空间id</p>
@@ -4383,6 +5981,212 @@ type ListFilesRsp struct {
 	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
 }
 
+// Predefined struct for user
+type ListLocationsRequestParams struct {
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>存储位置名匹配模式，支持SQL LIKE语法</p>
+	LocationNamePattern *string `json:"LocationNamePattern,omitnil,omitempty" name:"LocationNamePattern"`
+
+	// <p>是否基于快照分页</p>
+	SnapshotBased *bool `json:"SnapshotBased,omitnil,omitempty" name:"SnapshotBased"`
+
+	// <p>快照ID</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
+	// <p>页码，从1开始，可选，默认1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小，默认10，取值范围 1~500</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListLocationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>存储位置名匹配模式，支持SQL LIKE语法</p>
+	LocationNamePattern *string `json:"LocationNamePattern,omitnil,omitempty" name:"LocationNamePattern"`
+
+	// <p>是否基于快照分页</p>
+	SnapshotBased *bool `json:"SnapshotBased,omitnil,omitempty" name:"SnapshotBased"`
+
+	// <p>快照ID</p>
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
+	// <p>页码，从1开始，可选，默认1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小，默认10，取值范围 1~500</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListLocationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListLocationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "LocationNamePattern")
+	delete(f, "SnapshotBased")
+	delete(f, "SnapshotId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListLocationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListLocationsResponseParams struct {
+	// <p>返回结果</p>
+	Data *ListLocationsRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListLocationsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListLocationsResponseParams `json:"Response"`
+}
+
+func (r *ListLocationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListLocationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListLocationsRsp struct {
+	// 存储位置详情列表
+	Locations []*LocationInfo `json:"Locations,omitnil,omitempty" name:"Locations"`
+
+	// 结果总条数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 快照ID
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+}
+
+// Predefined struct for user
+type ListModelsRequestParams struct {
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>最大结果条数，默认10，取值1~10000</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>分页信息</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
+}
+
+type ListModelsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>最大结果条数，默认10，取值1~10000</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>分页信息</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
+}
+
+func (r *ListModelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListModelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "MaxResults")
+	delete(f, "WorkspaceId")
+	delete(f, "PageToken")
+	delete(f, "FetchOption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListModelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListModelsResponseParams struct {
+	// <p>返回信息</p>
+	Data *ListModelsRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListModelsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListModelsResponseParams `json:"Response"`
+}
+
+func (r *ListModelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListModelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListModelsRsp struct {
+	// 模型列表
+	Items []*ModelInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 总数量
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 分页令牌
+	NextPageToken *string `json:"NextPageToken,omitnil,omitempty" name:"NextPageToken"`
+}
+
 type ListPartition struct {
 	// 分区名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -4400,6 +6204,109 @@ type ListPartitioning struct {
 
 	// 分区
 	Assignments []*ListPartition `json:"Assignments,omitnil,omitempty" name:"Assignments"`
+}
+
+// Predefined struct for user
+type ListSchemaNamesRequestParams struct {
+	// <p>数据目录名，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>最大结果条数，可选，默认10</p>
+	MaxResults *string `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>数据源连接ID，可选（融合版新增字段）</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，取值参考CatalogSourceEnum：METALAKE/CONNECTION/SETATS</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+type ListSchemaNamesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>最大结果条数，可选，默认10</p>
+	MaxResults *string `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>数据源连接ID，可选（融合版新增字段）</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，取值参考CatalogSourceEnum：METALAKE/CONNECTION/SETATS</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+func (r *ListSchemaNamesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSchemaNamesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "WorkspaceId")
+	delete(f, "MaxResults")
+	delete(f, "PageToken")
+	delete(f, "ConnectionId")
+	delete(f, "CatalogSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSchemaNamesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListSchemaNamesResponseParams struct {
+	// <p>返回结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ListSchemaNamesRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListSchemaNamesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListSchemaNamesResponseParams `json:"Response"`
+}
+
+func (r *ListSchemaNamesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSchemaNamesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSchemaNamesRsp struct {
+	// 数据库名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*NameIdentifier `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 下页分页token信息(base64编码，包含offset、snapshotId等)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextPageToken *string `json:"NextPageToken,omitnil,omitempty" name:"NextPageToken"`
 }
 
 // Predefined struct for user
@@ -4513,6 +6420,116 @@ type ListSchemasRsp struct {
 }
 
 // Predefined struct for user
+type ListTableNamesRequestParams struct {
+	// <p>数据目录名，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名，必填</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>最大结果条数，可选，默认10</p>
+	MaxResults *string `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>数据源连接ID，可选（融合版新增字段）</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，取值参考CatalogSourceEnum：METALAKE/CONNECTION/SETATS</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+type ListTableNamesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名，必填</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>最大结果条数，可选，默认10</p>
+	MaxResults *string `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>数据源连接ID，可选（融合版新增字段）</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，取值参考CatalogSourceEnum：METALAKE/CONNECTION/SETATS</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+func (r *ListTableNamesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTableNamesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "WorkspaceId")
+	delete(f, "MaxResults")
+	delete(f, "PageToken")
+	delete(f, "ConnectionId")
+	delete(f, "CatalogSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTableNamesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTableNamesResponseParams struct {
+	// <p>返回结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ListTableNamesRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListTableNamesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListTableNamesResponseParams `json:"Response"`
+}
+
+func (r *ListTableNamesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTableNamesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTableNamesRsp struct {
+	// 数据表名数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*NameIdentifier `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 下页分页token信息(base64编码，包含offset、snapshotId等)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextPageToken *string `json:"NextPageToken,omitnil,omitempty" name:"NextPageToken"`
+}
+
+// Predefined struct for user
 type ListTablesRequestParams struct {
 	// <p>数据目录名</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
@@ -4532,10 +6549,10 @@ type ListTablesRequestParams struct {
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
 
-	// 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
@@ -4560,10 +6577,10 @@ type ListTablesRequest struct {
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
 	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
 
-	// 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
 	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 
-	// 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
 }
 
@@ -4626,6 +6643,336 @@ type ListTablesRsp struct {
 
 	// 下页分页token
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextPageToken *string `json:"NextPageToken,omitnil,omitempty" name:"NextPageToken"`
+}
+
+// Predefined struct for user
+type ListViewNamesRequestParams struct {
+	// <p>数据目录名，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名，必填</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>最大结果条数，可选，默认10</p>
+	MaxResults *string `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>数据源连接ID，可选（融合版新增字段）</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，取值参考CatalogSourceEnum：METALAKE/CONNECTION/SETATS</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+type ListViewNamesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名，必填</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>最大结果条数，可选，默认10</p>
+	MaxResults *string `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>数据源连接ID，可选（融合版新增字段）</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，取值参考CatalogSourceEnum：METALAKE/CONNECTION/SETATS</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+func (r *ListViewNamesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListViewNamesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "WorkspaceId")
+	delete(f, "MaxResults")
+	delete(f, "PageToken")
+	delete(f, "ConnectionId")
+	delete(f, "CatalogSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListViewNamesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListViewNamesResponseParams struct {
+	// <p>返回结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ListViewNamesRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListViewNamesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListViewNamesResponseParams `json:"Response"`
+}
+
+func (r *ListViewNamesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListViewNamesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListViewNamesRsp struct {
+	// 视图名数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*NameIdentifier `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 下页分页token信息(base64编码，包含offset、snapshotId等)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextPageToken *string `json:"NextPageToken,omitnil,omitempty" name:"NextPageToken"`
+}
+
+// Predefined struct for user
+type ListViewsRequestParams struct {
+	// <p>数据目录名</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>最大结果条数，默认10</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>分页token</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
+
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。可通过 ListConnections 获取</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+type ListViewsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>最大结果条数，默认10</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>分页token</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
+
+	// <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。可通过 ListConnections 获取</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+func (r *ListViewsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListViewsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "WorkspaceId")
+	delete(f, "MaxResults")
+	delete(f, "PageToken")
+	delete(f, "FetchOption")
+	delete(f, "ConnectionId")
+	delete(f, "CatalogSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListViewsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListViewsResponseParams struct {
+	// <p>操作结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ListViewsRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListViewsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListViewsResponseParams `json:"Response"`
+}
+
+func (r *ListViewsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListViewsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListViewsRsp struct {
+	// view列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ViewInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 下页分页token
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextPageToken *string `json:"NextPageToken,omitnil,omitempty" name:"NextPageToken"`
+}
+
+// Predefined struct for user
+type ListVolumesRequestParams struct {
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>获取数量</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>分页信息</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
+}
+
+type ListVolumesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>获取数量</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>调用时所在workspace唯一id</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>分页信息</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+	FetchOption *FetchOption `json:"FetchOption,omitnil,omitempty" name:"FetchOption"`
+}
+
+func (r *ListVolumesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVolumesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "MaxResults")
+	delete(f, "WorkspaceId")
+	delete(f, "PageToken")
+	delete(f, "FetchOption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListVolumesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListVolumesResponseParams struct {
+	// <p>接口返回信息</p>
+	Data *ListVolumesRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListVolumesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListVolumesResponseParams `json:"Response"`
+}
+
+func (r *ListVolumesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVolumesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListVolumesRsp struct {
+	// 数据卷信息
+	Items []*Volume `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 总数据卷数量
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 分页信息
 	NextPageToken *string `json:"NextPageToken,omitnil,omitempty" name:"NextPageToken"`
 }
 
@@ -5560,6 +7907,40 @@ type Literal struct {
 	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
 }
 
+type LocationInfo struct {
+	// 存储位置名
+	LocationName *string `json:"LocationName,omitnil,omitempty" name:"LocationName"`
+
+	// 存储位置URI
+	LocationUri *string `json:"LocationUri,omitnil,omitempty" name:"LocationUri"`
+
+	// 存储位置描述
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 存储位置属性
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// 审计信息
+	Audit *Audit `json:"Audit,omitnil,omitempty" name:"Audit"`
+}
+
+type LocationUpdate struct {
+	// 更新类型，取值：modify_location_name、modify_location_comment、modify_location_properties
+	UpdateType *string `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
+
+	// 新的备注，可选，UpdateType 为 modify_location_comment 时使用
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+
+	// 新增/修改的属性键值对列表，可选，UpdateType 为 modify_location_properties 时使用
+	SetProperties []*KVPair `json:"SetProperties,omitnil,omitempty" name:"SetProperties"`
+
+	// 要移除的属性key列表，可选，UpdateType 为 modify_location_properties 时使用
+	RemoveProperties []*string `json:"RemoveProperties,omitnil,omitempty" name:"RemoveProperties"`
+
+	// 新的名称，可选，UpdateType 为 modify_location_name 时使用
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+}
+
 type MetaOwner struct {
 	// 元数据名称（全名）:catalog.schema.table
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5576,6 +7957,84 @@ type MetaOwner struct {
 	// 所有者名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
+
+	// 数据目录来源，取值参考 CatalogSourceEnum：METALAKE / CONNECTION / SETATS。ListMetaOwners 走新参数 Catalogs 查询时，按入参回填；走旧参数 FullNames 查询时，按请求顶层 CatalogSource 回填（默认 METALAKE）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+type ModelInfo struct {
+	// <p>模型名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>catalog信息</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema 信息</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>模型描述</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>最新版本号</p>
+	LatestVersion *string `json:"LatestVersion,omitnil,omitempty" name:"LatestVersion"`
+
+	// <p>扩展数据</p>
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// <p>审计数据</p>
+	Audit *Audit `json:"Audit,omitnil,omitempty" name:"Audit"`
+
+	// <p>责任人信息</p>
+	MetaOwner *MetaOwner `json:"MetaOwner,omitnil,omitempty" name:"MetaOwner"`
+
+	// <p>id</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>资产全局唯一ID</p>
+	AssetGuid *string `json:"AssetGuid,omitnil,omitempty" name:"AssetGuid"`
+
+	// <p>当前用户对该实体的权限信息</p>
+	PermissionDetail *PermissionDetail `json:"PermissionDetail,omitnil,omitempty" name:"PermissionDetail"`
+
+	// <p>标签信息列表。注意：仅当请求中 FetchTags=true 时返回，默认不返回</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*CommonTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type ModelVersionInfo struct {
+	// 版本号
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 模型版本uri
+	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+
+	// 描述信息
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 扩展参数
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// 别名
+	Aliases []*string `json:"Aliases,omitnil,omitempty" name:"Aliases"`
+
+	// 审计信息
+	Audit *Audit `json:"Audit,omitnil,omitempty" name:"Audit"`
+
+	// Catalog Name
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// Schema Name
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// Model Name
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 标签列表
+	Tags []*AssetTagVote `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 资产全局唯一ID
+	AssetGuid *string `json:"AssetGuid,omitnil,omitempty" name:"AssetGuid"`
 }
 
 type MonitorMetricBrief struct {
@@ -5606,12 +8065,42 @@ type MonitorMetricItem struct {
 	TimeoutThreshold *string `json:"TimeoutThreshold,omitnil,omitempty" name:"TimeoutThreshold"`
 }
 
+type NameIdentifier struct {
+	// <p>名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>命名空间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace []*string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>元数据来源，取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。响应体始终返回具体来源值，不会返回CATALOG_SOURCE_ALL。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+
+	// <p>TCLAKE Catalog取值：（注册中0，待测试1，连接成功2，连接失败3，删除中4，已删除5）<br>SETATS Catalog取值：（Creating=30, Available=31, Deleted=32, Scaling=33, Isolated=34, Failed=35，未知=0）</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 type OrderBy struct {
 	// 排序方向，Asc（升序）或 Desc（降序），大小写不敏感
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
 	// 排序字段名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type Owner struct {
+	// 用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 用户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	//  0:USER, 1:GROUP
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type ParamInfo struct {
@@ -6191,6 +8680,259 @@ type Schema struct {
 	Tags []*CommonTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+// Predefined struct for user
+type SearchAssetRequestParams struct {
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>最大结果条数，默认30，可选30～50</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>关键字</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>资产类型列表，类型参见ListEntityTypeMetas的返回</p>
+	AssetTypes []*string `json:"AssetTypes,omitnil,omitempty" name:"AssetTypes"`
+
+	// <p>分页token信息，取上一页返回NextPageToken</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>按资产负责人检索</p><ul><li>my 我负责的(包含my时其他uin不生效)</li><li>uin 指定用户uin</li></ul>
+	Owner []*string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// <p>标签IDs，可通过 ListTags 获取</p>
+	TagIds []*int64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+
+	// <p>标签值IDs，可通过 ListTags 获取</p>
+	TagValueIds []*int64 `json:"TagValueIds,omitnil,omitempty" name:"TagValueIds"`
+
+	// <p>更新时间，13位时间戳</p>
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// <p>数据目录列表</p>
+	CatalogNames []*string `json:"CatalogNames,omitnil,omitempty" name:"CatalogNames"`
+
+	// <p>工作空间路径筛选(非catalog类资产)</p>
+	WorkspacePaths []*string `json:"WorkspacePaths,omitnil,omitempty" name:"WorkspacePaths"`
+
+	// <p>是否开启混合搜索</p>
+	EnableHybridSearch *bool `json:"EnableHybridSearch,omitnil,omitempty" name:"EnableHybridSearch"`
+
+	// <p>字段标签ID列表（可选）。使用场景：根据字段上打的标签检索资产（表），返回包含该字段标签的资产。与 TagIds 的区别：TagIds 是表级标签过滤，FieldTagIds 是字段级标签过滤。规格要求：int64 数组，最多支持 20 个标签 ID 同时过滤。可通过 ListTags 获取</p>
+	FieldTagIds []*int64 `json:"FieldTagIds,omitnil,omitempty" name:"FieldTagIds"`
+
+	// <p>排序，为空时默认按相关度倒排序</p><p>Name:<br>PopularityQuantity 热度</p><p>Direction:<br>Desc 降序<br>Asc 升序</p>
+	OrderBys []*OrderBy `json:"OrderBys,omitnil,omitempty" name:"OrderBys"`
+}
+
+type SearchAssetRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>最大结果条数，默认30，可选30～50</p>
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>关键字</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>资产类型列表，类型参见ListEntityTypeMetas的返回</p>
+	AssetTypes []*string `json:"AssetTypes,omitnil,omitempty" name:"AssetTypes"`
+
+	// <p>分页token信息，取上一页返回NextPageToken</p>
+	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
+
+	// <p>按资产负责人检索</p><ul><li>my 我负责的(包含my时其他uin不生效)</li><li>uin 指定用户uin</li></ul>
+	Owner []*string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// <p>标签IDs，可通过 ListTags 获取</p>
+	TagIds []*int64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+
+	// <p>标签值IDs，可通过 ListTags 获取</p>
+	TagValueIds []*int64 `json:"TagValueIds,omitnil,omitempty" name:"TagValueIds"`
+
+	// <p>更新时间，13位时间戳</p>
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// <p>数据目录列表</p>
+	CatalogNames []*string `json:"CatalogNames,omitnil,omitempty" name:"CatalogNames"`
+
+	// <p>工作空间路径筛选(非catalog类资产)</p>
+	WorkspacePaths []*string `json:"WorkspacePaths,omitnil,omitempty" name:"WorkspacePaths"`
+
+	// <p>是否开启混合搜索</p>
+	EnableHybridSearch *bool `json:"EnableHybridSearch,omitnil,omitempty" name:"EnableHybridSearch"`
+
+	// <p>字段标签ID列表（可选）。使用场景：根据字段上打的标签检索资产（表），返回包含该字段标签的资产。与 TagIds 的区别：TagIds 是表级标签过滤，FieldTagIds 是字段级标签过滤。规格要求：int64 数组，最多支持 20 个标签 ID 同时过滤。可通过 ListTags 获取</p>
+	FieldTagIds []*int64 `json:"FieldTagIds,omitnil,omitempty" name:"FieldTagIds"`
+
+	// <p>排序，为空时默认按相关度倒排序</p><p>Name:<br>PopularityQuantity 热度</p><p>Direction:<br>Desc 降序<br>Asc 升序</p>
+	OrderBys []*OrderBy `json:"OrderBys,omitnil,omitempty" name:"OrderBys"`
+}
+
+func (r *SearchAssetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchAssetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "MaxResults")
+	delete(f, "Keyword")
+	delete(f, "AssetTypes")
+	delete(f, "PageToken")
+	delete(f, "Owner")
+	delete(f, "TagIds")
+	delete(f, "TagValueIds")
+	delete(f, "ModifiedTime")
+	delete(f, "CatalogNames")
+	delete(f, "WorkspacePaths")
+	delete(f, "EnableHybridSearch")
+	delete(f, "FieldTagIds")
+	delete(f, "OrderBys")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchAssetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchAssetResponseParams struct {
+	// <p>返回信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *SearchAssetRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SearchAssetResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchAssetResponseParams `json:"Response"`
+}
+
+func (r *SearchAssetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchAssetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchAssetRsp struct {
+	// 结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*SearchResult `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 分页token，不为空时表示还有下一页数据，作为参数PageToken传递
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextPageToken *string `json:"NextPageToken,omitnil,omitempty" name:"NextPageToken"`
+}
+
+type SearchResult struct {
+	// <p>资产全名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullName *string `json:"FullName,omitnil,omitempty" name:"FullName"`
+
+	// <p>资产全局ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetGuid *string `json:"AssetGuid,omitnil,omitempty" name:"AssetGuid"`
+
+	// <p>各资产类别下的唯一ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// <p>资产名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
+
+	// <p>资产类型，参见ListEntityTypeMetas返回的EntityType</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// <p>用户活动</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserActivityInfo *UserActivityInfo `json:"UserActivityInfo,omitnil,omitempty" name:"UserActivityInfo"`
+
+	// <p>热度，值范围：[1,2,3,4]</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Popularity *string `json:"Popularity,omitnil,omitempty" name:"Popularity"`
+
+	// <p>资产标签</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>责任人</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Owner *Owner `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// <p>最近更新时间，毫秒时间戳</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// <p>描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>工作空间ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>工作空间文件夹路径（废弃）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkspaceFolderPath *string `json:"WorkspaceFolderPath,omitnil,omitempty" name:"WorkspaceFolderPath"`
+
+	// <p>高亮(废弃)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Highlighting []*Highlighting `json:"Highlighting,omitnil,omitempty" name:"Highlighting"`
+
+	// <p>各类资产扩展信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// <p>工作空间文件夹路径</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkspacePath *string `json:"WorkspacePath,omitnil,omitempty" name:"WorkspacePath"`
+
+	// <p>字段信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldInfo []*FieldInfo `json:"FieldInfo,omitnil,omitempty" name:"FieldInfo"`
+
+	// <p>废弃</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignalLevel *string `json:"SignalLevel,omitnil,omitempty" name:"SignalLevel"`
+
+	// <p>热度值</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PopularityQuantity *string `json:"PopularityQuantity,omitnil,omitempty" name:"PopularityQuantity"`
+
+	// <p>高亮</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighlightingInfo *HighlightingInfo `json:"HighlightingInfo,omitnil,omitempty" name:"HighlightingInfo"`
+
+	// <p>字段标签列表，返回资产下所有字段上打的标签信息，用于展示字段级标签；每项包含 LabelId、LabelName、LabelType、FieldName、FieldType</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldTags []*FieldTagInfo `json:"FieldTags,omitnil,omitempty" name:"FieldTags"`
+
+	// <p>资产别名列表。使用场景：仅指标、语义模型等业务资产支持多别名，其他资产类型返回空列表。前端可选择在资产名后面以【别名1、别名2】的形式展示</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Aliases []*string `json:"Aliases,omitnil,omitempty" name:"Aliases"`
+
+	// <p>资产元数据来源。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。仅catalog类资产（CATALOG/SCHEMA/TABLE/VIEW/MODEL/VOLUME/FUNCTION/TABLE_COLUMN）返回该字段，非catalog类资产该字段为空字符串。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
 type SingleFieldPartitioning struct {
 	// 分区字段
 	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
@@ -6445,6 +9187,43 @@ type TableInfo struct {
 	Tags []*CommonTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+type Tag struct {
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 标签类型，参考 LabelType 枚举：0=未知，1=治理标签，2=自定义标签，3=属性标签，4=脱敏标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type TagInfo struct {
+	// 标签ID（入参必填）
+	LabelId *string `json:"LabelId,omitnil,omitempty" name:"LabelId"`
+
+	// 标签名称（入参必填）
+	LabelName *string `json:"LabelName,omitnil,omitempty" name:"LabelName"`
+
+	// <p>标签类型（入参必填）</p><p>枚举值：</p><ul><li>1：GOVERNANCE_LABEL：治理标签（标签管理页手动创建）</li><li>2：CUSTOM_LABEL：自定义标签（打标时自动创建）</li><li>3：PROPERTY_LABEL：属性标签（Key-Value键值对）</li><li>4：DESENSITIZATION_LABEL：脱敏标签（与脱敏策略绑定）</li></ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 标签值ID（可选）；属性标签可为0；LabelType=4（脱敏标签）时非必填
+	LabelValueId *string `json:"LabelValueId,omitnil,omitempty" name:"LabelValueId"`
+
+	// 标签值（可选）；LabelType=4（脱敏标签）时非必填
+	LabelValue *string `json:"LabelValue,omitnil,omitempty" name:"LabelValue"`
+
+	// 【仅出参，入参无需填写】标签是否已被物理删除（true=已删除）
+	IsDeleted *bool `json:"IsDeleted,omitnil,omitempty" name:"IsDeleted"`
+
+	// 【仅入参，出参不返回】是否自动创建自定义标签（可选，默认 false）；true=当 LabelName 非空且标签不存在时，自动创建 LabelType=2（CUSTOM_LABEL）的自定义标签；false=仅使用已有标签打标，标签不存在时报错
+	CreateCustomLabel *bool `json:"CreateCustomLabel,omitnil,omitempty" name:"CreateCustomLabel"`
+}
+
 type TagValueInfo struct {
 	// <p>标签值ID。ID 模式写接口（UpdateWorkspaceUsersTags / UpdateWorkspaceGroupsTags）中必填，可通过 ListTags 接口出参 Items[].TagValues[].TagValueId 获取，也可通过 CreateTagValues 创建后获取；按名称模式接口（AttachWorkspaceUserTags / DetachWorkspaceUserTags）中无需传入；查询接口出参中回填。ID 不存在或已删除时接口报错 TagValueNotExist</p>
 	TagValueId *string `json:"TagValueId,omitnil,omitempty" name:"TagValueId"`
@@ -6639,6 +9418,96 @@ type UnbindWorkflowBundleRsp struct {
 	// 操作状态，true 表示成功
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
+type UpdateCatalogRequestParams struct {
+	// <p>数据目录名称，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>新描述，可选，为空表示不修改注释</p>
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+
+	// <p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+type UpdateCatalogRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>新描述，可选，为空表示不修改注释</p>
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+
+	// <p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+func (r *UpdateCatalogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCatalogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "WorkspaceId")
+	delete(f, "NewComment")
+	delete(f, "ConnectionId")
+	delete(f, "CatalogSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCatalogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCatalogResponseParams struct {
+	// <p>返回结果</p>
+	Data *UpdateCatalogRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateCatalogResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateCatalogResponseParams `json:"Response"`
+}
+
+func (r *UpdateCatalogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCatalogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateCatalogRsp struct {
+	// 是否成功
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 }
 
 // Predefined struct for user
@@ -7026,6 +9895,889 @@ type UpdateFolderRsp struct {
 }
 
 // Predefined struct for user
+type UpdateFunctionRequestParams struct {
+	// 数据目录名称，必填
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// schema名称，必填
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 函数名称，必填
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 新描述，可选，为空表示不修改注释
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+}
+
+type UpdateFunctionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据目录名称，必填
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// schema名称，必填
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 函数名称，必填
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 新描述，可选，为空表示不修改注释
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+}
+
+func (r *UpdateFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFunctionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "FunctionName")
+	delete(f, "WorkspaceId")
+	delete(f, "NewComment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFunctionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateFunctionResponseParams struct {
+	// 返回结果
+	Data *UpdateFunctionRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateFunctionResponseParams `json:"Response"`
+}
+
+func (r *UpdateFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFunctionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateFunctionRsp struct {
+	// 更新后的函数信息
+	Function *FunctionInfo `json:"Function,omitnil,omitempty" name:"Function"`
+}
+
+// Predefined struct for user
+type UpdateLocationRequestParams struct {
+	// 存储位置名，必填
+	LocationName *string `json:"LocationName,omitnil,omitempty" name:"LocationName"`
+
+	// 更新location的操作列表，必填
+	Updates []*LocationUpdate `json:"Updates,omitnil,omitempty" name:"Updates"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+type UpdateLocationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 存储位置名，必填
+	LocationName *string `json:"LocationName,omitnil,omitempty" name:"LocationName"`
+
+	// 更新location的操作列表，必填
+	Updates []*LocationUpdate `json:"Updates,omitnil,omitempty" name:"Updates"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+func (r *UpdateLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LocationName")
+	delete(f, "Updates")
+	delete(f, "WorkspaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateLocationResponseParams struct {
+	// 返回结果
+	Data *UpdateLocationRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateLocationResponseParams `json:"Response"`
+}
+
+func (r *UpdateLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateLocationRsp struct {
+	// 修改后的存储位置详情
+	Location *LocationInfo `json:"Location,omitnil,omitempty" name:"Location"`
+}
+
+// Predefined struct for user
+type UpdateModelRequestParams struct {
+	// 目录名称，必填
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 模式名称，必填
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 模型名称，必填
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 新名称，可选，为空表示不修改名称
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+
+	// 新注释，可选，为空表示不修改注释
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+}
+
+type UpdateModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 目录名称，必填
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 模式名称，必填
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 模型名称，必填
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 新名称，可选，为空表示不修改名称
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+
+	// 新注释，可选，为空表示不修改注释
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+}
+
+func (r *UpdateModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "ModelName")
+	delete(f, "WorkspaceId")
+	delete(f, "NewName")
+	delete(f, "NewComment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateModelResponseParams struct {
+	// 返回结果
+	Data *UpdateModelRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateModelResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateModelResponseParams `json:"Response"`
+}
+
+func (r *UpdateModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateModelRsp struct {
+	// 更新后的模型信息
+	Model *ModelInfo `json:"Model,omitnil,omitempty" name:"Model"`
+}
+
+// Predefined struct for user
+type UpdateModelVersionRequestParams struct {
+	// <p>目录名称，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>模式名称，必填</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>模型名称，必填</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本号，必填</p>
+	ModelVersion *int64 `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>要添加的别名，可选</p>
+	AddedAliases []*string `json:"AddedAliases,omitnil,omitempty" name:"AddedAliases"`
+
+	// <p>要移除的别名，可选</p>
+	RemovedAliases []*string `json:"RemovedAliases,omitnil,omitempty" name:"RemovedAliases"`
+
+	// <p>新注释，可选，为空表示不修改注释</p>
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+}
+
+type UpdateModelVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>目录名称，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>模式名称，必填</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>模型名称，必填</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本号，必填</p>
+	ModelVersion *int64 `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>要添加的别名，可选</p>
+	AddedAliases []*string `json:"AddedAliases,omitnil,omitempty" name:"AddedAliases"`
+
+	// <p>要移除的别名，可选</p>
+	RemovedAliases []*string `json:"RemovedAliases,omitnil,omitempty" name:"RemovedAliases"`
+
+	// <p>新注释，可选，为空表示不修改注释</p>
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+}
+
+func (r *UpdateModelVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateModelVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "ModelName")
+	delete(f, "ModelVersion")
+	delete(f, "WorkspaceId")
+	delete(f, "AddedAliases")
+	delete(f, "RemovedAliases")
+	delete(f, "NewComment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateModelVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateModelVersionResponseParams struct {
+	// <p>返回结果</p>
+	Data *UpdateModelVersionRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateModelVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateModelVersionResponseParams `json:"Response"`
+}
+
+func (r *UpdateModelVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateModelVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateModelVersionRsp struct {
+	// 更新后的模型版本信息
+	ModelVersion *ModelVersionInfo `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+}
+
+// Predefined struct for user
+type UpdateSchemaRequestParams struct {
+	// <p>数据目录名称，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称，必填</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>新描述，可选，为空表示不修改注释</p>
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+
+	// <p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。可通过 ListConnections 获取</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+type UpdateSchemaRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema名称，必填</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>新描述，可选，为空表示不修改注释</p>
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+
+	// <p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。可通过 ListConnections 获取</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+func (r *UpdateSchemaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateSchemaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "WorkspaceId")
+	delete(f, "NewComment")
+	delete(f, "ConnectionId")
+	delete(f, "CatalogSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateSchemaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateSchemaResponseParams struct {
+	// <p>返回结果</p>
+	Data *UpdateSchemaRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateSchemaResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateSchemaResponseParams `json:"Response"`
+}
+
+func (r *UpdateSchemaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateSchemaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateSchemaRsp struct {
+	// <p>更新后的 schema 信息</p>
+	Schema *Schema `json:"Schema,omitnil,omitempty" name:"Schema"`
+}
+
+// Predefined struct for user
+type UpdateTableColumnRequestParams struct {
+	// <p>数据目录名称，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名称，必填</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>表名，必填</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>字段描述列表，必填</p>
+	Columns []*ColumnBrief `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// <p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。可通过 ListConnections 获取</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+type UpdateTableColumnRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名称，必填</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>表名，必填</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>字段描述列表，必填</p>
+	Columns []*ColumnBrief `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// <p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。可通过 ListConnections 获取</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+func (r *UpdateTableColumnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTableColumnRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "TableName")
+	delete(f, "WorkspaceId")
+	delete(f, "Columns")
+	delete(f, "ConnectionId")
+	delete(f, "CatalogSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTableColumnRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTableColumnResponseParams struct {
+	// <p>返回结果</p>
+	Data *UpdateTableColumnRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateTableColumnResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTableColumnResponseParams `json:"Response"`
+}
+
+func (r *UpdateTableColumnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTableColumnResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateTableColumnRsp struct {
+	// 整体结果，true表示全部成功
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 失败的字段列表（部分成功场景），全部成功时为空
+	FailedColumns []*ColumnErrorMessages `json:"FailedColumns,omitnil,omitempty" name:"FailedColumns"`
+}
+
+// Predefined struct for user
+type UpdateTableRequestParams struct {
+	// <p>数据目录名称，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名称，必填</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>表名，必填</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>新名称，可选，为空表示不修改名称</p>
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+
+	// <p>新描述，可选，为空表示不修改注释</p>
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+
+	// <p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。可通过 ListConnections 获取</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+type UpdateTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据目录名称，必填</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>数据库名称，必填</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>表名，必填</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>调用时所在workspace唯一id，必填</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>新名称，可选，为空表示不修改名称</p>
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+
+	// <p>新描述，可选，为空表示不修改注释</p>
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+
+	// <p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。可通过 ListConnections 获取</p>
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+func (r *UpdateTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "TableName")
+	delete(f, "WorkspaceId")
+	delete(f, "NewName")
+	delete(f, "NewComment")
+	delete(f, "ConnectionId")
+	delete(f, "CatalogSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTableResponseParams struct {
+	// <p>返回结果</p>
+	Data *UpdateTableRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateTableResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTableResponseParams `json:"Response"`
+}
+
+func (r *UpdateTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateTableRsp struct {
+	// 更新后的表信息
+	Table *TableInfo `json:"Table,omitnil,omitempty" name:"Table"`
+}
+
+// Predefined struct for user
+type UpdateViewRequestParams struct {
+	// 数据目录名称，必填
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 数据库名称，必填
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// View名，必填
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 新名称，可选，为空表示不修改名称
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+
+	// 新描述，可选，为空表示不修改注释
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+}
+
+type UpdateViewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据目录名称，必填
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 数据库名称，必填
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// View名，必填
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 新名称，可选，为空表示不修改名称
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+
+	// 新描述，可选，为空表示不修改注释
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+}
+
+func (r *UpdateViewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateViewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "ViewName")
+	delete(f, "WorkspaceId")
+	delete(f, "NewName")
+	delete(f, "NewComment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateViewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateViewResponseParams struct {
+	// 返回结果
+	Data *UpdateViewRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateViewResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateViewResponseParams `json:"Response"`
+}
+
+func (r *UpdateViewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateViewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateViewRsp struct {
+	// 更新后的视图信息
+	View *ViewInfo `json:"View,omitnil,omitempty" name:"View"`
+}
+
+// Predefined struct for user
+type UpdateVolumeRequestParams struct {
+	// 目录名称，必填
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 模式名称，必填
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 数据卷名称，必填
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 新名称，可选，为空表示不修改名称
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+
+	// 新注释，可选，为空表示不修改注释
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+}
+
+type UpdateVolumeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 目录名称，必填
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 模式名称，必填
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 数据卷名称，必填
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// 调用时所在workspace唯一id，必填
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 新名称，可选，为空表示不修改名称
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+
+	// 新注释，可选，为空表示不修改注释
+	NewComment *string `json:"NewComment,omitnil,omitempty" name:"NewComment"`
+}
+
+func (r *UpdateVolumeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateVolumeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogName")
+	delete(f, "SchemaName")
+	delete(f, "VolumeName")
+	delete(f, "WorkspaceId")
+	delete(f, "NewName")
+	delete(f, "NewComment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateVolumeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateVolumeResponseParams struct {
+	// 返回结果
+	Data *UpdateVolumeRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateVolumeResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateVolumeResponseParams `json:"Response"`
+}
+
+func (r *UpdateVolumeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateVolumeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateVolumeRsp struct {
+	// 更新后的数据卷信息
+	Volume *Volume `json:"Volume,omitnil,omitempty" name:"Volume"`
+}
+
+// Predefined struct for user
 type UpdateWorkflowRequestParams struct {
 	// <p>工作空间ID，可通过 ListWorkspaces 获取。必填</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
@@ -7404,6 +11156,16 @@ func (r *UpdateWorkspaceUsersRolesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type UserActivityInfo struct {
+	// 是否收藏
+	// - true  是
+	// - false 否
+	IsFavorite *bool `json:"IsFavorite,omitnil,omitempty" name:"IsFavorite"`
+
+	// 上次查看时间
+	LastViewTime *string `json:"LastViewTime,omitnil,omitempty" name:"LastViewTime"`
+}
+
 type UserInfo struct {
 	// <p>uin</p>
 	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
@@ -7427,6 +11189,81 @@ type UserTagInfo struct {
 
 	// <p>该标签维度下绑定的标签值集合，元素结构见 TagValueInfo。ID 模式写接口中元素 TagValueId 必填；按名称模式接口中元素 TagValue 必填；查询接口出参中回填</p>
 	Values []*TagValueInfo `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type ViewInfo struct {
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 字段信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Columns []*ColumnInfo `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// 属性值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// 编辑者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Audit *Audit `json:"Audit,omitnil,omitempty" name:"Audit"`
+
+	// owner信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaOwner *MetaOwner `json:"MetaOwner,omitnil,omitempty" name:"MetaOwner"`
+
+	// 资产全局唯一ID
+	AssetGuid *string `json:"AssetGuid,omitnil,omitempty" name:"AssetGuid"`
+
+	// 当前用户对该实体的权限信息
+	PermissionDetail *PermissionDetail `json:"PermissionDetail,omitnil,omitempty" name:"PermissionDetail"`
+
+	// 标签信息列表。注意：仅当请求中 FetchTags=true 时返回，默认不返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*CommonTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type Volume struct {
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>catalog信息</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>schema 信息</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// <p>模型描述</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>存储位置</p>
+	StorageLocation *string `json:"StorageLocation,omitnil,omitempty" name:"StorageLocation"`
+
+	// <p>扩展数据</p>
+	Properties []*KVPair `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// <p>审计数据</p>
+	Audit *Audit `json:"Audit,omitnil,omitempty" name:"Audit"`
+
+	// 数据卷类型，取值：MANAGED(内部管理)、EXTERNAL(外部存储)
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>责任人信息</p>
+	MetaOwner *MetaOwner `json:"MetaOwner,omitnil,omitempty" name:"MetaOwner"`
+
+	// <p>资产全局唯一ID</p>
+	AssetGuid *string `json:"AssetGuid,omitnil,omitempty" name:"AssetGuid"`
+
+	// <p>当前用户对该实体的权限信息</p>
+	PermissionDetail *PermissionDetail `json:"PermissionDetail,omitnil,omitempty" name:"PermissionDetail"`
+
+	// <p>标签信息列表。注意：仅当请求中 FetchTags=true 时返回，默认不返回</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*CommonTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type Workflow struct {

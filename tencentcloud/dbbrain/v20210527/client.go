@@ -2331,6 +2331,118 @@ func (c *Client) DescribeAuditLogFilesWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeBlockingLockTreeRequest() (request *DescribeBlockingLockTreeRequest) {
+    request = &DescribeBlockingLockTreeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeBlockingLockTree")
+    
+    
+    return
+}
+
+func NewDescribeBlockingLockTreeResponse() (response *DescribeBlockingLockTreeResponse) {
+    response = &DescribeBlockingLockTreeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBlockingLockTree
+// 根据指定快照 token 查询该快照时刻的完整阻塞树（多层嵌套，根节点为头 blocker，支持多叉/多层展开）。支持两种定位方式，任选其一：(1) 优先 MonitorLoop（精确，lock monitor 一次扫描快照的唯一标识），可从 DescribeBlockingTimeRange / DescribeBlockingLogs / DescribeBlockingTrend 返回获取；(2) 兑底 BlockingTime（近似，任意阻塞时间点），后端会在该时间点±1分钟范围内找到最接近的 MonitorLoop 再下钻其阻塞树。当 MonitorLoop 不为空时优先采用；为空时回退使用 BlockingTime；两者都为空则返回参数错误。一个 MonitorLoop 可包含多棵独立阻塞树（若该快照内存在多组互不相干的阻塞链路）。对标 dbaas-pfs 的 DescribeLockTree。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+//  FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
+func (c *Client) DescribeBlockingLockTree(request *DescribeBlockingLockTreeRequest) (response *DescribeBlockingLockTreeResponse, err error) {
+    return c.DescribeBlockingLockTreeWithContext(context.Background(), request)
+}
+
+// DescribeBlockingLockTree
+// 根据指定快照 token 查询该快照时刻的完整阻塞树（多层嵌套，根节点为头 blocker，支持多叉/多层展开）。支持两种定位方式，任选其一：(1) 优先 MonitorLoop（精确，lock monitor 一次扫描快照的唯一标识），可从 DescribeBlockingTimeRange / DescribeBlockingLogs / DescribeBlockingTrend 返回获取；(2) 兑底 BlockingTime（近似，任意阻塞时间点），后端会在该时间点±1分钟范围内找到最接近的 MonitorLoop 再下钻其阻塞树。当 MonitorLoop 不为空时优先采用；为空时回退使用 BlockingTime；两者都为空则返回参数错误。一个 MonitorLoop 可包含多棵独立阻塞树（若该快照内存在多组互不相干的阻塞链路）。对标 dbaas-pfs 的 DescribeLockTree。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+//  FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
+func (c *Client) DescribeBlockingLockTreeWithContext(ctx context.Context, request *DescribeBlockingLockTreeRequest) (response *DescribeBlockingLockTreeResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlockingLockTreeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeBlockingLockTree")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBlockingLockTree require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBlockingLockTreeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBlockingLogsRequest() (request *DescribeBlockingLogsRequest) {
     request = &DescribeBlockingLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2439,6 +2551,118 @@ func (c *Client) DescribeBlockingLogsWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeBlockingLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBlockingTrendRequest() (request *DescribeBlockingTrendRequest) {
+    request = &DescribeBlockingTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeBlockingTrend")
+    
+    
+    return
+}
+
+func NewDescribeBlockingTrendResponse() (response *DescribeBlockingTrendResponse) {
+    response = &DescribeBlockingTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBlockingTrend
+// 查询指定实例在时间窗口内按时间粒度聚合的阻塞计数时序，用于前端绘制阻塞趋势图。返回每个粒度 bucket 的 (StartTime, EndTime, LockCount, MonitorLoopCount)，实际聚合区间为前闭后开 [StartTime, EndTime)。为稠密时序：时间窗口内每个粒度 bucket 都返回一个点，无数据的 bucket 补零（LockCount=0, MonitorLoopCount=0），前端可直接绘制连续趋势图。粒度自动按时间跨度 deltaMs = EndTime - StartTime 决定（右开上界判定）：deltaMs≤5min→SECONDS(1s)，deltaMs≤1h→MINUTES(1min)，deltaMs≤3h→FIVE_MINUTES(5min)，deltaMs≤6h→TEN_MINUTES(10min)，deltaMs≤12h→FIFTEEN_MINUTES(15min)，deltaMs≤24h→THIRTY_MINUTES(30min)，deltaMs>24h→HOUR(1h)。底层走 Druid timeseries 原生聚合，服务端完成聚合，适合高频前端刷新。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+//  FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
+func (c *Client) DescribeBlockingTrend(request *DescribeBlockingTrendRequest) (response *DescribeBlockingTrendResponse, err error) {
+    return c.DescribeBlockingTrendWithContext(context.Background(), request)
+}
+
+// DescribeBlockingTrend
+// 查询指定实例在时间窗口内按时间粒度聚合的阻塞计数时序，用于前端绘制阻塞趋势图。返回每个粒度 bucket 的 (StartTime, EndTime, LockCount, MonitorLoopCount)，实际聚合区间为前闭后开 [StartTime, EndTime)。为稠密时序：时间窗口内每个粒度 bucket 都返回一个点，无数据的 bucket 补零（LockCount=0, MonitorLoopCount=0），前端可直接绘制连续趋势图。粒度自动按时间跨度 deltaMs = EndTime - StartTime 决定（右开上界判定）：deltaMs≤5min→SECONDS(1s)，deltaMs≤1h→MINUTES(1min)，deltaMs≤3h→FIVE_MINUTES(5min)，deltaMs≤6h→TEN_MINUTES(10min)，deltaMs≤12h→FIFTEEN_MINUTES(15min)，deltaMs≤24h→THIRTY_MINUTES(30min)，deltaMs>24h→HOUR(1h)。底层走 Druid timeseries 原生聚合，服务端完成聚合，适合高频前端刷新。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+//  FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
+func (c *Client) DescribeBlockingTrendWithContext(ctx context.Context, request *DescribeBlockingTrendRequest) (response *DescribeBlockingTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlockingTrendRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeBlockingTrend")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBlockingTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBlockingTrendResponse()
     err = c.Send(request, response)
     return
 }
@@ -6129,6 +6353,118 @@ func (c *Client) DescribeSqlTemplateWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeSqlTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTableSpaceDataV2Request() (request *DescribeTableSpaceDataV2Request) {
+    request = &DescribeTableSpaceDataV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeTableSpaceDataV2")
+    
+    
+    return
+}
+
+func NewDescribeTableSpaceDataV2Response() (response *DescribeTableSpaceDataV2Response) {
+    response = &DescribeTableSpaceDataV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTableSpaceDataV2
+// 表空间数据查询（融合接口，多产品统一入口）。按入参 TableSchema + TableName（PG 系额外需 TableCatalog）定位单张表/集合，返回该表的空间使用明细。支持产品：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）、sqlserver（SQL Server）、dcdb（TDSQL MySQL 版）、tdsql（TDSQL）、mariadb（云数据库 MariaDB）。返回值按产品隔离：MySQL 系列返回 MysqlTableSpaceData；PostgreSQL 返回 PostgresTableSpaceData；MongoDB 返回 MongodbTableSpaceData（含集合明细列表 SpaceSchemas 和外层 Timestamp）；SQL Server 返回 SqlServerTableSpaceData。注意：只读实例（CDB RO / RO 组 / CynosDB RO / TDSQL-C 集群 RO）不支持空间分析，调用将直接报错。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+//  FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
+func (c *Client) DescribeTableSpaceDataV2(request *DescribeTableSpaceDataV2Request) (response *DescribeTableSpaceDataV2Response, err error) {
+    return c.DescribeTableSpaceDataV2WithContext(context.Background(), request)
+}
+
+// DescribeTableSpaceDataV2
+// 表空间数据查询（融合接口，多产品统一入口）。按入参 TableSchema + TableName（PG 系额外需 TableCatalog）定位单张表/集合，返回该表的空间使用明细。支持产品：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）、sqlserver（SQL Server）、dcdb（TDSQL MySQL 版）、tdsql（TDSQL）、mariadb（云数据库 MariaDB）。返回值按产品隔离：MySQL 系列返回 MysqlTableSpaceData；PostgreSQL 返回 PostgresTableSpaceData；MongoDB 返回 MongodbTableSpaceData（含集合明细列表 SpaceSchemas 和外层 Timestamp）；SQL Server 返回 SqlServerTableSpaceData。注意：只读实例（CDB RO / RO 组 / CynosDB RO / TDSQL-C 集群 RO）不支持空间分析，调用将直接报错。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+//  FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
+func (c *Client) DescribeTableSpaceDataV2WithContext(ctx context.Context, request *DescribeTableSpaceDataV2Request) (response *DescribeTableSpaceDataV2Response, err error) {
+    if request == nil {
+        request = NewDescribeTableSpaceDataV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeTableSpaceDataV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableSpaceDataV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTableSpaceDataV2Response()
     err = c.Send(request, response)
     return
 }

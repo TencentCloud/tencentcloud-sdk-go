@@ -3104,17 +3104,7 @@ func NewDeregisterModelsFromServiceProviderResponse() (response *DeregisterModel
 // 将模型关联到模型路由实例
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_MODELASSOCIATEDWITHMODELROUTER = "UnsupportedOperation.ModelAssociatedWithModelRouter"
 func (c *Client) DeregisterModelsFromServiceProvider(request *DeregisterModelsFromServiceProviderRequest) (response *DeregisterModelsFromServiceProviderResponse, err error) {
     return c.DeregisterModelsFromServiceProviderWithContext(context.Background(), request)
 }
@@ -3123,17 +3113,7 @@ func (c *Client) DeregisterModelsFromServiceProvider(request *DeregisterModelsFr
 // 将模型关联到模型路由实例
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_MODELASSOCIATEDWITHMODELROUTER = "UnsupportedOperation.ModelAssociatedWithModelRouter"
 func (c *Client) DeregisterModelsFromServiceProviderWithContext(ctx context.Context, request *DeregisterModelsFromServiceProviderRequest) (response *DeregisterModelsFromServiceProviderResponse, err error) {
     if request == nil {
         request = NewDeregisterModelsFromServiceProviderRequest()

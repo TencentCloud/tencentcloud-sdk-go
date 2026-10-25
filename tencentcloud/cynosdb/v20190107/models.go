@@ -1353,11 +1353,9 @@ type BackupLimitRestriction struct {
 	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitnil,omitempty" name:"IpComparisonSymbol"`
 
 	// 限制下载的vpc设置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LimitVpcs []*BackupLimitVpcItem `json:"LimitVpcs,omitnil,omitempty" name:"LimitVpcs"`
 
 	// 限制下载的ip设置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LimitIps []*string `json:"LimitIps,omitnil,omitempty" name:"LimitIps"`
 }
 
@@ -7824,26 +7822,26 @@ func (r *DescribeBackupDownloadRestrictionResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeBackupDownloadUrlRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 备份ID
+	// <p>备份ID</p>
 	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
-	// 备份下载来源限制条件
+	// <p>备份下载来源限制条件</p>
 	DownloadRestriction *BackupLimitRestriction `json:"DownloadRestriction,omitnil,omitempty" name:"DownloadRestriction"`
 }
 
 type DescribeBackupDownloadUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 备份ID
+	// <p>备份ID</p>
 	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
-	// 备份下载来源限制条件
+	// <p>备份下载来源限制条件</p>
 	DownloadRestriction *BackupLimitRestriction `json:"DownloadRestriction,omitnil,omitempty" name:"DownloadRestriction"`
 }
 
@@ -7870,7 +7868,7 @@ func (r *DescribeBackupDownloadUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupDownloadUrlResponseParams struct {
-	// 备份下载地址
+	// <p>备份下载地址</p>
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8421,26 +8419,26 @@ func (r *DescribeBinlogConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBinlogDownloadUrlRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// Binlog文件ID
+	// <p>Binlog文件ID</p>
 	BinlogId *int64 `json:"BinlogId,omitnil,omitempty" name:"BinlogId"`
 
-	// 备份下载来源限制条件
+	// <p>备份下载来源限制条件</p>
 	DownloadRestriction *BackupLimitRestriction `json:"DownloadRestriction,omitnil,omitempty" name:"DownloadRestriction"`
 }
 
 type DescribeBinlogDownloadUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// Binlog文件ID
+	// <p>Binlog文件ID</p>
 	BinlogId *int64 `json:"BinlogId,omitnil,omitempty" name:"BinlogId"`
 
-	// 备份下载来源限制条件
+	// <p>备份下载来源限制条件</p>
 	DownloadRestriction *BackupLimitRestriction `json:"DownloadRestriction,omitnil,omitempty" name:"DownloadRestriction"`
 }
 
@@ -8467,7 +8465,7 @@ func (r *DescribeBinlogDownloadUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBinlogDownloadUrlResponseParams struct {
-	// 下载地址
+	// <p>下载地址</p>
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

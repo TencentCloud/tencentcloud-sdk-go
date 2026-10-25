@@ -326,56 +326,60 @@ type ChatEndpoint struct {
 }
 
 type ConnectorInfo struct {
-	// 连接器 ID
+	// <p>连接器 ID</p>
 	ConnectorId *string `json:"ConnectorId,omitnil,omitempty" name:"ConnectorId"`
 
-	// 连接器短标识（终身不变，跨版本稳定）
+	// <p>连接器短标识（终身不变，跨版本稳定）</p>
 	ConnectorSlug *string `json:"ConnectorSlug,omitnil,omitempty" name:"ConnectorSlug"`
 
-	// 版本级连接器密钥
+	// <p>版本级连接器密钥</p>
 	ConnectorKey *string `json:"ConnectorKey,omitnil,omitempty" name:"ConnectorKey"`
 
-	// 连接器名称
+	// <p>连接器名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 连接器描述
+	// <p>连接器描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 头像 URL
+	// <p>头像 URL</p>
 	AvatarUrl *string `json:"AvatarUrl,omitnil,omitempty" name:"AvatarUrl"`
 
-	// 连接器来源：ENTERPRISE_AGENT / ASSISTANT
+	// <p>连接器来源：ENTERPRISE_AGENT / ASSISTANT</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 归属企业 ID
+	// <p>归属企业 ID</p>
 	EnterpriseId *string `json:"EnterpriseId,omitnil,omitempty" name:"EnterpriseId"`
 
-	// 连接器类型：MCP_SERVER / A2A / API_SERVICE
+	// <p>连接器类型：MCP_SERVER / A2A / API_SERVICE</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 上游服务地址
+	// <p>上游服务地址</p>
 	ServiceUrl *string `json:"ServiceUrl,omitnil,omitempty" name:"ServiceUrl"`
 
-	// 授权方式列表：NONE / ONEID / OAUTH2_IDP / API_KEY
+	// <p>授权方式列表：NONE / ONEID / OAUTH2_IDP / API_KEY / DYNAMIC_API_KEY。DYNAMIC_API_KEY 表示按每轮请求提供的动态字段，通过 HeaderMappings 注入出站 HTTP Header。</p>
 	AuthModes []*string `json:"AuthModes,omitnil,omitempty" name:"AuthModes"`
 
-	// 最新版本号
+	// <p>最新版本号</p>
 	LatestVersionNo *int64 `json:"LatestVersionNo,omitnil,omitempty" name:"LatestVersionNo"`
 
-	// 连接器状态：ACTIVE / DISABLED
+	// <p>连接器状态：ACTIVE / DISABLED</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 创建人 ID
+	// <p>创建人 ID</p>
 	CreatorId *string `json:"CreatorId,omitnil,omitempty" name:"CreatorId"`
 
-	// 创建时间（ISO8601，UTC）
+	// <p>创建时间（ISO8601，UTC）</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 最后修改时间（ISO8601，UTC）
+	// <p>最后修改时间（ISO8601，UTC）</p>
 	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
 
-	// VPC 网络配置 ID。为空表示该连接器通过公网访问 ServiceUrl。仅绑定 VPC 网络配置时本字段有值。
+	// <p>VPC 网络配置 ID。为空表示该连接器通过公网访问 ServiceUrl。仅绑定 VPC 网络配置时本字段有值。</p>
 	VpcConfigId *string `json:"VpcConfigId,omitnil,omitempty" name:"VpcConfigId"`
+
+	// <p>展示名：console 老连接器目录（DescribeConsoleConnectorList）下发，取 registry data.display_name，老数据缺失时回落 Name；云上目录无独立展示名，省略不返回。Name 是存储名/选型回写键（含 scope 前缀），不承担展示职责。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 }
 
 type ConnectorRefInput struct {

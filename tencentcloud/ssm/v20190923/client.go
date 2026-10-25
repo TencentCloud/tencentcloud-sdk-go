@@ -295,6 +295,64 @@ func (c *Client) CreateSecretWithContext(ctx context.Context, request *CreateSec
     return
 }
 
+func NewCreateServiceRequest() (request *CreateServiceRequest) {
+    request = &CreateServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssm", APIVersion, "CreateService")
+    
+    
+    return
+}
+
+func NewCreateServiceResponse() (response *CreateServiceResponse) {
+    response = &CreateServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateService
+// 开通 ssm 服务接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE_SERVICEALREADYENABLED = "ResourceInUse.ServiceAlreadyEnabled"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateService(request *CreateServiceRequest) (response *CreateServiceResponse, err error) {
+    return c.CreateServiceWithContext(context.Background(), request)
+}
+
+// CreateService
+// 开通 ssm 服务接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE_SERVICEALREADYENABLED = "ResourceInUse.ServiceAlreadyEnabled"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateServiceWithContext(ctx context.Context, request *CreateServiceRequest) (response *CreateServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ssm", APIVersion, "CreateService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSecretRequest() (request *DeleteSecretRequest) {
     request = &DeleteSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},

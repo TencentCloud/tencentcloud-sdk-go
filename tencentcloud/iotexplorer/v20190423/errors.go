@@ -230,6 +230,12 @@ const (
 	// App不存在。
 	INVALIDPARAMETERVALUE_APPNOTEXISTS = "InvalidParameterValue.AppNotExists"
 
+	// CA证书内容错误。
+	INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
+
+	// CA验证证书不匹配。
+	INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
+
 	// 检查第三方URL超时或失败。
 	INVALIDPARAMETERVALUE_CHECKFORWARDURLFAIL = "InvalidParameterValue.CheckForwardURLFail"
 
@@ -428,6 +434,24 @@ const (
 	// 绑定的产品数量超过限制。
 	LIMITEXCEEDED_BINDPRODUCTSEXCEEDLIMIT = "LimitExceeded.BindProductsExceedLimit"
 
+	// CA证书已经绑定了产品，无法操作。
+	LIMITEXCEEDED_CAALREADYBINDPRODUCT = "LimitExceeded.CAAlreadyBindProduct"
+
+	// CA证书已存在。
+	LIMITEXCEEDED_CACERTALREADYEXIST = "LimitExceeded.CACertAlreadyExist"
+
+	// CA证书达到上限。
+	LIMITEXCEEDED_CACERTLIMIT = "LimitExceeded.CACertLimit"
+
+	// CA证书名称重复。
+	LIMITEXCEEDED_CACERTNAMEREPEAT = "LimitExceeded.CACertNameRepeat"
+
+	// 不支持私有证书操作。
+	LIMITEXCEEDED_CACERTNOTSUPPORT = "LimitExceeded.CACertNotSupport"
+
+	// CA证书重复。
+	LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
+
 	// 设备数量超过限制。
 	LIMITEXCEEDED_DEVICEEXCEEDLIMIT = "LimitExceeded.DeviceExceedLimit"
 
@@ -496,6 +520,9 @@ const (
 
 	// 量产不存在。
 	RESOURCENOTFOUND_BATCHPRODUCTIONNOTEXIST = "ResourceNotFound.BatchProductionNotExist"
+
+	// CA证书不存在。
+	RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 
 	// CKafka 实例不存在
 	RESOURCENOTFOUND_CKAFKAINSTANCENOTEXIST = "ResourceNotFound.CKafkaInstanceNotExist"
