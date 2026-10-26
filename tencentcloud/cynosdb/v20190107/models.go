@@ -349,6 +349,17 @@ type AddClusterSlaveZoneResponseParams struct {
 	// <p>异步FlowId</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
+	// <p>订单ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
+
+	// <p>订单名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
+
+	// <p>交易ID</p>
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -15612,32 +15623,32 @@ func (r *InquirePriceModifyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquirePriceMultiSpecRequestParams struct {
-	// 可用区,每个地域提供最佳实践
+	// <p>可用区,每个地域提供最佳实践</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
+	// <p>实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS</p>
 	InstancePayMode *string `json:"InstancePayMode,omitnil,omitempty" name:"InstancePayMode"`
 
-	// 存储购买类型，可选值为：PREPAID, POSTPAID
+	// <p>存储购买类型，可选值为：PREPAID, POSTPAID</p>
 	StoragePayMode *string `json:"StoragePayMode,omitnil,omitempty" name:"StoragePayMode"`
 
-	// 商品规格
+	// <p>商品规格</p>
 	GoodsSpecs []*GoodsSpec `json:"GoodsSpecs,omitnil,omitempty" name:"GoodsSpecs"`
 }
 
 type InquirePriceMultiSpecRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区,每个地域提供最佳实践
+	// <p>可用区,每个地域提供最佳实践</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
+	// <p>实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS</p>
 	InstancePayMode *string `json:"InstancePayMode,omitnil,omitempty" name:"InstancePayMode"`
 
-	// 存储购买类型，可选值为：PREPAID, POSTPAID
+	// <p>存储购买类型，可选值为：PREPAID, POSTPAID</p>
 	StoragePayMode *string `json:"StoragePayMode,omitnil,omitempty" name:"StoragePayMode"`
 
-	// 商品规格
+	// <p>商品规格</p>
 	GoodsSpecs []*GoodsSpec `json:"GoodsSpecs,omitnil,omitempty" name:"GoodsSpecs"`
 }
 
@@ -15665,7 +15676,7 @@ func (r *InquirePriceMultiSpecRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquirePriceMultiSpecResponseParams struct {
-	// 商品价格
+	// <p>商品价格</p>
 	GoodsPrice []*GoodsPrice `json:"GoodsPrice,omitnil,omitempty" name:"GoodsPrice"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -25299,44 +25310,44 @@ func (r *TransferClusterPrepayToPostpayResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type TransferClusterZoneRequestParams struct {
-	// 源集群Id
+	// <p>源集群Id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 目标可用区
+	// <p>目标可用区</p>
 	DstZone *string `json:"DstZone,omitnil,omitempty" name:"DstZone"`
 
-	// 跨可用区迁移主从数据延迟校验阈值，单位毫秒(ms)
+	// <p>跨可用区迁移主从数据延迟校验阈值，单位毫秒(ms)</p>
 	MaxLag *int64 `json:"MaxLag,omitnil,omitempty" name:"MaxLag"`
 
-	// Immediate:立即执行，InMaintain:时间窗口执行
+	// <p>Immediate:立即执行，InMaintain:时间窗口执行</p>
 	TransferType *string `json:"TransferType,omitnil,omitempty" name:"TransferType"`
 
-	// 多可用区备区
+	// <p>多可用区备区</p>
 	DstSlaveZone *string `json:"DstSlaveZone,omitnil,omitempty" name:"DstSlaveZone"`
 
-	// proxy迁移的目标可用区信息
+	// <p>proxy迁移的目标可用区信息</p>
 	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
 }
 
 type TransferClusterZoneRequest struct {
 	*tchttp.BaseRequest
 	
-	// 源集群Id
+	// <p>源集群Id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 目标可用区
+	// <p>目标可用区</p>
 	DstZone *string `json:"DstZone,omitnil,omitempty" name:"DstZone"`
 
-	// 跨可用区迁移主从数据延迟校验阈值，单位毫秒(ms)
+	// <p>跨可用区迁移主从数据延迟校验阈值，单位毫秒(ms)</p>
 	MaxLag *int64 `json:"MaxLag,omitnil,omitempty" name:"MaxLag"`
 
-	// Immediate:立即执行，InMaintain:时间窗口执行
+	// <p>Immediate:立即执行，InMaintain:时间窗口执行</p>
 	TransferType *string `json:"TransferType,omitnil,omitempty" name:"TransferType"`
 
-	// 多可用区备区
+	// <p>多可用区备区</p>
 	DstSlaveZone *string `json:"DstSlaveZone,omitnil,omitempty" name:"DstSlaveZone"`
 
-	// proxy迁移的目标可用区信息
+	// <p>proxy迁移的目标可用区信息</p>
 	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
 }
 
@@ -25366,7 +25377,7 @@ func (r *TransferClusterZoneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TransferClusterZoneResponseParams struct {
-	// 异步任务id
+	// <p>异步任务id</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

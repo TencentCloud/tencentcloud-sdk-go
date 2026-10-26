@@ -28888,6 +28888,22 @@ type InstanceOpsDto struct {
 	// <p>权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 可管理</li><li>CAN_VIEW： 可见</li><li>NO_PERMISSIONS： 无权限</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
+
+	// <p>触发记录来源 (仅嵌套工作流触发场景有值, 取值以 SUB_PROCESS_ 开头时表示由嵌套工作流生成运行记录触发</p><p>枚举值：</p><ul><li>SUB_PROCESS_MAKEUP： 补录</li><li>SUB_PROCESS_TRIGGER： 调度触发</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerSource *string `json:"TriggerSource,omitnil,omitempty" name:"TriggerSource"`
+
+	// <p>父 嵌套工作流任务 ID (仅触发记录来源为嵌套工作流时有值)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSpTaskId *string `json:"ParentSpTaskId,omitnil,omitempty" name:"ParentSpTaskId"`
+
+	// <p>父嵌套工作流实例名称 (仅触发记录来源为嵌套工作流时有值)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSpInstanceName *string `json:"ParentSpInstanceName,omitnil,omitempty" name:"ParentSpInstanceName"`
+
+	// <p>父嵌套工作流实例数据时间 (仅触发记录来源为嵌套工作流时有值)</p><p>参数格式：2026-10-12 00:00:00</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSpInstanceDataTime *string `json:"ParentSpInstanceDataTime,omitnil,omitempty" name:"ParentSpInstanceDataTime"`
 }
 
 type InstanceOpsInfoPage struct {

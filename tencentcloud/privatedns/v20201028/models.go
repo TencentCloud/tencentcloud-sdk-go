@@ -1579,26 +1579,26 @@ func (r *DescribeDashboardResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExtendEndpointListRequestParams struct {
-	// 分页偏移量，从0开始
+	// <p>分页偏移量，从0开始</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页限制数目， 最大100，默认20
+	// <p>分页限制数目， 最大100，默认20</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤参数，支持EndpointName,EndpointId
+	// <p>过滤参数，支持EndpointName,EndpointId</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeExtendEndpointListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页偏移量，从0开始
+	// <p>分页偏移量，从0开始</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页限制数目， 最大100，默认20
+	// <p>分页限制数目， 最大100，默认20</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤参数，支持EndpointName,EndpointId
+	// <p>过滤参数，支持EndpointName,EndpointId</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -1625,6 +1625,12 @@ func (r *DescribeExtendEndpointListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExtendEndpointListResponseParams struct {
+	// <p>终端节点总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>终端节点列表</p>
+	OutboundEndpointSet []*OutboundEndpoint `json:"OutboundEndpointSet,omitnil,omitempty" name:"OutboundEndpointSet"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2355,6 +2361,11 @@ type EndPointServiceInfo struct {
 	EndPointIsolateFlag *uint64 `json:"EndPointIsolateFlag,omitnil,omitempty" name:"EndPointIsolateFlag"`
 }
 
+type EndpointService struct {
+	// <p>子网剩余IP数</p>
+	SubnetLessIp *uint64 `json:"SubnetLessIp,omitnil,omitempty" name:"SubnetLessIp"`
+}
+
 type Filter struct {
 	// 参数名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2912,6 +2923,37 @@ func (r *ModifyRecordsStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyRecordsStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type OutboundEndpoint struct {
+	// 出站终端节点ID
+	EndpointId *string `json:"EndpointId,omitnil,omitempty" name:"EndpointId"`
+
+	// 出站终端节点名
+	EndpointName *string `json:"EndpointName,omitnil,omitempty" name:"EndpointName"`
+
+	// 出站终端节点所属地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// tag标签
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 出站终端节点信息
+	// 仅在转发架构为 V2R的情况下返回
+	EndpointServiceSet []*EndpointService `json:"EndpointServiceSet,omitnil,omitempty" name:"EndpointServiceSet"`
+
+	// 转发链接架构
+	// V2V: privatelink
+	// V2R: jnsgw
+	ForwardLinkArch *string `json:"ForwardLinkArch,omitnil,omitempty" name:"ForwardLinkArch"`
+
+	// 终端节点服务ID
+	// 仅在转发架构为 V2V的情况下返回
+	EndPointServiceId *string `json:"EndPointServiceId,omitnil,omitempty" name:"EndPointServiceId"`
+
+	// 终端节点VIP列表
+	// 仅在转发架构为 V2V的情况下返回
+	EndPointVipSet []*string `json:"EndPointVipSet,omitnil,omitempty" name:"EndPointVipSet"`
 }
 
 type PrivateDNSAccount struct {

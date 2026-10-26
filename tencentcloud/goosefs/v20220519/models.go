@@ -1242,6 +1242,92 @@ type CustomerClusterAttr struct {
 	StorageFileSystemId *string `json:"StorageFileSystemId,omitnil,omitempty" name:"StorageFileSystemId"`
 }
 
+type DataRepositoryTaskAttribute struct {
+	// <p>数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者Bucket到文件系统(COS_TO_FS)</p>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>bucket名</p>
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// <p>bucket路径</p>
+	TaskPath *string `json:"TaskPath,omitnil,omitempty" name:"TaskPath"`
+
+	// <p>总的容量(单位Byte)</p>
+	TotalCapacity *uint64 `json:"TotalCapacity,omitnil,omitempty" name:"TotalCapacity"`
+
+	// <p>已完成的数据量(单位Byte)</p>
+	FinishedCapacity *uint64 `json:"FinishedCapacity,omitnil,omitempty" name:"FinishedCapacity"`
+
+	// <p>任务创建时间</p>
+	TaskCreateTime *string `json:"TaskCreateTime,omitnil,omitempty" name:"TaskCreateTime"`
+
+	// <p>任务开始执行时间</p>
+	TaskStartTime *string `json:"TaskStartTime,omitnil,omitempty" name:"TaskStartTime"`
+
+	// <p>任务结束时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskEndTime *string `json:"TaskEndTime,omitnil,omitempty" name:"TaskEndTime"`
+
+	// <p>INIT(任务初始化中) RUNNING(任务执行中) SUCCESS(任务已完成) FAIL(任务失败)</p>
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务名</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>任务失败原因</p>
+	TaskFailMsg *string `json:"TaskFailMsg,omitnil,omitempty" name:"TaskFailMsg"`
+
+	// <p>总共的文件个数</p>
+	TotalFileNumber *uint64 `json:"TotalFileNumber,omitnil,omitempty" name:"TotalFileNumber"`
+
+	// <p>已完成的文件个数</p>
+	FinishedFileNumber *uint64 `json:"FinishedFileNumber,omitnil,omitempty" name:"FinishedFileNumber"`
+
+	// <p>列表地址</p>
+	TextLocation *string `json:"TextLocation,omitnil,omitempty" name:"TextLocation"`
+
+	// <p>执行器类型</p>
+	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
+
+	// <p>是否自定义路径</p>
+	//
+	// Deprecated: EnableDataFlowSubPath is deprecated.
+	EnableDataFlowSubPath *bool `json:"EnableDataFlowSubPath,omitnil,omitempty" name:"EnableDataFlowSubPath"`
+
+	// <p>自定义路径</p>
+	//
+	// Deprecated: DataFlowSubPath is deprecated.
+	DataFlowSubPath *string `json:"DataFlowSubPath,omitnil,omitempty" name:"DataFlowSubPath"`
+
+	// <p>是否支持自定义目的路径（沉降表示桶前缀，预热表示本地路径）</p>
+	EnableCustomDestPath *bool `json:"EnableCustomDestPath,omitnil,omitempty" name:"EnableCustomDestPath"`
+
+	// <p>自定义目的路径（沉降表示桶前缀，预热表示本地路径）</p>
+	CustomDestPath *string `json:"CustomDestPath,omitnil,omitempty" name:"CustomDestPath"`
+
+	// <p>任务路径是否表示绝对路径（暂时仅支持沉降使用）</p>
+	IsTaskPathAbsolute *bool `json:"IsTaskPathAbsolute,omitnil,omitempty" name:"IsTaskPathAbsolute"`
+
+	// <p>任务内容输出桶</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputBucket *string `json:"OutputBucket,omitnil,omitempty" name:"OutputBucket"`
+
+	// <p>任务内容输出桶前缀</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputPrefix *string `json:"OutputPrefix,omitnil,omitempty" name:"OutputPrefix"`
+
+	// <p>是否支持自定义数据源路径(暂时仅支持清单过滤使用)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableCustomSrcPath *bool `json:"EnableCustomSrcPath,omitnil,omitempty" name:"EnableCustomSrcPath"`
+
+	// <p>自定义数据源路径(暂时仅支持清单过滤使用)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomSrcPath *string `json:"CustomSrcPath,omitnil,omitempty" name:"CustomSrcPath"`
+}
+
 // Predefined struct for user
 type DeleteCrossVpcSubnetSupportForClientNodeRequestParams struct {
 	// 文件系统ID
@@ -1845,6 +1931,80 @@ func (r *DescribeDataRepositoryTaskStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDataRepositoryTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataRepositoryTasksRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 最大返回数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeDataRepositoryTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 最大返回数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDataRepositoryTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataRepositoryTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataRepositoryTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataRepositoryTasksResponseParams struct {
+	// 数据流通任务列表
+	DataRepositoryTaskList []*DataRepositoryTaskAttribute `json:"DataRepositoryTaskList,omitnil,omitempty" name:"DataRepositoryTaskList"`
+
+	// 任务总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataRepositoryTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataRepositoryTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataRepositoryTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataRepositoryTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -5228,57 +5228,69 @@ func (r *ModifyUserBindWorkloadGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserPrivilegesV3RequestParams struct {
-	// 集群id
+	// <p>集群id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 用户权限
+	// <p>用户权限</p>
 	UserPrivileges *UpdateUserPrivileges `json:"UserPrivileges,omitnil,omitempty" name:"UserPrivileges"`
 
-	// 用户链接来自的 IP	
+	// <p>用户链接来自的 IP</p>
 	WhiteHost *string `json:"WhiteHost,omitnil,omitempty" name:"WhiteHost"`
 
-	// 更新类型，默认0，1为更新绑定计算组，2为更新默认计算组
+	// <p>更新类型，默认0，1为更新绑定计算组，2为更新默认计算组，4 为 GrantPrivileges, RevokePrivileges 接口专用批量授权</p><p>枚举值：</p><ul><li>0： 默认</li><li>1： 更新绑定计算组</li><li>2： 更新默认计算组</li><li>4： GrantPrivileges, RevokePrivileges 接口专用批量授权</li></ul>
 	UpdateType *int64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
 
-	// 需绑定计算组列表
+	// <p>需绑定计算组列表</p>
 	UpdateComputeGroups []*string `json:"UpdateComputeGroups,omitnil,omitempty" name:"UpdateComputeGroups"`
 
-	// 默认计算组
+	// <p>默认计算组</p>
 	DefaultComputeGroup *string `json:"DefaultComputeGroup,omitnil,omitempty" name:"DefaultComputeGroup"`
 
-	// 0: 灵活场景 1: 固定场景
+	// <p>0: 灵活场景 1: 固定场景</p>
 	ComputeGroupType *int64 `json:"ComputeGroupType,omitnil,omitempty" name:"ComputeGroupType"`
+
+	// <p>本次新增授权的库表，仅 UpdateType=4 时生效</p>
+	GrantPrivileges *UpdateUserPrivileges `json:"GrantPrivileges,omitnil,omitempty" name:"GrantPrivileges"`
+
+	// <p>本次取消授权的库表，仅 UpdateType=4 时生效</p>
+	RevokePrivileges *UpdateUserPrivileges `json:"RevokePrivileges,omitnil,omitempty" name:"RevokePrivileges"`
 }
 
 type ModifyUserPrivilegesV3Request struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// <p>集群id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 用户权限
+	// <p>用户权限</p>
 	UserPrivileges *UpdateUserPrivileges `json:"UserPrivileges,omitnil,omitempty" name:"UserPrivileges"`
 
-	// 用户链接来自的 IP	
+	// <p>用户链接来自的 IP</p>
 	WhiteHost *string `json:"WhiteHost,omitnil,omitempty" name:"WhiteHost"`
 
-	// 更新类型，默认0，1为更新绑定计算组，2为更新默认计算组
+	// <p>更新类型，默认0，1为更新绑定计算组，2为更新默认计算组，4 为 GrantPrivileges, RevokePrivileges 接口专用批量授权</p><p>枚举值：</p><ul><li>0： 默认</li><li>1： 更新绑定计算组</li><li>2： 更新默认计算组</li><li>4： GrantPrivileges, RevokePrivileges 接口专用批量授权</li></ul>
 	UpdateType *int64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
 
-	// 需绑定计算组列表
+	// <p>需绑定计算组列表</p>
 	UpdateComputeGroups []*string `json:"UpdateComputeGroups,omitnil,omitempty" name:"UpdateComputeGroups"`
 
-	// 默认计算组
+	// <p>默认计算组</p>
 	DefaultComputeGroup *string `json:"DefaultComputeGroup,omitnil,omitempty" name:"DefaultComputeGroup"`
 
-	// 0: 灵活场景 1: 固定场景
+	// <p>0: 灵活场景 1: 固定场景</p>
 	ComputeGroupType *int64 `json:"ComputeGroupType,omitnil,omitempty" name:"ComputeGroupType"`
+
+	// <p>本次新增授权的库表，仅 UpdateType=4 时生效</p>
+	GrantPrivileges *UpdateUserPrivileges `json:"GrantPrivileges,omitnil,omitempty" name:"GrantPrivileges"`
+
+	// <p>本次取消授权的库表，仅 UpdateType=4 时生效</p>
+	RevokePrivileges *UpdateUserPrivileges `json:"RevokePrivileges,omitnil,omitempty" name:"RevokePrivileges"`
 }
 
 func (r *ModifyUserPrivilegesV3Request) ToJsonString() string {
@@ -5301,6 +5313,8 @@ func (r *ModifyUserPrivilegesV3Request) FromJsonString(s string) error {
 	delete(f, "UpdateComputeGroups")
 	delete(f, "DefaultComputeGroup")
 	delete(f, "ComputeGroupType")
+	delete(f, "GrantPrivileges")
+	delete(f, "RevokePrivileges")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserPrivilegesV3Request has unknown keys!", "")
 	}
@@ -5309,11 +5323,14 @@ func (r *ModifyUserPrivilegesV3Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserPrivilegesV3ResponseParams struct {
-	// 错误信息，为空就是没有错误
+	// <p>错误信息，为空就是没有错误</p>
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
-	// 集群id
+	// <p>集群id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>因库/表已删除而被跳过的目标；ErrorMsg 为空时不代表失败，前端需弹窗提示</p>
+	SkippedItems *SkippedPrivilegeItem `json:"SkippedItems,omitnil,omitempty" name:"SkippedItems"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6625,6 +6642,20 @@ type SearchTags struct {
 
 	// 1表示只输入标签的键，没有输入值；非1则表示输入键时且输入值
 	AllValue *int64 `json:"AllValue,omitnil,omitempty" name:"AllValue"`
+}
+
+type SkippedPrivilegeItem struct {
+	// <p>数据目录（catalog）名称</p>
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// <p>库名</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>表名；库级条目被跳过时该字段为空（Go 定义带 omitempty，为空时响应里整个字段不出现）</p>
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// <p>跳过原因，如 table not found, maybe already dropped、database not found, maybe already dropped、existence check failed, granting  skipped this round, please retry</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 type SlowQueryRecord struct {

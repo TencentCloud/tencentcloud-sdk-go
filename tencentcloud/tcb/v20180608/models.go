@@ -87,44 +87,6 @@ type AIModelStatus struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
-type APIsUserKeyInfo struct {
-	// <p>用户创建的集成的名称</p>
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// <p>用户对创建的集成的描述</p>
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// <p>集成ID，用户创建的集成的标识id，前半部分用户填写，后半部分平台按照一定规则生成</p>
-	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
-
-	// <p>额外信息,根据集成类型不同，ext会有不同的子结构</p>
-	Ext *string `json:"Ext,omitnil,omitempty" name:"Ext"`
-
-	// <p>集成类型Code</p>
-	AuthTypeCode *string `json:"AuthTypeCode,omitnil,omitempty" name:"AuthTypeCode"`
-
-	// <p>状态</p>
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// <p>引用该集成的服务列表</p>
-	BindServiceList *BindServiceList `json:"BindServiceList,omitnil,omitempty" name:"BindServiceList"`
-
-	// <p>AuthTypeName 和AuthType 分别1-1对应</p>
-	AuthTypeName *string `json:"AuthTypeName,omitnil,omitempty" name:"AuthTypeName"`
-
-	// <p>github、gitlab、gitee、腾讯会议等oauth类型的，需要传这个ticket_id，创建的密钥对跟auth_ticket_token(对于github、gitlab、gitee)、weda_ticket_token(对于腾讯会议)关联起来</p>
-	TicketID *string `json:"TicketID,omitnil,omitempty" name:"TicketID"`
-
-	// <p>用户在创建(weixinmp、wxvirtualpay、weixin-store、channels、weixinpaydc)这五种之一时创建的关联的示例代码云函数的函数名</p>
-	DemoCodeFunctionName *string `json:"DemoCodeFunctionName,omitnil,omitempty" name:"DemoCodeFunctionName"`
-
-	// <p>创建时间</p><p>参数格式：2026-05-25T11:18:28+08:00</p>
-	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
-
-	// <p>更新时间</p><p>参数格式：2026-05-25T11:18:28+08:00</p>
-	UpdateAt *string `json:"UpdateAt,omitnil,omitempty" name:"UpdateAt"`
-}
-
 // Predefined struct for user
 type AddProviderRequestParams struct {
 	// 云开发环境 ID，用于唯一标识当前操作所属的云开发环境。
@@ -291,29 +253,6 @@ func (r *AddProviderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type AgentRuntimeCode struct {
-	// 对象存储桶名称
-	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
-
-	// 对象存储中代码包文件路径，以/开头
-	CosObjectName *string `json:"CosObjectName,omitnil,omitempty" name:"CosObjectName"`
-
-	// 包含函数代码文件及其依赖项的 zip 格式文件，zip包大小上限为 50MB，使用该接口时要求将 zip 文件的内容转成 base64 编码
-	ZipFile *string `json:"ZipFile,omitnil,omitempty" name:"ZipFile"`
-
-	// 对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
-	CosBucketRegion *string `json:"CosBucketRegion,omitnil,omitempty" name:"CosBucketRegion"`
-
-	// 如果是从TempCos创建的话，需要传入TempCosObjectName
-	TempCosObjectName *string `json:"TempCosObjectName,omitnil,omitempty" name:"TempCosObjectName"`
-
-	// 镜像部署时配置TCR镜像信息
-	ImageConfig *AgentRuntimeCodeImageConfig `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
-
-	// 云函数DemoId
-	DemoId *string `json:"DemoId,omitnil,omitempty" name:"DemoId"`
-}
-
 type AgentRuntimeCodeImageConfig struct {
 	// 镜像仓库类型，个人版或者企业版：personal/enterprise
 	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
@@ -332,69 +271,6 @@ type AgentRuntimeCodeImageConfig struct {
 
 	// 镜像加速开关，默认False
 	ContainerImageAccelerate *bool `json:"ContainerImageAccelerate,omitnil,omitempty" name:"ContainerImageAccelerate"`
-}
-
-type AgentRuntimeConfig struct {
-	// 函数代码. 注意：不能同时指定Cos和ZipFile
-	Code *AgentRuntimeCode `json:"Code,omitnil,omitempty" name:"Code"`
-
-	// 函数运行环境，默认Python2.7
-	// 目前支持的运行环境：
-	// - Python2.7
-	// - Python3.6
-	// - Python3.7
-	// - Python3.9
-	// - Python3.10
-	// - Nodejs6.10
-	// - Nodejs8.9
-	// - Nodejs10.15
-	// - Nodejs12.16
-	// - Nodejs14.18
-	// - Nodejs16.13
-	// - Nodejs18.15
-	// - Php5.6
-	// - Php7(7.2版本)
-	// - Php7.4
-	// - Php8.0
-	// - Go1
-	// - Java8
-	// - CustomRuntime
-	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
-
-	// 函数运行时内存大小，默认为 128M，可选范围 64、128MB-3072MB，并且以 128MB 为阶梯
-	MemorySize *int64 `json:"MemorySize,omitnil,omitempty" name:"MemorySize"`
-
-	// 函数是否自动安装依赖
-	InstallDependency *bool `json:"InstallDependency,omitnil,omitempty" name:"InstallDependency"`
-
-	// 函数最长执行时间，单位为秒，可选值范围 1-900 秒，默认为 3 秒
-	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
-
-	// 函数的环境变量，满足json格式
-	Environment *string `json:"Environment,omitnil,omitempty" name:"Environment"`
-
-	// Agent Session 配置
-	SessionConfig *AgentRuntimeSessionConfig `json:"SessionConfig,omitnil,omitempty" name:"SessionConfig"`
-}
-
-type AgentRuntimeSessionConfig struct {
-	// 单实例并发数最大值。取值范围 [1,100]
-	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil,omitempty" name:"MaxConcurrency"`
-
-	// session 来源，三选一：'HEADER', 'COOKIE', 'QUERY_STRING'
-	SessionSource *string `json:"SessionSource,omitnil,omitempty" name:"SessionSource"`
-
-	// session 名称，以字母开头，非首字母可包含数字、字母、下划线、中划线，长度5-40个字符
-	SessionName *string `json:"SessionName,omitnil,omitempty" name:"SessionName"`
-
-	// 最大并发会话数
-	MaximumConcurrencySessionPerInstance *int64 `json:"MaximumConcurrencySessionPerInstance,omitnil,omitempty" name:"MaximumConcurrencySessionPerInstance"`
-
-	// 生命周期
-	MaximumTTLInSeconds *int64 `json:"MaximumTTLInSeconds,omitnil,omitempty" name:"MaximumTTLInSeconds"`
-
-	// 空闲时长
-	MaximumIdleTimeInSeconds *int64 `json:"MaximumIdleTimeInSeconds,omitnil,omitempty" name:"MaximumIdleTimeInSeconds"`
 }
 
 // Predefined struct for user
@@ -712,28 +588,6 @@ func (r *BindClsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *BindClsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type BindService struct {
-	// 服务标识
-	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
-
-	// 服务名称
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 场景，云托管、云函数、aibuilder等
-	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
-}
-
-type BindServiceList struct {
-	// 密钥对绑定的mcp服务列表
-	Mcp []*BindService `json:"Mcp,omitnil,omitempty" name:"Mcp"`
-
-	// 密钥对绑定的apis服务列表
-	Apis []*BindService `json:"Apis,omitnil,omitempty" name:"Apis"`
-
-	// 登记哪个资源下的哪个场景使用了密钥对
-	Other []*BindService `json:"Other,omitnil,omitempty" name:"Other"`
 }
 
 // Predefined struct for user
@@ -2838,126 +2692,6 @@ func (r *CreateTableResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type CreateUserKeyRequestParams struct {
-	// <p>环境ID</p>
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// <p>用户创建的集成名称，或者密钥名称</p>
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// <p>用户创建的集成ID，集成表示，或者密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成</p>
-	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
-
-	// <p>集成描述</p>
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// <p>集成类型，或者授权类型码，对应GetUserKeyTemplateList接口的AuthTypeCode字段，比如github、gitlab、gitee、meeting、PublicAccountOpenService等</p>
-	AuthTypeCode *string `json:"AuthTypeCode,omitnil,omitempty" name:"AuthTypeCode"`
-
-	// <p>根据集成类型的不同，ext会有不同的子结构，具体每种授权类型的ext需要填写的信息，可以通过GetUserKeyTemplateList获取</p>
-	Ext *string `json:"Ext,omitnil,omitempty" name:"Ext"`
-
-	// <p>github、gitlab、gitee、腾讯会议等oauth类型的，需要传这个ticket_id，创建的密钥对跟auth_ticket_token(对于github、gitlab、gitee)、weda_ticket_token(对于腾讯会议)关联起来</p>
-	TicketID *string `json:"TicketID,omitnil,omitempty" name:"TicketID"`
-
-	// <p>业务类型，integration：从集成中心来的，默认为空，表示是从授权管理中心来的</p>
-	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
-
-	// <p>创建demo代码云函数需要的参数信息</p><p>入参限制：当Business为integration，且AuthTypeCode为(weixinmp、wxvirtualpay、weixin-store、channels、weixinpaydc)之一时必填</p>
-	RuntimeConfig *AgentRuntimeConfig `json:"RuntimeConfig,omitnil,omitempty" name:"RuntimeConfig"`
-
-	// <p>创建集成时创建关联的示例代码云函数的名称，当Business为integration，且AuthTypeCode为(weixinmp、wxvirtualpay、weixin-store、channels、weixinpaydc)之一时必填</p>
-	DemoCodeFunctionName *string `json:"DemoCodeFunctionName,omitnil,omitempty" name:"DemoCodeFunctionName"`
-}
-
-type CreateUserKeyRequest struct {
-	*tchttp.BaseRequest
-	
-	// <p>环境ID</p>
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// <p>用户创建的集成名称，或者密钥名称</p>
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// <p>用户创建的集成ID，集成表示，或者密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成</p>
-	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
-
-	// <p>集成描述</p>
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// <p>集成类型，或者授权类型码，对应GetUserKeyTemplateList接口的AuthTypeCode字段，比如github、gitlab、gitee、meeting、PublicAccountOpenService等</p>
-	AuthTypeCode *string `json:"AuthTypeCode,omitnil,omitempty" name:"AuthTypeCode"`
-
-	// <p>根据集成类型的不同，ext会有不同的子结构，具体每种授权类型的ext需要填写的信息，可以通过GetUserKeyTemplateList获取</p>
-	Ext *string `json:"Ext,omitnil,omitempty" name:"Ext"`
-
-	// <p>github、gitlab、gitee、腾讯会议等oauth类型的，需要传这个ticket_id，创建的密钥对跟auth_ticket_token(对于github、gitlab、gitee)、weda_ticket_token(对于腾讯会议)关联起来</p>
-	TicketID *string `json:"TicketID,omitnil,omitempty" name:"TicketID"`
-
-	// <p>业务类型，integration：从集成中心来的，默认为空，表示是从授权管理中心来的</p>
-	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
-
-	// <p>创建demo代码云函数需要的参数信息</p><p>入参限制：当Business为integration，且AuthTypeCode为(weixinmp、wxvirtualpay、weixin-store、channels、weixinpaydc)之一时必填</p>
-	RuntimeConfig *AgentRuntimeConfig `json:"RuntimeConfig,omitnil,omitempty" name:"RuntimeConfig"`
-
-	// <p>创建集成时创建关联的示例代码云函数的名称，当Business为integration，且AuthTypeCode为(weixinmp、wxvirtualpay、weixin-store、channels、weixinpaydc)之一时必填</p>
-	DemoCodeFunctionName *string `json:"DemoCodeFunctionName,omitnil,omitempty" name:"DemoCodeFunctionName"`
-}
-
-func (r *CreateUserKeyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateUserKeyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "EnvId")
-	delete(f, "Name")
-	delete(f, "KeyID")
-	delete(f, "Description")
-	delete(f, "AuthTypeCode")
-	delete(f, "Ext")
-	delete(f, "TicketID")
-	delete(f, "Business")
-	delete(f, "RuntimeConfig")
-	delete(f, "DemoCodeFunctionName")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserKeyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateUserKeyResponseParams struct {
-	// <p>创建成功记录条数</p>
-	CreateResult *uint64 `json:"CreateResult,omitnil,omitempty" name:"CreateResult"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateUserKeyResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateUserKeyResponseParams `json:"Response"`
-}
-
-func (r *CreateUserKeyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateUserKeyResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type CreateUserRequestParams struct {
 	// 环境id
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -3828,70 +3562,6 @@ func (r *DeleteTableResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTableResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteUserKeyRequestParams struct {
-	// 环境ID
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// 用户密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成
-	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
-}
-
-type DeleteUserKeyRequest struct {
-	*tchttp.BaseRequest
-	
-	// 环境ID
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// 用户密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成
-	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
-}
-
-func (r *DeleteUserKeyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteUserKeyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "EnvId")
-	delete(f, "KeyID")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserKeyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteUserKeyResponseParams struct {
-	// 删除记录条数
-	DeleteResult *uint64 `json:"DeleteResult,omitnil,omitempty" name:"DeleteResult"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteUserKeyResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteUserKeyResponseParams `json:"Response"`
-}
-
-func (r *DeleteUserKeyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteUserKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8933,84 +8603,6 @@ func (r *GetFunctionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type GetOneUserKeyRequestParams struct {
-	// <p>环境ID</p>
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// <p>用户密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成</p>
-	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
-
-	// <p>业务场景来源，默认不传，表示来源授权中心，integration表示来源集成中心，当从集成中心请求时必传integration</p>
-	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
-
-	// <p>是否需要加密字段的值，true：是，false：否，默认不传，不需要</p><p>默认值：false</p><p>当为true时，返回加密字段的值，前端进行按约定解密</p>
-	NeedPwd *bool `json:"NeedPwd,omitnil,omitempty" name:"NeedPwd"`
-}
-
-type GetOneUserKeyRequest struct {
-	*tchttp.BaseRequest
-	
-	// <p>环境ID</p>
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// <p>用户密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成</p>
-	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
-
-	// <p>业务场景来源，默认不传，表示来源授权中心，integration表示来源集成中心，当从集成中心请求时必传integration</p>
-	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
-
-	// <p>是否需要加密字段的值，true：是，false：否，默认不传，不需要</p><p>默认值：false</p><p>当为true时，返回加密字段的值，前端进行按约定解密</p>
-	NeedPwd *bool `json:"NeedPwd,omitnil,omitempty" name:"NeedPwd"`
-}
-
-func (r *GetOneUserKeyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetOneUserKeyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "EnvId")
-	delete(f, "KeyID")
-	delete(f, "Business")
-	delete(f, "NeedPwd")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOneUserKeyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetOneUserKeyResponseParams struct {
-	// <p>单个密钥对详情页</p>
-	UserKeyInfo *APIsUserKeyInfo `json:"UserKeyInfo,omitnil,omitempty" name:"UserKeyInfo"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type GetOneUserKeyResponse struct {
-	*tchttp.BaseResponse
-	Response *GetOneUserKeyResponseParams `json:"Response"`
-}
-
-func (r *GetOneUserKeyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetOneUserKeyResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type GetProvidersRequestParams struct {
 	// 环境 ID，用于指定需要查询配置第三方身份源的云开发环境。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -9069,101 +8661,6 @@ func (r *GetProvidersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetProvidersResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetUserKeyListRequestParams struct {
-	// <p>环境ID</p>
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// <p>分页的offset，从0开始</p>
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// <p>分页的每页多少条</p>
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// <p>根据集成名称模糊查询，name</p>
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// <p>集成类型映射码</p>
-	AuthTypeCode *string `json:"AuthTypeCode,omitnil,omitempty" name:"AuthTypeCode"`
-
-	// <p>业务类型，integration：从集成中心来的，默认为空，表示是从授权管理中心来的</p>
-	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
-}
-
-type GetUserKeyListRequest struct {
-	*tchttp.BaseRequest
-	
-	// <p>环境ID</p>
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// <p>分页的offset，从0开始</p>
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// <p>分页的每页多少条</p>
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// <p>根据集成名称模糊查询，name</p>
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// <p>集成类型映射码</p>
-	AuthTypeCode *string `json:"AuthTypeCode,omitnil,omitempty" name:"AuthTypeCode"`
-
-	// <p>业务类型，integration：从集成中心来的，默认为空，表示是从授权管理中心来的</p>
-	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
-}
-
-func (r *GetUserKeyListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetUserKeyListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "EnvId")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "Name")
-	delete(f, "AuthTypeCode")
-	delete(f, "Business")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUserKeyListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetUserKeyListResponseParams struct {
-	// <p>用户密钥对列表</p>
-	UserKeyList []*APIsUserKeyInfo `json:"UserKeyList,omitnil,omitempty" name:"UserKeyList"`
-
-	// <p>数据记录条数</p>
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type GetUserKeyListResponse struct {
-	*tchttp.BaseResponse
-	Response *GetUserKeyListResponseParams `json:"Response"`
-}
-
-func (r *GetUserKeyListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetUserKeyListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9380,11 +8877,14 @@ type HTTPServiceRoute struct {
 	// <p>路径重写规则</p>
 	PathRewrite *HTTPServicePathRewrite `json:"PathRewrite,omitnil,omitempty" name:"PathRewrite"`
 
-	// <p>上游服务类型。SCF: 云函数，CBR: 云托管，STATIC_STORE: 静态托管，WEB_SCF: WEB云函数，LH: Lighthouse</p>
+	// <p>上游资源类型</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： WEB云函数</li><li>STORAGE： 云存储</li></ul>
 	UpstreamResourceType *string `json:"UpstreamResourceType,omitnil,omitempty" name:"UpstreamResourceType"`
 
-	// <p>上游服务名</p>
+	// <p>上游资源名</p>
 	UpstreamResourceName *string `json:"UpstreamResourceName,omitnil,omitempty" name:"UpstreamResourceName"`
+
+	// <p>上游资源版本。仅支持云函数，可填具体的版本，$DEFAULT:请求转发到资源，流量比例由资源控制；$LATEST: 请求转发到最新版本；为空默认是$DEFAULT</p>
+	UpstreamResourceVersion *string `json:"UpstreamResourceVersion,omitnil,omitempty" name:"UpstreamResourceVersion"`
 
 	// <p>是否开启安全域名</p>
 	EnableSafeDomain *bool `json:"EnableSafeDomain,omitnil,omitempty" name:"EnableSafeDomain"`
@@ -9415,11 +8915,14 @@ type HTTPServiceRouteParam struct {
 	// <p>路径</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// <p>上游服务类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>LH： Lighthouse</li><li>STORAGE： 云存储</li></ul>
+	// <p>上游资源类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>STORAGE： 云存储</li></ul>
 	UpstreamResourceType *string `json:"UpstreamResourceType,omitnil,omitempty" name:"UpstreamResourceType"`
 
-	// <p>上游服务名。创建时必填，修改时可选填。HTTPServiceRouteServiceType类型为STATIC_STORE时，可不填，默认staticstore；HTTPServiceRouteServiceType类型为STORAGE时，可不填，默认storage。其他上游类型必须填写准确的服务名</p>
+	// <p>上游资源名。创建时必填，修改时可选填。HTTPServiceRouteServiceType类型为STATIC_STORE时，可不填，默认staticstore；HTTPServiceRouteServiceType类型为STORAGE时，可不填，默认storage。其他上游类型必须填写准确的服务名</p>
 	UpstreamResourceName *string `json:"UpstreamResourceName,omitnil,omitempty" name:"UpstreamResourceName"`
+
+	// <p>上游资源版本。仅支持云函数，可填具体的版本，$DEFAULT:请求转发到资源，流量比例由资源控制；$LATEST: 请求转发到最新版本；为空默认是$DEFAULT</p>
+	UpstreamResourceVersion *string `json:"UpstreamResourceVersion,omitnil,omitempty" name:"UpstreamResourceVersion"`
 
 	// <p>路径重写</p>
 	PathRewrite *HTTPServicePathRewrite `json:"PathRewrite,omitnil,omitempty" name:"PathRewrite"`
@@ -13731,119 +13234,6 @@ func (r *UpdateTableResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateTableResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type UpdateUserKeyRequestParams struct {
-	// <p>环境ID</p>
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// <p>用户密钥名称</p>
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// <p>用户密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成</p>
-	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
-
-	// <p>密钥对描述</p>
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// <p>授权类型code</p>
-	AuthTypeCode *string `json:"AuthTypeCode,omitnil,omitempty" name:"AuthTypeCode"`
-
-	// <p>根据授权类型的不同，ext会有不同的子结构</p>
-	Ext *string `json:"Ext,omitnil,omitempty" name:"Ext"`
-
-	// <p>业务类型，integration：从集成中心来的，默认为空，表示是从授权管理中心来的</p>
-	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
-
-	// <p>创建集成时创建对应的示例代码云函数需要的参数</p>
-	RuntimeConfig *AgentRuntimeConfig `json:"RuntimeConfig,omitnil,omitempty" name:"RuntimeConfig"`
-
-	// <p>创建集成时创建对应的示例代码云函数需要的函数名</p>
-	DemoCodeFunctionName *string `json:"DemoCodeFunctionName,omitnil,omitempty" name:"DemoCodeFunctionName"`
-}
-
-type UpdateUserKeyRequest struct {
-	*tchttp.BaseRequest
-	
-	// <p>环境ID</p>
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// <p>用户密钥名称</p>
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// <p>用户密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成</p>
-	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
-
-	// <p>密钥对描述</p>
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// <p>授权类型code</p>
-	AuthTypeCode *string `json:"AuthTypeCode,omitnil,omitempty" name:"AuthTypeCode"`
-
-	// <p>根据授权类型的不同，ext会有不同的子结构</p>
-	Ext *string `json:"Ext,omitnil,omitempty" name:"Ext"`
-
-	// <p>业务类型，integration：从集成中心来的，默认为空，表示是从授权管理中心来的</p>
-	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
-
-	// <p>创建集成时创建对应的示例代码云函数需要的参数</p>
-	RuntimeConfig *AgentRuntimeConfig `json:"RuntimeConfig,omitnil,omitempty" name:"RuntimeConfig"`
-
-	// <p>创建集成时创建对应的示例代码云函数需要的函数名</p>
-	DemoCodeFunctionName *string `json:"DemoCodeFunctionName,omitnil,omitempty" name:"DemoCodeFunctionName"`
-}
-
-func (r *UpdateUserKeyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UpdateUserKeyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "EnvId")
-	delete(f, "Name")
-	delete(f, "KeyID")
-	delete(f, "Description")
-	delete(f, "AuthTypeCode")
-	delete(f, "Ext")
-	delete(f, "Business")
-	delete(f, "RuntimeConfig")
-	delete(f, "DemoCodeFunctionName")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserKeyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type UpdateUserKeyResponseParams struct {
-	// <p>更新记录条数</p>
-	UpdateResult *uint64 `json:"UpdateResult,omitnil,omitempty" name:"UpdateResult"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type UpdateUserKeyResponse struct {
-	*tchttp.BaseResponse
-	Response *UpdateUserKeyResponseParams `json:"Response"`
-}
-
-func (r *UpdateUserKeyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UpdateUserKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

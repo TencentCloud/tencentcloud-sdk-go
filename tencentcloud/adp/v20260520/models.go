@@ -2021,6 +2021,9 @@ type ConversationExperience struct {
 
 	// <p>推荐问生成prompt模式。枚举值: 1:仅结合知识库输出推荐问的prompt</p>
 	RecommendPromptMode *int64 `json:"RecommendPromptMode,omitnil,omitempty" name:"RecommendPromptMode"`
+
+	// <p>新消息中断正在进行的消息</p>
+	EnableNewMessageInterrupt *bool `json:"EnableNewMessageInterrupt,omitnil,omitempty" name:"EnableNewMessageInterrupt"`
 }
 
 type ConversationFileCollection struct {
@@ -13272,13 +13275,13 @@ type OnceSchedule struct {
 }
 
 type OperationResult struct {
-	// <p>资源 ID</p>
+	// 资源 ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>失败原因（succeeded=false 时填充）</p>
+	// 失败原因（succeeded=false 时填充）
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
-	// <p>是否成功</p>
+	// 是否成功
 	Succeeded *bool `json:"Succeeded,omitnil,omitempty" name:"Succeeded"`
 }
 

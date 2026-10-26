@@ -821,6 +821,7 @@ func NewCreateCloudNativeAPIGatewayConsumerResponse() (response *CreateCloudNati
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
 //  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
@@ -828,6 +829,7 @@ func NewCreateCloudNativeAPIGatewayConsumerResponse() (response *CreateCloudNati
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
@@ -851,6 +853,7 @@ func (c *Client) CreateCloudNativeAPIGatewayConsumer(request *CreateCloudNativeA
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
 //  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
@@ -858,6 +861,7 @@ func (c *Client) CreateCloudNativeAPIGatewayConsumer(request *CreateCloudNativeA
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
@@ -999,7 +1003,9 @@ func NewCreateCloudNativeAPIGatewayLLMModelAPIResponse() (response *CreateCloudN
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  LIMITEXCEEDED_LIMITEXCEEDED = "LimitExceeded.LimitExceeded"
 //  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
@@ -1020,7 +1026,9 @@ func (c *Client) CreateCloudNativeAPIGatewayLLMModelAPI(request *CreateCloudNati
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  LIMITEXCEEDED_LIMITEXCEEDED = "LimitExceeded.LimitExceeded"
 //  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
@@ -6271,12 +6279,13 @@ func NewDescribeCloudNativeAPIGatewayLLMModelAPIsResponse() (response *DescribeC
 }
 
 // DescribeCloudNativeAPIGatewayLLMModelAPIs
-// 查询 LLM 模型 API 列表。
+// 查询指定网关实例下的所有 LLM 模型 API 列表。支持按名称关键词模糊搜索、按过滤器筛选，以及分页查询。用于绑定场景时，可通过 ConsumerGroupId 和 UseToBind 参数筛选可绑定的模型 API。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  LIMITEXCEEDED_LIMITEXCEEDED = "LimitExceeded.LimitExceeded"
@@ -6292,12 +6301,13 @@ func (c *Client) DescribeCloudNativeAPIGatewayLLMModelAPIs(request *DescribeClou
 }
 
 // DescribeCloudNativeAPIGatewayLLMModelAPIs
-// 查询 LLM 模型 API 列表。
+// 查询指定网关实例下的所有 LLM 模型 API 列表。支持按名称关键词模糊搜索、按过滤器筛选，以及分页查询。用于绑定场景时，可通过 ConsumerGroupId 和 UseToBind 参数筛选可绑定的模型 API。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  LIMITEXCEEDED_LIMITEXCEEDED = "LimitExceeded.LimitExceeded"

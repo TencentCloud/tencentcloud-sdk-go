@@ -224,6 +224,9 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// OperationDenied.BatchKeyPending
+	OPERATIONDENIED_BATCHKEYPENDING = "OperationDenied.BatchKeyPending"
+
 	// OperationDenied.LimitExceeded
 	OPERATIONDENIED_LIMITEXCEEDED = "OperationDenied.LimitExceeded"
 

@@ -1032,6 +1032,12 @@ type CosParam struct {
 
 	// <p>根据strptime 时间格式化的分区格式</p>
 	DirectoryTimeFormat *string `json:"DirectoryTimeFormat,omitnil,omitempty" name:"DirectoryTimeFormat"`
+
+	// <p>时间时区, 默认 UTC+08:00</p><p>参数格式：UTC+08:00</p>
+	Timezone *string `json:"Timezone,omitnil,omitempty" name:"Timezone"`
+
+	// <p>源数据解析格式</p><p>枚举值：</p><ul><li>JSON： JSON格式</li><li>Debezium： Debezium格式</li></ul>
+	SourceDataFormat *string `json:"SourceDataFormat,omitnil,omitempty" name:"SourceDataFormat"`
 }
 
 // Predefined struct for user
@@ -4554,10 +4560,10 @@ func (r *DeleteUserResponse) FromJsonString(s string) error {
 }
 
 type DescModifyType struct {
-	// 变配类型
+	// <p>变配类型</p>
 	ModifyType *int64 `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
 
-	// 是否迁移标志
+	// <p>是否迁移标志</p>
 	MigrateFlag *bool `json:"MigrateFlag,omitnil,omitempty" name:"MigrateFlag"`
 }
 
@@ -9580,39 +9586,42 @@ type KVParam struct {
 }
 
 type KafkaConnectParam struct {
-	// Kafka连接源的实例资源, 非自建时必填，NetworkType=VPC时传clb实例id
+	// <p>Kafka连接源的实例资源, 非自建时必填，NetworkType=VPC时传clb实例id</p>
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// 是否为自建集群
+	// <p>是否为自建集群</p>
 	SelfBuilt *bool `json:"SelfBuilt,omitnil,omitempty" name:"SelfBuilt"`
 
-	// 是否更新到关联的Dip任务
+	// <p>是否更新到关联的Dip任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdate *bool `json:"IsUpdate,omitnil,omitempty" name:"IsUpdate"`
 
-	// Kafka连接的broker地址, NetworkType=PUBLIC公网时必填
+	// <p>Kafka连接的broker地址, NetworkType=PUBLIC公网时必填</p>
 	BrokerAddress *string `json:"BrokerAddress,omitnil,omitempty" name:"BrokerAddress"`
 
-	// CKafka连接源的实例资源地域, 跨地域时必填
+	// <p>CKafka连接源的实例资源地域, 跨地域时必填</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 网络类型：PUBLIC公网；VPC
+	// <p>网络类型：PUBLIC公网；VPC</p>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// vpcId，NetworkType=VPC时必传
+	// <p>vpcId，NetworkType=VPC时必传</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// vip，NetworkType=VPC时必传
+	// <p>vip，NetworkType=VPC时必传</p>
 	ServiceVip *string `json:"ServiceVip,omitnil,omitempty" name:"ServiceVip"`
 
-	// 端口，NetworkType=VPC时必传
+	// <p>端口，NetworkType=VPC时必传</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 跨云同步下需要客户传递唯一Id标志一组资源
+	// <p>跨云同步下需要客户传递唯一Id标志一组资源</p>
 	CrossNetResourceUniqueId *string `json:"CrossNetResourceUniqueId,omitnil,omitempty" name:"CrossNetResourceUniqueId"`
 
-	// 跨云子网ID
+	// <p>跨云子网ID</p>
 	CrossNetVpcSubNetId *string `json:"CrossNetVpcSubNetId,omitnil,omitempty" name:"CrossNetVpcSubNetId"`
+
+	// <p>用户输入原始broker接入点地址</p>
+	OriginalBrokerAddresses *string `json:"OriginalBrokerAddresses,omitnil,omitempty" name:"OriginalBrokerAddresses"`
 }
 
 type KafkaParam struct {

@@ -1441,6 +1441,72 @@ func (c *Client) DescribeDataRepositoryTaskStatusWithContext(ctx context.Context
     return
 }
 
+func NewDescribeDataRepositoryTasksRequest() (request *DescribeDataRepositoryTasksRequest) {
+    request = &DescribeDataRepositoryTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DescribeDataRepositoryTasks")
+    
+    
+    return
+}
+
+func NewDescribeDataRepositoryTasksResponse() (response *DescribeDataRepositoryTasksResponse) {
+    response = &DescribeDataRepositoryTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataRepositoryTasks
+// 列出所有的数据流通任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDataRepositoryTasks(request *DescribeDataRepositoryTasksRequest) (response *DescribeDataRepositoryTasksResponse, err error) {
+    return c.DescribeDataRepositoryTasksWithContext(context.Background(), request)
+}
+
+// DescribeDataRepositoryTasks
+// 列出所有的数据流通任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDataRepositoryTasksWithContext(ctx context.Context, request *DescribeDataRepositoryTasksRequest) (response *DescribeDataRepositoryTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataRepositoryTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeDataRepositoryTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataRepositoryTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataRepositoryTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFileSystemBucketsRequest() (request *DescribeFileSystemBucketsRequest) {
     request = &DescribeFileSystemBucketsRequest{
         BaseRequest: &tchttp.BaseRequest{},

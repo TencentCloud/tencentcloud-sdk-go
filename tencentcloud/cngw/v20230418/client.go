@@ -75,7 +75,6 @@ func NewAddCloudNativeAPIGatewayConsumerGroupAuthResponse() (response *AddCloudN
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -105,7 +104,6 @@ func (c *Client) AddCloudNativeAPIGatewayConsumerGroupAuth(request *AddCloudNati
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -167,7 +165,6 @@ func NewAddCloudNativeAPIGatewayConsumerInGroupResponse() (response *AddCloudNat
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -197,7 +194,6 @@ func (c *Client) AddCloudNativeAPIGatewayConsumerInGroup(request *AddCloudNative
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -251,6 +247,8 @@ func NewBindCloudNativeAPIGatewaySecretKeyResponse() (response *BindCloudNativeA
 // BindCloudNativeAPIGatewaySecretKey
 // 添加密钥与资源的引用关系接口
 //
+// 【消费者批量自动分配 API Key｜修改：内部并发/配额逻辑，字段不变】ResourceType=Consumer 时与批量预留共用实例写锁，单消费者绑定配额使用当前锁定读。仍按原 SecretKeyId、ResourceIds 绑定；消费者目标最多一个，单密钥不能同时绑定多个消费者，成功仍返回 Result=true。此入口不新增 OperationDenied.BatchKeyPending；该错误属于下述四个变更入口的保护逻辑。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -259,7 +257,6 @@ func NewBindCloudNativeAPIGatewaySecretKeyResponse() (response *BindCloudNativeA
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -281,6 +278,8 @@ func (c *Client) BindCloudNativeAPIGatewaySecretKey(request *BindCloudNativeAPIG
 // BindCloudNativeAPIGatewaySecretKey
 // 添加密钥与资源的引用关系接口
 //
+// 【消费者批量自动分配 API Key｜修改：内部并发/配额逻辑，字段不变】ResourceType=Consumer 时与批量预留共用实例写锁，单消费者绑定配额使用当前锁定读。仍按原 SecretKeyId、ResourceIds 绑定；消费者目标最多一个，单密钥不能同时绑定多个消费者，成功仍返回 Result=true。此入口不新增 OperationDenied.BatchKeyPending；该错误属于下述四个变更入口的保护逻辑。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -289,7 +288,6 @@ func (c *Client) BindCloudNativeAPIGatewaySecretKey(request *BindCloudNativeAPIG
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -357,7 +355,6 @@ func NewCheckCloudNativeAPIGatewayMCPRouteMatchResponse() (response *CheckCloudN
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -400,7 +397,6 @@ func (c *Client) CheckCloudNativeAPIGatewayMCPRouteMatch(request *CheckCloudNati
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -469,7 +465,6 @@ func NewCheckCloudNativeAPIGatewayMCPToolVersionExistResponse() (response *Check
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -499,7 +494,6 @@ func (c *Client) CheckCloudNativeAPIGatewayMCPToolVersionExist(request *CheckClo
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -561,7 +555,6 @@ func NewCompareCloudNativeAPIGatewayMCPToolVersionResponse() (response *CompareC
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -591,7 +584,6 @@ func (c *Client) CompareCloudNativeAPIGatewayMCPToolVersion(request *CompareClou
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -653,7 +645,6 @@ func NewCreateCloudNativeAPIGatewayAIServiceSourceResponse() (response *CreateCl
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -683,7 +674,6 @@ func (c *Client) CreateCloudNativeAPIGatewayAIServiceSource(request *CreateCloud
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -745,7 +735,6 @@ func NewCreateCloudNativeAPIGatewayConsumerResponse() (response *CreateCloudNati
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -754,6 +743,7 @@ func NewCreateCloudNativeAPIGatewayConsumerResponse() (response *CreateCloudNati
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
@@ -775,7 +765,6 @@ func (c *Client) CreateCloudNativeAPIGatewayConsumer(request *CreateCloudNativeA
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -784,6 +773,7 @@ func (c *Client) CreateCloudNativeAPIGatewayConsumer(request *CreateCloudNativeA
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
@@ -837,7 +827,6 @@ func NewCreateCloudNativeAPIGatewayConsumerGroupResponse() (response *CreateClou
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -867,7 +856,6 @@ func (c *Client) CreateCloudNativeAPIGatewayConsumerGroup(request *CreateCloudNa
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -925,7 +913,9 @@ func NewCreateCloudNativeAPIGatewayLLMModelAPIResponse() (response *CreateCloudN
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  LIMITEXCEEDED_LIMITEXCEEDED = "LimitExceeded.LimitExceeded"
 //  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
@@ -946,7 +936,9 @@ func (c *Client) CreateCloudNativeAPIGatewayLLMModelAPI(request *CreateCloudNati
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  LIMITEXCEEDED_LIMITEXCEEDED = "LimitExceeded.LimitExceeded"
 //  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
@@ -1083,7 +1075,6 @@ func NewCreateCloudNativeAPIGatewayMCPRouteResponse() (response *CreateCloudNati
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -1126,7 +1117,6 @@ func (c *Client) CreateCloudNativeAPIGatewayMCPRoute(request *CreateCloudNativeA
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -1195,7 +1185,6 @@ func NewCreateCloudNativeAPIGatewayMCPServerResponse() (response *CreateCloudNat
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -1225,7 +1214,6 @@ func (c *Client) CreateCloudNativeAPIGatewayMCPServer(request *CreateCloudNative
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -1287,7 +1275,6 @@ func NewCreateCloudNativeAPIGatewayMCPToolResponse() (response *CreateCloudNativ
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -1317,7 +1304,6 @@ func (c *Client) CreateCloudNativeAPIGatewayMCPTool(request *CreateCloudNativeAP
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -1371,6 +1357,8 @@ func NewCreateCloudNativeAPIGatewaySecretKeyResponse() (response *CreateCloudNat
 // CreateCloudNativeAPIGatewaySecretKey
 // 创建消费者密钥。
 //
+// 【消费者批量自动分配 API Key｜修改：内部并发/配额逻辑，字段不变】消费者密钥单条创建在事务中使用与批量预留相同的实例写锁，配额检查使用当前锁定读，避免单条与批量并发绕过配额。仍是单条创建；原 GenerateType、请求字段、既有配额错误语义及 Result.Success/ID 不变，不增加 ConsumerIds/ClientToken。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -1379,7 +1367,6 @@ func NewCreateCloudNativeAPIGatewaySecretKeyResponse() (response *CreateCloudNat
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -1402,6 +1389,8 @@ func (c *Client) CreateCloudNativeAPIGatewaySecretKey(request *CreateCloudNative
 // CreateCloudNativeAPIGatewaySecretKey
 // 创建消费者密钥。
 //
+// 【消费者批量自动分配 API Key｜修改：内部并发/配额逻辑，字段不变】消费者密钥单条创建在事务中使用与批量预留相同的实例写锁，配额检查使用当前锁定读，避免单条与批量并发绕过配额。仍是单条创建；原 GenerateType、请求字段、既有配额错误语义及 Result.Success/ID 不变，不增加 ConsumerIds/ClientToken。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -1410,7 +1399,6 @@ func (c *Client) CreateCloudNativeAPIGatewaySecretKey(request *CreateCloudNative
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -1473,7 +1461,6 @@ func NewDeleteCloudNativeAPIGatewayAIServiceSourceResponse() (response *DeleteCl
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -1503,7 +1490,6 @@ func (c *Client) DeleteCloudNativeAPIGatewayAIServiceSource(request *DeleteCloud
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -1565,7 +1551,6 @@ func NewDeleteCloudNativeAPIGatewayConsumerResponse() (response *DeleteCloudNati
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -1595,7 +1580,6 @@ func (c *Client) DeleteCloudNativeAPIGatewayConsumer(request *DeleteCloudNativeA
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -1649,6 +1633,10 @@ func NewDeleteCloudNativeAPIGatewayConsumerGroupResponse() (response *DeleteClou
 // DeleteCloudNativeAPIGatewayConsumerGroup
 // 删除AI网关消费者组
 //
+// 
+//
+// 同步组仅在 soft_deleted 状态且全部依赖已清理后允许手动硬删除；ConsumerGroupId 使用组织 UUID。存在配额规则时须先删除规则，单纯停用不能解除依赖。硬删除时重新校验，依赖变化可能导致删除失败。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -1657,7 +1645,6 @@ func NewDeleteCloudNativeAPIGatewayConsumerGroupResponse() (response *DeleteClou
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -1679,6 +1666,10 @@ func (c *Client) DeleteCloudNativeAPIGatewayConsumerGroup(request *DeleteCloudNa
 // DeleteCloudNativeAPIGatewayConsumerGroup
 // 删除AI网关消费者组
 //
+// 
+//
+// 同步组仅在 soft_deleted 状态且全部依赖已清理后允许手动硬删除；ConsumerGroupId 使用组织 UUID。存在配额规则时须先删除规则，单纯停用不能解除依赖。硬删除时重新校验，依赖变化可能导致删除失败。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -1687,7 +1678,6 @@ func (c *Client) DeleteCloudNativeAPIGatewayConsumerGroup(request *DeleteCloudNa
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -1903,7 +1893,6 @@ func NewDeleteCloudNativeAPIGatewayMCPRouteResponse() (response *DeleteCloudNati
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -1946,7 +1935,6 @@ func (c *Client) DeleteCloudNativeAPIGatewayMCPRoute(request *DeleteCloudNativeA
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -2015,7 +2003,6 @@ func NewDeleteCloudNativeAPIGatewayMCPServerResponse() (response *DeleteCloudNat
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2045,7 +2032,6 @@ func (c *Client) DeleteCloudNativeAPIGatewayMCPServer(request *DeleteCloudNative
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2107,7 +2093,6 @@ func NewDeleteCloudNativeAPIGatewayMCPToolResponse() (response *DeleteCloudNativ
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2137,7 +2122,6 @@ func (c *Client) DeleteCloudNativeAPIGatewayMCPTool(request *DeleteCloudNativeAP
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2199,7 +2183,6 @@ func NewDeleteCloudNativeAPIGatewayMCPToolVersionResponse() (response *DeleteClo
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2229,7 +2212,6 @@ func (c *Client) DeleteCloudNativeAPIGatewayMCPToolVersion(request *DeleteCloudN
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2283,6 +2265,8 @@ func NewDeleteCloudNativeAPIGatewaySecretKeyResponse() (response *DeleteCloudNat
 // DeleteCloudNativeAPIGatewaySecretKey
 // 删除消费者密钥（被绑定时需先解绑）。
 //
+// 【消费者批量自动分配 API Key｜修改：新增未完成批次保护，字段不变】目标密钥属于批次且对应项处于 Pending/Running/Reconciling 时，删除返回 OperationDenied.BatchKeyPending。完成后仍执行原绑定/依赖删除检查；原 GatewayId/SecretKeyId 不变，成功不新增业务 Result。删除已生成密钥不改写批次历史成功，后续批次明文读取返回逐项 ResourceNotFound.SecretKey。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -2291,7 +2275,6 @@ func NewDeleteCloudNativeAPIGatewaySecretKeyResponse() (response *DeleteCloudNat
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2300,6 +2283,7 @@ func NewDeleteCloudNativeAPIGatewaySecretKeyResponse() (response *DeleteCloudNat
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BATCHKEYPENDING = "OperationDenied.BatchKeyPending"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
@@ -2313,6 +2297,8 @@ func (c *Client) DeleteCloudNativeAPIGatewaySecretKey(request *DeleteCloudNative
 // DeleteCloudNativeAPIGatewaySecretKey
 // 删除消费者密钥（被绑定时需先解绑）。
 //
+// 【消费者批量自动分配 API Key｜修改：新增未完成批次保护，字段不变】目标密钥属于批次且对应项处于 Pending/Running/Reconciling 时，删除返回 OperationDenied.BatchKeyPending。完成后仍执行原绑定/依赖删除检查；原 GatewayId/SecretKeyId 不变，成功不新增业务 Result。删除已生成密钥不改写批次历史成功，后续批次明文读取返回逐项 ResourceNotFound.SecretKey。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -2321,7 +2307,6 @@ func (c *Client) DeleteCloudNativeAPIGatewaySecretKey(request *DeleteCloudNative
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2330,6 +2315,7 @@ func (c *Client) DeleteCloudNativeAPIGatewaySecretKey(request *DeleteCloudNative
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BATCHKEYPENDING = "OperationDenied.BatchKeyPending"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
@@ -2384,7 +2370,6 @@ func NewDescribeCNGWServicesWithRoutesResponse() (response *DescribeCNGWServices
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_IOERROR = "InternalError.IOError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2415,7 +2400,6 @@ func (c *Client) DescribeCNGWServicesWithRoutes(request *DescribeCNGWServicesWit
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_IOERROR = "InternalError.IOError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2469,6 +2453,10 @@ func NewDescribeCloudNativeAPIGatewayAIQuotaResponse() (response *DescribeCloudN
 // DescribeCloudNativeAPIGatewayAIQuota
 // 查询AI网关配额
 //
+// 
+//
+// 支持 ConsumerGroup 配额，返回 ConsumerGroupPath、ConsumerGroupActive 及实际用量；失效组的规则仍可查询。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -2477,7 +2465,6 @@ func NewDescribeCloudNativeAPIGatewayAIQuotaResponse() (response *DescribeCloudN
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2499,6 +2486,10 @@ func (c *Client) DescribeCloudNativeAPIGatewayAIQuota(request *DescribeCloudNati
 // DescribeCloudNativeAPIGatewayAIQuota
 // 查询AI网关配额
 //
+// 
+//
+// 支持 ConsumerGroup 配额，返回 ConsumerGroupPath、ConsumerGroupActive 及实际用量；失效组的规则仍可查询。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -2507,7 +2498,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayAIQuota(request *DescribeCloudNati
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2561,6 +2551,10 @@ func NewDescribeCloudNativeAPIGatewayAIQuotaListResponse() (response *DescribeCl
 // DescribeCloudNativeAPIGatewayAIQuotaList
 // 查询AI配额配置列表
 //
+// 
+//
+// 支持按 ConsumerGroup 查询组自身配额，默认仍只查询 Consumer；返回组路径、有效状态及实际用量。上下级关联配额请使用 DescribeAIGWConsumerGroupAIQuotaList。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -2569,7 +2563,6 @@ func NewDescribeCloudNativeAPIGatewayAIQuotaListResponse() (response *DescribeCl
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2591,6 +2584,10 @@ func (c *Client) DescribeCloudNativeAPIGatewayAIQuotaList(request *DescribeCloud
 // DescribeCloudNativeAPIGatewayAIQuotaList
 // 查询AI配额配置列表
 //
+// 
+//
+// 支持按 ConsumerGroup 查询组自身配额，默认仍只查询 Consumer；返回组路径、有效状态及实际用量。上下级关联配额请使用 DescribeAIGWConsumerGroupAIQuotaList。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -2599,7 +2596,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayAIQuotaList(request *DescribeCloud
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2661,7 +2657,6 @@ func NewDescribeCloudNativeAPIGatewayAIServiceSourceListResponse() (response *De
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2691,7 +2686,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayAIServiceSourceList(request *Descr
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2745,6 +2739,10 @@ func NewDescribeCloudNativeAPIGatewayConsumerResponse() (response *DescribeCloud
 // DescribeCloudNativeAPIGatewayConsumer
 // 查询云原生消费者详情
 //
+// 
+//
+// 组织架构扩展：保留原消费者详情与完整字段，ConsumerGroups 补齐对应组织成员关系；同步成员保持目录归属隔离。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -2753,7 +2751,6 @@ func NewDescribeCloudNativeAPIGatewayConsumerResponse() (response *DescribeCloud
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2775,6 +2772,10 @@ func (c *Client) DescribeCloudNativeAPIGatewayConsumer(request *DescribeCloudNat
 // DescribeCloudNativeAPIGatewayConsumer
 // 查询云原生消费者详情
 //
+// 
+//
+// 组织架构扩展：保留原消费者详情与完整字段，ConsumerGroups 补齐对应组织成员关系；同步成员保持目录归属隔离。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -2783,7 +2784,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayConsumer(request *DescribeCloudNat
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2837,6 +2837,10 @@ func NewDescribeCloudNativeAPIGatewayConsumerGroupResponse() (response *Describe
 // DescribeCloudNativeAPIGatewayConsumerGroup
 // 查询消费者组详情。
 //
+// 
+//
+// 组织架构扩展：ConsumerGroupId 同时支持原 cg-* 和组织部门 UUID；保留状态、数量、时间和描述逻辑。原普通组状态为 Enable/Disable，目录部门状态为 active/disabled/soft_deleted。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -2845,7 +2849,6 @@ func NewDescribeCloudNativeAPIGatewayConsumerGroupResponse() (response *Describe
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -2867,6 +2870,10 @@ func (c *Client) DescribeCloudNativeAPIGatewayConsumerGroup(request *DescribeClo
 // DescribeCloudNativeAPIGatewayConsumerGroup
 // 查询消费者组详情。
 //
+// 
+//
+// 组织架构扩展：ConsumerGroupId 同时支持原 cg-* 和组织部门 UUID；保留状态、数量、时间和描述逻辑。原普通组状态为 Enable/Disable，目录部门状态为 active/disabled/soft_deleted。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -2875,7 +2882,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayConsumerGroup(request *DescribeClo
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -3007,6 +3013,7 @@ func NewDescribeCloudNativeAPIGatewayLLMModelAPIsResponse() (response *DescribeC
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  LIMITEXCEEDED_LIMITEXCEEDED = "LimitExceeded.LimitExceeded"
@@ -3028,6 +3035,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayLLMModelAPIs(request *DescribeClou
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  LIMITEXCEEDED_LIMITEXCEEDED = "LimitExceeded.LimitExceeded"
@@ -3371,7 +3379,6 @@ func NewDescribeCloudNativeAPIGatewayMCPRouteListResponse() (response *DescribeC
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -3414,7 +3421,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPRouteList(request *DescribeClou
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -3483,7 +3489,6 @@ func NewDescribeCloudNativeAPIGatewayMCPServerResponse() (response *DescribeClou
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -3513,7 +3518,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPServer(request *DescribeCloudNa
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -3599,7 +3603,6 @@ func NewDescribeCloudNativeAPIGatewayMCPServerACLResponse() (response *DescribeC
 //  INTERNALERROR_TKECLUSTERNOTREADY = "InternalError.TKEClusterNotReady"
 //  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 //  INVALIDFILTER = "InvalidFilter"
@@ -3611,7 +3614,6 @@ func NewDescribeCloudNativeAPIGatewayMCPServerACLResponse() (response *DescribeC
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -3704,7 +3706,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPServerACL(request *DescribeClou
 //  INTERNALERROR_TKECLUSTERNOTREADY = "InternalError.TKEClusterNotReady"
 //  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 //  INVALIDFILTER = "InvalidFilter"
@@ -3716,7 +3717,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPServerACL(request *DescribeClou
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -3841,7 +3841,6 @@ func NewDescribeCloudNativeAPIGatewayMCPServerAuthResponse() (response *Describe
 //  INTERNALERROR_TKECLUSTERNOTREADY = "InternalError.TKEClusterNotReady"
 //  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 //  INVALIDFILTER = "InvalidFilter"
@@ -3853,7 +3852,6 @@ func NewDescribeCloudNativeAPIGatewayMCPServerAuthResponse() (response *Describe
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -3946,7 +3944,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPServerAuth(request *DescribeClo
 //  INTERNALERROR_TKECLUSTERNOTREADY = "InternalError.TKEClusterNotReady"
 //  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 //  INVALIDFILTER = "InvalidFilter"
@@ -3958,7 +3955,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPServerAuth(request *DescribeClo
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -4059,7 +4055,6 @@ func NewDescribeCloudNativeAPIGatewayMCPServerListResponse() (response *Describe
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4089,7 +4084,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPServerList(request *DescribeClo
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4151,7 +4145,6 @@ func NewDescribeCloudNativeAPIGatewayMCPToolResponse() (response *DescribeCloudN
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4181,7 +4174,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPTool(request *DescribeCloudNati
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4267,7 +4259,6 @@ func NewDescribeCloudNativeAPIGatewayMCPToolACLListResponse() (response *Describ
 //  INTERNALERROR_TKECLUSTERNOTREADY = "InternalError.TKEClusterNotReady"
 //  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 //  INVALIDFILTER = "InvalidFilter"
@@ -4279,7 +4270,6 @@ func NewDescribeCloudNativeAPIGatewayMCPToolACLListResponse() (response *Describ
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -4372,7 +4362,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPToolACLList(request *DescribeCl
 //  INTERNALERROR_TKECLUSTERNOTREADY = "InternalError.TKEClusterNotReady"
 //  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 //  INVALIDFILTER = "InvalidFilter"
@@ -4384,7 +4373,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPToolACLList(request *DescribeCl
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -4484,7 +4472,6 @@ func NewDescribeCloudNativeAPIGatewayMCPToolImportTaskResponse() (response *Desc
 //  FAILEDOPERATION_ROLE = "FailedOperation.Role"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4512,7 +4499,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPToolImportTask(request *Describ
 //  FAILEDOPERATION_ROLE = "FailedOperation.Role"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4573,7 +4559,6 @@ func NewDescribeCloudNativeAPIGatewayMCPToolListResponse() (response *DescribeCl
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4603,7 +4588,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPToolList(request *DescribeCloud
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4665,7 +4649,6 @@ func NewDescribeCloudNativeAPIGatewayMCPToolVersionResponse() (response *Describ
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4695,7 +4678,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPToolVersion(request *DescribeCl
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4757,7 +4739,6 @@ func NewDescribeCloudNativeAPIGatewayMCPToolVersionListResponse() (response *Des
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4787,7 +4768,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPToolVersionList(request *Descri
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4848,7 +4828,6 @@ func NewDescribeCloudNativeAPIGatewayMCPToolsFromFileResponse() (response *Descr
 //  FAILEDOPERATION_ROLE = "FailedOperation.Role"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
 //  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
@@ -4875,7 +4854,6 @@ func (c *Client) DescribeCloudNativeAPIGatewayMCPToolsFromFile(request *Describe
 //  FAILEDOPERATION_ROLE = "FailedOperation.Role"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
 //  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
@@ -4927,6 +4905,10 @@ func NewDescribeCloudNativeAPIGatewaySecretKeyResponse() (response *DescribeClou
 // DescribeCloudNativeAPIGatewaySecretKey
 // 查询密钥详情（SecretValue 字段会被掩码）。
 //
+// 普通版批量新建密钥的生成来源扩展：新页面按需 IncludeCreationInfo=true，省略/false 保持原响应字段。原 GenerateType 不新增 Batch；批量记录仍为 System。协议：https://iwiki.woa.com/p/4042678235。
+//
+// 【消费者批量自动分配 API Key｜修改：可选参数及可选出参】增加可选 IncludeCreationInfo（默认 false）。仅 true 且 ResourceType=Consumer 时在原 Result 增加 CredentialGenerateType、CreationSource、BatchId 三个非必返字段；省略/false 保持旧响应。原字段、SecretValue 脱敏和单条详情结构不变。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -4935,7 +4917,6 @@ func NewDescribeCloudNativeAPIGatewaySecretKeyResponse() (response *DescribeClou
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -4957,6 +4938,10 @@ func (c *Client) DescribeCloudNativeAPIGatewaySecretKey(request *DescribeCloudNa
 // DescribeCloudNativeAPIGatewaySecretKey
 // 查询密钥详情（SecretValue 字段会被掩码）。
 //
+// 普通版批量新建密钥的生成来源扩展：新页面按需 IncludeCreationInfo=true，省略/false 保持原响应字段。原 GenerateType 不新增 Batch；批量记录仍为 System。协议：https://iwiki.woa.com/p/4042678235。
+//
+// 【消费者批量自动分配 API Key｜修改：可选参数及可选出参】增加可选 IncludeCreationInfo（默认 false）。仅 true 且 ResourceType=Consumer 时在原 Result 增加 CredentialGenerateType、CreationSource、BatchId 三个非必返字段；省略/false 保持旧响应。原字段、SecretValue 脱敏和单条详情结构不变。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -4965,7 +4950,6 @@ func (c *Client) DescribeCloudNativeAPIGatewaySecretKey(request *DescribeCloudNa
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5019,6 +5003,10 @@ func NewDescribeCloudNativeAPIGatewaySecretKeyListResponse() (response *Describe
 // DescribeCloudNativeAPIGatewaySecretKeyList
 // 查询密钥列表。
 //
+// 普通版批量新建密钥的生成来源扩展：新页面按需 IncludeCreationInfo=true，省略/false 保持原响应字段。原 GenerateType 不新增 Batch；批量记录仍为 System。协议：https://iwiki.woa.com/p/4042678235。
+//
+// 【消费者批量自动分配 API Key｜修改：可选参数、可选出参及筛选】增加可选 IncludeCreationInfo（默认 false）。仅 true 且 ResourceType=Consumer 时在原 Result.SecretKeys[] 增加 CredentialGenerateType、CreationSource、BatchId 三个非必返字段；Result.TotalCount/SecretKeys 结构不变。Filters 新增 CredentialGenerateType、CreationSource，先过滤后计数分页，与是否返回来源字段独立；保留原 GenerateType 枚举和原分页上限。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -5027,7 +5015,6 @@ func NewDescribeCloudNativeAPIGatewaySecretKeyListResponse() (response *Describe
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5049,6 +5036,10 @@ func (c *Client) DescribeCloudNativeAPIGatewaySecretKeyList(request *DescribeClo
 // DescribeCloudNativeAPIGatewaySecretKeyList
 // 查询密钥列表。
 //
+// 普通版批量新建密钥的生成来源扩展：新页面按需 IncludeCreationInfo=true，省略/false 保持原响应字段。原 GenerateType 不新增 Batch；批量记录仍为 System。协议：https://iwiki.woa.com/p/4042678235。
+//
+// 【消费者批量自动分配 API Key｜修改：可选参数、可选出参及筛选】增加可选 IncludeCreationInfo（默认 false）。仅 true 且 ResourceType=Consumer 时在原 Result.SecretKeys[] 增加 CredentialGenerateType、CreationSource、BatchId 三个非必返字段；Result.TotalCount/SecretKeys 结构不变。Filters 新增 CredentialGenerateType、CreationSource，先过滤后计数分页，与是否返回来源字段独立；保留原 GenerateType 枚举和原分页上限。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -5057,7 +5048,6 @@ func (c *Client) DescribeCloudNativeAPIGatewaySecretKeyList(request *DescribeClo
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5119,7 +5109,6 @@ func NewDescribeCloudNativeAPIGatewaySecretKeyValueResponse() (response *Describ
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5149,7 +5138,6 @@ func (c *Client) DescribeCloudNativeAPIGatewaySecretKeyValue(request *DescribeCl
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5211,7 +5199,6 @@ func NewModifyCloudNativeAPIGatewayAIServiceSourceResponse() (response *ModifyCl
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5241,7 +5228,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayAIServiceSource(request *ModifyCloud
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5303,7 +5289,6 @@ func NewModifyCloudNativeAPIGatewayConsumerResponse() (response *ModifyCloudNati
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5333,7 +5318,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayConsumer(request *ModifyCloudNativeA
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5395,7 +5379,6 @@ func NewModifyCloudNativeAPIGatewayConsumerGroupResponse() (response *ModifyClou
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5425,7 +5408,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayConsumerGroup(request *ModifyCloudNa
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5641,7 +5623,6 @@ func NewModifyCloudNativeAPIGatewayMCPRouteResponse() (response *ModifyCloudNati
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -5684,7 +5665,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayMCPRoute(request *ModifyCloudNativeA
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -5759,7 +5739,6 @@ func NewModifyCloudNativeAPIGatewayMCPRouteStatusResponse() (response *ModifyClo
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -5802,7 +5781,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayMCPRouteStatus(request *ModifyCloudN
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -5871,7 +5849,6 @@ func NewModifyCloudNativeAPIGatewayMCPServerResponse() (response *ModifyCloudNat
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5901,7 +5878,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayMCPServer(request *ModifyCloudNative
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -5987,7 +5963,6 @@ func NewModifyCloudNativeAPIGatewayMCPServerACLResponse() (response *ModifyCloud
 //  INTERNALERROR_TKECLUSTERNOTREADY = "InternalError.TKEClusterNotReady"
 //  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 //  INVALIDFILTER = "InvalidFilter"
@@ -5999,7 +5974,6 @@ func NewModifyCloudNativeAPIGatewayMCPServerACLResponse() (response *ModifyCloud
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -6092,7 +6066,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayMCPServerACL(request *ModifyCloudNat
 //  INTERNALERROR_TKECLUSTERNOTREADY = "InternalError.TKEClusterNotReady"
 //  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 //  INVALIDFILTER = "InvalidFilter"
@@ -6104,7 +6077,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayMCPServerACL(request *ModifyCloudNat
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -6229,7 +6201,6 @@ func NewModifyCloudNativeAPIGatewayMCPServerAuthResponse() (response *ModifyClou
 //  INTERNALERROR_TKECLUSTERNOTREADY = "InternalError.TKEClusterNotReady"
 //  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 //  INVALIDFILTER = "InvalidFilter"
@@ -6241,7 +6212,6 @@ func NewModifyCloudNativeAPIGatewayMCPServerAuthResponse() (response *ModifyClou
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -6334,7 +6304,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayMCPServerAuth(request *ModifyCloudNa
 //  INTERNALERROR_TKECLUSTERNOTREADY = "InternalError.TKEClusterNotReady"
 //  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 //  INVALIDFILTER = "InvalidFilter"
@@ -6346,7 +6315,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayMCPServerAuth(request *ModifyCloudNa
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -6447,7 +6415,6 @@ func NewModifyCloudNativeAPIGatewayMCPServerStatusResponse() (response *ModifyCl
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -6477,7 +6444,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayMCPServerStatus(request *ModifyCloud
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -6539,7 +6505,6 @@ func NewModifyCloudNativeAPIGatewayMCPToolResponse() (response *ModifyCloudNativ
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -6569,7 +6534,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayMCPTool(request *ModifyCloudNativeAP
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -6655,7 +6619,6 @@ func NewModifyCloudNativeAPIGatewayMCPToolACLResponse() (response *ModifyCloudNa
 //  INTERNALERROR_TKECLUSTERNOTREADY = "InternalError.TKEClusterNotReady"
 //  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 //  INVALIDFILTER = "InvalidFilter"
@@ -6667,7 +6630,6 @@ func NewModifyCloudNativeAPIGatewayMCPToolACLResponse() (response *ModifyCloudNa
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -6760,7 +6722,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayMCPToolACL(request *ModifyCloudNativ
 //  INTERNALERROR_TKECLUSTERNOTREADY = "InternalError.TKEClusterNotReady"
 //  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 //  INVALIDFILTER = "InvalidFilter"
@@ -6772,7 +6733,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayMCPToolACL(request *ModifyCloudNativ
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_BUCKETNAME = "InvalidParameterValue.BucketName"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
-//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
 //  INVALIDPARAMETERVALUE_GATEWAYVERSION = "InvalidParameterValue.GatewayVersion"
@@ -6873,7 +6833,6 @@ func NewModifyCloudNativeAPIGatewayMCPToolStatusResponse() (response *ModifyClou
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -6903,7 +6862,6 @@ func (c *Client) ModifyCloudNativeAPIGatewayMCPToolStatus(request *ModifyCloudNa
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -6957,6 +6915,8 @@ func NewModifyCloudNativeAPIGatewaySecretKeyResponse() (response *ModifyCloudNat
 // ModifyCloudNativeAPIGatewaySecretKey
 // 修改AI网关密钥
 //
+// 【消费者批量自动分配 API Key｜修改：新增未完成批次保护，字段不变】目标密钥属于批次且对应项处于 Pending/Running/Reconciling 时，编辑返回 OperationDenied.BatchKeyPending，提示等待批次完成。其他情况继续原编辑校验和行为；原 GatewayId/SecretKeyId/Name/Description 不变，成功不新增业务 Result。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -6965,7 +6925,6 @@ func NewModifyCloudNativeAPIGatewaySecretKeyResponse() (response *ModifyCloudNat
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -6974,6 +6933,7 @@ func NewModifyCloudNativeAPIGatewaySecretKeyResponse() (response *ModifyCloudNat
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BATCHKEYPENDING = "OperationDenied.BatchKeyPending"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
@@ -6987,6 +6947,8 @@ func (c *Client) ModifyCloudNativeAPIGatewaySecretKey(request *ModifyCloudNative
 // ModifyCloudNativeAPIGatewaySecretKey
 // 修改AI网关密钥
 //
+// 【消费者批量自动分配 API Key｜修改：新增未完成批次保护，字段不变】目标密钥属于批次且对应项处于 Pending/Running/Reconciling 时，编辑返回 OperationDenied.BatchKeyPending，提示等待批次完成。其他情况继续原编辑校验和行为；原 GatewayId/SecretKeyId/Name/Description 不变，成功不新增业务 Result。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -6995,7 +6957,6 @@ func (c *Client) ModifyCloudNativeAPIGatewaySecretKey(request *ModifyCloudNative
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -7004,6 +6965,7 @@ func (c *Client) ModifyCloudNativeAPIGatewaySecretKey(request *ModifyCloudNative
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BATCHKEYPENDING = "OperationDenied.BatchKeyPending"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
@@ -7057,7 +7019,6 @@ func NewRemoveCloudNativeAPIGatewayConsumerGroupAuthResponse() (response *Remove
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -7087,7 +7048,6 @@ func (c *Client) RemoveCloudNativeAPIGatewayConsumerGroupAuth(request *RemoveClo
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -7149,7 +7109,6 @@ func NewRemoveCloudNativeAPIGatewayConsumerInGroupResponse() (response *RemoveCl
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -7179,7 +7138,6 @@ func (c *Client) RemoveCloudNativeAPIGatewayConsumerInGroup(request *RemoveCloud
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -7241,7 +7199,6 @@ func NewRollbackCloudNativeAPIGatewayMCPToolVersionResponse() (response *Rollbac
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -7271,7 +7228,6 @@ func (c *Client) RollbackCloudNativeAPIGatewayMCPToolVersion(request *RollbackCl
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -7325,6 +7281,8 @@ func NewUnbindCloudNativeAPIGatewaySecretKeyResponse() (response *UnbindCloudNat
 // UnbindCloudNativeAPIGatewaySecretKey
 // 解绑密钥
 //
+// 【消费者批量自动分配 API Key｜修改：新增未完成批次保护，字段不变】目标密钥属于批次且对应项处于 Pending/Running/Reconciling 时，解绑返回 OperationDenied.BatchKeyPending。完成后继续原解绑；原 GatewayId/SecretKeyId/ResourceType/ResourceIds 不变，成功不新增业务 Result。解绑不改写批次历史成功，后续批次明文读取返回逐项 OperationDenied.BindingChanged。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -7333,7 +7291,6 @@ func NewUnbindCloudNativeAPIGatewaySecretKeyResponse() (response *UnbindCloudNat
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -7342,6 +7299,7 @@ func NewUnbindCloudNativeAPIGatewaySecretKeyResponse() (response *UnbindCloudNat
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BATCHKEYPENDING = "OperationDenied.BatchKeyPending"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
@@ -7355,6 +7313,8 @@ func (c *Client) UnbindCloudNativeAPIGatewaySecretKey(request *UnbindCloudNative
 // UnbindCloudNativeAPIGatewaySecretKey
 // 解绑密钥
 //
+// 【消费者批量自动分配 API Key｜修改：新增未完成批次保护，字段不变】目标密钥属于批次且对应项处于 Pending/Running/Reconciling 时，解绑返回 OperationDenied.BatchKeyPending。完成后继续原解绑；原 GatewayId/SecretKeyId/ResourceType/ResourceIds 不变，成功不新增业务 Result。解绑不改写批次历史成功，后续批次明文读取返回逐项 OperationDenied.BindingChanged。 完整接口清单与逐项说明：https://iwiki.woa.com/p/4042678235（第 2、2.4 节）。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
@@ -7363,7 +7323,6 @@ func (c *Client) UnbindCloudNativeAPIGatewaySecretKey(request *UnbindCloudNative
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -7372,6 +7331,7 @@ func (c *Client) UnbindCloudNativeAPIGatewaySecretKey(request *UnbindCloudNative
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BATCHKEYPENDING = "OperationDenied.BatchKeyPending"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
@@ -7425,7 +7385,6 @@ func NewUpdateCloudNativeAPIGatewayMCPToolsResponse() (response *UpdateCloudNati
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -7434,6 +7393,7 @@ func NewUpdateCloudNativeAPIGatewayMCPToolsResponse() (response *UpdateCloudNati
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BATCHKEYPENDING = "OperationDenied.BatchKeyPending"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
@@ -7455,7 +7415,6 @@ func (c *Client) UpdateCloudNativeAPIGatewayMCPTools(request *UpdateCloudNativeA
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -7464,6 +7423,7 @@ func (c *Client) UpdateCloudNativeAPIGatewayMCPTools(request *UpdateCloudNativeA
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BATCHKEYPENDING = "OperationDenied.BatchKeyPending"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"

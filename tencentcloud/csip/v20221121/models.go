@@ -69054,6 +69054,9 @@ type ModifyVulScanPeriodicRequestParams struct {
 
 	// <p>标签ID</p>
 	TagIds []*uint64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+
+	// <p>优先使用腾讯云软件源</p>
+	PreferCloudSource *bool `json:"PreferCloudSource,omitnil,omitempty" name:"PreferCloudSource"`
 }
 
 type ModifyVulScanPeriodicRequest struct {
@@ -69106,6 +69109,9 @@ type ModifyVulScanPeriodicRequest struct {
 
 	// <p>标签ID</p>
 	TagIds []*uint64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+
+	// <p>优先使用腾讯云软件源</p>
+	PreferCloudSource *bool `json:"PreferCloudSource,omitnil,omitempty" name:"PreferCloudSource"`
 }
 
 func (r *ModifyVulScanPeriodicRequest) ToJsonString() string {
@@ -69136,6 +69142,7 @@ func (r *ModifyVulScanPeriodicRequest) FromJsonString(s string) error {
 	delete(f, "EnableSync")
 	delete(f, "SyncTo")
 	delete(f, "TagIds")
+	delete(f, "PreferCloudSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVulScanPeriodicRequest has unknown keys!", "")
 	}
