@@ -177,7 +177,7 @@ func NewCreateBusinessResourceResponse() (response *CreateBusinessResourceRespon
 }
 
 // CreateBusinessResource
-// 创建业务资源，会对一些必填参数进行校验和参数合法性校验，创建业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。创建时也会做校验，但没有返回对应的异常信息，私有化调用path为：capi/GatewayResource/CreateBusinessResource
+// 创建业务资源
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
@@ -200,7 +200,7 @@ func (c *Client) CreateBusinessResource(request *CreateBusinessResourceRequest) 
 }
 
 // CreateBusinessResource
-// 创建业务资源，会对一些必填参数进行校验和参数合法性校验，创建业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。创建时也会做校验，但没有返回对应的异常信息，私有化调用path为：capi/GatewayResource/CreateBusinessResource
+// 创建业务资源
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
@@ -1231,7 +1231,7 @@ func NewDescribeBusinessResourcesResponse() (response *DescribeBusinessResources
 }
 
 // DescribeBusinessResources
-// 获取业务资源列表,支持分页，如果分页信息不传递会有默认分页，支持排序，不传排序字段，按业务资源创建时间排序,私有化调用path为：capi/GatewayResource/DescribeBusinessResources
+// 获取业务资源列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
@@ -1241,7 +1241,7 @@ func (c *Client) DescribeBusinessResources(request *DescribeBusinessResourcesReq
 }
 
 // DescribeBusinessResources
-// 获取业务资源列表,支持分页，如果分页信息不传递会有默认分页，支持排序，不传排序字段，按业务资源创建时间排序,私有化调用path为：capi/GatewayResource/DescribeBusinessResources
+// 获取业务资源列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
@@ -3053,7 +3053,7 @@ func NewModifyBusinessResourceResponse() (response *ModifyBusinessResourceRespon
 }
 
 // ModifyBusinessResource
-// 修改业务资源，会对一些必填参数进行校验和参数合法性校验，修改业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。修改时也会做校验，但没有返回对应的异常信息,私有化调用path为：capi/GatewayResource/ModifyBusinessResource
+// 修改业务资源
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
@@ -3078,7 +3078,7 @@ func (c *Client) ModifyBusinessResource(request *ModifyBusinessResourceRequest) 
 }
 
 // ModifyBusinessResource
-// 修改业务资源，会对一些必填参数进行校验和参数合法性校验，修改业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。修改时也会做校验，但没有返回对应的异常信息,私有化调用path为：capi/GatewayResource/ModifyBusinessResource
+// 修改业务资源
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"

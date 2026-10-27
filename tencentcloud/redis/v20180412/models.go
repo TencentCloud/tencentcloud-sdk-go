@@ -4671,252 +4671,170 @@ func (r *DescribeInstanceZoneInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// 每页输出实例的数量，参数默认值20，最大值为1000。
+	// <p>每页输出实例的数量，参数默认值20，最大值为1000。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
+	// <p>分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
-	// 
+	// <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例列表排序依据，枚举值如下所示：
-	// - projectId：依据项目ID排序。
-	// - createtime：依据实例创建时间排序。
-	// - instancename：依据实例名称排序。
-	// - type：依据实例类型排序。
-	// - curDeadline：依据实例到期时间排序。
+	// <p>实例列表排序依据，枚举值如下所示：</p><ul><li>projectId：依据项目ID排序。</li><li>createtime：依据实例创建时间排序。</li><li>instancename：依据实例名称排序。</li><li>type：依据实例类型排序。</li><li>curDeadline：依据实例到期时间排序。</li></ul>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 实例排序方式，默认为倒序排序。
-	// - 1：倒序。
-	// - 0：顺序。
+	// <p>实例排序方式，默认为倒序排序。</p><ul><li>1：倒序。</li><li>0：顺序。</li></ul>
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 私有网络 ID 数组。如果不配置该参数或设置数组为空则默认选择基础网络。例如47525。该参数暂时保留，可忽略。请根据 UniqVpcIds 参数格式设置私有网络ID数组。
+	// <p>私有网络 ID 数组。如果不配置该参数或设置数组为空则默认选择基础网络。例如47525。该参数暂时保留，可忽略。请根据 UniqVpcIds 参数格式设置私有网络ID数组。</p>
 	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
 
-	// 私有网络所属子网 ID 数组，例如：56854。该参数暂时保留，可忽略。请根据 UniqSubnetIds 参数格式设置私有网络子网 ID 数组。
+	// <p>私有网络所属子网 ID 数组，例如：56854。该参数暂时保留，可忽略。请根据 UniqSubnetIds 参数格式设置私有网络子网 ID 数组。</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 设置模糊查询关键字段，仅实例名称支持模糊查询。
+	// <p>设置模糊查询关键字段，仅实例名称支持模糊查询。</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 项目 ID 组成的数组。
+	// <p>项目 ID 组成的数组。</p>
 	ProjectIds []*int64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 实例名称。
+	// <p>实例名称。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 私有网络 ID 数组。如果不配置该参数或者设置数组为空则默认选择基础网络，如：vpc-sad23jfdfk。
+	// <p>私有网络 ID 数组。如果不配置该参数或者设置数组为空则默认选择基础网络，如：vpc-sad23jfdfk。</p>
 	UniqVpcIds []*string `json:"UniqVpcIds,omitnil,omitempty" name:"UniqVpcIds"`
 
-	// 私有网络所属子网 ID 数组，如：subnet-fdj24n34j2。
+	// <p>私有网络所属子网 ID 数组，如：subnet-fdj24n34j2。</p>
 	UniqSubnetIds []*string `json:"UniqSubnetIds,omitnil,omitempty" name:"UniqSubnetIds"`
 
-	// 地域 ID 数组，该参数已经弃用，可通过公共参数Region查询对应地域。
+	// <p>地域 ID 数组，该参数已经弃用，可通过公共参数Region查询对应地域。</p>
 	RegionIds []*int64 `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 实例状态。
-	// - 0：待初始化。
-	// - 1：流程中。
-	// - 2：运行中。
-	// - -2：已隔离。
-	// - -3：待删除。
+	// <p>实例状态。</p><ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例架构版本。
-	// - 1：单机版。
-	// - 2：主从版。
-	// - 3：集群版。
+	// <p>实例架构版本。</p><ul><li>1：单机版。</li><li>2：主从版。</li><li>3：集群版。</li></ul>
 	TypeVersion *int64 `json:"TypeVersion,omitnil,omitempty" name:"TypeVersion"`
 
-	// 存储引擎信息。可设置为Redis-2.8、Redis-4.0、Redis-5.0、Redis-6.0 或者 CKV。
+	// <p>存储引擎信息。可设置为Redis-2.8、Redis-4.0、Redis-5.0、Redis-6.0 或者 CKV。</p>
 	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
 
-	// 续费模式。
-	// - 0：手动续费。
-	// - 1：自动续费。
-	// - 2：到期不再续费。
+	// <p>续费模式。</p><ul><li>0：手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</li></ul>
 	AutoRenew []*int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 计费模式。
-	// - postpaid：按量计费。
-	// - prepaid：包年包月。
+	// <p>计费模式。</p><ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul>
 	BillingMode *string `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 
-	// 实例类型。
-	// - 2：Redis 2.8 内存版（标准架构）。
-	// - 3：CKV 3.2 内存版（标准架构）。
-	// - 4：CKV 3.2 内存版（集群架构）。
-	// - 5：Redis 2.8 内存版（单机）。
-	// - 6：Redis 4.0 内存版（标准架构）。
-	// - 7：Redis 4.0 内存版（集群架构）。
-	// - 8：Redis 5.0 内存版（标准架构）。
-	// - 9：Redis 5.0 内存版（集群架构）。
-	// - 15：Redis 6.2 内存版（标准架构）。
-	// - 16：Redis 6.2 内存版（集群架构）。
-	// - 17：Redis 7.0 内存版（标准架构）。
-	// - 18：Redis 7.0 内存版（集群架构）。
-	// - 200:Memcached 1.6 内存版（集群架构）。
+	// <p>实例类型。</p><ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>5：Redis 2.8 内存版（单机）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li><li>200:Memcached 1.6 内存版（集群架构）。</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 该参数为数组类型，支持配置实例名称、实例 ID、IP地址，其中实例名称为模糊匹配，实例 ID 和 IP 地址精确匹配。
-	// 
-	// - 数组中每一个元素取并集进行匹配查询。
-	// - **InstanceId** 与 **SearchKeys** 同时配置，则取二者交集进行匹配查询。
+	// <p>该参数为数组类型，支持配置实例名称、实例 ID、IP地址，其中实例名称为模糊匹配，实例 ID 和 IP 地址精确匹配。</p><ul><li>数组中每一个元素取并集进行匹配查询。</li><li><strong>InstanceId</strong> 与 <strong>SearchKeys</strong> 同时配置，则取二者交集进行匹配查询。</li></ul>
 	SearchKeys []*string `json:"SearchKeys,omitnil,omitempty" name:"SearchKeys"`
 
-	// 内部参数，用户可忽略。
+	// <p>内部参数，用户可忽略。</p>
 	TypeList []*int64 `json:"TypeList,omitnil,omitempty" name:"TypeList"`
 
-	// 内部参数，用户可忽略。
+	// <p>内部参数，用户可忽略。</p>
 	MonitorVersion *string `json:"MonitorVersion,omitnil,omitempty" name:"MonitorVersion"`
 
-	// 根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+	// <p>根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。</p>
 	InstanceTags []*InstanceTagInfo `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
-	// 根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。
+	// <p>根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 实例的产品版本。如果该参数不配置或者数组设置为空值，则默认不依据此参数过滤实例。
-	// - local：本地盘版。
-	// - cdc：独享集群版。
+	// <p>实例的部署类型。如果该参数不配置或者数组设置为空值，则默认不依据此参数过滤实例。</p><p>枚举值：</p><ul><li>local： 通用 I 型。</li><li>localv2： 通用 II 型。</li><li>cdc： 独享集群型。</li></ul>
 	ProductVersions []*string `json:"ProductVersions,omitnil,omitempty" name:"ProductVersions"`
 
-	// 批量查询指定的实例 ID，返回结果已 Limit 限制为主。
+	// <p>批量查询指定的实例 ID，返回结果已 Limit 限制为主。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 可用区模式。
-	// - singleaz：单可用区。
-	// - multiaz：多可用区。
+	// <p>可用区模式。</p><ul><li>singleaz：单可用区。</li><li>multiaz：多可用区。</li></ul>
 	AzMode *string `json:"AzMode,omitnil,omitempty" name:"AzMode"`
 }
 
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页输出实例的数量，参数默认值20，最大值为1000。
+	// <p>每页输出实例的数量，参数默认值20，最大值为1000。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
+	// <p>分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
-	// 
+	// <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例列表排序依据，枚举值如下所示：
-	// - projectId：依据项目ID排序。
-	// - createtime：依据实例创建时间排序。
-	// - instancename：依据实例名称排序。
-	// - type：依据实例类型排序。
-	// - curDeadline：依据实例到期时间排序。
+	// <p>实例列表排序依据，枚举值如下所示：</p><ul><li>projectId：依据项目ID排序。</li><li>createtime：依据实例创建时间排序。</li><li>instancename：依据实例名称排序。</li><li>type：依据实例类型排序。</li><li>curDeadline：依据实例到期时间排序。</li></ul>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 实例排序方式，默认为倒序排序。
-	// - 1：倒序。
-	// - 0：顺序。
+	// <p>实例排序方式，默认为倒序排序。</p><ul><li>1：倒序。</li><li>0：顺序。</li></ul>
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 私有网络 ID 数组。如果不配置该参数或设置数组为空则默认选择基础网络。例如47525。该参数暂时保留，可忽略。请根据 UniqVpcIds 参数格式设置私有网络ID数组。
+	// <p>私有网络 ID 数组。如果不配置该参数或设置数组为空则默认选择基础网络。例如47525。该参数暂时保留，可忽略。请根据 UniqVpcIds 参数格式设置私有网络ID数组。</p>
 	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
 
-	// 私有网络所属子网 ID 数组，例如：56854。该参数暂时保留，可忽略。请根据 UniqSubnetIds 参数格式设置私有网络子网 ID 数组。
+	// <p>私有网络所属子网 ID 数组，例如：56854。该参数暂时保留，可忽略。请根据 UniqSubnetIds 参数格式设置私有网络子网 ID 数组。</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 设置模糊查询关键字段，仅实例名称支持模糊查询。
+	// <p>设置模糊查询关键字段，仅实例名称支持模糊查询。</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 项目 ID 组成的数组。
+	// <p>项目 ID 组成的数组。</p>
 	ProjectIds []*int64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 实例名称。
+	// <p>实例名称。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 私有网络 ID 数组。如果不配置该参数或者设置数组为空则默认选择基础网络，如：vpc-sad23jfdfk。
+	// <p>私有网络 ID 数组。如果不配置该参数或者设置数组为空则默认选择基础网络，如：vpc-sad23jfdfk。</p>
 	UniqVpcIds []*string `json:"UniqVpcIds,omitnil,omitempty" name:"UniqVpcIds"`
 
-	// 私有网络所属子网 ID 数组，如：subnet-fdj24n34j2。
+	// <p>私有网络所属子网 ID 数组，如：subnet-fdj24n34j2。</p>
 	UniqSubnetIds []*string `json:"UniqSubnetIds,omitnil,omitempty" name:"UniqSubnetIds"`
 
-	// 地域 ID 数组，该参数已经弃用，可通过公共参数Region查询对应地域。
+	// <p>地域 ID 数组，该参数已经弃用，可通过公共参数Region查询对应地域。</p>
 	RegionIds []*int64 `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 实例状态。
-	// - 0：待初始化。
-	// - 1：流程中。
-	// - 2：运行中。
-	// - -2：已隔离。
-	// - -3：待删除。
+	// <p>实例状态。</p><ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例架构版本。
-	// - 1：单机版。
-	// - 2：主从版。
-	// - 3：集群版。
+	// <p>实例架构版本。</p><ul><li>1：单机版。</li><li>2：主从版。</li><li>3：集群版。</li></ul>
 	TypeVersion *int64 `json:"TypeVersion,omitnil,omitempty" name:"TypeVersion"`
 
-	// 存储引擎信息。可设置为Redis-2.8、Redis-4.0、Redis-5.0、Redis-6.0 或者 CKV。
+	// <p>存储引擎信息。可设置为Redis-2.8、Redis-4.0、Redis-5.0、Redis-6.0 或者 CKV。</p>
 	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
 
-	// 续费模式。
-	// - 0：手动续费。
-	// - 1：自动续费。
-	// - 2：到期不再续费。
+	// <p>续费模式。</p><ul><li>0：手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</li></ul>
 	AutoRenew []*int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 计费模式。
-	// - postpaid：按量计费。
-	// - prepaid：包年包月。
+	// <p>计费模式。</p><ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul>
 	BillingMode *string `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 
-	// 实例类型。
-	// - 2：Redis 2.8 内存版（标准架构）。
-	// - 3：CKV 3.2 内存版（标准架构）。
-	// - 4：CKV 3.2 内存版（集群架构）。
-	// - 5：Redis 2.8 内存版（单机）。
-	// - 6：Redis 4.0 内存版（标准架构）。
-	// - 7：Redis 4.0 内存版（集群架构）。
-	// - 8：Redis 5.0 内存版（标准架构）。
-	// - 9：Redis 5.0 内存版（集群架构）。
-	// - 15：Redis 6.2 内存版（标准架构）。
-	// - 16：Redis 6.2 内存版（集群架构）。
-	// - 17：Redis 7.0 内存版（标准架构）。
-	// - 18：Redis 7.0 内存版（集群架构）。
-	// - 200:Memcached 1.6 内存版（集群架构）。
+	// <p>实例类型。</p><ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>5：Redis 2.8 内存版（单机）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li><li>200:Memcached 1.6 内存版（集群架构）。</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 该参数为数组类型，支持配置实例名称、实例 ID、IP地址，其中实例名称为模糊匹配，实例 ID 和 IP 地址精确匹配。
-	// 
-	// - 数组中每一个元素取并集进行匹配查询。
-	// - **InstanceId** 与 **SearchKeys** 同时配置，则取二者交集进行匹配查询。
+	// <p>该参数为数组类型，支持配置实例名称、实例 ID、IP地址，其中实例名称为模糊匹配，实例 ID 和 IP 地址精确匹配。</p><ul><li>数组中每一个元素取并集进行匹配查询。</li><li><strong>InstanceId</strong> 与 <strong>SearchKeys</strong> 同时配置，则取二者交集进行匹配查询。</li></ul>
 	SearchKeys []*string `json:"SearchKeys,omitnil,omitempty" name:"SearchKeys"`
 
-	// 内部参数，用户可忽略。
+	// <p>内部参数，用户可忽略。</p>
 	TypeList []*int64 `json:"TypeList,omitnil,omitempty" name:"TypeList"`
 
-	// 内部参数，用户可忽略。
+	// <p>内部参数，用户可忽略。</p>
 	MonitorVersion *string `json:"MonitorVersion,omitnil,omitempty" name:"MonitorVersion"`
 
-	// 根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+	// <p>根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。</p>
 	InstanceTags []*InstanceTagInfo `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
-	// 根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。
+	// <p>根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 实例的产品版本。如果该参数不配置或者数组设置为空值，则默认不依据此参数过滤实例。
-	// - local：本地盘版。
-	// - cdc：独享集群版。
+	// <p>实例的部署类型。如果该参数不配置或者数组设置为空值，则默认不依据此参数过滤实例。</p><p>枚举值：</p><ul><li>local： 通用 I 型。</li><li>localv2： 通用 II 型。</li><li>cdc： 独享集群型。</li></ul>
 	ProductVersions []*string `json:"ProductVersions,omitnil,omitempty" name:"ProductVersions"`
 
-	// 批量查询指定的实例 ID，返回结果已 Limit 限制为主。
+	// <p>批量查询指定的实例 ID，返回结果已 Limit 限制为主。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 可用区模式。
-	// - singleaz：单可用区。
-	// - multiaz：多可用区。
+	// <p>可用区模式。</p><ul><li>singleaz：单可用区。</li><li>multiaz：多可用区。</li></ul>
 	AzMode *string `json:"AzMode,omitnil,omitempty" name:"AzMode"`
 }
 
@@ -4967,10 +4885,10 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesResponseParams struct {
-	// 实例总数量。
+	// <p>实例总数量。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 实例详细信息列表。
+	// <p>实例详细信息列表。</p>
 	InstanceSet []*InstanceSet `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7892,7 +7810,7 @@ type InstanceSet struct {
 	// Deprecated: SizeUsed is deprecated.
 	SizeUsed *float64 `json:"SizeUsed,omitnil,omitempty" name:"SizeUsed"`
 
-	// <p>实例类型。</p><p>枚举值：</p><ul><li>2： Redis 2.8 内存版（标准架构）。</li><li>3： CKV 3.2 内存版（标准架构）。</li><li>4： CKV 3.2 内存版（集群架构）。</li><li>5： Redis 2.8 内存版（单机）。</li><li>6： Redis 4.0 内存版（标准架构）。</li><li>7： Redis 4.0 内存版（集群架构）。</li><li>8： Redis 5.0 内存版（标准架构）。</li><li>9： Redis 5.0 内存版（集群架构）。</li><li>15： Redis 6.2 内存版（标准架构）。</li><li>16： Redis 6.2 内存版（集群架构）。</li><li>17： Redis 7.0 内存版（标准架构）。</li><li>18： Redis 7.0 内存版（集群架构）。</li><li>19： Valkey 8.0 内存版（标准架构）。</li><li>20： Valkey 8.0 内存版（集群架构）。</li><li>21： Valkey 8.0 内存版（标准架构）。</li><li>22： Valkey 8.0 内存版（集群架构）。</li><li>200： Memcached 1.6 内存版（集群架构）。</li></ul>
+	// <p>实例类型。</p><p>枚举值：</p><ul><li>2： Redis 2.8 内存版（标准架构）。</li><li>3： CKV 3.2 内存版（标准架构）。</li><li>4： CKV 3.2 内存版（集群架构）。</li><li>5： Redis 2.8 内存版（单机）。</li><li>6： Redis 4.0 内存版（标准架构）。</li><li>7： Redis 4.0 内存版（集群架构）。</li><li>8： Redis 5.0 内存版（标准架构）。</li><li>9： Redis 5.0 内存版（集群架构）。</li><li>15： Redis 6.2 内存版（标准架构）。</li><li>16： Redis 6.2 内存版（集群架构）。</li><li>17： Redis 7.0 内存版（标准架构）。</li><li>18： Redis 7.0 内存版（集群架构）。</li><li>19： Valkey 8.0 内存版（标准架构）。</li><li>20： Valkey 8.0 内存版（集群架构）。</li><li>21： Valkey 9.0 内存版（标准架构）。</li><li>22： Valkey 9.0 内存版（集群架构）。</li><li>200： Memcached 1.6 内存版（集群架构）。</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// <p>实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul></p>
@@ -8012,7 +7930,7 @@ type InstanceSet struct {
 	// <p>CDC 集群ID。</p>
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
-	// <p>产品版本。<ul><li>local：本地盘。</li><li>cloud：云盘版。</li><li>cdc：CDC 集群版本。</li></ul></p>
+	// <p>实例的部署类型。</p><p>枚举值：</p><ul><li>local： 通用 I 型。</li><li>localv2： 通用 II 型。</li><li>cdc： 独享集群型。</li></ul>
 	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 
 	// <p>实例当前Proxy版本。</p>

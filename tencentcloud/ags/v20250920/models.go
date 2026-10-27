@@ -5794,10 +5794,10 @@ type UpdateSandboxInstanceRequestParams struct {
 	// <p>沙箱实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// <p>新的超时时间（从设置时开始重新计算超时），支持格式：5m、300s、1h等。最小30s，最大24h。如果不指定则保持原有超时设置</p>
+	// 手动设置实例还需运行多久，如 5m、300s、1h。未传入时保持原设置；传入后从本次设置开始重新计时。仅正在运行、且未设置为永久运行的实例可修改。修改时不会缩短已获得的自动续期时间。
 	Timeout *string `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// <p>沙箱实例元数据</p>
+	// 实例元数据。
 	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
@@ -5807,10 +5807,10 @@ type UpdateSandboxInstanceRequest struct {
 	// <p>沙箱实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// <p>新的超时时间（从设置时开始重新计算超时），支持格式：5m、300s、1h等。最小30s，最大24h。如果不指定则保持原有超时设置</p>
+	// 手动设置实例还需运行多久，如 5m、300s、1h。未传入时保持原设置；传入后从本次设置开始重新计时。仅正在运行、且未设置为永久运行的实例可修改。修改时不会缩短已获得的自动续期时间。
 	Timeout *string `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// <p>沙箱实例元数据</p>
+	// 实例元数据。
 	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 

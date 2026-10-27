@@ -1950,6 +1950,29 @@ func (r *CancelTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CertDetail struct {
+	// <p>证书ID</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// <p>证书备注名</p>
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// <p>证书绑定的主域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>证书来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>有效期结束（秒级时间戳）</p><p>单位：秒</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>证书到期剩余天数</p>
+	RemainDays *int64 `json:"RemainDays,omitnil,omitempty" name:"RemainDays"`
+
+	// <p>证书状态，1为已通过</p>
+	CertStatus *int64 `json:"CertStatus,omitnil,omitempty" name:"CertStatus"`
+}
+
 // Predefined struct for user
 type CheckCreateLibraDBInstanceRequestParams struct {
 	// 集群ID
@@ -13765,20 +13788,20 @@ func (r *DescribeSQLExecutionPlanResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSSLStatusRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeSSLStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -13804,11 +13827,17 @@ func (r *DescribeSSLStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSSLStatusResponseParams struct {
-	// yes-开启，no-关闭
+	// <p>yes-开启，no-关闭</p>
 	IsOpenSSL *string `json:"IsOpenSSL,omitnil,omitempty" name:"IsOpenSSL"`
 
-	// 证书下载地址
+	// <p>证书下载地址</p>
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// <p>证书类型</p><p>枚举值：</p><ul><li>platform： 云端证书</li><li>custom： 自定义证书</li></ul>
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
+
+	// <p>自定义证书详情，仅 CertType=custom 时有值。</p>
+	CertDetail *CertDetail `json:"CertDetail,omitnil,omitempty" name:"CertDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -21670,21 +21699,33 @@ func (r *OpenReadOnlyInstanceExclusiveAccessResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type OpenSSLRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>证书类型</p><p>枚举值：</p><ul><li>platform： 云端证书</li><li>custom： 自定义证书</li></ul><p>默认值：platform</p>
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
+
+	// <p>证书ID，CertType=custom 时必传</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 }
 
 type OpenSSLRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>证书类型</p><p>枚举值：</p><ul><li>platform： 云端证书</li><li>custom： 自定义证书</li></ul><p>默认值：platform</p>
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
+
+	// <p>证书ID，CertType=custom 时必传</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 }
 
 func (r *OpenSSLRequest) ToJsonString() string {
@@ -21701,6 +21742,8 @@ func (r *OpenSSLRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "InstanceId")
+	delete(f, "CertType")
+	delete(f, "CertId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenSSLRequest has unknown keys!", "")
 	}
@@ -21709,10 +21752,10 @@ func (r *OpenSSLRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OpenSSLResponseParams struct {
-	// 任务流ID
+	// <p>任务流ID</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 任务id
+	// <p>任务id</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

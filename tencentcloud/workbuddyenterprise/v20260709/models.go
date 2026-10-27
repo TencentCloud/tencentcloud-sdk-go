@@ -286,6 +286,22 @@ type BuiltinModel struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportsImages *bool `json:"SupportsImages,omitnil,omitempty" name:"SupportsImages"`
 
+	// 模型是否支持思考。仅用于展示；能否配置思考强度以 ThinkingLevels 和 CanDisableThinking 为准
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportsThinking *bool `json:"SupportsThinking,omitnil,omitempty" name:"SupportsThinking"`
+
+	// 可选的思考强度，取值：MINIMAL、LOW、MEDIUM、HIGH、XHIGH、MAX，数组顺序即展示顺序。不包含「关闭」，空数组表示不支持调整强度。在 Agent 版本 Manifest 中配置 thinking.level 时使用对应的小写值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThinkingLevels []*string `json:"ThinkingLevels,omitnil,omitempty" name:"ThinkingLevels"`
+
+	// 模型默认的思考强度，取值同 ThinkingLevels；空字符串表示未声明。Agent 版本 Manifest 未配置 thinking 时按模型默认档位运行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultThinkingLevel *string `json:"DefaultThinkingLevel,omitnil,omitempty" name:"DefaultThinkingLevel"`
+
+	// 是否支持关闭思考。为 true 时，可在 Agent 版本 Manifest 中配置 thinking.level 为 disabled
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanDisableThinking *bool `json:"CanDisableThinking,omitnil,omitempty" name:"CanDisableThinking"`
+
 	// 模型中文描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DescriptionZh *string `json:"DescriptionZh,omitnil,omitempty" name:"DescriptionZh"`
@@ -1576,7 +1592,7 @@ type DescribeExpertListRequestParams struct {
 	// <p>专家来源，必填：BUILTIN（内置）/ CUSTOM（自建）</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// <p>标准过滤条件：ExpertId（精确，多值 OR，携带即按 ID 批量查询，忽略分页）/ Keyword（模糊）</p>
+	// <p>标准过滤条件：ExpertId（精确，多值 OR，携带即按 ID 批量查询，忽略分页）/ Keyword（模糊）/ PublishStatus（DRAFT、PUBLISHED、ALL，仅 CUSTOM）/ ExpertType（AGENT 普通专家、TEAM 专家团）。ExpertType 只允许一个过滤条件且 Values 必须仅含一个值，不传则不增加形态过滤；可与 ExpertId 组合取交集，分页总数 TotalCount 为过滤后的匹配数。专家选择列表建议传 {&quot;Name&quot;:&quot;ExpertType&quot;,&quot;Values&quot;:[&quot;AGENT&quot;]}。CAPI 的 CUSTOM 目录仅有普通专家，按 TEAM 过滤返回空集。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>偏移量，从 0 开始，默认 0（按 ID 批量查询时忽略）</p>
@@ -1592,7 +1608,7 @@ type DescribeExpertListRequest struct {
 	// <p>专家来源，必填：BUILTIN（内置）/ CUSTOM（自建）</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// <p>标准过滤条件：ExpertId（精确，多值 OR，携带即按 ID 批量查询，忽略分页）/ Keyword（模糊）</p>
+	// <p>标准过滤条件：ExpertId（精确，多值 OR，携带即按 ID 批量查询，忽略分页）/ Keyword（模糊）/ PublishStatus（DRAFT、PUBLISHED、ALL，仅 CUSTOM）/ ExpertType（AGENT 普通专家、TEAM 专家团）。ExpertType 只允许一个过滤条件且 Values 必须仅含一个值，不传则不增加形态过滤；可与 ExpertId 组合取交集，分页总数 TotalCount 为过滤后的匹配数。专家选择列表建议传 {&quot;Name&quot;:&quot;ExpertType&quot;,&quot;Values&quot;:[&quot;AGENT&quot;]}。CAPI 的 CUSTOM 目录仅有普通专家，按 TEAM 过滤返回空集。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>偏移量，从 0 开始，默认 0（按 ID 批量查询时忽略）</p>
@@ -1635,6 +1651,9 @@ type DescribeExpertListResponseParams struct {
 	// <p>全局计数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Counts *ExpertCounts `json:"Counts,omitnil,omitempty" name:"Counts"`
+
+	// <p>Agent 可绑定的专家数量上限，当前默认值为 5。</p>
+	MaxBindings *int64 `json:"MaxBindings,omitnil,omitempty" name:"MaxBindings"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1861,6 +1880,9 @@ type DescribeMessageEventListRequestParams struct {
 
 	// <p>过滤条件数组，多个 Filter 之间为 AND 关系，同一 Filter 内多个 Values 为 OR 关系</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+
+	SubAgentId *string `json:"SubAgentId,omitnil,omitempty" name:"SubAgentId"`
 }
 
 type DescribeMessageEventListRequest struct {
@@ -1880,6 +1902,8 @@ type DescribeMessageEventListRequest struct {
 
 	// <p>过滤条件数组，多个 Filter 之间为 AND 关系，同一 Filter 内多个 Values 为 OR 关系</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	SubAgentId *string `json:"SubAgentId,omitnil,omitempty" name:"SubAgentId"`
 }
 
 func (r *DescribeMessageEventListRequest) ToJsonString() string {
@@ -1899,6 +1923,7 @@ func (r *DescribeMessageEventListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "SubAgentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMessageEventListRequest has unknown keys!", "")
 	}
@@ -2164,6 +2189,10 @@ type ExternalAgentInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	A2AVersion *string `json:"A2AVersion,omitnil,omitempty" name:"A2AVersion"`
 
+	// 子 Agent 的最新版本名，返回版本存储名（default / test-N / prod-N），非 V1/V2 展示名。取值规则：有正式版本（prod）时取最新 prod，否则取最新 test，再否则取 default。仅企业 Agent 来源返回（其 A2AVersion 恒为 default）；其他来源或查询失败时不返回。注意：不代表 A2A 调用时实际执行的版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestVersionName *string `json:"LatestVersionName,omitnil,omitempty" name:"LatestVersionName"`
+
 	// A2A card skills 集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	A2ASkillSet []*A2ASkillItem `json:"A2ASkillSet,omitnil,omitempty" name:"A2ASkillSet"`
@@ -2247,6 +2276,24 @@ type MessageEventToolCall struct {
 	// <p>调用开始时间（RFC3339 格式）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartedAt *string `json:"StartedAt,omitnil,omitempty" name:"StartedAt"`
+
+	// 本次调用对应的业务专家 ID。
+	ExpertId *string `json:"ExpertId,omitnil,omitempty" name:"ExpertId"`
+
+	// 本次调用对应的专家名称。
+	ExpertName *string `json:"ExpertName,omitnil,omitempty" name:"ExpertName"`
+
+	// 执行时解析到的专家资源版本。
+	ExpertVersion *string `json:"ExpertVersion,omitnil,omitempty" name:"ExpertVersion"`
+
+	// CBC 子代理执行实例 ID，可用于查询该次专家调用的消息事件。
+	SubAgentId *string `json:"SubAgentId,omitnil,omitempty" name:"SubAgentId"`
+
+	// CBC 子代理定义名称。
+	SubAgentName *string `json:"SubAgentName,omitnil,omitempty" name:"SubAgentName"`
+
+	// 父会话中触发本次子代理执行的工具调用 ID。
+	ParentToolCallId *string `json:"ParentToolCallId,omitnil,omitempty" name:"ParentToolCallId"`
 }
 
 // Predefined struct for user

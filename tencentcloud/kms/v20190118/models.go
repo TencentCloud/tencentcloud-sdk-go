@@ -604,6 +604,97 @@ func (r *CreateKeyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateKmsInstanceRequestParams struct {
+	// <p>实例付费类型(PREPAID)</p>
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// <p>版本类型</p><p>枚举值：</p><ul><li>professional： 专业版</li></ul>
+	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
+
+	// <p>预付费实例信息</p>
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
+
+	// <p>可重入客户端ID</p>
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>实例标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateKmsInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例付费类型(PREPAID)</p>
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// <p>版本类型</p><p>枚举值：</p><ul><li>professional： 专业版</li></ul>
+	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
+
+	// <p>预付费实例信息</p>
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
+
+	// <p>可重入客户端ID</p>
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>实例标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateKmsInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKmsInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceChargeType")
+	delete(f, "ProductVersion")
+	delete(f, "InstanceChargePrepaid")
+	delete(f, "ClientToken")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKmsInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateKmsInstanceResponseParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>计费订单号</p>
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
+
+	// <p>计费冻结流水号</p>
+	BillId *string `json:"BillId,omitnil,omitempty" name:"BillId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateKmsInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateKmsInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateKmsInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKmsInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateWhiteBoxKeyRequestParams struct {
 	// 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字。Alias不可重复。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
@@ -3437,6 +3528,14 @@ func (r *ImportKeyMaterialResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ImportKeyMaterialResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InstanceChargePrepaid struct {
+	// <p>按月购买时长（1～100）月</p>
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// <p>续费标记（0:用户未设置，1:自动续费 2:不自动续费）</p>
+	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
 type Key struct {

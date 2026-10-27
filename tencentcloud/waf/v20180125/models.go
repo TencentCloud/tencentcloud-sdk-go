@@ -16509,32 +16509,32 @@ func (r *GetAttackDownloadRecordsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetAttackHistogramRequestParams struct {
-	// 查询的域名，所有域名使用all
+	// <p>查询的域名，所有域名使用all</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 查询起始时间
+	// <p>查询起始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询结束时间
+	// <p>查询结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// Lucene语法
+	// <p>Lucene语法</p>
 	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
 }
 
 type GetAttackHistogramRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询的域名，所有域名使用all
+	// <p>查询的域名，所有域名使用all</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 查询起始时间
+	// <p>查询起始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询结束时间
+	// <p>查询结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// Lucene语法
+	// <p>Lucene语法</p>
 	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
 }
 
@@ -16562,13 +16562,13 @@ func (r *GetAttackHistogramRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetAttackHistogramResponseParams struct {
-	// 统计详情
+	// <p>统计详情</p>
 	Data []*LogHistogramInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 时间段大小
+	// <p>时间段大小</p><p>单位：秒</p>
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 统计的条目数
+	// <p>统计的条目数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

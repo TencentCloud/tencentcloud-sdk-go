@@ -81,7 +81,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cngw v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.201
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.202
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -89,6 +89,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/csxg v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ctem v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ctsdb v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvd v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cwp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cws v0.0.0
@@ -356,6 +357,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/csxg => ../tencentcloud/csxg
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ctem => ../tencentcloud/ctem
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ctsdb => ../tencentcloud/ctsdb
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvd => ../tencentcloud/cvd
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm => ../tencentcloud/cvm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cwp => ../tencentcloud/cwp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cws => ../tencentcloud/cws

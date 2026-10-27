@@ -73,38 +73,38 @@ type CloudDedicatedZoneResourceSummaryInfo struct {
 
 // Predefined struct for user
 type DescribeCloudDedicatedZoneHostsRequestParams struct {
-	// 专属可用区ID 
+	// <p>专属可用区ID</p>
 	CloudDedicatedZoneID *string `json:"CloudDedicatedZoneID,omitnil,omitempty" name:"CloudDedicatedZoneID"`
 
-	// 一个或多个Host面的CVM实例信息。最大支持查询100台Host。
+	// <p>一个或多个Host面的CVM实例信息。最大支持查询100台Host。</p>
 	HostUuids []*string `json:"HostUuids,omitnil,omitempty" name:"HostUuids"`
 
-	// 查询一个实例或者多个实例所在的Host上面的CVM实例信息。最大支持查询100台实例。
+	// <p>查询一个实例或者多个实例所在的Host上面的CVM实例信息。最大支持查询100台实例。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
+	// <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
+	// <p>返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeCloudDedicatedZoneHostsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 专属可用区ID 
+	// <p>专属可用区ID</p>
 	CloudDedicatedZoneID *string `json:"CloudDedicatedZoneID,omitnil,omitempty" name:"CloudDedicatedZoneID"`
 
-	// 一个或多个Host面的CVM实例信息。最大支持查询100台Host。
+	// <p>一个或多个Host面的CVM实例信息。最大支持查询100台Host。</p>
 	HostUuids []*string `json:"HostUuids,omitnil,omitempty" name:"HostUuids"`
 
-	// 查询一个实例或者多个实例所在的Host上面的CVM实例信息。最大支持查询100台实例。
+	// <p>查询一个实例或者多个实例所在的Host上面的CVM实例信息。最大支持查询100台实例。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
+	// <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
+	// <p>返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -133,8 +133,11 @@ func (r *DescribeCloudDedicatedZoneHostsRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeCloudDedicatedZoneHostsResponseParams struct {
-	// 返回Host和Host上部署的实例信息之间的关系
+	// <p>返回Host和Host上部署的实例信息之间的关系</p>
 	CloudDedicatedZoneHostsInfoSet []*CloudDedicatedZoneHostsInfo `json:"CloudDedicatedZoneHostsInfoSet,omitnil,omitempty" name:"CloudDedicatedZoneHostsInfoSet"`
+
+	// <p>母机总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

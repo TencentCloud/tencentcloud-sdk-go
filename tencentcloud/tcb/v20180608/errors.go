@@ -53,6 +53,9 @@ const (
 	// 数据库sql解析异常
 	FAILEDOPERATION_DATABASESQLSYNTAXERROR = "FailedOperation.DatabaseSqlSyntaxError"
 
+	// 函数不在可删除的稳态
+	FAILEDOPERATION_DELETEFUNCTION = "FailedOperation.DeleteFunction"
+
 	// FailedOperation.DuplicatedData
 	FAILEDOPERATION_DUPLICATEDDATA = "FailedOperation.DuplicatedData"
 

@@ -254,6 +254,67 @@ func (r *CreateAssetResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCheckRequestParams struct {
+	// <p>漏洞情报ID</p>
+	VulId *string `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>企业ID</p>
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+}
+
+type CreateCheckRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>漏洞情报ID</p>
+	VulId *string `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>企业ID</p>
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+}
+
+func (r *CreateCheckRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCheckRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulId")
+	delete(f, "CustomerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCheckRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCheckResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCheckResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCheckResponseParams `json:"Response"`
+}
+
+func (r *CreateCheckResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCheckResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCustomerRequestParams struct {
 	// <p>企业名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -1136,6 +1197,67 @@ func (r *CreatePortResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePortResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateScanRequestParams struct {
+	// <p>漏洞情报ID</p>
+	VulId *string `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>企业ID</p>
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+}
+
+type CreateScanRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>漏洞情报ID</p>
+	VulId *string `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>企业ID</p>
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+}
+
+func (r *CreateScanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulId")
+	delete(f, "CustomerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateScanResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateScanResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateScanResponseParams `json:"Response"`
+}
+
+func (r *CreateScanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2941,6 +3063,80 @@ func (r *DescribeAssetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBannerAssetDataRequestParams struct {
+	// <p>漏洞情报ID</p>
+	VulId *string `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeBannerAssetDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>漏洞情报ID</p>
+	VulId *string `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeBannerAssetDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBannerAssetDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBannerAssetDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBannerAssetDataResponseParams struct {
+	// <p>数组</p>
+	List []*IntelligenceResult `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>总数</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBannerAssetDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBannerAssetDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeBannerAssetDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBannerAssetDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeConfigsRequestParams struct {
 	// 企业ID列表，可多选
 	CustomerIdList []*int64 `json:"CustomerIdList,omitnil,omitempty" name:"CustomerIdList"`
@@ -4514,6 +4710,74 @@ func (r *DescribeHttpsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeIntelligencesRequestParams struct {
+	// 查询数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeIntelligencesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeIntelligencesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntelligencesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntelligencesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntelligencesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIntelligencesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntelligencesResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntelligencesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntelligencesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeJobRecordDetailsRequestParams struct {
 	// <p>数据类型，包括：enterprise(企业架构)，domain(主域名)，sub_domain(子域名)，asset(主机资产)，port(端口服务)，http(网站资产)，vul(漏洞信息)，app(APP)，wechat_applet(微信小程序)，wechat_official_account(微信公众号)，github(Github泄露)，manage(后台识别)，config(目录爆破)，dark_web(暗网泄露)，net_disk(文库网盘泄露)，social_engineering(员工信息)，supply_chain(供应链信息)，weak_password(弱口令)，sensitive_info(敏感信息泄露)，suspicious_asset(影子资产)</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
@@ -5412,6 +5676,80 @@ func (r *DescribeNetDisksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNetDisksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePocAssetDataRequestParams struct {
+	// <p>漏洞情报ID</p>
+	VulId *string `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribePocAssetDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>漏洞情报ID</p>
+	VulId *string `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribePocAssetDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePocAssetDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePocAssetDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePocAssetDataResponseParams struct {
+	// <p>数组</p>
+	List []*IntelligenceResult `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>总数</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePocAssetDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePocAssetDataResponseParams `json:"Response"`
+}
+
+func (r *DescribePocAssetDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePocAssetDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7946,6 +8284,29 @@ func (r *IgnoreDataResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *IgnoreDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type IntelligenceResult struct {
+	// <p>客户ID</p>
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// <p>客户名称</p>
+	CustomerName *string `json:"CustomerName,omitnil,omitempty" name:"CustomerName"`
+
+	// <p>标题</p>
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// <p>指纹</p>
+	Banner *string `json:"Banner,omitnil,omitempty" name:"Banner"`
+
+	// <p>截图预览</p>
+	ScreenshotUrl *string `json:"ScreenshotUrl,omitnil,omitempty" name:"ScreenshotUrl"`
+
+	// <p>是否受影响</p>
+	IsAffected *bool `json:"IsAffected,omitnil,omitempty" name:"IsAffected"`
+
+	// <p>网址</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type JobRecordProgress struct {

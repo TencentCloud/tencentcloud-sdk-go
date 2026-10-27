@@ -8145,6 +8145,12 @@ type CreateKnowledgeBaseRequestParams struct {
 
 	// <p>知识库描述。长度限制：最多256个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>知识库的索引类型</p><p>枚举值：</p><ul><li>Semantic： 语义索引</li><li>DNA： DNA 索引</li></ul><p>默认值：Semantic</p>
+	IndexType *string `json:"IndexType,omitnil,omitempty" name:"IndexType"`
+
+	// <p>允许入库的媒体类型</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li></ul><p>默认值：Video</p>
+	MediaType *string `json:"MediaType,omitnil,omitempty" name:"MediaType"`
 }
 
 type CreateKnowledgeBaseRequest struct {
@@ -8158,6 +8164,12 @@ type CreateKnowledgeBaseRequest struct {
 
 	// <p>知识库描述。长度限制：最多256个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>知识库的索引类型</p><p>枚举值：</p><ul><li>Semantic： 语义索引</li><li>DNA： DNA 索引</li></ul><p>默认值：Semantic</p>
+	IndexType *string `json:"IndexType,omitnil,omitempty" name:"IndexType"`
+
+	// <p>允许入库的媒体类型</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li></ul><p>默认值：Video</p>
+	MediaType *string `json:"MediaType,omitnil,omitempty" name:"MediaType"`
 }
 
 func (r *CreateKnowledgeBaseRequest) ToJsonString() string {
@@ -8175,6 +8187,8 @@ func (r *CreateKnowledgeBaseRequest) FromJsonString(s string) error {
 	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Description")
+	delete(f, "IndexType")
+	delete(f, "MediaType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKnowledgeBaseRequest has unknown keys!", "")
 	}
@@ -8228,6 +8242,9 @@ type CreateLLMComprehendTemplateRequestParams struct {
 
 	// <p>人脸识别配置</p>
 	FaceRecognition *LLMComprehendFaceRecognition `json:"FaceRecognition,omitnil,omitempty" name:"FaceRecognition"`
+
+	// <p>DNA解析配置</p>
+	DNA *LLMComprehendDNA `json:"DNA,omitnil,omitempty" name:"DNA"`
 }
 
 type CreateLLMComprehendTemplateRequest struct {
@@ -8253,6 +8270,9 @@ type CreateLLMComprehendTemplateRequest struct {
 
 	// <p>人脸识别配置</p>
 	FaceRecognition *LLMComprehendFaceRecognition `json:"FaceRecognition,omitnil,omitempty" name:"FaceRecognition"`
+
+	// <p>DNA解析配置</p>
+	DNA *LLMComprehendDNA `json:"DNA,omitnil,omitempty" name:"DNA"`
 }
 
 func (r *CreateLLMComprehendTemplateRequest) ToJsonString() string {
@@ -8274,6 +8294,7 @@ func (r *CreateLLMComprehendTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Summary")
 	delete(f, "Asr")
 	delete(f, "FaceRecognition")
+	delete(f, "DNA")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLLMComprehendTemplateRequest has unknown keys!", "")
 	}
@@ -10452,6 +10473,53 @@ type CustomVoiceInfo struct {
 
 	// <p>音色信息。</p>
 	VoiceInfo *string `json:"VoiceInfo,omitnil,omitempty" name:"VoiceInfo"`
+}
+
+type DNATask struct {
+	// <p>任务 ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务状态。</p><p>枚举值：</p><ul><li>WAITING： 等待中</li><li>PROCESSING： 处理中</li><li>FINISH： 已完成</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>错误码，0 表示成功，其他值表示失败：</p><p>40000：输入参数不合法，请检查输入参数；<br>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；<br>70000：内部服务错误，建议重试。</p>
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// <p>错误信息。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>被检测的媒资 FileId。</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>查重命中列表。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output []*DNATaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
+}
+
+type DNATaskOutput struct {
+	// <p>命中的参考媒资 FileId。</p>
+	RefFileId *string `json:"RefFileId,omitnil,omitempty" name:"RefFileId"`
+
+	// <p>查询媒资命中片段起始时间。</p><p>单位：秒</p>
+	QueryStartSec *float64 `json:"QueryStartSec,omitnil,omitempty" name:"QueryStartSec"`
+
+	// <p>查询媒资命中片段结束时间。</p><p>单位：秒</p>
+	QueryEndSec *float64 `json:"QueryEndSec,omitnil,omitempty" name:"QueryEndSec"`
+
+	// <p>参考媒资对应片段起始时间。</p><p>单位：秒</p>
+	RefStartSec *float64 `json:"RefStartSec,omitnil,omitempty" name:"RefStartSec"`
+
+	// <p>参考媒资对应片段结束时间。</p><p>单位：秒</p>
+	RefEndSec *float64 `json:"RefEndSec,omitnil,omitempty" name:"RefEndSec"`
+
+	// <p>匹配置信度。</p><p>取值范围：[0, 1]</p>
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// <p>变速比（1.0 表示原速，非 1 表示加速或者减速）。</p>
+	SpeedRatio *float64 `json:"SpeedRatio,omitnil,omitempty" name:"SpeedRatio"`
 }
 
 type DNSVerifyInfo struct {
@@ -18029,6 +18097,12 @@ type DescribeTaskDetailResponseParams struct {
 	// <p>视频深度估算任务，仅当 TaskType 为VideoDepthEstimation，该字段有值。</p>
 	VideoDepthEstimationTask *VideoDepthEstimationTask `json:"VideoDepthEstimationTask,omitnil,omitempty" name:"VideoDepthEstimationTask"`
 
+	// <p>DNA查重任务，仅当TaskType为CreateDnaTask，该字段有值。</p>
+	DNATask *DNATask `json:"DNATask,omitnil,omitempty" name:"DNATask"`
+
+	// <p>异步按语义搜索媒体任务，仅当TaskType为SearchMediaBySemanticsAsync，该字段有值。</p>
+	SearchMediaBySemanticsAsync *SearchMediaBySemanticsAsync `json:"SearchMediaBySemanticsAsync,omitnil,omitempty" name:"SearchMediaBySemanticsAsync"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -21451,6 +21525,12 @@ type KnowledgeBaseInfo struct {
 	// <p>知识库描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
+	// <p>知识库的索引类型</p><p>枚举值：</p><ul><li>Semantic： 语义索引</li><li>DNA： DNA 索引</li></ul>
+	IndexType *string `json:"IndexType,omitnil,omitempty" name:"IndexType"`
+
+	// <p>允许入库的媒体类型</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li></ul>
+	MediaType *string `json:"MediaType,omitnil,omitempty" name:"MediaType"`
+
 	// <p>知识库状态。</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>active： 正常</li><li>deleting： 删除中</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
@@ -21480,6 +21560,11 @@ type LLMComprehendAsrForUpdate struct {
 	// 文本转录任务开关，可选值：
 	// - ON：开启文本转录任务；
 	// - OFF：关闭文本转录任务。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+type LLMComprehendDNA struct {
+	// <p>DNA解析任务开关</p><p>枚举值：</p><ul><li>ON： 开启DNA解析任务</li><li>OFF： 关闭DNA解析任务</li></ul><p>默认值：OFF</p>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 }
 
@@ -21561,6 +21646,9 @@ type LLMComprehendTemplateItem struct {
 
 	// <p>人脸识别解析配置</p>
 	FaceRecognition *LLMComprehendFaceRecognition `json:"FaceRecognition,omitnil,omitempty" name:"FaceRecognition"`
+
+	// <p>DNA解析配置</p>
+	DNA *LLMComprehendDNA `json:"DNA,omitnil,omitempty" name:"DNA"`
 
 	// <p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
@@ -25559,6 +25647,9 @@ type ModifyLLMComprehendTemplateRequestParams struct {
 
 	// <p>人脸识别配置</p>
 	FaceRecognition *LLMComprehendFaceRecognitionForUpdate `json:"FaceRecognition,omitnil,omitempty" name:"FaceRecognition"`
+
+	// <p>DNA解析配置</p>
+	DNA *LLMComprehendDNA `json:"DNA,omitnil,omitempty" name:"DNA"`
 }
 
 type ModifyLLMComprehendTemplateRequest struct {
@@ -25587,6 +25678,9 @@ type ModifyLLMComprehendTemplateRequest struct {
 
 	// <p>人脸识别配置</p>
 	FaceRecognition *LLMComprehendFaceRecognitionForUpdate `json:"FaceRecognition,omitnil,omitempty" name:"FaceRecognition"`
+
+	// <p>DNA解析配置</p>
+	DNA *LLMComprehendDNA `json:"DNA,omitnil,omitempty" name:"DNA"`
 }
 
 func (r *ModifyLLMComprehendTemplateRequest) ToJsonString() string {
@@ -25609,6 +25703,7 @@ func (r *ModifyLLMComprehendTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Summary")
 	delete(f, "Asr")
 	delete(f, "FaceRecognition")
+	delete(f, "DNA")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLLMComprehendTemplateRequest has unknown keys!", "")
 	}
@@ -32343,15 +32438,45 @@ type ScratchRepairInfo struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+type SearchMediaBySemanticsAsync struct {
+	// <p>任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// <p>扩展错误码。</p>
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// <p>错误信息。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>本次查询文本（图片查询时为空）。</p>
+	QueryText *string `json:"QueryText,omitnil,omitempty" name:"QueryText"`
+
+	// <p>召回列表。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchResults []*SemanticsSearchResult `json:"SearchResults,omitnil,omitempty" name:"SearchResults"`
+}
+
 // Predefined struct for user
 type SearchMediaBySemanticsRequestParams struct {
 	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// <p>需要进行搜索的内容</p>
+	// <p>需要进行搜索的文本内容。</p><p>入参限制：与 <code>FileId</code>、<code>Url</code> <strong>三选一且互斥</strong>。</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// <p>知识库ID，留空时将使用默认知识库</p>
+	// <p>需要进行搜索的图片FileId。</p><p>入参限制：必须是<strong>图片</strong>类型媒资，且与 <code>Text</code>、<code>Url</code> <strong>三选一且互斥</strong>。</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>需要进行搜索的图片Url。 </p><p>入参限制：必须是<strong>图片</strong>Url，且与 <code>Text</code>、<code>FileId</code> <strong>三选一且互斥</strong>。</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>知识库ID，留空时将使用默认知识库。<br>当输入为图片时，必须选择MediaType=Image的知识库。</p>
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
 	// <p>返回的记录条数，默认值：20。</p><p>取值范围：[1, 100]</p>
@@ -32376,10 +32501,16 @@ type SearchMediaBySemanticsRequest struct {
 	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// <p>需要进行搜索的内容</p>
+	// <p>需要进行搜索的文本内容。</p><p>入参限制：与 <code>FileId</code>、<code>Url</code> <strong>三选一且互斥</strong>。</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// <p>知识库ID，留空时将使用默认知识库</p>
+	// <p>需要进行搜索的图片FileId。</p><p>入参限制：必须是<strong>图片</strong>类型媒资，且与 <code>Text</code>、<code>Url</code> <strong>三选一且互斥</strong>。</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>需要进行搜索的图片Url。 </p><p>入参限制：必须是<strong>图片</strong>Url，且与 <code>Text</code>、<code>FileId</code> <strong>三选一且互斥</strong>。</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>知识库ID，留空时将使用默认知识库。<br>当输入为图片时，必须选择MediaType=Image的知识库。</p>
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
 	// <p>返回的记录条数，默认值：20。</p><p>取值范围：[1, 100]</p>
@@ -32412,6 +32543,8 @@ func (r *SearchMediaBySemanticsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SubAppId")
 	delete(f, "Text")
+	delete(f, "FileId")
+	delete(f, "Url")
 	delete(f, "KnowledgeBaseId")
 	delete(f, "Limit")
 	delete(f, "Categories")

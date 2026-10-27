@@ -684,6 +684,11 @@ type BuildContext struct {
 	OutPut *string `json:"OutPut,omitnil,omitempty" name:"OutPut"`
 }
 
+type BuildRunner struct {
+	// <p>构建服务所需 CPU 规格</p>
+	Cpus *int64 `json:"Cpus,omitnil,omitempty" name:"Cpus"`
+}
+
 type BuildSecret struct {
 	// <p>标准化为 DNS Label 风格；构建时注入为 $SECRET_&lt;NAME&gt;（同时也提供原大写形式 $SECRET_&lt;NAME_UPPERCASE&gt;）</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -1495,7 +1500,7 @@ type CreateCloudAppRequestParams struct {
 	// <p>服务名</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// <p>部署类型</p>
+	// <p>部署类型</p><p>枚举值：</p><ul><li>statis-hosting： 静态托管应用</li><li>custom： 自定义流水线</li></ul>
 	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
 
 	// <p>构建类型</p>
@@ -1545,6 +1550,9 @@ type CreateCloudAppRequestParams struct {
 
 	// <p>后置执行命令</p>
 	PostDeployCommand *string `json:"PostDeployCommand,omitnil,omitempty" name:"PostDeployCommand"`
+
+	// <p>流水线运行配置</p>
+	Runner *BuildRunner `json:"Runner,omitnil,omitempty" name:"Runner"`
 }
 
 type CreateCloudAppRequest struct {
@@ -1556,7 +1564,7 @@ type CreateCloudAppRequest struct {
 	// <p>服务名</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// <p>部署类型</p>
+	// <p>部署类型</p><p>枚举值：</p><ul><li>statis-hosting： 静态托管应用</li><li>custom： 自定义流水线</li></ul>
 	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
 
 	// <p>构建类型</p>
@@ -1606,6 +1614,9 @@ type CreateCloudAppRequest struct {
 
 	// <p>后置执行命令</p>
 	PostDeployCommand *string `json:"PostDeployCommand,omitnil,omitempty" name:"PostDeployCommand"`
+
+	// <p>流水线运行配置</p>
+	Runner *BuildRunner `json:"Runner,omitnil,omitempty" name:"Runner"`
 }
 
 func (r *CreateCloudAppRequest) ToJsonString() string {
@@ -1639,6 +1650,7 @@ func (r *CreateCloudAppRequest) FromJsonString(s string) error {
 	delete(f, "ClientToken")
 	delete(f, "PreDeployCommand")
 	delete(f, "PostDeployCommand")
+	delete(f, "Runner")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudAppRequest has unknown keys!", "")
 	}

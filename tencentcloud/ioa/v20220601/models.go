@@ -362,57 +362,117 @@ type CreateBusinessResourceData struct {
 
 // Predefined struct for user
 type CreateBusinessResourceRequestParams struct {
-	// 业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+	// <p>业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)</p>
 	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
 
-	// 业务资源协议类型, 1:UDP, 2:TCP, 3:所有协议(只支持32位)
+	// <p>业务资源协议类型, 1:UDP, 2:TCP, 3:所有协议(只支持32位)</p>
 	Protocol *int64 `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 业务资源名称，同一个资源模块下面不可重复
+	// <p>业务资源名称，同一个资源模块下面不可重复</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+	// <p>业务资源类型:ip,domain,ip_section，对应ip、域名、ip段</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 业务资源端口 all,1-65535
+	// <p>业务资源端口 all,1-65535</p>
 	ServicePort *string `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 
-	// 业务资源优先级 1-65535(只支持32位)
+	// <p>业务资源优先级 1-65535(只支持32位)</p>
 	Levels *int64 `json:"Levels,omitnil,omitempty" name:"Levels"`
 
-	// 业务资源地址(ip、域名、ip段)
+	// <p>业务资源地址(ip、域名、ip段)</p>
 	ServiceAddress *string `json:"ServiceAddress,omitnil,omitempty" name:"ServiceAddress"`
 
-	// 是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+	// <p>是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)</p>
 	DirectConn *int64 `json:"DirectConn,omitnil,omitempty" name:"DirectConn"`
+
+	// <p>连通性检查开关，0-关闭 1-开启，默认1(只支持32位)</p>
+	ConnectivityCheckSwitch *int64 `json:"ConnectivityCheckSwitch,omitnil,omitempty" name:"ConnectivityCheckSwitch"`
+
+	// <p>连通性检查测试间隔数值，最小为1，默认1(只支持32位)</p>
+	ConnectivityCheckInterval *int64 `json:"ConnectivityCheckInterval,omitnil,omitempty" name:"ConnectivityCheckInterval"`
+
+	// <p>连通性检查测试间隔单位 minutes/hours/days，默认hours</p>
+	ConnectivityCheckIntervalUnit *string `json:"ConnectivityCheckIntervalUnit,omitnil,omitempty" name:"ConnectivityCheckIntervalUnit"`
+
+	// <p>资源网络类型：1-内网资源 2-外网资源，默认1</p>
+	ServiceNetwork *int64 `json:"ServiceNetwork,omitnil,omitempty" name:"ServiceNetwork"`
+
+	// <p>是否启用L3网络：1-不启用 2-启用，默认1</p>
+	WireGuardTunnel *int64 `json:"WireGuardTunnel,omitnil,omitempty" name:"WireGuardTunnel"`
+
+	// <p>资源描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>URL审计开关：0-关闭 1-开启，默认0</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+	URLAuditState *int64 `json:"URLAuditState,omitnil,omitempty" name:"URLAuditState"`
+
+	// <p>URL审计证书ID列表，多个用分号分隔</p>
+	URLAuditId *string `json:"URLAuditId,omitnil,omitempty" name:"URLAuditId"`
+
+	// <p>URL审计路径，多个用分号分隔</p>
+	URLPath *string `json:"URLPath,omitnil,omitempty" name:"URLPath"`
+
+	// <p>证书Id</p>
+	SSLCertId *string `json:"SSLCertId,omitnil,omitempty" name:"SSLCertId"`
 }
 
 type CreateBusinessResourceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+	// <p>业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)</p>
 	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
 
-	// 业务资源协议类型, 1:UDP, 2:TCP, 3:所有协议(只支持32位)
+	// <p>业务资源协议类型, 1:UDP, 2:TCP, 3:所有协议(只支持32位)</p>
 	Protocol *int64 `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 业务资源名称，同一个资源模块下面不可重复
+	// <p>业务资源名称，同一个资源模块下面不可重复</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+	// <p>业务资源类型:ip,domain,ip_section，对应ip、域名、ip段</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 业务资源端口 all,1-65535
+	// <p>业务资源端口 all,1-65535</p>
 	ServicePort *string `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 
-	// 业务资源优先级 1-65535(只支持32位)
+	// <p>业务资源优先级 1-65535(只支持32位)</p>
 	Levels *int64 `json:"Levels,omitnil,omitempty" name:"Levels"`
 
-	// 业务资源地址(ip、域名、ip段)
+	// <p>业务资源地址(ip、域名、ip段)</p>
 	ServiceAddress *string `json:"ServiceAddress,omitnil,omitempty" name:"ServiceAddress"`
 
-	// 是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+	// <p>是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)</p>
 	DirectConn *int64 `json:"DirectConn,omitnil,omitempty" name:"DirectConn"`
+
+	// <p>连通性检查开关，0-关闭 1-开启，默认1(只支持32位)</p>
+	ConnectivityCheckSwitch *int64 `json:"ConnectivityCheckSwitch,omitnil,omitempty" name:"ConnectivityCheckSwitch"`
+
+	// <p>连通性检查测试间隔数值，最小为1，默认1(只支持32位)</p>
+	ConnectivityCheckInterval *int64 `json:"ConnectivityCheckInterval,omitnil,omitempty" name:"ConnectivityCheckInterval"`
+
+	// <p>连通性检查测试间隔单位 minutes/hours/days，默认hours</p>
+	ConnectivityCheckIntervalUnit *string `json:"ConnectivityCheckIntervalUnit,omitnil,omitempty" name:"ConnectivityCheckIntervalUnit"`
+
+	// <p>资源网络类型：1-内网资源 2-外网资源，默认1</p>
+	ServiceNetwork *int64 `json:"ServiceNetwork,omitnil,omitempty" name:"ServiceNetwork"`
+
+	// <p>是否启用L3网络：1-不启用 2-启用，默认1</p>
+	WireGuardTunnel *int64 `json:"WireGuardTunnel,omitnil,omitempty" name:"WireGuardTunnel"`
+
+	// <p>资源描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>URL审计开关：0-关闭 1-开启，默认0</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+	URLAuditState *int64 `json:"URLAuditState,omitnil,omitempty" name:"URLAuditState"`
+
+	// <p>URL审计证书ID列表，多个用分号分隔</p>
+	URLAuditId *string `json:"URLAuditId,omitnil,omitempty" name:"URLAuditId"`
+
+	// <p>URL审计路径，多个用分号分隔</p>
+	URLPath *string `json:"URLPath,omitnil,omitempty" name:"URLPath"`
+
+	// <p>证书Id</p>
+	SSLCertId *string `json:"SSLCertId,omitnil,omitempty" name:"SSLCertId"`
 }
 
 func (r *CreateBusinessResourceRequest) ToJsonString() string {
@@ -435,6 +495,16 @@ func (r *CreateBusinessResourceRequest) FromJsonString(s string) error {
 	delete(f, "Levels")
 	delete(f, "ServiceAddress")
 	delete(f, "DirectConn")
+	delete(f, "ConnectivityCheckSwitch")
+	delete(f, "ConnectivityCheckInterval")
+	delete(f, "ConnectivityCheckIntervalUnit")
+	delete(f, "ServiceNetwork")
+	delete(f, "WireGuardTunnel")
+	delete(f, "Description")
+	delete(f, "URLAuditState")
+	delete(f, "URLAuditId")
+	delete(f, "URLPath")
+	delete(f, "SSLCertId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBusinessResourceRequest has unknown keys!", "")
 	}
@@ -443,7 +513,7 @@ func (r *CreateBusinessResourceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBusinessResourceResponseParams struct {
-	// 创建业务资源响应的数据
+	// <p>创建业务资源响应的数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CreateBusinessResourceData `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -2348,75 +2418,67 @@ type DescribeBusinessResourceData struct {
 }
 
 type DescribeBusinessResourcePageRsp struct {
-	// 业务资源列表数据对象集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DescribeBusinessResourceData `json:"Items,omitnil,omitempty" name:"Items"`
-
 	// 分页公共对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 业务资源列表数据对象集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DescribeBusinessResourceData `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 // Predefined struct for user
 type DescribeBusinessResourcesRequestParams struct {
-	// 资源模块Id
-	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
-
-	// 搜索的业务资源名称
-	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
-
-	// 获取业务资源列表的开始时间，时间格式：2006-01-02
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 搜索关键字
-	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
-
-	// 获取业务资源列表的结束时间，时间格式：2006-01-02
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 滤条件、分页参数。分页内容不传，默认获取第1页，10条数据
-	// 排序条件
-	// <li>CreateTime - string - 是否必填：否 - 排序支持：是 - 按业务资源创建时间排序。</li>
-	// <li>Levels - int - 是否必填：否 - 排序支持：是 - 按业务资源优先级排序。</li>
-	// <li>ReachableState - int - 是否必填：否 - 排序支持：是 - 按业务资源连通性排序(私有化版本不支持)。</li>
+	// <p>滤条件、分页参数。分页内容不传，默认获取第1页，10条数据<br>排序条件</p><li>CreateTime - string - 是否必填：否 - 排序支持：是 - 按业务资源创建时间排序。</li><li>Levels - int - 是否必填：否 - 排序支持：是 - 按业务资源优先级排序。</li><li>ReachableState - int - 是否必填：否 - 排序支持：是 - 按业务资源连通性排序(私有化版本不支持)。</li>
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 资源类型
+	// <p>资源模块Id</p>
+	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
+
+	// <p>服务名称</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>搜索关键字</p>
+	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// <p>获取业务资源列表的开始时间，时间格式：2006-01-02</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>获取业务资源列表的结束时间，时间格式：2006-01-02</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>资源类型</p>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// web资源前端地址
+	// <p>web资源前端地址</p>
 	FrontAddr *string `json:"FrontAddr,omitnil,omitempty" name:"FrontAddr"`
 }
 
 type DescribeBusinessResourcesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源模块Id
-	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
-
-	// 搜索的业务资源名称
-	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
-
-	// 获取业务资源列表的开始时间，时间格式：2006-01-02
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 搜索关键字
-	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
-
-	// 获取业务资源列表的结束时间，时间格式：2006-01-02
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 滤条件、分页参数。分页内容不传，默认获取第1页，10条数据
-	// 排序条件
-	// <li>CreateTime - string - 是否必填：否 - 排序支持：是 - 按业务资源创建时间排序。</li>
-	// <li>Levels - int - 是否必填：否 - 排序支持：是 - 按业务资源优先级排序。</li>
-	// <li>ReachableState - int - 是否必填：否 - 排序支持：是 - 按业务资源连通性排序(私有化版本不支持)。</li>
+	// <p>滤条件、分页参数。分页内容不传，默认获取第1页，10条数据<br>排序条件</p><li>CreateTime - string - 是否必填：否 - 排序支持：是 - 按业务资源创建时间排序。</li><li>Levels - int - 是否必填：否 - 排序支持：是 - 按业务资源优先级排序。</li><li>ReachableState - int - 是否必填：否 - 排序支持：是 - 按业务资源连通性排序(私有化版本不支持)。</li>
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 资源类型
+	// <p>资源模块Id</p>
+	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
+
+	// <p>服务名称</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>搜索关键字</p>
+	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// <p>获取业务资源列表的开始时间，时间格式：2006-01-02</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>获取业务资源列表的结束时间，时间格式：2006-01-02</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>资源类型</p>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// web资源前端地址
+	// <p>web资源前端地址</p>
 	FrontAddr *string `json:"FrontAddr,omitnil,omitempty" name:"FrontAddr"`
 }
 
@@ -2432,12 +2494,12 @@ func (r *DescribeBusinessResourcesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Condition")
 	delete(f, "AreaId")
 	delete(f, "ServiceName")
-	delete(f, "StartTime")
 	delete(f, "Keywords")
+	delete(f, "StartTime")
 	delete(f, "EndTime")
-	delete(f, "Condition")
 	delete(f, "AccessType")
 	delete(f, "FrontAddr")
 	if len(f) > 0 {
@@ -2448,7 +2510,7 @@ func (r *DescribeBusinessResourcesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBusinessResourcesResponseParams struct {
-	// 业务资源分页返回对象
+	// <p>业务资源分页返回对象</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DescribeBusinessResourcePageRsp `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -5918,63 +5980,117 @@ type I18nString struct {
 
 // Predefined struct for user
 type ModifyBusinessResourceRequestParams struct {
-	// 业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+	// <p>业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)</p>
 	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
 
-	// 业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)
+	// <p>业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)</p>
 	Protocol *int64 `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 业务资源名称，同一个资源模块下面不可重复
+	// <p>业务资源名称，同一个资源模块下面不可重复</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 业务资源优先级 1-65535(只支持32位)
+	// <p>业务资源优先级 1-65535(只支持32位)</p>
 	Levels *int64 `json:"Levels,omitnil,omitempty" name:"Levels"`
 
-	// 业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+	// <p>业务资源类型:ip,domain,ip_section，对应ip、域名、ip段</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 业务资源端口 all,1-65535
+	// <p>业务资源端口 all,1-65535</p>
 	ServicePort *string `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 
-	// 修改业务资源的id(只支持32位)
+	// <p>修改业务资源的id(只支持32位)</p>
 	ServiceId *int64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 业务资源地址(ip、域名、ip段)
+	// <p>业务资源地址(ip、域名、ip段)</p>
 	ServiceAddress *string `json:"ServiceAddress,omitnil,omitempty" name:"ServiceAddress"`
 
-	// 是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+	// <p>是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)</p>
 	DirectConn *int64 `json:"DirectConn,omitnil,omitempty" name:"DirectConn"`
+
+	// <p>连通性检查开关，0-关闭 1-开启，默认1(只支持32位)</p>
+	ConnectivityCheckSwitch *int64 `json:"ConnectivityCheckSwitch,omitnil,omitempty" name:"ConnectivityCheckSwitch"`
+
+	// <p>连通性检查测试间隔数值，最小为1，默认1(只支持32位)</p>
+	ConnectivityCheckInterval *int64 `json:"ConnectivityCheckInterval,omitnil,omitempty" name:"ConnectivityCheckInterval"`
+
+	// <p>连通性检查测试间隔单位 minutes/hours/days，默认hours</p>
+	ConnectivityCheckIntervalUnit *string `json:"ConnectivityCheckIntervalUnit,omitnil,omitempty" name:"ConnectivityCheckIntervalUnit"`
+
+	// <p>资源网络类型：1-内网资源 2-外网资源，默认1</p>
+	ServiceNetwork *int64 `json:"ServiceNetwork,omitnil,omitempty" name:"ServiceNetwork"`
+
+	// <p>是否启用L3网络：1-不启用 2-启用，默认1</p>
+	WireGuardTunnel *int64 `json:"WireGuardTunnel,omitnil,omitempty" name:"WireGuardTunnel"`
+
+	// <p>资源描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>URL审计开关：0-关闭 1-开启，默认0</p>
+	URLAuditState *int64 `json:"URLAuditState,omitnil,omitempty" name:"URLAuditState"`
+
+	// <p>URL审计证书ID列表，多个用分号分隔</p>
+	URLAuditId *string `json:"URLAuditId,omitnil,omitempty" name:"URLAuditId"`
+
+	// <p>URL审计路径，多个用分号分隔</p>
+	URLPath *string `json:"URLPath,omitnil,omitempty" name:"URLPath"`
 }
 
 type ModifyBusinessResourceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+	// <p>业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)</p>
 	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
 
-	// 业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)
+	// <p>业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)</p>
 	Protocol *int64 `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 业务资源名称，同一个资源模块下面不可重复
+	// <p>业务资源名称，同一个资源模块下面不可重复</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 业务资源优先级 1-65535(只支持32位)
+	// <p>业务资源优先级 1-65535(只支持32位)</p>
 	Levels *int64 `json:"Levels,omitnil,omitempty" name:"Levels"`
 
-	// 业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+	// <p>业务资源类型:ip,domain,ip_section，对应ip、域名、ip段</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 业务资源端口 all,1-65535
+	// <p>业务资源端口 all,1-65535</p>
 	ServicePort *string `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 
-	// 修改业务资源的id(只支持32位)
+	// <p>修改业务资源的id(只支持32位)</p>
 	ServiceId *int64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 业务资源地址(ip、域名、ip段)
+	// <p>业务资源地址(ip、域名、ip段)</p>
 	ServiceAddress *string `json:"ServiceAddress,omitnil,omitempty" name:"ServiceAddress"`
 
-	// 是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+	// <p>是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)</p>
 	DirectConn *int64 `json:"DirectConn,omitnil,omitempty" name:"DirectConn"`
+
+	// <p>连通性检查开关，0-关闭 1-开启，默认1(只支持32位)</p>
+	ConnectivityCheckSwitch *int64 `json:"ConnectivityCheckSwitch,omitnil,omitempty" name:"ConnectivityCheckSwitch"`
+
+	// <p>连通性检查测试间隔数值，最小为1，默认1(只支持32位)</p>
+	ConnectivityCheckInterval *int64 `json:"ConnectivityCheckInterval,omitnil,omitempty" name:"ConnectivityCheckInterval"`
+
+	// <p>连通性检查测试间隔单位 minutes/hours/days，默认hours</p>
+	ConnectivityCheckIntervalUnit *string `json:"ConnectivityCheckIntervalUnit,omitnil,omitempty" name:"ConnectivityCheckIntervalUnit"`
+
+	// <p>资源网络类型：1-内网资源 2-外网资源，默认1</p>
+	ServiceNetwork *int64 `json:"ServiceNetwork,omitnil,omitempty" name:"ServiceNetwork"`
+
+	// <p>是否启用L3网络：1-不启用 2-启用，默认1</p>
+	WireGuardTunnel *int64 `json:"WireGuardTunnel,omitnil,omitempty" name:"WireGuardTunnel"`
+
+	// <p>资源描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>URL审计开关：0-关闭 1-开启，默认0</p>
+	URLAuditState *int64 `json:"URLAuditState,omitnil,omitempty" name:"URLAuditState"`
+
+	// <p>URL审计证书ID列表，多个用分号分隔</p>
+	URLAuditId *string `json:"URLAuditId,omitnil,omitempty" name:"URLAuditId"`
+
+	// <p>URL审计路径，多个用分号分隔</p>
+	URLPath *string `json:"URLPath,omitnil,omitempty" name:"URLPath"`
 }
 
 func (r *ModifyBusinessResourceRequest) ToJsonString() string {
@@ -5998,6 +6114,15 @@ func (r *ModifyBusinessResourceRequest) FromJsonString(s string) error {
 	delete(f, "ServiceId")
 	delete(f, "ServiceAddress")
 	delete(f, "DirectConn")
+	delete(f, "ConnectivityCheckSwitch")
+	delete(f, "ConnectivityCheckInterval")
+	delete(f, "ConnectivityCheckIntervalUnit")
+	delete(f, "ServiceNetwork")
+	delete(f, "WireGuardTunnel")
+	delete(f, "Description")
+	delete(f, "URLAuditState")
+	delete(f, "URLAuditId")
+	delete(f, "URLPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBusinessResourceRequest has unknown keys!", "")
 	}

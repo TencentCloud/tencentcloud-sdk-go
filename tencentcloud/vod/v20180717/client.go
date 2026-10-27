@@ -15569,6 +15569,8 @@ func NewSearchMediaBySemanticsResponse() (response *SearchMediaBySemanticsRespon
 // SearchMediaBySemantics
 // 使用自然语言对媒体进行语义搜索。
 //
+// 仅支持文搜视频、文搜图、图搜图，图搜视频请使用SearchMediaBySemanticsAsync.
+//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
@@ -15578,6 +15580,8 @@ func (c *Client) SearchMediaBySemantics(request *SearchMediaBySemanticsRequest) 
 
 // SearchMediaBySemantics
 // 使用自然语言对媒体进行语义搜索。
+//
+// 仅支持文搜视频、文搜图、图搜图，图搜视频请使用SearchMediaBySemanticsAsync.
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

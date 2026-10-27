@@ -2025,6 +2025,7 @@ func NewDeleteFunctionResponse() (response *DeleteFunctionResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEFUNCTION = "FailedOperation.DeleteFunction"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2044,6 +2045,7 @@ func (c *Client) DeleteFunction(request *DeleteFunctionRequest) (response *Delet
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEFUNCTION = "FailedOperation.DeleteFunction"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

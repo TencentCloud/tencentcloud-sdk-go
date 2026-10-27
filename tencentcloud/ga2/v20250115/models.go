@@ -90,7 +90,7 @@ type CreateAccelerateAreasRequestParams struct {
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
 	// <p>加速地域信息。一次最多创建10组加速地域。</p>
-	AcceleratorAreas []*AcceleratorAreas `json:"AcceleratorAreas,omitnil,omitempty" name:"AcceleratorAreas"`
+	AcceleratorAreas []*CreateAcceleratorAreasInfo `json:"AcceleratorAreas,omitnil,omitempty" name:"AcceleratorAreas"`
 }
 
 type CreateAccelerateAreasRequest struct {
@@ -100,7 +100,7 @@ type CreateAccelerateAreasRequest struct {
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
 	// <p>加速地域信息。一次最多创建10组加速地域。</p>
-	AcceleratorAreas []*AcceleratorAreas `json:"AcceleratorAreas,omitnil,omitempty" name:"AcceleratorAreas"`
+	AcceleratorAreas []*CreateAcceleratorAreasInfo `json:"AcceleratorAreas,omitnil,omitempty" name:"AcceleratorAreas"`
 }
 
 func (r *CreateAccelerateAreasRequest) ToJsonString() string {
@@ -146,6 +146,20 @@ func (r *CreateAccelerateAreasResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateAccelerateAreasResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAcceleratorAreasInfo struct {
+	// <p>加速地域</p>
+	AccelerateRegion *string `json:"AccelerateRegion,omitnil,omitempty" name:"AccelerateRegion"`
+
+	// <p>带宽</p><p>单位：Mbps</p>
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// <p>公网质量类型</p><p>枚举值：</p><ul><li>BGP： BGP</li><li>QUALITY_BGP： 精品BGP</li><li>STATIC_IP： 三网</li></ul><p>默认值：BGP</p>
+	IspType *string `json:"IspType,omitnil,omitempty" name:"IspType"`
+
+	// <p>IP 地址协议</p><p>枚举值：</p><ul><li>IPv4： IPv4</li></ul><p>默认值：IPv4</p>
+	IpVersion *string `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
 // Predefined struct for user
@@ -2048,7 +2062,7 @@ type DescribeForwardingPolicyRequestParams struct {
 	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>返回数量，默认为20，最大值为100。</p>
+	// <p>返回数量，默认为20，最大值为200。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <p>过滤条件。<li>forwarding-policy-id - String -（过滤条件）策略ID。</li></p>
@@ -2067,7 +2081,7 @@ type DescribeForwardingPolicyRequest struct {
 	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>返回数量，默认为20，最大值为100。</p>
+	// <p>返回数量，默认为20，最大值为200。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <p>过滤条件。<li>forwarding-policy-id - String -（过滤条件）策略ID。</li></p>
@@ -2139,7 +2153,7 @@ type DescribeForwardingRuleRequestParams struct {
 	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>返回数量，默认为20，最大值为100。</p>
+	// <p>返回数量，默认为20，最大值为200。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <p>过滤条件。<li>forwarding-rule-id - String -（过滤条件）规则ID。</li></p>
@@ -2161,7 +2175,7 @@ type DescribeForwardingRuleRequest struct {
 	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>返回数量，默认为20，最大值为100。</p>
+	// <p>返回数量，默认为20，最大值为200。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <p>过滤条件。<li>forwarding-rule-id - String -（过滤条件）规则ID。</li></p>
@@ -2231,7 +2245,7 @@ type DescribeGlobalAcceleratorAccessLogRequestParams struct {
 	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>返回数量。</p><p>取值范围：[0, 200]</p>
+	// <p>返回数量。</p><p>取值范围：[1, 200]</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -2247,7 +2261,7 @@ type DescribeGlobalAcceleratorAccessLogRequest struct {
 	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>返回数量。</p><p>取值范围：[0, 200]</p>
+	// <p>返回数量。</p><p>取值范围：[1, 200]</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -3103,13 +3117,27 @@ type ListenerSet struct {
 	IdleTimeout *uint64 `json:"IdleTimeout,omitnil,omitempty" name:"IdleTimeout"`
 }
 
+type ModifyAccelerateAreasInfo struct {
+	// <p>加速地域</p>
+	AccelerateRegion *string `json:"AccelerateRegion,omitnil,omitempty" name:"AccelerateRegion"`
+
+	// <p>带宽</p><p>单位：Mbps</p>
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// <p>公网质量类型</p><p>枚举值：</p><ul><li>BGP： BGP</li><li>QUALITY_BGP： 精品BGP</li><li>STATIC_IP： 三网</li></ul>
+	IspType *string `json:"IspType,omitnil,omitempty" name:"IspType"`
+
+	// <p>IP 地址协议</p><p>枚举值：</p><ul><li>IPv4： IPv4</li></ul>
+	IpVersion *string `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
+}
+
 // Predefined struct for user
 type ModifyAccelerateAreasRequestParams struct {
 	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
 	// <p>加速地域信息。</p><p>入参限制：数组长度不能超过10。</p>
-	AcceleratorAreas []*AcceleratorAreas `json:"AcceleratorAreas,omitnil,omitempty" name:"AcceleratorAreas"`
+	AcceleratorAreas []*ModifyAccelerateAreasInfo `json:"AcceleratorAreas,omitnil,omitempty" name:"AcceleratorAreas"`
 }
 
 type ModifyAccelerateAreasRequest struct {
@@ -3119,7 +3147,7 @@ type ModifyAccelerateAreasRequest struct {
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
 	// <p>加速地域信息。</p><p>入参限制：数组长度不能超过10。</p>
-	AcceleratorAreas []*AcceleratorAreas `json:"AcceleratorAreas,omitnil,omitempty" name:"AcceleratorAreas"`
+	AcceleratorAreas []*ModifyAccelerateAreasInfo `json:"AcceleratorAreas,omitnil,omitempty" name:"AcceleratorAreas"`
 }
 
 func (r *ModifyAccelerateAreasRequest) ToJsonString() string {

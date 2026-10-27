@@ -1,0 +1,2 @@
+// Package doc
+package doc

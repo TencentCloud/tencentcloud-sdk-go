@@ -1556,6 +1556,9 @@ type Storage struct {
 
 	// <p>是否压缩。<br>1:压缩  2:不压缩</p>
 	Compress *uint64 `json:"Compress,omitnil,omitempty" name:"Compress"`
+
+	// <p>CKAFKA路由信息</p>
+	CkafkaRoute *string `json:"CkafkaRoute,omitnil,omitempty" name:"CkafkaRoute"`
 }
 
 type Tracks struct {

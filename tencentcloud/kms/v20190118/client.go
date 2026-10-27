@@ -579,6 +579,78 @@ func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyReq
     return
 }
 
+func NewCreateKmsInstanceRequest() (request *CreateKmsInstanceRequest) {
+    request = &CreateKmsInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "CreateKmsInstance")
+    
+    
+    return
+}
+
+func NewCreateKmsInstanceResponse() (response *CreateKmsInstanceResponse) {
+    response = &CreateKmsInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateKmsInstance
+// 购买开通KMS服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ORDERCHECKFAILED = "FailedOperation.OrderCheckFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETER_MISSINGPRODUCTVERSION = "InvalidParameter.MissingProductVersion"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCECHARGETYPE = "InvalidParameterValue.InvalidInstanceChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDPERIOD = "InvalidParameterValue.InvalidPeriod"
+//  INVALIDPARAMETERVALUE_INVALIDPRODUCTVERSION = "InvalidParameterValue.InvalidProductVersion"
+//  LIMITEXCEEDED_INSTANCEQUOTAEXCEEDED = "LimitExceeded.InstanceQuotaExceeded"
+//  RESOURCEINUSE_ORDERINPROGRESS = "ResourceInUse.OrderInProgress"
+//  RESOURCEINUSE_POSTPAIDINSTANCEALREADYEXISTS = "ResourceInUse.PostpaidInstanceAlreadyExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateKmsInstance(request *CreateKmsInstanceRequest) (response *CreateKmsInstanceResponse, err error) {
+    return c.CreateKmsInstanceWithContext(context.Background(), request)
+}
+
+// CreateKmsInstance
+// 购买开通KMS服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ORDERCHECKFAILED = "FailedOperation.OrderCheckFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETER_MISSINGPRODUCTVERSION = "InvalidParameter.MissingProductVersion"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCECHARGETYPE = "InvalidParameterValue.InvalidInstanceChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDPERIOD = "InvalidParameterValue.InvalidPeriod"
+//  INVALIDPARAMETERVALUE_INVALIDPRODUCTVERSION = "InvalidParameterValue.InvalidProductVersion"
+//  LIMITEXCEEDED_INSTANCEQUOTAEXCEEDED = "LimitExceeded.InstanceQuotaExceeded"
+//  RESOURCEINUSE_ORDERINPROGRESS = "ResourceInUse.OrderInProgress"
+//  RESOURCEINUSE_POSTPAIDINSTANCEALREADYEXISTS = "ResourceInUse.PostpaidInstanceAlreadyExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateKmsInstanceWithContext(ctx context.Context, request *CreateKmsInstanceRequest) (response *CreateKmsInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateKmsInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "kms", APIVersion, "CreateKmsInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateKmsInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateKmsInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWhiteBoxKeyRequest() (request *CreateWhiteBoxKeyRequest) {
     request = &CreateWhiteBoxKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},

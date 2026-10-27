@@ -221,6 +221,94 @@ func (c *Client) CreateAssetWithContext(ctx context.Context, request *CreateAsse
     return
 }
 
+func NewCreateCheckRequest() (request *CreateCheckRequest) {
+    request = &CreateCheckRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ctem", APIVersion, "CreateCheck")
+    
+    
+    return
+}
+
+func NewCreateCheckResponse() (response *CreateCheckResponse) {
+    response = &CreateCheckResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCheck
+// 检查修复状况
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCheck(request *CreateCheckRequest) (response *CreateCheckResponse, err error) {
+    return c.CreateCheckWithContext(context.Background(), request)
+}
+
+// CreateCheck
+// 检查修复状况
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCheckWithContext(ctx context.Context, request *CreateCheckRequest) (response *CreateCheckResponse, err error) {
+    if request == nil {
+        request = NewCreateCheckRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "CreateCheck")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCheck require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCheckResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCustomerRequest() (request *CreateCustomerRequest) {
     request = &CreateCustomerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -833,6 +921,94 @@ func (c *Client) CreatePortWithContext(ctx context.Context, request *CreatePortR
     request.SetContext(ctx)
     
     response = NewCreatePortResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateScanRequest() (request *CreateScanRequest) {
+    request = &CreateScanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ctem", APIVersion, "CreateScan")
+    
+    
+    return
+}
+
+func NewCreateScanResponse() (response *CreateScanResponse) {
+    response = &CreateScanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateScan
+// 扫描巡检
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateScan(request *CreateScanRequest) (response *CreateScanResponse, err error) {
+    return c.CreateScanWithContext(context.Background(), request)
+}
+
+// CreateScan
+// 扫描巡检
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateScanWithContext(ctx context.Context, request *CreateScanRequest) (response *CreateScanResponse, err error) {
+    if request == nil {
+        request = NewCreateScanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "CreateScan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateScan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateScanResponse()
     err = c.Send(request, response)
     return
 }
@@ -2597,6 +2773,94 @@ func (c *Client) DescribeAssetsWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribeBannerAssetDataRequest() (request *DescribeBannerAssetDataRequest) {
+    request = &DescribeBannerAssetDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ctem", APIVersion, "DescribeBannerAssetData")
+    
+    
+    return
+}
+
+func NewDescribeBannerAssetDataResponse() (response *DescribeBannerAssetDataResponse) {
+    response = &DescribeBannerAssetDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBannerAssetData
+// 相关资产
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBannerAssetData(request *DescribeBannerAssetDataRequest) (response *DescribeBannerAssetDataResponse, err error) {
+    return c.DescribeBannerAssetDataWithContext(context.Background(), request)
+}
+
+// DescribeBannerAssetData
+// 相关资产
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBannerAssetDataWithContext(ctx context.Context, request *DescribeBannerAssetDataRequest) (response *DescribeBannerAssetDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeBannerAssetDataRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeBannerAssetData")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBannerAssetData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBannerAssetDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConfigsRequest() (request *DescribeConfigsRequest) {
     request = &DescribeConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3565,6 +3829,94 @@ func (c *Client) DescribeHttpsWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeIntelligencesRequest() (request *DescribeIntelligencesRequest) {
+    request = &DescribeIntelligencesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ctem", APIVersion, "DescribeIntelligences")
+    
+    
+    return
+}
+
+func NewDescribeIntelligencesResponse() (response *DescribeIntelligencesResponse) {
+    response = &DescribeIntelligencesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIntelligences
+// 查询情报列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIntelligences(request *DescribeIntelligencesRequest) (response *DescribeIntelligencesResponse, err error) {
+    return c.DescribeIntelligencesWithContext(context.Background(), request)
+}
+
+// DescribeIntelligences
+// 查询情报列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIntelligencesWithContext(ctx context.Context, request *DescribeIntelligencesRequest) (response *DescribeIntelligencesResponse, err error) {
+    if request == nil {
+        request = NewDescribeIntelligencesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribeIntelligences")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIntelligences require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIntelligencesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobRecordDetailsRequest() (request *DescribeJobRecordDetailsRequest) {
     request = &DescribeJobRecordDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4177,6 +4529,94 @@ func (c *Client) DescribeNetDisksWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeNetDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePocAssetDataRequest() (request *DescribePocAssetDataRequest) {
+    request = &DescribePocAssetDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ctem", APIVersion, "DescribePocAssetData")
+    
+    
+    return
+}
+
+func NewDescribePocAssetDataResponse() (response *DescribePocAssetDataResponse) {
+    response = &DescribePocAssetDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePocAssetData
+// 实际受影响资产
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePocAssetData(request *DescribePocAssetDataRequest) (response *DescribePocAssetDataResponse, err error) {
+    return c.DescribePocAssetDataWithContext(context.Background(), request)
+}
+
+// DescribePocAssetData
+// 实际受影响资产
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePocAssetDataWithContext(ctx context.Context, request *DescribePocAssetDataRequest) (response *DescribePocAssetDataResponse, err error) {
+    if request == nil {
+        request = NewDescribePocAssetDataRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ctem", APIVersion, "DescribePocAssetData")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePocAssetData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePocAssetDataResponse()
     err = c.Send(request, response)
     return
 }

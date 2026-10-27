@@ -35,6 +35,9 @@ const (
 	// 加密操作失败。
 	FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
 
+	// 订单校验失败
+	FAILEDOPERATION_ORDERCHECKFAILED = "FailedOperation.OrderCheckFailed"
+
 	// 已有正在进行的轮转任务
 	FAILEDOPERATION_ROTATETASKRUNNING = "FailedOperation.RotateTaskRunning"
 
@@ -53,11 +56,17 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 后付费传了 ProductVersion/InstanceChargePrepaid
+	INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+
 	// 解密EncryptedKeyMaterial失败。
 	INVALIDPARAMETER_DECRYPTMATERIALERROR = "InvalidParameter.DecryptMaterialError"
 
 	// 计划删除时间参数非法。
 	INVALIDPARAMETER_INVALIDPENDINGWINDOWINDAYS = "InvalidParameter.InvalidPendingWindowInDays"
+
+	// ProductVersion参数缺失
+	INVALIDPARAMETER_MISSINGPRODUCTVERSION = "InvalidParameter.MissingProductVersion"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -92,14 +101,23 @@ const (
 	// 导入的数据密钥合法
 	INVALIDPARAMETERVALUE_INVALIDIMPORTKEYMATERIAL = "InvalidParameterValue.InvalidImportKeyMaterial"
 
+	// InstanceChargeType类型非法
+	INVALIDPARAMETERVALUE_INVALIDINSTANCECHARGETYPE = "InvalidParameterValue.InvalidInstanceChargeType"
+
 	// KeyId不合法。
 	INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
 
 	// KeyUsage参数错误。
 	INVALIDPARAMETERVALUE_INVALIDKEYUSAGE = "InvalidParameterValue.InvalidKeyUsage"
 
+	// Period 越界(1~36)
+	INVALIDPARAMETERVALUE_INVALIDPERIOD = "InvalidParameterValue.InvalidPeriod"
+
 	// Plaintext不合法。
 	INVALIDPARAMETERVALUE_INVALIDPLAINTEXT = "InvalidParameterValue.InvalidPlaintext"
+
+	// ProductVersion不合法
+	INVALIDPARAMETERVALUE_INVALIDPRODUCTVERSION = "InvalidParameterValue.InvalidProductVersion"
 
 	// Type参数错误。
 	INVALIDPARAMETERVALUE_INVALIDTYPE = "InvalidParameterValue.InvalidType"
@@ -122,6 +140,9 @@ const (
 	// 设备指纹个数超过限制。
 	LIMITEXCEEDED_FINGERPRINTSLIMITEXCEEDED = "LimitExceeded.FingerprintsLimitExceeded"
 
+	// 预付费实例达上限
+	LIMITEXCEEDED_INSTANCEQUOTAEXCEEDED = "LimitExceeded.InstanceQuotaExceeded"
+
 	// 创建的密钥个数超过限制。
 	LIMITEXCEEDED_KEYLIMITEXCEEDED = "LimitExceeded.KeyLimitExceeded"
 
@@ -130,6 +151,12 @@ const (
 
 	// 轮转操作触发限频，默认24小时内仅可轮转一次
 	REQUESTLIMITEXCEEDED_ROTATERATELIMITED = "RequestLimitExceeded.RotateRateLimited"
+
+	// 存在进行中订单
+	RESOURCEINUSE_ORDERINPROGRESS = "ResourceInUse.OrderInProgress"
+
+	// 后付费实例已存在
+	RESOURCEINUSE_POSTPAIDINSTANCEALREADYEXISTS = "ResourceInUse.PostpaidInstanceAlreadyExists"
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
