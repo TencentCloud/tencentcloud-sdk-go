@@ -355,6 +355,18 @@ import "crypto/tls"
 
 **再次强调，除非您知道自己在做什么，并明白由此带来的风险，否则不要尝试关闭服务器证书校验。**
 
+## CommonClient 大数字处理
+
+默认情况下 CommonClient 会将数据解析到 interface{} 中，而 Json 标准库会为数字类型默认分配 float 类型导致大数字溢出。
+
+为此我们提供了一套修复方案，你可以通过构建时添加 Build Tag 来开启它：
+
+```bash
+go build -tags tencentcloud_common_number_precision
+```
+
+开启前后 CommonClient 用法一致，无需修改代码来兼容新版本
+
 # 功能介绍
 
 ## 凭证管理
