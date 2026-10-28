@@ -3670,7 +3670,7 @@ type DescribeSandboxToolListRequestParams struct {
 	// 返回数量，默认为20，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件
+	// 过滤条件。支持 access-policy-id 按关联的访问策略 ID 反向查询；其他过滤条件沿用沙箱工具列表接口约定。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -3686,7 +3686,7 @@ type DescribeSandboxToolListRequest struct {
 	// 返回数量，默认为20，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件
+	// 过滤条件。支持 access-policy-id 按关联的访问策略 ID 反向查询；其他过滤条件沿用沙箱工具列表接口约定。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 

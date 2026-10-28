@@ -15238,17 +15238,23 @@ type Sort struct {
 }
 
 type Space struct {
-	// 空间id
+	// <p>空间id</p>
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
-	// 空间名称
+	// <p>空间名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 空间描述
+	// <p>空间描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 空间权限
+	// <p>空间权限</p>
 	PermissionIdList []*string `json:"PermissionIdList,omitnil,omitempty" name:"PermissionIdList"`
+
+	// <p>创建时间</p><p>参数格式：秒时间戳</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p><p>参数格式：秒时间戳</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type SpecialStatusInfo struct {

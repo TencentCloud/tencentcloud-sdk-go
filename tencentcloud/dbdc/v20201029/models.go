@@ -3903,6 +3903,71 @@ func (r *ModifyDBCustomNodeTagsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDBCustomNodeTypeRequestParams struct {
+	// <p>节点ID</p>
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <p>节点机型</p>
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+}
+
+type ModifyDBCustomNodeTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>节点ID</p>
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <p>节点机型</p>
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+}
+
+func (r *ModifyDBCustomNodeTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBCustomNodeTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeId")
+	delete(f, "NodeType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBCustomNodeTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBCustomNodeTypeResponseParams struct {
+	// <p>修改节点配置的任务ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDBCustomNodeTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBCustomNodeTypeResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBCustomNodeTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBCustomNodeTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBCustomNodesDisasterRecoverGroupRequestParams struct {
 	// <p>节点ID</p><p>入参限制：单次数量上限为100</p>
 	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
@@ -4059,6 +4124,71 @@ type PolicyRule struct {
 
 	// <p>规则备注描述</p>
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+}
+
+// Predefined struct for user
+type RebootDBCustomNodesRequestParams struct {
+	// <p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p>
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+
+	// <p>关机类型</p><p>枚举值：</p><ul><li>SOFT： 软关机</li><li>HARD： 硬关机</li><li>SOFT_FIRST： 优先软关机，失败再执行硬关机</li></ul><p>默认值：SOFT</p>
+	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
+}
+
+type RebootDBCustomNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p>
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+
+	// <p>关机类型</p><p>枚举值：</p><ul><li>SOFT： 软关机</li><li>HARD： 硬关机</li><li>SOFT_FIRST： 优先软关机，失败再执行硬关机</li></ul><p>默认值：SOFT</p>
+	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
+}
+
+func (r *RebootDBCustomNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RebootDBCustomNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeIds")
+	delete(f, "StopType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RebootDBCustomNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RebootDBCustomNodesResponseParams struct {
+	// <p>任务ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RebootDBCustomNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *RebootDBCustomNodesResponseParams `json:"Response"`
+}
+
+func (r *RebootDBCustomNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RebootDBCustomNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RegionInfo struct {
@@ -4229,6 +4359,157 @@ func (r *RenewDBCustomNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ResetDBCustomNodeRequestParams struct {
+	// <p>节点ID</p><p>参数格式：dbcn-hq98qjym</p>
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <p>实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
+	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// <p>重设的操作系统镜像ID</p><p>取值参考：可通过&quot;DescribeDBCustomImages&quot;接口获取支持的镜像。</p>
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// <p>重装系统时，可以指定修改节点的主机名。</p><p>入参限制：- 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</p><ul><li>Windows ：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>Linux：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li></ul><p>注意：节点在没有加入到集群之前才支持修改主机 HostName。</p>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+}
+
+type ResetDBCustomNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>节点ID</p><p>参数格式：dbcn-hq98qjym</p>
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <p>实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
+	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// <p>重设的操作系统镜像ID</p><p>取值参考：可通过&quot;DescribeDBCustomImages&quot;接口获取支持的镜像。</p>
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// <p>重装系统时，可以指定修改节点的主机名。</p><p>入参限制：- 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</p><ul><li>Windows ：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>Linux：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li></ul><p>注意：节点在没有加入到集群之前才支持修改主机 HostName。</p>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+}
+
+func (r *ResetDBCustomNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetDBCustomNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeId")
+	delete(f, "LoginSettings")
+	delete(f, "ImageId")
+	delete(f, "HostName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetDBCustomNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetDBCustomNodeResponseParams struct {
+	// <p>任务ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResetDBCustomNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetDBCustomNodeResponseParams `json:"Response"`
+}
+
+func (r *ResetDBCustomNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetDBCustomNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResizeDBCustomNodeDiskRequestParams struct {
+	// <p>节点ID</p>
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <p>节点磁盘ID</p>
+	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
+
+	// <p>调整后的磁盘容量大小</p><p>单位：GB</p><p>必须大于当前硬盘大小。系统盘小于2048，数据盘小于32000</p>
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+type ResizeDBCustomNodeDiskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>节点ID</p>
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <p>节点磁盘ID</p>
+	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
+
+	// <p>调整后的磁盘容量大小</p><p>单位：GB</p><p>必须大于当前硬盘大小。系统盘小于2048，数据盘小于32000</p>
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+func (r *ResizeDBCustomNodeDiskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResizeDBCustomNodeDiskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeId")
+	delete(f, "DiskId")
+	delete(f, "DiskSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResizeDBCustomNodeDiskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResizeDBCustomNodeDiskResponseParams struct {
+	// <p>调整节点磁盘容量的任务ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResizeDBCustomNodeDiskResponse struct {
+	*tchttp.BaseResponse
+	Response *ResizeDBCustomNodeDiskResponseParams `json:"Response"`
+}
+
+func (r *ResizeDBCustomNodeDiskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResizeDBCustomNodeDiskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ResourceTag struct {
 	// 标签键
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
@@ -4258,6 +4539,129 @@ type SecurityGroup struct {
 
 	// <p>安全组备注说明</p>
 	SecurityGroupRemark *string `json:"SecurityGroupRemark,omitnil,omitempty" name:"SecurityGroupRemark"`
+}
+
+// Predefined struct for user
+type StartDBCustomNodesRequestParams struct {
+	// <p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p>
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+}
+
+type StartDBCustomNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p>
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+}
+
+func (r *StartDBCustomNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartDBCustomNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartDBCustomNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartDBCustomNodesResponseParams struct {
+	// <p>任务ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartDBCustomNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *StartDBCustomNodesResponseParams `json:"Response"`
+}
+
+func (r *StartDBCustomNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartDBCustomNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopDBCustomNodesRequestParams struct {
+	// <p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p>
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+
+	// <p>关机类型</p><p>枚举值：</p><ul><li>SOFT： 软关机</li><li>HARD： 硬关机</li><li>SOFT_FIRST： 优先软关机，失败再执行硬关机</li></ul><p>默认值：SOFT</p>
+	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
+}
+
+type StopDBCustomNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p>
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+
+	// <p>关机类型</p><p>枚举值：</p><ul><li>SOFT： 软关机</li><li>HARD： 硬关机</li><li>SOFT_FIRST： 优先软关机，失败再执行硬关机</li></ul><p>默认值：SOFT</p>
+	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
+}
+
+func (r *StopDBCustomNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopDBCustomNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeIds")
+	delete(f, "StopType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopDBCustomNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopDBCustomNodesResponseParams struct {
+	// <p>任务ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopDBCustomNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *StopDBCustomNodesResponseParams `json:"Response"`
+}
+
+func (r *StopDBCustomNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopDBCustomNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SystemDisk struct {

@@ -781,6 +781,72 @@ func (c *Client) CreatePolicyRuleWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateUserQuotaRequest() (request *CreateUserQuotaRequest) {
+    request = &CreateUserQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "CreateUserQuota")
+    
+    
+    return
+}
+
+func NewCreateUserQuotaResponse() (response *CreateUserQuotaResponse) {
+    response = &CreateUserQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserQuota
+// 创建用户配额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUserQuota(request *CreateUserQuotaRequest) (response *CreateUserQuotaResponse, err error) {
+    return c.CreateUserQuotaWithContext(context.Background(), request)
+}
+
+// CreateUserQuota
+// 创建用户配额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUserQuotaWithContext(ctx context.Context, request *CreateUserQuotaRequest) (response *CreateUserQuotaResponse, err error) {
+    if request == nil {
+        request = NewCreateUserQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "CreateUserQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCrossVpcSubnetSupportForClientNodeRequest() (request *DeleteCrossVpcSubnetSupportForClientNodeRequest) {
     request = &DeleteCrossVpcSubnetSupportForClientNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1107,6 +1173,72 @@ func (c *Client) DeletePolicyRuleWithContext(ctx context.Context, request *Delet
     request.SetContext(ctx)
     
     response = NewDeletePolicyRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUserQuotaRequest() (request *DeleteUserQuotaRequest) {
+    request = &DeleteUserQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DeleteUserQuota")
+    
+    
+    return
+}
+
+func NewDeleteUserQuotaResponse() (response *DeleteUserQuotaResponse) {
+    response = &DeleteUserQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUserQuota
+// 删除用户配额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteUserQuota(request *DeleteUserQuotaRequest) (response *DeleteUserQuotaResponse, err error) {
+    return c.DeleteUserQuotaWithContext(context.Background(), request)
+}
+
+// DeleteUserQuota
+// 删除用户配额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteUserQuotaWithContext(ctx context.Context, request *DeleteUserQuotaRequest) (response *DeleteUserQuotaResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DeleteUserQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserQuotaResponse()
     err = c.Send(request, response)
     return
 }
@@ -1971,6 +2103,74 @@ func (c *Client) DescribePolicyRuleExecuteRecordWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribePolicyRuleExecuteRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserQuotaRequest() (request *DescribeUserQuotaRequest) {
+    request = &DescribeUserQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DescribeUserQuota")
+    
+    
+    return
+}
+
+func NewDescribeUserQuotaResponse() (response *DescribeUserQuotaResponse) {
+    response = &DescribeUserQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserQuota
+// 查询用户配额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserQuota(request *DescribeUserQuotaRequest) (response *DescribeUserQuotaResponse, err error) {
+    return c.DescribeUserQuotaWithContext(context.Background(), request)
+}
+
+// DescribeUserQuota
+// 查询用户配额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserQuotaWithContext(ctx context.Context, request *DescribeUserQuotaRequest) (response *DescribeUserQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeUserQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserQuotaResponse()
     err = c.Send(request, response)
     return
 }
@@ -2921,6 +3121,72 @@ func (c *Client) UpdateLoadTaskPriorityWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewUpdateLoadTaskPriorityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateUserQuotaRequest() (request *UpdateUserQuotaRequest) {
+    request = &UpdateUserQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "UpdateUserQuota")
+    
+    
+    return
+}
+
+func NewUpdateUserQuotaResponse() (response *UpdateUserQuotaResponse) {
+    response = &UpdateUserQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateUserQuota
+// 修改用户配额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateUserQuota(request *UpdateUserQuotaRequest) (response *UpdateUserQuotaResponse, err error) {
+    return c.UpdateUserQuotaWithContext(context.Background(), request)
+}
+
+// UpdateUserQuota
+// 修改用户配额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateUserQuotaWithContext(ctx context.Context, request *UpdateUserQuotaRequest) (response *UpdateUserQuotaResponse, err error) {
+    if request == nil {
+        request = NewUpdateUserQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "UpdateUserQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateUserQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateUserQuotaResponse()
     err = c.Send(request, response)
     return
 }

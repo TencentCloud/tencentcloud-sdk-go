@@ -3059,6 +3059,60 @@ func (c *Client) DeleteLLMKeywordLibraryWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteLLMSdkAccessRequest() (request *DeleteLLMSdkAccessRequest) {
+    request = &DeleteLLMSdkAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteLLMSdkAccess")
+    
+    
+    return
+}
+
+func NewDeleteLLMSdkAccessResponse() (response *DeleteLLMSdkAccessResponse) {
+    response = &DeleteLLMSdkAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLLMSdkAccess
+// llmwaf-sdk删除接入配置接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteLLMSdkAccess(request *DeleteLLMSdkAccessRequest) (response *DeleteLLMSdkAccessResponse, err error) {
+    return c.DeleteLLMSdkAccessWithContext(context.Background(), request)
+}
+
+// DeleteLLMSdkAccess
+// llmwaf-sdk删除接入配置接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteLLMSdkAccessWithContext(ctx context.Context, request *DeleteLLMSdkAccessRequest) (response *DeleteLLMSdkAccessResponse, err error) {
+    if request == nil {
+        request = NewDeleteLLMSdkAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DeleteLLMSdkAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLLMSdkAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLLMSdkAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteOwaspRuleStatusRequest() (request *DeleteOwaspRuleStatusRequest) {
     request = &DeleteOwaspRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

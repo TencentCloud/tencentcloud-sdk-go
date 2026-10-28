@@ -170,6 +170,14 @@ type ActionLibraryListResult struct {
 	ObjectTypeId *int64 `json:"ObjectTypeId,omitnil,omitempty" name:"ObjectTypeId"`
 }
 
+type AgentFilter struct {
+	// 查询key
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 查询value
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type ApmServiceInfo struct {
 	// 业务ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -692,6 +700,94 @@ func (r *DescribeActionLibraryListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeActionLibraryListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceAgentListRequestParams struct {
+	// <p>1:CVM<br>2.TKE</p>
+	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>筛选条件</p>
+	Filters []*AgentFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>页数</p>
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页大小</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>查询探针场景</p>
+	AgentScene *uint64 `json:"AgentScene,omitnil,omitempty" name:"AgentScene"`
+}
+
+type DescribeInstanceAgentListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>1:CVM<br>2.TKE</p>
+	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>筛选条件</p>
+	Filters []*AgentFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>页数</p>
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页大小</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>查询探针场景</p>
+	AgentScene *uint64 `json:"AgentScene,omitnil,omitempty" name:"AgentScene"`
+}
+
+func (r *DescribeInstanceAgentListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceAgentListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceType")
+	delete(f, "Filters")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	delete(f, "AgentScene")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceAgentListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceAgentListResponseParams struct {
+	// <p>返回InstnaceAgent详情</p>
+	InstanceAgent []*InstanceAgent `json:"InstanceAgent,omitnil,omitempty" name:"InstanceAgent"`
+
+	// <p>总条目数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceAgentListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceAgentListResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceAgentListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceAgentListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1454,6 +1550,87 @@ func (r *ExecuteTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ExecuteTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InstallAgentOpenApiRequestParams struct {
+	// <p>1:CVM<br>2:TKE</p>
+	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>安装探针实例列表</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+type InstallAgentOpenApiRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>1:CVM<br>2:TKE</p>
+	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>安装探针实例列表</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+func (r *InstallAgentOpenApiRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InstallAgentOpenApiRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceType")
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstallAgentOpenApiRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InstallAgentOpenApiResponseParams struct {
+	// <p>状态异常提示用户</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message []*string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InstallAgentOpenApiResponse struct {
+	*tchttp.BaseResponse
+	Response *InstallAgentOpenApiResponseParams `json:"Response"`
+}
+
+func (r *InstallAgentOpenApiResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InstallAgentOpenApiResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InstanceAgent struct {
+	// 添加InstanceAgent的参数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceAgentItem []*InstanceAgentItem `json:"InstanceAgentItem,omitnil,omitempty" name:"InstanceAgentItem"`
+}
+
+type InstanceAgentItem struct {
+	// <p>添加参数Key的名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>添加参数的Value</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
@@ -2443,5 +2620,70 @@ func (r *TriggerPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TriggerPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UninstallAgentOpenApiRequestParams struct {
+	// <p>1: CVM<br>2: TKE</p>
+	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>需要卸载的instance_id</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+type UninstallAgentOpenApiRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>1: CVM<br>2: TKE</p>
+	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>需要卸载的instance_id</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+func (r *UninstallAgentOpenApiRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UninstallAgentOpenApiRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceType")
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UninstallAgentOpenApiRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UninstallAgentOpenApiResponseParams struct {
+	// <p>提示用户状态不正确无法安装字段</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message []*string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UninstallAgentOpenApiResponse struct {
+	*tchttp.BaseResponse
+	Response *UninstallAgentOpenApiResponseParams `json:"Response"`
+}
+
+func (r *UninstallAgentOpenApiResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UninstallAgentOpenApiResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

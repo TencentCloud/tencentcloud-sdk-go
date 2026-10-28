@@ -3598,15 +3598,7 @@ func NewDescribeLogInstanceListResponse() (response *DescribeLogInstanceListResp
 // 日志实例列表查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
-//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 func (c *Client) DescribeLogInstanceList(request *DescribeLogInstanceListRequest) (response *DescribeLogInstanceListResponse, err error) {
     return c.DescribeLogInstanceListWithContext(context.Background(), request)
 }
@@ -3615,15 +3607,7 @@ func (c *Client) DescribeLogInstanceList(request *DescribeLogInstanceListRequest
 // 日志实例列表查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
-//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 func (c *Client) DescribeLogInstanceListWithContext(ctx context.Context, request *DescribeLogInstanceListRequest) (response *DescribeLogInstanceListResponse, err error) {
     if request == nil {
         request = NewDescribeLogInstanceListRequest()

@@ -8333,6 +8333,81 @@ func (r *RemoveWorkspaceGroupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RemoveWorkspaceUsersRequestParams struct {
+	// <p>必填，待移除的用户 UIN 列表，用户 UIN 可通过 ListWorkspaceUsers 接口获取，单次最多10个</p>
+	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
+
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+type RemoveWorkspaceUsersRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>必填，待移除的用户 UIN 列表，用户 UIN 可通过 ListWorkspaceUsers 接口获取，单次最多10个</p>
+	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
+
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+func (r *RemoveWorkspaceUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveWorkspaceUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserUins")
+	delete(f, "WorkspaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveWorkspaceUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveWorkspaceUsersResponseParams struct {
+	// <p>批量移除工作空间用户结果</p>
+	Data *RemoveWorkspaceUsersRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RemoveWorkspaceUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveWorkspaceUsersResponseParams `json:"Response"`
+}
+
+func (r *RemoveWorkspaceUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveWorkspaceUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveWorkspaceUsersRsp struct {
+	// <p>请求已完成处理；即使部分失败也为 true，逐个结果以 SuccessUins/FailItems 为准</p>
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>移除成功的用户 UIN 列表</p>
+	SuccessUins []*string `json:"SuccessUins,omitnil,omitempty" name:"SuccessUins"`
+
+	// <p>失败项列表（Item 为用户 UIN，FailReason 为失败原因）</p>
+	FailItems []*CommonFailItem `json:"FailItems,omitnil,omitempty" name:"FailItems"`
+}
+
+// Predefined struct for user
 type RerunWorkflowRunRequestParams struct {
 	// <p>工作空间ID，可通过 ListWorkspaces 获取。必填</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
@@ -10934,6 +11009,82 @@ func (r *UpdateWorkspaceGroupsRolesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateWorkspaceGroupsTagsRequestParams struct {
+	// <p>必填，用户组ID列表，单次最多100个；可通过 ListWorkspaceGroups 接口获取</p>
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// <p>必填，工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>标签列表，覆盖写用户组的标签；传即覆盖更新，不传或为空则清除全部标签</p>
+	Tags []*UserTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type UpdateWorkspaceGroupsTagsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>必填，用户组ID列表，单次最多100个；可通过 ListWorkspaceGroups 接口获取</p>
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// <p>必填，工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>标签列表，覆盖写用户组的标签；传即覆盖更新，不传或为空则清除全部标签</p>
+	Tags []*UserTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *UpdateWorkspaceGroupsTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateWorkspaceGroupsTagsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	delete(f, "WorkspaceId")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateWorkspaceGroupsTagsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateWorkspaceGroupsTagsResponseParams struct {
+	// <p>修改工作空间用户组标签响应</p>
+	Data *UpdateWorkspaceGroupsTagsRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateWorkspaceGroupsTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateWorkspaceGroupsTagsResponseParams `json:"Response"`
+}
+
+func (r *UpdateWorkspaceGroupsTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateWorkspaceGroupsTagsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateWorkspaceGroupsTagsRsp struct {
+	// 操作是否成功
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
 type UpdateWorkspaceRequestParams struct {
 	// <p>工作空间ID</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
@@ -11154,6 +11305,82 @@ func (r *UpdateWorkspaceUsersRolesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateWorkspaceUsersRolesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateWorkspaceUsersTagsRequestParams struct {
+	// <p>必填，用户UIN列表，单次最多100个</p>
+	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
+
+	// <p>必填，工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>待更新的标签集合（标签维度及标签值通过 ID 指定），覆盖更新语义：传入后将被覆盖为目标用户的全部直绑标签，不传或传空数组则清空目标用户的所有直绑标签。每个元素中 TagId 必填，Values[].TagValueId 必填；传入的 TagValue、Source、GroupNames 服务端不读取，无需传入。标签维度与标签值可先通过 CreateTags / CreateTagValues 创建，再通过 ListTags 获取 ID（TagId 取 Items[].TagId，TagValueId 取 Items[].TagValues[].TagValueId）。</p>
+	Tags []*UserTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type UpdateWorkspaceUsersTagsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>必填，用户UIN列表，单次最多100个</p>
+	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
+
+	// <p>必填，工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>待更新的标签集合（标签维度及标签值通过 ID 指定），覆盖更新语义：传入后将被覆盖为目标用户的全部直绑标签，不传或传空数组则清空目标用户的所有直绑标签。每个元素中 TagId 必填，Values[].TagValueId 必填；传入的 TagValue、Source、GroupNames 服务端不读取，无需传入。标签维度与标签值可先通过 CreateTags / CreateTagValues 创建，再通过 ListTags 获取 ID（TagId 取 Items[].TagId，TagValueId 取 Items[].TagValues[].TagValueId）。</p>
+	Tags []*UserTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *UpdateWorkspaceUsersTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateWorkspaceUsersTagsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserUins")
+	delete(f, "WorkspaceId")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateWorkspaceUsersTagsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateWorkspaceUsersTagsResponseParams struct {
+	// <p>修改工作空间用户标签响应</p>
+	Data *UpdateWorkspaceUsersTagsRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateWorkspaceUsersTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateWorkspaceUsersTagsResponseParams `json:"Response"`
+}
+
+func (r *UpdateWorkspaceUsersTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateWorkspaceUsersTagsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateWorkspaceUsersTagsRsp struct {
+	// 操作是否成功
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type UserActivityInfo struct {

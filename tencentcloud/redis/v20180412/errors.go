@@ -95,6 +95,9 @@ const (
 	// 内部错误。
 	INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 
+	// 查询请求失败
+	INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+
 	// 获取实例列表出错。
 	INTERNALERROR_LISTINSTANCESERROR = "InternalError.ListInstancesError"
 

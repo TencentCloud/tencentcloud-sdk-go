@@ -901,6 +901,7 @@ func NewCreateSandboxToolResponse() (response *CreateSandboxToolResponse) {
 //  INTERNALERROR_VPCSERVICEUNAVAILABLE = "InternalError.VPCServiceUnavailable"
 //  INVALIDPARAMETERVALUE_ROLEARN = "InvalidParameterValue.RoleArn"
 //  INVALIDPARAMETERVALUE_SANDBOXTOOL = "InvalidParameterValue.SandboxTool"
+//  INVALIDPARAMETERVALUE_SECURITYCONTEXT = "InvalidParameterValue.SecurityContext"
 //  INVALIDPARAMETERVALUE_SECURITYGROUPID = "InvalidParameterValue.SecurityGroupId"
 //  INVALIDPARAMETERVALUE_STORAGEMOUNT = "InvalidParameterValue.StorageMount"
 //  INVALIDPARAMETERVALUE_SUBNETID = "InvalidParameterValue.SubnetId"
@@ -934,6 +935,7 @@ func (c *Client) CreateSandboxTool(request *CreateSandboxToolRequest) (response 
 //  INTERNALERROR_VPCSERVICEUNAVAILABLE = "InternalError.VPCServiceUnavailable"
 //  INVALIDPARAMETERVALUE_ROLEARN = "InvalidParameterValue.RoleArn"
 //  INVALIDPARAMETERVALUE_SANDBOXTOOL = "InvalidParameterValue.SandboxTool"
+//  INVALIDPARAMETERVALUE_SECURITYCONTEXT = "InvalidParameterValue.SecurityContext"
 //  INVALIDPARAMETERVALUE_SECURITYGROUPID = "InvalidParameterValue.SecurityGroupId"
 //  INVALIDPARAMETERVALUE_STORAGEMOUNT = "InvalidParameterValue.StorageMount"
 //  INVALIDPARAMETERVALUE_SUBNETID = "InvalidParameterValue.SubnetId"
@@ -2617,7 +2619,6 @@ func NewDescribeSandboxInstancesResponse() (response *DescribeSandboxInstancesRe
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSandboxInstances(request *DescribeSandboxInstancesRequest) (response *DescribeSandboxInstancesResponse, err error) {
@@ -2629,7 +2630,6 @@ func (c *Client) DescribeSandboxInstances(request *DescribeSandboxInstancesReque
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSandboxInstancesWithContext(ctx context.Context, request *DescribeSandboxInstancesRequest) (response *DescribeSandboxInstancesResponse, err error) {
@@ -2675,7 +2675,6 @@ func NewDescribeSandboxSnapshotListResponse() (response *DescribeSandboxSnapshot
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSandboxSnapshotList(request *DescribeSandboxSnapshotListRequest) (response *DescribeSandboxSnapshotListResponse, err error) {
@@ -2689,7 +2688,6 @@ func (c *Client) DescribeSandboxSnapshotList(request *DescribeSandboxSnapshotLis
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSandboxSnapshotListWithContext(ctx context.Context, request *DescribeSandboxSnapshotListRequest) (response *DescribeSandboxSnapshotListResponse, err error) {
@@ -2733,6 +2731,7 @@ func NewDescribeSandboxToolListResponse() (response *DescribeSandboxToolListResp
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETERVALUE_TOOLIDS = "InvalidParameterValue.ToolIds"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSandboxToolList(request *DescribeSandboxToolListRequest) (response *DescribeSandboxToolListResponse, err error) {
@@ -2744,6 +2743,7 @@ func (c *Client) DescribeSandboxToolList(request *DescribeSandboxToolListRequest
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETERVALUE_TOOLIDS = "InvalidParameterValue.ToolIds"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSandboxToolListWithContext(ctx context.Context, request *DescribeSandboxToolListRequest) (response *DescribeSandboxToolListResponse, err error) {
@@ -3622,7 +3622,10 @@ func NewStartSandboxInstanceResponse() (response *StartSandboxInstanceResponse) 
 //  FAILEDOPERATION_STORAGEMOUNT = "FailedOperation.StorageMount"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE_AUTOPAUSENOTALLOWED = "InvalidParameterValue.AutoPauseNotAllowed"
+//  INVALIDPARAMETERVALUE_AUTORESUMENOTALLOWED = "InvalidParameterValue.AutoResumeNotAllowed"
 //  INVALIDPARAMETERVALUE_MOUNTOPTION = "InvalidParameterValue.MountOption"
+//  INVALIDPARAMETERVALUE_SECURITYCONTEXT = "InvalidParameterValue.SecurityContext"
 //  INVALIDPARAMETERVALUE_STORAGEMOUNT = "InvalidParameterValue.StorageMount"
 //  INVALIDPARAMETERVALUE_TIMEOUT = "InvalidParameterValue.Timeout"
 //  LIMITEXCEEDED_SANDBOXINSTANCE = "LimitExceeded.SandboxInstance"
@@ -3650,7 +3653,10 @@ func (c *Client) StartSandboxInstance(request *StartSandboxInstanceRequest) (res
 //  FAILEDOPERATION_STORAGEMOUNT = "FailedOperation.StorageMount"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETERVALUE_AUTOPAUSENOTALLOWED = "InvalidParameterValue.AutoPauseNotAllowed"
+//  INVALIDPARAMETERVALUE_AUTORESUMENOTALLOWED = "InvalidParameterValue.AutoResumeNotAllowed"
 //  INVALIDPARAMETERVALUE_MOUNTOPTION = "InvalidParameterValue.MountOption"
+//  INVALIDPARAMETERVALUE_SECURITYCONTEXT = "InvalidParameterValue.SecurityContext"
 //  INVALIDPARAMETERVALUE_STORAGEMOUNT = "InvalidParameterValue.StorageMount"
 //  INVALIDPARAMETERVALUE_TIMEOUT = "InvalidParameterValue.Timeout"
 //  LIMITEXCEEDED_SANDBOXINSTANCE = "LimitExceeded.SandboxInstance"

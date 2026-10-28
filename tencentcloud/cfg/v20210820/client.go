@@ -371,6 +371,64 @@ func (c *Client) DescribeActionLibraryListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeInstanceAgentListRequest() (request *DescribeInstanceAgentListRequest) {
+    request = &DescribeInstanceAgentListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfg", APIVersion, "DescribeInstanceAgentList")
+    
+    
+    return
+}
+
+func NewDescribeInstanceAgentListResponse() (response *DescribeInstanceAgentListResponse) {
+    response = &DescribeInstanceAgentListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceAgentList
+// 查询探针列表，换为OTeam探针版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeInstanceAgentList(request *DescribeInstanceAgentListRequest) (response *DescribeInstanceAgentListResponse, err error) {
+    return c.DescribeInstanceAgentListWithContext(context.Background(), request)
+}
+
+// DescribeInstanceAgentList
+// 查询探针列表，换为OTeam探针版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeInstanceAgentListWithContext(ctx context.Context, request *DescribeInstanceAgentListRequest) (response *DescribeInstanceAgentListResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceAgentListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfg", APIVersion, "DescribeInstanceAgentList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceAgentList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceAgentListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeObjectTypeListRequest() (request *DescribeObjectTypeListRequest) {
     request = &DescribeObjectTypeListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -965,6 +1023,78 @@ func (c *Client) ExecuteTaskInstanceWithContext(ctx context.Context, request *Ex
     return
 }
 
+func NewInstallAgentOpenApiRequest() (request *InstallAgentOpenApiRequest) {
+    request = &InstallAgentOpenApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfg", APIVersion, "InstallAgentOpenApi")
+    
+    
+    return
+}
+
+func NewInstallAgentOpenApiResponse() (response *InstallAgentOpenApiResponse) {
+    response = &InstallAgentOpenApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InstallAgentOpenApi
+// 安装探针接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InstallAgentOpenApi(request *InstallAgentOpenApiRequest) (response *InstallAgentOpenApiResponse, err error) {
+    return c.InstallAgentOpenApiWithContext(context.Background(), request)
+}
+
+// InstallAgentOpenApi
+// 安装探针接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InstallAgentOpenApiWithContext(ctx context.Context, request *InstallAgentOpenApiRequest) (response *InstallAgentOpenApiResponse, err error) {
+    if request == nil {
+        request = NewInstallAgentOpenApiRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfg", APIVersion, "InstallAgentOpenApi")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InstallAgentOpenApi require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInstallAgentOpenApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTaskRunStatusRequest() (request *ModifyTaskRunStatusRequest) {
     request = &ModifyTaskRunStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1091,6 +1221,70 @@ func (c *Client) TriggerPolicyWithContext(ctx context.Context, request *TriggerP
     request.SetContext(ctx)
     
     response = NewTriggerPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUninstallAgentOpenApiRequest() (request *UninstallAgentOpenApiRequest) {
+    request = &UninstallAgentOpenApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfg", APIVersion, "UninstallAgentOpenApi")
+    
+    
+    return
+}
+
+func NewUninstallAgentOpenApiResponse() (response *UninstallAgentOpenApiResponse) {
+    response = &UninstallAgentOpenApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UninstallAgentOpenApi
+// 卸载探针
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UninstallAgentOpenApi(request *UninstallAgentOpenApiRequest) (response *UninstallAgentOpenApiResponse, err error) {
+    return c.UninstallAgentOpenApiWithContext(context.Background(), request)
+}
+
+// UninstallAgentOpenApi
+// 卸载探针
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UninstallAgentOpenApiWithContext(ctx context.Context, request *UninstallAgentOpenApiRequest) (response *UninstallAgentOpenApiResponse, err error) {
+    if request == nil {
+        request = NewUninstallAgentOpenApiRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfg", APIVersion, "UninstallAgentOpenApi")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UninstallAgentOpenApi require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUninstallAgentOpenApiResponse()
     err = c.Send(request, response)
     return
 }

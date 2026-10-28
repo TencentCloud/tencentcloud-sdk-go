@@ -4711,6 +4711,9 @@ func (r *DescribeHttpsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIntelligencesRequestParams struct {
+	// <p>企业ID</p>
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
 	// 查询数组
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -4719,11 +4722,17 @@ type DescribeIntelligencesRequestParams struct {
 
 	// 分页偏移
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>是否筛选有效情报</p>
+	IsActual *bool `json:"IsActual,omitnil,omitempty" name:"IsActual"`
 }
 
 type DescribeIntelligencesRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>企业ID</p>
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
 	// 查询数组
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -4732,6 +4741,9 @@ type DescribeIntelligencesRequest struct {
 
 	// 分页偏移
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>是否筛选有效情报</p>
+	IsActual *bool `json:"IsActual,omitnil,omitempty" name:"IsActual"`
 }
 
 func (r *DescribeIntelligencesRequest) ToJsonString() string {
@@ -4746,9 +4758,11 @@ func (r *DescribeIntelligencesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "CustomerId")
 	delete(f, "Filters")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "IsActual")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntelligencesRequest has unknown keys!", "")
 	}
@@ -4757,6 +4771,12 @@ func (r *DescribeIntelligencesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIntelligencesResponseParams struct {
+	// <p>总数</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>数组</p>
+	List []*IntelligenceDesc `json:"List,omitnil,omitempty" name:"List"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -8181,9 +8201,11 @@ type Equity struct {
 
 type Filter struct {
 	// 要搜索的字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 目标值列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -8284,6 +8306,50 @@ func (r *IgnoreDataResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *IgnoreDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type IntelligenceDesc struct {
+	// <p>情报ID</p>
+	VulId *string `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>情报名称</p>
+	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
+
+	// <p>情报概述</p>
+	VulOverview *string `json:"VulOverview,omitnil,omitempty" name:"VulOverview"`
+
+	// <p>录入时间</p>
+	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
+
+	// <p>漏洞风险等级 1：低风险，2：中风险，3：高风险</p>
+	RiskLevel *int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// <p>标签</p>
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>关联组件</p>
+	VulComponents *string `json:"VulComponents,omitnil,omitempty" name:"VulComponents"`
+
+	// <p>相关指纹数量</p>
+	BannerCount *int64 `json:"BannerCount,omitnil,omitempty" name:"BannerCount"`
+
+	// <p>漏洞资产数量</p>
+	VulAssetCount *int64 `json:"VulAssetCount,omitnil,omitempty" name:"VulAssetCount"`
+
+	// <p>最新任务状态:todo/doing/done，如果为空表示没有任务</p>
+	LastTaskStatus *string `json:"LastTaskStatus,omitnil,omitempty" name:"LastTaskStatus"`
+
+	// <p>任务id</p>
+	LastTaskInstanceId *string `json:"LastTaskInstanceId,omitnil,omitempty" name:"LastTaskInstanceId"`
+
+	// <p>xscan指纹插件id</p>
+	XscanBannerPluginId *string `json:"XscanBannerPluginId,omitnil,omitempty" name:"XscanBannerPluginId"`
+
+	// <p>xscan poc插件id</p>
+	XscanPocPluginId *string `json:"XscanPocPluginId,omitnil,omitempty" name:"XscanPocPluginId"`
+
+	// <p>上一次扫描时间</p>
+	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
 }
 
 type IntelligenceResult struct {

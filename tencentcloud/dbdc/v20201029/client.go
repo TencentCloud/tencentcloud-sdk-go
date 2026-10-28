@@ -2243,6 +2243,66 @@ func (c *Client) ModifyDBCustomNodeTagsWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifyDBCustomNodeTypeRequest() (request *ModifyDBCustomNodeTypeRequest) {
+    request = &ModifyDBCustomNodeTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbdc", APIVersion, "ModifyDBCustomNodeType")
+    
+    
+    return
+}
+
+func NewModifyDBCustomNodeTypeResponse() (response *ModifyDBCustomNodeTypeResponse) {
+    response = &ModifyDBCustomNodeTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBCustomNodeType
+// 该接口（ModifyDBCustomNodeType）用于修改 DB Custom 节点配置。
+//
+// 修改节点配置过程中会重启节点。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_PARAMETERERROR = "InvalidParameterValue.ParameterError"
+func (c *Client) ModifyDBCustomNodeType(request *ModifyDBCustomNodeTypeRequest) (response *ModifyDBCustomNodeTypeResponse, err error) {
+    return c.ModifyDBCustomNodeTypeWithContext(context.Background(), request)
+}
+
+// ModifyDBCustomNodeType
+// 该接口（ModifyDBCustomNodeType）用于修改 DB Custom 节点配置。
+//
+// 修改节点配置过程中会重启节点。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_PARAMETERERROR = "InvalidParameterValue.ParameterError"
+func (c *Client) ModifyDBCustomNodeTypeWithContext(ctx context.Context, request *ModifyDBCustomNodeTypeRequest) (response *ModifyDBCustomNodeTypeResponse, err error) {
+    if request == nil {
+        request = NewModifyDBCustomNodeTypeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "ModifyDBCustomNodeType")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBCustomNodeType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBCustomNodeTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBCustomNodesDisasterRecoverGroupRequest() (request *ModifyDBCustomNodesDisasterRecoverGroupRequest) {
     request = &ModifyDBCustomNodesDisasterRecoverGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2357,6 +2417,62 @@ func (c *Client) ModifyInstanceNameWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewRebootDBCustomNodesRequest() (request *RebootDBCustomNodesRequest) {
+    request = &RebootDBCustomNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbdc", APIVersion, "RebootDBCustomNodes")
+    
+    
+    return
+}
+
+func NewRebootDBCustomNodesResponse() (response *RebootDBCustomNodesResponse) {
+    response = &RebootDBCustomNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RebootDBCustomNodes
+// 该接口（RebootDBCustomNodes）用于重启 DB Custom 节点。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) RebootDBCustomNodes(request *RebootDBCustomNodesRequest) (response *RebootDBCustomNodesResponse, err error) {
+    return c.RebootDBCustomNodesWithContext(context.Background(), request)
+}
+
+// RebootDBCustomNodes
+// 该接口（RebootDBCustomNodes）用于重启 DB Custom 节点。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) RebootDBCustomNodesWithContext(ctx context.Context, request *RebootDBCustomNodesRequest) (response *RebootDBCustomNodesResponse, err error) {
+    if request == nil {
+        request = NewRebootDBCustomNodesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "RebootDBCustomNodes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RebootDBCustomNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRebootDBCustomNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveNodesFromDBCustomClusterRequest() (request *RemoveNodesFromDBCustomClusterRequest) {
     request = &RemoveNodesFromDBCustomClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2465,6 +2581,230 @@ func (c *Client) RenewDBCustomNodeWithContext(ctx context.Context, request *Rene
     request.SetContext(ctx)
     
     response = NewRenewDBCustomNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetDBCustomNodeRequest() (request *ResetDBCustomNodeRequest) {
+    request = &ResetDBCustomNodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbdc", APIVersion, "ResetDBCustomNode")
+    
+    
+    return
+}
+
+func NewResetDBCustomNodeResponse() (response *ResetDBCustomNodeResponse) {
+    response = &ResetDBCustomNodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetDBCustomNode
+// 该接口（ResetDBCustomNode）用于重装 DB Custom 节点的操作系统。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ResetDBCustomNode(request *ResetDBCustomNodeRequest) (response *ResetDBCustomNodeResponse, err error) {
+    return c.ResetDBCustomNodeWithContext(context.Background(), request)
+}
+
+// ResetDBCustomNode
+// 该接口（ResetDBCustomNode）用于重装 DB Custom 节点的操作系统。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ResetDBCustomNodeWithContext(ctx context.Context, request *ResetDBCustomNodeRequest) (response *ResetDBCustomNodeResponse, err error) {
+    if request == nil {
+        request = NewResetDBCustomNodeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "ResetDBCustomNode")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetDBCustomNode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetDBCustomNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResizeDBCustomNodeDiskRequest() (request *ResizeDBCustomNodeDiskRequest) {
+    request = &ResizeDBCustomNodeDiskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbdc", APIVersion, "ResizeDBCustomNodeDisk")
+    
+    
+    return
+}
+
+func NewResizeDBCustomNodeDiskResponse() (response *ResizeDBCustomNodeDiskResponse) {
+    response = &ResizeDBCustomNodeDiskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResizeDBCustomNodeDisk
+// 该接口（ResizeDBCustomNodeDisk）用于调整 DB Custom 节点磁盘容量。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_PARAMETERERROR = "InvalidParameterValue.ParameterError"
+func (c *Client) ResizeDBCustomNodeDisk(request *ResizeDBCustomNodeDiskRequest) (response *ResizeDBCustomNodeDiskResponse, err error) {
+    return c.ResizeDBCustomNodeDiskWithContext(context.Background(), request)
+}
+
+// ResizeDBCustomNodeDisk
+// 该接口（ResizeDBCustomNodeDisk）用于调整 DB Custom 节点磁盘容量。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_PARAMETERERROR = "InvalidParameterValue.ParameterError"
+func (c *Client) ResizeDBCustomNodeDiskWithContext(ctx context.Context, request *ResizeDBCustomNodeDiskRequest) (response *ResizeDBCustomNodeDiskResponse, err error) {
+    if request == nil {
+        request = NewResizeDBCustomNodeDiskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "ResizeDBCustomNodeDisk")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResizeDBCustomNodeDisk require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResizeDBCustomNodeDiskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartDBCustomNodesRequest() (request *StartDBCustomNodesRequest) {
+    request = &StartDBCustomNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbdc", APIVersion, "StartDBCustomNodes")
+    
+    
+    return
+}
+
+func NewStartDBCustomNodesResponse() (response *StartDBCustomNodesResponse) {
+    response = &StartDBCustomNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartDBCustomNodes
+// 该接口（StartDBCustomNodes）用于开机 DB Custom 节点。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) StartDBCustomNodes(request *StartDBCustomNodesRequest) (response *StartDBCustomNodesResponse, err error) {
+    return c.StartDBCustomNodesWithContext(context.Background(), request)
+}
+
+// StartDBCustomNodes
+// 该接口（StartDBCustomNodes）用于开机 DB Custom 节点。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) StartDBCustomNodesWithContext(ctx context.Context, request *StartDBCustomNodesRequest) (response *StartDBCustomNodesResponse, err error) {
+    if request == nil {
+        request = NewStartDBCustomNodesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "StartDBCustomNodes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartDBCustomNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartDBCustomNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopDBCustomNodesRequest() (request *StopDBCustomNodesRequest) {
+    request = &StopDBCustomNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbdc", APIVersion, "StopDBCustomNodes")
+    
+    
+    return
+}
+
+func NewStopDBCustomNodesResponse() (response *StopDBCustomNodesResponse) {
+    response = &StopDBCustomNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopDBCustomNodes
+// 该接口（StopDBCustomNodes）用于关机 DB Custom 节点。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) StopDBCustomNodes(request *StopDBCustomNodesRequest) (response *StopDBCustomNodesResponse, err error) {
+    return c.StopDBCustomNodesWithContext(context.Background(), request)
+}
+
+// StopDBCustomNodes
+// 该接口（StopDBCustomNodes）用于关机 DB Custom 节点。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) StopDBCustomNodesWithContext(ctx context.Context, request *StopDBCustomNodesRequest) (response *StopDBCustomNodesResponse, err error) {
+    if request == nil {
+        request = NewStopDBCustomNodesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "StopDBCustomNodes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopDBCustomNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopDBCustomNodesResponse()
     err = c.Send(request, response)
     return
 }

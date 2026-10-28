@@ -6640,6 +6640,60 @@ func (r *DeleteLLMKeywordLibraryResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteLLMSdkAccessRequestParams struct {
+	// 要删除的应用id
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type DeleteLLMSdkAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要删除的应用id
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *DeleteLLMSdkAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLLMSdkAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLLMSdkAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLLMSdkAccessResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLLMSdkAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLLMSdkAccessResponseParams `json:"Response"`
+}
+
+func (r *DeleteLLMSdkAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLLMSdkAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteOwaspRuleStatusRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`

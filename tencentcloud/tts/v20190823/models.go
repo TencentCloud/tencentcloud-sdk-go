@@ -317,6 +317,9 @@ type TextToVoiceRequestParams struct {
 
 	// <p>控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效；</p>
 	EmotionIntensity *int64 `json:"EmotionIntensity,omitnil,omitempty" name:"EmotionIntensity"`
+
+	// <p>是否开启LaTeX文本朗读功能，默认为false。<br>注：</p><ul><li>该参数适用于K12教育场景，启用后，会增加一定的时延</li><li>仅支持中文文本中使用LaTeX公式</li><li>仅支持部分超自然大模型2.0音色，详情见<a href="https://cloud.tencent.com/document/product/1073/92668">音色列表</a>。</li><li>公式使用需添加定界符，支持 $...$、$$...$$<br>例：同学们看这道题，$1 + 2 = 3$，这是最基础的加法。</li></ul>
+	EnableLatex *bool `json:"EnableLatex,omitnil,omitempty" name:"EnableLatex"`
 }
 
 type TextToVoiceRequest struct {
@@ -366,6 +369,9 @@ type TextToVoiceRequest struct {
 
 	// <p>控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效；</p>
 	EmotionIntensity *int64 `json:"EmotionIntensity,omitnil,omitempty" name:"EmotionIntensity"`
+
+	// <p>是否开启LaTeX文本朗读功能，默认为false。<br>注：</p><ul><li>该参数适用于K12教育场景，启用后，会增加一定的时延</li><li>仅支持中文文本中使用LaTeX公式</li><li>仅支持部分超自然大模型2.0音色，详情见<a href="https://cloud.tencent.com/document/product/1073/92668">音色列表</a>。</li><li>公式使用需添加定界符，支持 $...$、$$...$$<br>例：同学们看这道题，$1 + 2 = 3$，这是最基础的加法。</li></ul>
+	EnableLatex *bool `json:"EnableLatex,omitnil,omitempty" name:"EnableLatex"`
 }
 
 func (r *TextToVoiceRequest) ToJsonString() string {
@@ -395,6 +401,7 @@ func (r *TextToVoiceRequest) FromJsonString(s string) error {
 	delete(f, "SegmentRate")
 	delete(f, "EmotionCategory")
 	delete(f, "EmotionIntensity")
+	delete(f, "EnableLatex")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToVoiceRequest has unknown keys!", "")
 	}

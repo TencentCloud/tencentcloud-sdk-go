@@ -1204,6 +1204,91 @@ func (r *CreatePolicyRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserQuotaRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 配额类型，UID或GID
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// 配额对象名称，对应UID或者GID的值
+	QuotaObjectName *string `json:"QuotaObjectName,omitnil,omitempty" name:"QuotaObjectName"`
+
+	// 容量配额（需带单位G）
+	QuotaSizeLimit *string `json:"QuotaSizeLimit,omitnil,omitempty" name:"QuotaSizeLimit"`
+
+	// 文件数配额
+	QuotaFilesLimit *string `json:"QuotaFilesLimit,omitnil,omitempty" name:"QuotaFilesLimit"`
+}
+
+type CreateUserQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 配额类型，UID或GID
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// 配额对象名称，对应UID或者GID的值
+	QuotaObjectName *string `json:"QuotaObjectName,omitnil,omitempty" name:"QuotaObjectName"`
+
+	// 容量配额（需带单位G）
+	QuotaSizeLimit *string `json:"QuotaSizeLimit,omitnil,omitempty" name:"QuotaSizeLimit"`
+
+	// 文件数配额
+	QuotaFilesLimit *string `json:"QuotaFilesLimit,omitnil,omitempty" name:"QuotaFilesLimit"`
+}
+
+func (r *CreateUserQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "QuotaType")
+	delete(f, "QuotaObjectName")
+	delete(f, "QuotaSizeLimit")
+	delete(f, "QuotaFilesLimit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserQuotaResponseParams struct {
+	// 配额id
+	QuotaId *string `json:"QuotaId,omitnil,omitempty" name:"QuotaId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateUserQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserQuotaResponseParams `json:"Response"`
+}
+
+func (r *CreateUserQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CustomerClusterAttr struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -1623,6 +1708,67 @@ func (r *DeletePolicyRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePolicyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserQuotaRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 配额id
+	QuotaId *string `json:"QuotaId,omitnil,omitempty" name:"QuotaId"`
+}
+
+type DeleteUserQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 配额id
+	QuotaId *string `json:"QuotaId,omitnil,omitempty" name:"QuotaId"`
+}
+
+func (r *DeleteUserQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "QuotaId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserQuotaResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteUserQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteUserQuotaResponseParams `json:"Response"`
+}
+
+func (r *DeleteUserQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2479,6 +2625,84 @@ func (r *DescribePolicyRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePolicyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserQuotaRequestParams struct {
+	// <p>文件系统id</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>QuotaId列表</p>
+	QuotaIds []*string `json:"QuotaIds,omitnil,omitempty" name:"QuotaIds"`
+
+	// <p>配额类型</p>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// <p>配额对象名称列表</p>
+	QuotaObjectNames []*string `json:"QuotaObjectNames,omitnil,omitempty" name:"QuotaObjectNames"`
+}
+
+type DescribeUserQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件系统id</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>QuotaId列表</p>
+	QuotaIds []*string `json:"QuotaIds,omitnil,omitempty" name:"QuotaIds"`
+
+	// <p>配额类型</p>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// <p>配额对象名称列表</p>
+	QuotaObjectNames []*string `json:"QuotaObjectNames,omitnil,omitempty" name:"QuotaObjectNames"`
+}
+
+func (r *DescribeUserQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "QuotaIds")
+	delete(f, "QuotaType")
+	delete(f, "QuotaObjectNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserQuotaResponseParams struct {
+	// <p>配额信息列表</p>
+	QuotaList []*UserQuotaInfo `json:"QuotaList,omitnil,omitempty" name:"QuotaList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserQuotaResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3872,4 +4096,117 @@ func (r *UpdateLoadTaskPriorityResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateLoadTaskPriorityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateUserQuotaRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 配额id
+	QuotaId *string `json:"QuotaId,omitnil,omitempty" name:"QuotaId"`
+
+	// 容量配额限定值
+	QuotaSizeLimit *string `json:"QuotaSizeLimit,omitnil,omitempty" name:"QuotaSizeLimit"`
+
+	// 文件数配额限定值
+	QuotaFilesLimit *string `json:"QuotaFilesLimit,omitnil,omitempty" name:"QuotaFilesLimit"`
+}
+
+type UpdateUserQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 配额id
+	QuotaId *string `json:"QuotaId,omitnil,omitempty" name:"QuotaId"`
+
+	// 容量配额限定值
+	QuotaSizeLimit *string `json:"QuotaSizeLimit,omitnil,omitempty" name:"QuotaSizeLimit"`
+
+	// 文件数配额限定值
+	QuotaFilesLimit *string `json:"QuotaFilesLimit,omitnil,omitempty" name:"QuotaFilesLimit"`
+}
+
+func (r *UpdateUserQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateUserQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "QuotaId")
+	delete(f, "QuotaSizeLimit")
+	delete(f, "QuotaFilesLimit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateUserQuotaResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateUserQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateUserQuotaResponseParams `json:"Response"`
+}
+
+func (r *UpdateUserQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateUserQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UserQuotaInfo struct {
+	// 配额id
+	QuotaId *string `json:"QuotaId,omitnil,omitempty" name:"QuotaId"`
+
+	// 配额类型
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// 配额对象名称，对应UID/GID的值
+	QuotaObjectName *string `json:"QuotaObjectName,omitnil,omitempty" name:"QuotaObjectName"`
+
+	// 容量配额限定值
+	QuotaSizeLimit *string `json:"QuotaSizeLimit,omitnil,omitempty" name:"QuotaSizeLimit"`
+
+	// 已使用容量配额
+	QuotaSizeUsed *string `json:"QuotaSizeUsed,omitnil,omitempty" name:"QuotaSizeUsed"`
+
+	// 容量配额使用占比
+	QuotaSizeUsedPercent *string `json:"QuotaSizeUsedPercent,omitnil,omitempty" name:"QuotaSizeUsedPercent"`
+
+	// 文件数配额限定值
+	QuotaFilesLimit *string `json:"QuotaFilesLimit,omitnil,omitempty" name:"QuotaFilesLimit"`
+
+	// 已使用文件数配额
+	QuotaFilesUsed *string `json:"QuotaFilesUsed,omitnil,omitempty" name:"QuotaFilesUsed"`
+
+	// 文件数配额使用占比
+	QuotaFilesUsedPercent *string `json:"QuotaFilesUsedPercent,omitnil,omitempty" name:"QuotaFilesUsedPercent"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 配额状态：creating 配置中 active 已生效 modify 修改中
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }

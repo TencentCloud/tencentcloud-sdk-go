@@ -4397,6 +4397,64 @@ func (c *Client) RemoveWorkspaceGroupsWithContext(ctx context.Context, request *
     return
 }
 
+func NewRemoveWorkspaceUsersRequest() (request *RemoveWorkspaceUsersRequest) {
+    request = &RemoveWorkspaceUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "RemoveWorkspaceUsers")
+    
+    
+    return
+}
+
+func NewRemoveWorkspaceUsersResponse() (response *RemoveWorkspaceUsersResponse) {
+    response = &RemoveWorkspaceUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveWorkspaceUsers
+// <p>批量移除工作空间用户（单次最多10个；单个 UIN 失败不影响其他 UIN 移除，成败以 SuccessUins/FailItems 为准）</p>
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) RemoveWorkspaceUsers(request *RemoveWorkspaceUsersRequest) (response *RemoveWorkspaceUsersResponse, err error) {
+    return c.RemoveWorkspaceUsersWithContext(context.Background(), request)
+}
+
+// RemoveWorkspaceUsers
+// <p>批量移除工作空间用户（单次最多10个；单个 UIN 失败不影响其他 UIN 移除，成败以 SuccessUins/FailItems 为准）</p>
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) RemoveWorkspaceUsersWithContext(ctx context.Context, request *RemoveWorkspaceUsersRequest) (response *RemoveWorkspaceUsersResponse, err error) {
+    if request == nil {
+        request = NewRemoveWorkspaceUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "RemoveWorkspaceUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveWorkspaceUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveWorkspaceUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRerunWorkflowRunRequest() (request *RerunWorkflowRunRequest) {
     request = &RerunWorkflowRunRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6229,6 +6287,64 @@ func (c *Client) UpdateWorkspaceGroupsRolesWithContext(ctx context.Context, requ
     return
 }
 
+func NewUpdateWorkspaceGroupsTagsRequest() (request *UpdateWorkspaceGroupsTagsRequest) {
+    request = &UpdateWorkspaceGroupsTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateWorkspaceGroupsTags")
+    
+    
+    return
+}
+
+func NewUpdateWorkspaceGroupsTagsResponse() (response *UpdateWorkspaceGroupsTagsResponse) {
+    response = &UpdateWorkspaceGroupsTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateWorkspaceGroupsTags
+// 修改工作空间用户组标签
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GROUPIDSEMPTY = "InvalidParameterValue.GroupIdsEmpty"
+//  INVALIDPARAMETERVALUE_INVALIDTAGID = "InvalidParameterValue.InvalidTagId"
+//  INVALIDPARAMETERVALUE_INVALIDTAGVALUEID = "InvalidParameterValue.InvalidTagValueId"
+//  INVALIDPARAMETERVALUE_TAGNOTEXIST = "InvalidParameterValue.TagNotExist"
+//  INVALIDPARAMETERVALUE_TAGVALUENOTEXIST = "InvalidParameterValue.TagValueNotExist"
+func (c *Client) UpdateWorkspaceGroupsTags(request *UpdateWorkspaceGroupsTagsRequest) (response *UpdateWorkspaceGroupsTagsResponse, err error) {
+    return c.UpdateWorkspaceGroupsTagsWithContext(context.Background(), request)
+}
+
+// UpdateWorkspaceGroupsTags
+// 修改工作空间用户组标签
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GROUPIDSEMPTY = "InvalidParameterValue.GroupIdsEmpty"
+//  INVALIDPARAMETERVALUE_INVALIDTAGID = "InvalidParameterValue.InvalidTagId"
+//  INVALIDPARAMETERVALUE_INVALIDTAGVALUEID = "InvalidParameterValue.InvalidTagValueId"
+//  INVALIDPARAMETERVALUE_TAGNOTEXIST = "InvalidParameterValue.TagNotExist"
+//  INVALIDPARAMETERVALUE_TAGVALUENOTEXIST = "InvalidParameterValue.TagValueNotExist"
+func (c *Client) UpdateWorkspaceGroupsTagsWithContext(ctx context.Context, request *UpdateWorkspaceGroupsTagsRequest) (response *UpdateWorkspaceGroupsTagsResponse, err error) {
+    if request == nil {
+        request = NewUpdateWorkspaceGroupsTagsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateWorkspaceGroupsTags")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateWorkspaceGroupsTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateWorkspaceGroupsTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateWorkspaceRoleRequest() (request *UpdateWorkspaceRoleRequest) {
     request = &UpdateWorkspaceRoleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6252,37 +6368,11 @@ func NewUpdateWorkspaceRoleResponse() (response *UpdateWorkspaceRoleResponse) {
 // 更新工作空间角色
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_LABELCOUNTLIMIT = "FailedOperation.LabelCountLimit"
-//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
-//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
-//  FAILEDOPERATION_WORKFLOWCREATELOCKACQUIREFAILED = "FailedOperation.WorkflowCreateLockAcquireFailed"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_DUPLICATETASKNAMEERROR = "InvalidParameterValue.DuplicateTaskNameError"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYELEMENTCOUNTLIMIT = "InvalidParameterValue.LoopDataArrayElementCountLimit"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYJSONINVALID = "InvalidParameterValue.LoopDataArrayJsonInvalid"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAY = "InvalidParameterValue.LoopDataArrayNotJsonArray"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAYLITERAL = "InvalidParameterValue.LoopDataArrayNotJsonArrayLiteral"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUEBLANK = "InvalidParameterValue.LoopDataArrayValueBlank"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUELENGTHLIMIT = "InvalidParameterValue.LoopDataArrayValueLengthLimit"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVARIABLEEXPRESSIONINVALID = "InvalidParameterValue.LoopDataArrayVariableExpressionInvalid"
-//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
-//  INVALIDPARAMETERVALUE_TASKHOOKVALIDATIONFAILED = "InvalidParameterValue.TaskHookValidationFailed"
-//  INVALIDPARAMETERVALUE_TASKNAMECONTAINSILLEGALCHARACTERSERROR = "InvalidParameterValue.TaskNameContainsIllegalCharactersError"
-//  INVALIDPARAMETERVALUE_TASKNAMEEXCEEDSLIMITERROR = "InvalidParameterValue.TaskNameExceedsLimitError"
-//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTRESOURCEGROUP = "InvalidParameterValue.TaskTypeNotSupportResourceGroup"
-//  INVALIDPARAMETERVALUE_TASKTYPEPROPERTYKEYVALUEREQUESTREQUIREDERROR = "InvalidParameterValue.TaskTypePropertyKeyValueRequestRequiredError"
-//  INVALIDPARAMETERVALUE_WORKFLOWNAMEEXISTS = "InvalidParameterValue.WorkflowNameExists"
-//  INVALIDPARAMETERVALUE_WORKFLOWNAMEINVALID = "InvalidParameterValue.WorkflowNameInvalid"
-//  INVALIDPARAMETERVALUE_WORKFLOWSTARTTIMEAFTERENDTIMEERROR = "InvalidParameterValue.WorkflowStartTimeAfterEndTimeError"
-//  INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_WORKFLOWNOTEXIST = "ResourceNotFound.WorkflowNotExist"
-//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
-//  RESOURCENOTFOUND_WORKFLOWTRIGGERNOTFOUND = "ResourceNotFound.WorkflowTriggerNotFound"
+//  INVALIDPARAMETERVALUE_GROUPIDSEMPTY = "InvalidParameterValue.GroupIdsEmpty"
+//  INVALIDPARAMETERVALUE_INVALIDTAGID = "InvalidParameterValue.InvalidTagId"
+//  INVALIDPARAMETERVALUE_INVALIDTAGVALUEID = "InvalidParameterValue.InvalidTagValueId"
+//  INVALIDPARAMETERVALUE_TAGNOTEXIST = "InvalidParameterValue.TagNotExist"
+//  INVALIDPARAMETERVALUE_TAGVALUENOTEXIST = "InvalidParameterValue.TagValueNotExist"
 func (c *Client) UpdateWorkspaceRole(request *UpdateWorkspaceRoleRequest) (response *UpdateWorkspaceRoleResponse, err error) {
     return c.UpdateWorkspaceRoleWithContext(context.Background(), request)
 }
@@ -6291,37 +6381,11 @@ func (c *Client) UpdateWorkspaceRole(request *UpdateWorkspaceRoleRequest) (respo
 // 更新工作空间角色
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_LABELCOUNTLIMIT = "FailedOperation.LabelCountLimit"
-//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
-//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
-//  FAILEDOPERATION_WORKFLOWCREATELOCKACQUIREFAILED = "FailedOperation.WorkflowCreateLockAcquireFailed"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_DUPLICATETASKNAMEERROR = "InvalidParameterValue.DuplicateTaskNameError"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYELEMENTCOUNTLIMIT = "InvalidParameterValue.LoopDataArrayElementCountLimit"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYJSONINVALID = "InvalidParameterValue.LoopDataArrayJsonInvalid"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAY = "InvalidParameterValue.LoopDataArrayNotJsonArray"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAYLITERAL = "InvalidParameterValue.LoopDataArrayNotJsonArrayLiteral"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUEBLANK = "InvalidParameterValue.LoopDataArrayValueBlank"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUELENGTHLIMIT = "InvalidParameterValue.LoopDataArrayValueLengthLimit"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVARIABLEEXPRESSIONINVALID = "InvalidParameterValue.LoopDataArrayVariableExpressionInvalid"
-//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
-//  INVALIDPARAMETERVALUE_TASKHOOKVALIDATIONFAILED = "InvalidParameterValue.TaskHookValidationFailed"
-//  INVALIDPARAMETERVALUE_TASKNAMECONTAINSILLEGALCHARACTERSERROR = "InvalidParameterValue.TaskNameContainsIllegalCharactersError"
-//  INVALIDPARAMETERVALUE_TASKNAMEEXCEEDSLIMITERROR = "InvalidParameterValue.TaskNameExceedsLimitError"
-//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTRESOURCEGROUP = "InvalidParameterValue.TaskTypeNotSupportResourceGroup"
-//  INVALIDPARAMETERVALUE_TASKTYPEPROPERTYKEYVALUEREQUESTREQUIREDERROR = "InvalidParameterValue.TaskTypePropertyKeyValueRequestRequiredError"
-//  INVALIDPARAMETERVALUE_WORKFLOWNAMEEXISTS = "InvalidParameterValue.WorkflowNameExists"
-//  INVALIDPARAMETERVALUE_WORKFLOWNAMEINVALID = "InvalidParameterValue.WorkflowNameInvalid"
-//  INVALIDPARAMETERVALUE_WORKFLOWSTARTTIMEAFTERENDTIMEERROR = "InvalidParameterValue.WorkflowStartTimeAfterEndTimeError"
-//  INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_WORKFLOWNOTEXIST = "ResourceNotFound.WorkflowNotExist"
-//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
-//  RESOURCENOTFOUND_WORKFLOWTRIGGERNOTFOUND = "ResourceNotFound.WorkflowTriggerNotFound"
+//  INVALIDPARAMETERVALUE_GROUPIDSEMPTY = "InvalidParameterValue.GroupIdsEmpty"
+//  INVALIDPARAMETERVALUE_INVALIDTAGID = "InvalidParameterValue.InvalidTagId"
+//  INVALIDPARAMETERVALUE_INVALIDTAGVALUEID = "InvalidParameterValue.InvalidTagValueId"
+//  INVALIDPARAMETERVALUE_TAGNOTEXIST = "InvalidParameterValue.TagNotExist"
+//  INVALIDPARAMETERVALUE_TAGVALUENOTEXIST = "InvalidParameterValue.TagValueNotExist"
 func (c *Client) UpdateWorkspaceRoleWithContext(ctx context.Context, request *UpdateWorkspaceRoleRequest) (response *UpdateWorkspaceRoleResponse, err error) {
     if request == nil {
         request = NewUpdateWorkspaceRoleRequest()
@@ -6362,37 +6426,11 @@ func NewUpdateWorkspaceUsersRolesResponse() (response *UpdateWorkspaceUsersRoles
 // 修改工作空间用户角色
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_LABELCOUNTLIMIT = "FailedOperation.LabelCountLimit"
-//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
-//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
-//  FAILEDOPERATION_WORKFLOWCREATELOCKACQUIREFAILED = "FailedOperation.WorkflowCreateLockAcquireFailed"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_DUPLICATETASKNAMEERROR = "InvalidParameterValue.DuplicateTaskNameError"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYELEMENTCOUNTLIMIT = "InvalidParameterValue.LoopDataArrayElementCountLimit"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYJSONINVALID = "InvalidParameterValue.LoopDataArrayJsonInvalid"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAY = "InvalidParameterValue.LoopDataArrayNotJsonArray"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAYLITERAL = "InvalidParameterValue.LoopDataArrayNotJsonArrayLiteral"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUEBLANK = "InvalidParameterValue.LoopDataArrayValueBlank"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUELENGTHLIMIT = "InvalidParameterValue.LoopDataArrayValueLengthLimit"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVARIABLEEXPRESSIONINVALID = "InvalidParameterValue.LoopDataArrayVariableExpressionInvalid"
-//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
-//  INVALIDPARAMETERVALUE_TASKHOOKVALIDATIONFAILED = "InvalidParameterValue.TaskHookValidationFailed"
-//  INVALIDPARAMETERVALUE_TASKNAMECONTAINSILLEGALCHARACTERSERROR = "InvalidParameterValue.TaskNameContainsIllegalCharactersError"
-//  INVALIDPARAMETERVALUE_TASKNAMEEXCEEDSLIMITERROR = "InvalidParameterValue.TaskNameExceedsLimitError"
-//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTRESOURCEGROUP = "InvalidParameterValue.TaskTypeNotSupportResourceGroup"
-//  INVALIDPARAMETERVALUE_TASKTYPEPROPERTYKEYVALUEREQUESTREQUIREDERROR = "InvalidParameterValue.TaskTypePropertyKeyValueRequestRequiredError"
-//  INVALIDPARAMETERVALUE_WORKFLOWNAMEEXISTS = "InvalidParameterValue.WorkflowNameExists"
-//  INVALIDPARAMETERVALUE_WORKFLOWNAMEINVALID = "InvalidParameterValue.WorkflowNameInvalid"
-//  INVALIDPARAMETERVALUE_WORKFLOWSTARTTIMEAFTERENDTIMEERROR = "InvalidParameterValue.WorkflowStartTimeAfterEndTimeError"
-//  INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_WORKFLOWNOTEXIST = "ResourceNotFound.WorkflowNotExist"
-//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
-//  RESOURCENOTFOUND_WORKFLOWTRIGGERNOTFOUND = "ResourceNotFound.WorkflowTriggerNotFound"
+//  INVALIDPARAMETERVALUE_GROUPIDSEMPTY = "InvalidParameterValue.GroupIdsEmpty"
+//  INVALIDPARAMETERVALUE_INVALIDTAGID = "InvalidParameterValue.InvalidTagId"
+//  INVALIDPARAMETERVALUE_INVALIDTAGVALUEID = "InvalidParameterValue.InvalidTagValueId"
+//  INVALIDPARAMETERVALUE_TAGNOTEXIST = "InvalidParameterValue.TagNotExist"
+//  INVALIDPARAMETERVALUE_TAGVALUENOTEXIST = "InvalidParameterValue.TagValueNotExist"
 func (c *Client) UpdateWorkspaceUsersRoles(request *UpdateWorkspaceUsersRolesRequest) (response *UpdateWorkspaceUsersRolesResponse, err error) {
     return c.UpdateWorkspaceUsersRolesWithContext(context.Background(), request)
 }
@@ -6401,37 +6439,11 @@ func (c *Client) UpdateWorkspaceUsersRoles(request *UpdateWorkspaceUsersRolesReq
 // 修改工作空间用户角色
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
-//  FAILEDOPERATION_LABELCOUNTLIMIT = "FailedOperation.LabelCountLimit"
-//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
-//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
-//  FAILEDOPERATION_WORKFLOWCREATELOCKACQUIREFAILED = "FailedOperation.WorkflowCreateLockAcquireFailed"
-//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_DUPLICATETASKNAMEERROR = "InvalidParameterValue.DuplicateTaskNameError"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYELEMENTCOUNTLIMIT = "InvalidParameterValue.LoopDataArrayElementCountLimit"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYJSONINVALID = "InvalidParameterValue.LoopDataArrayJsonInvalid"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAY = "InvalidParameterValue.LoopDataArrayNotJsonArray"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYNOTJSONARRAYLITERAL = "InvalidParameterValue.LoopDataArrayNotJsonArrayLiteral"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUEBLANK = "InvalidParameterValue.LoopDataArrayValueBlank"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVALUELENGTHLIMIT = "InvalidParameterValue.LoopDataArrayValueLengthLimit"
-//  INVALIDPARAMETERVALUE_LOOPDATAARRAYVARIABLEEXPRESSIONINVALID = "InvalidParameterValue.LoopDataArrayVariableExpressionInvalid"
-//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
-//  INVALIDPARAMETERVALUE_TASKHOOKVALIDATIONFAILED = "InvalidParameterValue.TaskHookValidationFailed"
-//  INVALIDPARAMETERVALUE_TASKNAMECONTAINSILLEGALCHARACTERSERROR = "InvalidParameterValue.TaskNameContainsIllegalCharactersError"
-//  INVALIDPARAMETERVALUE_TASKNAMEEXCEEDSLIMITERROR = "InvalidParameterValue.TaskNameExceedsLimitError"
-//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTRESOURCEGROUP = "InvalidParameterValue.TaskTypeNotSupportResourceGroup"
-//  INVALIDPARAMETERVALUE_TASKTYPEPROPERTYKEYVALUEREQUESTREQUIREDERROR = "InvalidParameterValue.TaskTypePropertyKeyValueRequestRequiredError"
-//  INVALIDPARAMETERVALUE_WORKFLOWNAMEEXISTS = "InvalidParameterValue.WorkflowNameExists"
-//  INVALIDPARAMETERVALUE_WORKFLOWNAMEINVALID = "InvalidParameterValue.WorkflowNameInvalid"
-//  INVALIDPARAMETERVALUE_WORKFLOWSTARTTIMEAFTERENDTIMEERROR = "InvalidParameterValue.WorkflowStartTimeAfterEndTimeError"
-//  INVALIDPARAMETERVALUE_WORKFLOWTRIGGERADVANCEDCONFIGERROR = "InvalidParameterValue.WorkflowTriggerAdvancedConfigError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_WORKFLOWNOTEXIST = "ResourceNotFound.WorkflowNotExist"
-//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
-//  RESOURCENOTFOUND_WORKFLOWTRIGGERNOTFOUND = "ResourceNotFound.WorkflowTriggerNotFound"
+//  INVALIDPARAMETERVALUE_GROUPIDSEMPTY = "InvalidParameterValue.GroupIdsEmpty"
+//  INVALIDPARAMETERVALUE_INVALIDTAGID = "InvalidParameterValue.InvalidTagId"
+//  INVALIDPARAMETERVALUE_INVALIDTAGVALUEID = "InvalidParameterValue.InvalidTagValueId"
+//  INVALIDPARAMETERVALUE_TAGNOTEXIST = "InvalidParameterValue.TagNotExist"
+//  INVALIDPARAMETERVALUE_TAGVALUENOTEXIST = "InvalidParameterValue.TagValueNotExist"
 func (c *Client) UpdateWorkspaceUsersRolesWithContext(ctx context.Context, request *UpdateWorkspaceUsersRolesRequest) (response *UpdateWorkspaceUsersRolesResponse, err error) {
     if request == nil {
         request = NewUpdateWorkspaceUsersRolesRequest()
@@ -6445,6 +6457,84 @@ func (c *Client) UpdateWorkspaceUsersRolesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewUpdateWorkspaceUsersRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateWorkspaceUsersTagsRequest() (request *UpdateWorkspaceUsersTagsRequest) {
+    request = &UpdateWorkspaceUsersTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateWorkspaceUsersTags")
+    
+    
+    return
+}
+
+func NewUpdateWorkspaceUsersTagsResponse() (response *UpdateWorkspaceUsersTagsResponse) {
+    response = &UpdateWorkspaceUsersTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateWorkspaceUsersTags
+// 修改工作空间用户标签
+//
+// 本接口为整体覆盖式修改：每次调用以请求中的 Tags 为准，替换指定用户的全部直绑标签，而非增量追加。
+//
+// 1、传入 Tags（含 TagId/TagValueId）：替换为该批标签
+//
+// 2、不传 Tags 或传入空数组（"Tags": []）：将清除 UserUins 中所有用户的全部直绑标签，且操作不可逆，请谨慎调用
+//
+// 3、多个用户将共享同一批 Tags；仅修改单个用户时，UserUins 请只传该用户
+//
+// 4、仅清除用户直绑（Source=1）的标签，用户从用户组继承的标签（Source=2）不受影响
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDTAGID = "InvalidParameterValue.InvalidTagId"
+//  INVALIDPARAMETERVALUE_INVALIDTAGVALUEID = "InvalidParameterValue.InvalidTagValueId"
+//  INVALIDPARAMETERVALUE_TAGNOTEXIST = "InvalidParameterValue.TagNotExist"
+//  INVALIDPARAMETERVALUE_TAGVALUENOTEXIST = "InvalidParameterValue.TagValueNotExist"
+//  INVALIDPARAMETERVALUE_USERUINSEMPTY = "InvalidParameterValue.UserUinsEmpty"
+func (c *Client) UpdateWorkspaceUsersTags(request *UpdateWorkspaceUsersTagsRequest) (response *UpdateWorkspaceUsersTagsResponse, err error) {
+    return c.UpdateWorkspaceUsersTagsWithContext(context.Background(), request)
+}
+
+// UpdateWorkspaceUsersTags
+// 修改工作空间用户标签
+//
+// 本接口为整体覆盖式修改：每次调用以请求中的 Tags 为准，替换指定用户的全部直绑标签，而非增量追加。
+//
+// 1、传入 Tags（含 TagId/TagValueId）：替换为该批标签
+//
+// 2、不传 Tags 或传入空数组（"Tags": []）：将清除 UserUins 中所有用户的全部直绑标签，且操作不可逆，请谨慎调用
+//
+// 3、多个用户将共享同一批 Tags；仅修改单个用户时，UserUins 请只传该用户
+//
+// 4、仅清除用户直绑（Source=1）的标签，用户从用户组继承的标签（Source=2）不受影响
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDTAGID = "InvalidParameterValue.InvalidTagId"
+//  INVALIDPARAMETERVALUE_INVALIDTAGVALUEID = "InvalidParameterValue.InvalidTagValueId"
+//  INVALIDPARAMETERVALUE_TAGNOTEXIST = "InvalidParameterValue.TagNotExist"
+//  INVALIDPARAMETERVALUE_TAGVALUENOTEXIST = "InvalidParameterValue.TagValueNotExist"
+//  INVALIDPARAMETERVALUE_USERUINSEMPTY = "InvalidParameterValue.UserUinsEmpty"
+func (c *Client) UpdateWorkspaceUsersTagsWithContext(ctx context.Context, request *UpdateWorkspaceUsersTagsRequest) (response *UpdateWorkspaceUsersTagsResponse, err error) {
+    if request == nil {
+        request = NewUpdateWorkspaceUsersTagsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateWorkspaceUsersTags")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateWorkspaceUsersTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateWorkspaceUsersTagsResponse()
     err = c.Send(request, response)
     return
 }

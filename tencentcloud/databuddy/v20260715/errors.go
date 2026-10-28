@@ -95,7 +95,7 @@ const (
 	// 资源不存在或不可见：ID 不存在、不属于当前工作空间或已删除；TaskRunId 传入非执行层 JobId（如调度实例 WorkflowTaskRunId）时返回其 JobNotFound 子码
 	INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
 
-	// 未知错误
+	// 内部未知错误，系统发生无法预期的异常。
 	INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 
 	// 参数错误。
@@ -119,6 +119,9 @@ const (
 	// 同一工作流内存在重名任务
 	INVALIDPARAMETERVALUE_DUPLICATETASKNAMEERROR = "InvalidParameterValue.DuplicateTaskNameError"
 
+	// 用户组ID列表不能为空
+	INVALIDPARAMETERVALUE_GROUPIDSEMPTY = "InvalidParameterValue.GroupIdsEmpty"
+
 	// 用户组Id不存在
 	INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
 
@@ -127,6 +130,12 @@ const (
 
 	// 参数错误
 	INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+
+	// 标签ID格式或取值无效
+	INVALIDPARAMETERVALUE_INVALIDTAGID = "InvalidParameterValue.InvalidTagId"
+
+	// 标签值ID格式或取值无效
+	INVALIDPARAMETERVALUE_INVALIDTAGVALUEID = "InvalidParameterValue.InvalidTagValueId"
 
 	// 工作流列表筛选字段Key值错误
 	INVALIDPARAMETERVALUE_LISTWORKFLOWFILTERPARAMERROR = "InvalidParameterValue.ListWorkflowFilterParamError"
@@ -164,6 +173,12 @@ const (
 	// 参数 <parameter> 不能为 null。
 	INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
 
+	// 指定的标签不存在
+	INVALIDPARAMETERVALUE_TAGNOTEXIST = "InvalidParameterValue.TagNotExist"
+
+	// 指定的标签值不存在
+	INVALIDPARAMETERVALUE_TAGVALUENOTEXIST = "InvalidParameterValue.TagValueNotExist"
+
 	// 引用对象不存在或已被删除
 	INVALIDPARAMETERVALUE_TASKHOOKVALIDATIONFAILED = "InvalidParameterValue.TaskHookValidationFailed"
 
@@ -178,6 +193,9 @@ const (
 
 	// 任务类型属性值在入参时为必填，但是并没有传递
 	INVALIDPARAMETERVALUE_TASKTYPEPROPERTYKEYVALUEREQUESTREQUIREDERROR = "InvalidParameterValue.TaskTypePropertyKeyValueRequestRequiredError"
+
+	// 用户Uin列表不能为空
+	INVALIDPARAMETERVALUE_USERUINSEMPTY = "InvalidParameterValue.UserUinsEmpty"
 
 	// 结束时间不能早于开始时间
 	INVALIDPARAMETERVALUE_WORKFLOWENDTIMELESSSTARTTIME = "InvalidParameterValue.WorkflowEndTimeLessStartTime"
