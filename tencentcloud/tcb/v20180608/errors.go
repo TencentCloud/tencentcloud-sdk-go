@@ -56,6 +56,21 @@ const (
 	// 函数不在可删除的稳态
 	FAILEDOPERATION_DELETEFUNCTION = "FailedOperation.DeleteFunction"
 
+	// 开通 PG Document 插件时，实例缺少依赖的插件
+	FAILEDOPERATION_DOCUMENTDEPENDENCYFILESMISSING = "FailedOperation.DocumentDependencyFilesMissing"
+
+	// 开通 PG Document 插件时，实例缺少 pgdoc 或 pgdoc_core 等核心参数
+	FAILEDOPERATION_DOCUMENTEXTENSIONFILESMISSING = "FailedOperation.DocumentExtensionFilesMissing"
+
+	// 开通 PG Document 插件时，由于核心插件或依赖插件被黑名单禁用（通常属于安全风险）
+	FAILEDOPERATION_DOCUMENTEXTENSIONUNAVAILABLE = "FailedOperation.DocumentExtensionUnavailable"
+
+	// 开通 PG Document 插件时与已有的 Flexdb 数据库能力冲突
+	FAILEDOPERATION_DOCUMENTFLEXDBCOEXISTENCE = "FailedOperation.DocumentFlexdbCoexistence"
+
+	// 开通 PG Document 插件时，缺少核心类库
+	FAILEDOPERATION_DOCUMENTLIBRARYUNAVAILABLE = "FailedOperation.DocumentLibraryUnavailable"
+
 	// FailedOperation.DuplicatedData
 	FAILEDOPERATION_DUPLICATEDDATA = "FailedOperation.DuplicatedData"
 
@@ -100,6 +115,9 @@ const (
 
 	// 套餐包不支持
 	FAILEDOPERATION_PACKAGEUNSUPPORTED = "FailedOperation.PackageUnsupported"
+
+	// 操作失败，后台依赖平台错误。
+	FAILEDOPERATION_PLATFORMERROR = "FailedOperation.PlatformError"
 
 	// 查询异常
 	FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
@@ -256,6 +274,12 @@ const (
 
 	// 非内部账号禁止操作
 	OPERATIONDENIED_NONINTERNALACCOUNT = "OperationDenied.NonInternalAccount"
+
+	// 操作被拒绝，资源已存在。
+	OPERATIONDENIED_RESOURCEALREADYEXISTS = "OperationDenied.ResourceAlreadyExists"
+
+	// 当前操作被禁止，资源被依赖
+	OPERATIONDENIED_RESOURCEDEPENDED = "OperationDenied.ResourceDepended"
 
 	// 操作失败：资源被冻结。
 	OPERATIONDENIED_RESOURCEFROZEN = "OperationDenied.ResourceFrozen"

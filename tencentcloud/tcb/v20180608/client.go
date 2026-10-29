@@ -5681,6 +5681,92 @@ func (c *Client) DownloadFunctionWithContext(ctx context.Context, request *Downl
     return
 }
 
+func NewEnablePGDocumentExtRequest() (request *EnablePGDocumentExtRequest) {
+    request = &EnablePGDocumentExtRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "EnablePGDocumentExt")
+    
+    
+    return
+}
+
+func NewEnablePGDocumentExtResponse() (response *EnablePGDocumentExtResponse) {
+    response = &EnablePGDocumentExtResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnablePGDocumentExt
+// 当前环境下开启 Postgresql 数据库文档插件能力，开启后会在指定  EnvId 的 PostgreSQL 实例下自动生成  pgdoc schema 以提供文档能力，不会额外产生费用，可以云开发控制或云 API 开启使用。
+//
+// 当前支持地域已环境开通时所在地域为准。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_DATASOURCEOPERATIONAUTHFAILURE = "AuthFailure.DataSourceOperationAuthFailure"
+//  FAILEDOPERATION_DOCUMENTDEPENDENCYFILESMISSING = "FailedOperation.DocumentDependencyFilesMissing"
+//  FAILEDOPERATION_DOCUMENTEXTENSIONFILESMISSING = "FailedOperation.DocumentExtensionFilesMissing"
+//  FAILEDOPERATION_DOCUMENTEXTENSIONUNAVAILABLE = "FailedOperation.DocumentExtensionUnavailable"
+//  FAILEDOPERATION_DOCUMENTFLEXDBCOEXISTENCE = "FailedOperation.DocumentFlexdbCoexistence"
+//  FAILEDOPERATION_DOCUMENTLIBRARYUNAVAILABLE = "FailedOperation.DocumentLibraryUnavailable"
+//  FAILEDOPERATION_INSTANCESTATUSCONFLICT = "FailedOperation.InstanceStatusConflict"
+//  FAILEDOPERATION_PGCONNECTERROR = "FailedOperation.PGConnectError"
+//  FAILEDOPERATION_PGEXECUTESQLERROR = "FailedOperation.PGExecuteSqlError"
+//  FAILEDOPERATION_PLATFORMERROR = "FailedOperation.PlatformError"
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_RESOURCEALREADYEXISTS = "OperationDenied.ResourceAlreadyExists"
+//  OPERATIONDENIED_RESOURCEDEPENDED = "OperationDenied.ResourceDepended"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+func (c *Client) EnablePGDocumentExt(request *EnablePGDocumentExtRequest) (response *EnablePGDocumentExtResponse, err error) {
+    return c.EnablePGDocumentExtWithContext(context.Background(), request)
+}
+
+// EnablePGDocumentExt
+// 当前环境下开启 Postgresql 数据库文档插件能力，开启后会在指定  EnvId 的 PostgreSQL 实例下自动生成  pgdoc schema 以提供文档能力，不会额外产生费用，可以云开发控制或云 API 开启使用。
+//
+// 当前支持地域已环境开通时所在地域为准。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_DATASOURCEOPERATIONAUTHFAILURE = "AuthFailure.DataSourceOperationAuthFailure"
+//  FAILEDOPERATION_DOCUMENTDEPENDENCYFILESMISSING = "FailedOperation.DocumentDependencyFilesMissing"
+//  FAILEDOPERATION_DOCUMENTEXTENSIONFILESMISSING = "FailedOperation.DocumentExtensionFilesMissing"
+//  FAILEDOPERATION_DOCUMENTEXTENSIONUNAVAILABLE = "FailedOperation.DocumentExtensionUnavailable"
+//  FAILEDOPERATION_DOCUMENTFLEXDBCOEXISTENCE = "FailedOperation.DocumentFlexdbCoexistence"
+//  FAILEDOPERATION_DOCUMENTLIBRARYUNAVAILABLE = "FailedOperation.DocumentLibraryUnavailable"
+//  FAILEDOPERATION_INSTANCESTATUSCONFLICT = "FailedOperation.InstanceStatusConflict"
+//  FAILEDOPERATION_PGCONNECTERROR = "FailedOperation.PGConnectError"
+//  FAILEDOPERATION_PGEXECUTESQLERROR = "FailedOperation.PGExecuteSqlError"
+//  FAILEDOPERATION_PLATFORMERROR = "FailedOperation.PlatformError"
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_RESOURCEALREADYEXISTS = "OperationDenied.ResourceAlreadyExists"
+//  OPERATIONDENIED_RESOURCEDEPENDED = "OperationDenied.ResourceDepended"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+func (c *Client) EnablePGDocumentExtWithContext(ctx context.Context, request *EnablePGDocumentExtRequest) (response *EnablePGDocumentExtResponse, err error) {
+    if request == nil {
+        request = NewEnablePGDocumentExtRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "EnablePGDocumentExt")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnablePGDocumentExt require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnablePGDocumentExtResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExecutePGSqlRequest() (request *ExecutePGSqlRequest) {
     request = &ExecutePGSqlRequest{
         BaseRequest: &tchttp.BaseRequest{},

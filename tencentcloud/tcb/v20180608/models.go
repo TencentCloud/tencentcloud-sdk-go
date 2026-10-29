@@ -8011,6 +8011,63 @@ type EmailTemplateConfig struct {
 	DefaultTpl *LocalizedTemplate `json:"DefaultTpl,omitnil,omitempty" name:"DefaultTpl"`
 }
 
+// Predefined struct for user
+type EnablePGDocumentExtRequestParams struct {
+	// <p>环境 id，租户级标识信息，开通环境时产生，全局唯一</p><p>参数格式：用户自定义小写英文命名 + 随机雪花字符</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+type EnablePGDocumentExtRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境 id，租户级标识信息，开通环境时产生，全局唯一</p><p>参数格式：用户自定义小写英文命名 + 随机雪花字符</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+func (r *EnablePGDocumentExtRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnablePGDocumentExtRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnablePGDocumentExtRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnablePGDocumentExtResponseParams struct {
+	// <p>是否开启成功标记</p><p>枚举值：</p><ul><li>true： 开启成功</li><li>false： 开启失败</li></ul>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnablePGDocumentExtResponse struct {
+	*tchttp.BaseResponse
+	Response *EnablePGDocumentExtResponseParams `json:"Response"`
+}
+
+func (r *EnablePGDocumentExtResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnablePGDocumentExtResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EnvBillingInfoItem struct {
 	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
