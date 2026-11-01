@@ -1767,6 +1767,9 @@ type CoefficientTierCondition struct {
 
 	// <p>video 仅 480p／720p／768p／1024p／1080p／2k／4k，统一小写；只校验全局枚举，不校验模型支持子集；列表内不重复</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// <p>是否有视频输入</p>
+	HasInputVideo *bool `json:"HasInputVideo,omitnil,omitempty" name:"HasInputVideo"`
 }
 
 type ConfigListItem struct {
@@ -13866,7 +13869,7 @@ type ModifyServiceProviderModelAttributesRequestParams struct {
 	// <p>待修改的模型的名称（原始模型名称）</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+	// <p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
 	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
 
 	// <p>新的上游模型名称</p>
@@ -13874,6 +13877,9 @@ type ModifyServiceProviderModelAttributesRequestParams struct {
 
 	// <p>新的对外模型名称</p>
 	NewModelAlias *string `json:"NewModelAlias,omitnil,omitempty" name:"NewModelAlias"`
+
+	// <p>上游模型灰度操作，支持 Set、Promote、Rollback。</p><p>入参限制：未传时沿用普通属性编辑；显式 null、空对象及未知字段拒绝。与显式传入的 NewModelName、NewModelAlias、InputModalities 互斥，包括 null 和空别名。</p><p>Set 必须提供候选 ModelName 和 1～99 的整数 Weight，可调整同一候选的比例；相同配置在资源可编辑时成功且不重复下发。Promote、Rollback 仅传 Operation，分别全量切换到候选或恢复主模型并结束灰度。外层 ModelName 定位当前主模型；响应仍为 RequestId，任务通过 DescribeAsyncJobs 查询。</p>
+	UpstreamRollout *UpstreamRolloutOperation `json:"UpstreamRollout,omitnil,omitempty" name:"UpstreamRollout"`
 }
 
 type ModifyServiceProviderModelAttributesRequest struct {
@@ -13885,7 +13891,7 @@ type ModifyServiceProviderModelAttributesRequest struct {
 	// <p>待修改的模型的名称（原始模型名称）</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+	// <p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
 	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
 
 	// <p>新的上游模型名称</p>
@@ -13893,6 +13899,9 @@ type ModifyServiceProviderModelAttributesRequest struct {
 
 	// <p>新的对外模型名称</p>
 	NewModelAlias *string `json:"NewModelAlias,omitnil,omitempty" name:"NewModelAlias"`
+
+	// <p>上游模型灰度操作，支持 Set、Promote、Rollback。</p><p>入参限制：未传时沿用普通属性编辑；显式 null、空对象及未知字段拒绝。与显式传入的 NewModelName、NewModelAlias、InputModalities 互斥，包括 null 和空别名。</p><p>Set 必须提供候选 ModelName 和 1～99 的整数 Weight，可调整同一候选的比例；相同配置在资源可编辑时成功且不重复下发。Promote、Rollback 仅传 Operation，分别全量切换到候选或恢复主模型并结束灰度。外层 ModelName 定位当前主模型；响应仍为 RequestId，任务通过 DescribeAsyncJobs 查询。</p>
+	UpstreamRollout *UpstreamRolloutOperation `json:"UpstreamRollout,omitnil,omitempty" name:"UpstreamRollout"`
 }
 
 func (r *ModifyServiceProviderModelAttributesRequest) ToJsonString() string {
@@ -13912,6 +13921,7 @@ func (r *ModifyServiceProviderModelAttributesRequest) FromJsonString(s string) e
 	delete(f, "InputModalities")
 	delete(f, "NewModelName")
 	delete(f, "NewModelAlias")
+	delete(f, "UpstreamRollout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServiceProviderModelAttributesRequest has unknown keys!", "")
 	}
@@ -16896,6 +16906,17 @@ type TypeInfo struct {
 
 	// 规格可用性
 	SpecAvailabilitySet []*SpecAvailability `json:"SpecAvailabilitySet,omitnil,omitempty" name:"SpecAvailabilitySet"`
+}
+
+type UpstreamRolloutOperation struct {
+	// <p>上游模型灰度操作类型。Set：开始灰度或调整同一候选的比例；Promote：全量切换到候选模型并结束灰度；Rollback：保留当前主模型并结束灰度。</p><p>入参限制：仅支持 Set、Promote、Rollback，区分大小写。Promote 和 Rollback 仅允许在灰度中使用，且禁止携带 ModelName、Weight。</p>
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// <p>候选上游模型的原始名称，保留名称中的斜杠。</p><p>入参限制：Operation 为 Set 时必填，非空且最长 128 个字符；不能与当前主模型相同，不能占用同一 BYOK 的其他主模型或有效灰度候选名称。Promote、Rollback 禁止传入。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>候选上游模型的灰度流量比例。</p><p>取值范围：[1, 99]</p><p>单位：%</p><p>Set 时必填，无默认值，必须为整数；拒绝 0、100、小数、布尔值及字符串。Promote、Rollback 禁止传入。比例只影响需要重新选择上游的请求，已有有效 Sticky 绑定不迁移，实际流量占比不保证等于配置比例。</p>
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
 type UserGroupInfo struct {

@@ -3456,6 +3456,77 @@ func (r *CreateReleaseResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSSETokenRequestParams struct {
+	// <p>主用户Uin</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// <p>子用户Uin</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+type CreateSSETokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>主用户Uin</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// <p>子用户Uin</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+func (r *CreateSSETokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSSETokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	delete(f, "AppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSSETokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSSETokenResponseParams struct {
+	// <p>SSE 鉴权 Token</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSSETokenResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSSETokenResponseParams `json:"Response"`
+}
+
+func (r *CreateSSETokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSSETokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSimilarQuestionRequestParams struct {
 	// <p>所属知识库 ID</p>
 	KbId *string `json:"KbId,omitnil,omitempty" name:"KbId"`

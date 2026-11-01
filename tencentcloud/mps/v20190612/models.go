@@ -3927,6 +3927,9 @@ type CloneViralAIGC struct {
 
 	// <p>模式。flagship（高级版，默认）、standard（标准版）、depthcrafter(深度提取)</p>
 	ModelTier *string `json:"ModelTier,omitnil,omitempty" name:"ModelTier"`
+
+	// <p>深度估计结果是否含音频， 默认不含</p>
+	DepthWithAudio *bool `json:"DepthWithAudio,omitnil,omitempty" name:"DepthWithAudio"`
 }
 
 type CloneViralContent struct {
@@ -3974,6 +3977,9 @@ type CloneViralPersona struct {
 
 	// <p>体型。slim / standard / athletic / chubby</p>
 	BodyType *string `json:"BodyType,omitnil,omitempty" name:"BodyType"`
+
+	// <p>人物图片</p>
+	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 }
 
 type CloneViralProduct struct {
@@ -3987,10 +3993,21 @@ type CloneViralProduct struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
+type CloneViralReference struct {
+	// <p>服饰套装参考图，多套按视频中的分段换装</p>
+	Outfits []*string `json:"Outfits,omitnil,omitempty" name:"Outfits"`
+
+	// <p>背景/场景参考图</p>
+	Backgrounds []*string `json:"Backgrounds,omitnil,omitempty" name:"Backgrounds"`
+}
+
 // Predefined struct for user
 type CloneViralRequestParams struct {
 	// <p>爆款视频Url</p>
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
+
+	// <p>处理类型</p><p>枚举值：</p><ul><li>script ： 脚本级爆款复刻</li><li>motion： 动作级爆款复刻</li><li>depth： 深度估计</li></ul>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// <p>产品信息。除深度提取外，其他模式必填</p>
 	Product *CloneViralProduct `json:"Product,omitnil,omitempty" name:"Product"`
@@ -4006,6 +4023,9 @@ type CloneViralRequestParams struct {
 
 	// <p>输出相关参数</p>
 	Output *CloneViralOutputOption `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>其他参考素材（如背景、服装）</p>
+	Reference *CloneViralReference `json:"Reference,omitnil,omitempty" name:"Reference"`
 }
 
 type CloneViralRequest struct {
@@ -4014,6 +4034,9 @@ type CloneViralRequest struct {
 	// <p>爆款视频Url</p>
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
+	// <p>处理类型</p><p>枚举值：</p><ul><li>script ： 脚本级爆款复刻</li><li>motion： 动作级爆款复刻</li><li>depth： 深度估计</li></ul>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
 	// <p>产品信息。除深度提取外，其他模式必填</p>
 	Product *CloneViralProduct `json:"Product,omitnil,omitempty" name:"Product"`
 
@@ -4028,6 +4051,9 @@ type CloneViralRequest struct {
 
 	// <p>输出相关参数</p>
 	Output *CloneViralOutputOption `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>其他参考素材（如背景、服装）</p>
+	Reference *CloneViralReference `json:"Reference,omitnil,omitempty" name:"Reference"`
 }
 
 func (r *CloneViralRequest) ToJsonString() string {
@@ -4043,11 +4069,13 @@ func (r *CloneViralRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "VideoUrl")
+	delete(f, "Mode")
 	delete(f, "Product")
 	delete(f, "AIGCParam")
 	delete(f, "ContentParam")
 	delete(f, "Persona")
 	delete(f, "Output")
+	delete(f, "Reference")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloneViralRequest has unknown keys!", "")
 	}

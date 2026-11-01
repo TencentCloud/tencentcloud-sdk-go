@@ -833,6 +833,58 @@ func (c *Client) CreateReleaseWithContext(ctx context.Context, request *CreateRe
     return
 }
 
+func NewCreateSSETokenRequest() (request *CreateSSETokenRequest) {
+    request = &CreateSSETokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreateSSEToken")
+    
+    
+    return
+}
+
+func NewCreateSSETokenResponse() (response *CreateSSETokenResponse) {
+    response = &CreateSSETokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSSEToken
+// 创建 SSE Token
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateSSEToken(request *CreateSSETokenRequest) (response *CreateSSETokenResponse, err error) {
+    return c.CreateSSETokenWithContext(context.Background(), request)
+}
+
+// CreateSSEToken
+// 创建 SSE Token
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateSSETokenWithContext(ctx context.Context, request *CreateSSETokenRequest) (response *CreateSSETokenResponse, err error) {
+    if request == nil {
+        request = NewCreateSSETokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateSSEToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSSEToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSSETokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSimilarQuestionRequest() (request *CreateSimilarQuestionRequest) {
     request = &CreateSimilarQuestionRequest{
         BaseRequest: &tchttp.BaseRequest{},

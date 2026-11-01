@@ -3196,6 +3196,9 @@ type DescribeSpanTreeByIDRequestParams struct {
 
 	// <p>是否开启云资源关联</p>
 	EnableResourceLink *bool `json:"EnableResourceLink,omitnil,omitempty" name:"EnableResourceLink"`
+
+	// <p>字符串数组，tagstag里面的key</p>
+	FilterTagKeys []*string `json:"FilterTagKeys,omitnil,omitempty" name:"FilterTagKeys"`
 }
 
 type DescribeSpanTreeByIDRequest struct {
@@ -3227,6 +3230,9 @@ type DescribeSpanTreeByIDRequest struct {
 
 	// <p>是否开启云资源关联</p>
 	EnableResourceLink *bool `json:"EnableResourceLink,omitnil,omitempty" name:"EnableResourceLink"`
+
+	// <p>字符串数组，tagstag里面的key</p>
+	FilterTagKeys []*string `json:"FilterTagKeys,omitnil,omitempty" name:"FilterTagKeys"`
 }
 
 func (r *DescribeSpanTreeByIDRequest) ToJsonString() string {
@@ -3250,6 +3256,7 @@ func (r *DescribeSpanTreeByIDRequest) FromJsonString(s string) error {
 	delete(f, "FocusSpanId")
 	delete(f, "FilterViewTagKeyList")
 	delete(f, "EnableResourceLink")
+	delete(f, "FilterTagKeys")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSpanTreeByIDRequest has unknown keys!", "")
 	}
