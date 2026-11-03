@@ -74,6 +74,16 @@ type A2ASkillItem struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
+type AgentConfig struct {
+	// <p>执行 Prompt（必填）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>Agent 唯一标识（引用 CreateAgent 创建的 Managed Agent，必填）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+}
+
 type AgentItem struct {
 	// Agent 业务 ID（全局唯一，数字字符串形态）
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -834,6 +844,121 @@ func (r *CreateAgentVersionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateScheduledTaskRequestParams struct {
+	// <p>任务名称</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>任务关联的 Agent 配置</p>
+	AgentConfig *AgentConfig `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// <p>Cron 表达式</p>
+	CronExpr *string `json:"CronExpr,omitnil,omitempty" name:"CronExpr"`
+
+	// <p>任务描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>调度类型：CRON（按 Cron 周期执行，默认）或 ONCE（单次执行）</p>
+	FrequencyType *string `json:"FrequencyType,omitnil,omitempty" name:"FrequencyType"`
+
+	// <p>生效日期开始时间（YYYY-MM-DD 格式），可选，不传时不限制开始时间</p>
+	EffectiveStart *string `json:"EffectiveStart,omitnil,omitempty" name:"EffectiveStart"`
+
+	// <p>生效日期结束时间（YYYY-MM-DD 格式），可选，不传时不限制结束时间</p>
+	EffectiveEnd *string `json:"EffectiveEnd,omitnil,omitempty" name:"EffectiveEnd"`
+
+	// <p>投递目标集合（BOT_CHANNEL / WEBHOOK 可并存）</p>
+	DeliveryTargetSet []*DeliveryTarget `json:"DeliveryTargetSet,omitnil,omitempty" name:"DeliveryTargetSet"`
+}
+
+type CreateScheduledTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务名称</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>任务关联的 Agent 配置</p>
+	AgentConfig *AgentConfig `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// <p>Cron 表达式</p>
+	CronExpr *string `json:"CronExpr,omitnil,omitempty" name:"CronExpr"`
+
+	// <p>任务描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>调度类型：CRON（按 Cron 周期执行，默认）或 ONCE（单次执行）</p>
+	FrequencyType *string `json:"FrequencyType,omitnil,omitempty" name:"FrequencyType"`
+
+	// <p>生效日期开始时间（YYYY-MM-DD 格式），可选，不传时不限制开始时间</p>
+	EffectiveStart *string `json:"EffectiveStart,omitnil,omitempty" name:"EffectiveStart"`
+
+	// <p>生效日期结束时间（YYYY-MM-DD 格式），可选，不传时不限制结束时间</p>
+	EffectiveEnd *string `json:"EffectiveEnd,omitnil,omitempty" name:"EffectiveEnd"`
+
+	// <p>投递目标集合（BOT_CHANNEL / WEBHOOK 可并存）</p>
+	DeliveryTargetSet []*DeliveryTarget `json:"DeliveryTargetSet,omitnil,omitempty" name:"DeliveryTargetSet"`
+}
+
+func (r *CreateScheduledTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScheduledTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskName")
+	delete(f, "AgentConfig")
+	delete(f, "CronExpr")
+	delete(f, "Description")
+	delete(f, "FrequencyType")
+	delete(f, "EffectiveStart")
+	delete(f, "EffectiveEnd")
+	delete(f, "DeliveryTargetSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScheduledTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateScheduledTaskResponseParams struct {
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务唯一标识</p>
+	TaskKey *string `json:"TaskKey,omitnil,omitempty" name:"TaskKey"`
+
+	// <p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>下次执行时间</p>
+	NextRunTime *string `json:"NextRunTime,omitnil,omitempty" name:"NextRunTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateScheduledTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateScheduledTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateScheduledTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScheduledTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAgentRequestParams struct {
 	// <p>Agent 业务 ID</p>
 	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
@@ -885,6 +1010,74 @@ func (r *DeleteAgentResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteAgentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteScheduledTaskRequestParams struct {
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteScheduledTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteScheduledTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteScheduledTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteScheduledTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteScheduledTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteScheduledTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteScheduledTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteScheduledTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteScheduledTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeliveryTarget struct {
+	// <p>投递类型：BOT_CHANNEL（IM 渠道投递）或 WEBHOOK（自定义回调）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>是否启用此投递目标</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>投递配置，按 Type 不同</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Options *TargetOptions `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 // Predefined struct for user
@@ -1959,6 +2152,391 @@ func (r *DescribeMessageEventListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeScheduledTaskListRequestParams struct {
+	// <p>偏移量，从 0 开始</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，缺省为 20，最大 100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件数组，多个 Filter 之间为 AND 关系，同一 Filter 内多个 Values 为 OR 关系。支持的 Filter.Name：TaskName（模糊）、Status（精确 0/1）、AgentId（精确）</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeScheduledTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>偏移量，从 0 开始</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，缺省为 20，最大 100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件数组，多个 Filter 之间为 AND 关系，同一 Filter 内多个 Values 为 OR 关系。支持的 Filter.Name：TaskName（模糊）、Status（精确 0/1）、AgentId（精确）</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeScheduledTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScheduledTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScheduledTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScheduledTaskListResponseParams struct {
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>任务列表（分页后）</p>
+	ScheduledTaskSet []*ScheduledTaskSummary `json:"ScheduledTaskSet,omitnil,omitempty" name:"ScheduledTaskSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeScheduledTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeScheduledTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeScheduledTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScheduledTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScheduledTaskLogListRequestParams struct {
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>偏移量，从 0 开始</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，缺省为 20，最大 100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>是否返回聚合统计（Stats）</p>
+	WithStats *bool `json:"WithStats,omitnil,omitempty" name:"WithStats"`
+
+	// <p>过滤条件数组，多个 Filter 之间为 AND 关系，同一 Filter 内多个 Values 为 OR 关系</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeScheduledTaskLogListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>偏移量，从 0 开始</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，缺省为 20，最大 100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>是否返回聚合统计（Stats）</p>
+	WithStats *bool `json:"WithStats,omitnil,omitempty" name:"WithStats"`
+
+	// <p>过滤条件数组，多个 Filter 之间为 AND 关系，同一 Filter 内多个 Values 为 OR 关系</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeScheduledTaskLogListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScheduledTaskLogListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "WithStats")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScheduledTaskLogListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScheduledTaskLogListResponseParams struct {
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>执行日志列表（分页后）</p>
+	ScheduledTaskLogSet []*ScheduledTaskLogSummary `json:"ScheduledTaskLogSet,omitnil,omitempty" name:"ScheduledTaskLogSet"`
+
+	// <p>聚合统计（WithStats=true 时返回）</p>
+	Stats *ScheduledTaskLogStats `json:"Stats,omitnil,omitempty" name:"Stats"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeScheduledTaskLogListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeScheduledTaskLogListResponseParams `json:"Response"`
+}
+
+func (r *DescribeScheduledTaskLogListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScheduledTaskLogListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScheduledTaskLogRequestParams struct {
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>执行日志 ID</p>
+	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
+}
+
+type DescribeScheduledTaskLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>执行日志 ID</p>
+	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
+}
+
+func (r *DescribeScheduledTaskLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScheduledTaskLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "LogId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScheduledTaskLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScheduledTaskLogResponseParams struct {
+	// <p>执行日志 ID</p>
+	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
+
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务唯一标识</p>
+	TaskKey *string `json:"TaskKey,omitnil,omitempty" name:"TaskKey"`
+
+	// <p>关联会话 ID</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>触发类型：MANUAL（手动）/ CRON（定时）</p>
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <p>执行状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>本次执行 Prompt</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>执行输出内容（完整结果；列表接口 DescribeScheduledTaskLogList 仅返回前 50 字符预览）</p>
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// <p>开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>执行时长（毫秒）</p>
+	DurationMs *int64 `json:"DurationMs,omitnil,omitempty" name:"DurationMs"`
+
+	// <p>投递状态</p>
+	DeliveryStatus *string `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
+
+	// <p>投递错误信息</p>
+	DeliveryError *string `json:"DeliveryError,omitnil,omitempty" name:"DeliveryError"`
+
+	// <p>创建时间</p>
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>失败原因</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// <p>会话名称（AgentOS 侧生成的 AI 标题 / 用户改名）；缺失时为空，调用方可兜底展示 SessionId 后缀</p>
+	SessionName *string `json:"SessionName,omitnil,omitempty" name:"SessionName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeScheduledTaskLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeScheduledTaskLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeScheduledTaskLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScheduledTaskLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScheduledTaskRequestParams struct {
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeScheduledTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeScheduledTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScheduledTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScheduledTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScheduledTaskResponseParams struct {
+	// <p>任务 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务唯一标识</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskKey *string `json:"TaskKey,omitnil,omitempty" name:"TaskKey"`
+
+	// <p>任务名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>任务描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>关联 Agent ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>Cron 表达式</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronExpr *string `json:"CronExpr,omitnil,omitempty" name:"CronExpr"`
+
+	// <p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>最近执行时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastRunTime *string `json:"LastRunTime,omitnil,omitempty" name:"LastRunTime"`
+
+	// <p>下次执行时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextRunTime *string `json:"NextRunTime,omitnil,omitempty" name:"NextRunTime"`
+
+	// <p>创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>更新时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// <p>任务 Agent 配置（Prompt/Model/AgentId）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentConfig *AgentConfig `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// <p>生效日期开始时间（YYYY-MM-DD 格式），不传时不限制开始时间</p>
+	EffectiveStart *string `json:"EffectiveStart,omitnil,omitempty" name:"EffectiveStart"`
+
+	// <p>生效日期结束时间（YYYY-MM-DD 格式），不传时不限制结束时间</p>
+	EffectiveEnd *string `json:"EffectiveEnd,omitnil,omitempty" name:"EffectiveEnd"`
+
+	// <p>投递目标集合（BOT_CHANNEL / WEBHOOK 可并存）</p>
+	DeliveryTargetSet []*DeliveryTarget `json:"DeliveryTargetSet,omitnil,omitempty" name:"DeliveryTargetSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeScheduledTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeScheduledTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeScheduledTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScheduledTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSkillListRequestParams struct {
 	// 技能来源，必填：BUILTIN（内置）/ CUSTOM（自建）/ AUTHORIZED（企业授权）。数据通路判别，非筛选条件
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
@@ -2210,6 +2788,16 @@ type Filter struct {
 	// 是否精确匹配，默认 false（模糊匹配）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExactMatch *bool `json:"ExactMatch,omitnil,omitempty" name:"ExactMatch"`
+}
+
+type Header struct {
+	// <p>请求头名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>请求头值</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type MessageEvent struct {
@@ -2790,6 +3378,116 @@ func (r *ModifyAgentVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyScheduledTaskRequestParams struct {
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务名称</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>任务描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>任务关联的 Agent 配置</p>
+	AgentConfig *AgentConfig `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// <p>Cron 表达式</p>
+	CronExpr *string `json:"CronExpr,omitnil,omitempty" name:"CronExpr"`
+
+	// <p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>生效日期开始时间（YYYY-MM-DD 格式），传空串清除，不传保持原值</p>
+	EffectiveStart *string `json:"EffectiveStart,omitnil,omitempty" name:"EffectiveStart"`
+
+	// <p>生效日期结束时间（YYYY-MM-DD 格式），传空串清除，不传保持原值</p>
+	EffectiveEnd *string `json:"EffectiveEnd,omitnil,omitempty" name:"EffectiveEnd"`
+
+	// <p>投递目标集合（部分更新时整体替换）</p>
+	DeliveryTargetSet []*DeliveryTarget `json:"DeliveryTargetSet,omitnil,omitempty" name:"DeliveryTargetSet"`
+}
+
+type ModifyScheduledTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务名称</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>任务描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>任务关联的 Agent 配置</p>
+	AgentConfig *AgentConfig `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// <p>Cron 表达式</p>
+	CronExpr *string `json:"CronExpr,omitnil,omitempty" name:"CronExpr"`
+
+	// <p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>生效日期开始时间（YYYY-MM-DD 格式），传空串清除，不传保持原值</p>
+	EffectiveStart *string `json:"EffectiveStart,omitnil,omitempty" name:"EffectiveStart"`
+
+	// <p>生效日期结束时间（YYYY-MM-DD 格式），传空串清除，不传保持原值</p>
+	EffectiveEnd *string `json:"EffectiveEnd,omitnil,omitempty" name:"EffectiveEnd"`
+
+	// <p>投递目标集合（部分更新时整体替换）</p>
+	DeliveryTargetSet []*DeliveryTarget `json:"DeliveryTargetSet,omitnil,omitempty" name:"DeliveryTargetSet"`
+}
+
+func (r *ModifyScheduledTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyScheduledTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TaskName")
+	delete(f, "Description")
+	delete(f, "AgentConfig")
+	delete(f, "CronExpr")
+	delete(f, "Status")
+	delete(f, "EffectiveStart")
+	delete(f, "EffectiveEnd")
+	delete(f, "DeliveryTargetSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyScheduledTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyScheduledTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyScheduledTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyScheduledTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyScheduledTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyScheduledTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RoutingItem struct {
 	// 版本 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2798,6 +3496,116 @@ type RoutingItem struct {
 	// 权重，(0, 1] 之间的浮点百分比
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *float64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+}
+
+type ScheduledTaskLogStats struct {
+	// <p>总执行次数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>成功次数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessCount *int64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// <p>失败次数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedCount *int64 `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
+
+	// <p>平均执行时长（毫秒）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvgDurationMs *int64 `json:"AvgDurationMs,omitnil,omitempty" name:"AvgDurationMs"`
+}
+
+type ScheduledTaskLogSummary struct {
+	// <p>执行日志 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
+
+	// <p>任务唯一标识</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskKey *string `json:"TaskKey,omitnil,omitempty" name:"TaskKey"`
+
+	// <p>触发类型：MANUAL（手动）/ CRON（定时）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <p>执行状态</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>开始时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>执行时长（毫秒）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DurationMs *int64 `json:"DurationMs,omitnil,omitempty" name:"DurationMs"`
+
+	// <p>投递状态</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliveryStatus *string `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
+
+	// <p>关联会话 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>失败原因</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// <p>会话名称（AgentOS 侧生成的 AI 标题 / 用户改名）；缺失时为空，调用方可兜底展示 SessionId 后缀</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionName *string `json:"SessionName,omitnil,omitempty" name:"SessionName"`
+
+	// <p>执行结果预览（前 50 字符），仅用于列表页展示；完整结果请调用 DescribeScheduledTaskLog</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+}
+
+type ScheduledTaskSummary struct {
+	// <p>任务 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务唯一标识</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskKey *string `json:"TaskKey,omitnil,omitempty" name:"TaskKey"`
+
+	// <p>任务名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>关联 Agent ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>Cron 表达式</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronExpr *string `json:"CronExpr,omitnil,omitempty" name:"CronExpr"`
+
+	// <p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>最近执行时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastRunTime *string `json:"LastRunTime,omitnil,omitempty" name:"LastRunTime"`
+
+	// <p>下次执行时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextRunTime *string `json:"NextRunTime,omitnil,omitempty" name:"NextRunTime"`
+
+	// <p>创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>任务 Agent 配置（Prompt/Model/AgentId）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentConfig *AgentConfig `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
 }
 
 type SessionItem struct {
@@ -2896,6 +3704,32 @@ type SkillItem struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type TargetOptions struct {
+	// <p>渠道类型（BOT_CHANNEL 必填）：FEISHU / DINGTALK / QQ / WECOM_NEW / WECOM_AIBOT / WECHAT_KF</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelType *string `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
+
+	// <p>渠道标识（BOT_CHANNEL 必填）：飞书 appId / 钉钉 appKey / QQ appId / 企微 corpId:agentId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>回调 URL（WEBHOOK 必填）：仅允许 http/https，禁止内网地址（SSRF 防护）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>自定义请求头列表，与默认 Content-Type: application/json 合并</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Headers []*Header `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// <p>HMAC-SHA256 签名密钥（WEBHOOK 可选）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Secret *string `json:"Secret,omitnil,omitempty" name:"Secret"`
+
+	// <p>接收目标 ID 集合（群 ID / 用户 ID / 频道 ID），BOT_CHANNEL 模式必填，至少一个</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecipientIdSet []*string `json:"RecipientIdSet,omitnil,omitempty" name:"RecipientIdSet"`
+}
+
 type TokenUsage struct {
 	// <p>输入Token</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2912,6 +3746,70 @@ type TokenUsage struct {
 	// <p>统计口径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+}
+
+// Predefined struct for user
+type TriggerScheduledTaskRequestParams struct {
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>覆盖 Prompt，为空则使用任务原 Prompt</p>
+	OverridePrompt *string `json:"OverridePrompt,omitnil,omitempty" name:"OverridePrompt"`
+}
+
+type TriggerScheduledTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>覆盖 Prompt，为空则使用任务原 Prompt</p>
+	OverridePrompt *string `json:"OverridePrompt,omitnil,omitempty" name:"OverridePrompt"`
+}
+
+func (r *TriggerScheduledTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerScheduledTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "OverridePrompt")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TriggerScheduledTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TriggerScheduledTaskResponseParams struct {
+	// <p>本次触发产生的执行日志 ID</p>
+	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TriggerScheduledTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *TriggerScheduledTaskResponseParams `json:"Response"`
+}
+
+func (r *TriggerScheduledTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerScheduledTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -212,6 +212,63 @@ func (r *ApplyCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BatchDeleteCSRRequestParams struct {
+	// 要删除的CSR Id标识。最多100个
+	CSRIds []*int64 `json:"CSRIds,omitnil,omitempty" name:"CSRIds"`
+}
+
+type BatchDeleteCSRRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要删除的CSR Id标识。最多100个
+	CSRIds []*int64 `json:"CSRIds,omitnil,omitempty" name:"CSRIds"`
+}
+
+func (r *BatchDeleteCSRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteCSRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CSRIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeleteCSRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDeleteCSRResponseParams struct {
+	// 成功删除的CSR ID 标识
+	Success []*int64 `json:"Success,omitnil,omitempty" name:"Success"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchDeleteCSRResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchDeleteCSRResponseParams `json:"Response"`
+}
+
+func (r *BatchDeleteCSRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteCSRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BatchDeleteFail struct {
 	// 失败的证书ID
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
@@ -251,6 +308,56 @@ type COSInstanceList struct {
 
 	// 错误信息
 	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
+}
+
+type CSRItem struct {
+	// <p>CSR Id标识</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>账号</p>
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>企业/单位名称</p>
+	Organization *string `json:"Organization,omitnil,omitempty" name:"Organization"`
+
+	// <p>部门</p>
+	Department *string `json:"Department,omitnil,omitempty" name:"Department"`
+
+	// <p>邮箱</p>
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// <p>省份</p>
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// <p>城市</p>
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// <p>国家</p>
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// <p>备注</p>
+	Remarks *string `json:"Remarks,omitnil,omitempty" name:"Remarks"`
+
+	// <p>状态</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>算法</p>
+	EncryptAlgo *string `json:"EncryptAlgo,omitnil,omitempty" name:"EncryptAlgo"`
+
+	// <p>算法参数</p>
+	KeyParameter *string `json:"KeyParameter,omitnil,omitempty" name:"KeyParameter"`
+
+	// <p>标签</p>
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>SAN域名</p>
+	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
 }
 
 // Predefined struct for user
@@ -1120,6 +1227,9 @@ type Certificates struct {
 
 	// <p>当前订阅服务下已经签发未过期的证书数量</p>
 	CertServiceValidCertificateCount *int64 `json:"CertServiceValidCertificateCount,omitnil,omitempty" name:"CertServiceValidCertificateCount"`
+
+	// <p>是否可重新提交。</p><p>默认值：false</p>
+	ResubmitAble *bool `json:"ResubmitAble,omitnil,omitempty" name:"ResubmitAble"`
 }
 
 // Predefined struct for user
@@ -1552,6 +1662,154 @@ type CosInstanceDetail struct {
 
 	// 存储桶地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+// Predefined struct for user
+type CreateCSRRequestParams struct {
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>企业/单位名称</p>
+	Organization *string `json:"Organization,omitnil,omitempty" name:"Organization"`
+
+	// <p>部门</p>
+	Department *string `json:"Department,omitnil,omitempty" name:"Department"`
+
+	// <p>邮箱</p>
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// <p>省份</p>
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// <p>城市</p>
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// <p>符合ISO 3166 标准的国家或地域代码。如:CN、US</p>
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// <p>加密算法，支持 RSA及ECC。</p>
+	EncryptAlgo *string `json:"EncryptAlgo,omitnil,omitempty" name:"EncryptAlgo"`
+
+	// <p>密钥参数，RSA仅支持2048，4096。ECC仅支持prime256v1</p>
+	KeyParameter *string `json:"KeyParameter,omitnil,omitempty" name:"KeyParameter"`
+
+	// <p>是否生成CSR内容。生成CSR内容后，此CSR记录不再支持修改</p>
+	Generate *bool `json:"Generate,omitnil,omitempty" name:"Generate"`
+
+	// <p>私钥密码</p>
+	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>标签列表</p>
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>SAN域名</p>
+	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
+}
+
+type CreateCSRRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>企业/单位名称</p>
+	Organization *string `json:"Organization,omitnil,omitempty" name:"Organization"`
+
+	// <p>部门</p>
+	Department *string `json:"Department,omitnil,omitempty" name:"Department"`
+
+	// <p>邮箱</p>
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// <p>省份</p>
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// <p>城市</p>
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// <p>符合ISO 3166 标准的国家或地域代码。如:CN、US</p>
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// <p>加密算法，支持 RSA及ECC。</p>
+	EncryptAlgo *string `json:"EncryptAlgo,omitnil,omitempty" name:"EncryptAlgo"`
+
+	// <p>密钥参数，RSA仅支持2048，4096。ECC仅支持prime256v1</p>
+	KeyParameter *string `json:"KeyParameter,omitnil,omitempty" name:"KeyParameter"`
+
+	// <p>是否生成CSR内容。生成CSR内容后，此CSR记录不再支持修改</p>
+	Generate *bool `json:"Generate,omitnil,omitempty" name:"Generate"`
+
+	// <p>私钥密码</p>
+	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>标签列表</p>
+	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>SAN域名</p>
+	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
+}
+
+func (r *CreateCSRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCSRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Organization")
+	delete(f, "Department")
+	delete(f, "Email")
+	delete(f, "Province")
+	delete(f, "City")
+	delete(f, "Country")
+	delete(f, "EncryptAlgo")
+	delete(f, "KeyParameter")
+	delete(f, "Generate")
+	delete(f, "KeyPassword")
+	delete(f, "Remark")
+	delete(f, "Tags")
+	delete(f, "SubjectAltName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCSRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCSRResponseParams struct {
+	// <p>CSR ID标识</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCSRResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCSRResponseParams `json:"Response"`
+}
+
+func (r *CreateCSRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCSRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2876,6 +3134,198 @@ type DeployedResources struct {
 }
 
 // Predefined struct for user
+type DescribeCSRRequestParams struct {
+	// <p>CSR ID标识</p>
+	CSRId *int64 `json:"CSRId,omitnil,omitempty" name:"CSRId"`
+}
+
+type DescribeCSRRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>CSR ID标识</p>
+	CSRId *int64 `json:"CSRId,omitnil,omitempty" name:"CSRId"`
+}
+
+func (r *DescribeCSRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCSRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CSRId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCSRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCSRResponseParams struct {
+	// <p>CSR Id标识</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>账号</p>
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>企业/单位名称</p>
+	Organization *string `json:"Organization,omitnil,omitempty" name:"Organization"`
+
+	// <p>部门</p>
+	Department *string `json:"Department,omitnil,omitempty" name:"Department"`
+
+	// <p>邮箱</p>
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// <p>省份</p>
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// <p>城市</p>
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// <p>国家</p>
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// <p>密钥算法</p>
+	EncryptAlgo *string `json:"EncryptAlgo,omitnil,omitempty" name:"EncryptAlgo"`
+
+	// <p>算法参数</p>
+	KeyParameter *string `json:"KeyParameter,omitnil,omitempty" name:"KeyParameter"`
+
+	// <p>备注</p>
+	Remarks *string `json:"Remarks,omitnil,omitempty" name:"Remarks"`
+
+	// <p>状态</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>私钥密码</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>CSR内容</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CSR *string `json:"CSR,omitnil,omitempty" name:"CSR"`
+
+	// <p>私钥内容</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
+
+	// <p>SAN域名</p>
+	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCSRResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCSRResponseParams `json:"Response"`
+}
+
+func (r *DescribeCSRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCSRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCSRSetRequestParams struct {
+	// 每页数量，默认10。最大100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量，从0开始。	
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 使用域名过滤。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 使用加密算法过滤
+	EncryptAlgo *string `json:"EncryptAlgo,omitnil,omitempty" name:"EncryptAlgo"`
+}
+
+type DescribeCSRSetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页数量，默认10。最大100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量，从0开始。	
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 使用域名过滤。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 使用加密算法过滤
+	EncryptAlgo *string `json:"EncryptAlgo,omitnil,omitempty" name:"EncryptAlgo"`
+}
+
+func (r *DescribeCSRSetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCSRSetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Domain")
+	delete(f, "EncryptAlgo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCSRSetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCSRSetResponseParams struct {
+	// 总数量。	
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 列表。
+	Set []*CSRItem `json:"Set,omitnil,omitempty" name:"Set"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCSRSetResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCSRSetResponseParams `json:"Response"`
+}
+
+func (r *DescribeCSRSetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCSRSetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCertificateBindResourceTaskDetailRequestParams struct {
 	// <p>任务ID，根据CreateCertificateBindResourceSyncTask得到的任务ID查询绑定云资源结果</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -3258,6 +3708,9 @@ type DescribeCertificateDetailResponseParams struct {
 	// <p>托管状态，0代表托管中，5代表资源替换中， 10代表托管完成， -1代表未托管</p>
 	HostingStatus *int64 `json:"HostingStatus,omitnil,omitempty" name:"HostingStatus"`
 
+	// <p>是否可重新提交。</p>
+	ResubmitAble *bool `json:"ResubmitAble,omitnil,omitempty" name:"ResubmitAble"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3364,14 +3817,14 @@ func (r *DescribeCertificateOperateLogsResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeCertificateRequestParams struct {
-	// 证书 ID。
+	// <p>证书 ID。</p>
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 type DescribeCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 证书 ID。
+	// <p>证书 ID。</p>
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
@@ -3396,249 +3849,152 @@ func (r *DescribeCertificateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCertificateResponseParams struct {
-	// 用户 UIN。
+	// <p>用户 UIN。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 项目 ID。
+	// <p>项目 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 证书来源：
-	// trustasia：亚洲诚信，
-	// upload：用户上传。
-	// wosign：沃通
-	// sheca：上海CA
+	// <p>证书来源：<br>trustasia：亚洲诚信，<br>upload：用户上传。<br>wosign：沃通<br>sheca：上海CA</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
-	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
+	// <p>证书类型：CA = 客户端证书，SVR = 服务器证书。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
-	// 证书套餐类型：
-	// null：用户上传证书（没有套餐类型），
-	// 2：TrustAsia TLS RSA CA， 
-	// 3：SecureSite 增强型企业版（EV Pro）， 
-	// 4：SecureSite 增强型（EV）， 
-	// 5：SecureSite 企业型专业版（OV Pro），
-	// 6：SecureSite 企业型（OV）， 
-	// 7：SecureSite 企业型（OV）通配符， 
-	// 8：Geotrust 增强型（EV）， 
-	// 9：Geotrust 企业型（OV）， 
-	// 10：Geotrust 企业型（OV）通配符， 
-	// 11：TrustAsia 域名型多域名 SSL 证书， 
-	// 12：TrustAsia 域名型（DV）通配符， 
-	// 13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 
-	// 14：TrustAsia 企业型（OV）SSL 证书（D3）， 
-	// 15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 
-	// 16：TrustAsia 增强型 （EV）SSL 证书（D3）， 
-	// 17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 
-	// 18：GlobalSign 企业型（OV）SSL 证书， 
-	// 19：GlobalSign 企业型通配符 （OV）SSL 证书， 
-	// 20：GlobalSign 增强型 （EV）SSL 证书， 
-	// 21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 
-	// 22：GlobalSign 企业型多域名（OV）SSL 证书， 
-	// 23：GlobalSign 企业型通配符多域名（OV）SSL 证书，
-	// 24：GlobalSign 增强型多域名（EV）SSL 证书，
-	// 25：Wotrus 域名型证书，
-	// 26：Wotrus 域名型多域名证书，
-	// 27：Wotrus 域名型通配符证书，
-	// 28：Wotrus 企业型证书，
-	// 29：Wotrus 企业型多域名证书，
-	// 30：Wotrus 企业型通配符证书，
-	// 31：Wotrus 增强型证书，
-	// 32：Wotrus 增强型多域名证书，
-	// 33：WoTrus-国密域名型证书，
-	// 34：WoTrus-国密域名型证书（多域名），
-	// 35：WoTrus-国密域名型证书（通配符），
-	// 37：WoTrus-国密企业型证书，
-	// 38：WoTrus-国密企业型证书（多域名），
-	// 39：WoTrus-国密企业型证书（通配符），
-	// 40：WoTrus-国密增强型证书，
-	// 41：WoTrus-国密增强型证书（多域名），
-	// 42：TrustAsia-域名型证书（通配符多域名），
-	// 43：DNSPod-企业型(OV)SSL证书
-	// 44：DNSPod-企业型(OV)通配符SSL证书
-	// 45：DNSPod-企业型(OV)多域名SSL证书
-	// 46：DNSPod-增强型(EV)SSL证书
-	// 47：DNSPod-增强型(EV)多域名SSL证书
-	// 48：DNSPod-域名型(DV)SSL证书
-	// 49：DNSPod-域名型(DV)通配符SSL证书
-	// 50：DNSPod-域名型(DV)多域名SSL证书
-	// 51：DNSPod（国密）-企业型(OV)SSL证书
-	// 52：DNSPod（国密）-企业型(OV)通配符SSL证书
-	// 53：DNSPod（国密）-企业型(OV)多域名SSL证书
-	// 54：DNSPod（国密）-域名型(DV)SSL证书
-	// 55：DNSPod（国密）-域名型(DV)通配符SSL证书
-	// 56：DNSPod（国密）-域名型(DV)多域名SSL证书
-	// 57：SecureSite 企业型专业版多域名(OV Pro)
-	// 58：SecureSite 企业型多域名(OV)
-	// 59：SecureSite 增强型专业版多域名(EV Pro)
-	// 60：SecureSite 增强型多域名(EV)
-	// 61：Geotrust 增强型多域名(EV)
-	// 75：SecureSite 企业型(OV)
-	// 76：SecureSite 企业型(OV)通配符
-	// 77：SecureSite 增强型(EV)
-	// 78：Geotrust 企业型(OV)
-	// 79：Geotrust 企业型(OV)通配符
-	// 80：Geotrust 增强型(EV)
-	// 81：GlobalSign 企业型（OV）SSL证书
-	// 82：GlobalSign 企业型通配符 （OV）SSL证书
-	// 83：TrustAsia C1 DV Free
-	// 85：GlobalSign 增强型 （EV）SSL证书
-	// 88：GlobalSign 企业型通配符多域名 （OV）SSL证书
-	// 89：GlobalSign 企业型多域名 （OV）SSL证书
-	// 90：GlobalSign 增强型多域名（EV） SSL证书
-	// 91：Geotrust 增强型多域名(EV)
-	// 92：SecureSite 企业型专业版多域名(OV Pro)
-	// 93：SecureSite 企业型多域名(OV)
-	// 94：SecureSite 增强型专业版多域名(EV Pro)
-	// 95：SecureSite 增强型多域名(EV)
-	// 96：SecureSite 增强型专业版(EV Pro)
-	// 97：SecureSite 企业型专业版(OV Pro)
-	// 98：CFCA 企业型(OV)SSL证书
-	// 99：CFCA 企业型多域名(OV)SSL证书
-	// 100：CFCA 企业型通配符(OV)SSL证书
-	// 101：CFCA 增强型(EV)SSL证书
+	// <p>证书套餐类型：<br>null：用户上传证书（没有套餐类型），<br>2：TrustAsia TLS RSA CA，<br>3：SecureSite 增强型企业版（EV Pro），<br>4：SecureSite 增强型（EV），<br>5：SecureSite 企业型专业版（OV Pro），<br>6：SecureSite 企业型（OV），<br>7：SecureSite 企业型（OV）通配符，<br>8：Geotrust 增强型（EV），<br>9：Geotrust 企业型（OV），<br>10：Geotrust 企业型（OV）通配符，<br>11：TrustAsia 域名型多域名 SSL 证书，<br>12：TrustAsia 域名型（DV）通配符，<br>13：TrustAsia 企业型通配符（OV）SSL 证书（D3），<br>14：TrustAsia 企业型（OV）SSL 证书（D3），<br>15：TrustAsia 企业型多域名 （OV）SSL 证书（D3），<br>16：TrustAsia 增强型 （EV）SSL 证书（D3），<br>17：TrustAsia 增强型多域名（EV）SSL 证书（D3），<br>18：GlobalSign 企业型（OV）SSL 证书，<br>19：GlobalSign 企业型通配符 （OV）SSL 证书，<br>20：GlobalSign 增强型 （EV）SSL 证书，<br>21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3），<br>22：GlobalSign 企业型多域名（OV）SSL 证书，<br>23：GlobalSign 企业型通配符多域名（OV）SSL 证书，<br>24：GlobalSign 增强型多域名（EV）SSL 证书，<br>25：Wotrus 域名型证书，<br>26：Wotrus 域名型多域名证书，<br>27：Wotrus 域名型通配符证书，<br>28：Wotrus 企业型证书，<br>29：Wotrus 企业型多域名证书，<br>30：Wotrus 企业型通配符证书，<br>31：Wotrus 增强型证书，<br>32：Wotrus 增强型多域名证书，<br>33：WoTrus-国密域名型证书，<br>34：WoTrus-国密域名型证书（多域名），<br>35：WoTrus-国密域名型证书（通配符），<br>37：WoTrus-国密企业型证书，<br>38：WoTrus-国密企业型证书（多域名），<br>39：WoTrus-国密企业型证书（通配符），<br>40：WoTrus-国密增强型证书，<br>41：WoTrus-国密增强型证书（多域名），<br>42：TrustAsia-域名型证书（通配符多域名），<br>43：DNSPod-企业型(OV)SSL证书<br>44：DNSPod-企业型(OV)通配符SSL证书<br>45：DNSPod-企业型(OV)多域名SSL证书<br>46：DNSPod-增强型(EV)SSL证书<br>47：DNSPod-增强型(EV)多域名SSL证书<br>48：DNSPod-域名型(DV)SSL证书<br>49：DNSPod-域名型(DV)通配符SSL证书<br>50：DNSPod-域名型(DV)多域名SSL证书<br>51：DNSPod（国密）-企业型(OV)SSL证书<br>52：DNSPod（国密）-企业型(OV)通配符SSL证书<br>53：DNSPod（国密）-企业型(OV)多域名SSL证书<br>54：DNSPod（国密）-域名型(DV)SSL证书<br>55：DNSPod（国密）-域名型(DV)通配符SSL证书<br>56：DNSPod（国密）-域名型(DV)多域名SSL证书<br>57：SecureSite 企业型专业版多域名(OV Pro)<br>58：SecureSite 企业型多域名(OV)<br>59：SecureSite 增强型专业版多域名(EV Pro)<br>60：SecureSite 增强型多域名(EV)<br>61：Geotrust 增强型多域名(EV)<br>75：SecureSite 企业型(OV)<br>76：SecureSite 企业型(OV)通配符<br>77：SecureSite 增强型(EV)<br>78：Geotrust 企业型(OV)<br>79：Geotrust 企业型(OV)通配符<br>80：Geotrust 增强型(EV)<br>81：GlobalSign 企业型（OV）SSL证书<br>82：GlobalSign 企业型通配符 （OV）SSL证书<br>83：TrustAsia C1 DV Free<br>85：GlobalSign 增强型 （EV）SSL证书<br>88：GlobalSign 企业型通配符多域名 （OV）SSL证书<br>89：GlobalSign 企业型多域名 （OV）SSL证书<br>90：GlobalSign 增强型多域名（EV） SSL证书<br>91：Geotrust 增强型多域名(EV)<br>92：SecureSite 企业型专业版多域名(OV Pro)<br>93：SecureSite 企业型多域名(OV)<br>94：SecureSite 增强型专业版多域名(EV Pro)<br>95：SecureSite 增强型多域名(EV)<br>96：SecureSite 增强型专业版(EV Pro)<br>97：SecureSite 企业型专业版(OV Pro)<br>98：CFCA 企业型(OV)SSL证书<br>99：CFCA 企业型多域名(OV)SSL证书<br>100：CFCA 企业型通配符(OV)SSL证书<br>101：CFCA 增强型(EV)SSL证书</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 证书产品名称
+	// <p>证书产品名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductZhName *string `json:"ProductZhName,omitnil,omitempty" name:"ProductZhName"`
 
-	// 域名。
+	// <p>域名。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 备注名称。
+	// <p>备注名称。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
+	// <p>证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 状态信息。 取值范围：
-	// //通用状态信息
-	// 1、PRE-REVIEWING：预审核中
-	// 2、LEGAL-REVIEWING：法务审核中
-	// 3、CA-REVIEWING：CA审核中
-	// 4、PENDING-DCV：域名验证中
-	// 5、WAIT-ISSUE：等待签发（域名验证已通过）
-	// //证书审核失败状态信息
-	// 1、订单审核失败
-	// 2、CA审核失败，域名未通过安全审查
-	// 3、域名验证超时，订单自动关闭，请您重新进行证书申请
-	// 4、证书资料未通过证书CA机构审核，审核人员会致电您证书预留的联系方式，请您留意来电。后续可通过“修改资料”重新提交资料
-	// 待持续完善
+	// <p>状态信息。 取值范围：<br>//通用状态信息<br>1、PRE-REVIEWING：预审核中<br>2、LEGAL-REVIEWING：法务审核中<br>3、CA-REVIEWING：CA审核中<br>4、PENDING-DCV：域名验证中<br>5、WAIT-ISSUE：等待签发（域名验证已通过）<br>//证书审核失败状态信息<br>1、订单审核失败<br>2、CA审核失败，域名未通过安全审查<br>3、域名验证超时，订单自动关闭，请您重新进行证书申请<br>4、证书资料未通过证书CA机构审核，审核人员会致电您证书预留的联系方式，请您留意来电。后续可通过“修改资料”重新提交资料<br>待持续完善</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
-	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
+	// <p>验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
-	// 漏洞扫描状态。
+	// <p>漏洞扫描状态。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil,omitempty" name:"VulnerabilityStatus"`
 
-	// 证书生效时间。时区为GMT+8:00
+	// <p>证书生效时间。时区为GMT+8:00</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
-	// 证书失效时间。时区为GMT+8:00
+	// <p>证书失效时间。时区为GMT+8:00</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
-	// 证书有效期：单位(月)。
+	// <p>证书有效期：单位(月)。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
-	// 申请时间。时区为GMT+8:00
+	// <p>申请时间。时区为GMT+8:00</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
-	// 订单 ID。
+	// <p>订单 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
-	// 证书扩展信息。
+	// <p>证书扩展信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateExtra *CertificateExtra `json:"CertificateExtra,omitnil,omitempty" name:"CertificateExtra"`
 
-	// DV 认证信息。
+	// <p>DV 认证信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthDetail *DvAuthDetail `json:"DvAuthDetail,omitnil,omitempty" name:"DvAuthDetail"`
 
-	// 漏洞扫描评估报告。
+	// <p>漏洞扫描评估报告。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulnerabilityReport *string `json:"VulnerabilityReport,omitnil,omitempty" name:"VulnerabilityReport"`
 
-	// 证书 ID。
+	// <p>证书 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 证书类型名称。
+	// <p>证书类型名称。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageTypeName *string `json:"PackageTypeName,omitnil,omitempty" name:"PackageTypeName"`
 
-	// 状态描述。
+	// <p>状态描述。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusName *string `json:"StatusName,omitnil,omitempty" name:"StatusName"`
 
-	// 证书包含的多个域名（包含主域名）。
+	// <p>证书包含的多个域名（包含主域名）。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
 
-	// 是否为 VIP 客户。
+	// <p>是否为 VIP 客户。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVip *bool `json:"IsVip,omitnil,omitempty" name:"IsVip"`
 
-	// 是否为泛域名证书。
+	// <p>是否为泛域名证书。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsWildcard *bool `json:"IsWildcard,omitnil,omitempty" name:"IsWildcard"`
 
-	// 是否为 DV 版证书。
+	// <p>是否为 DV 版证书。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDv *bool `json:"IsDv,omitnil,omitempty" name:"IsDv"`
 
-	// 是否启用了漏洞扫描功能。
+	// <p>是否启用了漏洞扫描功能。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVulnerability *bool `json:"IsVulnerability,omitnil,omitempty" name:"IsVulnerability"`
 
-	// 是否可重颁发证书。
+	// <p>是否可重颁发证书。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewAble *bool `json:"RenewAble,omitnil,omitempty" name:"RenewAble"`
 
-	// 提交的资料信息。
+	// <p>提交的资料信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmittedData *SubmittedData `json:"SubmittedData,omitnil,omitempty" name:"SubmittedData"`
 
-	// 是否可部署。
+	// <p>是否可部署。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deployable *bool `json:"Deployable,omitnil,omitempty" name:"Deployable"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// CA证书的所有加密方式。仅证书类型CertificateType为CA有效
+	// <p>CA证书的所有加密方式。仅证书类型CertificateType为CA有效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CAEncryptAlgorithms []*string `json:"CAEncryptAlgorithms,omitnil,omitempty" name:"CAEncryptAlgorithms"`
 
-	// CA证书的所有通用名称。仅证书类型CertificateType为CA有效
+	// <p>CA证书的所有通用名称。仅证书类型CertificateType为CA有效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CACommonNames []*string `json:"CACommonNames,omitnil,omitempty" name:"CACommonNames"`
 
-	// CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00
+	// <p>CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CAEndTimes []*string `json:"CAEndTimes,omitnil,omitempty" name:"CAEndTimes"`
 
-	// DV证书吊销验证值
+	// <p>DV证书吊销验证值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvRevokeAuthDetail []*DvAuths `json:"DvRevokeAuthDetail,omitnil,omitempty" name:"DvRevokeAuthDetail"`
+
+	// <p>是否可重新提交。</p><p>默认值：false</p>
+	ResubmitAble *bool `json:"ResubmitAble,omitnil,omitempty" name:"ResubmitAble"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6450,6 +6806,154 @@ type ManagerStatusInfo struct {
 
 	// 管理人预审核的域名列表
 	ManagerPreAuditDomains []*ManagerPreAuditDomain `json:"ManagerPreAuditDomains,omitnil,omitempty" name:"ManagerPreAuditDomains"`
+}
+
+// Predefined struct for user
+type ModifyCSRRequestParams struct {
+	// <p>CSR ID标识</p>
+	CSRId *int64 `json:"CSRId,omitnil,omitempty" name:"CSRId"`
+
+	// <p>是否生成CSR内容。生成CSR内容后，此CSR记录不再支持修改</p>
+	Generate *bool `json:"Generate,omitnil,omitempty" name:"Generate"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>企业/单位名称</p>
+	Organization *string `json:"Organization,omitnil,omitempty" name:"Organization"`
+
+	// <p>部门</p>
+	Department *string `json:"Department,omitnil,omitempty" name:"Department"`
+
+	// <p>邮箱</p>
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// <p>省份</p>
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// <p>城市</p>
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// <p>国家</p>
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// <p>加密算法，支持 RSA及ECC。</p>
+	EncryptAlgo *string `json:"EncryptAlgo,omitnil,omitempty" name:"EncryptAlgo"`
+
+	// <p>密钥参数，RSA仅支持2048，4096。ECC仅支持prime256v1</p>
+	KeyParameter *string `json:"KeyParameter,omitnil,omitempty" name:"KeyParameter"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>私钥密码</p>
+	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
+
+	// <p>SAN域名</p>
+	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
+}
+
+type ModifyCSRRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>CSR ID标识</p>
+	CSRId *int64 `json:"CSRId,omitnil,omitempty" name:"CSRId"`
+
+	// <p>是否生成CSR内容。生成CSR内容后，此CSR记录不再支持修改</p>
+	Generate *bool `json:"Generate,omitnil,omitempty" name:"Generate"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>企业/单位名称</p>
+	Organization *string `json:"Organization,omitnil,omitempty" name:"Organization"`
+
+	// <p>部门</p>
+	Department *string `json:"Department,omitnil,omitempty" name:"Department"`
+
+	// <p>邮箱</p>
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// <p>省份</p>
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// <p>城市</p>
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// <p>国家</p>
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// <p>加密算法，支持 RSA及ECC。</p>
+	EncryptAlgo *string `json:"EncryptAlgo,omitnil,omitempty" name:"EncryptAlgo"`
+
+	// <p>密钥参数，RSA仅支持2048，4096。ECC仅支持prime256v1</p>
+	KeyParameter *string `json:"KeyParameter,omitnil,omitempty" name:"KeyParameter"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>私钥密码</p>
+	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
+
+	// <p>SAN域名</p>
+	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
+}
+
+func (r *ModifyCSRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCSRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CSRId")
+	delete(f, "Generate")
+	delete(f, "Domain")
+	delete(f, "Organization")
+	delete(f, "Department")
+	delete(f, "Email")
+	delete(f, "Province")
+	delete(f, "City")
+	delete(f, "Country")
+	delete(f, "EncryptAlgo")
+	delete(f, "KeyParameter")
+	delete(f, "Remark")
+	delete(f, "KeyPassword")
+	delete(f, "SubjectAltName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCSRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCSRResponseParams struct {
+	// <p>CSR ID标识</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCSRResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCSRResponseParams `json:"Response"`
+}
+
+func (r *ModifyCSRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCSRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

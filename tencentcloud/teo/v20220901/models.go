@@ -12698,14 +12698,14 @@ func (r *DescribeMultiPathGatewayResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMultiPathGatewaySecretKeyRequestParams struct {
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 }
 
 type DescribeMultiPathGatewaySecretKeyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 }
 
@@ -12730,7 +12730,7 @@ func (r *DescribeMultiPathGatewaySecretKeyRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeMultiPathGatewaySecretKeyResponseParams struct {
-	// 接入密钥。
+	// <p>接入密钥。</p>
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18248,7 +18248,7 @@ type InferenceContainerConfig struct {
 	// <p>容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。</p>
 	StartupCommand *string `json:"StartupCommand,omitnil,omitempty" name:"StartupCommand"`
 
-	// <p>容器运行时的环境变量。最多支持 10 个变量。</p>
+	// <p>容器运行时的环境变量。最多支持 50 个变量。</p>
 	EnvironmentVariables []*InferenceEnvironmentVariable `json:"EnvironmentVariables,omitnil,omitempty" name:"EnvironmentVariables"`
 }
 
@@ -18262,7 +18262,7 @@ type InferenceContainerConfigForModify struct {
 	// <p>容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。</p>
 	StartupCommand *string `json:"StartupCommand,omitnil,omitempty" name:"StartupCommand"`
 
-	// <p>容器运行时的环境变量。最多支持 10 个变量。</p>
+	// <p>容器运行时的环境变量。最多支持 50 个变量。</p>
 	EnvironmentVariables []*InferenceEnvironmentVariable `json:"EnvironmentVariables,omitnil,omitempty" name:"EnvironmentVariables"`
 }
 

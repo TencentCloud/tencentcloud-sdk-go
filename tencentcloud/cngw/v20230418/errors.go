@@ -242,6 +242,12 @@ const (
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
+	// 当前网关已存在全局自定义护栏策略。
+	RESOURCEINUSE_CUSTOMGUARDRAILGLOBAL = "ResourceInUse.CustomGuardrailGlobal"
+
+	// 路由或资源已被其他自定义护栏策略占用。
+	RESOURCEINUSE_CUSTOMGUARDRAILROUTE = "ResourceInUse.CustomGuardrailRoute"
+
 	// ResourceInUse.GatewayServiceExistGroups
 	RESOURCEINUSE_GATEWAYSERVICEEXISTGROUPS = "ResourceInUse.GatewayServiceExistGroups"
 

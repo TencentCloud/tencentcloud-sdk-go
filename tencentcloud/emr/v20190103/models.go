@@ -5463,53 +5463,57 @@ func (r *DescribeInstanceRenewNodesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesListRequestParams struct {
-	// 集群筛选策略。取值范围：<li>clusterList：表示查询除了已销毁集群之外的集群列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的集群之外的集群列表。</li><li>cloudHardwareManage/componentManage：目前这两个取值为预留取值，暂时和monitorManage表示同样的含义。</li>
+	// <p>集群筛选策略。取值范围：<li>clusterList：表示查询除了已销毁集群之外的集群列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的集群之外的集群列表。</li><li>cloudHardwareManage/componentManage：目前这两个取值为预留取值，暂时和monitorManage表示同样的含义。</li></p>
 	DisplayStrategy *string `json:"DisplayStrategy,omitnil,omitempty" name:"DisplayStrategy"`
 
-	// 页编号，默认值为0，表示第一页。
+	// <p>页编号，默认值为0，表示第一页。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页返回数量，默认值为100，最大值为100。
-	// 如果limit和offset都为0，则查询全部记录；
+	// <p>每页返回数量，默认值为100，最大值为100。<br>如果limit和offset都为0，则查询全部记录；</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
+	// <p>排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li></p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示升序。</li><li>1：表示降序。</li>默认值为0。
+	// <p>按照OrderField升序或者降序进行排序。取值范围：<li>0：表示升序。</li><li>1：表示降序。</li>默认值为0。</p>
 	Asc *int64 `json:"Asc,omitnil,omitempty" name:"Asc"`
 
-	// 自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{"Name":"ClusterId","Values":["emr-xxxxxxxx"]}]</li><li>根据clusterName过滤实例：[{"Name": "ClusterName","Values": ["cluster_name"]}]</li><li>根据ClusterStatus过滤实例：[{"Name": "ClusterStatus","Values": ["2"]}]</li>
+	// <p>自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{&quot;Name&quot;:&quot;ClusterId&quot;,&quot;Values&quot;:[&quot;emr-xxxxxxxx&quot;]}]</li><li>根据clusterName过滤实例：[{&quot;Name&quot;: &quot;ClusterName&quot;,&quot;Values&quot;: [&quot;cluster_name&quot;]}]</li><li>根据ClusterStatus过滤实例：[{&quot;Name&quot;: &quot;ClusterStatus&quot;,&quot;Values&quot;: [&quot;2&quot;]}]</li></p>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 默认0为普通集群，2为tke集群
+	// <p>默认0为普通集群，2为tke集群</p>
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// <p>是否返回需要密码信息</p>
+	NeedMcpPasswordInfo *bool `json:"NeedMcpPasswordInfo,omitnil,omitempty" name:"NeedMcpPasswordInfo"`
 }
 
 type DescribeInstancesListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群筛选策略。取值范围：<li>clusterList：表示查询除了已销毁集群之外的集群列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的集群之外的集群列表。</li><li>cloudHardwareManage/componentManage：目前这两个取值为预留取值，暂时和monitorManage表示同样的含义。</li>
+	// <p>集群筛选策略。取值范围：<li>clusterList：表示查询除了已销毁集群之外的集群列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的集群之外的集群列表。</li><li>cloudHardwareManage/componentManage：目前这两个取值为预留取值，暂时和monitorManage表示同样的含义。</li></p>
 	DisplayStrategy *string `json:"DisplayStrategy,omitnil,omitempty" name:"DisplayStrategy"`
 
-	// 页编号，默认值为0，表示第一页。
+	// <p>页编号，默认值为0，表示第一页。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页返回数量，默认值为100，最大值为100。
-	// 如果limit和offset都为0，则查询全部记录；
+	// <p>每页返回数量，默认值为100，最大值为100。<br>如果limit和offset都为0，则查询全部记录；</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
+	// <p>排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li></p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示升序。</li><li>1：表示降序。</li>默认值为0。
+	// <p>按照OrderField升序或者降序进行排序。取值范围：<li>0：表示升序。</li><li>1：表示降序。</li>默认值为0。</p>
 	Asc *int64 `json:"Asc,omitnil,omitempty" name:"Asc"`
 
-	// 自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{"Name":"ClusterId","Values":["emr-xxxxxxxx"]}]</li><li>根据clusterName过滤实例：[{"Name": "ClusterName","Values": ["cluster_name"]}]</li><li>根据ClusterStatus过滤实例：[{"Name": "ClusterStatus","Values": ["2"]}]</li>
+	// <p>自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{&quot;Name&quot;:&quot;ClusterId&quot;,&quot;Values&quot;:[&quot;emr-xxxxxxxx&quot;]}]</li><li>根据clusterName过滤实例：[{&quot;Name&quot;: &quot;ClusterName&quot;,&quot;Values&quot;: [&quot;cluster_name&quot;]}]</li><li>根据ClusterStatus过滤实例：[{&quot;Name&quot;: &quot;ClusterStatus&quot;,&quot;Values&quot;: [&quot;2&quot;]}]</li></p>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 默认0为普通集群，2为tke集群
+	// <p>默认0为普通集群，2为tke集群</p>
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// <p>是否返回需要密码信息</p>
+	NeedMcpPasswordInfo *bool `json:"NeedMcpPasswordInfo,omitnil,omitempty" name:"NeedMcpPasswordInfo"`
 }
 
 func (r *DescribeInstancesListRequest) ToJsonString() string {
@@ -5531,6 +5535,7 @@ func (r *DescribeInstancesListRequest) FromJsonString(s string) error {
 	delete(f, "Asc")
 	delete(f, "Filters")
 	delete(f, "ClusterType")
+	delete(f, "NeedMcpPasswordInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesListRequest has unknown keys!", "")
 	}
@@ -5539,10 +5544,10 @@ func (r *DescribeInstancesListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesListResponseParams struct {
-	// 符合条件的实例总数。
+	// <p>符合条件的实例总数。</p>
 	TotalCnt *int64 `json:"TotalCnt,omitnil,omitempty" name:"TotalCnt"`
 
-	// 集群实例列表
+	// <p>集群实例列表</p>
 	InstancesList []*EmrListInstance `json:"InstancesList,omitnil,omitempty" name:"InstancesList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8001,103 +8006,112 @@ type EMREventListItem struct {
 }
 
 type EmrListInstance struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 常见状态描述：集群生产中,集群运行中,集群创建中,集群已关闭,集群已删除
+	// <p>常见状态描述：集群生产中,集群运行中,集群创建中,集群已关闭,集群已删除</p>
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
-	// 集群名字
+	// <p>集群名字</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 集群地域
+	// <p>集群地域</p>
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 用户APPID
+	// <p>用户APPID</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
-	// 运行时间
+	// <p>运行时间</p>
 	RunTime *string `json:"RunTime,omitnil,omitempty" name:"RunTime"`
 
-	// 集群IP
+	// <p>集群IP</p>
 	MasterIp *string `json:"MasterIp,omitnil,omitempty" name:"MasterIp"`
 
-	// 集群版本
+	// <p>集群版本</p>
 	EmrVersion *string `json:"EmrVersion,omitnil,omitempty" name:"EmrVersion"`
 
-	// 集群计费类型
+	// <p>集群计费类型</p>
 	ChargeType *uint64 `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// emr ID
+	// <p>emr ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 产品ID
+	// <p>产品ID</p>
 	ProductId *uint64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 区域
+	// <p>区域</p>
 	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	SubnetId *uint64 `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 网络ID
+	// <p>网络ID</p>
 	VpcId *uint64 `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 地区
+	// <p>地区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 状态码, 取值为-2(集群已删除), -1(集群已关闭), 0(集群生产中), 2(集群运行中), 3(集群创建中)
+	// <p>状态码, 取值为-2(集群已删除), -1(集群已关闭), 0(集群生产中), 2(集群运行中), 3(集群创建中)</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例标签
+	// <p>实例标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 告警信息
+	// <p>告警信息</p>
 	AlarmInfo *string `json:"AlarmInfo,omitnil,omitempty" name:"AlarmInfo"`
 
-	// 是否是woodpecker集群
+	// <p>是否是woodpecker集群</p>
 	IsWoodpeckerCluster *uint64 `json:"IsWoodpeckerCluster,omitnil,omitempty" name:"IsWoodpeckerCluster"`
 
-	// Vpc中文
+	// <p>Vpc中文</p>
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
-	// 子网中文
+	// <p>子网中文</p>
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
-	// 字符串VpcId
+	// <p>字符串VpcId</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 字符串子网
+	// <p>字符串子网</p>
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
-	// 集群类型
+	// <p>集群类型</p>
 	ClusterClass *string `json:"ClusterClass,omitnil,omitempty" name:"ClusterClass"`
 
-	// 是否为跨AZ集群
+	// <p>是否为跨AZ集群</p>
 	IsMultiZoneCluster *bool `json:"IsMultiZoneCluster,omitnil,omitempty" name:"IsMultiZoneCluster"`
 
-	// 是否手戳集群
+	// <p>是否手戳集群</p>
 	IsHandsCluster *bool `json:"IsHandsCluster,omitnil,omitempty" name:"IsHandsCluster"`
 
-	// 体外客户端组件信息
+	// <p>体外客户端组件信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutSideSoftInfo []*SoftDependInfo `json:"OutSideSoftInfo,omitnil,omitempty" name:"OutSideSoftInfo"`
 
-	// 当前集群的应用场景是否支持体外客户端
+	// <p>当前集群的应用场景是否支持体外客户端</p>
 	IsSupportOutsideCluster *bool `json:"IsSupportOutsideCluster,omitnil,omitempty" name:"IsSupportOutsideCluster"`
 
-	// 是否专有集群场景集群
+	// <p>是否专有集群场景集群</p>
 	IsDedicatedCluster *bool `json:"IsDedicatedCluster,omitnil,omitempty" name:"IsDedicatedCluster"`
 
-	// 集群支持克隆
+	// <p>集群支持克隆</p>
 	IsSupportClone *bool `json:"IsSupportClone,omitnil,omitempty" name:"IsSupportClone"`
+
+	// <p>集群包含的组件</p>
+	Soft []*string `json:"Soft,omitnil,omitempty" name:"Soft"`
+
+	// <p>是否开启了实例保护</p>
+	IsTerminateProtection *bool `json:"IsTerminateProtection,omitnil,omitempty" name:"IsTerminateProtection"`
+
+	// <p>mcp密码信息</p>
+	McpPasswordInfo *McpPasswordInfo `json:"McpPasswordInfo,omitnil,omitempty" name:"McpPasswordInfo"`
 }
 
 type EmrPrice struct {
@@ -9973,6 +9987,14 @@ type LoginSettings struct {
 
 	// 密钥ID。关联密钥后，就可以通过对应的私钥来访问实例；PublicKeyId可通过接口[DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699)获取
 	PublicKeyId *string `json:"PublicKeyId,omitnil,omitempty" name:"PublicKeyId"`
+}
+
+type McpPasswordInfo struct {
+	// <p>hive是否需要密码</p>
+	HivePasswordRequired *bool `json:"HivePasswordRequired,omitnil,omitempty" name:"HivePasswordRequired"`
+
+	// <p>trino是否需要密码</p>
+	TrinoPasswordRequired *bool `json:"TrinoPasswordRequired,omitnil,omitempty" name:"TrinoPasswordRequired"`
 }
 
 type MetaDbInfo struct {

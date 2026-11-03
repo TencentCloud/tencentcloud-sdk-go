@@ -8973,26 +8973,32 @@ func (r *DescribeClusterDatabaseTablesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClusterDatabasesRequestParams struct {
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 分页偏移
+	// <p>DB库名（支持模糊匹配）</p>
+	FuzzyDBNames []*string `json:"FuzzyDBNames,omitnil,omitempty" name:"FuzzyDBNames"`
+
+	// <p>分页偏移</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页限制数量
+	// <p>分页限制数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeClusterDatabasesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 分页偏移
+	// <p>DB库名（支持模糊匹配）</p>
+	FuzzyDBNames []*string `json:"FuzzyDBNames,omitnil,omitempty" name:"FuzzyDBNames"`
+
+	// <p>分页偏移</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页限制数量
+	// <p>分页限制数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -9009,6 +9015,7 @@ func (r *DescribeClusterDatabasesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "FuzzyDBNames")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
@@ -9019,16 +9026,16 @@ func (r *DescribeClusterDatabasesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClusterDatabasesResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 分页偏移
+	// <p>分页偏移</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 数据库列表
+	// <p>数据库列表</p>
 	Databases []*string `json:"Databases,omitnil,omitempty" name:"Databases"`
 
-	// 分页限制数
+	// <p>分页限制数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21451,26 +21458,26 @@ func (r *OpenClusterPasswordComplexityResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OpenClusterReadOnlyInstanceGroupAccessRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 端口
+	// <p>端口</p>
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 安全组ID 
+	// <p>安全组ID</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
 type OpenClusterReadOnlyInstanceGroupAccessRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 端口
+	// <p>端口</p>
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 安全组ID 
+	// <p>安全组ID</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
@@ -21497,7 +21504,7 @@ func (r *OpenClusterReadOnlyInstanceGroupAccessRequest) FromJsonString(s string)
 
 // Predefined struct for user
 type OpenClusterReadOnlyInstanceGroupAccessResponseParams struct {
-	// 开启流程ID
+	// <p>开启流程ID</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

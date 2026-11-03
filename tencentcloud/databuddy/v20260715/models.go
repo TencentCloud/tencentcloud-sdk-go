@@ -630,6 +630,20 @@ type ConsoleUserInfo struct {
 	IsAdmin *bool `json:"IsAdmin,omitnil,omitempty" name:"IsAdmin"`
 }
 
+type CosEventSubscription struct {
+	// CKafka 实例 ID，例如 ckafka-xxxxxxxx（订阅时必填）
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// CKafka 主题名称（订阅时必填）
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 服务角色名称，例如 COSNotifyRole（订阅时必填；服务端按当前租户拼接完整 ARN）
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// COS 存储桶所在地域，例如 ap-guangzhou（订阅时必填；过渡方案，后续可能改为服务端自动解析并移除）
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
 // Predefined struct for user
 type CreateCatalogRequestParams struct {
 	// <p>catalog名称</p>
@@ -1018,12 +1032,15 @@ type CreateFolderRsp struct {
 
 // Predefined struct for user
 type CreateLocationRequestParams struct {
-
+	// COS 文件事件订阅配置，可选；不设置时不订阅（仅 COS 类型 Location 生效）。设置时先订阅 COS 桶事件投递到 CKafka 再创建 Location，创建失败自动回滚退订
+	FileEventSubscription *CosEventSubscription `json:"FileEventSubscription,omitnil,omitempty" name:"FileEventSubscription"`
 }
 
 type CreateLocationRequest struct {
 	*tchttp.BaseRequest
 	
+	// COS 文件事件订阅配置，可选；不设置时不订阅（仅 COS 类型 Location 生效）。设置时先订阅 COS 桶事件投递到 CKafka 再创建 Location，创建失败自动回滚退订
+	FileEventSubscription *CosEventSubscription `json:"FileEventSubscription,omitnil,omitempty" name:"FileEventSubscription"`
 }
 
 func (r *CreateLocationRequest) ToJsonString() string {
@@ -1038,7 +1055,7 @@ func (r *CreateLocationRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "FileEventSubscription")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLocationRequest has unknown keys!", "")
 	}
@@ -3622,6 +3639,9 @@ func (r *GetLocationResponse) FromJsonString(s string) error {
 type GetLocationRsp struct {
 	// 存储位置详情
 	Location *LocationInfo `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// COS 文件事件订阅明细（未订阅时为空）
+	FileEventSubscription *CosEventSubscription `json:"FileEventSubscription,omitnil,omitempty" name:"FileEventSubscription"`
 }
 
 // Predefined struct for user
@@ -5981,6 +6001,14 @@ type ListFilesRsp struct {
 	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
 }
 
+type ListLocationItem struct {
+	// 存储位置详情
+	Location *LocationInfo `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// COS 文件事件订阅明细（未订阅时为空，非空即已订阅）
+	FileEventSubscription *CosEventSubscription `json:"FileEventSubscription,omitnil,omitempty" name:"FileEventSubscription"`
+}
+
 // Predefined struct for user
 type ListLocationsRequestParams struct {
 	// <p>调用时所在workspace唯一id，必填</p>
@@ -5992,7 +6020,7 @@ type ListLocationsRequestParams struct {
 	// <p>是否基于快照分页</p>
 	SnapshotBased *bool `json:"SnapshotBased,omitnil,omitempty" name:"SnapshotBased"`
 
-	// <p>快照ID</p>
+	// <p>快照ID，首次查询时不传，后续传入上一次 ListLocations 响应返回的 SnapshotId</p>
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
 	// <p>页码，从1开始，可选，默认1</p>
@@ -6014,7 +6042,7 @@ type ListLocationsRequest struct {
 	// <p>是否基于快照分页</p>
 	SnapshotBased *bool `json:"SnapshotBased,omitnil,omitempty" name:"SnapshotBased"`
 
-	// <p>快照ID</p>
+	// <p>快照ID，首次查询时不传，后续传入上一次 ListLocations 响应返回的 SnapshotId</p>
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
 	// <p>页码，从1开始，可选，默认1</p>
@@ -6074,7 +6102,7 @@ func (r *ListLocationsResponse) FromJsonString(s string) error {
 }
 
 type ListLocationsRsp struct {
-	// 存储位置详情列表
+	// 存储位置详情列表（Deprecated: 请使用 Items，平铺含订阅状态；前端切换完成后移除）
 	Locations []*LocationInfo `json:"Locations,omitnil,omitempty" name:"Locations"`
 
 	// 结果总条数
@@ -6082,6 +6110,9 @@ type ListLocationsRsp struct {
 
 	// 快照ID
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
+	// 存储位置 + 订阅平铺列表（与 Locations 同序同长，前端优先使用本字段）；订阅状态判断：FileEventSubscription 非空即已开启
+	Items []*ListLocationItem `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 // Predefined struct for user
@@ -7925,7 +7956,7 @@ type LocationInfo struct {
 }
 
 type LocationUpdate struct {
-	// 更新类型，取值：modify_location_name、modify_location_comment、modify_location_properties
+	// 更新类型，取值：modify_location_name、modify_location_comment、modify_location_properties、modify_file_event_subscription（操作COS文件事件订阅，WeData侧联动不透传TCLake；配合请求顶层FileEventSubscription字段：有值=开启/编辑订阅，未设置=关闭订阅）
 	UpdateType *string `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
 
 	// 新的备注，可选，UpdateType 为 modify_location_comment 时使用
@@ -10064,11 +10095,14 @@ type UpdateLocationRequestParams struct {
 	// 存储位置名，必填
 	LocationName *string `json:"LocationName,omitnil,omitempty" name:"LocationName"`
 
-	// 更新location的操作列表，必填
+	// 更新location的操作列表，必填。通过 UpdateType 指定操作类型，支持的 UpdateType：modify_location_name（修改名称）、modify_location_comment（修改描述）、modify_location_properties（修改属性）、modify_file_event_subscription（操作COS文件事件订阅开关）
 	Updates []*LocationUpdate `json:"Updates,omitnil,omitempty" name:"Updates"`
 
 	// 调用时所在workspace唯一id，必填
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// COS 文件事件订阅配置，可选；不设置时不改动现有订阅（仅 COS 类型 Location 生效）。设置时：先按新配置重新订阅（同桶覆盖写，幂等），再修改 Location 元数据。与 Updates 中的 modify_file_event_subscription 配合表达开关操作：Updates 含该类型且本字段有值=开启/编辑订阅；Updates 含该类型且本字段未设置=关闭订阅；Updates 不含该类型时维持默认语义（不设置不动、设置覆盖）
+	FileEventSubscription *CosEventSubscription `json:"FileEventSubscription,omitnil,omitempty" name:"FileEventSubscription"`
 }
 
 type UpdateLocationRequest struct {
@@ -10077,11 +10111,14 @@ type UpdateLocationRequest struct {
 	// 存储位置名，必填
 	LocationName *string `json:"LocationName,omitnil,omitempty" name:"LocationName"`
 
-	// 更新location的操作列表，必填
+	// 更新location的操作列表，必填。通过 UpdateType 指定操作类型，支持的 UpdateType：modify_location_name（修改名称）、modify_location_comment（修改描述）、modify_location_properties（修改属性）、modify_file_event_subscription（操作COS文件事件订阅开关）
 	Updates []*LocationUpdate `json:"Updates,omitnil,omitempty" name:"Updates"`
 
 	// 调用时所在workspace唯一id，必填
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// COS 文件事件订阅配置，可选；不设置时不改动现有订阅（仅 COS 类型 Location 生效）。设置时：先按新配置重新订阅（同桶覆盖写，幂等），再修改 Location 元数据。与 Updates 中的 modify_file_event_subscription 配合表达开关操作：Updates 含该类型且本字段有值=开启/编辑订阅；Updates 含该类型且本字段未设置=关闭订阅；Updates 不含该类型时维持默认语义（不设置不动、设置覆盖）
+	FileEventSubscription *CosEventSubscription `json:"FileEventSubscription,omitnil,omitempty" name:"FileEventSubscription"`
 }
 
 func (r *UpdateLocationRequest) ToJsonString() string {
@@ -10099,6 +10136,7 @@ func (r *UpdateLocationRequest) FromJsonString(s string) error {
 	delete(f, "LocationName")
 	delete(f, "Updates")
 	delete(f, "WorkspaceId")
+	delete(f, "FileEventSubscription")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateLocationRequest has unknown keys!", "")
 	}
@@ -10133,6 +10171,9 @@ func (r *UpdateLocationResponse) FromJsonString(s string) error {
 type UpdateLocationRsp struct {
 	// 修改后的存储位置详情
 	Location *LocationInfo `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// COS 文件事件订阅明细（未订阅时为空）
+	FileEventSubscription *CosEventSubscription `json:"FileEventSubscription,omitnil,omitempty" name:"FileEventSubscription"`
 }
 
 // Predefined struct for user

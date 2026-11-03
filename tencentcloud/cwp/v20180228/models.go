@@ -21567,7 +21567,7 @@ type DescribeMalwareTimingScanSettingResponseParams struct {
 	// <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
 	EnableMemShellScan *uint64 `json:"EnableMemShellScan,omitnil,omitempty" name:"EnableMemShellScan"`
 
-	// <p>防护模式 0 标准 1 重保</p>
+	// <p>防护模式 0 标准 1 重保 2自定义隔离</p>
 	ProtectMode *uint64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
 
 	// <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
@@ -21581,6 +21581,12 @@ type DescribeMalwareTimingScanSettingResponseParams struct {
 
 	// <p>用户选择的隔离范围，0：默认全隔离 1：用户自选</p>
 	QuaraScope *uint64 `json:"QuaraScope,omitnil,omitempty" name:"QuaraScope"`
+
+	// <p>自定义隔离模式已保存的告警类型Code列表</p>
+	QuaraTypes []*string `json:"QuaraTypes,omitnil,omitempty" name:"QuaraTypes"`
+
+	// <p>告警类型字典（灰度规则下发，供前端渲染勾选项）</p>
+	QuaraTypeDict []*QuaraTypeDictItem `json:"QuaraTypeDict,omitnil,omitempty" name:"QuaraTypeDict"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -41831,7 +41837,7 @@ type ModifyMalwareTimingScanSettingsRequestParams struct {
 	// <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
 	EnableMemShellScan *uint64 `json:"EnableMemShellScan,omitnil,omitempty" name:"EnableMemShellScan"`
 
-	// <p>防护模式 0 标准 1重保</p>
+	// <p>防护模式 0 标准 1重保 2自定义隔离</p>
 	ProtectMode *uint64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
 
 	// <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
@@ -41845,6 +41851,9 @@ type ModifyMalwareTimingScanSettingsRequestParams struct {
 
 	// <p>产品类型 0-主机安全(默认) 1-安全中心</p>
 	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+
+	// <p>自定义隔离模式的告警类型Code列表（ProtectMode=2时必填，Code取自Describe返回的QuaraTypeDict）</p>
+	QuaraTypes []*string `json:"QuaraTypes,omitnil,omitempty" name:"QuaraTypes"`
 }
 
 type ModifyMalwareTimingScanSettingsRequest struct {
@@ -41901,7 +41910,7 @@ type ModifyMalwareTimingScanSettingsRequest struct {
 	// <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
 	EnableMemShellScan *uint64 `json:"EnableMemShellScan,omitnil,omitempty" name:"EnableMemShellScan"`
 
-	// <p>防护模式 0 标准 1重保</p>
+	// <p>防护模式 0 标准 1重保 2自定义隔离</p>
 	ProtectMode *uint64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
 
 	// <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
@@ -41915,6 +41924,9 @@ type ModifyMalwareTimingScanSettingsRequest struct {
 
 	// <p>产品类型 0-主机安全(默认) 1-安全中心</p>
 	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+
+	// <p>自定义隔离模式的告警类型Code列表（ProtectMode=2时必填，Code取自Describe返回的QuaraTypeDict）</p>
+	QuaraTypes []*string `json:"QuaraTypes,omitnil,omitempty" name:"QuaraTypes"`
 }
 
 func (r *ModifyMalwareTimingScanSettingsRequest) ToJsonString() string {
@@ -41951,6 +41963,7 @@ func (r *ModifyMalwareTimingScanSettingsRequest) FromJsonString(s string) error 
 	delete(f, "QuaraUuids")
 	delete(f, "QuaraScope")
 	delete(f, "ProductType")
+	delete(f, "QuaraTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMalwareTimingScanSettingsRequest has unknown keys!", "")
 	}
@@ -44711,6 +44724,20 @@ type ProtectStat struct {
 
 	// 数量
 	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
+}
+
+type QuaraTypeDictItem struct {
+	// <p>告警类型标识，与 QuaraTypes 取值一致</p>
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// <p>展示类型名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>是否推荐隔离</p>
+	Recommend *bool `json:"Recommend,omitnil,omitempty" name:"Recommend"`
+
+	// <p>描述和建议</p>
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 }
 
 type RansomDefenseBackup struct {

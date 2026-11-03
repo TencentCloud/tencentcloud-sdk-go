@@ -2220,6 +2220,143 @@ type ConfigFileTemplate struct {
 }
 
 // Predefined struct for user
+type CreateAIGWCustomGuardrailPolicyRequestParams struct {
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>策略名称，同一网关内唯一，长度 1～64</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>审核服务配置</p>
+	ServiceConfig *CustomGuardrailServiceConfigInput `json:"ServiceConfig,omitnil,omitempty" name:"ServiceConfig"`
+
+	// <p>审核响应判定配置</p>
+	DecisionConfig *CustomGuardrailDecisionConfigInput `json:"DecisionConfig,omitnil,omitempty" name:"DecisionConfig"`
+
+	// <p>资源绑定范围，global 或 resource。修改时传入的是新的完整范围，不是增量追加。</p>
+	Scope *CustomGuardrailScopeInput `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>必填，必须显式选择鉴权类型；无鉴权填写 {"AuthType":"none"}。</p>
+	AuthConfig *CustomGuardrailAuthConfigInput `json:"AuthConfig,omitnil,omitempty" name:"AuthConfig"`
+
+	// <p>必填，Direction、HandleAction、TimeoutMs、FailureMode 四项均须显式填写。</p>
+	BehaviorConfig *CustomGuardrailBehaviorConfigInput `json:"BehaviorConfig,omitnil,omitempty" name:"BehaviorConfig"`
+
+	// <p>策略描述，最长 200</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否启用策略，默认 true</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>过滤与采样配置</p>
+	FilterConfig *CustomGuardrailFilterConfigInput `json:"FilterConfig,omitnil,omitempty" name:"FilterConfig"`
+}
+
+type CreateAIGWCustomGuardrailPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>策略名称，同一网关内唯一，长度 1～64</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>审核服务配置</p>
+	ServiceConfig *CustomGuardrailServiceConfigInput `json:"ServiceConfig,omitnil,omitempty" name:"ServiceConfig"`
+
+	// <p>审核响应判定配置</p>
+	DecisionConfig *CustomGuardrailDecisionConfigInput `json:"DecisionConfig,omitnil,omitempty" name:"DecisionConfig"`
+
+	// <p>资源绑定范围，global 或 resource。修改时传入的是新的完整范围，不是增量追加。</p>
+	Scope *CustomGuardrailScopeInput `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>必填，必须显式选择鉴权类型；无鉴权填写 {"AuthType":"none"}。</p>
+	AuthConfig *CustomGuardrailAuthConfigInput `json:"AuthConfig,omitnil,omitempty" name:"AuthConfig"`
+
+	// <p>必填，Direction、HandleAction、TimeoutMs、FailureMode 四项均须显式填写。</p>
+	BehaviorConfig *CustomGuardrailBehaviorConfigInput `json:"BehaviorConfig,omitnil,omitempty" name:"BehaviorConfig"`
+
+	// <p>策略描述，最长 200</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否启用策略，默认 true</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>过滤与采样配置</p>
+	FilterConfig *CustomGuardrailFilterConfigInput `json:"FilterConfig,omitnil,omitempty" name:"FilterConfig"`
+}
+
+func (r *CreateAIGWCustomGuardrailPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIGWCustomGuardrailPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Name")
+	delete(f, "ServiceConfig")
+	delete(f, "DecisionConfig")
+	delete(f, "Scope")
+	delete(f, "AuthConfig")
+	delete(f, "BehaviorConfig")
+	delete(f, "Description")
+	delete(f, "Enabled")
+	delete(f, "FilterConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIGWCustomGuardrailPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAIGWCustomGuardrailPolicyResponseParams struct {
+	// <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+	Result *CreateAIGWCustomGuardrailPolicyResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAIGWCustomGuardrailPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAIGWCustomGuardrailPolicyResponseParams `json:"Response"`
+}
+
+func (r *CreateAIGWCustomGuardrailPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIGWCustomGuardrailPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAIGWCustomGuardrailPolicyResult struct {
+	// <p>本次配置同步是否全部成功。即使云 API 未返回 Response.Error，仍须检查此值、SyncStatus 和 FailedResources。</p>
+	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
+
+	// <p>新建策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>本次同步成功的业务资源引用；Modify 返回的不是严格的新增差集。</p>
+	AddedResources []*CustomGuardrailResourceRef `json:"AddedResources,omitnil,omitempty" name:"AddedResources"`
+
+	// <p>失败资源及原因；非空表示配置同步仍需处理，不要因 HTTP 200 判定全部成功。</p>
+	FailedResources []*CustomGuardrailSyncFailure `json:"FailedResources,omitnil,omitempty" name:"FailedResources"`
+
+	// <p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+	SyncStatus *string `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+}
+
+// Predefined struct for user
 type CreateAutoScalerResourceStrategyRequestParams struct {
 	// 网关实例ID
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
@@ -5539,6 +5676,637 @@ func (r *CreateWafDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CustomGuardrailAuthConfig struct {
+	// <p>网关访问审核引擎的鉴权方式：none 无鉴权（创建默认值）；api_key 在指定 HTTP Header 中发送凭据。与客户端访问 AI 网关时使用的鉴权相互独立。none 模式不应携带 HeaderName 或 ApiKey。</p>
+	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// <p>api_key 模式的鉴权 Header 名，例如 X-Audit-Key 或 Authorization。需为有效 Header 名；不能使用 Content-Type、Accept 或 x-cngw-audit- 前缀的保留名称。不建议使用 Host、Content-Length 等会影响 HTTP 协议语义的头。</p>
+	HeaderName *string `json:"HeaderName,omitnil,omitempty" name:"HeaderName"`
+
+	// <p>只读：是否已保存审核引擎鉴权密钥。不会返回密钥本身；修改时无需回传此字段。</p>
+	HasApiKey *bool `json:"HasApiKey,omitnil,omitempty" name:"HasApiKey"`
+}
+
+type CustomGuardrailAuthConfigInput struct {
+	// <p>审核引擎鉴权方式，必须显式选择 none（无鉴权）或 api_key（Header 密钥）；无鉴权也必须填写 none，不再自动补齐。api_key 时 HeaderName 和 ApiKey 必填；与客户端访问网关的鉴权独立。</p>
+	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// <p>AuthType=api_key 时必填的有效 HTTP Header 名，例如 X-Audit-Key 或 Authorization；禁止协议保留头。AuthType=none 时不得填写。</p>
+	HeaderName *string `json:"HeaderName,omitnil,omitempty" name:"HeaderName"`
+
+	// <p>AuthType=api_key 时必填，作为 Header 完整值原样发送；如需 Bearer，调用方自行填写前缀。修改时省略可沿用已保存密钥；不能用 HasApiKey 代替真实密钥。</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+}
+
+type CustomGuardrailAuthConfigPatch struct {
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。审核引擎鉴权方式，必须显式选择 none（无鉴权）或 api_key（Header 密钥）；无鉴权也必须填写 none，不再自动补齐。api_key 时 HeaderName 和 ApiKey 必填；与客户端访问网关的鉴权独立。</p>
+	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。AuthType=api_key 时必填的有效 HTTP Header 名，例如 X-Audit-Key 或 Authorization；禁止协议保留头。AuthType=none 时不得填写。</p>
+	HeaderName *string `json:"HeaderName,omitnil,omitempty" name:"HeaderName"`
+
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。AuthType=api_key 时必填，作为 Header 完整值原样发送；如需 Bearer，调用方自行填写前缀。修改时省略可沿用已保存密钥；不能用 HasApiKey 代替真实密钥。</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+
+	// <p>true 表示清除已保存密钥，不能与 ApiKey 同时传入。仅传 ClearApiKey=true 时同时切换为 none 并清空鉴权 Header；也可通过 AuthType=none 清除既有密钥。</p><p>修改时省略本字段保留原值。</p>
+	ClearApiKey *bool `json:"ClearApiKey,omitnil,omitempty" name:"ClearApiKey"`
+}
+
+type CustomGuardrailBehaviorConfig struct {
+	// <p>审核方向：input 只审核业务请求，output 只审核业务响应，both 两者均审核；创建默认 input。送审包及审核日志使用 request/response 表示方向，不使用 input/output。</p>
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// <p>命中后的处理：block 执行阻断或符合条件的输出替换；observe 仅观察记录命中，不执行命中阻断或替换。创建默认 block。审核调用异常另由 FailureMode 处理，不应把 observe 当作所有故障无条件放行。</p>
+	HandleAction *string `json:"HandleAction,omitnil,omitempty" name:"HandleAction"`
+
+	// <p>审核调用超时，单位毫秒，范围 50～5000，创建默认 500。不是整个模型生成/SSE 连接的总时长限制；流式多批次分别发生审核 HTTP 调用。应按引擎网络及处理耗时设置，示例中的 5000 是显式测试值，不是默认值。</p>
+	TimeoutMs *int64 `json:"TimeoutMs,omitnil,omitempty" name:"TimeoutMs"`
+
+	// <p>审核失败时的策略：open 尝试失败放行（创建默认值，有内容未审核即放行风险）；closed 失败关闭。此项处理网络、超时、响应契约等异常，不改变正常 block 判定。open 不能绕过所有 Relay 安全/生命周期错误，也不保证已派发业务请求可安全重放。</p>
+	FailureMode *string `json:"FailureMode,omitnil,omitempty" name:"FailureMode"`
+}
+
+type CustomGuardrailBehaviorConfigInput struct {
+	// <p>必填，仅允许 input（仅输入）或 both（输入加输出），与控制台一致；不允许 output、空值或省略。送审包方向使用 request/response。</p>
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// <p>必填，observe 只观察记录，block 执行命中阻断或符合条件的输出替换。不再自动补默认值。审核异常另由 FailureMode 处理。</p>
+	HandleAction *string `json:"HandleAction,omitnil,omitempty" name:"HandleAction"`
+
+	// <p>必填整数，50～5000 毫秒，0 无效且不再代表默认值。控制台初始显示 500，但 API 调用方仍须传入。这是每次审核 HTTP 调用的超时，不是整个模型生成或 SSE 连接时长。</p>
+	TimeoutMs *int64 `json:"TimeoutMs,omitnil,omitempty" name:"TimeoutMs"`
+
+	// <p>必填，open 为异常时尝试放行（存在未审核内容放行风险），closed 为异常时拦截；不得省略或为空。不改变正常命中结论，open 不能绕过所有 Relay 安全或生命周期错误。</p>
+	FailureMode *string `json:"FailureMode,omitnil,omitempty" name:"FailureMode"`
+}
+
+type CustomGuardrailBehaviorConfigPatch struct {
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填，仅允许 input（仅输入）或 both（输入加输出），与控制台一致；不允许 output、空值或省略。送审包方向使用 request/response。</p>
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填，observe 只观察记录，block 执行命中阻断或符合条件的输出替换。不再自动补默认值。审核异常另由 FailureMode 处理。</p>
+	HandleAction *string `json:"HandleAction,omitnil,omitempty" name:"HandleAction"`
+
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填整数，50～5000 毫秒，0 无效且不再代表默认值。控制台初始显示 500，但 API 调用方仍须传入。这是每次审核 HTTP 调用的超时，不是整个模型生成或 SSE 连接时长。</p>
+	TimeoutMs *int64 `json:"TimeoutMs,omitnil,omitempty" name:"TimeoutMs"`
+
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填，open 为异常时尝试放行（存在未审核内容放行风险），closed 为异常时拦截；不得省略或为空。不改变正常命中结论，open 不能绕过所有 Relay 安全或生命周期错误。</p>
+	FailureMode *string `json:"FailureMode,omitnil,omitempty" name:"FailureMode"`
+}
+
+type CustomGuardrailBindableResource struct {
+	// <p>业务资源类型</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>业务资源 ID</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>业务资源名称</p>
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// <p>业务资源访问路径</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>数据面解析协议</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>该业务资源对应的全部 Kong Route ID，仅用于关联/排查；创建 Scope.Resources 时仍填业务 ResourceId。</p>
+	RouteIds []*string `json:"RouteIds,omitnil,omitempty" name:"RouteIds"`
+
+	// <p>对应任一 Route 是否被其他自定义护栏策略占用；查询时传 PolicyId 可排除自身占用。</p>
+	Occupied *bool `json:"Occupied,omitnil,omitempty" name:"Occupied"`
+
+	// <p>占用策略的可读名称及 ID，格式为 策略名称 (策略ID)，多个以逗号分隔；名称不可用时回退 ID，不应按此展示字段解析策略主键。</p>
+	OccupiedBy *string `json:"OccupiedBy,omitnil,omitempty" name:"OccupiedBy"`
+
+	// <p>资源当前是否可解析为受支持的绑定目标；与 Occupied 独立，选择时同时检查 Supported=true 且 Occupied=false。</p>
+	Supported *bool `json:"Supported,omitnil,omitempty" name:"Supported"`
+
+	// <p>不支持绑定的原因</p>
+	UnsupportedReason *string `json:"UnsupportedReason,omitnil,omitempty" name:"UnsupportedReason"`
+}
+
+type CustomGuardrailCapabilityLimits struct {
+	// <p>Header 白名单最大条数。</p>
+	MaxHeaderAllowList *int64 `json:"MaxHeaderAllowList,omitnil,omitempty" name:"MaxHeaderAllowList"`
+
+	// <p>单方向关键词最大条数。</p>
+	MaxKeywordsPerDirection *int64 `json:"MaxKeywordsPerDirection,omitnil,omitempty" name:"MaxKeywordsPerDirection"`
+
+	// <p>直接内联送审的 Body 上限，单位字节。</p>
+	InlineBodyBytes *int64 `json:"InlineBodyBytes,omitnil,omitempty" name:"InlineBodyBytes"`
+
+	// <p>可接受的请求 Body 上限，单位字节。</p>
+	MaxAcceptedBodyBytes *int64 `json:"MaxAcceptedBodyBytes,omitnil,omitempty" name:"MaxAcceptedBodyBytes"`
+
+	// <p>超大请求 Body 默认分片大小，单位字节。</p>
+	TransferChunkBytes *int64 `json:"TransferChunkBytes,omitnil,omitempty" name:"TransferChunkBytes"`
+
+	// <p>超大请求 Body 最大分片大小，单位字节。</p>
+	MaxTransferChunkBytes *int64 `json:"MaxTransferChunkBytes,omitnil,omitempty" name:"MaxTransferChunkBytes"`
+
+	// <p>分片传输目标最大分片数。</p>
+	TransferTargetMaxChunks *int64 `json:"TransferTargetMaxChunks,omitnil,omitempty" name:"TransferTargetMaxChunks"`
+
+	// <p>普通响应审核最大 Body 大小，单位字节。</p>
+	MaxResponseBodyBytes *int64 `json:"MaxResponseBodyBytes,omitnil,omitempty" name:"MaxResponseBodyBytes"`
+
+	// <p>单个流式事件最大字节数，单位字节。</p>
+	MaxStreamEventBytes *int64 `json:"MaxStreamEventBytes,omitnil,omitempty" name:"MaxStreamEventBytes"`
+
+	// <p>单数据面实例 Stream Relay 默认并发槽位。</p>
+	StreamRelayMaxConcurrentRequests *int64 `json:"StreamRelayMaxConcurrentRequests,omitnil,omitempty" name:"StreamRelayMaxConcurrentRequests"`
+
+	// <p>审核超时最小值，单位毫秒。</p>
+	MinTimeoutMs *int64 `json:"MinTimeoutMs,omitnil,omitempty" name:"MinTimeoutMs"`
+
+	// <p>审核超时最大值，单位毫秒。</p>
+	MaxTimeoutMs *int64 `json:"MaxTimeoutMs,omitnil,omitempty" name:"MaxTimeoutMs"`
+
+	// <p>审核超时默认值，单位毫秒。</p>
+	DefaultTimeoutMs *int64 `json:"DefaultTimeoutMs,omitnil,omitempty" name:"DefaultTimeoutMs"`
+}
+
+type CustomGuardrailDecisionConfig struct {
+	// <p>已保存的判定模式。新配置仅支持 field_mapping；存量策略可能返回 standard_v2，查询、删除或停用不要求迁移，修改判定配置或重新启用前必须迁移。</p>
+	ContractMode *string `json:"ContractMode,omitnil,omitempty" name:"ContractMode"`
+
+	// <p>必须显式填写 default 或 response。default 使用 BlockMessage；response 使用 FieldMapping.MessageFieldPath 读取提示，值缺失或不合法时回退默认文案。default 时 BlockMessage 必填，response 时 MessageFieldPath 必填。</p>
+	BlockMessageMode *string `json:"BlockMessageMode,omitnil,omitempty" name:"BlockMessageMode"`
+
+	// <p>本策略默认/兜底拦截提示，最长 512 个字符。未配置或为空时使用系统按请求语言选择的默认提示；不是替换后的业务响应 Body。</p>
+	BlockMessage *string `json:"BlockMessage,omitnil,omitempty" name:"BlockMessage"`
+
+	// <p>是否允许输出内容替换，省略为 false。开启且配置 RewriteFieldPath 后，输出审核响应只要存在该字段就优先 replace，不要求 HitFieldPath/HitValue 命中，也不要求引擎 decision=replace；替换字段不存在才按命中规则处理。输入永不替换；observe 只记录、不阻断或替换。非法替换正文是审核异常。流式仅替换当前未发送批次，不可撤回已发送内容。</p>
+	RewriteEnabled *bool `json:"RewriteEnabled,omitnil,omitempty" name:"RewriteEnabled"`
+
+	// <p>自定义模式必填的响应字段映射。HitFieldPath 和 HitValue 必填。输出启用替换且替换字段存在时优先 replace；否则要求命中字段存在且为有效同类型标量，值相等时 block，不相等时 allow。缺失或非法命中字段属于无效审核响应，不能等同于安全放行。</p>
+	FieldMapping *CustomGuardrailFieldMapping `json:"FieldMapping,omitnil,omitempty" name:"FieldMapping"`
+}
+
+type CustomGuardrailDecisionConfigInput struct {
+	// <p>仅支持 field_mapping（自定义字段映射），必须显式填写；不允许 standard_v2、空字符串或 null。只决定如何解析审核响应，网关送审请求仍使用统一 Schema 2.0 封装。</p>
+	ContractMode *string `json:"ContractMode,omitnil,omitempty" name:"ContractMode"`
+
+	// <p>必须显式填写 default 或 response。default 使用 BlockMessage；response 使用 FieldMapping.MessageFieldPath 读取提示，值缺失或不合法时回退默认文案。default 时 BlockMessage 必填，response 时 MessageFieldPath 必填。</p>
+	BlockMessageMode *string `json:"BlockMessageMode,omitnil,omitempty" name:"BlockMessageMode"`
+
+	// <p>自定义模式必填的响应字段映射。HitFieldPath 和 HitValue 必填。输出启用替换且替换字段存在时优先 replace；否则要求命中字段存在且为有效同类型标量，值相等时 block，不相等时 allow。缺失或非法命中字段属于无效审核响应，不能等同于安全放行。</p>
+	FieldMapping *CustomGuardrailFieldMappingInput `json:"FieldMapping,omitnil,omitempty" name:"FieldMapping"`
+
+	// <p>默认/兜底拦截提示，长度 1～512 字符，不是替换 Body。BlockMessageMode=default 时必填且不能为空白；创建/草稿测试使用 response 模式时可省略，后端补充系统兜底提示。修改时省略保留原值，显式空值不用于清空文案。</p>
+	BlockMessage *string `json:"BlockMessage,omitnil,omitempty" name:"BlockMessage"`
+
+	// <p>是否允许输出内容替换，省略为 false。开启且配置 RewriteFieldPath 后，输出审核响应只要存在该字段就优先 replace，不要求 HitFieldPath/HitValue 命中，也不要求引擎 decision=replace；替换字段不存在才按命中规则处理。输入永不替换；observe 只记录、不阻断或替换。非法替换正文是审核异常。流式仅替换当前未发送批次，不可撤回已发送内容。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RewriteEnabled *bool `json:"RewriteEnabled,omitnil,omitempty" name:"RewriteEnabled"`
+}
+
+type CustomGuardrailDecisionConfigPatch struct {
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。仅支持 field_mapping（自定义字段映射），必须显式填写；不允许 standard_v2、空字符串或 null。只决定如何解析审核响应，网关送审请求仍使用统一 Schema 2.0 封装。</p>
+	ContractMode *string `json:"ContractMode,omitnil,omitempty" name:"ContractMode"`
+
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必须显式填写 default 或 response。default 使用 BlockMessage；response 使用 FieldMapping.MessageFieldPath 读取提示，值缺失或不合法时回退默认文案。default 时 BlockMessage 必填，response 时 MessageFieldPath 必填。</p>
+	BlockMessageMode *string `json:"BlockMessageMode,omitnil,omitempty" name:"BlockMessageMode"`
+
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。默认/兜底拦截提示，长度 1～512 字符，不是替换 Body。BlockMessageMode=default 时必填且不能为空白；创建/草稿测试使用 response 模式时可省略，后端补充系统兜底提示。修改时省略保留原值，显式空值不用于清空文案。</p>
+	BlockMessage *string `json:"BlockMessage,omitnil,omitempty" name:"BlockMessage"`
+
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。是否允许输出内容替换，省略为 false。开启且配置 RewriteFieldPath 后，输出审核响应只要存在该字段就优先 replace，不要求 HitFieldPath/HitValue 命中，也不要求引擎 decision=replace；替换字段不存在才按命中规则处理。输入永不替换；observe 只记录、不阻断或替换。非法替换正文是审核异常。流式仅替换当前未发送批次，不可撤回已发送内容。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RewriteEnabled *bool `json:"RewriteEnabled,omitnil,omitempty" name:"RewriteEnabled"`
+
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。自定义模式必填的响应字段映射。HitFieldPath 和 HitValue 必填。输出启用替换且替换字段存在时优先 replace；否则要求命中字段存在且为有效同类型标量，值相等时 block，不相等时 allow。缺失或非法命中字段属于无效审核响应，不能等同于安全放行。</p>
+	FieldMapping *CustomGuardrailFieldMappingPatch `json:"FieldMapping,omitnil,omitempty" name:"FieldMapping"`
+}
+
+type CustomGuardrailFieldMapping struct {
+	// <p>必填。命中字段的点分隔对象路径，例如 decision 或 result.blocked；不支持数组下标、JSONPath 或通配符。</p>
+	HitFieldPath *string `json:"HitFieldPath,omitnil,omitempty" name:"HitFieldPath"`
+
+	// <p>必填，API 类型为 string。可填写 JSON 字符串、数字或布尔标量文本，也接受 block 等非空普通文本并规范化为 JSON 字符串。示例：block 或 "block" 匹配字符串，true 匹配布尔值，0 匹配数字。null、对象、数组和空白文本不支持；类型不同不视为普通未命中。</p>
+	HitValue *string `json:"HitValue,omitnil,omitempty" name:"HitValue"`
+
+	// <p>BlockMessageMode=response 时必填，例如 message 或 result.message；读取结果应为 1～512 字符的字符串，否则使用兜底文案。</p>
+	MessageFieldPath *string `json:"MessageFieldPath,omitnil,omitempty" name:"MessageFieldPath"`
+
+	// <p>RewriteEnabled=true 时必填，例如 content.body；仅输出审核读取。字段存在即优先 replace，与命中值是否相等无关。JSON 替换值应是完整业务 JSON；SSE 必须是以空行结束的完整事件文本，替换当前未发送的 event_batch，不是整个流或某个 TCP chunk。输入不替换。</p>
+	RewriteFieldPath *string `json:"RewriteFieldPath,omitnil,omitempty" name:"RewriteFieldPath"`
+}
+
+type CustomGuardrailFieldMappingInput struct {
+	// <p>必填。命中字段的点分隔对象路径，例如 decision 或 result.blocked；不支持数组下标、JSONPath 或通配符。</p>
+	HitFieldPath *string `json:"HitFieldPath,omitnil,omitempty" name:"HitFieldPath"`
+
+	// <p>必填，API 类型为 string。可填写 JSON 字符串、数字或布尔标量文本，也接受 block 等非空普通文本并规范化为 JSON 字符串。示例：block 或 "block" 匹配字符串，true 匹配布尔值，0 匹配数字。null、对象、数组和空白文本不支持；类型不同不视为普通未命中。</p>
+	HitValue *string `json:"HitValue,omitnil,omitempty" name:"HitValue"`
+
+	// <p>BlockMessageMode=response 时必填，例如 message 或 result.message；读取结果应为 1～512 字符的字符串，否则使用兜底文案。</p>
+	MessageFieldPath *string `json:"MessageFieldPath,omitnil,omitempty" name:"MessageFieldPath"`
+
+	// <p>RewriteEnabled=true 时必填，例如 content.body；仅输出审核读取。字段存在即优先 replace，与命中值是否相等无关。JSON 替换值应是完整业务 JSON；SSE 必须是以空行结束的完整事件文本，替换当前未发送的 event_batch，不是整个流或某个 TCP chunk。输入不替换。</p>
+	RewriteFieldPath *string `json:"RewriteFieldPath,omitnil,omitempty" name:"RewriteFieldPath"`
+}
+
+type CustomGuardrailFieldMappingPatch struct {
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填。命中字段的点分隔对象路径，例如 decision 或 result.blocked；不支持数组下标、JSONPath 或通配符。</p>
+	HitFieldPath *string `json:"HitFieldPath,omitnil,omitempty" name:"HitFieldPath"`
+
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填，API 类型为 string。可填写 JSON 字符串、数字或布尔标量文本，也接受 block 等非空普通文本并规范化为 JSON 字符串。示例：block 或 "block" 匹配字符串，true 匹配布尔值，0 匹配数字。null、对象、数组和空白文本不支持；类型不同不视为普通未命中。</p>
+	HitValue *string `json:"HitValue,omitnil,omitempty" name:"HitValue"`
+
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。BlockMessageMode=response 时必填，例如 message 或 result.message；读取结果应为 1～512 字符的字符串，否则使用兜底文案。</p>
+	MessageFieldPath *string `json:"MessageFieldPath,omitnil,omitempty" name:"MessageFieldPath"`
+
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。RewriteEnabled=true 时必填，例如 content.body；仅输出审核读取。字段存在即优先 replace，与命中值是否相等无关。JSON 替换值应是完整业务 JSON；SSE 必须是以空行结束的完整事件文本，替换当前未发送的 event_batch，不是整个流或某个 TCP chunk。输入不替换。</p>
+	RewriteFieldPath *string `json:"RewriteFieldPath,omitnil,omitempty" name:"RewriteFieldPath"`
+}
+
+type CustomGuardrailFilterConfig struct {
+	// <p>请求方向的流式筛选：all 全部（创建默认）、streaming 流式、non_streaming 非流式。依据请求的流式意图/协议识别；无法可靠判别时保守保留送审资格，不应依赖该字段实现强隔离。</p>
+	RequestStreamMode *string `json:"RequestStreamMode,omitnil,omitempty" name:"RequestStreamMode"`
+
+	// <p>响应方向的流式筛选：all 全部（创建默认）、streaming 仅流式、non_streaming 仅非流式。开启输出审核并选择 streaming 可用于 SSE 响应审核。此字段不设置窗口大小或分片步长。</p>
+	ResponseStreamMode *string `json:"ResponseStreamMode,omitnil,omitempty" name:"ResponseStreamMode"`
+
+	// <p>请求送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤；非空时按 KeywordMatchMode 满足条件才送审，不是本地违禁词阻断列表。</p>
+	RequestKeywords []*string `json:"RequestKeywords,omitnil,omitempty" name:"RequestKeywords"`
+
+	// <p>响应送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤。流式审核按增量审核单元执行筛选，不代表等待完整响应后统一判断。</p>
+	ResponseKeywords []*string `json:"ResponseKeywords,omitnil,omitempty" name:"ResponseKeywords"`
+
+	// <p>关键词匹配方式：any 任一关键词命中（创建默认）；all 所有关键词命中。按文本字面子串匹配，不是正则表达式。</p>
+	KeywordMatchMode *string `json:"KeywordMatchMode,omitnil,omitempty" name:"KeywordMatchMode"`
+
+	// <p>关键词匹配是否区分大小写，创建默认 false。</p>
+	KeywordCaseSensitive *bool `json:"KeywordCaseSensitive,omitnil,omitempty" name:"KeywordCaseSensitive"`
+
+	// <p>是否启用送审采样，创建默认 false（不按采样率跳过）。采样与方向、流式、关键词过滤叠加；开启低比例采样会使未抽中的内容不送审。</p>
+	SamplingEnabled *bool `json:"SamplingEnabled,omitnil,omitempty" name:"SamplingEnabled"`
+
+	// <p>请求送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。0 不抽取，1 全量，0.1 表示 10%，不是填写整数 10。</p>
+	RequestSamplingRate *float64 `json:"RequestSamplingRate,omitnil,omitempty" name:"RequestSamplingRate"`
+
+	// <p>响应送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。同一请求响应流保持一致的采样选择，不是对每个 SSE 网络 chunk 独立抽样。</p>
+	ResponseSamplingRate *float64 `json:"ResponseSamplingRate,omitnil,omitempty" name:"ResponseSamplingRate"`
+}
+
+type CustomGuardrailFilterConfigInput struct {
+	// <p>请求方向的流式筛选：all 全部（创建默认）、streaming 流式、non_streaming 非流式。依据请求的流式意图/协议识别；无法可靠判别时保守保留送审资格，不应依赖该字段实现强隔离。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestStreamMode *string `json:"RequestStreamMode,omitnil,omitempty" name:"RequestStreamMode"`
+
+	// <p>响应方向的流式筛选：all 全部（创建默认）、streaming 仅流式、non_streaming 仅非流式。开启输出审核并选择 streaming 可用于 SSE 响应审核。此字段不设置窗口大小或分片步长。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseStreamMode *string `json:"ResponseStreamMode,omitnil,omitempty" name:"ResponseStreamMode"`
+
+	// <p>请求送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤；非空时按 KeywordMatchMode 满足条件才送审，不是本地违禁词阻断列表。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestKeywords []*string `json:"RequestKeywords,omitnil,omitempty" name:"RequestKeywords"`
+
+	// <p>响应送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤。流式审核按增量审核单元执行筛选，不代表等待完整响应后统一判断。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseKeywords []*string `json:"ResponseKeywords,omitnil,omitempty" name:"ResponseKeywords"`
+
+	// <p>关键词匹配方式：any 任一关键词命中（创建默认）；all 所有关键词命中。按文本字面子串匹配，不是正则表达式。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeywordMatchMode *string `json:"KeywordMatchMode,omitnil,omitempty" name:"KeywordMatchMode"`
+
+	// <p>关键词匹配是否区分大小写，创建默认 false。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeywordCaseSensitive *bool `json:"KeywordCaseSensitive,omitnil,omitempty" name:"KeywordCaseSensitive"`
+
+	// <p>是否启用送审采样，创建默认 false（不按采样率跳过）。采样与方向、流式、关键词过滤叠加；开启低比例采样会使未抽中的内容不送审。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SamplingEnabled *bool `json:"SamplingEnabled,omitnil,omitempty" name:"SamplingEnabled"`
+
+	// <p>请求送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。0 不抽取，1 全量，0.1 表示 10%，不是填写整数 10。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestSamplingRate *float64 `json:"RequestSamplingRate,omitnil,omitempty" name:"RequestSamplingRate"`
+
+	// <p>响应送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。同一请求响应流保持一致的采样选择，不是对每个 SSE 网络 chunk 独立抽样。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseSamplingRate *float64 `json:"ResponseSamplingRate,omitnil,omitempty" name:"ResponseSamplingRate"`
+}
+
+type CustomGuardrailFilterConfigPatch struct {
+	// <p>请求方向的流式筛选：all 全部（创建默认）、streaming 流式、non_streaming 非流式。依据请求的流式意图/协议识别；无法可靠判别时保守保留送审资格，不应依赖该字段实现强隔离。</p><p>修改时省略本字段保留原值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestStreamMode *string `json:"RequestStreamMode,omitnil,omitempty" name:"RequestStreamMode"`
+
+	// <p>响应方向的流式筛选：all 全部（创建默认）、streaming 仅流式、non_streaming 仅非流式。开启输出审核并选择 streaming 可用于 SSE 响应审核。此字段不设置窗口大小或分片步长。</p><p>修改时省略本字段保留原值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseStreamMode *string `json:"ResponseStreamMode,omitnil,omitempty" name:"ResponseStreamMode"`
+
+	// <p>请求送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤；非空时按 KeywordMatchMode 满足条件才送审，不是本地违禁词阻断列表。</p><p>修改时省略本字段保留原值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestKeywords []*string `json:"RequestKeywords,omitnil,omitempty" name:"RequestKeywords"`
+
+	// <p>响应送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤。流式审核按增量审核单元执行筛选，不代表等待完整响应后统一判断。</p><p>修改时省略本字段保留原值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseKeywords []*string `json:"ResponseKeywords,omitnil,omitempty" name:"ResponseKeywords"`
+
+	// <p>关键词匹配方式：any 任一关键词命中（创建默认）；all 所有关键词命中。按文本字面子串匹配，不是正则表达式。</p><p>修改时省略本字段保留原值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeywordMatchMode *string `json:"KeywordMatchMode,omitnil,omitempty" name:"KeywordMatchMode"`
+
+	// <p>关键词匹配是否区分大小写，创建默认 false。</p><p>修改时省略本字段保留原值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeywordCaseSensitive *bool `json:"KeywordCaseSensitive,omitnil,omitempty" name:"KeywordCaseSensitive"`
+
+	// <p>是否启用送审采样，创建默认 false（不按采样率跳过）。采样与方向、流式、关键词过滤叠加；开启低比例采样会使未抽中的内容不送审。</p><p>修改时省略本字段保留原值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SamplingEnabled *bool `json:"SamplingEnabled,omitnil,omitempty" name:"SamplingEnabled"`
+
+	// <p>请求送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。0 不抽取，1 全量，0.1 表示 10%，不是填写整数 10。</p><p>修改时省略本字段保留原值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestSamplingRate *float64 `json:"RequestSamplingRate,omitnil,omitempty" name:"RequestSamplingRate"`
+
+	// <p>响应送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。同一请求响应流保持一致的采样选择，不是对每个 SSE 网络 chunk 独立抽样。</p><p>修改时省略本字段保留原值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseSamplingRate *float64 `json:"ResponseSamplingRate,omitnil,omitempty" name:"ResponseSamplingRate"`
+}
+
+type CustomGuardrailHit struct {
+	// <p>业务网关请求 ID；不是本次云 API 响应的 RequestId。流式同一业务请求可产生多条审核记录。</p>
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+
+	// <p>审核记录 Unix 毫秒级时间戳；注意查询入参 StartTime/EndTime 为秒级。</p>
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>策略名称</p>
+	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
+
+	// <p>业务资源类型</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>业务资源 ID</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>Kong Route ID</p>
+	RouteId *string `json:"RouteId,omitnil,omitempty" name:"RouteId"`
+
+	// <p>业务协议</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>审核方向：request 或 response</p>
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// <p>是否为流式审核</p>
+	Streaming *bool `json:"Streaming,omitnil,omitempty" name:"Streaming"`
+
+	// <p>该审核单元是否标记为最终单元；不是是否命中/是否连接正常结束的判断依据。</p>
+	Final *bool `json:"Final,omitnil,omitempty" name:"Final"`
+
+	// <p>归一化后的审核判定，可能为 allow、block、replace、error；不是原始自定义字段的任意值。观察模式仍可记录命中判定。</p>
+	Decision *string `json:"Decision,omitnil,omitempty" name:"Decision"`
+
+	// <p>策略配置动作</p>
+	ConfiguredAction *string `json:"ConfiguredAction,omitnil,omitempty" name:"ConfiguredAction"`
+
+	// <p>该审核记录的策略处理结果，如 allow、block、replace、error。需与 Decision、ConfiguredAction、ErrorCode 联合分析；记录不等于客户端已成功收到全部响应。</p>
+	EffectiveAction *string `json:"EffectiveAction,omitnil,omitempty" name:"EffectiveAction"`
+
+	// <p>内容是否被改写</p>
+	Rewritten *bool `json:"Rewritten,omitnil,omitempty" name:"Rewritten"`
+
+	// <p>请求或响应是否被拦截</p>
+	Blocked *bool `json:"Blocked,omitnil,omitempty" name:"Blocked"`
+
+	// <p>本审核记录是否因失败放行发生降级；为 true 时不能认为内容已经审核通过。</p>
+	Downgraded *bool `json:"Downgraded,omitnil,omitempty" name:"Downgraded"`
+
+	// <p>审核服务 HTTP 状态码</p>
+	ProviderStatusCode *int64 `json:"ProviderStatusCode,omitnil,omitempty" name:"ProviderStatusCode"`
+
+	// <p>该审核调用耗时，单位毫秒，可含小数；不是完整模型请求时长或客户端首字延迟。</p>
+	LatencyMs *float64 `json:"LatencyMs,omitnil,omitempty" name:"LatencyMs"`
+
+	// <p>稳定错误码</p>
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>审核原因或错误摘要</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+type CustomGuardrailHitFilter struct {
+	// <p>支持 PolicyId、Direction、Decision、EffectiveAction、ResourceType、ResourceId、Protocol、RouteId、RequestId、ErrorCode。Direction 使用 request/response；Protocol 应使用实际审核日志中的协议名，如 mcp-streamable-http。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>每个过滤项仅支持一个非空字符串值，不支持同一项多值 OR；不同过滤项之间为 AND。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type CustomGuardrailPolicy struct {
+	// <p>策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>策略名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>策略描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>策略期望启用状态；实际生效还需检查 EffectiveEnabled 和 SyncStatus。</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>当前控制面计算值：Enabled=true 且 SyncStatus=synced 时为 true。不代表一次真实业务请求已通过审核，也不替代 DP 同步/链路验证。</p>
+	EffectiveEnabled *bool `json:"EffectiveEnabled,omitnil,omitempty" name:"EffectiveEnabled"`
+
+	// <p>审核服务配置</p>
+	ServiceConfig *CustomGuardrailServiceConfig `json:"ServiceConfig,omitnil,omitempty" name:"ServiceConfig"`
+
+	// <p>审核引擎鉴权的脱敏视图，仅返回鉴权类型、Header 名和密钥存在状态，不返回 ApiKey。</p>
+	AuthConfig *CustomGuardrailAuthConfig `json:"AuthConfig,omitnil,omitempty" name:"AuthConfig"`
+
+	// <p>审核响应判定配置</p>
+	DecisionConfig *CustomGuardrailDecisionConfig `json:"DecisionConfig,omitnil,omitempty" name:"DecisionConfig"`
+
+	// <p>处理行为配置</p>
+	BehaviorConfig *CustomGuardrailBehaviorConfig `json:"BehaviorConfig,omitnil,omitempty" name:"BehaviorConfig"`
+
+	// <p>过滤与采样配置</p>
+	FilterConfig *CustomGuardrailFilterConfig `json:"FilterConfig,omitnil,omitempty" name:"FilterConfig"`
+
+	// <p>生效范围</p>
+	Scope *CustomGuardrailScope `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>业务资源到 Kong Route 的绑定及插件投影信息，一个业务资源可能对应多个 Route。</p>
+	Bindings []*CustomGuardrailPolicyBinding `json:"Bindings,omitnil,omitempty" name:"Bindings"`
+
+	// <p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+	SyncStatus *string `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+
+	// <p>配置同步错误摘要，无错误时可能省略。</p>
+	SyncError *string `json:"SyncError,omitnil,omitempty" name:"SyncError"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>最后修改时间</p>
+	ModificationTime *string `json:"ModificationTime,omitnil,omitempty" name:"ModificationTime"`
+}
+
+type CustomGuardrailPolicyBinding struct {
+	// <p>业务资源类型</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>业务资源 ID</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>业务资源名称</p>
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// <p>资源访问路径</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>数据面解析协议</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>底层 Kong Route ID</p>
+	RouteId *string `json:"RouteId,omitnil,omitempty" name:"RouteId"`
+
+	// <p>绑定 Route 上的 cngw-ai-custom-guardrail 插件实例 ID；未投影、禁用或同步失败时可能不存在。</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+	SyncStatus *string `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+
+	// <p>最近一次同步错误摘要</p>
+	SyncError *string `json:"SyncError,omitnil,omitempty" name:"SyncError"`
+}
+
+type CustomGuardrailPolicyFilter struct {
+	// <p>过滤字段：Enabled、Direction、HandleAction、BindType、SyncStatus；名称区分大小写。Direction 使用 input/output/both。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>至少一个字符串值；同一过滤项内多个值为 OR，不同过滤项之间为 AND。例如 Enabled 的值为字符串 "true"，不是布尔值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type CustomGuardrailResourceRef struct {
+	// <p>被审核的业务资源类型：model_api 模型 API；mcp_server MCP Server（当前支持 Streamable HTTP）；agent_api Agent API（当前支持 A2A）。</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>上述类型的管控业务资源 ID，可从 DescribeAIGWCustomGuardrailBindableResources 获取；不是审核引擎 ServiceId，也不是 Kong RouteId。请原样使用接口返回 ID。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type CustomGuardrailResourceRefInput struct {
+	// <p>被审核的业务资源类型：model_api 模型 API；mcp_server MCP Server（当前支持 Streamable HTTP）；agent_api Agent API（当前支持 A2A）。</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>上述类型的管控业务资源 ID，可从 DescribeAIGWCustomGuardrailBindableResources 获取；不是审核引擎 ServiceId，也不是 Kong RouteId。请原样使用接口返回 ID。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type CustomGuardrailScope struct {
+	// <p>绑定方式：resource 显式指定业务资源；global 覆盖网关中当前支持的业务资源，由平台关联到其 Kong Route，并随受支持的资源变更协调绑定。不是创建一个独立的 Kong global 插件。相同 Route 不能同时被多个自定义护栏策略占用。</p>
+	BindType *string `json:"BindType,omitnil,omitempty" name:"BindType"`
+
+	// <p>BindType=resource 时必填，1～200 个资源，ResourceType/ResourceId 组合不得重复；global 时不应填写资源或传 []。Modify 传入 Scope 时替换整个范围，不是增量追加。暂不纳入 Dify/Custom Agent 和 Legacy SSE MCP。</p>
+	Resources []*CustomGuardrailResourceRef `json:"Resources,omitnil,omitempty" name:"Resources"`
+}
+
+type CustomGuardrailScopeInput struct {
+	// <p>绑定方式：resource 显式指定业务资源；global 覆盖网关中当前支持的业务资源，由平台关联到其 Kong Route，并随受支持的资源变更协调绑定。不是创建一个独立的 Kong global 插件。相同 Route 不能同时被多个自定义护栏策略占用。</p>
+	BindType *string `json:"BindType,omitnil,omitempty" name:"BindType"`
+
+	// <p>BindType=resource 时必填，1～200 个资源，ResourceType/ResourceId 组合不得重复；global 时不应填写资源或传 []。Modify 传入 Scope 时替换整个范围，不是增量追加。暂不纳入 Dify/Custom Agent 和 Legacy SSE MCP。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resources []*CustomGuardrailResourceRefInput `json:"Resources,omitnil,omitempty" name:"Resources"`
+}
+
+type CustomGuardrailServiceConfig struct {
+	// <p>审核服务地址来源：manual 手动填写完整 URL，service 引用本网关服务管理中的 Kong Service。二者互斥；创建时按接口要求显式传入。</p>
+	AddressMode *string `json:"AddressMode,omitnil,omitempty" name:"AddressMode"`
+
+	// <p>AddressMode=service 时必填。填写审核引擎对应的 Kong Service ID，不是被审核的模型 API、MCP Server 或 Agent API ID。按该服务的 protocol、host、port、path 拼出审核 URL；直接请求该 URL，不是经过该服务的网关 Route，也不会自动继承其 Route 插件或业务鉴权。manual 模式不得填写。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>AddressMode=manual 时必填，审核引擎接受 POST 的 HTTP/HTTPS 完整 URL，例如 https://audit.example.com/v2/audit；路径以实际引擎为准，不会自动补 /v2/audit。service 模式不得填写。请填写 URL 原文，不要粘贴 Markdown 链接。</p>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// <p>是否校验审核引擎 HTTPS 证书，创建默认 true；仅影响审核 HTTP 调用，不是客户端访问网关的 TLS 设置。</p>
+	SSLVerify *bool `json:"SSLVerify,omitnil,omitempty" name:"SSLVerify"`
+
+	// <p>是否把原业务请求的完整 Query 字符串写入送审包，创建默认 false。开启可能把 Query 中的凭据或个人信息传给审核服务，须确认接收方可信；不是审核服务 URL 自身的 Query 开关。</p>
+	QueryPassthroughEnabled *bool `json:"QueryPassthroughEnabled,omitnil,omitempty" name:"QueryPassthroughEnabled"`
+
+	// <p>允许额外写入送审包的原始 HTTP Header 名称，最多 64 项，每项最长 128 字节；名称不区分大小写，默认 []。内置保留 content-type、accept、mcp-protocol-version、a2a-version；Authorization、Cookie、API Key、MCP 会话标识和内部 Relay 等受限头不会因加入本列表而放行。审核服务自身的鉴权请使用 AuthConfig。</p>
+	HeaderAllowList []*string `json:"HeaderAllowList,omitnil,omitempty" name:"HeaderAllowList"`
+}
+
+type CustomGuardrailServiceConfigInput struct {
+	// <p>审核服务地址来源，必须显式选择 service（已有服务）或 manual（手动 URL）；不得省略、为空或 null。service 时 ServiceId 必填，manual 时 Endpoint 必填，两种地址互斥。</p>
+	AddressMode *string `json:"AddressMode,omitnil,omitempty" name:"AddressMode"`
+
+	// <p>AddressMode=service 时必填。填写审核引擎对应的 Kong Service ID，不是被审核的模型 API、MCP Server 或 Agent API ID。按该服务的 protocol、host、port、path 拼出审核 URL；直接请求该 URL，不是经过该服务的网关 Route，也不会自动继承其 Route 插件或业务鉴权。manual 模式不得填写。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>AddressMode=manual 时必填，审核引擎接受 POST 的 HTTP/HTTPS 完整 URL，例如 https://audit.example.com/v2/audit；路径以实际引擎为准，不会自动补 /v2/audit。service 模式不得填写。请填写 URL 原文，不要粘贴 Markdown 链接。</p>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// <p>是否校验审核引擎 HTTPS 证书，创建默认 true；仅影响审核 HTTP 调用，不是客户端访问网关的 TLS 设置。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SSLVerify *bool `json:"SSLVerify,omitnil,omitempty" name:"SSLVerify"`
+
+	// <p>是否把原业务请求的完整 Query 字符串写入送审包，创建默认 false。开启可能把 Query 中的凭据或个人信息传给审核服务，须确认接收方可信；不是审核服务 URL 自身的 Query 开关。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryPassthroughEnabled *bool `json:"QueryPassthroughEnabled,omitnil,omitempty" name:"QueryPassthroughEnabled"`
+
+	// <p>允许额外写入送审包的原始 HTTP Header 名称，最多 64 项，每项最长 128 字节；名称不区分大小写，默认 []。内置保留 content-type、accept、mcp-protocol-version、a2a-version；Authorization、Cookie、API Key、MCP 会话标识和内部 Relay 等受限头不会因加入本列表而放行。审核服务自身的鉴权请使用 AuthConfig。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeaderAllowList []*string `json:"HeaderAllowList,omitnil,omitempty" name:"HeaderAllowList"`
+}
+
+type CustomGuardrailServiceConfigPatch struct {
+	// <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。审核服务地址来源，必须显式选择 service（已有服务）或 manual（手动 URL）；不得省略、为空或 null。service 时 ServiceId 必填，manual 时 Endpoint 必填，两种地址互斥。</p>
+	AddressMode *string `json:"AddressMode,omitnil,omitempty" name:"AddressMode"`
+
+	// <p>AddressMode=service 时必填。填写审核引擎对应的 Kong Service ID，不是被审核的模型 API、MCP Server 或 Agent API ID。按该服务的 protocol、host、port、path 拼出审核 URL；直接请求该 URL，不是经过该服务的网关 Route，也不会自动继承其 Route 插件或业务鉴权。manual 模式不得填写。</p><p>修改时省略本字段保留原值。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>AddressMode=manual 时必填，审核引擎接受 POST 的 HTTP/HTTPS 完整 URL，例如 https://audit.example.com/v2/audit；路径以实际引擎为准，不会自动补 /v2/audit。service 模式不得填写。请填写 URL 原文，不要粘贴 Markdown 链接。</p><p>修改时省略本字段保留原值。</p>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// <p>是否校验审核引擎 HTTPS 证书，创建默认 true；仅影响审核 HTTP 调用，不是客户端访问网关的 TLS 设置。</p><p>修改时省略本字段保留原值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SSLVerify *bool `json:"SSLVerify,omitnil,omitempty" name:"SSLVerify"`
+
+	// <p>是否把原业务请求的完整 Query 字符串写入送审包，创建默认 false。开启可能把 Query 中的凭据或个人信息传给审核服务，须确认接收方可信；不是审核服务 URL 自身的 Query 开关。</p><p>修改时省略本字段保留原值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryPassthroughEnabled *bool `json:"QueryPassthroughEnabled,omitnil,omitempty" name:"QueryPassthroughEnabled"`
+
+	// <p>允许额外写入送审包的原始 HTTP Header 名称，最多 64 项，每项最长 128 字节；名称不区分大小写，默认 []。内置保留 content-type、accept、mcp-protocol-version、a2a-version；Authorization、Cookie、API Key、MCP 会话标识和内部 Relay 等受限头不会因加入本列表而放行。审核服务自身的鉴权请使用 AuthConfig。</p><p>修改时省略本字段保留原值。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeaderAllowList []*string `json:"HeaderAllowList,omitnil,omitempty" name:"HeaderAllowList"`
+}
+
+type CustomGuardrailSyncFailure struct {
+	// <p>资源类型；策略级错误时为 policy</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>资源 ID</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>底层 Kong Route ID</p>
+	RouteId *string `json:"RouteId,omitnil,omitempty" name:"RouteId"`
+
+	// <p>错误摘要</p>
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
+}
+
 type DefaultKongRoute struct {
 	// <p>服务名字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -5551,6 +6319,78 @@ type DefaultKongRoute struct {
 
 	// <p>Http Path</p>
 	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
+}
+
+// Predefined struct for user
+type DeleteAIGWCustomGuardrailPolicyRequestParams struct {
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+}
+
+type DeleteAIGWCustomGuardrailPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+}
+
+func (r *DeleteAIGWCustomGuardrailPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAIGWCustomGuardrailPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "PolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAIGWCustomGuardrailPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAIGWCustomGuardrailPolicyResponseParams struct {
+	// <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+	Result *DeleteAIGWCustomGuardrailPolicyResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAIGWCustomGuardrailPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAIGWCustomGuardrailPolicyResponseParams `json:"Response"`
+}
+
+func (r *DeleteAIGWCustomGuardrailPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAIGWCustomGuardrailPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAIGWCustomGuardrailPolicyResult struct {
+	// <p>是否完成插件投影清理并删除策略。false 时策略保留供重试，应检查 FailedResources。</p>
+	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
+
+	// <p>投影清理失败的业务资源</p>
+	FailedResources []*CustomGuardrailSyncFailure `json:"FailedResources,omitnil,omitempty" name:"FailedResources"`
 }
 
 // Predefined struct for user
@@ -7524,6 +8364,502 @@ func (r *DeleteWafDomainsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteWafDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIGWCustomGuardrailBindableResourcesRequestParams struct {
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>资源类型：model_api、mcp_server 或 agent_api</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>当前策略 ID；用于排除自身占用</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>按资源名称或路径模糊搜索</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>分页偏移量，最小 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单页数量，范围 1～100，默认 20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeAIGWCustomGuardrailBindableResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>资源类型：model_api、mcp_server 或 agent_api</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>当前策略 ID；用于排除自身占用</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>按资源名称或路径模糊搜索</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>分页偏移量，最小 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单页数量，范围 1～100，默认 20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAIGWCustomGuardrailBindableResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIGWCustomGuardrailBindableResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "ResourceType")
+	delete(f, "PolicyId")
+	delete(f, "Keyword")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIGWCustomGuardrailBindableResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIGWCustomGuardrailBindableResourcesResponseParams struct {
+	// <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+	Result *DescribeAIGWCustomGuardrailBindableResourcesResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIGWCustomGuardrailBindableResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIGWCustomGuardrailBindableResourcesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIGWCustomGuardrailBindableResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIGWCustomGuardrailBindableResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIGWCustomGuardrailBindableResourcesResult struct {
+	// <p>符合条件的资源总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>可绑定资源列表</p>
+	DataList []*CustomGuardrailBindableResource `json:"DataList,omitnil,omitempty" name:"DataList"`
+}
+
+// Predefined struct for user
+type DescribeAIGWCustomGuardrailCapabilitiesRequestParams struct {
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+}
+
+type DescribeAIGWCustomGuardrailCapabilitiesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+}
+
+func (r *DescribeAIGWCustomGuardrailCapabilitiesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIGWCustomGuardrailCapabilitiesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIGWCustomGuardrailCapabilitiesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIGWCustomGuardrailCapabilitiesResponseParams struct {
+	// <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+	Result *DescribeAIGWCustomGuardrailCapabilitiesResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIGWCustomGuardrailCapabilitiesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIGWCustomGuardrailCapabilitiesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIGWCustomGuardrailCapabilitiesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIGWCustomGuardrailCapabilitiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIGWCustomGuardrailCapabilitiesResult struct {
+	// <p>支持该能力的最低网关版本，当前为 3.9.6</p>
+	MinGatewayVersion *string `json:"MinGatewayVersion,omitnil,omitempty" name:"MinGatewayVersion"`
+
+	// <p>支持绑定的业务资源类型</p>
+	SupportedResourceTypes []*string `json:"SupportedResourceTypes,omitnil,omitempty" name:"SupportedResourceTypes"`
+
+	// <p>当前控制面允许绑定的协议分类，以返回值为准；不表示每种协议变体均可用。目前不开放 Dify、Custom Agent、Legacy SSE MCP。</p>
+	SupportedProtocols []*string `json:"SupportedProtocols,omitnil,omitempty" name:"SupportedProtocols"`
+
+	// <p>当前允许配置的审核方向，仅 input（仅输入）和 both（输入加输出）。</p>
+	SupportedDirections []*string `json:"SupportedDirections,omitnil,omitempty" name:"SupportedDirections"`
+
+	// <p>是否支持流式请求与响应审核</p>
+	SupportsStreaming *bool `json:"SupportsStreaming,omitnil,omitempty" name:"SupportsStreaming"`
+
+	// <p>是否支持自定义审核响应字段映射</p>
+	SupportsFieldMapping *bool `json:"SupportsFieldMapping,omitnil,omitempty" name:"SupportsFieldMapping"`
+
+	// <p>系统默认拦截提示</p>
+	DefaultBlockMessage *string `json:"DefaultBlockMessage,omitnil,omitempty" name:"DefaultBlockMessage"`
+
+	// <p>拦截提示最大字符数</p>
+	MaxBlockMessageLength *int64 `json:"MaxBlockMessageLength,omitnil,omitempty" name:"MaxBlockMessageLength"`
+
+	// <p>控制面公布的能力限制/默认值，不是当前请求可修改的配置对象，也不是逐个 DP 实时读取值。窗口大小、并发审核数等未作为策略 API 入参开放。</p>
+	Limits *CustomGuardrailCapabilityLimits `json:"Limits,omitnil,omitempty" name:"Limits"`
+}
+
+// Predefined struct for user
+type DescribeAIGWCustomGuardrailHitsRequestParams struct {
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>查询起始时间，Unix 秒级时间戳</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，Unix 秒级时间戳</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>分页偏移量，最小 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单页数量，范围 1～100，默认 20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>审核记录过滤条件</p>
+	Filters []*CustomGuardrailHitFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeAIGWCustomGuardrailHitsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>查询起始时间，Unix 秒级时间戳</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，Unix 秒级时间戳</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>分页偏移量，最小 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单页数量，范围 1～100，默认 20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>审核记录过滤条件</p>
+	Filters []*CustomGuardrailHitFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeAIGWCustomGuardrailHitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIGWCustomGuardrailHitsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIGWCustomGuardrailHitsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIGWCustomGuardrailHitsResponseParams struct {
+	// <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+	Result *DescribeAIGWCustomGuardrailHitsResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIGWCustomGuardrailHitsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIGWCustomGuardrailHitsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIGWCustomGuardrailHitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIGWCustomGuardrailHitsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIGWCustomGuardrailHitsResult struct {
+	// <p>时间范围和过滤条件内匹配的审核日志总数，分页前统计；不再限定为最多 1000 条。日志异常条目可能无法解析为 Hits。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>当前页审核记录，按时间倒序；同一业务请求的多次送审会产生多条记录，不能直接把条数当业务请求数。</p>
+	Hits []*CustomGuardrailHit `json:"Hits,omitnil,omitempty" name:"Hits"`
+
+	// <p>兼容字段，当前分页查询返回 false；用 Offset、Limit、TotalCount 翻页。1000 条限制只适用于导出接口。</p>
+	Truncated *bool `json:"Truncated,omitnil,omitempty" name:"Truncated"`
+}
+
+// Predefined struct for user
+type DescribeAIGWCustomGuardrailPolicyListRequestParams struct {
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>单页数量，范围 1～100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>按策略名称或描述模糊搜索</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>策略过滤条件</p>
+	Filters []*CustomGuardrailPolicyFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页偏移量，最小 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeAIGWCustomGuardrailPolicyListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>单页数量，范围 1～100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>按策略名称或描述模糊搜索</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>策略过滤条件</p>
+	Filters []*CustomGuardrailPolicyFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页偏移量，最小 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeAIGWCustomGuardrailPolicyListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIGWCustomGuardrailPolicyListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Limit")
+	delete(f, "Keyword")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIGWCustomGuardrailPolicyListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIGWCustomGuardrailPolicyListResponseParams struct {
+	// <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+	Result *DescribeAIGWCustomGuardrailPolicyListResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIGWCustomGuardrailPolicyListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIGWCustomGuardrailPolicyListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIGWCustomGuardrailPolicyListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIGWCustomGuardrailPolicyListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIGWCustomGuardrailPolicyListResult struct {
+	// <p>符合条件的策略总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>策略列表</p>
+	DataList []*CustomGuardrailPolicy `json:"DataList,omitnil,omitempty" name:"DataList"`
+}
+
+// Predefined struct for user
+type DescribeAIGWCustomGuardrailPolicyRequestParams struct {
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+}
+
+type DescribeAIGWCustomGuardrailPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+}
+
+func (r *DescribeAIGWCustomGuardrailPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIGWCustomGuardrailPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "PolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIGWCustomGuardrailPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIGWCustomGuardrailPolicyResponseParams struct {
+	// <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+	Result *DescribeAIGWCustomGuardrailPolicyResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIGWCustomGuardrailPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIGWCustomGuardrailPolicyResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIGWCustomGuardrailPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIGWCustomGuardrailPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIGWCustomGuardrailPolicyResult struct {
+	// <p>策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>策略名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>策略描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>策略期望启用状态；实际生效还需检查 EffectiveEnabled 和 SyncStatus。</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>当前控制面计算值：Enabled=true 且 SyncStatus=synced 时为 true。不代表一次真实业务请求已通过审核，也不替代 DP 同步/链路验证。</p>
+	EffectiveEnabled *bool `json:"EffectiveEnabled,omitnil,omitempty" name:"EffectiveEnabled"`
+
+	// <p>审核服务配置</p>
+	ServiceConfig *CustomGuardrailServiceConfig `json:"ServiceConfig,omitnil,omitempty" name:"ServiceConfig"`
+
+	// <p>审核引擎鉴权的脱敏视图，仅返回鉴权类型、Header 名和密钥存在状态，不返回 ApiKey。</p>
+	AuthConfig *CustomGuardrailAuthConfig `json:"AuthConfig,omitnil,omitempty" name:"AuthConfig"`
+
+	// <p>审核响应判定配置</p>
+	DecisionConfig *CustomGuardrailDecisionConfig `json:"DecisionConfig,omitnil,omitempty" name:"DecisionConfig"`
+
+	// <p>处理行为配置</p>
+	BehaviorConfig *CustomGuardrailBehaviorConfig `json:"BehaviorConfig,omitnil,omitempty" name:"BehaviorConfig"`
+
+	// <p>过滤与采样配置</p>
+	FilterConfig *CustomGuardrailFilterConfig `json:"FilterConfig,omitnil,omitempty" name:"FilterConfig"`
+
+	// <p>生效范围</p>
+	Scope *CustomGuardrailScope `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>业务资源到 Kong Route 的绑定及插件投影信息，一个业务资源可能对应多个 Route。</p>
+	Bindings []*CustomGuardrailPolicyBinding `json:"Bindings,omitnil,omitempty" name:"Bindings"`
+
+	// <p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+	SyncStatus *string `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+
+	// <p>配置同步错误摘要，无错误时可能省略。</p>
+	SyncError *string `json:"SyncError,omitnil,omitempty" name:"SyncError"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>最后修改时间</p>
+	ModificationTime *string `json:"ModificationTime,omitnil,omitempty" name:"ModificationTime"`
 }
 
 // Predefined struct for user
@@ -13051,6 +14387,105 @@ type EnvInfo struct {
 	EnableConfigIntranet *bool `json:"EnableConfigIntranet,omitnil,omitempty" name:"EnableConfigIntranet"`
 }
 
+// Predefined struct for user
+type ExportAIGWCustomGuardrailHitsRequestParams struct {
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>导出起始时间，Unix 秒级时间戳</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>导出结束时间，Unix 秒级时间戳</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>审核记录过滤条件</p>
+	Filters []*CustomGuardrailHitFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>导出格式：csv 或 json；默认 csv</p>
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
+type ExportAIGWCustomGuardrailHitsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>导出起始时间，Unix 秒级时间戳</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>导出结束时间，Unix 秒级时间戳</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>审核记录过滤条件</p>
+	Filters []*CustomGuardrailHitFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>导出格式：csv 或 json；默认 csv</p>
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
+func (r *ExportAIGWCustomGuardrailHitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportAIGWCustomGuardrailHitsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Filters")
+	delete(f, "Format")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportAIGWCustomGuardrailHitsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportAIGWCustomGuardrailHitsResponseParams struct {
+	// <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+	Result *ExportAIGWCustomGuardrailHitsResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExportAIGWCustomGuardrailHitsResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportAIGWCustomGuardrailHitsResponseParams `json:"Response"`
+}
+
+func (r *ExportAIGWCustomGuardrailHitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportAIGWCustomGuardrailHitsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportAIGWCustomGuardrailHitsResult struct {
+	// <p>实际导出格式</p>
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// <p>实际编码进导出内容的审核记录数，最多 1000。</p>
+	RowCount *int64 `json:"RowCount,omitnil,omitempty" name:"RowCount"`
+
+	// <p>是否达到单次最多 1000 条的导出截断条件；true 时可能还有更多记录，可缩小时间范围后分别导出。</p>
+	Truncated *bool `json:"Truncated,omitnil,omitempty" name:"Truncated"`
+
+	// <p>CSV/JSON 文件内容的 Base64 编码字符串，需 Base64 解码后保存，不是下载 URL。</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
 type ExtendedMetadata struct {
 	// <p>枚举类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -14230,12 +15665,173 @@ type Location struct {
 	Campus *string `json:"Campus,omitnil,omitempty" name:"Campus"`
 }
 
+type MaintenanceWindow struct {
+	// <p>时区</p>
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// <p>星期</p>
+	DayOfWeek *int64 `json:"DayOfWeek,omitnil,omitempty" name:"DayOfWeek"`
+
+	// <p>开始时间</p><p>参数格式：hh:mm</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p><p>参数格式：hh:mm</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
 type Metadata struct {
 	// 元数据键名。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 元数据键值。不填则默认为空字符串。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type ModifyAIGWCustomGuardrailPolicyRequestParams struct {
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>策略名称，长度 1～64</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>策略描述，最长 200；传空字符串可清空</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否启用策略</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>审核服务局部更新配置</p>
+	ServiceConfig *CustomGuardrailServiceConfigPatch `json:"ServiceConfig,omitnil,omitempty" name:"ServiceConfig"`
+
+	// <p>审核服务鉴权局部更新配置</p>
+	AuthConfig *CustomGuardrailAuthConfigPatch `json:"AuthConfig,omitnil,omitempty" name:"AuthConfig"`
+
+	// <p>审核响应判定局部更新配置</p>
+	DecisionConfig *CustomGuardrailDecisionConfigPatch `json:"DecisionConfig,omitnil,omitempty" name:"DecisionConfig"`
+
+	// <p>处理行为局部更新配置</p>
+	BehaviorConfig *CustomGuardrailBehaviorConfigPatch `json:"BehaviorConfig,omitnil,omitempty" name:"BehaviorConfig"`
+
+	// <p>过滤与采样局部更新配置</p>
+	FilterConfig *CustomGuardrailFilterConfigPatch `json:"FilterConfig,omitnil,omitempty" name:"FilterConfig"`
+
+	// <p>资源绑定范围，global 或 resource。修改时传入的是新的完整范围，不是增量追加。</p>
+	Scope *CustomGuardrailScopeInput `json:"Scope,omitnil,omitempty" name:"Scope"`
+}
+
+type ModifyAIGWCustomGuardrailPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>网关实例 ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>策略名称，长度 1～64</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>策略描述，最长 200；传空字符串可清空</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否启用策略</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>审核服务局部更新配置</p>
+	ServiceConfig *CustomGuardrailServiceConfigPatch `json:"ServiceConfig,omitnil,omitempty" name:"ServiceConfig"`
+
+	// <p>审核服务鉴权局部更新配置</p>
+	AuthConfig *CustomGuardrailAuthConfigPatch `json:"AuthConfig,omitnil,omitempty" name:"AuthConfig"`
+
+	// <p>审核响应判定局部更新配置</p>
+	DecisionConfig *CustomGuardrailDecisionConfigPatch `json:"DecisionConfig,omitnil,omitempty" name:"DecisionConfig"`
+
+	// <p>处理行为局部更新配置</p>
+	BehaviorConfig *CustomGuardrailBehaviorConfigPatch `json:"BehaviorConfig,omitnil,omitempty" name:"BehaviorConfig"`
+
+	// <p>过滤与采样局部更新配置</p>
+	FilterConfig *CustomGuardrailFilterConfigPatch `json:"FilterConfig,omitnil,omitempty" name:"FilterConfig"`
+
+	// <p>资源绑定范围，global 或 resource。修改时传入的是新的完整范围，不是增量追加。</p>
+	Scope *CustomGuardrailScopeInput `json:"Scope,omitnil,omitempty" name:"Scope"`
+}
+
+func (r *ModifyAIGWCustomGuardrailPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAIGWCustomGuardrailPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "PolicyId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "Enabled")
+	delete(f, "ServiceConfig")
+	delete(f, "AuthConfig")
+	delete(f, "DecisionConfig")
+	delete(f, "BehaviorConfig")
+	delete(f, "FilterConfig")
+	delete(f, "Scope")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAIGWCustomGuardrailPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAIGWCustomGuardrailPolicyResponseParams struct {
+	// <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+	Result *ModifyAIGWCustomGuardrailPolicyResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAIGWCustomGuardrailPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAIGWCustomGuardrailPolicyResponseParams `json:"Response"`
+}
+
+func (r *ModifyAIGWCustomGuardrailPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAIGWCustomGuardrailPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAIGWCustomGuardrailPolicyResult struct {
+	// <p>本次配置同步是否全部成功。即使云 API 未返回 Response.Error，仍须检查此值、SyncStatus 和 FailedResources。</p>
+	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
+
+	// <p>变更后的策略</p>
+	Policy *CustomGuardrailPolicy `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// <p>本次同步成功的业务资源引用；Modify 返回的不是严格的新增差集。</p>
+	AddedResources []*CustomGuardrailResourceRef `json:"AddedResources,omitnil,omitempty" name:"AddedResources"`
+
+	// <p>与修改前相比移除的 Route 绑定数量；一个业务资源可有多条 Route，因此不等于业务资源数量。</p>
+	RemovedCount *int64 `json:"RemovedCount,omitnil,omitempty" name:"RemovedCount"`
+
+	// <p>失败资源及原因；非空表示配置同步仍需处理，不要因 HTTP 200 判定全部成功。</p>
+	FailedResources []*CustomGuardrailSyncFailure `json:"FailedResources,omitnil,omitempty" name:"FailedResources"`
+
+	// <p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+	SyncStatus *string `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
 }
 
 // Predefined struct for user
@@ -17557,6 +19153,9 @@ type SREInstance struct {
 
 	// <p>禁止限流</p>
 	MaxCapacityLimitEnabled *bool `json:"MaxCapacityLimitEnabled,omitnil,omitempty" name:"MaxCapacityLimitEnabled"`
+
+	// <p>维护窗口</p>
+	MaintenanceWindow []*MaintenanceWindow `json:"MaintenanceWindow,omitnil,omitempty" name:"MaintenanceWindow"`
 }
 
 type ServiceGatewaySelector struct {

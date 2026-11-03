@@ -2062,6 +2062,35 @@ func (r *ResizeInstanceDiskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RoleStatusInfo struct {
+
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+
+	WorkloadType *string `json:"WorkloadType,omitnil,omitempty" name:"WorkloadType"`
+
+
+	WorkloadName *string `json:"WorkloadName,omitnil,omitempty" name:"WorkloadName"`
+
+
+	RunningReplicas *int64 `json:"RunningReplicas,omitnil,omitempty" name:"RunningReplicas"`
+
+
+	TargetReplicas *int64 `json:"TargetReplicas,omitnil,omitempty" name:"TargetReplicas"`
+
+
+	ContainerCount *int64 `json:"ContainerCount,omitnil,omitempty" name:"ContainerCount"`
+
+
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+
+	LastObservedTime *string `json:"LastObservedTime,omitnil,omitempty" name:"LastObservedTime"`
+
+
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+}
+
 // Predefined struct for user
 type RunInstancesRequestParams struct {
 	// 应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
@@ -2210,6 +2239,9 @@ type ServiceDetail struct {
 
 	// <p>服务超参数配置</p>
 	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
+
+	// <p>角色状态</p>
+	RoleStatuses []*RoleStatusInfo `json:"RoleStatuses,omitnil,omitempty" name:"RoleStatuses"`
 
 	// <p>安全类型</p>
 	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`

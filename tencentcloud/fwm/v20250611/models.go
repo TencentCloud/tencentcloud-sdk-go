@@ -340,15 +340,15 @@ func (r *CancelIgnorePolicyRiskResponse) FromJsonString(s string) error {
 }
 
 type CommonFilter struct {
-	// 筛选字段名
+	// <p>筛选字段名。支持：SecurityGroupId、FwGroupId、IP（IP地址模糊搜索）、InstanceName（实例名称模糊搜索）、VpcId（VPC ID精确搜索）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 筛选值列表
+	// <p>筛选值列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// 操作类型：1=精确匹配，7=in，9=模糊匹配
+	// <p>操作类型。1=等于，7=in，9=模糊匹配</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorType *int64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
 }
@@ -1876,38 +1876,38 @@ func (r *DescribeNatAclRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOrganMembersRequestParams struct {
-	// 搜索过滤条件列表，支持按成员 ID、账号名称、身份、纳管状态等字段筛选
+	// <p>搜索过滤条件列表，支持按成员 ID、账号名称、身份、纳管状态等字段筛选</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页大小，默认 20
+	// <p>分页大小，默认 20</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，默认 0
+	// <p>分页偏移量，默认 0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段，如 MemberCreateTime
+	// <p>排序字段，如 MemberCreateTime</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
-	// 排序方式：asc 升序，desc 降序
+	// <p>排序方式：asc 升序，desc 降序</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type DescribeOrganMembersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 搜索过滤条件列表，支持按成员 ID、账号名称、身份、纳管状态等字段筛选
+	// <p>搜索过滤条件列表，支持按成员 ID、账号名称、身份、纳管状态等字段筛选</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页大小，默认 20
+	// <p>分页大小，默认 20</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，默认 0
+	// <p>分页偏移量，默认 0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段，如 MemberCreateTime
+	// <p>排序字段，如 MemberCreateTime</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
-	// 排序方式：asc 升序，desc 降序
+	// <p>排序方式：asc 升序，desc 降序</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
@@ -1936,10 +1936,10 @@ func (r *DescribeOrganMembersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOrganMembersResponseParams struct {
-	// 集团成员总数
+	// <p>集团成员总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 集团成员列表
+	// <p>集团成员列表</p>
 	Members []*OrganMemberItem `json:"Members,omitnil,omitempty" name:"Members"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2626,38 +2626,38 @@ func (r *DescribeSecurityGroupRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStrategiesRequestParams struct {
-	// 产品类型
+	// <p>产品类型</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 执行区域：pre是前区，post 是后区
+	// <p>执行区域：pre是前区，post 是后区</p>
 	ExecArea *string `json:"ExecArea,omitnil,omitempty" name:"ExecArea"`
 
-	// 筛选条件
+	// <p>筛选条件</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 条数限制
+	// <p>条数限制</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeStrategiesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品类型
+	// <p>产品类型</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 执行区域：pre是前区，post 是后区
+	// <p>执行区域：pre是前区，post 是后区</p>
 	ExecArea *string `json:"ExecArea,omitnil,omitempty" name:"ExecArea"`
 
-	// 筛选条件
+	// <p>筛选条件</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 条数限制
+	// <p>条数限制</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -2686,10 +2686,10 @@ func (r *DescribeStrategiesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStrategiesResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 策略列表
+	// <p>策略列表</p>
 	Strategies []*StrategyResp `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2856,14 +2856,14 @@ func (r *DescribeStrategyDispatchStatusResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeStrategyRequestParams struct {
-	// 策略Id
+	// <p>策略Id</p>
 	StrategyId *string `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
 }
 
 type DescribeStrategyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 策略Id
+	// <p>策略Id</p>
 	StrategyId *string `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
 }
 
@@ -2888,7 +2888,7 @@ func (r *DescribeStrategyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStrategyResponseParams struct {
-	// 策略详情
+	// <p>策略详情</p>
 	Strategy *StrategyResp `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4419,6 +4419,10 @@ type OrganMemberItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CfwSharerAppId *string `json:"CfwSharerAppId,omitnil,omitempty" name:"CfwSharerAppId"`
 
+	// <p>共享者MemberId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CfwSharerMemberId *string `json:"CfwSharerMemberId,omitnil,omitempty" name:"CfwSharerMemberId"`
+
 	// <p>云防火墙计费实例 ID，非空表示已购买云防火墙</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CfwInstanceId *string `json:"CfwInstanceId,omitnil,omitempty" name:"CfwInstanceId"`
@@ -4445,6 +4449,9 @@ type OrganMemberItem struct {
 
 	// <p>是否是后付费云防版本</p><p>枚举值：</p><ul><li>1： 后付费</li><li>0： 非后付费</li><li>-1： 未知</li></ul>
 	IsCfwPostPay *int64 `json:"IsCfwPostPay,omitnil,omitempty" name:"IsCfwPostPay"`
+
+	// <p>企业安全组免费额度领取态：0-未领用，1-已领用（永久领取态）</p>
+	SgFreeClaimed *int64 `json:"SgFreeClaimed,omitnil,omitempty" name:"SgFreeClaimed"`
 }
 
 type OrganSummary struct {
@@ -4933,52 +4940,55 @@ type StrategyReq struct {
 }
 
 type StrategyResp struct {
-	// 策略Id
+	// <p>策略Id</p>
 	StrategyId *string `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
 
-	// 规则组Id
+	// <p>规则组Id</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 规则组名称
+	// <p>产品类型</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>规则组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 规则数
+	// <p>规则数</p>
 	RuleCount *int64 `json:"RuleCount,omitnil,omitempty" name:"RuleCount"`
 
-	// 策略状态
+	// <p>策略状态</p>
 	RuleStatus *int64 `json:"RuleStatus,omitnil,omitempty" name:"RuleStatus"`
 
-	// 下发账号
+	// <p>下发账号</p>
 	ReceiveAccount []*ReceiveAccount `json:"ReceiveAccount,omitnil,omitempty" name:"ReceiveAccount"`
 
-	// 优先级
+	// <p>优先级</p>
 	Sequence *int64 `json:"Sequence,omitnil,omitempty" name:"Sequence"`
 
-	// 下发失败原因
+	// <p>下发失败原因</p>
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 
-	// 下发失败原因类型
+	// <p>下发失败原因类型</p>
 	ErrorType *string `json:"ErrorType,omitnil,omitempty" name:"ErrorType"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 创建人
+	// <p>创建人</p>
 	CreateBy *string `json:"CreateBy,omitnil,omitempty" name:"CreateBy"`
 
-	// 更新人
+	// <p>更新人</p>
 	UpdateBy *string `json:"UpdateBy,omitnil,omitempty" name:"UpdateBy"`
 
-	// 执行区域
+	// <p>执行区域</p>
 	ExecArea *string `json:"ExecArea,omitnil,omitempty" name:"ExecArea"`
 
-	// 创建人名称
+	// <p>创建人名称</p>
 	CreateName *string `json:"CreateName,omitnil,omitempty" name:"CreateName"`
 
-	// 更新人名称
+	// <p>更新人名称</p>
 	UpdateName *string `json:"UpdateName,omitnil,omitempty" name:"UpdateName"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 

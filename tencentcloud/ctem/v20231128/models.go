@@ -1263,57 +1263,63 @@ func (r *CreateScanResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSeedsRequestParams struct {
-	// 企业ID
+	// <p>企业ID</p>
 	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
 
-	// ip种子数组
+	// <p>ip种子数组</p>
 	Ips []*string `json:"Ips,omitnil,omitempty" name:"Ips"`
 
-	// icon种子数组
+	// <p>icon种子数组</p>
 	Icons []*string `json:"Icons,omitnil,omitempty" name:"Icons"`
 
-	// 主域名种子数组
+	// <p>主域名种子数组</p>
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// title种子数组
+	// <p>title种子数组</p>
 	Titles []*string `json:"Titles,omitnil,omitempty" name:"Titles"`
 
-	// 子域名种子数组
+	// <p>子域名种子数组</p>
 	SubDomains []*string `json:"SubDomains,omitnil,omitempty" name:"SubDomains"`
 
-	// 关键词种子数组
+	// <p>关键词种子数组</p>
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
-	// 母公司种子数组
+	// <p>母公司种子数组</p>
 	ParentCompanies []*string `json:"ParentCompanies,omitnil,omitempty" name:"ParentCompanies"`
+
+	// <p>关键词用途：leakage_code代码泄露/leakage_data其他泄露/wechat_applet微信小程序/wechat_official_account微信公众号，不填=全部用途</p>
+	KeywordPurposes []*string `json:"KeywordPurposes,omitnil,omitempty" name:"KeywordPurposes"`
 }
 
 type CreateSeedsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 企业ID
+	// <p>企业ID</p>
 	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
 
-	// ip种子数组
+	// <p>ip种子数组</p>
 	Ips []*string `json:"Ips,omitnil,omitempty" name:"Ips"`
 
-	// icon种子数组
+	// <p>icon种子数组</p>
 	Icons []*string `json:"Icons,omitnil,omitempty" name:"Icons"`
 
-	// 主域名种子数组
+	// <p>主域名种子数组</p>
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// title种子数组
+	// <p>title种子数组</p>
 	Titles []*string `json:"Titles,omitnil,omitempty" name:"Titles"`
 
-	// 子域名种子数组
+	// <p>子域名种子数组</p>
 	SubDomains []*string `json:"SubDomains,omitnil,omitempty" name:"SubDomains"`
 
-	// 关键词种子数组
+	// <p>关键词种子数组</p>
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
-	// 母公司种子数组
+	// <p>母公司种子数组</p>
 	ParentCompanies []*string `json:"ParentCompanies,omitnil,omitempty" name:"ParentCompanies"`
+
+	// <p>关键词用途：leakage_code代码泄露/leakage_data其他泄露/wechat_applet微信小程序/wechat_official_account微信公众号，不填=全部用途</p>
+	KeywordPurposes []*string `json:"KeywordPurposes,omitnil,omitempty" name:"KeywordPurposes"`
 }
 
 func (r *CreateSeedsRequest) ToJsonString() string {
@@ -1336,6 +1342,7 @@ func (r *CreateSeedsRequest) FromJsonString(s string) error {
 	delete(f, "SubDomains")
 	delete(f, "Keywords")
 	delete(f, "ParentCompanies")
+	delete(f, "KeywordPurposes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSeedsRequest has unknown keys!", "")
 	}
@@ -7819,30 +7826,33 @@ type DisplayPort struct {
 }
 
 type DisplaySeed struct {
-	// 主键ID
+	// <p>主键ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 企业ID
+	// <p>企业ID</p>
 	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
 
-	// 分类，包括：domain(主域名)、icon(图标)、ip(IP)、
-	// keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(标题)
+	// <p>分类，包括：domain(主域名)、icon(图标)、ip(IP)、<br>keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(标题)</p>
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 
-	// 值
+	// <p>值</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// md5值
+	// <p>md5值</p>
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
 
-	// 来源
+	// <p>来源</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
-	// 是否可信
+	// <p>是否可信</p>
 	IsValid *bool `json:"IsValid,omitnil,omitempty" name:"IsValid"`
+
+	// <p>关键词用途，可多选：leakage_code代码泄露/leakage_data其他泄露/wechat_applet微信小程序/wechat_official_account微信公众号；不填=全部用途</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Purposes []*string `json:"Purposes,omitnil,omitempty" name:"Purposes"`
 }
 
 type DisplaySensitiveInfo struct {

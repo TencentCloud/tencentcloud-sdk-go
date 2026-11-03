@@ -1884,6 +1884,12 @@ type AssetComponent struct {
 
 	// <p>影响镜像数</p>
 	AffectedImageCount *uint64 `json:"AffectedImageCount,omitnil,omitempty" name:"AffectedImageCount"`
+
+	// <p>影响仓库镜像数</p>
+	AffectedRegistryImageCount *uint64 `json:"AffectedRegistryImageCount,omitnil,omitempty" name:"AffectedRegistryImageCount"`
+
+	// <p>影响CICD镜像数</p>
+	AffectedCICDImageCount *uint64 `json:"AffectedCICDImageCount,omitnil,omitempty" name:"AffectedCICDImageCount"`
 }
 
 type AssetDetailItem struct {
@@ -5643,6 +5649,12 @@ type ClusterListItem struct {
 
 	// <p>标签修改信息</p>
 	TagModifyInfo *AssetTagModifyAssetItem `json:"TagModifyInfo,omitnil,omitempty" name:"TagModifyInfo"`
+
+	// <p>集群普通节点数</p>
+	NormalNodeCount *uint64 `json:"NormalNodeCount,omitnil,omitempty" name:"NormalNodeCount"`
+
+	// <p>审计日志开关失败信息，只在 AuditLogSwitchStatus 为 2（开启失败）或 3（关闭失败）时非空。</p>
+	AuditLogFailedInfo *string `json:"AuditLogFailedInfo,omitnil,omitempty" name:"AuditLogFailedInfo"`
 }
 
 type ClusterNamespaceListItem struct {
@@ -6034,6 +6046,11 @@ type ContainerAppItem struct {
 
 	// 关联进程数量
 	ProcessCnt *int64 `json:"ProcessCnt,omitnil,omitempty" name:"ProcessCnt"`
+}
+
+type ContainerAutoScaleConfig struct {
+	// <p>容器自动扩容开关</p><p>枚举值：</p><ul><li>OFF： 关</li><li>ON： 开</li></ul>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 }
 
 type ContainerComponentItem struct {
@@ -22836,7 +22853,7 @@ type DescribeBaselineAggregatedItemListRequestParams struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// <p>通用过滤条件。支持的 Name：ResultStatus（结果状态 PASS/NOT_PASS/CHECKING/CHECK_FAILED/NOT_INVOLVED）、Name（检测项名称，模糊搜索）、RiskLevel（风险等级 CRITICAL/HIGH/MEDIUM/LOW）、PolicyName（所属基线/策略名称，模糊搜索）。</p>
+	// <p>通用过滤条件。支持的 Name：<br>ResultStatus（结果状态 PASS/NOT_PASS/CHECKING/CHECK_FAILED/NOT_INVOLVED）<br>Name（检测项名称，模糊搜索）<br>RiskLevel（风险等级 CRITICAL/HIGH/MEDIUM/LOW）<br>ClusterCaMD5（集群CaMD5，精准搜索）<br>ClusterId（集群Id，精准搜索）</p>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>分页查询每页数量，最大值 100；超过时服务端将自动回退为默认值 10。</p>
@@ -22870,7 +22887,7 @@ type DescribeBaselineAggregatedItemListRequest struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// <p>通用过滤条件。支持的 Name：ResultStatus（结果状态 PASS/NOT_PASS/CHECKING/CHECK_FAILED/NOT_INVOLVED）、Name（检测项名称，模糊搜索）、RiskLevel（风险等级 CRITICAL/HIGH/MEDIUM/LOW）、PolicyName（所属基线/策略名称，模糊搜索）。</p>
+	// <p>通用过滤条件。支持的 Name：<br>ResultStatus（结果状态 PASS/NOT_PASS/CHECKING/CHECK_FAILED/NOT_INVOLVED）<br>Name（检测项名称，模糊搜索）<br>RiskLevel（风险等级 CRITICAL/HIGH/MEDIUM/LOW）<br>ClusterCaMD5（集群CaMD5，精准搜索）<br>ClusterId（集群Id，精准搜索）</p>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>分页查询每页数量，最大值 100；超过时服务端将自动回退为默认值 10。</p>
@@ -23265,7 +23282,7 @@ type DescribeBaselineItemRiskListRequestParams struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// <p>通用过滤条件。支持的 Name：ResultStatus（通过状态，Values: PASS/NOT_PASS）、AssetName（资产名称/ID，模糊搜索）、IP（IP地址，模糊搜索）、Tag（资产标签，模糊搜索）。</p>
+	// <p>通用过滤条件。支持的 Name：<br>ResultStatus（通过状态，Values: PASS/NOT_PASS）<br>AssetName（资产名称/ID，模糊搜索）<br>IP（IP地址，模糊搜索）<br>Tag（资产标签，模糊搜索）<br>ClusterCaMD5 (集群ca-md5,精确匹配)<br>ClusterId (集群Id,精确匹配)</p>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>分页查询每页数量，最大值 100；超过时服务端将自动回退为默认值 10。</p>
@@ -23302,7 +23319,7 @@ type DescribeBaselineItemRiskListRequest struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// <p>通用过滤条件。支持的 Name：ResultStatus（通过状态，Values: PASS/NOT_PASS）、AssetName（资产名称/ID，模糊搜索）、IP（IP地址，模糊搜索）、Tag（资产标签，模糊搜索）。</p>
+	// <p>通用过滤条件。支持的 Name：<br>ResultStatus（通过状态，Values: PASS/NOT_PASS）<br>AssetName（资产名称/ID，模糊搜索）<br>IP（IP地址，模糊搜索）<br>Tag（资产标签，模糊搜索）<br>ClusterCaMD5 (集群ca-md5,精确匹配)<br>ClusterId (集群Id,精确匹配)</p>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>分页查询每页数量，最大值 100；超过时服务端将自动回退为默认值 10。</p>
@@ -28856,6 +28873,9 @@ type DescribeClusterSummaryResponseParams struct {
 
 	// <p>未绑定旗舰版节点数量</p>
 	UnboundUltimateNodeCount *uint64 `json:"UnboundUltimateNodeCount,omitnil,omitempty" name:"UnboundUltimateNodeCount"`
+
+	// <p>普通节点总数</p>
+	NormalNodeCount *uint64 `json:"NormalNodeCount,omitnil,omitempty" name:"NormalNodeCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -40478,6 +40498,24 @@ type DescribeImageRegistryAssetOverviewResponseParams struct {
 	// <p>试用配额</p>
 	TrialQuota *uint64 `json:"TrialQuota,omitnil,omitempty" name:"TrialQuota"`
 
+	// <p>有风险的镜像数</p>
+	RiskImageCnt *uint64 `json:"RiskImageCnt,omitnil,omitempty" name:"RiskImageCnt"`
+
+	// <p>CICD镜像数</p>
+	CICDImageCnt *uint64 `json:"CICDImageCnt,omitnil,omitempty" name:"CICDImageCnt"`
+
+	// <p>CICD已扫描镜数</p>
+	CICDImageScannedCnt *uint64 `json:"CICDImageScannedCnt,omitnil,omitempty" name:"CICDImageScannedCnt"`
+
+	// <p>有风险的CICD镜像数</p>
+	RiskCICDImageCnt *uint64 `json:"RiskCICDImageCnt,omitnil,omitempty" name:"RiskCICDImageCnt"`
+
+	// <p>敏感文件数</p>
+	SecretFileCnt *uint64 `json:"SecretFileCnt,omitnil,omitempty" name:"SecretFileCnt"`
+
+	// <p>构建风险数</p>
+	BuildRiskCnt *uint64 `json:"BuildRiskCnt,omitnil,omitempty" name:"BuildRiskCnt"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -42931,7 +42969,7 @@ type DescribeMalwareTimingScanSettingResponseParams struct {
 	// <p>执行清理开关 0未开启 1开启</p>
 	DoClean *int64 `json:"DoClean,omitnil,omitempty" name:"DoClean"`
 
-	// <p>防护模式 0 标准 1 重保</p>
+	// <p>防护模式 0 标准 1 重保  2-自定义隔离</p>
 	ProtectMode *int64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
 
 	// <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
@@ -42957,6 +42995,12 @@ type DescribeMalwareTimingScanSettingResponseParams struct {
 
 	// <p>超时时长（秒）</p>
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>自定义隔离模式已保存的告警类型Code列表</p>
+	QuaraTypes []*string `json:"QuaraTypes,omitnil,omitempty" name:"QuaraTypes"`
+
+	// <p>告警类型字典（灰度规则下发，供前端渲染勾选项）</p>
+	QuaraTypeDict []*QuaraTypeDictItem `json:"QuaraTypeDict,omitnil,omitempty" name:"QuaraTypeDict"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -54954,7 +54998,7 @@ type EDRRule struct {
 	// <p>策略描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+	// <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network, k8s_api-K8s API/K8s API</p><p>枚举值：</p><ul><li>md5-文件MD5： File MD5</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
 	// <p>执行动作 / Action: 0-告警/Alert, 1-放行/Allow, 2-告警并拦截/Alert and Block</p>
@@ -55055,6 +55099,9 @@ type EDRRule struct {
 
 	// <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
 	FileOperationRules *RuleContentFileOperation `json:"FileOperationRules,omitnil,omitempty" name:"FileOperationRules"`
+
+	// <p>K8s API 规则，ContentType=k8s_api 的自定义规则填充</p>
+	K8sApiRule *RuleContentK8sAPI `json:"K8sApiRule,omitnil,omitempty" name:"K8sApiRule"`
 }
 
 type EDRRuleTagItem struct {
@@ -55299,7 +55346,7 @@ type EdrAlertDetail struct {
 	// <p>告警唯一标识</p>
 	AlertId *string `json:"AlertId,omitnil,omitempty" name:"AlertId"`
 
-	// <p>告警大类（英文枚举：VIRUS_TROJAN/ABNORMAL_LOGIN/HOST_BEHAVIOR/NETWORK_BEHAVIOR/LINK_ENGINE）</p>
+	// <p>告警大类（英文枚举：VIRUS_TROJAN/ABNORMAL_LOGIN/HOST_BEHAVIOR/NETWORK_BEHAVIOR/LINK_ENGINE/K8S_API）</p>
 	AlertCategory *string `json:"AlertCategory,omitnil,omitempty" name:"AlertCategory"`
 
 	// <p>告警子类型（英文枚举：MALWARE_FILE/MALWARE_PROCESS/RISK_LOGIN/BRUTE_FORCE/DNS/BASH/PRIV_ESCALATION/REVERSE_SHELL/NET_ATTACK/VUL_DEFENCE/MEMORY_SHELL_INJECT/MEMORY_SHELL_SCAN/MULTI_BEHAVIOR_ATTACK）</p>
@@ -55344,7 +55391,7 @@ type EdrAlertDetail struct {
 	// <p>容器ID（保留字段，恒为空串）</p>
 	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
 
-	// <p>集群ID（保留字段，恒为空串）</p>
+	// <p>集群ID。容器告警和 K8s API 异常请求告警有值</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// <p>首次发现时间</p>
@@ -55356,7 +55403,7 @@ type EdrAlertDetail struct {
 	// <p>规则名称（规则富化）</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// <p>内容类型: md5/cmdline/dns/ip_inbound/ip_outbound/custom_file/process_network</p>
+	// <p>内容类型: md5/cmdline/dns/ip_inbound/ip_outbound/custom_file/process_network/k8s_api</p><p>枚举值：</p><ul><li>k8s_api： k8s api告警类型</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
 	// <p>实例名（资产富化）</p>
@@ -56451,19 +56498,17 @@ type HitRules struct {
 }
 
 type HostAutoScaleConfig struct {
-	// 主机自动扩容开关
-	// 枚举值：
-	// ON：开启
-	// OFF：关闭
-	// 补充说明：不传则不修改；映射底层自动加购开关 auto_repurchase_switch
+	// <p>主机自动扩容开关<br>枚举值：<br>ON：开启<br>OFF：关闭<br>补充说明：不传则不修改；映射底层自动加购开关 auto_repurchase_switch</p>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
-	// 扩容版本
-	// 枚举值：
-	// PRO：专业版
-	// ULTIMATE：旗舰版
-	// 补充说明：不传则不修改
+	// <p>扩容版本<br>枚举值：<br>PRO：专业版<br>ULTIMATE：旗舰版<br>补充说明：不传则不修改</p>
 	ProtectType *string `json:"ProtectType,omitnil,omitempty" name:"ProtectType"`
+
+	// <p>扩容资产范围</p><p>枚举值：</p><ul><li>ALL： 全部资产</li><li>BY_TAG： 按标签扩容</li></ul>
+	AssetRange *string `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
+
+	// <p>标签ID列表</p>
+	TagIds []*int64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
 }
 
 type HostBriefInfo struct {
@@ -56739,6 +56784,12 @@ type IaCFile struct {
 
 	// <p>扫描失败类型(0:无失败, 1:检测超时, 2:文件格式解析失败, 3:检测失败)</p>
 	FailType *int64 `json:"FailType,omitnil,omitempty" name:"FailType"`
+
+	// <p>扫描失败原因</p>
+	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
+
+	// <p>扫描失败解决方案</p>
+	FailSolution *string `json:"FailSolution,omitnil,omitempty" name:"FailSolution"`
 }
 
 type IaCFileRisk struct {
@@ -56863,6 +56914,12 @@ type ImageAssetDetail struct {
 
 	// <p>严重敏感信息数</p>
 	CriticalLevelSensitiveCnt *uint64 `json:"CriticalLevelSensitiveCnt,omitnil,omitempty" name:"CriticalLevelSensitiveCnt"`
+
+	// <p>敏感文件数</p>
+	SecretFileCnt *uint64 `json:"SecretFileCnt,omitnil,omitempty" name:"SecretFileCnt"`
+
+	// <p>构建风险数</p>
+	BuildRiskCnt *uint64 `json:"BuildRiskCnt,omitnil,omitempty" name:"BuildRiskCnt"`
 }
 
 type ImageAssetInfo struct {
@@ -56991,6 +57048,33 @@ type ImageAssetInfo struct {
 
 	// <p>最近扫描任务Id</p>
 	ScanTaskId *uint64 `json:"ScanTaskId,omitnil,omitempty" name:"ScanTaskId"`
+
+	// <p>CICD名</p>
+	CICDName *string `json:"CICDName,omitnil,omitempty" name:"CICDName"`
+
+	// <p>CICD Id</p>
+	CICDId *uint64 `json:"CICDId,omitnil,omitempty" name:"CICDId"`
+
+	// <p>是否是CICD镜像</p>
+	IsCICD *uint64 `json:"IsCICD,omitnil,omitempty" name:"IsCICD"`
+
+	// <p>敏感文件数</p>
+	SecretFileCnt *uint64 `json:"SecretFileCnt,omitnil,omitempty" name:"SecretFileCnt"`
+
+	// <p>构建风险数</p>
+	BuildRiskCnt *uint64 `json:"BuildRiskCnt,omitnil,omitempty" name:"BuildRiskCnt"`
+
+	// <p>高危敏感文件数</p>
+	HighLevelSecretFileCnt *uint64 `json:"HighLevelSecretFileCnt,omitnil,omitempty" name:"HighLevelSecretFileCnt"`
+
+	// <p>严重敏感文件数</p>
+	CriticalLevelSecretFileCnt *uint64 `json:"CriticalLevelSecretFileCnt,omitnil,omitempty" name:"CriticalLevelSecretFileCnt"`
+
+	// <p>高危构建风险数</p>
+	HighLevelBuildRiskCnt *uint64 `json:"HighLevelBuildRiskCnt,omitnil,omitempty" name:"HighLevelBuildRiskCnt"`
+
+	// <p>严重构建风险数</p>
+	CriticalLevelBuildRiskCnt *uint64 `json:"CriticalLevelBuildRiskCnt,omitnil,omitempty" name:"CriticalLevelBuildRiskCnt"`
 }
 
 type ImageAssociatedAssetCount struct {
@@ -57159,6 +57243,12 @@ type ImageLayer struct {
 
 	// <p>镜像层创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
 	LayerCreateTime *string `json:"LayerCreateTime,omitnil,omitempty" name:"LayerCreateTime"`
+
+	// <p>敏感文件数</p>
+	SecretFileCnt *uint64 `json:"SecretFileCnt,omitnil,omitempty" name:"SecretFileCnt"`
+
+	// <p>构建风险数</p>
+	BuildRiskCnt *uint64 `json:"BuildRiskCnt,omitnil,omitempty" name:"BuildRiskCnt"`
 }
 
 type ImageLayerVul struct {
@@ -57567,6 +57657,12 @@ type ImageSensitiveInfo struct {
 
 	// <p>镜像层序号</p>
 	LayerIndex *uint64 `json:"LayerIndex,omitnil,omitempty" name:"LayerIndex"`
+
+	// <p>影响仓库镜像数</p>
+	AffectedRegistryImageCount *uint64 `json:"AffectedRegistryImageCount,omitnil,omitempty" name:"AffectedRegistryImageCount"`
+
+	// <p>影响CICD镜像数</p>
+	AffectedCICDImageCount *uint64 `json:"AffectedCICDImageCount,omitnil,omitempty" name:"AffectedCICDImageCount"`
 }
 
 type ImageSensitiveWhitelist struct {
@@ -57670,6 +57766,15 @@ type ImageVirus struct {
 
 	// <p>木马类型</p>
 	VirusType *string `json:"VirusType,omitnil,omitempty" name:"VirusType"`
+
+	// <p>影响镜像数</p>
+	AffectedImageCount *uint64 `json:"AffectedImageCount,omitnil,omitempty" name:"AffectedImageCount"`
+
+	// <p>影响仓库镜像数</p>
+	AffectedRegistryImageCount *uint64 `json:"AffectedRegistryImageCount,omitnil,omitempty" name:"AffectedRegistryImageCount"`
+
+	// <p>影响CICD镜像数</p>
+	AffectedCICDImageCount *uint64 `json:"AffectedCICDImageCount,omitnil,omitempty" name:"AffectedCICDImageCount"`
 }
 
 type ImageVirusWhitelist struct {
@@ -57702,6 +57807,9 @@ type ImageVirusWhitelist struct {
 
 	// <p>木马白名单名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>白名单Md5</p>
+	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
 }
 
 type ImageVirusWhitelistDetail struct {
@@ -57851,6 +57959,12 @@ type ImageVulSummary struct {
 
 	// <p>记录id</p>
 	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>影响仓库镜像数</p>
+	AffectedRegistryImageCount *uint64 `json:"AffectedRegistryImageCount,omitnil,omitempty" name:"AffectedRegistryImageCount"`
+
+	// <p>影响CICD镜像数</p>
+	AffectedCICDImageCount *uint64 `json:"AffectedCICDImageCount,omitnil,omitempty" name:"AffectedCICDImageCount"`
 }
 
 type ImageVulWhitelist struct {
@@ -63924,7 +64038,7 @@ type ModifyEDRRuleRequestParams struct {
 	// <p>策略名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+	// <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network,k8s_api-K8s API/K8s API</p><p>枚举值：</p><ul><li>md5-文件MD5： File MD5</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
 	// <p>告警等级 / Alert Level: 1-高危/High, 2-中危/Medium, 3-低危/Low, 4-提示/Reminder</p>
@@ -64001,6 +64115,9 @@ type ModifyEDRRuleRequestParams struct {
 
 	// <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
 	FileOperationRules *RuleContentFileOperation `json:"FileOperationRules,omitnil,omitempty" name:"FileOperationRules"`
+
+	// <p>ContentType=k8s_api 时传入的 K8s API 规则，各非空字段的值需要 Base64 编码，k8s_api 规则只按集群生效</p>
+	K8sApiRule *RuleContentK8sAPI `json:"K8sApiRule,omitnil,omitempty" name:"K8sApiRule"`
 }
 
 type ModifyEDRRuleRequest struct {
@@ -64027,7 +64144,7 @@ type ModifyEDRRuleRequest struct {
 	// <p>策略名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+	// <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network,k8s_api-K8s API/K8s API</p><p>枚举值：</p><ul><li>md5-文件MD5： File MD5</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
 	// <p>告警等级 / Alert Level: 1-高危/High, 2-中危/Medium, 3-低危/Low, 4-提示/Reminder</p>
@@ -64104,6 +64221,9 @@ type ModifyEDRRuleRequest struct {
 
 	// <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
 	FileOperationRules *RuleContentFileOperation `json:"FileOperationRules,omitnil,omitempty" name:"FileOperationRules"`
+
+	// <p>ContentType=k8s_api 时传入的 K8s API 规则，各非空字段的值需要 Base64 编码，k8s_api 规则只按集群生效</p>
+	K8sApiRule *RuleContentK8sAPI `json:"K8sApiRule,omitnil,omitempty" name:"K8sApiRule"`
 }
 
 func (r *ModifyEDRRuleRequest) ToJsonString() string {
@@ -64151,6 +64271,7 @@ func (r *ModifyEDRRuleRequest) FromJsonString(s string) error {
 	delete(f, "ImageIDsWithAppId")
 	delete(f, "ConditionMatches")
 	delete(f, "FileOperationRules")
+	delete(f, "K8sApiRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEDRRuleRequest has unknown keys!", "")
 	}
@@ -66034,7 +66155,7 @@ type ModifyMalwareTimingScanSettingsRequestParams struct {
 	// <p>1 清理, 0 不清理本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</p>
 	DoClean *int64 `json:"DoClean,omitnil,omitempty" name:"DoClean"`
 
-	// <p>防护模式 0 标准 1重保</p>
+	// <p>防护模式 0 标准 1重保  2-自定义隔离</p>
 	ProtectMode *int64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
 
 	// <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
@@ -66060,6 +66181,9 @@ type ModifyMalwareTimingScanSettingsRequestParams struct {
 
 	// <p>超时时长（秒）</p>
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>自定义隔离模式的告警类型Code列表（ProtectMode=2时必填，Code取自Describe返回的QuaraTypeDict）</p>
+	QuaraTypes []*string `json:"QuaraTypes,omitnil,omitempty" name:"QuaraTypes"`
 }
 
 type ModifyMalwareTimingScanSettingsRequest struct {
@@ -66131,7 +66255,7 @@ type ModifyMalwareTimingScanSettingsRequest struct {
 	// <p>1 清理, 0 不清理本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</p>
 	DoClean *int64 `json:"DoClean,omitnil,omitempty" name:"DoClean"`
 
-	// <p>防护模式 0 标准 1重保</p>
+	// <p>防护模式 0 标准 1重保  2-自定义隔离</p>
 	ProtectMode *int64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
 
 	// <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
@@ -66157,6 +66281,9 @@ type ModifyMalwareTimingScanSettingsRequest struct {
 
 	// <p>超时时长（秒）</p>
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>自定义隔离模式的告警类型Code列表（ProtectMode=2时必填，Code取自Describe返回的QuaraTypeDict）</p>
+	QuaraTypes []*string `json:"QuaraTypes,omitnil,omitempty" name:"QuaraTypes"`
 }
 
 func (r *ModifyMalwareTimingScanSettingsRequest) ToJsonString() string {
@@ -66202,6 +66329,7 @@ func (r *ModifyMalwareTimingScanSettingsRequest) FromJsonString(s string) error 
 	delete(f, "QuaraClusterIDsWithAppId")
 	delete(f, "QuaraExcludeClusterIDsWithAppId")
 	delete(f, "Timeout")
+	delete(f, "QuaraTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMalwareTimingScanSettingsRequest has unknown keys!", "")
 	}
@@ -66957,17 +67085,21 @@ func (r *ModifyOrganizationAccountStatusResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyPayConfigRequestParams struct {
-	// 主机安全模块自动扩容配置
-	// 补充说明：不传则不修改主机配置；本期至少需传本模块。后续可扩展 ContainerConfig / AIAgentConfig 命名模块字段
+	// <p>主机安全模块自动扩容配置<br>补充说明：不传则不修改主机配置；本期至少需传本模块。后续可扩展 ContainerConfig / AIAgentConfig 命名模块字段</p>
 	HostConfig *HostAutoScaleConfig `json:"HostConfig,omitnil,omitempty" name:"HostConfig"`
+
+	// <p>容器安全模块自动扩容配置，不传则不修改</p>
+	ContainerConfig *ContainerAutoScaleConfig `json:"ContainerConfig,omitnil,omitempty" name:"ContainerConfig"`
 }
 
 type ModifyPayConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主机安全模块自动扩容配置
-	// 补充说明：不传则不修改主机配置；本期至少需传本模块。后续可扩展 ContainerConfig / AIAgentConfig 命名模块字段
+	// <p>主机安全模块自动扩容配置<br>补充说明：不传则不修改主机配置；本期至少需传本模块。后续可扩展 ContainerConfig / AIAgentConfig 命名模块字段</p>
 	HostConfig *HostAutoScaleConfig `json:"HostConfig,omitnil,omitempty" name:"HostConfig"`
+
+	// <p>容器安全模块自动扩容配置，不传则不修改</p>
+	ContainerConfig *ContainerAutoScaleConfig `json:"ContainerConfig,omitnil,omitempty" name:"ContainerConfig"`
 }
 
 func (r *ModifyPayConfigRequest) ToJsonString() string {
@@ -66983,6 +67115,7 @@ func (r *ModifyPayConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "HostConfig")
+	delete(f, "ContainerConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPayConfigRequest has unknown keys!", "")
 	}
@@ -70531,6 +70664,20 @@ type PublicIpDomainListKey struct {
 	Asset *string `json:"Asset,omitnil,omitempty" name:"Asset"`
 }
 
+type QuaraTypeDictItem struct {
+	// <p>告警类型标识，与 QuaraTypes 取值一致</p>
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// <p>展示类型名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>是否推荐隔离</p>
+	Recommend *bool `json:"Recommend,omitnil,omitempty" name:"Recommend"`
+
+	// <p>描述和建议</p>
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+}
+
 type RaspLicenseList struct {
 	// <p>机器唯一ID</p>
 	QUUID *string `json:"QUUID,omitnil,omitempty" name:"QUUID"`
@@ -71297,6 +71444,41 @@ type RuleContentFileOperation struct {
 
 	// <p>动作列表（多选为或关系）：read-读 write-写 rename-重命名 delete-删除 truncate-清空内容</p>
 	FileActions []*string `json:"FileActions,omitnil,omitempty" name:"FileActions"`
+}
+
+type RuleContentK8sAPI struct {
+	// <p>请求资源</p>
+	RequestURI *string `json:"RequestURI,omitnil,omitempty" name:"RequestURI"`
+
+	// <p>操作类型</p>
+	Verb *string `json:"Verb,omitnil,omitempty" name:"Verb"`
+
+	// <p>发起请求用户</p>
+	RequestUser *string `json:"RequestUser,omitnil,omitempty" name:"RequestUser"`
+
+	// <p>用户代理</p>
+	UserAgent *string `json:"UserAgent,omitnil,omitempty" name:"UserAgent"`
+
+	// <p>来源 IP</p>
+	SourceIPS *string `json:"SourceIPS,omitnil,omitempty" name:"SourceIPS"`
+
+	// <p>响应状态码</p>
+	ResponseStatusCode *string `json:"ResponseStatusCode,omitnil,omitempty" name:"ResponseStatusCode"`
+
+	// <p>请求数据</p>
+	RequestObject *string `json:"RequestObject,omitnil,omitempty" name:"RequestObject"`
+
+	// <p>响应数据</p>
+	ResponseObject *string `json:"ResponseObject,omitnil,omitempty" name:"ResponseObject"`
+
+	// <p>挂载宿主机目录</p>
+	MountHostDir *string `json:"MountHostDir,omitnil,omitempty" name:"MountHostDir"`
+
+	// <p>Pod 名称或 IP</p>
+	PodNameIP *string `json:"PodNameIP,omitnil,omitempty" name:"PodNameIP"`
+
+	// <p>审计日志 ID</p>
+	AuditID *string `json:"AuditID,omitnil,omitempty" name:"AuditID"`
 }
 
 type RuleContentProcessInfo struct {

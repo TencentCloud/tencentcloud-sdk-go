@@ -911,6 +911,7 @@ func NewUpdateProbeTaskConfigurationListResponse() (response *UpdateProbeTaskCon
 //  FAILEDOPERATION_TASKTYPENOTSAME = "FailedOperation.TaskTypeNotSame"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TASKPARAMSINVALID = "InvalidParameter.TaskParamsInvalid"
 func (c *Client) UpdateProbeTaskConfigurationList(request *UpdateProbeTaskConfigurationListRequest) (response *UpdateProbeTaskConfigurationListResponse, err error) {
     return c.UpdateProbeTaskConfigurationListWithContext(context.Background(), request)
 }
@@ -932,6 +933,7 @@ func (c *Client) UpdateProbeTaskConfigurationList(request *UpdateProbeTaskConfig
 //  FAILEDOPERATION_TASKTYPENOTSAME = "FailedOperation.TaskTypeNotSame"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TASKPARAMSINVALID = "InvalidParameter.TaskParamsInvalid"
 func (c *Client) UpdateProbeTaskConfigurationListWithContext(ctx context.Context, request *UpdateProbeTaskConfigurationListRequest) (response *UpdateProbeTaskConfigurationListResponse, err error) {
     if request == nil {
         request = NewUpdateProbeTaskConfigurationListRequest()

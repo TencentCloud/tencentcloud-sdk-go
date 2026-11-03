@@ -517,6 +517,112 @@ func (c *Client) CreateAgentVersionFromSourceWithContext(ctx context.Context, re
     return
 }
 
+func NewCreateScheduledTaskRequest() (request *CreateScheduledTaskRequest) {
+    request = &CreateScheduledTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("workbuddyenterprise", APIVersion, "CreateScheduledTask")
+    
+    
+    return
+}
+
+func NewCreateScheduledTaskResponse() (response *CreateScheduledTaskResponse) {
+    response = &CreateScheduledTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateScheduledTask
+// 创建自动化任务。AgentConfig 由上游传入，managed-agent 仅做协议透传。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  FAILEDOPERATION_WMASESSIONARREARSSUSPENDED = "FailedOperation.WMASessionArrearsSuspended"
+//  FAILEDOPERATION_WMASESSIONPRECHECKBLOCKED = "FailedOperation.WMASessionPrecheckBlocked"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_WMASESSIONPRECHECKFAILED = "InternalError.WMASessionPrecheckFailed"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) CreateScheduledTask(request *CreateScheduledTaskRequest) (response *CreateScheduledTaskResponse, err error) {
+    return c.CreateScheduledTaskWithContext(context.Background(), request)
+}
+
+// CreateScheduledTask
+// 创建自动化任务。AgentConfig 由上游传入，managed-agent 仅做协议透传。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  FAILEDOPERATION_WMASESSIONARREARSSUSPENDED = "FailedOperation.WMASessionArrearsSuspended"
+//  FAILEDOPERATION_WMASESSIONPRECHECKBLOCKED = "FailedOperation.WMASessionPrecheckBlocked"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_WMASESSIONPRECHECKFAILED = "InternalError.WMASessionPrecheckFailed"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) CreateScheduledTaskWithContext(ctx context.Context, request *CreateScheduledTaskRequest) (response *CreateScheduledTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateScheduledTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "workbuddyenterprise", APIVersion, "CreateScheduledTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateScheduledTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateScheduledTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAgentRequest() (request *DeleteAgentRequest) {
     request = &DeleteAgentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -603,6 +709,106 @@ func (c *Client) DeleteAgentWithContext(ctx context.Context, request *DeleteAgen
     request.SetContext(ctx)
     
     response = NewDeleteAgentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteScheduledTaskRequest() (request *DeleteScheduledTaskRequest) {
+    request = &DeleteScheduledTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("workbuddyenterprise", APIVersion, "DeleteScheduledTask")
+    
+    
+    return
+}
+
+func NewDeleteScheduledTaskResponse() (response *DeleteScheduledTaskResponse) {
+    response = &DeleteScheduledTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteScheduledTask
+// 删除指定的自动化任务。删除后不可恢复。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DeleteScheduledTask(request *DeleteScheduledTaskRequest) (response *DeleteScheduledTaskResponse, err error) {
+    return c.DeleteScheduledTaskWithContext(context.Background(), request)
+}
+
+// DeleteScheduledTask
+// 删除指定的自动化任务。删除后不可恢复。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DeleteScheduledTaskWithContext(ctx context.Context, request *DeleteScheduledTaskRequest) (response *DeleteScheduledTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteScheduledTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "workbuddyenterprise", APIVersion, "DeleteScheduledTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteScheduledTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteScheduledTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -1697,6 +1903,410 @@ func (c *Client) DescribeMessageEventListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeScheduledTaskRequest() (request *DescribeScheduledTaskRequest) {
+    request = &DescribeScheduledTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("workbuddyenterprise", APIVersion, "DescribeScheduledTask")
+    
+    
+    return
+}
+
+func NewDescribeScheduledTaskResponse() (response *DescribeScheduledTaskResponse) {
+    response = &DescribeScheduledTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeScheduledTask
+// 查询单个自动化任务的详细信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeScheduledTask(request *DescribeScheduledTaskRequest) (response *DescribeScheduledTaskResponse, err error) {
+    return c.DescribeScheduledTaskWithContext(context.Background(), request)
+}
+
+// DescribeScheduledTask
+// 查询单个自动化任务的详细信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeScheduledTaskWithContext(ctx context.Context, request *DescribeScheduledTaskRequest) (response *DescribeScheduledTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeScheduledTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "workbuddyenterprise", APIVersion, "DescribeScheduledTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScheduledTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeScheduledTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScheduledTaskListRequest() (request *DescribeScheduledTaskListRequest) {
+    request = &DescribeScheduledTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("workbuddyenterprise", APIVersion, "DescribeScheduledTaskList")
+    
+    
+    return
+}
+
+func NewDescribeScheduledTaskListResponse() (response *DescribeScheduledTaskListResponse) {
+    response = &DescribeScheduledTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeScheduledTaskList
+// 分页查询自动化任务列表，支持按任务名称、状态、Agent 过滤。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  INVALIDPARAMETER_PAGINATION = "InvalidParameter.Pagination"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeScheduledTaskList(request *DescribeScheduledTaskListRequest) (response *DescribeScheduledTaskListResponse, err error) {
+    return c.DescribeScheduledTaskListWithContext(context.Background(), request)
+}
+
+// DescribeScheduledTaskList
+// 分页查询自动化任务列表，支持按任务名称、状态、Agent 过滤。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  INVALIDPARAMETER_PAGINATION = "InvalidParameter.Pagination"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeScheduledTaskListWithContext(ctx context.Context, request *DescribeScheduledTaskListRequest) (response *DescribeScheduledTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeScheduledTaskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "workbuddyenterprise", APIVersion, "DescribeScheduledTaskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScheduledTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeScheduledTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScheduledTaskLogRequest() (request *DescribeScheduledTaskLogRequest) {
+    request = &DescribeScheduledTaskLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("workbuddyenterprise", APIVersion, "DescribeScheduledTaskLog")
+    
+    
+    return
+}
+
+func NewDescribeScheduledTaskLogResponse() (response *DescribeScheduledTaskLogResponse) {
+    response = &DescribeScheduledTaskLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeScheduledTaskLog
+// 查询单条自动化任务执行日志的详细信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeScheduledTaskLog(request *DescribeScheduledTaskLogRequest) (response *DescribeScheduledTaskLogResponse, err error) {
+    return c.DescribeScheduledTaskLogWithContext(context.Background(), request)
+}
+
+// DescribeScheduledTaskLog
+// 查询单条自动化任务执行日志的详细信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeScheduledTaskLogWithContext(ctx context.Context, request *DescribeScheduledTaskLogRequest) (response *DescribeScheduledTaskLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeScheduledTaskLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "workbuddyenterprise", APIVersion, "DescribeScheduledTaskLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScheduledTaskLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeScheduledTaskLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScheduledTaskLogListRequest() (request *DescribeScheduledTaskLogListRequest) {
+    request = &DescribeScheduledTaskLogListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("workbuddyenterprise", APIVersion, "DescribeScheduledTaskLogList")
+    
+    
+    return
+}
+
+func NewDescribeScheduledTaskLogListResponse() (response *DescribeScheduledTaskLogListResponse) {
+    response = &DescribeScheduledTaskLogListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeScheduledTaskLogList
+// 分页查询自动化任务执行日志列表，支持状态和时间范围过滤，可选返回聚合统计。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  INVALIDPARAMETER_PAGINATION = "InvalidParameter.Pagination"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeScheduledTaskLogList(request *DescribeScheduledTaskLogListRequest) (response *DescribeScheduledTaskLogListResponse, err error) {
+    return c.DescribeScheduledTaskLogListWithContext(context.Background(), request)
+}
+
+// DescribeScheduledTaskLogList
+// 分页查询自动化任务执行日志列表，支持状态和时间范围过滤，可选返回聚合统计。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  INVALIDPARAMETER_PAGINATION = "InvalidParameter.Pagination"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeScheduledTaskLogListWithContext(ctx context.Context, request *DescribeScheduledTaskLogListRequest) (response *DescribeScheduledTaskLogListResponse, err error) {
+    if request == nil {
+        request = NewDescribeScheduledTaskLogListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "workbuddyenterprise", APIVersion, "DescribeScheduledTaskLogList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScheduledTaskLogList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeScheduledTaskLogListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSkillListRequest() (request *DescribeSkillListRequest) {
     request = &DescribeSkillListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2319,6 +2929,212 @@ func (c *Client) ModifyAgentVersionWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyAgentVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyScheduledTaskRequest() (request *ModifyScheduledTaskRequest) {
+    request = &ModifyScheduledTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("workbuddyenterprise", APIVersion, "ModifyScheduledTask")
+    
+    
+    return
+}
+
+func NewModifyScheduledTaskResponse() (response *ModifyScheduledTaskResponse) {
+    response = &ModifyScheduledTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyScheduledTask
+// 部分更新自动化任务配置（Patch 语义：仅传递需要更新的字段），支持启停状态切换。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) ModifyScheduledTask(request *ModifyScheduledTaskRequest) (response *ModifyScheduledTaskResponse, err error) {
+    return c.ModifyScheduledTaskWithContext(context.Background(), request)
+}
+
+// ModifyScheduledTask
+// 部分更新自动化任务配置（Patch 语义：仅传递需要更新的字段），支持启停状态切换。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) ModifyScheduledTaskWithContext(ctx context.Context, request *ModifyScheduledTaskRequest) (response *ModifyScheduledTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyScheduledTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "workbuddyenterprise", APIVersion, "ModifyScheduledTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyScheduledTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyScheduledTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTriggerScheduledTaskRequest() (request *TriggerScheduledTaskRequest) {
+    request = &TriggerScheduledTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("workbuddyenterprise", APIVersion, "TriggerScheduledTask")
+    
+    
+    return
+}
+
+func NewTriggerScheduledTaskResponse() (response *TriggerScheduledTaskResponse) {
+    response = &TriggerScheduledTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TriggerScheduledTask
+// 手动触发一次自动化任务执行，返回执行日志 ID。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  FAILEDOPERATION_WMASESSIONARREARSSUSPENDED = "FailedOperation.WMASessionArrearsSuspended"
+//  FAILEDOPERATION_WMASESSIONPRECHECKBLOCKED = "FailedOperation.WMASessionPrecheckBlocked"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_WMASESSIONPRECHECKFAILED = "InternalError.WMASessionPrecheckFailed"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) TriggerScheduledTask(request *TriggerScheduledTaskRequest) (response *TriggerScheduledTaskResponse, err error) {
+    return c.TriggerScheduledTaskWithContext(context.Background(), request)
+}
+
+// TriggerScheduledTask
+// 手动触发一次自动化任务执行，返回执行日志 ID。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  FAILEDOPERATION_WMASESSIONARREARSSUSPENDED = "FailedOperation.WMASessionArrearsSuspended"
+//  FAILEDOPERATION_WMASESSIONPRECHECKBLOCKED = "FailedOperation.WMASessionPrecheckBlocked"
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INTERNALERROR_INVALIDCRONEXPRESSION = "InternalError.InvalidCronExpression"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INTERNALERROR_LIMITEXCEEDED = "InternalError.LimitExceeded"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_PERMISSIONDENIED = "InternalError.PermissionDenied"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_REQUESTLIMITEXCEEDED = "InternalError.RequestLimitExceeded"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_RESOURCEINUSE = "InternalError.ResourceInUse"
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  INTERNALERROR_RESOURCEUNAVAILABLE = "InternalError.ResourceUnavailable"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_WMASESSIONPRECHECKFAILED = "InternalError.WMASessionPrecheckFailed"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) TriggerScheduledTaskWithContext(ctx context.Context, request *TriggerScheduledTaskRequest) (response *TriggerScheduledTaskResponse, err error) {
+    if request == nil {
+        request = NewTriggerScheduledTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "workbuddyenterprise", APIVersion, "TriggerScheduledTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TriggerScheduledTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTriggerScheduledTaskResponse()
     err = c.Send(request, response)
     return
 }

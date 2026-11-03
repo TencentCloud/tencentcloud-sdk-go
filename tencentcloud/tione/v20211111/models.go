@@ -6823,16 +6823,16 @@ type ExposePortConfig struct {
 }
 
 type Filter struct {
-	// 过滤字段名称
+	// <p>过滤字段名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 过滤字段取值
+	// <p>过滤字段取值</p>
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// 是否开启反向查询
+	// <p>是否开启反向查询</p>
 	Negative *bool `json:"Negative,omitnil,omitempty" name:"Negative"`
 
-	// 是否开启模糊匹配
+	// <p>是否开启模糊匹配</p>
 	Fuzzy *bool `json:"Fuzzy,omitnil,omitempty" name:"Fuzzy"`
 }
 

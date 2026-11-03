@@ -828,15 +828,21 @@ func (r *CreateDirectConnectTunnelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDirectConnectRequestParams struct {
-	// 物理专线的ID。
+	// <p>物理专线的ID。</p>
 	DirectConnectId *string `json:"DirectConnectId,omitnil,omitempty" name:"DirectConnectId"`
+
+	// <p>预计裁撤时间</p>
+	PlannedRepealDate *string `json:"PlannedRepealDate,omitnil,omitempty" name:"PlannedRepealDate"`
 }
 
 type DeleteDirectConnectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 物理专线的ID。
+	// <p>物理专线的ID。</p>
 	DirectConnectId *string `json:"DirectConnectId,omitnil,omitempty" name:"DirectConnectId"`
+
+	// <p>预计裁撤时间</p>
+	PlannedRepealDate *string `json:"PlannedRepealDate,omitnil,omitempty" name:"PlannedRepealDate"`
 }
 
 func (r *DeleteDirectConnectRequest) ToJsonString() string {
@@ -852,6 +858,7 @@ func (r *DeleteDirectConnectRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DirectConnectId")
+	delete(f, "PlannedRepealDate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDirectConnectRequest has unknown keys!", "")
 	}

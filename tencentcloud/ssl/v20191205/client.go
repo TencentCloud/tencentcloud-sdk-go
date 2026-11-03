@@ -147,6 +147,64 @@ func (c *Client) ApplyCertificateWithContext(ctx context.Context, request *Apply
     return
 }
 
+func NewBatchDeleteCSRRequest() (request *BatchDeleteCSRRequest) {
+    request = &BatchDeleteCSRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "BatchDeleteCSR")
+    
+    
+    return
+}
+
+func NewBatchDeleteCSRResponse() (response *BatchDeleteCSRResponse) {
+    response = &BatchDeleteCSRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchDeleteCSR
+// 批量删除CSR
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCSRID = "InvalidParameter.InvalidCSRId"
+//  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) BatchDeleteCSR(request *BatchDeleteCSRRequest) (response *BatchDeleteCSRResponse, err error) {
+    return c.BatchDeleteCSRWithContext(context.Background(), request)
+}
+
+// BatchDeleteCSR
+// 批量删除CSR
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCSRID = "InvalidParameter.InvalidCSRId"
+//  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) BatchDeleteCSRWithContext(ctx context.Context, request *BatchDeleteCSRRequest) (response *BatchDeleteCSRResponse, err error) {
+    if request == nil {
+        request = NewBatchDeleteCSRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "BatchDeleteCSR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDeleteCSR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchDeleteCSRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelAuditCertificateRequest() (request *CancelAuditCertificateRequest) {
     request = &CancelAuditCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -709,6 +767,62 @@ func (c *Client) CompleteCertificateWithContext(ctx context.Context, request *Co
     request.SetContext(ctx)
     
     response = NewCompleteCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCSRRequest() (request *CreateCSRRequest) {
+    request = &CreateCSRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "CreateCSR")
+    
+    
+    return
+}
+
+func NewCreateCSRResponse() (response *CreateCSRResponse) {
+    response = &CreateCSRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCSR
+// 创建CSR
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CAMAUTHORIZEDFAIL = "FailedOperation.CAMAuthorizedFail"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) CreateCSR(request *CreateCSRRequest) (response *CreateCSRResponse, err error) {
+    return c.CreateCSRWithContext(context.Background(), request)
+}
+
+// CreateCSR
+// 创建CSR
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CAMAUTHORIZEDFAIL = "FailedOperation.CAMAuthorizedFail"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) CreateCSRWithContext(ctx context.Context, request *CreateCSRRequest) (response *CreateCSRResponse, err error) {
+    if request == nil {
+        request = NewCreateCSRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "CreateCSR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCSR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCSRResponse()
     err = c.Send(request, response)
     return
 }
@@ -1355,6 +1469,114 @@ func (c *Client) DeployCertificateRecordRollbackWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDeployCertificateRecordRollbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCSRRequest() (request *DescribeCSRRequest) {
+    request = &DescribeCSRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeCSR")
+    
+    
+    return
+}
+
+func NewDescribeCSRResponse() (response *DescribeCSRResponse) {
+    response = &DescribeCSRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCSR
+// 查询CSR详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETER_INVALIDCSRID = "InvalidParameter.InvalidCSRId"
+//  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+func (c *Client) DescribeCSR(request *DescribeCSRRequest) (response *DescribeCSRResponse, err error) {
+    return c.DescribeCSRWithContext(context.Background(), request)
+}
+
+// DescribeCSR
+// 查询CSR详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETER_INVALIDCSRID = "InvalidParameter.InvalidCSRId"
+//  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+func (c *Client) DescribeCSRWithContext(ctx context.Context, request *DescribeCSRRequest) (response *DescribeCSRResponse, err error) {
+    if request == nil {
+        request = NewDescribeCSRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeCSR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCSR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCSRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCSRSetRequest() (request *DescribeCSRSetRequest) {
+    request = &DescribeCSRSetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeCSRSet")
+    
+    
+    return
+}
+
+func NewDescribeCSRSetResponse() (response *DescribeCSRSetResponse) {
+    response = &DescribeCSRSetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCSRSet
+// 查询CSR列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CAMAUTHORIZEDFAIL = "FailedOperation.CAMAuthorizedFail"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) DescribeCSRSet(request *DescribeCSRSetRequest) (response *DescribeCSRSetResponse, err error) {
+    return c.DescribeCSRSetWithContext(context.Background(), request)
+}
+
+// DescribeCSRSet
+// 查询CSR列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CAMAUTHORIZEDFAIL = "FailedOperation.CAMAuthorizedFail"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) DescribeCSRSetWithContext(ctx context.Context, request *DescribeCSRSetRequest) (response *DescribeCSRSetResponse, err error) {
+    if request == nil {
+        request = NewDescribeCSRSetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "DescribeCSRSet")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCSRSet require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCSRSetResponse()
     err = c.Send(request, response)
     return
 }
@@ -3435,6 +3657,62 @@ func (c *Client) DownloadCertificateWithContext(ctx context.Context, request *Do
     request.SetContext(ctx)
     
     response = NewDownloadCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCSRRequest() (request *ModifyCSRRequest) {
+    request = &ModifyCSRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "ModifyCSR")
+    
+    
+    return
+}
+
+func NewModifyCSRResponse() (response *ModifyCSRResponse) {
+    response = &ModifyCSRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCSR
+// 修改CSR信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  INVALIDPARAMETER_INVALIDCSRID = "InvalidParameter.InvalidCSRId"
+//  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+func (c *Client) ModifyCSR(request *ModifyCSRRequest) (response *ModifyCSRResponse, err error) {
+    return c.ModifyCSRWithContext(context.Background(), request)
+}
+
+// ModifyCSR
+// 修改CSR信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  INVALIDPARAMETER_INVALIDCSRID = "InvalidParameter.InvalidCSRId"
+//  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+func (c *Client) ModifyCSRWithContext(ctx context.Context, request *ModifyCSRRequest) (response *ModifyCSRResponse, err error) {
+    if request == nil {
+        request = NewModifyCSRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ssl", APIVersion, "ModifyCSR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCSR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCSRResponse()
     err = c.Send(request, response)
     return
 }

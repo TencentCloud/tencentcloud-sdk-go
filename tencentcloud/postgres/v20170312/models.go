@@ -2788,28 +2788,28 @@ type DBInstance struct {
 }
 
 type DBInstanceNetInfo struct {
-	// DNS域名
+	// <p>DNS域名</p>
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// IP地址
+	// <p>IP地址</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 连接Port地址
+	// <p>连接Port地址</p>
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；
+	// <p>网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；</p>
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 网络连接状态，1、initing（未开通）；2、opened（已开通）；3、closed（已关闭）；4、opening（开通中）；5、closing（关闭中）；
+	// <p>网络连接状态，1、initing（未开通）；2、opened（已开通）；3、closed（已关闭）；4、opening（开通中）；5、closing（关闭中）；</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 私有网络ID
+	// <p>私有网络ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 连接数据库的协议类型，当前支持：postgresql、mssql（MSSQL兼容语法）
+	// <p>连接数据库的协议类型，当前支持：postgresql、mssql（MSSQL兼容语法）</p>
 	ProtocolType *string `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 }
 
@@ -7861,42 +7861,40 @@ func (r *InquiryPriceRenewDBInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceUpgradeDBInstanceRequestParams struct {
-	// 实例的磁盘大小，单位GB
+	// <p>实例的磁盘大小，单位GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例的内存大小，单位GB
+	// <p>实例的内存大小，单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例ID，形如postgres-hez4fh0v。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID，形如postgres-hez4fh0v。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 实例计费类型。
+	// <p>实例计费类型。</p>
 	//
 	// Deprecated: InstanceChargeType is deprecated.
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 实例的Cpu大小，单位Core。
-	// 不传入此参数时，默认根据Memory确定的售卖规格所对应的Cpu进行设置。如Memory为2，支持的售卖规格有1核2GiB，则不传入Cpu时，Cpu默认为1。
+	// <p>实例的Cpu大小，单位Core。<br>不传入此参数时，默认根据Memory确定的售卖规格所对应的Cpu进行设置。如Memory为2，支持的售卖规格有1核2GiB，则不传入Cpu时，Cpu默认为1。</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 }
 
 type InquiryPriceUpgradeDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例的磁盘大小，单位GB
+	// <p>实例的磁盘大小，单位GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例的内存大小，单位GB
+	// <p>实例的内存大小，单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例ID，形如postgres-hez4fh0v。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID，形如postgres-hez4fh0v。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 实例计费类型。
+	// <p>实例计费类型。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 实例的Cpu大小，单位Core。
-	// 不传入此参数时，默认根据Memory确定的售卖规格所对应的Cpu进行设置。如Memory为2，支持的售卖规格有1核2GiB，则不传入Cpu时，Cpu默认为1。
+	// <p>实例的Cpu大小，单位Core。<br>不传入此参数时，默认根据Memory确定的售卖规格所对应的Cpu进行设置。如Memory为2，支持的售卖规格有1核2GiB，则不传入Cpu时，Cpu默认为1。</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 }
 
@@ -7925,13 +7923,13 @@ func (r *InquiryPriceUpgradeDBInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceUpgradeDBInstanceResponseParams struct {
-	// 刊例价费用
+	// <p>刊例价费用</p>
 	OriginalPrice *int64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 折后实际付款金额
+	// <p>折后实际付款金额</p>
 	Price *int64 `json:"Price,omitnil,omitempty" name:"Price"`
 
-	// 币种。例如，CNY：人民币。
+	// <p>币种。例如，CNY：人民币。</p>
 	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
