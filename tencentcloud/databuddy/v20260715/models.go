@@ -3319,7 +3319,7 @@ type GetCatalogRequestParams struct {
 	// <p>调用时所在workspace唯一id</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// <p>数据目录id</p>
+	// <p>数据目录id，通过ListCatalogs接口获取</p>
 	CatalogId *string `json:"CatalogId,omitnil,omitempty" name:"CatalogId"`
 
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
@@ -3341,7 +3341,7 @@ type GetCatalogRequest struct {
 	// <p>调用时所在workspace唯一id</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// <p>数据目录id</p>
+	// <p>数据目录id，通过ListCatalogs接口获取</p>
 	CatalogId *string `json:"CatalogId,omitnil,omitempty" name:"CatalogId"`
 
 	// <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
@@ -7679,6 +7679,101 @@ type ListWorkspaceGroupsRsp struct {
 }
 
 // Predefined struct for user
+type ListWorkspaceRolesRequestParams struct {
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>关键字，支持按角色名称模糊搜索</p>
+	NameKeyword *string `json:"NameKeyword,omitnil,omitempty" name:"NameKeyword"`
+
+	// <p>页码，从1开始，默认1</p><p>默认值：1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小，默认10，取值范围为 [1,100]，越界时自动收敛到边界值</p><p>默认值：10</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListWorkspaceRolesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>关键字，支持按角色名称模糊搜索</p>
+	NameKeyword *string `json:"NameKeyword,omitnil,omitempty" name:"NameKeyword"`
+
+	// <p>页码，从1开始，默认1</p><p>默认值：1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小，默认10，取值范围为 [1,100]，越界时自动收敛到边界值</p><p>默认值：10</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListWorkspaceRolesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListWorkspaceRolesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "NameKeyword")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListWorkspaceRolesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListWorkspaceRolesResponseParams struct {
+	// <p>工作空间角色结果</p>
+	Data *ListWorkspaceRolesRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListWorkspaceRolesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListWorkspaceRolesResponseParams `json:"Response"`
+}
+
+func (r *ListWorkspaceRolesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListWorkspaceRolesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListWorkspaceRolesRsp struct {
+	// <p>角色列表</p>
+	Items []*Role `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// <p>当前页码</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>总记录数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>总页数</p>
+	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+}
+
+// Predefined struct for user
 type ListWorkspaceUsersRequestParams struct {
 	// <p>工作空间ID</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
@@ -8550,6 +8645,14 @@ type ResourceGroupInfo struct {
 	// <p>资源组状态</p><p>参数格式：0 // 未指定 1 // 待创建 2 // 创建中 3 // 运行中 4 // 已停止 5 // 停止中 6 // 启动中 7 // 更新中 8 // 删除中 9 // 已删除 10 // 用户主动启动 / 自动启动（有任务提交且自动启停开启） 11 // 可用: 仅存在于数据计算型 12 // 不可用: 仅存在于数据计算型 13 // 失败</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupStatus *string `json:"ResourceGroupStatus,omitnil,omitempty" name:"ResourceGroupStatus"`
+}
+
+type Role struct {
+	// <p>角色基本信息</p>
+	BasicInfo *RoleBasicInfo `json:"BasicInfo,omitnil,omitempty" name:"BasicInfo"`
+
+	// <p>角色权限</p>
+	Permissions []*RolePermission `json:"Permissions,omitnil,omitempty" name:"Permissions"`
 }
 
 type RoleBasicInfo struct {

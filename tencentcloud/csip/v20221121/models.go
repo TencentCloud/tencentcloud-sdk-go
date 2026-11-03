@@ -18575,6 +18575,196 @@ func (r *DeleteImageVulWhitelistResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteLoginWhiteCustomEDRRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>显式勾选的规则ID列表，最多 1000 个；与 SelectAll 二选一</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>是否跨页全选：true-删除符合 Filters 的全部规则（此时 Filters 必填） false-仅删除 Ids</p>
+	SelectAll *bool `json:"SelectAll,omitnil,omitempty" name:"SelectAll"`
+
+	// <p>多账号目标账号 AppId 列表，最多 1000 个；为空表示仅当前账号；传入但全部无权限时返回 InvalidParameter</p>
+	TargetAppIDs []*uint64 `json:"TargetAppIDs,omitnil,omitempty" name:"TargetAppIDs"`
+
+	// <p>排除的规则ID列表，最多1000个</p>
+	ExcludeIds []*int64 `json:"ExcludeIds,omitnil,omitempty" name:"ExcludeIds"`
+
+	// <p>全选条件下的筛选条件</p>
+	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DeleteLoginWhiteCustomEDRRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>显式勾选的规则ID列表，最多 1000 个；与 SelectAll 二选一</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>是否跨页全选：true-删除符合 Filters 的全部规则（此时 Filters 必填） false-仅删除 Ids</p>
+	SelectAll *bool `json:"SelectAll,omitnil,omitempty" name:"SelectAll"`
+
+	// <p>多账号目标账号 AppId 列表，最多 1000 个；为空表示仅当前账号；传入但全部无权限时返回 InvalidParameter</p>
+	TargetAppIDs []*uint64 `json:"TargetAppIDs,omitnil,omitempty" name:"TargetAppIDs"`
+
+	// <p>排除的规则ID列表，最多1000个</p>
+	ExcludeIds []*int64 `json:"ExcludeIds,omitnil,omitempty" name:"ExcludeIds"`
+
+	// <p>全选条件下的筛选条件</p>
+	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DeleteLoginWhiteCustomEDRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLoginWhiteCustomEDRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Ids")
+	delete(f, "SelectAll")
+	delete(f, "TargetAppIDs")
+	delete(f, "ExcludeIds")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLoginWhiteCustomEDRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLoginWhiteCustomEDRResponseParams struct {
+	// <p>删除的规则条数</p>
+	DeletedCount *int64 `json:"DeletedCount,omitnil,omitempty" name:"DeletedCount"`
+
+	// <p>删除失败的账号 AppId 列表；仅当全部失败时才返回错误</p>
+	FailedAppIds []*uint64 `json:"FailedAppIds,omitnil,omitempty" name:"FailedAppIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLoginWhiteCustomEDRResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLoginWhiteCustomEDRResponseParams `json:"Response"`
+}
+
+func (r *DeleteLoginWhiteCustomEDRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLoginWhiteCustomEDRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLoginWhiteLearnEDRRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>显式勾选的规则ID列表，最多 1000 个；与 SelectAll 二选一</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>是否跨页全选：true-删除符合 Filters 的全部规则（此时 Filters 必填） false-仅删除 Ids</p>
+	SelectAll *bool `json:"SelectAll,omitnil,omitempty" name:"SelectAll"`
+
+	// <p>多账号目标账号 AppId 列表，最多 1000 个；为空表示仅当前账号；传入但全部无权限时返回 InvalidParameter</p>
+	TargetAppIDs []*uint64 `json:"TargetAppIDs,omitnil,omitempty" name:"TargetAppIDs"`
+
+	// <p>排除的规则ID列表</p>
+	ExcludeIds []*int64 `json:"ExcludeIds,omitnil,omitempty" name:"ExcludeIds"`
+
+	// <p>全选条件下的筛选条件</p>
+	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DeleteLoginWhiteLearnEDRRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>显式勾选的规则ID列表，最多 1000 个；与 SelectAll 二选一</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>是否跨页全选：true-删除符合 Filters 的全部规则（此时 Filters 必填） false-仅删除 Ids</p>
+	SelectAll *bool `json:"SelectAll,omitnil,omitempty" name:"SelectAll"`
+
+	// <p>多账号目标账号 AppId 列表，最多 1000 个；为空表示仅当前账号；传入但全部无权限时返回 InvalidParameter</p>
+	TargetAppIDs []*uint64 `json:"TargetAppIDs,omitnil,omitempty" name:"TargetAppIDs"`
+
+	// <p>排除的规则ID列表</p>
+	ExcludeIds []*int64 `json:"ExcludeIds,omitnil,omitempty" name:"ExcludeIds"`
+
+	// <p>全选条件下的筛选条件</p>
+	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DeleteLoginWhiteLearnEDRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLoginWhiteLearnEDRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Ids")
+	delete(f, "SelectAll")
+	delete(f, "TargetAppIDs")
+	delete(f, "ExcludeIds")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLoginWhiteLearnEDRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLoginWhiteLearnEDRResponseParams struct {
+	// <p>删除的主机记录行数（一个规则组可能含多行，与自定义白名单接口按规则条数统计的口径不同）</p>
+	DeletedCount *int64 `json:"DeletedCount,omitnil,omitempty" name:"DeletedCount"`
+
+	// <p>删除失败的账号 AppId 列表；仅当全部失败时才返回错误</p>
+	FailedAppIds []*uint64 `json:"FailedAppIds,omitnil,omitempty" name:"FailedAppIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLoginWhiteLearnEDRResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLoginWhiteLearnEDRResponseParams `json:"Response"`
+}
+
+func (r *DeleteLoginWhiteLearnEDRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLoginWhiteLearnEDRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteLoginWhiteListRequestParams struct {
 	// <p>白名单ID (最大 100 条)</p>
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
@@ -38181,6 +38371,80 @@ func (r *DescribeEdrLogCollectPathsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEdrMalwareFileRequestParams struct {
+	// <p>EDR 告警唯一标识，必填，最长 34 字符</p>
+	AlertId *string `json:"AlertId,omitnil,omitempty" name:"AlertId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>告警所属账号 AppId（跨账号场景由前端透传成员 AppId）；为 0 或省略时回退为登录账号 AppId</p>
+	TargetAppId *uint64 `json:"TargetAppId,omitnil,omitempty" name:"TargetAppId"`
+}
+
+type DescribeEdrMalwareFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>EDR 告警唯一标识，必填，最长 34 字符</p>
+	AlertId *string `json:"AlertId,omitnil,omitempty" name:"AlertId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>告警所属账号 AppId（跨账号场景由前端透传成员 AppId）；为 0 或省略时回退为登录账号 AppId</p>
+	TargetAppId *uint64 `json:"TargetAppId,omitnil,omitempty" name:"TargetAppId"`
+}
+
+func (r *DescribeEdrMalwareFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdrMalwareFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AlertId")
+	delete(f, "MemberId")
+	delete(f, "TargetAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEdrMalwareFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEdrMalwareFileResponseParams struct {
+	// <p>样本下载链接。公有云为 COS 预签名 URL（1 小时过期）；非公有云且导出开关打开时为 data:application/octet-stream;base64,&lt;zip 的 base64&gt;</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// <p>导出文件名，形如 &lt;name&gt;.zip；仅非公有云 base64 分支返回，其余场景不返回该字段</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEdrMalwareFileResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEdrMalwareFileResponseParams `json:"Response"`
+}
+
+func (r *DescribeEdrMalwareFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdrMalwareFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExportJobDownloadURLRequestParams struct {
 	// 任务ID
 	JobID *string `json:"JobID,omitnil,omitempty" name:"JobID"`
@@ -42505,6 +42769,101 @@ func (r *DescribeLoginWhiteCombinedListResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeLoginWhiteCustomListEDRRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件数组（多个 Filter 间为 AND 关系）。支持 Name：Keyword（SrcIp/UserName/Locations/Remark 模糊）、SrcIp、UserName、Location、Remark、ModifyBeginTime、ModifyEndTime（时间格式 2006-01-02 15:04:05）；未知 Name 忽略不报错</p>
+	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页大小，默认 10，上限 100；传 0 或大于 100 时按默认/上限返回</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移，默认 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向：ASC-正序 DESC-倒序（大小写不敏感），默认 DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段：CreateTime-创建时间 ModifyTime-修改时间，默认 ModifyTime；传非法值返回 InvalidParameter</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeLoginWhiteCustomListEDRRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件数组（多个 Filter 间为 AND 关系）。支持 Name：Keyword（SrcIp/UserName/Locations/Remark 模糊）、SrcIp、UserName、Location、Remark、ModifyBeginTime、ModifyEndTime（时间格式 2006-01-02 15:04:05）；未知 Name 忽略不报错</p>
+	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页大小，默认 10，上限 100；传 0 或大于 100 时按默认/上限返回</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移，默认 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向：ASC-正序 DESC-倒序（大小写不敏感），默认 DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段：CreateTime-创建时间 ModifyTime-修改时间，默认 ModifyTime；传非法值返回 InvalidParameter</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeLoginWhiteCustomListEDRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLoginWhiteCustomListEDRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoginWhiteCustomListEDRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLoginWhiteCustomListEDRResponseParams struct {
+	// <p>符合筛选条件的规则总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>自定义白名单规则列表（Type 恒为 Custom），为空时返回 []</p>
+	List []*LoginWhiteItem `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLoginWhiteCustomListEDRResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLoginWhiteCustomListEDRResponseParams `json:"Response"`
+}
+
+func (r *DescribeLoginWhiteCustomListEDRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLoginWhiteCustomListEDRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLoginWhiteHostListRequestParams struct {
 	// <p>白名单ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -42589,6 +42948,104 @@ func (r *DescribeLoginWhiteHostListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLoginWhiteHostListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLoginWhiteLearnListEDRRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件数组（多个 Filter 间为 AND 关系）。支持 Name：Keyword 或 Location（常用登录地模糊）、Remark、ModifyBeginTime、ModifyEndTime（时间格式 2006-01-02 15:04:05）；未知 Name 忽略不报错</p>
+	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页大小，默认 10，上限 100；传 0 或大于 100 时按默认/上限返回</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移，默认 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向：ASC-正序 DESC-倒序（大小写不敏感），默认 DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段：CreateTime-创建时间 ModifyTime-修改时间，默认 ModifyTime；传非法值返回 InvalidParameter</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeLoginWhiteLearnListEDRRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件数组（多个 Filter 间为 AND 关系）。支持 Name：Keyword 或 Location（常用登录地模糊）、Remark、ModifyBeginTime、ModifyEndTime（时间格式 2006-01-02 15:04:05）；未知 Name 忽略不报错</p>
+	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页大小，默认 10，上限 100；传 0 或大于 100 时按默认/上限返回</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移，默认 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向：ASC-正序 DESC-倒序（大小写不敏感），默认 DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段：CreateTime-创建时间 ModifyTime-修改时间，默认 ModifyTime；传非法值返回 InvalidParameter</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeLoginWhiteLearnListEDRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLoginWhiteLearnListEDRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoginWhiteLearnListEDRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLoginWhiteLearnListEDRResponseParams struct {
+	// <p>规则组总数（按 AppId + 常用登录地聚合）</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>自学习白名单规则组列表（Type 恒为 Learn），为空时返回 []</p>
+	List []*LoginWhiteItem `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>自学习白名单开关状态；多账号时取当前账号，供前端空态提示前往开启</p>
+	AutoLearnEnable *bool `json:"AutoLearnEnable,omitnil,omitempty" name:"AutoLearnEnable"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLoginWhiteLearnListEDRResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLoginWhiteLearnListEDRResponseParams `json:"Response"`
+}
+
+func (r *DescribeLoginWhiteLearnListEDRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLoginWhiteLearnListEDRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -58933,6 +59390,90 @@ type LoginWhiteCombinedInfo struct {
 	Locations *string `json:"Locations,omitnil,omitempty" name:"Locations"`
 }
 
+type LoginWhiteItem struct {
+	// <p>白名单类型：Custom-自定义白名单 Learn-自学习白名单</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>规则所属账号 AppId，多账号场景下用于区分与后续编辑定位</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>规则ID；自学习为规则组ID（组内最小行ID）</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>登录源IP（逗号分隔）；自学习白名单恒为空</p>
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
+
+	// <p>登录用户名（逗号分隔）；自学习白名单恒为空</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>登录时段起始 HH:MM；自学习白名单恒为空</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>登录时段结束 HH:MM；自学习白名单恒为空</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>常用登录地列表</p>
+	Places []*LoginWhitePlace `json:"Places,omitnil,omitempty" name:"Places"`
+
+	// <p>常用登录地展示文案（逗号分隔），供列表直接展示</p>
+	Locations *string `json:"Locations,omitnil,omitempty" name:"Locations"`
+
+	// <p>生效资产范围：0-指定主机（主机或标签命中） 1-全部主机</p>
+	Scope *int64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>生效主机 QUUID 列表（与 InstanceIDs 一一对应）</p>
+	QUUIDS []*string `json:"QUUIDS,omitnil,omitempty" name:"QUUIDS"`
+
+	// <p>生效主机实例ID列表（与 QUUIDS 一一对应）</p>
+	InstanceIDs []*string `json:"InstanceIDs,omitnil,omitempty" name:"InstanceIDs"`
+
+	// <p>剔除主机 QUUID 列表</p>
+	ExcludeQUUIDS []*string `json:"ExcludeQUUIDS,omitnil,omitempty" name:"ExcludeQUUIDS"`
+
+	// <p>剔除主机实例ID列表</p>
+	ExcludeInstanceIDs []*string `json:"ExcludeInstanceIDs,omitnil,omitempty" name:"ExcludeInstanceIDs"`
+
+	// <p>生效标签详情列表</p>
+	TagItems []*EDRRuleTagItem `json:"TagItems,omitnil,omitempty" name:"TagItems"`
+
+	// <p>主机数：自定义为指定主机数（Scope=1 时为 0，前端展示全部主机）；自学习为组内去重主机数</p>
+	HostCount *int64 `json:"HostCount,omitnil,omitempty" name:"HostCount"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>创建时间，格式 2006-01-02 15:04:05</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>最近修改时间，格式 2006-01-02 15:04:05</p>
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+}
+
+type LoginWhitePlace struct {
+	// <p>国家ID</p>
+	CountryId *int64 `json:"CountryId,omitnil,omitempty" name:"CountryId"`
+
+	// <p>省份ID；99999 表示全部省份</p>
+	ProvinceId *int64 `json:"ProvinceId,omitnil,omitempty" name:"ProvinceId"`
+
+	// <p>城市ID；99999 表示全部城市</p>
+	CityId *int64 `json:"CityId,omitnil,omitempty" name:"CityId"`
+
+	// <p>地点展示文案，服务端按 Language 生成，如 中国-广东-深圳</p>
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+}
+
+type LoginWhitePlaceInput struct {
+	// <p>国家ID，当前仅支持国内：1</p>
+	CountryId *int64 `json:"CountryId,omitnil,omitempty" name:"CountryId"`
+
+	// <p>省份ID；99999 表示全部省份</p>
+	ProvinceId *int64 `json:"ProvinceId,omitnil,omitempty" name:"ProvinceId"`
+
+	// <p>城市ID；99999 表示全部城市</p>
+	CityId *int64 `json:"CityId,omitnil,omitempty" name:"CityId"`
+}
+
 type Machine struct {
 	// <p>Agent状态，取值：ONLINE-在线，OFFLINE-离线，UNINSTALL-未安装</p>
 	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
@@ -65710,6 +66251,264 @@ type ModifyLoginTypeFailInfo struct {
 
 	// <p>失败原因</p>
 	MessageDesc *string `json:"MessageDesc,omitnil,omitempty" name:"MessageDesc"`
+}
+
+// Predefined struct for user
+type ModifyLoginWhiteCustomEDRRequestParams struct {
+	// <p>规则ID；自学习为规则组ID（组内最小行ID）</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>登录源IP，多个以逗号分隔；支持单个IP、区间(a-b)、CIDR，支持 IPv4 与 IPv6；最长 2048 字符</p>
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
+
+	// <p>登录用户名，多个以逗号分隔；最长 1024 字符</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>登录时段起始 HH:MM；与 EndTime 必须同时填写或同时为空</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>登录时段结束 HH:MM；与 StartTime 必须同时填写或同时为空</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>常用登录地列表，最多 200 个；ProvinceId/CityId 传 99999 表示全部省份/全部城市</p>
+	Places []*LoginWhitePlaceInput `json:"Places,omitnil,omitempty" name:"Places"`
+
+	// <p>备注，最长 255 字符</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>生效资产范围：0-指定主机（主机或标签命中） 1-全部主机</p>
+	Scope *int64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>指定主机（实例ID 形态）列表，最多 10000 项；服务端经 idmap 翻译为 QUUID 后与 QUUIDSWithAppId 合并去重</p>
+	InstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"InstanceIDsWithAppId,omitnil,omitempty" name:"InstanceIDsWithAppId"`
+
+	// <p>剔除主机（实例ID 形态）列表，最多 10000 项</p>
+	ExcludeInstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"ExcludeInstanceIDsWithAppId,omitnil,omitempty" name:"ExcludeInstanceIDsWithAppId"`
+
+	// <p>安全中心标签ID列表，最多 100 个；Scope=0 时与主机为或关系；自学习白名单不支持按标签生效（传非空将被拒绝）</p>
+	TagIDs []*string `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
+
+	// <p>目标appid</p>
+	TargetAppIDs []*uint64 `json:"TargetAppIDs,omitnil,omitempty" name:"TargetAppIDs"`
+
+	// <p>是否加白历史告警</p>
+	DealOldEvents *int64 `json:"DealOldEvents,omitnil,omitempty" name:"DealOldEvents"`
+}
+
+type ModifyLoginWhiteCustomEDRRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>规则ID；自学习为规则组ID（组内最小行ID）</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>登录源IP，多个以逗号分隔；支持单个IP、区间(a-b)、CIDR，支持 IPv4 与 IPv6；最长 2048 字符</p>
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
+
+	// <p>登录用户名，多个以逗号分隔；最长 1024 字符</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>登录时段起始 HH:MM；与 EndTime 必须同时填写或同时为空</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>登录时段结束 HH:MM；与 StartTime 必须同时填写或同时为空</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>常用登录地列表，最多 200 个；ProvinceId/CityId 传 99999 表示全部省份/全部城市</p>
+	Places []*LoginWhitePlaceInput `json:"Places,omitnil,omitempty" name:"Places"`
+
+	// <p>备注，最长 255 字符</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>生效资产范围：0-指定主机（主机或标签命中） 1-全部主机</p>
+	Scope *int64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>指定主机（实例ID 形态）列表，最多 10000 项；服务端经 idmap 翻译为 QUUID 后与 QUUIDSWithAppId 合并去重</p>
+	InstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"InstanceIDsWithAppId,omitnil,omitempty" name:"InstanceIDsWithAppId"`
+
+	// <p>剔除主机（实例ID 形态）列表，最多 10000 项</p>
+	ExcludeInstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"ExcludeInstanceIDsWithAppId,omitnil,omitempty" name:"ExcludeInstanceIDsWithAppId"`
+
+	// <p>安全中心标签ID列表，最多 100 个；Scope=0 时与主机为或关系；自学习白名单不支持按标签生效（传非空将被拒绝）</p>
+	TagIDs []*string `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
+
+	// <p>目标appid</p>
+	TargetAppIDs []*uint64 `json:"TargetAppIDs,omitnil,omitempty" name:"TargetAppIDs"`
+
+	// <p>是否加白历史告警</p>
+	DealOldEvents *int64 `json:"DealOldEvents,omitnil,omitempty" name:"DealOldEvents"`
+}
+
+func (r *ModifyLoginWhiteCustomEDRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLoginWhiteCustomEDRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "MemberId")
+	delete(f, "SrcIp")
+	delete(f, "UserName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Places")
+	delete(f, "Remark")
+	delete(f, "Scope")
+	delete(f, "InstanceIDsWithAppId")
+	delete(f, "ExcludeInstanceIDsWithAppId")
+	delete(f, "TagIDs")
+	delete(f, "TargetAppIDs")
+	delete(f, "DealOldEvents")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoginWhiteCustomEDRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLoginWhiteCustomEDRResponseParams struct {
+	// <p>失败的账号</p>
+	FailedAppIds []*uint64 `json:"FailedAppIds,omitnil,omitempty" name:"FailedAppIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLoginWhiteCustomEDRResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLoginWhiteCustomEDRResponseParams `json:"Response"`
+}
+
+func (r *ModifyLoginWhiteCustomEDRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLoginWhiteCustomEDRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLoginWhiteLearnEDRRequestParams struct {
+	// <p>规则ID；自学习为规则组ID（组内最小行ID）</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>常用登录地列表，必填，1-200 个；为自学习规则唯一的内容维度</p>
+	Places []*LoginWhitePlaceInput `json:"Places,omitnil,omitempty" name:"Places"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>规则所属账号 AppId（取列表出参 AppId）；为空取当前账号；非当前账号需通过归属校验</p>
+	RuleAppId *uint64 `json:"RuleAppId,omitnil,omitempty" name:"RuleAppId"`
+
+	// <p>备注，最长 255 字符</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>生效资产范围：0-指定主机（主机或标签命中） 1-全部主机</p>
+	Scope *int64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>指定主机（实例ID 形态）列表，最多 10000 项；服务端经 idmap 翻译为 QUUID 后与 QUUIDSWithAppId 合并去重</p>
+	InstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"InstanceIDsWithAppId,omitnil,omitempty" name:"InstanceIDsWithAppId"`
+
+	// <p>剔除主机（实例ID 形态）列表，最多 10000 项</p>
+	ExcludeInstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"ExcludeInstanceIDsWithAppId,omitnil,omitempty" name:"ExcludeInstanceIDsWithAppId"`
+
+	// <p>安全中心标签ID列表，最多 100 个；Scope=0 时与主机为或关系；自学习白名单不支持按标签生效（传非空将被拒绝）</p>
+	TagIDs []*string `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
+}
+
+type ModifyLoginWhiteLearnEDRRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>规则ID；自学习为规则组ID（组内最小行ID）</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>常用登录地列表，必填，1-200 个；为自学习规则唯一的内容维度</p>
+	Places []*LoginWhitePlaceInput `json:"Places,omitnil,omitempty" name:"Places"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>规则所属账号 AppId（取列表出参 AppId）；为空取当前账号；非当前账号需通过归属校验</p>
+	RuleAppId *uint64 `json:"RuleAppId,omitnil,omitempty" name:"RuleAppId"`
+
+	// <p>备注，最长 255 字符</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>生效资产范围：0-指定主机（主机或标签命中） 1-全部主机</p>
+	Scope *int64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>指定主机（实例ID 形态）列表，最多 10000 项；服务端经 idmap 翻译为 QUUID 后与 QUUIDSWithAppId 合并去重</p>
+	InstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"InstanceIDsWithAppId,omitnil,omitempty" name:"InstanceIDsWithAppId"`
+
+	// <p>剔除主机（实例ID 形态）列表，最多 10000 项</p>
+	ExcludeInstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"ExcludeInstanceIDsWithAppId,omitnil,omitempty" name:"ExcludeInstanceIDsWithAppId"`
+
+	// <p>安全中心标签ID列表，最多 100 个；Scope=0 时与主机为或关系；自学习白名单不支持按标签生效（传非空将被拒绝）</p>
+	TagIDs []*string `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
+}
+
+func (r *ModifyLoginWhiteLearnEDRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLoginWhiteLearnEDRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Places")
+	delete(f, "MemberId")
+	delete(f, "RuleAppId")
+	delete(f, "Remark")
+	delete(f, "Scope")
+	delete(f, "InstanceIDsWithAppId")
+	delete(f, "ExcludeInstanceIDsWithAppId")
+	delete(f, "TagIDs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoginWhiteLearnEDRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLoginWhiteLearnEDRResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLoginWhiteLearnEDRResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLoginWhiteLearnEDRResponseParams `json:"Response"`
+}
+
+func (r *ModifyLoginWhiteLearnEDRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLoginWhiteLearnEDRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

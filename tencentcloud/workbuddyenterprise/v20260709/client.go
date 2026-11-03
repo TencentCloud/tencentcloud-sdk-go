@@ -813,6 +813,96 @@ func (c *Client) DeleteScheduledTaskWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDeleteSessionArtifactListRequest() (request *DeleteSessionArtifactListRequest) {
+    request = &DeleteSessionArtifactListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("workbuddyenterprise", APIVersion, "DeleteSessionArtifactList")
+    
+    
+    return
+}
+
+func NewDeleteSessionArtifactListResponse() (response *DeleteSessionArtifactListResponse) {
+    response = &DeleteSessionArtifactListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSessionArtifactList
+// 删除指定的物料，删除后不可恢复。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_AGENTOPERATIONFAILED = "InternalError.AgentOperationFailed"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_AGENTIDREQUIRED = "InvalidParameter.AgentIDRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  INVALIDPARAMETER_INVALIDREQUESTBODY = "InvalidParameter.InvalidRequestBody"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+//  RESOURCENOTFOUND_AGENT = "ResourceNotFound.Agent"
+//  UNAUTHORIZEDOPERATION_UNPROVISIONEDTENANT = "UnauthorizedOperation.UnprovisionedTenant"
+func (c *Client) DeleteSessionArtifactList(request *DeleteSessionArtifactListRequest) (response *DeleteSessionArtifactListResponse, err error) {
+    return c.DeleteSessionArtifactListWithContext(context.Background(), request)
+}
+
+// DeleteSessionArtifactList
+// 删除指定的物料，删除后不可恢复。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_AGENTOPERATIONFAILED = "InternalError.AgentOperationFailed"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_AGENTIDREQUIRED = "InvalidParameter.AgentIDRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  INVALIDPARAMETER_INVALIDREQUESTBODY = "InvalidParameter.InvalidRequestBody"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+//  RESOURCENOTFOUND_AGENT = "ResourceNotFound.Agent"
+//  UNAUTHORIZEDOPERATION_UNPROVISIONEDTENANT = "UnauthorizedOperation.UnprovisionedTenant"
+func (c *Client) DeleteSessionArtifactListWithContext(ctx context.Context, request *DeleteSessionArtifactListRequest) (response *DeleteSessionArtifactListResponse, err error) {
+    if request == nil {
+        request = NewDeleteSessionArtifactListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "workbuddyenterprise", APIVersion, "DeleteSessionArtifactList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSessionArtifactList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSessionArtifactListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentRequest() (request *DescribeAgentRequest) {
     request = &DescribeAgentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2303,6 +2393,182 @@ func (c *Client) DescribeScheduledTaskLogListWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeScheduledTaskLogListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSessionArtifactDownloadUrlRequest() (request *DescribeSessionArtifactDownloadUrlRequest) {
+    request = &DescribeSessionArtifactDownloadUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("workbuddyenterprise", APIVersion, "DescribeSessionArtifactDownloadUrl")
+    
+    
+    return
+}
+
+func NewDescribeSessionArtifactDownloadUrlResponse() (response *DescribeSessionArtifactDownloadUrlResponse) {
+    response = &DescribeSessionArtifactDownloadUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSessionArtifactDownloadUrl
+// 获取会话物料下载链接。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_ENTERPRISEIDREQUIRED = "InvalidParameter.EnterpriseIDRequired"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  INVALIDPARAMETER_INVALIDREQUESTBODY = "InvalidParameter.InvalidRequestBody"
+//  INVALIDPARAMETER_PAGINATION = "InvalidParameter.Pagination"
+//  INVALIDPARAMETER_SOURCEREQUIRED = "InvalidParameter.SourceRequired"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeSessionArtifactDownloadUrl(request *DescribeSessionArtifactDownloadUrlRequest) (response *DescribeSessionArtifactDownloadUrlResponse, err error) {
+    return c.DescribeSessionArtifactDownloadUrlWithContext(context.Background(), request)
+}
+
+// DescribeSessionArtifactDownloadUrl
+// 获取会话物料下载链接。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_ENTERPRISEIDREQUIRED = "InvalidParameter.EnterpriseIDRequired"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  INVALIDPARAMETER_INVALIDREQUESTBODY = "InvalidParameter.InvalidRequestBody"
+//  INVALIDPARAMETER_PAGINATION = "InvalidParameter.Pagination"
+//  INVALIDPARAMETER_SOURCEREQUIRED = "InvalidParameter.SourceRequired"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeSessionArtifactDownloadUrlWithContext(ctx context.Context, request *DescribeSessionArtifactDownloadUrlRequest) (response *DescribeSessionArtifactDownloadUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeSessionArtifactDownloadUrlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "workbuddyenterprise", APIVersion, "DescribeSessionArtifactDownloadUrl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSessionArtifactDownloadUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSessionArtifactDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSessionArtifactListRequest() (request *DescribeSessionArtifactListRequest) {
+    request = &DescribeSessionArtifactListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("workbuddyenterprise", APIVersion, "DescribeSessionArtifactList")
+    
+    
+    return
+}
+
+func NewDescribeSessionArtifactListResponse() (response *DescribeSessionArtifactListResponse) {
+    response = &DescribeSessionArtifactListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSessionArtifactList
+// 分页查询会话物料列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_ENTERPRISEIDREQUIRED = "InvalidParameter.EnterpriseIDRequired"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  INVALIDPARAMETER_INVALIDREQUESTBODY = "InvalidParameter.InvalidRequestBody"
+//  INVALIDPARAMETER_PAGINATION = "InvalidParameter.Pagination"
+//  INVALIDPARAMETER_SOURCEREQUIRED = "InvalidParameter.SourceRequired"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeSessionArtifactList(request *DescribeSessionArtifactListRequest) (response *DescribeSessionArtifactListResponse, err error) {
+    return c.DescribeSessionArtifactListWithContext(context.Background(), request)
+}
+
+// DescribeSessionArtifactList
+// 分页查询会话物料列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_IDENTITYNOTFOUND = "AuthFailure.IdentityNotFound"
+//  AUTHFAILURE_IDENTITYRESOLUTIONFAILED = "AuthFailure.IdentityResolutionFailed"
+//  FAILEDOPERATION_ENTITLEMENTNOTFOUND = "FailedOperation.EntitlementNotFound"
+//  INTERNALERROR_ENTITLEMENTCHECKFAILED = "InternalError.EntitlementCheckFailed"
+//  INTERNALERROR_MARSHALFAILED = "InternalError.MarshalFailed"
+//  INTERNALERROR_NORESOLVER = "InternalError.NoResolver"
+//  INTERNALERROR_PANIC = "InternalError.Panic"
+//  INTERNALERROR_READBODYFAILED = "InternalError.ReadBodyFailed"
+//  INTERNALERROR_RESOLVEENTERPRISEFAILED = "InternalError.ResolveEnterpriseFailed"
+//  INTERNALERROR_TENANTRESOLVEFAILED = "InternalError.TenantResolveFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_ACTIONREQUIRED = "InvalidParameter.ActionRequired"
+//  INVALIDPARAMETER_EMPTYBODY = "InvalidParameter.EmptyBody"
+//  INVALIDPARAMETER_ENTERPRISEIDREQUIRED = "InvalidParameter.EnterpriseIDRequired"
+//  INVALIDPARAMETER_INVALIDJSON = "InvalidParameter.InvalidJSON"
+//  INVALIDPARAMETER_INVALIDREQUESTBODY = "InvalidParameter.InvalidRequestBody"
+//  INVALIDPARAMETER_PAGINATION = "InvalidParameter.Pagination"
+//  INVALIDPARAMETER_SOURCEREQUIRED = "InvalidParameter.SourceRequired"
+//  MISSINGPARAMETER_UINREQUIRED = "MissingParameter.UinRequired"
+func (c *Client) DescribeSessionArtifactListWithContext(ctx context.Context, request *DescribeSessionArtifactListRequest) (response *DescribeSessionArtifactListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSessionArtifactListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "workbuddyenterprise", APIVersion, "DescribeSessionArtifactList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSessionArtifactList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSessionArtifactListResponse()
     err = c.Send(request, response)
     return
 }

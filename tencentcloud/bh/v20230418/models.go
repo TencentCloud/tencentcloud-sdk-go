@@ -10771,6 +10771,12 @@ type SearchTaskResultRequestParams struct {
 
 	// <p>分页的页内记录数，默认为20，最大200</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>任务类别</p><p>枚举值：</p><ul><li>0： Linux 类型任务</li><li>1： Windows 类型任务</li></ul>
+	Category []*int64 `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>任务状态</p><p>枚举值：</p><ul><li>1： 执行中</li><li>2： 成功</li><li>3： 失败</li><li>4： 部分成功</li></ul>
+	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type SearchTaskResultRequest struct {
@@ -10802,6 +10808,12 @@ type SearchTaskResultRequest struct {
 
 	// <p>分页的页内记录数，默认为20，最大200</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>任务类别</p><p>枚举值：</p><ul><li>0： Linux 类型任务</li><li>1： Windows 类型任务</li></ul>
+	Category []*int64 `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>任务状态</p><p>枚举值：</p><ul><li>1： 执行中</li><li>2： 成功</li><li>3： 失败</li><li>4： 部分成功</li></ul>
+	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *SearchTaskResultRequest) ToJsonString() string {
@@ -10825,6 +10837,8 @@ func (r *SearchTaskResultRequest) FromJsonString(s string) error {
 	delete(f, "TaskType")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Category")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchTaskResultRequest has unknown keys!", "")
 	}

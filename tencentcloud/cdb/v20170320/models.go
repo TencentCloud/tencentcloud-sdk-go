@@ -1918,6 +1918,9 @@ type CreateAccountsRequestParams struct {
 
 	// <p>新账户最大可用连接数，默认值为10240，最大可设置值为10240。</p>
 	MaxUserConnections *int64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
+
+	// <p>创建账号时的完整信息</p>
+	CreateAccounts []*CreateDBAccount `json:"CreateAccounts,omitnil,omitempty" name:"CreateAccounts"`
 }
 
 type CreateAccountsRequest struct {
@@ -1937,6 +1940,9 @@ type CreateAccountsRequest struct {
 
 	// <p>新账户最大可用连接数，默认值为10240，最大可设置值为10240。</p>
 	MaxUserConnections *int64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
+
+	// <p>创建账号时的完整信息</p>
+	CreateAccounts []*CreateDBAccount `json:"CreateAccounts,omitnil,omitempty" name:"CreateAccounts"`
 }
 
 func (r *CreateAccountsRequest) ToJsonString() string {
@@ -1956,6 +1962,7 @@ func (r *CreateAccountsRequest) FromJsonString(s string) error {
 	delete(f, "Password")
 	delete(f, "Description")
 	delete(f, "MaxUserConnections")
+	delete(f, "CreateAccounts")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccountsRequest has unknown keys!", "")
 	}
@@ -3006,6 +3013,17 @@ func (r *CreateCloneInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateCloneInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDBAccount struct {
+	// <p>账号名称</p>
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// <p>主机名</p>
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// <p>开始SSM托管的相关信息</p>
+	SSMInfos *SSMCreateAccountInfos `json:"SSMInfos,omitnil,omitempty" name:"SSMInfos"`
 }
 
 // Predefined struct for user
@@ -4286,6 +4304,9 @@ type DeleteAccountsRequestParams struct {
 
 	// <p>云数据库账号。</p>
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
+
+	// <p>待删除账号的完整信息。</p>
+	DeleteAccounts []*DeleteDBAccount `json:"DeleteAccounts,omitnil,omitempty" name:"DeleteAccounts"`
 }
 
 type DeleteAccountsRequest struct {
@@ -4296,6 +4317,9 @@ type DeleteAccountsRequest struct {
 
 	// <p>云数据库账号。</p>
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
+
+	// <p>待删除账号的完整信息。</p>
+	DeleteAccounts []*DeleteDBAccount `json:"DeleteAccounts,omitnil,omitempty" name:"DeleteAccounts"`
 }
 
 func (r *DeleteAccountsRequest) ToJsonString() string {
@@ -4312,6 +4336,7 @@ func (r *DeleteAccountsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Accounts")
+	delete(f, "DeleteAccounts")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAccountsRequest has unknown keys!", "")
 	}
@@ -4632,6 +4657,23 @@ func (r *DeleteBackupResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteBackupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDBAccount struct {
+	// <p>用户名</p>
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// <p>主机名</p>
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// <p>凭据名称</p>
+	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
+
+	// <p>保留时间，0表示立即删除(最大30天)</p>
+	RecoveryWindowInDays *int64 `json:"RecoveryWindowInDays,omitnil,omitempty" name:"RecoveryWindowInDays"`
+
+	// <p>删除模式</p><p>枚举值：</p><ul><li>0： 仅删除凭据</li><li>1： 删除凭据+账号</li></ul>
+	DeleteMode *int64 `json:"DeleteMode,omitnil,omitempty" name:"DeleteMode"`
 }
 
 // Predefined struct for user
@@ -15492,6 +15534,24 @@ type PeriodStrategy struct {
 	TimeInterval *TimeInterval `json:"TimeInterval,omitnil,omitempty" name:"TimeInterval"`
 }
 
+type PrivilegeGroup struct {
+	// 全局权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GlobalPrivileges []*string `json:"GlobalPrivileges,omitnil,omitempty" name:"GlobalPrivileges"`
+
+	// 数据库权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabasePrivileges []*DatabasePrivilege `json:"DatabasePrivileges,omitnil,omitempty" name:"DatabasePrivileges"`
+
+	// 表权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TablePrivileges []*TablePrivilege `json:"TablePrivileges,omitnil,omitempty" name:"TablePrivileges"`
+
+	// 列权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges,omitnil,omitempty" name:"ColumnPrivileges"`
+}
+
 type ProxyAddress struct {
 	// <p>代理组地址ID</p>
 	ProxyAddressId *string `json:"ProxyAddressId,omitnil,omitempty" name:"ProxyAddressId"`
@@ -16410,6 +16470,44 @@ type RuleTemplateRecordInfo struct {
 
 	// 变更的时间。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type SSMCreateAccountInfos struct {
+	// <p>是否开启SSM托管</p><p>枚举值：</p><ul><li>true： 开启托管</li><li>false： 不开启托管</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsOpenSSM *bool `json:"IsOpenSSM,omitnil,omitempty" name:"IsOpenSSM"`
+
+	// <p>是否创建轮转账号</p><p>枚举值：</p><ul><li>true： 创建轮转账号</li><li>false： 创建非轮转账号</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsRotationAccount *bool `json:"IsRotationAccount,omitnil,omitempty" name:"IsRotationAccount"`
+
+	// <p>凭据名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
+
+	// <p>KMS CMK ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
+
+	// <p>密钥类型</p><p>枚举值：</p><ul><li>0： KMS密码</li><li>1： 软件密钥</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptType *int64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
+
+	// <p>是否开启轮转</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableRotation *bool `json:"EnableRotation,omitnil,omitempty" name:"EnableRotation"`
+
+	// <p>轮转周期</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RotationFrequency *int64 `json:"RotationFrequency,omitnil,omitempty" name:"RotationFrequency"`
+
+	// <p>权限列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivilegesList *PrivilegeGroup `json:"PrivilegesList,omitnil,omitempty" name:"PrivilegesList"`
+
+	// <p>独享版 KMS 集群 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
 }
 
 type SecurityGroup struct {

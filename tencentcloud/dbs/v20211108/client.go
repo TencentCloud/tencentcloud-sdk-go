@@ -131,7 +131,14 @@ func NewCreateBackupPlanResponse() (response *CreateBackupPlanResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEBACKUPERR = "FailedOperation.CreateBackupErr"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INTERNALERROR_INTERNALINNERCOMMONERROR = "InternalError.InternalInnerCommonError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (response *CreateBackupPlanResponse, err error) {
     return c.CreateBackupPlanWithContext(context.Background(), request)
 }
@@ -141,7 +148,14 @@ func (c *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (response *C
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEBACKUPERR = "FailedOperation.CreateBackupErr"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INTERNALERROR_INTERNALINNERCOMMONERROR = "InternalError.InternalInnerCommonError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateBackupPlanWithContext(ctx context.Context, request *CreateBackupPlanRequest) (response *CreateBackupPlanResponse, err error) {
     if request == nil {
         request = NewCreateBackupPlanRequest()

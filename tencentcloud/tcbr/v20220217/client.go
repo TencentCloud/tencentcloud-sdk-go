@@ -851,6 +851,64 @@ func (c *Client) DescribeVersionDetailWithContext(ctx context.Context, request *
     return
 }
 
+func NewInitializeCloudRunResourceRequest() (request *InitializeCloudRunResourceRequest) {
+    request = &InitializeCloudRunResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "InitializeCloudRunResource")
+    
+    
+    return
+}
+
+func NewInitializeCloudRunResourceResponse() (response *InitializeCloudRunResourceResponse) {
+    response = &InitializeCloudRunResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InitializeCloudRunResource
+// 创建云托管环境，并开通资源。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+func (c *Client) InitializeCloudRunResource(request *InitializeCloudRunResourceRequest) (response *InitializeCloudRunResourceResponse, err error) {
+    return c.InitializeCloudRunResourceWithContext(context.Background(), request)
+}
+
+// InitializeCloudRunResource
+// 创建云托管环境，并开通资源。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+func (c *Client) InitializeCloudRunResourceWithContext(ctx context.Context, request *InitializeCloudRunResourceRequest) (response *InitializeCloudRunResourceResponse, err error) {
+    if request == nil {
+        request = NewInitializeCloudRunResourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "InitializeCloudRunResource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InitializeCloudRunResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInitializeCloudRunResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOperateServerManageRequest() (request *OperateServerManageRequest) {
     request = &OperateServerManageRequest{
         BaseRequest: &tchttp.BaseRequest{},

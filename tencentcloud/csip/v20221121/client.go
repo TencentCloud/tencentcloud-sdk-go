@@ -10539,6 +10539,114 @@ func (c *Client) DeleteImageVulWhitelistWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteLoginWhiteCustomEDRRequest() (request *DeleteLoginWhiteCustomEDRRequest) {
+    request = &DeleteLoginWhiteCustomEDRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteLoginWhiteCustomEDR")
+    
+    
+    return
+}
+
+func NewDeleteLoginWhiteCustomEDRResponse() (response *DeleteLoginWhiteCustomEDRResponse) {
+    response = &DeleteLoginWhiteCustomEDRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLoginWhiteCustomEDR
+// 批量删除 CSC 异常登录自定义白名单（软删 status=2），支持跨页全选。Ids 与 SelectAll 二选一，均为空时返回 InvalidParameter；跨页全选总量超过 100000 条时整体拒绝。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteLoginWhiteCustomEDR(request *DeleteLoginWhiteCustomEDRRequest) (response *DeleteLoginWhiteCustomEDRResponse, err error) {
+    return c.DeleteLoginWhiteCustomEDRWithContext(context.Background(), request)
+}
+
+// DeleteLoginWhiteCustomEDR
+// 批量删除 CSC 异常登录自定义白名单（软删 status=2），支持跨页全选。Ids 与 SelectAll 二选一，均为空时返回 InvalidParameter；跨页全选总量超过 100000 条时整体拒绝。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteLoginWhiteCustomEDRWithContext(ctx context.Context, request *DeleteLoginWhiteCustomEDRRequest) (response *DeleteLoginWhiteCustomEDRResponse, err error) {
+    if request == nil {
+        request = NewDeleteLoginWhiteCustomEDRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteLoginWhiteCustomEDR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLoginWhiteCustomEDR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLoginWhiteCustomEDRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLoginWhiteLearnEDRRequest() (request *DeleteLoginWhiteLearnEDRRequest) {
+    request = &DeleteLoginWhiteLearnEDRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteLoginWhiteLearnEDR")
+    
+    
+    return
+}
+
+func NewDeleteLoginWhiteLearnEDRResponse() (response *DeleteLoginWhiteLearnEDRResponse) {
+    response = &DeleteLoginWhiteLearnEDRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLoginWhiteLearnEDR
+// 批量删除 CSC 异常登录自学习白名单规则组（整组软删 enable=0），传入组内任一行 ID 即可定位整组，支持跨页全选（上限 100000 个规则组）。删除后不会被自动重学，需重新开关自学习刷新学习锚点；本接口不回扫历史告警。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteLoginWhiteLearnEDR(request *DeleteLoginWhiteLearnEDRRequest) (response *DeleteLoginWhiteLearnEDRResponse, err error) {
+    return c.DeleteLoginWhiteLearnEDRWithContext(context.Background(), request)
+}
+
+// DeleteLoginWhiteLearnEDR
+// 批量删除 CSC 异常登录自学习白名单规则组（整组软删 enable=0），传入组内任一行 ID 即可定位整组，支持跨页全选（上限 100000 个规则组）。删除后不会被自动重学，需重新开关自学习刷新学习锚点；本接口不回扫历史告警。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteLoginWhiteLearnEDRWithContext(ctx context.Context, request *DeleteLoginWhiteLearnEDRRequest) (response *DeleteLoginWhiteLearnEDRResponse, err error) {
+    if request == nil {
+        request = NewDeleteLoginWhiteLearnEDRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteLoginWhiteLearnEDR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLoginWhiteLearnEDR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLoginWhiteLearnEDRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLoginWhiteListRequest() (request *DeleteLoginWhiteListRequest) {
     request = &DeleteLoginWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -26891,6 +26999,60 @@ func (c *Client) DescribeEdrLogCollectPathsWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeEdrMalwareFileRequest() (request *DescribeEdrMalwareFileRequest) {
+    request = &DescribeEdrMalwareFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeEdrMalwareFile")
+    
+    
+    return
+}
+
+func NewDescribeEdrMalwareFileResponse() (response *DescribeEdrMalwareFileResponse) {
+    response = &DescribeEdrMalwareFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEdrMalwareFile
+// 按 EDR 告警标识定位恶意文件告警，返回其恶意样本的下载链接。仅 alert_sub_type=1（恶意文件）的告警允许下载，其它子类型按资源不存在处理。公有云返回 COS 预签名 URL（1 小时有效）；非公有云且导出开关打开时返回 base64 DataURL 并同时返回 FileName。跨账号场景由 TargetAppId 指定告警所属账号，会做归属校验（fail-close，无权限返回 InvalidParameter）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEdrMalwareFile(request *DescribeEdrMalwareFileRequest) (response *DescribeEdrMalwareFileResponse, err error) {
+    return c.DescribeEdrMalwareFileWithContext(context.Background(), request)
+}
+
+// DescribeEdrMalwareFile
+// 按 EDR 告警标识定位恶意文件告警，返回其恶意样本的下载链接。仅 alert_sub_type=1（恶意文件）的告警允许下载，其它子类型按资源不存在处理。公有云返回 COS 预签名 URL（1 小时有效）；非公有云且导出开关打开时返回 base64 DataURL 并同时返回 FileName。跨账号场景由 TargetAppId 指定告警所属账号，会做归属校验（fail-close，无权限返回 InvalidParameter）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEdrMalwareFileWithContext(ctx context.Context, request *DescribeEdrMalwareFileRequest) (response *DescribeEdrMalwareFileResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdrMalwareFileRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeEdrMalwareFile")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdrMalwareFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdrMalwareFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExportJobDownloadURLRequest() (request *DescribeExportJobDownloadURLRequest) {
     request = &DescribeExportJobDownloadURLRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -26914,9 +27076,9 @@ func NewDescribeExportJobDownloadURLResponse() (response *DescribeExportJobDownl
 // 导出任务结果下载URL
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExportJobDownloadURL(request *DescribeExportJobDownloadURLRequest) (response *DescribeExportJobDownloadURLResponse, err error) {
     return c.DescribeExportJobDownloadURLWithContext(context.Background(), request)
 }
@@ -26925,9 +27087,9 @@ func (c *Client) DescribeExportJobDownloadURL(request *DescribeExportJobDownload
 // 导出任务结果下载URL
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExportJobDownloadURLWithContext(ctx context.Context, request *DescribeExportJobDownloadURLRequest) (response *DescribeExportJobDownloadURLResponse, err error) {
     if request == nil {
         request = NewDescribeExportJobDownloadURLRequest()
@@ -26968,9 +27130,9 @@ func NewDescribeExportJobManageListResponse() (response *DescribeExportJobManage
 // 导出任务列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExportJobManageList(request *DescribeExportJobManageListRequest) (response *DescribeExportJobManageListResponse, err error) {
     return c.DescribeExportJobManageListWithContext(context.Background(), request)
 }
@@ -26979,9 +27141,9 @@ func (c *Client) DescribeExportJobManageList(request *DescribeExportJobManageLis
 // 导出任务列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExportJobManageListWithContext(ctx context.Context, request *DescribeExportJobManageListRequest) (response *DescribeExportJobManageListResponse, err error) {
     if request == nil {
         request = NewDescribeExportJobManageListRequest()
@@ -27022,9 +27184,9 @@ func NewDescribeExposeAssetCategoryResponse() (response *DescribeExposeAssetCate
 // 云边界分析资产分类
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposeAssetCategory(request *DescribeExposeAssetCategoryRequest) (response *DescribeExposeAssetCategoryResponse, err error) {
     return c.DescribeExposeAssetCategoryWithContext(context.Background(), request)
 }
@@ -27033,9 +27195,9 @@ func (c *Client) DescribeExposeAssetCategory(request *DescribeExposeAssetCategor
 // 云边界分析资产分类
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposeAssetCategoryWithContext(ctx context.Context, request *DescribeExposeAssetCategoryRequest) (response *DescribeExposeAssetCategoryResponse, err error) {
     if request == nil {
         request = NewDescribeExposeAssetCategoryRequest()
@@ -27076,9 +27238,9 @@ func NewDescribeExposePathResponse() (response *DescribeExposePathResponse) {
 // 查询云边界分析路径节点
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposePath(request *DescribeExposePathRequest) (response *DescribeExposePathResponse, err error) {
     return c.DescribeExposePathWithContext(context.Background(), request)
 }
@@ -27087,9 +27249,9 @@ func (c *Client) DescribeExposePath(request *DescribeExposePathRequest) (respons
 // 查询云边界分析路径节点
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposePathWithContext(ctx context.Context, request *DescribeExposePathRequest) (response *DescribeExposePathResponse, err error) {
     if request == nil {
         request = NewDescribeExposePathRequest()
@@ -27130,9 +27292,9 @@ func NewDescribeExposeRiskStatisticsResponse() (response *DescribeExposeRiskStat
 // 云边界风险待治理风险
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposeRiskStatistics(request *DescribeExposeRiskStatisticsRequest) (response *DescribeExposeRiskStatisticsResponse, err error) {
     return c.DescribeExposeRiskStatisticsWithContext(context.Background(), request)
 }
@@ -27141,9 +27303,9 @@ func (c *Client) DescribeExposeRiskStatistics(request *DescribeExposeRiskStatist
 // 云边界风险待治理风险
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposeRiskStatisticsWithContext(ctx context.Context, request *DescribeExposeRiskStatisticsRequest) (response *DescribeExposeRiskStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeExposeRiskStatisticsRequest()
@@ -27184,9 +27346,9 @@ func NewDescribeExposeRisksResponse() (response *DescribeExposeRisksResponse) {
 // 云边界待处理风险列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposeRisks(request *DescribeExposeRisksRequest) (response *DescribeExposeRisksResponse, err error) {
     return c.DescribeExposeRisksWithContext(context.Background(), request)
 }
@@ -27195,9 +27357,9 @@ func (c *Client) DescribeExposeRisks(request *DescribeExposeRisksRequest) (respo
 // 云边界待处理风险列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposeRisksWithContext(ctx context.Context, request *DescribeExposeRisksRequest) (response *DescribeExposeRisksResponse, err error) {
     if request == nil {
         request = NewDescribeExposeRisksRequest()
@@ -27238,9 +27400,9 @@ func NewDescribeExposeRulesResponse() (response *DescribeExposeRulesResponse) {
 // 边界规则列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposeRules(request *DescribeExposeRulesRequest) (response *DescribeExposeRulesResponse, err error) {
     return c.DescribeExposeRulesWithContext(context.Background(), request)
 }
@@ -27249,9 +27411,9 @@ func (c *Client) DescribeExposeRules(request *DescribeExposeRulesRequest) (respo
 // 边界规则列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposeRulesWithContext(ctx context.Context, request *DescribeExposeRulesRequest) (response *DescribeExposeRulesResponse, err error) {
     if request == nil {
         request = NewDescribeExposeRulesRequest()
@@ -27292,9 +27454,9 @@ func NewDescribeExposureAutoTagAttributeResponse() (response *DescribeExposureAu
 // 云边界自动打标-规则属性
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposureAutoTagAttribute(request *DescribeExposureAutoTagAttributeRequest) (response *DescribeExposureAutoTagAttributeResponse, err error) {
     return c.DescribeExposureAutoTagAttributeWithContext(context.Background(), request)
 }
@@ -27303,9 +27465,9 @@ func (c *Client) DescribeExposureAutoTagAttribute(request *DescribeExposureAutoT
 // 云边界自动打标-规则属性
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposureAutoTagAttributeWithContext(ctx context.Context, request *DescribeExposureAutoTagAttributeRequest) (response *DescribeExposureAutoTagAttributeResponse, err error) {
     if request == nil {
         request = NewDescribeExposureAutoTagAttributeRequest()
@@ -27346,9 +27508,9 @@ func NewDescribeExposureAutoTagRulesResponse() (response *DescribeExposureAutoTa
 // 云边界自动打标-规则列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposureAutoTagRules(request *DescribeExposureAutoTagRulesRequest) (response *DescribeExposureAutoTagRulesResponse, err error) {
     return c.DescribeExposureAutoTagRulesWithContext(context.Background(), request)
 }
@@ -27357,9 +27519,9 @@ func (c *Client) DescribeExposureAutoTagRules(request *DescribeExposureAutoTagRu
 // 云边界自动打标-规则列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposureAutoTagRulesWithContext(ctx context.Context, request *DescribeExposureAutoTagRulesRequest) (response *DescribeExposureAutoTagRulesResponse, err error) {
     if request == nil {
         request = NewDescribeExposureAutoTagRulesRequest()
@@ -27400,9 +27562,9 @@ func NewDescribeExposureTrendResponse() (response *DescribeExposureTrendResponse
 // 查询互联网暴露周期数量趋势统计信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposureTrend(request *DescribeExposureTrendRequest) (response *DescribeExposureTrendResponse, err error) {
     return c.DescribeExposureTrendWithContext(context.Background(), request)
 }
@@ -27411,9 +27573,9 @@ func (c *Client) DescribeExposureTrend(request *DescribeExposureTrendRequest) (r
 // 查询互联网暴露周期数量趋势统计信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposureTrendWithContext(ctx context.Context, request *DescribeExposureTrendRequest) (response *DescribeExposureTrendResponse, err error) {
     if request == nil {
         request = NewDescribeExposureTrendRequest()
@@ -27454,9 +27616,9 @@ func NewDescribeExposuresResponse() (response *DescribeExposuresResponse) {
 // 云边界分析资产列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposures(request *DescribeExposuresRequest) (response *DescribeExposuresResponse, err error) {
     return c.DescribeExposuresWithContext(context.Background(), request)
 }
@@ -27465,9 +27627,9 @@ func (c *Client) DescribeExposures(request *DescribeExposuresRequest) (response 
 // 云边界分析资产列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExposuresWithContext(ctx context.Context, request *DescribeExposuresRequest) (response *DescribeExposuresResponse, err error) {
     if request == nil {
         request = NewDescribeExposuresRequest()
@@ -27508,9 +27670,9 @@ func NewDescribeGatewayAssetsResponse() (response *DescribeGatewayAssetsResponse
 // 获取网关列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeGatewayAssets(request *DescribeGatewayAssetsRequest) (response *DescribeGatewayAssetsResponse, err error) {
     return c.DescribeGatewayAssetsWithContext(context.Background(), request)
 }
@@ -27519,9 +27681,9 @@ func (c *Client) DescribeGatewayAssets(request *DescribeGatewayAssetsRequest) (r
 // 获取网关列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeGatewayAssetsWithContext(ctx context.Context, request *DescribeGatewayAssetsRequest) (response *DescribeGatewayAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeGatewayAssetsRequest()
@@ -27562,9 +27724,9 @@ func NewDescribeHighBaseLineRiskListResponse() (response *DescribeHighBaseLineRi
 // 查询云边界分析-暴露路径下主机节点的高危基线风险列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHighBaseLineRiskList(request *DescribeHighBaseLineRiskListRequest) (response *DescribeHighBaseLineRiskListResponse, err error) {
     return c.DescribeHighBaseLineRiskListWithContext(context.Background(), request)
 }
@@ -27573,9 +27735,9 @@ func (c *Client) DescribeHighBaseLineRiskList(request *DescribeHighBaseLineRiskL
 // 查询云边界分析-暴露路径下主机节点的高危基线风险列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHighBaseLineRiskListWithContext(ctx context.Context, request *DescribeHighBaseLineRiskListRequest) (response *DescribeHighBaseLineRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeHighBaseLineRiskListRequest()
@@ -27616,9 +27778,9 @@ func NewDescribeHostKBRiskListResponse() (response *DescribeHostKBRiskListRespon
 // 获取主机kb风险列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHostKBRiskList(request *DescribeHostKBRiskListRequest) (response *DescribeHostKBRiskListResponse, err error) {
     return c.DescribeHostKBRiskListWithContext(context.Background(), request)
 }
@@ -27627,9 +27789,9 @@ func (c *Client) DescribeHostKBRiskList(request *DescribeHostKBRiskListRequest) 
 // 获取主机kb风险列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHostKBRiskListWithContext(ctx context.Context, request *DescribeHostKBRiskListRequest) (response *DescribeHostKBRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeHostKBRiskListRequest()
@@ -27670,9 +27832,9 @@ func NewDescribeHostVulItemVPRInfoResponse() (response *DescribeHostVulItemVPRIn
 // 获取主机漏洞VPR信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHostVulItemVPRInfo(request *DescribeHostVulItemVPRInfoRequest) (response *DescribeHostVulItemVPRInfoResponse, err error) {
     return c.DescribeHostVulItemVPRInfoWithContext(context.Background(), request)
 }
@@ -27681,9 +27843,9 @@ func (c *Client) DescribeHostVulItemVPRInfo(request *DescribeHostVulItemVPRInfoR
 // 获取主机漏洞VPR信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHostVulItemVPRInfoWithContext(ctx context.Context, request *DescribeHostVulItemVPRInfoRequest) (response *DescribeHostVulItemVPRInfoResponse, err error) {
     if request == nil {
         request = NewDescribeHostVulItemVPRInfoRequest()
@@ -27724,9 +27886,9 @@ func NewDescribeHostVulOverviewResponse() (response *DescribeHostVulOverviewResp
 // 获取主机漏洞概览
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHostVulOverview(request *DescribeHostVulOverviewRequest) (response *DescribeHostVulOverviewResponse, err error) {
     return c.DescribeHostVulOverviewWithContext(context.Background(), request)
 }
@@ -27735,9 +27897,9 @@ func (c *Client) DescribeHostVulOverview(request *DescribeHostVulOverviewRequest
 // 获取主机漏洞概览
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHostVulOverviewWithContext(ctx context.Context, request *DescribeHostVulOverviewRequest) (response *DescribeHostVulOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeHostVulOverviewRequest()
@@ -27778,9 +27940,9 @@ func NewDescribeHostVulRiskListResponse() (response *DescribeHostVulRiskListResp
 // 获取主机漏洞风险列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHostVulRiskList(request *DescribeHostVulRiskListRequest) (response *DescribeHostVulRiskListResponse, err error) {
     return c.DescribeHostVulRiskListWithContext(context.Background(), request)
 }
@@ -27789,9 +27951,9 @@ func (c *Client) DescribeHostVulRiskList(request *DescribeHostVulRiskListRequest
 // 获取主机漏洞风险列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHostVulRiskListWithContext(ctx context.Context, request *DescribeHostVulRiskListRequest) (response *DescribeHostVulRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeHostVulRiskListRequest()
@@ -30863,6 +31025,58 @@ func (c *Client) DescribeLoginWhiteCombinedListWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeLoginWhiteCustomListEDRRequest() (request *DescribeLoginWhiteCustomListEDRRequest) {
+    request = &DescribeLoginWhiteCustomListEDRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeLoginWhiteCustomListEDR")
+    
+    
+    return
+}
+
+func NewDescribeLoginWhiteCustomListEDRResponse() (response *DescribeLoginWhiteCustomListEDRResponse) {
+    response = &DescribeLoginWhiteCustomListEDRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLoginWhiteCustomListEDR
+// 查询 CSC 异常登录自定义白名单列表。多账号场景按 MemberId 解析出全部成员 AppId 后一次聚合查询。按 ModifyTime DESC 分页返回，出参切片字段恒为 [] 不会为 null。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLoginWhiteCustomListEDR(request *DescribeLoginWhiteCustomListEDRRequest) (response *DescribeLoginWhiteCustomListEDRResponse, err error) {
+    return c.DescribeLoginWhiteCustomListEDRWithContext(context.Background(), request)
+}
+
+// DescribeLoginWhiteCustomListEDR
+// 查询 CSC 异常登录自定义白名单列表。多账号场景按 MemberId 解析出全部成员 AppId 后一次聚合查询。按 ModifyTime DESC 分页返回，出参切片字段恒为 [] 不会为 null。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLoginWhiteCustomListEDRWithContext(ctx context.Context, request *DescribeLoginWhiteCustomListEDRRequest) (response *DescribeLoginWhiteCustomListEDRResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoginWhiteCustomListEDRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeLoginWhiteCustomListEDR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoginWhiteCustomListEDR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLoginWhiteCustomListEDRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLoginWhiteHostListRequest() (request *DescribeLoginWhiteHostListRequest) {
     request = &DescribeLoginWhiteHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -30921,6 +31135,58 @@ func (c *Client) DescribeLoginWhiteHostListWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeLoginWhiteHostListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLoginWhiteLearnListEDRRequest() (request *DescribeLoginWhiteLearnListEDRRequest) {
+    request = &DescribeLoginWhiteLearnListEDRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeLoginWhiteLearnListEDR")
+    
+    
+    return
+}
+
+func NewDescribeLoginWhiteLearnListEDRResponse() (response *DescribeLoginWhiteLearnListEDRResponse) {
+    response = &DescribeLoginWhiteLearnListEDRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLoginWhiteLearnListEDR
+// 查询 CSC 异常登录自学习白名单列表（规则组）。规则组按 (AppId, 常用登录地) 聚合，Id 为组内最小行 ID；出参 SrcIp/UserName/StartTime/EndTime 恒为空。AutoLearnEnable 返回自学习开关状态，供前端空态展示判断是否跳转开启。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLoginWhiteLearnListEDR(request *DescribeLoginWhiteLearnListEDRRequest) (response *DescribeLoginWhiteLearnListEDRResponse, err error) {
+    return c.DescribeLoginWhiteLearnListEDRWithContext(context.Background(), request)
+}
+
+// DescribeLoginWhiteLearnListEDR
+// 查询 CSC 异常登录自学习白名单列表（规则组）。规则组按 (AppId, 常用登录地) 聚合，Id 为组内最小行 ID；出参 SrcIp/UserName/StartTime/EndTime 恒为空。AutoLearnEnable 返回自学习开关状态，供前端空态展示判断是否跳转开启。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLoginWhiteLearnListEDRWithContext(ctx context.Context, request *DescribeLoginWhiteLearnListEDRRequest) (response *DescribeLoginWhiteLearnListEDRResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoginWhiteLearnListEDRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeLoginWhiteLearnListEDR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoginWhiteLearnListEDR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLoginWhiteLearnListEDRResponse()
     err = c.Send(request, response)
     return
 }
@@ -44937,6 +45203,118 @@ func (c *Client) ModifyImageVulWhitelistWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyImageVulWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLoginWhiteCustomEDRRequest() (request *ModifyLoginWhiteCustomEDRRequest) {
+    request = &ModifyLoginWhiteCustomEDRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyLoginWhiteCustomEDR")
+    
+    
+    return
+}
+
+func NewModifyLoginWhiteCustomEDRResponse() (response *ModifyLoginWhiteCustomEDRResponse) {
+    response = &ModifyLoginWhiteCustomEDRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLoginWhiteCustomEDR
+// 修改 CSC 异常登录自定义白名单，全量覆盖保存（未传字段视为清空）。本接口不触发历史告警回扫；查重时排除自身；规则不存在返回 ResourceNotFound。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLoginWhiteCustomEDR(request *ModifyLoginWhiteCustomEDRRequest) (response *ModifyLoginWhiteCustomEDRResponse, err error) {
+    return c.ModifyLoginWhiteCustomEDRWithContext(context.Background(), request)
+}
+
+// ModifyLoginWhiteCustomEDR
+// 修改 CSC 异常登录自定义白名单，全量覆盖保存（未传字段视为清空）。本接口不触发历史告警回扫；查重时排除自身；规则不存在返回 ResourceNotFound。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLoginWhiteCustomEDRWithContext(ctx context.Context, request *ModifyLoginWhiteCustomEDRRequest) (response *ModifyLoginWhiteCustomEDRResponse, err error) {
+    if request == nil {
+        request = NewModifyLoginWhiteCustomEDRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyLoginWhiteCustomEDR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLoginWhiteCustomEDR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLoginWhiteCustomEDRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLoginWhiteLearnEDRRequest() (request *ModifyLoginWhiteLearnEDRRequest) {
+    request = &ModifyLoginWhiteLearnEDRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyLoginWhiteLearnEDR")
+    
+    
+    return
+}
+
+func NewModifyLoginWhiteLearnEDRResponse() (response *ModifyLoginWhiteLearnEDRResponse) {
+    response = &ModifyLoginWhiteLearnEDRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLoginWhiteLearnEDR
+// 修改 CSC 异常登录自学习白名单规则组，按 (AppId, 常用登录地) 定位整组。约束：不支持新建、不支持按标签生效（TagIDs 必须为空）；仅支持 Scope=0 直接选择 与 Scope=1 全部资产+剔除；规则组行数超过 5000 时拒绝；单事务先插后删；编辑后最长一个缓存周期（默认 120s）内生效。本接口不回扫历史告警。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLoginWhiteLearnEDR(request *ModifyLoginWhiteLearnEDRRequest) (response *ModifyLoginWhiteLearnEDRResponse, err error) {
+    return c.ModifyLoginWhiteLearnEDRWithContext(context.Background(), request)
+}
+
+// ModifyLoginWhiteLearnEDR
+// 修改 CSC 异常登录自学习白名单规则组，按 (AppId, 常用登录地) 定位整组。约束：不支持新建、不支持按标签生效（TagIDs 必须为空）；仅支持 Scope=0 直接选择 与 Scope=1 全部资产+剔除；规则组行数超过 5000 时拒绝；单事务先插后删；编辑后最长一个缓存周期（默认 120s）内生效。本接口不回扫历史告警。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLoginWhiteLearnEDRWithContext(ctx context.Context, request *ModifyLoginWhiteLearnEDRRequest) (response *ModifyLoginWhiteLearnEDRResponse, err error) {
+    if request == nil {
+        request = NewModifyLoginWhiteLearnEDRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyLoginWhiteLearnEDR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLoginWhiteLearnEDR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLoginWhiteLearnEDRResponse()
     err = c.Send(request, response)
     return
 }

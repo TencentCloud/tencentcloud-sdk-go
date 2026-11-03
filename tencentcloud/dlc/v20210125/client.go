@@ -16199,6 +16199,56 @@ func (c *Client) GetRayJobYamlWithContext(ctx context.Context, request *GetRayJo
     return
 }
 
+func NewGetRayServeEventRequest() (request *GetRayServeEventRequest) {
+    request = &GetRayServeEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "GetRayServeEvent")
+    
+    
+    return
+}
+
+func NewGetRayServeEventResponse() (response *GetRayServeEventResponse) {
+    response = &GetRayServeEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetRayServeEvent
+// 通过 ResourceManager 调用 CLS SearchLog API 查询 RayServe 部署相关事件日志。不返回总数，使用 Context 进行翻页，ListOver 标识是否还有更多数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) GetRayServeEvent(request *GetRayServeEventRequest) (response *GetRayServeEventResponse, err error) {
+    return c.GetRayServeEventWithContext(context.Background(), request)
+}
+
+// GetRayServeEvent
+// 通过 ResourceManager 调用 CLS SearchLog API 查询 RayServe 部署相关事件日志。不返回总数，使用 Context 进行翻页，ListOver 标识是否还有更多数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) GetRayServeEventWithContext(ctx context.Context, request *GetRayServeEventRequest) (response *GetRayServeEventResponse, err error) {
+    if request == nil {
+        request = NewGetRayServeEventRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "GetRayServeEvent")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRayServeEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetRayServeEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetResourceConfigRequest() (request *GetResourceConfigRequest) {
     request = &GetResourceConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -17863,6 +17913,58 @@ func (c *Client) ListServiceApiKeysWithContext(ctx context.Context, request *Lis
     request.SetContext(ctx)
     
     response = NewListServiceApiKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListStoragesRequest() (request *ListStoragesRequest) {
+    request = &ListStoragesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListStorages")
+    
+    
+    return
+}
+
+func NewListStoragesResponse() (response *ListStoragesResponse) {
+    response = &ListStoragesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListStorages
+// 根据集群ID列出所有Ray任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  UNAUTHORIZEDOPERATION_GOOSEFSDESCRIBECLUSTERS = "UnauthorizedOperation.GooseFSDescribeClusters"
+func (c *Client) ListStorages(request *ListStoragesRequest) (response *ListStoragesResponse, err error) {
+    return c.ListStoragesWithContext(context.Background(), request)
+}
+
+// ListStorages
+// 根据集群ID列出所有Ray任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  UNAUTHORIZEDOPERATION_GOOSEFSDESCRIBECLUSTERS = "UnauthorizedOperation.GooseFSDescribeClusters"
+func (c *Client) ListStoragesWithContext(ctx context.Context, request *ListStoragesRequest) (response *ListStoragesResponse, err error) {
+    if request == nil {
+        request = NewListStoragesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListStorages")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListStorages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListStoragesResponse()
     err = c.Send(request, response)
     return
 }
@@ -20721,6 +20823,56 @@ func (c *Client) StopRayClusterWithContext(ctx context.Context, request *StopRay
     return
 }
 
+func NewSubmitRayJobRequest() (request *SubmitRayJobRequest) {
+    request = &SubmitRayJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "SubmitRayJob")
+    
+    
+    return
+}
+
+func NewSubmitRayJobResponse() (response *SubmitRayJobResponse) {
+    response = &SubmitRayJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitRayJob
+// 提交新的Ray任务到指定集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) SubmitRayJob(request *SubmitRayJobRequest) (response *SubmitRayJobResponse, err error) {
+    return c.SubmitRayJobWithContext(context.Background(), request)
+}
+
+// SubmitRayJob
+// 提交新的Ray任务到指定集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) SubmitRayJobWithContext(ctx context.Context, request *SubmitRayJobRequest) (response *SubmitRayJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitRayJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "SubmitRayJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitRayJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitRayJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitTrainingJobRequest() (request *SubmitTrainingJobRequest) {
     request = &SubmitTrainingJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -20744,7 +20896,7 @@ func NewSubmitTrainingJobResponse() (response *SubmitTrainingJobResponse) {
 // 断点续训（克隆实例）
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
 func (c *Client) SubmitTrainingJob(request *SubmitTrainingJobRequest) (response *SubmitTrainingJobResponse, err error) {
     return c.SubmitTrainingJobWithContext(context.Background(), request)
 }
@@ -20753,7 +20905,7 @@ func (c *Client) SubmitTrainingJob(request *SubmitTrainingJobRequest) (response 
 // 断点续训（克隆实例）
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
 func (c *Client) SubmitTrainingJobWithContext(ctx context.Context, request *SubmitTrainingJobRequest) (response *SubmitTrainingJobResponse, err error) {
     if request == nil {
         request = NewSubmitTrainingJobRequest()

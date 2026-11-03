@@ -6499,6 +6499,9 @@ type DescribePlatformCreditsUsageDetailRequestParams struct {
 
 	// <p>平台版套餐id</p>
 	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>查询返回数据时间界别</p><p>枚举值：</p><ul><li>Daily： 按照天级别返回数据</li><li>Hourly： 按照小时级别返回数据</li></ul><p>默认值：Daily</p><p>部分数据按照天级别统计，无法按照小时级别返回</p>
+	QueryLevel *string `json:"QueryLevel,omitnil,omitempty" name:"QueryLevel"`
 }
 
 type DescribePlatformCreditsUsageDetailRequest struct {
@@ -6518,6 +6521,9 @@ type DescribePlatformCreditsUsageDetailRequest struct {
 
 	// <p>平台版套餐id</p>
 	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>查询返回数据时间界别</p><p>枚举值：</p><ul><li>Daily： 按照天级别返回数据</li><li>Hourly： 按照小时级别返回数据</li></ul><p>默认值：Daily</p><p>部分数据按照天级别统计，无法按照小时级别返回</p>
+	QueryLevel *string `json:"QueryLevel,omitnil,omitempty" name:"QueryLevel"`
 }
 
 func (r *DescribePlatformCreditsUsageDetailRequest) ToJsonString() string {
@@ -6537,6 +6543,7 @@ func (r *DescribePlatformCreditsUsageDetailRequest) FromJsonString(s string) err
 	delete(f, "EndDate")
 	delete(f, "NeedUsageDetails")
 	delete(f, "PlatformId")
+	delete(f, "QueryLevel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlatformCreditsUsageDetailRequest has unknown keys!", "")
 	}

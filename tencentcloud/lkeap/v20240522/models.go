@@ -701,16 +701,14 @@ func (r *GetEmbeddingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetReconstructDocumentResultRequestParams struct {
-	// 说明：解析任务ID
-	// 备注：仅支持单个任务ID
+	// <p>说明：解析任务ID<br>备注：仅支持单个任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type GetReconstructDocumentResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 说明：解析任务ID
-	// 备注：仅支持单个任务ID
+	// <p>说明：解析任务ID<br>备注：仅支持单个任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -735,25 +733,25 @@ func (r *GetReconstructDocumentResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetReconstructDocumentResultResponseParams struct {
-	// 任务状态。
-	// - `Success`：执行完成
-	// - `Processing`：执行中
-	// -  `Pause`: 暂停
-	// -  `Failed`：执行失败
-	// -  `WaitExecute`：等待执行
+	// <p>任务状态。</p><ul><li><code>Success</code>：执行完成</li><li><code>Processing</code>：执行中</li><li><code>Pause</code>: 暂停</li><li><code>Failed</code>：执行失败</li><li><code>WaitExecute</code>：等待执行</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟
+	// <p>解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟</p>
 	DocumentRecognizeResultUrl *string `json:"DocumentRecognizeResultUrl,omitnil,omitempty" name:"DocumentRecognizeResultUrl"`
 
-	// 文档解析失败的页码
+	// <p>文档解析失败的页码</p>
 	FailedPages []*ReconstructDocumentFailedPage `json:"FailedPages,omitnil,omitempty" name:"FailedPages"`
 
-	// 文档拆分任务的用量	
+	// <p>文档拆分任务的用量</p>
 	Usage *DocumentUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
 
-	// 文档解析任务失败错误信息，当文档解析任务失败会返回具体的错误信息
+	// <p>文档解析任务失败错误信息，当文档解析任务失败会返回具体的错误信息</p>
+	//
+	// Deprecated: Error is deprecated.
 	Error *ErrorInfo `json:"Error,omitnil,omitempty" name:"Error"`
+
+	// <p>文档解析任务失败错误信息，当文档解析任务失败会返回具体的错误信息</p>
+	TaskErrInfo *TaskErrInfo `json:"TaskErrInfo,omitnil,omitempty" name:"TaskErrInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1220,6 +1218,10 @@ type SplitDocumentFailedPage struct {
 	// 失败页码	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
+type TaskErrInfo struct {
+
 }
 
 type Thinking struct {

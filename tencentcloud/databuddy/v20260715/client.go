@@ -4165,6 +4165,64 @@ func (c *Client) ListWorkspaceGroupsWithContext(ctx context.Context, request *Li
     return
 }
 
+func NewListWorkspaceRolesRequest() (request *ListWorkspaceRolesRequest) {
+    request = &ListWorkspaceRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListWorkspaceRoles")
+    
+    
+    return
+}
+
+func NewListWorkspaceRolesResponse() (response *ListWorkspaceRolesResponse) {
+    response = &ListWorkspaceRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListWorkspaceRoles
+// 查询工作空间角色列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) ListWorkspaceRoles(request *ListWorkspaceRolesRequest) (response *ListWorkspaceRolesResponse, err error) {
+    return c.ListWorkspaceRolesWithContext(context.Background(), request)
+}
+
+// ListWorkspaceRoles
+// 查询工作空间角色列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) ListWorkspaceRolesWithContext(ctx context.Context, request *ListWorkspaceRolesRequest) (response *ListWorkspaceRolesResponse, err error) {
+    if request == nil {
+        request = NewListWorkspaceRolesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListWorkspaceRoles")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListWorkspaceRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListWorkspaceRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListWorkspaceUsersRequest() (request *ListWorkspaceUsersRequest) {
     request = &ListWorkspaceUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},

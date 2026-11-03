@@ -1501,6 +1501,101 @@ type HpaPolicy struct {
 	PolicyThreshold *uint64 `json:"PolicyThreshold,omitnil,omitempty" name:"PolicyThreshold"`
 }
 
+// Predefined struct for user
+type InitializeCloudRunResourceRequestParams struct {
+	// <p>tcbr,run,weda,baas</p>
+	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
+
+	// <p>环境ID 云开发平台必填</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>私有网络Id</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>子网列表</p>
+	SubNetIds []*string `json:"SubNetIds,omitnil,omitempty" name:"SubNetIds"`
+
+	// <p>来源：wechat | cloud | weda</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>渠道：wechat | cloud | weda</p>
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+}
+
+type InitializeCloudRunResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>tcbr,run,weda,baas</p>
+	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
+
+	// <p>环境ID 云开发平台必填</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>私有网络Id</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>子网列表</p>
+	SubNetIds []*string `json:"SubNetIds,omitnil,omitempty" name:"SubNetIds"`
+
+	// <p>来源：wechat | cloud | weda</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>渠道：wechat | cloud | weda</p>
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+}
+
+func (r *InitializeCloudRunResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InitializeCloudRunResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvType")
+	delete(f, "EnvId")
+	delete(f, "VpcId")
+	delete(f, "SubNetIds")
+	delete(f, "Source")
+	delete(f, "Channel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InitializeCloudRunResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InitializeCloudRunResourceResponseParams struct {
+	// <p>环境Id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>后付费订单号</p>
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InitializeCloudRunResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *InitializeCloudRunResourceResponseParams `json:"Response"`
+}
+
+func (r *InitializeCloudRunResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InitializeCloudRunResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type LogObject struct {
 	// 日志属于的 topic ID
 	// 注意：此字段可能返回 null，表示取不到有效值。

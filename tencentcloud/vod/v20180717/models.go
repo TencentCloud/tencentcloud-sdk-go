@@ -2459,6 +2459,31 @@ type AigcImageTaskOutputFileInfo struct {
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 }
 
+type AigcModelQuota struct {
+	// <p>模型名称。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>任务的配额数。</p><p>单位：张/秒。</p><ul><li>当 QuotaType 为 Image 时，单位为张；</li><li>当 QuotaType 为 Video 时，单位为秒；</li></ul>
+	QuotaLimit *uint64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
+
+	// <p>模型版本。</p>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+}
+
+type AigcModelQuotaWithUsage struct {
+	// <p>模型名称。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本。</p>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>任务的配额数。</p><p>单位：张/秒。</p><ul><li>当 QuotaType 为 Image 时，单位为张；</li><li>当 QuotaType 为 Video 时，单位为秒；</li></ul>
+	QuotaLimit *uint64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
+
+	// <p>已经使用的用量数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li></ul>
+	Usage *uint64 `json:"Usage,omitnil,omitempty" name:"Usage"`
+}
+
 type AigcQuotaItem struct {
 	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
 	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
@@ -2471,6 +2496,18 @@ type AigcQuotaItem struct {
 
 	// <p>已经使用的用量数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
 	Usage *uint64 `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// <p>配额重置周期。</p><p>枚举值：</p><ul><li>Day： 每天重置。</li><li>Month： 每月指定日期重置。</li><li>Total： 永不重置，QuotaLimit参数即为总额度。</li></ul>
+	QuotaPeriod *string `json:"QuotaPeriod,omitnil,omitempty" name:"QuotaPeriod"`
+
+	// <p>每月配额的重置日期，仅QuotaPeriod=Month时有效。</p><p>如果当月无所选日期时，顺延至次月 1 日 00:00 重置。</p>
+	ResetDay *uint64 `json:"ResetDay,omitnil,omitempty" name:"ResetDay"`
+
+	// <p>是否开启按单个模型设置配额</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+	ModelQuotaSwitch *string `json:"ModelQuotaSwitch,omitnil,omitempty" name:"ModelQuotaSwitch"`
+
+	// <p>按单个模型设置的配额，仅ModelQuotaSwitch=ON时有效。</p>
+	ModelQuotas []*AigcModelQuotaWithUsage `json:"ModelQuotas,omitnil,omitempty" name:"ModelQuotas"`
 }
 
 type AigcTextDetail struct {
@@ -6323,6 +6360,18 @@ type CreateAigcQuotaRequestParams struct {
 
 	// <p>仅当QuotaType=Text时有效，用于选择需要进行配额限制ApiToken</p>
 	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+
+	// <p>配额重置周期。</p><p>枚举值：</p><ul><li>Day： 每天重置。</li><li>Month： 每月指定日期重置。</li><li>Total： 永不重置，QuotaLimit参数即为总额度。</li></ul>
+	QuotaPeriod *string `json:"QuotaPeriod,omitnil,omitempty" name:"QuotaPeriod"`
+
+	// <p>每月配额的重置日期，仅QuotaPeriod=Month时有效。</p><p>如果当月无所选日期时，顺延至次月 1 日 00:00 重置。</p>
+	ResetDay *uint64 `json:"ResetDay,omitnil,omitempty" name:"ResetDay"`
+
+	// <p>是否开启按单个模型设置配额</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul>
+	ModelQuotaSwitch *string `json:"ModelQuotaSwitch,omitnil,omitempty" name:"ModelQuotaSwitch"`
+
+	// <p>按单个模型设置的配额，仅ModelQuotaSwitch=ON时有效。</p>
+	ModelQuotas []*AigcModelQuota `json:"ModelQuotas,omitnil,omitempty" name:"ModelQuotas"`
 }
 
 type CreateAigcQuotaRequest struct {
@@ -6339,6 +6388,18 @@ type CreateAigcQuotaRequest struct {
 
 	// <p>仅当QuotaType=Text时有效，用于选择需要进行配额限制ApiToken</p>
 	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+
+	// <p>配额重置周期。</p><p>枚举值：</p><ul><li>Day： 每天重置。</li><li>Month： 每月指定日期重置。</li><li>Total： 永不重置，QuotaLimit参数即为总额度。</li></ul>
+	QuotaPeriod *string `json:"QuotaPeriod,omitnil,omitempty" name:"QuotaPeriod"`
+
+	// <p>每月配额的重置日期，仅QuotaPeriod=Month时有效。</p><p>如果当月无所选日期时，顺延至次月 1 日 00:00 重置。</p>
+	ResetDay *uint64 `json:"ResetDay,omitnil,omitempty" name:"ResetDay"`
+
+	// <p>是否开启按单个模型设置配额</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul>
+	ModelQuotaSwitch *string `json:"ModelQuotaSwitch,omitnil,omitempty" name:"ModelQuotaSwitch"`
+
+	// <p>按单个模型设置的配额，仅ModelQuotaSwitch=ON时有效。</p>
+	ModelQuotas []*AigcModelQuota `json:"ModelQuotas,omitnil,omitempty" name:"ModelQuotas"`
 }
 
 func (r *CreateAigcQuotaRequest) ToJsonString() string {
@@ -6357,6 +6418,10 @@ func (r *CreateAigcQuotaRequest) FromJsonString(s string) error {
 	delete(f, "QuotaType")
 	delete(f, "QuotaLimit")
 	delete(f, "ApiToken")
+	delete(f, "QuotaPeriod")
+	delete(f, "ResetDay")
+	delete(f, "ModelQuotaSwitch")
+	delete(f, "ModelQuotas")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAigcQuotaRequest has unknown keys!", "")
 	}
@@ -24366,6 +24431,18 @@ type ModifyAigcQuotaRequestParams struct {
 
 	// <p>仅当QuotaType=Text时有效，用于选择需要进行配额限制ApiToken</p>
 	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+
+	// <p>配额重置周期。</p><p>枚举值：</p><ul><li>Day： 每天重置。</li><li>Month： 每月指定日期重置。</li><li>Total： 永不重置，QuotaLimit参数即为总额度。</li></ul>
+	QuotaPeriod *string `json:"QuotaPeriod,omitnil,omitempty" name:"QuotaPeriod"`
+
+	// <p>每月配额的重置日期，仅QuotaPeriod=Month时有效。</p><p>如果当月无所选日期时，顺延至次月 1 日 00:00 重置。</p>
+	ResetDay *uint64 `json:"ResetDay,omitnil,omitempty" name:"ResetDay"`
+
+	// <p>是否开启按单个模型设置配额</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul>
+	ModelQuotaSwitch *string `json:"ModelQuotaSwitch,omitnil,omitempty" name:"ModelQuotaSwitch"`
+
+	// <p>按单个模型设置的配额，仅ModelQuotaSwitch=ON时有效。</p>
+	ModelQuotas []*AigcModelQuota `json:"ModelQuotas,omitnil,omitempty" name:"ModelQuotas"`
 }
 
 type ModifyAigcQuotaRequest struct {
@@ -24382,6 +24459,18 @@ type ModifyAigcQuotaRequest struct {
 
 	// <p>仅当QuotaType=Text时有效，用于选择需要进行配额限制ApiToken</p>
 	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+
+	// <p>配额重置周期。</p><p>枚举值：</p><ul><li>Day： 每天重置。</li><li>Month： 每月指定日期重置。</li><li>Total： 永不重置，QuotaLimit参数即为总额度。</li></ul>
+	QuotaPeriod *string `json:"QuotaPeriod,omitnil,omitempty" name:"QuotaPeriod"`
+
+	// <p>每月配额的重置日期，仅QuotaPeriod=Month时有效。</p><p>如果当月无所选日期时，顺延至次月 1 日 00:00 重置。</p>
+	ResetDay *uint64 `json:"ResetDay,omitnil,omitempty" name:"ResetDay"`
+
+	// <p>是否开启按单个模型设置配额</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul>
+	ModelQuotaSwitch *string `json:"ModelQuotaSwitch,omitnil,omitempty" name:"ModelQuotaSwitch"`
+
+	// <p>按单个模型设置的配额，仅ModelQuotaSwitch=ON时有效。</p>
+	ModelQuotas []*AigcModelQuota `json:"ModelQuotas,omitnil,omitempty" name:"ModelQuotas"`
 }
 
 func (r *ModifyAigcQuotaRequest) ToJsonString() string {
@@ -24400,6 +24489,10 @@ func (r *ModifyAigcQuotaRequest) FromJsonString(s string) error {
 	delete(f, "QuotaType")
 	delete(f, "QuotaLimit")
 	delete(f, "ApiToken")
+	delete(f, "QuotaPeriod")
+	delete(f, "ResetDay")
+	delete(f, "ModelQuotaSwitch")
+	delete(f, "ModelQuotas")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAigcQuotaRequest has unknown keys!", "")
 	}
@@ -32356,7 +32449,7 @@ type SceneAigcVideoOutputConfig struct {
 	// <p>生成视频时长。</p><ul><li>当使用生商品图场景时，可选值4、6、8秒。</li><li>当使用角色场景时，可选值为4到15秒。</li></ul>
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// <p>分辨率。仅当角色场景时有效。取值如下：</p><ul><li>当 Model 是 character_scene_standard 时，支持 480p、720p、1080p、4K；</li><li>当 Model 是 character_scene_mini 时，支持 480p、720p；</li><li>当 Model 是 character_scene_fast 时，支持 720p。</li></ul>
+	// <p>分辨率。仅当角色场景时有效。取值如下：</p><ul><li>当 Model 是 character_scene_standard 时，支持 480P、720P、1080P、4K；</li><li>当 Model 是 character_scene_mini 时，支持 480P、720P；</li><li>当 Model 是 character_scene_fast 时，支持 720P。</li></ul>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 }
 
@@ -35198,6 +35291,9 @@ type VideoDepthEstimationOutputConfig struct {
 	// <p>输出媒资过期时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>，仅 StorageMode 为 Permanent 时生效。不传表示永不过期。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>是否保留原视频音频，默认不保留原视频音频。</p><p>枚举值：</p><ul><li>ON： 保留音频</li><li>OFF： 不保留音频</li></ul>
+	KeepAudio *string `json:"KeepAudio,omitnil,omitempty" name:"KeepAudio"`
 }
 
 // Predefined struct for user

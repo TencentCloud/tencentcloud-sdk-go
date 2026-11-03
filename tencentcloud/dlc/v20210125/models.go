@@ -1809,6 +1809,16 @@ type BucketPartitioning struct {
 	NumBuckets *uint64 `json:"NumBuckets,omitnil,omitempty" name:"NumBuckets"`
 }
 
+type CFSFileSystemInfo struct {
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+type CFSTurboFileSystemInfo struct {
+	// <p>CFS Turbo ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
 type CHDFSProductVpcInfo struct {
 	// vpc id
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
@@ -1824,6 +1834,11 @@ type CHDFSProductVpcInfo struct {
 
 	// 权限组Id
 	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
+}
+
+type COSBucketInfo struct {
+	// <p>COS桶名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type CSV struct {
@@ -26278,6 +26293,117 @@ func (r *GetRayJobYamlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetRayServeEventRequestParams struct {
+	// <p>DeploymentId</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>开始时间（毫秒时间戳）</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间（毫秒时间戳）</p>
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>排序字段列表</p>
+	SortFields []*SortField `json:"SortFields,omitnil,omitempty" name:"SortFields"`
+
+	// <p>翻页上下文，首次查询不传，后续翻页传入上一次返回的 Context 值</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>分页大小</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>事件类型过滤，仅允许 ASCII 字母（如 Normal、Warning）</p>
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+}
+
+type GetRayServeEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>DeploymentId</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>开始时间（毫秒时间戳）</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间（毫秒时间戳）</p>
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>排序字段列表</p>
+	SortFields []*SortField `json:"SortFields,omitnil,omitempty" name:"SortFields"`
+
+	// <p>翻页上下文，首次查询不传，后续翻页传入上一次返回的 Context 值</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>分页大小</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>事件类型过滤，仅允许 ASCII 字母（如 Normal、Warning）</p>
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+}
+
+func (r *GetRayServeEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRayServeEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SortFields")
+	delete(f, "Context")
+	delete(f, "PageSize")
+	delete(f, "EventType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRayServeEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetRayServeEventResponseParams struct {
+	// <p>翻页上下文，下一次分页请求时传入此值</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>是否已经返回所有符合条件的日志，true 表示已全部返回</p>
+	ListOver *bool `json:"ListOver,omitnil,omitempty" name:"ListOver"`
+
+	// <p>事件列表</p>
+	Events []*RayJobEventItem `json:"Events,omitnil,omitempty" name:"Events"`
+
+	// <p>事件开始时间</p><p>单位：毫秒</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>事件结束时间</p><p>单位：毫秒</p>
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetRayServeEventResponse struct {
+	*tchttp.BaseResponse
+	Response *GetRayServeEventResponseParams `json:"Response"`
+}
+
+func (r *GetRayServeEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRayServeEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetResourceConfigRequestParams struct {
 	// 模板ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -26362,6 +26488,23 @@ func (r *GetResourceConfigResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetResourceConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type GooseFSClustersInfo struct {
+	// <p>集群 ID，形如 g_cvm_xxx</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>所属子网 ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// <p>Master RPC 地址，多个地址用英文逗号拼接，例如 &quot;10.0.1.10:19998,10.0.1.11:19998&quot;，供 CSI 驱动连接用</p>
+	MasterRPCAddress *string `json:"MasterRPCAddress,omitnil,omitempty" name:"MasterRPCAddress"`
 }
 
 type GooseFSConfig struct {
@@ -30701,6 +30844,72 @@ func (r *ListServiceApiKeysResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListServiceApiKeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListStoragesRequestParams struct {
+	// <p>存储类型筛选：CFS / CFSTurbo / COS / GooseFS；不填表示查询所有类型</p><p>枚举值：</p><ul><li>CFS： CFS 文件.</li><li>CFSTurbo： CFS Turbo 文件.</li><li>COS ： COS Bucket.</li><li>GooseFS： GooseFS .</li></ul>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+}
+
+type ListStoragesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>存储类型筛选：CFS / CFSTurbo / COS / GooseFS；不填表示查询所有类型</p><p>枚举值：</p><ul><li>CFS： CFS 文件.</li><li>CFSTurbo： CFS Turbo 文件.</li><li>COS ： COS Bucket.</li><li>GooseFS： GooseFS .</li></ul>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+}
+
+func (r *ListStoragesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListStoragesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StorageType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListStoragesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListStoragesResponseParams struct {
+	// <p>CFS列表</p>
+	CFSFileSystems []*CFSFileSystemInfo `json:"CFSFileSystems,omitnil,omitempty" name:"CFSFileSystems"`
+
+	// <p>COS列表</p>
+	COSBuckets []*COSBucketInfo `json:"COSBuckets,omitnil,omitempty" name:"COSBuckets"`
+
+	// <p>CFS Turbo 文件系统列表</p>
+	CFSTurboFileSystems []*CFSTurboFileSystemInfo `json:"CFSTurboFileSystems,omitnil,omitempty" name:"CFSTurboFileSystems"`
+
+	// <p>GooseFS 集群列表（状态为 ACTIVE 的可用集群）</p>
+	GooseFSClusters []*GooseFSClustersInfo `json:"GooseFSClusters,omitnil,omitempty" name:"GooseFSClusters"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListStoragesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListStoragesResponseParams `json:"Response"`
+}
+
+func (r *ListStoragesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListStoragesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -38236,6 +38445,231 @@ type StreamingStatistics struct {
 
 	// 平均延时
 	AverageTotalDelay *float64 `json:"AverageTotalDelay,omitnil,omitempty" name:"AverageTotalDelay"`
+}
+
+// Predefined struct for user
+type SubmitRayJobRequestParams struct {
+	// <p>入口命令</p>
+	Entrypoint *string `json:"Entrypoint,omitnil,omitempty" name:"Entrypoint"`
+
+	// <p>资源分区ID</p>
+	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
+
+	// <p>队列名称</p>
+	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>任务名称</p>
+	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
+
+	// <p>运行时环境</p>
+	RuntimeEnv *string `json:"RuntimeEnv,omitnil,omitempty" name:"RuntimeEnv"`
+
+	// <p>镜像名称</p>
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
+
+	// <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+	ImagePullType *string `json:"ImagePullType,omitnil,omitempty" name:"ImagePullType"`
+
+	// <p>资源配置</p>
+	ResourceConfig *string `json:"ResourceConfig,omitnil,omitempty" name:"ResourceConfig"`
+
+	// <p>目录</p>
+	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
+
+	// <p>弹性伸缩配置</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
+
+	// <p>高级参数，JSON 字符串（透传到 Neutrino）</p>
+	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
+
+	// <p>计算组ID；与 ClusterId 互斥。组成员展开为候选集群后由 neutrino 侧路由</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>作业优先级（1-9，数字越大优先级越高）</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>用户网络配置 JSON 字符串</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+}
+
+type SubmitRayJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>入口命令</p>
+	Entrypoint *string `json:"Entrypoint,omitnil,omitempty" name:"Entrypoint"`
+
+	// <p>资源分区ID</p>
+	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
+
+	// <p>队列名称</p>
+	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>任务名称</p>
+	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
+
+	// <p>运行时环境</p>
+	RuntimeEnv *string `json:"RuntimeEnv,omitnil,omitempty" name:"RuntimeEnv"`
+
+	// <p>镜像名称</p>
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
+
+	// <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+	ImagePullType *string `json:"ImagePullType,omitnil,omitempty" name:"ImagePullType"`
+
+	// <p>资源配置</p>
+	ResourceConfig *string `json:"ResourceConfig,omitnil,omitempty" name:"ResourceConfig"`
+
+	// <p>目录</p>
+	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
+
+	// <p>弹性伸缩配置</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
+
+	// <p>高级参数，JSON 字符串（透传到 Neutrino）</p>
+	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
+
+	// <p>计算组ID；与 ClusterId 互斥。组成员展开为候选集群后由 neutrino 侧路由</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>作业优先级（1-9，数字越大优先级越高）</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>用户网络配置 JSON 字符串</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+}
+
+func (r *SubmitRayJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitRayJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Entrypoint")
+	delete(f, "ResourcePartitionId")
+	delete(f, "Queue")
+	delete(f, "JobName")
+	delete(f, "RuntimeEnv")
+	delete(f, "Image")
+	delete(f, "ImagePullPolicy")
+	delete(f, "ImagePullType")
+	delete(f, "ResourceConfig")
+	delete(f, "Catalog")
+	delete(f, "AutoscalerOptions")
+	delete(f, "AdvancedOptions")
+	delete(f, "GroupId")
+	delete(f, "Priority")
+	delete(f, "Tags")
+	delete(f, "NetworkConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitRayJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitRayJobResponseParams struct {
+	// <p>任务ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>所属资源分区ID</p>
+	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
+
+	// <p>所属队列名称</p>
+	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>任务状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>入口命令</p>
+	Entrypoint *string `json:"Entrypoint,omitnil,omitempty" name:"Entrypoint"`
+
+	// <p>任务名称</p>
+	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
+
+	// <p>应用ID</p>
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>用户UIN</p>
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>子用户UIN</p>
+	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
+
+	// <p>运行时间(ms)</p>
+	RunningTime *int64 `json:"RunningTime,omitnil,omitempty" name:"RunningTime"`
+
+	// <p>创建时间</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>运行时环境配置(JSON)</p>
+	RuntimeEnv *string `json:"RuntimeEnv,omitnil,omitempty" name:"RuntimeEnv"`
+
+	// <p>镜像地址</p>
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// <p>资源配置(JSON)</p>
+	ResourceConfig *string `json:"ResourceConfig,omitnil,omitempty" name:"ResourceConfig"`
+
+	// <p>存储卷和挂载卷配置(JSON)</p>
+	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
+
+	// <p>镜像拉取策略</p>
+	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
+
+	// <p>弹性伸缩配置(JSON)</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
+
+	// <p>高级参数，JSON 字符串（透传到 Neutrino）</p>
+	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
+
+	// <p>作业优先级（1-9，数字越大优先级越高）</p>
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>业务来源标识（调用上下文）</p>
+	JobSource *string `json:"JobSource,omitnil,omitempty" name:"JobSource"`
+
+	// <p>集群名称</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitRayJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitRayJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitRayJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitRayJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -3711,27 +3711,69 @@ func (r *CreateCloudNativeAPIGatewayMCPServerResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type CreateCloudNativeAPIGatewayMCPToolRequestParams struct {
+	// <p>网关实例 id</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>MCP Server Id</p>
+	ServerId *string `json:"ServerId,omitnil,omitempty" name:"ServerId"`
+
 	// <p>内容类型</p>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// <p>名字</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>方法</p><p>枚举值：</p><ul><li>GET： GET</li><li>POST： POST</li><li>PUT： PUT</li><li>DELETE： DELETE</li><li>PATCH： PATCH</li></ul>
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>路径</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// <p>展示名字</p>
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
 	// <p>服务 id</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>输入</p>
+	InputParams []*CNAPIGwMCPToolParam `json:"InputParams,omitnil,omitempty" name:"InputParams"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateCloudNativeAPIGatewayMCPToolRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>网关实例 id</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>MCP Server Id</p>
+	ServerId *string `json:"ServerId,omitnil,omitempty" name:"ServerId"`
+
 	// <p>内容类型</p>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// <p>名字</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>方法</p><p>枚举值：</p><ul><li>GET： GET</li><li>POST： POST</li><li>PUT： PUT</li><li>DELETE： DELETE</li><li>PATCH： PATCH</li></ul>
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>路径</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// <p>展示名字</p>
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
 	// <p>服务 id</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>输入</p>
+	InputParams []*CNAPIGwMCPToolParam `json:"InputParams,omitnil,omitempty" name:"InputParams"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateCloudNativeAPIGatewayMCPToolRequest) ToJsonString() string {
@@ -3746,9 +3788,16 @@ func (r *CreateCloudNativeAPIGatewayMCPToolRequest) FromJsonString(s string) err
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "GatewayId")
+	delete(f, "ServerId")
 	delete(f, "ContentType")
+	delete(f, "Name")
+	delete(f, "Method")
+	delete(f, "Path")
 	delete(f, "DisplayName")
 	delete(f, "ServiceId")
+	delete(f, "InputParams")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayMCPToolRequest has unknown keys!", "")
 	}
