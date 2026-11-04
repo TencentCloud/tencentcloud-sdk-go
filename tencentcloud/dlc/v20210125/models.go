@@ -3474,11 +3474,20 @@ type CopyJobSpecResponseParams struct {
 	// <p>作业包名称</p>
 	JobPackageName *string `json:"JobPackageName,omitnil,omitempty" name:"JobPackageName"`
 
+	// <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+	JobPackageSource *string `json:"JobPackageSource,omitnil,omitempty" name:"JobPackageSource"`
+
 	// <p>应用ID</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// <p>创建者UIN</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>子用户UIN</p>
+	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
+
+	// <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+	SubAccountName *string `json:"SubAccountName,omitnil,omitempty" name:"SubAccountName"`
 
 	// <p>创建时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
@@ -6353,6 +6362,9 @@ type CreateLabRequestParams struct {
 	// <p>是否开启token认证</p>
 	EnableToken *bool `json:"EnableToken,omitnil,omitempty" name:"EnableToken"`
 
+	// <p>弹性伸缩配置（JSON）</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
+
 	// <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	ImagePullType *string `json:"ImagePullType,omitnil,omitempty" name:"ImagePullType"`
 
@@ -6426,6 +6438,9 @@ type CreateLabRequest struct {
 	// <p>是否开启token认证</p>
 	EnableToken *bool `json:"EnableToken,omitnil,omitempty" name:"EnableToken"`
 
+	// <p>弹性伸缩配置（JSON）</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
+
 	// <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	ImagePullType *string `json:"ImagePullType,omitnil,omitempty" name:"ImagePullType"`
 
@@ -6468,6 +6483,7 @@ func (r *CreateLabRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "PersistentWorkDir")
 	delete(f, "EnableToken")
+	delete(f, "AutoscalerOptions")
 	delete(f, "ImagePullType")
 	delete(f, "LabImagePullType")
 	delete(f, "NetworkConfig")
@@ -6524,6 +6540,9 @@ type CreateLabResponseParams struct {
 	// <p>创建时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
+	// <p>更新时间</p>
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
 	// <p>计算组 ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
@@ -6548,6 +6567,15 @@ type CreateLabResponseParams struct {
 	// <p>优先级（1-9，数字越大优先级越高）</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
+	// <p>启动时间（最近一次启动）</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>停止时间（最近一次停止/休眠）</p>
+	StopTime *uint64 `json:"StopTime,omitnil,omitempty" name:"StopTime"`
+
+	// <p>删除时间</p>
+	DeleteTime *uint64 `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
+
 	// <p>标签列表（TagKey-TagValue）</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
@@ -6556,6 +6584,12 @@ type CreateLabResponseParams struct {
 
 	// <p>是否开启token认证</p>
 	EnableToken *bool `json:"EnableToken,omitnil,omitempty" name:"EnableToken"`
+
+	// <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>弹性伸缩配置（JSON）</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
 
 	// <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	LabImagePullType *string `json:"LabImagePullType,omitnil,omitempty" name:"LabImagePullType"`
@@ -24331,6 +24365,12 @@ type GetLabDetailResponseParams struct {
 	// <p>状态详情/错误信息</p>
 	StatusMessage *string `json:"StatusMessage,omitnil,omitempty" name:"StatusMessage"`
 
+	// <p>创建时间</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
 	// <p>资源配置(JSON)</p>
 	ResourceConfig *string `json:"ResourceConfig,omitnil,omitempty" name:"ResourceConfig"`
 
@@ -24372,6 +24412,12 @@ type GetLabDetailResponseParams struct {
 
 	// <p>是否开启token认证</p>
 	EnableToken *bool `json:"EnableToken,omitnil,omitempty" name:"EnableToken"`
+
+	// <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>弹性伸缩配置（JSON）</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
 
 	// <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	LabImagePullType *string `json:"LabImagePullType,omitnil,omitempty" name:"LabImagePullType"`
@@ -26131,6 +26177,9 @@ type GetRayJobResponseParams struct {
 	// <p>任务ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
+	// <p>所属集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
 	// <p>所属资源分区ID</p>
 	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
 
@@ -26142,6 +26191,9 @@ type GetRayJobResponseParams struct {
 
 	// <p>所属队列别名</p>
 	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
+
+	// <p>Ray Submission ID</p>
+	SubmissionId *string `json:"SubmissionId,omitnil,omitempty" name:"SubmissionId"`
 
 	// <p>任务状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
@@ -26160,6 +26212,9 @@ type GetRayJobResponseParams struct {
 
 	// <p>创建账号</p>
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
+
+	// <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+	SubAccountName *string `json:"SubAccountName,omitnil,omitempty" name:"SubAccountName"`
 
 	// <p>历史记录链接</p>
 	HistoryUrl *string `json:"HistoryUrl,omitnil,omitempty" name:"HistoryUrl"`
@@ -30239,50 +30294,50 @@ type ListPartitioning struct {
 
 // Predefined struct for user
 type ListRayClusterJobsRequestParams struct {
-	// 集群ID（必填）
+	// <p>集群ID（必填）</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 当前页码（从1开始）
+	// <p>当前页码（从1开始）</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页数量
+	// <p>每页数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 额外过滤条件（ClusterId 已由外层单独传入，无需再在此处指定）
+	// <p>额外过滤条件（ClusterId 已由外层单独传入，无需再在此处指定）</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 提交时间起始过滤-时间戳（毫秒，可选）
+	// <p>提交时间起始过滤-时间戳（毫秒，可选）</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 提交时间截止过滤-时间戳（毫秒，可选）
+	// <p>提交时间截止过滤-时间戳（毫秒，可选）</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 排序字段列表
+	// <p>排序字段列表</p>
 	SortFields []*SortField `json:"SortFields,omitnil,omitempty" name:"SortFields"`
 }
 
 type ListRayClusterJobsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID（必填）
+	// <p>集群ID（必填）</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 当前页码（从1开始）
+	// <p>当前页码（从1开始）</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页数量
+	// <p>每页数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 额外过滤条件（ClusterId 已由外层单独传入，无需再在此处指定）
+	// <p>额外过滤条件（ClusterId 已由外层单独传入，无需再在此处指定）</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 提交时间起始过滤-时间戳（毫秒，可选）
+	// <p>提交时间起始过滤-时间戳（毫秒，可选）</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 提交时间截止过滤-时间戳（毫秒，可选）
+	// <p>提交时间截止过滤-时间戳（毫秒，可选）</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 排序字段列表
+	// <p>排序字段列表</p>
 	SortFields []*SortField `json:"SortFields,omitnil,omitempty" name:"SortFields"`
 }
 
@@ -30313,16 +30368,19 @@ func (r *ListRayClusterJobsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRayClusterJobsResponseParams struct {
-	// 当前页码（从1开始）
+	// <p>总记录数</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>当前页码（从1开始）</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页数量
+	// <p>每页数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 总页数
+	// <p>总页数</p>
 	TotalPages *int64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
 
-	// 该集群下的Ray作业列表
+	// <p>该集群下的Ray作业列表</p>
 	Items []*RayJobSubmitEntity `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -30451,44 +30509,44 @@ func (r *ListRayClustersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRayJobsRequestParams struct {
-	// 当前页码（从1开始）
+	// <p>当前页码（从1开始）</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 页数
+	// <p>页数</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 过滤条件列表（列表的字段名称）
+	// <p>过滤条件列表（列表的字段名称）</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 提交时间起始过滤-时间戳（毫秒，可选）
+	// <p>提交时间起始过滤-时间戳（毫秒，可选）</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 提交时间截止过滤-时间戳（毫秒，可选）
+	// <p>提交时间截止过滤-时间戳（毫秒，可选）</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 排序字段列表（列表字段）
+	// <p>排序字段列表（列表字段）</p>
 	SortFields []*SortField `json:"SortFields,omitnil,omitempty" name:"SortFields"`
 }
 
 type ListRayJobsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 当前页码（从1开始）
+	// <p>当前页码（从1开始）</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 页数
+	// <p>页数</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 过滤条件列表（列表的字段名称）
+	// <p>过滤条件列表（列表的字段名称）</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 提交时间起始过滤-时间戳（毫秒，可选）
+	// <p>提交时间起始过滤-时间戳（毫秒，可选）</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 提交时间截止过滤-时间戳（毫秒，可选）
+	// <p>提交时间截止过滤-时间戳（毫秒，可选）</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 排序字段列表（列表字段）
+	// <p>排序字段列表（列表字段）</p>
 	SortFields []*SortField `json:"SortFields,omitnil,omitempty" name:"SortFields"`
 }
 
@@ -30518,16 +30576,19 @@ func (r *ListRayJobsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRayJobsResponseParams struct {
-	// 当前页码（从1开始）
+	// <p>总记录数</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>当前页码（从1开始）</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 页数
+	// <p>页数</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 总页数
+	// <p>总页数</p>
 	TotalPages *int64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
 
-	// ray作业列表
+	// <p>ray作业列表</p>
 	Items []*RayJobSubmitEntity `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -36459,11 +36520,23 @@ type RunJobSpecResponseParams struct {
 	// <p>任务ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
+	// <p>所属集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群名称</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
 	// <p>所属资源分区ID</p>
 	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
 
+	// <p>默认资源分区名称</p>
+	ResourcePartitionName *string `json:"ResourcePartitionName,omitnil,omitempty" name:"ResourcePartitionName"`
+
 	// <p>所属队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>Ray Submission ID</p>
+	SubmissionId *string `json:"SubmissionId,omitnil,omitempty" name:"SubmissionId"`
 
 	// <p>任务状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
@@ -36483,11 +36556,20 @@ type RunJobSpecResponseParams struct {
 	// <p>子用户UIN</p>
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 
+	// <p>历史记录链接</p>
+	HistoryUrl *string `json:"HistoryUrl,omitnil,omitempty" name:"HistoryUrl"`
+
 	// <p>运行时间(ms)</p>
 	RunningTime *int64 `json:"RunningTime,omitnil,omitempty" name:"RunningTime"`
 
+	// <p>完成时间</p>
+	FinishTime *uint64 `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
 	// <p>创建时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>失败原因/错误信息</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
 	// <p>运行时环境配置(JSON)</p>
 	RuntimeEnv *string `json:"RuntimeEnv,omitnil,omitempty" name:"RuntimeEnv"`
@@ -37366,6 +37448,9 @@ type StartLabResponseParams struct {
 	// <p>创建时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
+	// <p>更新时间</p>
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
 	// <p>所属集群组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
@@ -37399,6 +37484,12 @@ type StartLabResponseParams struct {
 	// <p>启动时间（最近一次启动）</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
+	// <p>停止时间（最近一次停止/休眠）</p>
+	StopTime *uint64 `json:"StopTime,omitnil,omitempty" name:"StopTime"`
+
+	// <p>删除时间</p>
+	DeleteTime *uint64 `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
+
 	// <p>标签列表（TagKey-TagValue）</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
@@ -37407,6 +37498,12 @@ type StartLabResponseParams struct {
 
 	// <p>是否开启token认证</p>
 	EnableToken *bool `json:"EnableToken,omitnil,omitempty" name:"EnableToken"`
+
+	// <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>弹性伸缩配置（JSON）</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
 
 	// <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	LabImagePullType *string `json:"LabImagePullType,omitnil,omitempty" name:"LabImagePullType"`
@@ -38128,11 +38225,17 @@ type StopLabResponseParams struct {
 	// <p>案例模板ID（startMode=EXAMPLE 时使用）</p>
 	ExampleId *string `json:"ExampleId,omitnil,omitempty" name:"ExampleId"`
 
+	// <p>代码包/工程归档地址</p>
+	CodeArchiveUrl *string `json:"CodeArchiveUrl,omitnil,omitempty" name:"CodeArchiveUrl"`
+
 	// <p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
 	Services []*TypeKVPair `json:"Services,omitnil,omitempty" name:"Services"`
 
 	// <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
 	LabImage *string `json:"LabImage,omitnil,omitempty" name:"LabImage"`
+
+	// <p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
+	LabImagePullPolicy *string `json:"LabImagePullPolicy,omitnil,omitempty" name:"LabImagePullPolicy"`
 
 	// <p>集群ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -38142,6 +38245,9 @@ type StopLabResponseParams struct {
 
 	// <p>集群名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集群描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// <p>所属资源分区ID</p>
 	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
@@ -38164,11 +38270,26 @@ type StopLabResponseParams struct {
 	// <p>集群状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
+	// <p>状态详情/错误信息</p>
+	StatusMessage *string `json:"StatusMessage,omitnil,omitempty" name:"StatusMessage"`
+
 	// <p>创建时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
+	// <p>更新时间</p>
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>所属集群组名称</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>计算组 ID</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
 	// <p>资源配置(JSON)</p>
 	ResourceConfig *string `json:"ResourceConfig,omitnil,omitempty" name:"ResourceConfig"`
+
+	// <p>资源配置ID</p>
+	ResourceConfigId *string `json:"ResourceConfigId,omitnil,omitempty" name:"ResourceConfigId"`
 
 	// <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
@@ -38179,6 +38300,9 @@ type StopLabResponseParams struct {
 	// <p>Dashboard URL / 历史记录链接</p>
 	HistoryUrl *string `json:"HistoryUrl,omitnil,omitempty" name:"HistoryUrl"`
 
+	// <p>镜像拉取策略</p>
+	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
+
 	// <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
 	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
 
@@ -38187,6 +38311,12 @@ type StopLabResponseParams struct {
 
 	// <p>启动时间（最近一次启动）</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>停止时间（最近一次停止/休眠）</p>
+	StopTime *uint64 `json:"StopTime,omitnil,omitempty" name:"StopTime"`
+
+	// <p>删除时间</p>
+	DeleteTime *uint64 `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
 	// <p>标签列表（TagKey-TagValue）</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
@@ -38199,6 +38329,9 @@ type StopLabResponseParams struct {
 
 	// <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>弹性伸缩配置（JSON）</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
 
 	// <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	LabImagePullType *string `json:"LabImagePullType,omitnil,omitempty" name:"LabImagePullType"`
@@ -38452,6 +38585,9 @@ type SubmitRayJobRequestParams struct {
 	// <p>入口命令</p>
 	Entrypoint *string `json:"Entrypoint,omitnil,omitempty" name:"Entrypoint"`
 
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
 	// <p>资源分区ID</p>
 	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
 
@@ -38488,11 +38624,32 @@ type SubmitRayJobRequestParams struct {
 	// <p>计算组ID；与 ClusterId 互斥。组成员展开为候选集群后由 neutrino 侧路由</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
+	// <p>集群分派策略，本期仅支持 RANDOM；大小写不敏感</p>
+	DispatchStrategy *string `json:"DispatchStrategy,omitnil,omitempty" name:"DispatchStrategy"`
+
 	// <p>作业优先级（1-9，数字越大优先级越高）</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>作业包 URL</p>
+	JobPackage *string `json:"JobPackage,omitnil,omitempty" name:"JobPackage"`
+
+	// <p>作业包名称</p>
+	JobPackageName *string `json:"JobPackageName,omitnil,omitempty" name:"JobPackageName"`
+
+	// <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+	JobPackageSource *string `json:"JobPackageSource,omitnil,omitempty" name:"JobPackageSource"`
+
+	// <p>业务来源标识，只为调用上下文，不落盘 JobSpec</p>
+	JobSource *string `json:"JobSource,omitnil,omitempty" name:"JobSource"`
+
+	// <p>外部工作流引擎业务键 flowId</p>
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// <p>外部工作流引擎业务键 executionId</p>
+	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
 
 	// <p>用户网络配置 JSON 字符串</p>
 	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
@@ -38504,6 +38661,9 @@ type SubmitRayJobRequest struct {
 	// <p>入口命令</p>
 	Entrypoint *string `json:"Entrypoint,omitnil,omitempty" name:"Entrypoint"`
 
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
 	// <p>资源分区ID</p>
 	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
 
@@ -38540,11 +38700,32 @@ type SubmitRayJobRequest struct {
 	// <p>计算组ID；与 ClusterId 互斥。组成员展开为候选集群后由 neutrino 侧路由</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
+	// <p>集群分派策略，本期仅支持 RANDOM；大小写不敏感</p>
+	DispatchStrategy *string `json:"DispatchStrategy,omitnil,omitempty" name:"DispatchStrategy"`
+
 	// <p>作业优先级（1-9，数字越大优先级越高）</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>作业包 URL</p>
+	JobPackage *string `json:"JobPackage,omitnil,omitempty" name:"JobPackage"`
+
+	// <p>作业包名称</p>
+	JobPackageName *string `json:"JobPackageName,omitnil,omitempty" name:"JobPackageName"`
+
+	// <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+	JobPackageSource *string `json:"JobPackageSource,omitnil,omitempty" name:"JobPackageSource"`
+
+	// <p>业务来源标识，只为调用上下文，不落盘 JobSpec</p>
+	JobSource *string `json:"JobSource,omitnil,omitempty" name:"JobSource"`
+
+	// <p>外部工作流引擎业务键 flowId</p>
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// <p>外部工作流引擎业务键 executionId</p>
+	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
 
 	// <p>用户网络配置 JSON 字符串</p>
 	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
@@ -38563,6 +38744,7 @@ func (r *SubmitRayJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Entrypoint")
+	delete(f, "ClusterId")
 	delete(f, "ResourcePartitionId")
 	delete(f, "Queue")
 	delete(f, "JobName")
@@ -38575,8 +38757,15 @@ func (r *SubmitRayJobRequest) FromJsonString(s string) error {
 	delete(f, "AutoscalerOptions")
 	delete(f, "AdvancedOptions")
 	delete(f, "GroupId")
+	delete(f, "DispatchStrategy")
 	delete(f, "Priority")
 	delete(f, "Tags")
+	delete(f, "JobPackage")
+	delete(f, "JobPackageName")
+	delete(f, "JobPackageSource")
+	delete(f, "JobSource")
+	delete(f, "FlowId")
+	delete(f, "ExecutionId")
 	delete(f, "NetworkConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitRayJobRequest has unknown keys!", "")
@@ -38589,11 +38778,20 @@ type SubmitRayJobResponseParams struct {
 	// <p>任务ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
+	// <p>所属集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
 	// <p>所属资源分区ID</p>
 	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
 
+	// <p>默认资源分区名称</p>
+	ResourcePartitionName *string `json:"ResourcePartitionName,omitnil,omitempty" name:"ResourcePartitionName"`
+
 	// <p>所属队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>Ray Submission ID</p>
+	SubmissionId *string `json:"SubmissionId,omitnil,omitempty" name:"SubmissionId"`
 
 	// <p>任务状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
@@ -38613,11 +38811,23 @@ type SubmitRayJobResponseParams struct {
 	// <p>子用户UIN</p>
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 
+	// <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+	SubAccountName *string `json:"SubAccountName,omitnil,omitempty" name:"SubAccountName"`
+
+	// <p>历史记录链接</p>
+	HistoryUrl *string `json:"HistoryUrl,omitnil,omitempty" name:"HistoryUrl"`
+
 	// <p>运行时间(ms)</p>
 	RunningTime *int64 `json:"RunningTime,omitnil,omitempty" name:"RunningTime"`
 
+	// <p>完成时间</p>
+	FinishTime *uint64 `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
 	// <p>创建时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>失败原因/错误信息</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
 	// <p>运行时环境配置(JSON)</p>
 	RuntimeEnv *string `json:"RuntimeEnv,omitnil,omitempty" name:"RuntimeEnv"`
@@ -38636,6 +38846,12 @@ type SubmitRayJobResponseParams struct {
 
 	// <p>弹性伸缩配置(JSON)</p>
 	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
+
+	// <p>来源配置ID</p>
+	SpecId *string `json:"SpecId,omitnil,omitempty" name:"SpecId"`
+
+	// <p>来源配置名称</p>
+	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
 	// <p>高级参数，JSON 字符串（透传到 Neutrino）</p>
 	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
@@ -41438,6 +41654,9 @@ type UpdateJobSpecPriorityResponseParams struct {
 	// <p>集群分派策略（本期仅支持 RANDOM；NULL 时退化为依赖 ClusterGroup 配置兜底）</p>
 	DispatchStrategy *string `json:"DispatchStrategy,omitnil,omitempty" name:"DispatchStrategy"`
 
+	// <p>作业提交目标：GROUP（按计算组分派）/ CLUSTER（指定集群）/ SERVERLESS（按 Serverless 拉起）</p>
+	SubmissionTarget *string `json:"SubmissionTarget,omitnil,omitempty" name:"SubmissionTarget"`
+
 	// <p>作业包URL</p>
 	JobPackage *string `json:"JobPackage,omitnil,omitempty" name:"JobPackage"`
 
@@ -41475,8 +41694,17 @@ type UpdateJobSpecPriorityResponseParams struct {
 	// <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
+	// <p>计算组名称</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>集群名称</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
 	// <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺时按 Local 处理</p>
 	JobPackageSource *string `json:"JobPackageSource,omitnil,omitempty" name:"JobPackageSource"`
+
+	// <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+	SubAccountName *string `json:"SubAccountName,omitnil,omitempty" name:"SubAccountName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -41832,6 +42060,9 @@ func (r *UpdateJobSpecResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateLabRequestParams struct {
+	// <p>数据实验室ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
 	// <p>数据实验室名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -41847,8 +42078,14 @@ type UpdateLabRequestParams struct {
 	// <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
 
+	// <p>资源配置</p>
+	ResourceConfig *string `json:"ResourceConfig,omitnil,omitempty" name:"ResourceConfig"`
+
 	// <p>资源配置ID</p>
 	ResourceConfigId *string `json:"ResourceConfigId,omitnil,omitempty" name:"ResourceConfigId"`
+
+	// <p>存储卷和挂载卷配置</p>
+	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
 	// <p>计算组 ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
@@ -41859,6 +42096,9 @@ type UpdateLabRequestParams struct {
 	// <p>队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
 
+	// <p>服务类型列表(VSCODE, JUPYTER, WEBSHELL)，不填则使用默认配置</p>
+	ServiceTypes []*string `json:"ServiceTypes,omitnil,omitempty" name:"ServiceTypes"`
+
 	// <p>案例ID，当 startMode=EXAMPLE 时必填</p>
 	ExampleId *string `json:"ExampleId,omitnil,omitempty" name:"ExampleId"`
 
@@ -41867,6 +42107,9 @@ type UpdateLabRequestParams struct {
 
 	// <p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
 	LabImagePullPolicy *string `json:"LabImagePullPolicy,omitnil,omitempty" name:"LabImagePullPolicy"`
+
+	// <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
 
 	// <p>优先级（1-9，数字越大优先级越高）</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
@@ -41879,6 +42122,9 @@ type UpdateLabRequestParams struct {
 
 	// <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
 	PersistentWorkDir *PersistentWorkDir `json:"PersistentWorkDir,omitnil,omitempty" name:"PersistentWorkDir"`
+
+	// <p>弹性伸缩配置（JSON）</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
 
 	// <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	ImagePullType *string `json:"ImagePullType,omitnil,omitempty" name:"ImagePullType"`
@@ -41893,6 +42139,9 @@ type UpdateLabRequestParams struct {
 type UpdateLabRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>数据实验室ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
 	// <p>数据实验室名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -41908,8 +42157,14 @@ type UpdateLabRequest struct {
 	// <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
 
+	// <p>资源配置</p>
+	ResourceConfig *string `json:"ResourceConfig,omitnil,omitempty" name:"ResourceConfig"`
+
 	// <p>资源配置ID</p>
 	ResourceConfigId *string `json:"ResourceConfigId,omitnil,omitempty" name:"ResourceConfigId"`
+
+	// <p>存储卷和挂载卷配置</p>
+	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
 	// <p>计算组 ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
@@ -41920,6 +42175,9 @@ type UpdateLabRequest struct {
 	// <p>队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
 
+	// <p>服务类型列表(VSCODE, JUPYTER, WEBSHELL)，不填则使用默认配置</p>
+	ServiceTypes []*string `json:"ServiceTypes,omitnil,omitempty" name:"ServiceTypes"`
+
 	// <p>案例ID，当 startMode=EXAMPLE 时必填</p>
 	ExampleId *string `json:"ExampleId,omitnil,omitempty" name:"ExampleId"`
 
@@ -41928,6 +42186,9 @@ type UpdateLabRequest struct {
 
 	// <p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
 	LabImagePullPolicy *string `json:"LabImagePullPolicy,omitnil,omitempty" name:"LabImagePullPolicy"`
+
+	// <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
 
 	// <p>优先级（1-9，数字越大优先级越高）</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
@@ -41940,6 +42201,9 @@ type UpdateLabRequest struct {
 
 	// <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
 	PersistentWorkDir *PersistentWorkDir `json:"PersistentWorkDir,omitnil,omitempty" name:"PersistentWorkDir"`
+
+	// <p>弹性伸缩配置（JSON）</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
 
 	// <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	ImagePullType *string `json:"ImagePullType,omitnil,omitempty" name:"ImagePullType"`
@@ -41963,22 +42227,28 @@ func (r *UpdateLabRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Id")
 	delete(f, "Name")
 	delete(f, "Image")
 	delete(f, "LabImage")
 	delete(f, "Description")
 	delete(f, "ImagePullPolicy")
+	delete(f, "ResourceConfig")
 	delete(f, "ResourceConfigId")
+	delete(f, "Catalog")
 	delete(f, "GroupId")
 	delete(f, "ResourcePartitionId")
 	delete(f, "Queue")
+	delete(f, "ServiceTypes")
 	delete(f, "ExampleId")
 	delete(f, "CodeArchiveUrl")
 	delete(f, "LabImagePullPolicy")
+	delete(f, "AdvancedOptions")
 	delete(f, "Priority")
 	delete(f, "EnableToken")
 	delete(f, "Tags")
 	delete(f, "PersistentWorkDir")
+	delete(f, "AutoscalerOptions")
 	delete(f, "ImagePullType")
 	delete(f, "LabImagePullType")
 	delete(f, "NetworkConfig")
@@ -42032,8 +42302,23 @@ type UpdateLabResponseParams struct {
 	// <p>用户UIN</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
+	// <p>子用户UIN</p>
+	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
+
 	// <p>集群状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>状态详情/错误信息</p>
+	StatusMessage *string `json:"StatusMessage,omitnil,omitempty" name:"StatusMessage"`
+
+	// <p>创建时间</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>所属集群组名称</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// <p>计算组 ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
@@ -42047,17 +42332,44 @@ type UpdateLabResponseParams struct {
 	// <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
+	// <p>存储卷和挂载卷配置(JSON)</p>
+	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
+
+	// <p>Dashboard URL / 历史记录链接</p>
+	HistoryUrl *string `json:"HistoryUrl,omitnil,omitempty" name:"HistoryUrl"`
+
 	// <p>镜像拉取策略</p>
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
 
+	// <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
+
 	// <p>优先级（1-9，数字越大优先级越高）</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// <p>启动时间（最近一次启动）</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>停止时间（最近一次停止/休眠）</p>
+	StopTime *uint64 `json:"StopTime,omitnil,omitempty" name:"StopTime"`
+
+	// <p>删除时间</p>
+	DeleteTime *uint64 `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
+
+	// <p>标签列表（TagKey-TagValue）</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
 	PersistentWorkDir *PersistentWorkDir `json:"PersistentWorkDir,omitnil,omitempty" name:"PersistentWorkDir"`
 
 	// <p>是否开启token认证</p>
 	EnableToken *bool `json:"EnableToken,omitnil,omitempty" name:"EnableToken"`
+
+	// <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>弹性伸缩配置（JSON）</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
 
 	// <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
 	LabImagePullType *string `json:"LabImagePullType,omitnil,omitempty" name:"LabImagePullType"`
@@ -42427,6 +42739,9 @@ type UpdateRayJobPriorityResponseParams struct {
 	// <p>任务ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
+	// <p>所属集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
 	// <p>所属资源分区ID</p>
 	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
 
@@ -42435,6 +42750,9 @@ type UpdateRayJobPriorityResponseParams struct {
 
 	// <p>所属队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>Ray Submission ID</p>
+	SubmissionId *string `json:"SubmissionId,omitnil,omitempty" name:"SubmissionId"`
 
 	// <p>任务状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
@@ -42454,6 +42772,9 @@ type UpdateRayJobPriorityResponseParams struct {
 	// <p>创建账号</p>
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 
+	// <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+	SubAccountName *string `json:"SubAccountName,omitnil,omitempty" name:"SubAccountName"`
+
 	// <p>历史记录链接</p>
 	HistoryUrl *string `json:"HistoryUrl,omitnil,omitempty" name:"HistoryUrl"`
 
@@ -42465,6 +42786,12 @@ type UpdateRayJobPriorityResponseParams struct {
 
 	// <p>创建时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>失败原因/错误信息</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// <p>运行时环境配置(JSON)</p>
+	RuntimeEnv *string `json:"RuntimeEnv,omitnil,omitempty" name:"RuntimeEnv"`
 
 	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
@@ -42478,8 +42805,17 @@ type UpdateRayJobPriorityResponseParams struct {
 	// <p>镜像拉取策略</p>
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
 
+	// <p>弹性伸缩配置(JSON)</p>
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
+
 	// <p>来源配置ID</p>
 	SpecId *string `json:"SpecId,omitnil,omitempty" name:"SpecId"`
+
+	// <p>来源配置名称</p>
+	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
+
+	// <p>高级参数，JSON 字符串</p>
+	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
 
 	// <p>作业优先级（1-9，数字越大优先级越高）</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
@@ -42489,6 +42825,9 @@ type UpdateRayJobPriorityResponseParams struct {
 
 	// <p>业务来源标识（调用上下文，长度上限 64，禁止控制字符）</p>
 	JobSource *string `json:"JobSource,omitnil,omitempty" name:"JobSource"`
+
+	// <p>集群名称</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

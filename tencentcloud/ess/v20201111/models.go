@@ -1935,7 +1935,7 @@ type CreateBatchInitOrganizationUrlRequestParams struct {
 	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// <p>初始化操作类型<ul><li>CREATE_SEAL : 创建印章</li><li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li><li>OPEN_AUTO_SIGN :开通企业“授权签”</li><li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权“授权签”</li><li>CHANGE_SUB_ORGANIZATION_ADMIN_AUTH :变更子企业超管授权(<strong>授权后，主企业可变更子企业超管，此功能需联系客户经理开通白名单使用</strong>)</li></ul></p>
+	// <p>初始化操作类型<ul></p><li>CREATE_SEAL : 创建印章</li><li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li><li>OPEN_AUTO_SIGN :开通企业“授权签”</li><li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权“授权签”</li><li>CHANGE_SUB_ORGANIZATION_ADMIN_AUTH :变更子企业超管授权(**授权后，主企业可变更子企业超管，此功能需联系客户经理开通白名单使用**)</li><li>API_ACCREDIT: 开通企业 CA-API (**该操作类型不可与其他操作混合使用，此功能需联系客户经理开通白名单使用**)</li></ul>
 	OperateTypes []*string `json:"OperateTypes,omitnil,omitempty" name:"OperateTypes"`
 
 	// <p>批量操作的企业Id列表，最大支持50个</p>
@@ -1957,7 +1957,7 @@ type CreateBatchInitOrganizationUrlRequest struct {
 	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// <p>初始化操作类型<ul><li>CREATE_SEAL : 创建印章</li><li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li><li>OPEN_AUTO_SIGN :开通企业“授权签”</li><li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权“授权签”</li><li>CHANGE_SUB_ORGANIZATION_ADMIN_AUTH :变更子企业超管授权(<strong>授权后，主企业可变更子企业超管，此功能需联系客户经理开通白名单使用</strong>)</li></ul></p>
+	// <p>初始化操作类型<ul></p><li>CREATE_SEAL : 创建印章</li><li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li><li>OPEN_AUTO_SIGN :开通企业“授权签”</li><li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权“授权签”</li><li>CHANGE_SUB_ORGANIZATION_ADMIN_AUTH :变更子企业超管授权(**授权后，主企业可变更子企业超管，此功能需联系客户经理开通白名单使用**)</li><li>API_ACCREDIT: 开通企业 CA-API (**该操作类型不可与其他操作混合使用，此功能需联系客户经理开通白名单使用**)</li></ul>
 	OperateTypes []*string `json:"OperateTypes,omitnil,omitempty" name:"OperateTypes"`
 
 	// <p>批量操作的企业Id列表，最大支持50个</p>
@@ -14023,7 +14023,7 @@ type DescribeOrganizationSealsRequestParams struct {
 	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// <p>需查询的印章状态列表。</p><ul><li>空：（默认）仅查询启用状态的印章；</li><li><strong>ALL</strong>：查询所有状态的印章；</li><li><strong>CHECKING</strong>：查询待审核的印章；</li><li><strong>SUCCESS</strong>：查询启用状态的印章；</li><li><strong>FAIL</strong>：查询印章审核拒绝的印章；</li><li><strong>DISABLE</strong>：查询已停用的印章；</li><li><strong>STOPPED</strong>：查询已终止的印章；</li><li><strong>VOID</strong>：查询已作废的印章；</li><li><strong>INVALID</strong>：查询已失效的印章。</li></ul>
+	// <p>需查询的印章状态数组。默认为空，仅查询启用状态的印章</p><p>枚举值：</p><ul><li>ALL： 所有状态</li><li>CHECKING： 待审核</li><li>SUCCESS： 启用状态</li><li>FAIL： 审核拒绝</li><li>DISABLE： 已停用</li><li>STOPPED： 已终止</li><li>VOID： 已作废</li><li>INVALID： 已失效</li><li>CHECKING-SADM： 待超管审核</li></ul>
 	SealStatuses []*string `json:"SealStatuses,omitnil,omitempty" name:"SealStatuses"`
 }
 
@@ -14051,7 +14051,7 @@ type DescribeOrganizationSealsRequest struct {
 	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// <p>需查询的印章状态列表。</p><ul><li>空：（默认）仅查询启用状态的印章；</li><li><strong>ALL</strong>：查询所有状态的印章；</li><li><strong>CHECKING</strong>：查询待审核的印章；</li><li><strong>SUCCESS</strong>：查询启用状态的印章；</li><li><strong>FAIL</strong>：查询印章审核拒绝的印章；</li><li><strong>DISABLE</strong>：查询已停用的印章；</li><li><strong>STOPPED</strong>：查询已终止的印章；</li><li><strong>VOID</strong>：查询已作废的印章；</li><li><strong>INVALID</strong>：查询已失效的印章。</li></ul>
+	// <p>需查询的印章状态数组。默认为空，仅查询启用状态的印章</p><p>枚举值：</p><ul><li>ALL： 所有状态</li><li>CHECKING： 待审核</li><li>SUCCESS： 启用状态</li><li>FAIL： 审核拒绝</li><li>DISABLE： 已停用</li><li>STOPPED： 已终止</li><li>VOID： 已作废</li><li>INVALID： 已失效</li><li>CHECKING-SADM： 待超管审核</li></ul>
 	SealStatuses []*string `json:"SealStatuses,omitnil,omitempty" name:"SealStatuses"`
 }
 
@@ -17259,55 +17259,55 @@ type NeedReviewApproverInfo struct {
 }
 
 type OccupiedSeal struct {
-	// 电子印章编号
+	// <p>电子印章编号</p>
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 电子印章名称
+	// <p>电子印章名称</p>
 	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 
-	// 电子印章授权时间戳，单位秒
+	// <p>电子印章授权时间戳，单位秒</p>
 	CreateOn *int64 `json:"CreateOn,omitnil,omitempty" name:"CreateOn"`
 
-	// 电子印章授权人的UserId
+	// <p>电子印章授权人的UserId</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 电子印章策略Id
+	// <p>电子印章策略Id</p>
 	SealPolicyId *string `json:"SealPolicyId,omitnil,omitempty" name:"SealPolicyId"`
 
-	// 印章状态，有以下六种：CHECKING（审核中）SUCCESS（已启用）FAIL（审核拒绝）CHECKING-SADM（待超管审核）DISABLE（已停用）STOPPED（已终止）
+	// <p>印章状态</p><p>枚举值：</p><ul><li>CHECKING： 待审核</li><li>SUCCESS： 启用状态</li><li>FAIL： 审核拒绝</li><li>DISABLE： 已停用</li><li>STOPPED： 已终止</li><li>VOID： 已作废</li><li>INVALID： 已失效</li><li>CHECKING-SADM： 待超管审核</li></ul>
 	SealStatus *string `json:"SealStatus,omitnil,omitempty" name:"SealStatus"`
 
-	// 审核失败原因
+	// <p>审核失败原因</p>
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 
-	// 印章图片url，5分钟内有效
+	// <p>印章图片url，5分钟内有效</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 印章类型,OFFICIAL-企业公章, CONTRACT-合同专用章,ORGANIZATIONSEAL-企业印章(本地上传印章类型),LEGAL_PERSON_SEAL-法人印章
+	// <p>印章类型,OFFICIAL-企业公章, CONTRACT-合同专用章,ORGANIZATIONSEAL-企业印章(本地上传印章类型),LEGAL_PERSON_SEAL-法人印章</p>
 	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
-	// 用印申请是否为永久授权，true-是，false-否
+	// <p>用印申请是否为永久授权，true-是，false-否</p>
 	IsAllTime *bool `json:"IsAllTime,omitnil,omitempty" name:"IsAllTime"`
 
-	// 授权人列表
+	// <p>授权人列表</p>
 	AuthorizedUsers []*AuthorizedUser `json:"AuthorizedUsers,omitnil,omitempty" name:"AuthorizedUsers"`
 
-	// 印章扩展数据信息
+	// <p>印章扩展数据信息</p>
 	ExtendScene *ExtendScene `json:"ExtendScene,omitnil,omitempty" name:"ExtendScene"`
 
-	// 印章的真实宽度，单位毫米
+	// <p>印章的真实宽度，单位毫米</p>
 	RealWidth *int64 `json:"RealWidth,omitnil,omitempty" name:"RealWidth"`
 
-	// 印章的真实高度，单位毫米
+	// <p>印章的真实高度，单位毫米</p>
 	RealHeight *int64 `json:"RealHeight,omitnil,omitempty" name:"RealHeight"`
 
-	// 自定义子类型印章
+	// <p>自定义子类型印章</p>
 	SubSealType *string `json:"SubSealType,omitnil,omitempty" name:"SubSealType"`
 
-	// 自定义子类型印章名称
+	// <p>自定义子类型印章名称</p>
 	SubSealName *string `json:"SubSealName,omitnil,omitempty" name:"SubSealName"`
 
-	// 印章描述
+	// <p>印章描述</p>
 	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 }
 

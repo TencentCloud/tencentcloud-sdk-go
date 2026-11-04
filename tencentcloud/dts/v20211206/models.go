@@ -5159,23 +5159,26 @@ type MigrateAction struct {
 }
 
 type MigrateDBItem struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例Vip
+	// <p>实例Vip</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 实例Vport
+	// <p>实例Vport</p>
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 是否可以作为迁移对象，1-可以，0-不可以
+	// <p>是否可以作为迁移对象，1-可以，0-不可以</p>
 	Usable *int64 `json:"Usable,omitnil,omitempty" name:"Usable"`
 
-	// 不可以作为迁移对象的原因
+	// <p>不可以作为迁移对象的原因</p>
 	Hint *string `json:"Hint,omitnil,omitempty" name:"Hint"`
+
+	// <p>硬盘类型，仅Postgresql适用</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 本地SSD</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： SSD云硬盘</li><li>CLOUD_HSSD： 增强型SSD云硬盘</li></ul>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 type MigrateDetailInfo struct {
@@ -8009,15 +8012,21 @@ func (r *StopCompareResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopMigrateJobRequestParams struct {
-	// 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+	// <p>数据迁移任务ID，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>任务结束时是否强制迁移高级对象，仅PG适用</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul>
+	MigrateAdvancedObject *string `json:"MigrateAdvancedObject,omitnil,omitempty" name:"MigrateAdvancedObject"`
 }
 
 type StopMigrateJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+	// <p>数据迁移任务ID，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>任务结束时是否强制迁移高级对象，仅PG适用</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul>
+	MigrateAdvancedObject *string `json:"MigrateAdvancedObject,omitnil,omitempty" name:"MigrateAdvancedObject"`
 }
 
 func (r *StopMigrateJobRequest) ToJsonString() string {
@@ -8033,6 +8042,7 @@ func (r *StopMigrateJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "JobId")
+	delete(f, "MigrateAdvancedObject")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopMigrateJobRequest has unknown keys!", "")
 	}

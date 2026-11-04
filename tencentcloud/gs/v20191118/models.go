@@ -1181,6 +1181,57 @@ func (r *CreateAndroidInstanceLabelResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAndroidInstanceMCPTokenRequestParams struct {
+
+}
+
+type CreateAndroidInstanceMCPTokenRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateAndroidInstanceMCPTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndroidInstanceMCPTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstanceMCPTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAndroidInstanceMCPTokenResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAndroidInstanceMCPTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAndroidInstanceMCPTokenResponseParams `json:"Response"`
+}
+
+func (r *CreateAndroidInstanceMCPTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndroidInstanceMCPTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAndroidInstanceSSHRequestParams struct {
 	// 实例ID
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
@@ -2233,6 +2284,57 @@ func (r *DeleteAndroidInstanceLabelResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAndroidInstanceMCPTokenRequestParams struct {
+
+}
+
+type DeleteAndroidInstanceMCPTokenRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DeleteAndroidInstanceMCPTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAndroidInstanceMCPTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAndroidInstanceMCPTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAndroidInstanceMCPTokenResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAndroidInstanceMCPTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAndroidInstanceMCPTokenResponseParams `json:"Response"`
+}
+
+func (r *DeleteAndroidInstanceMCPTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAndroidInstanceMCPTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAndroidAppsRequestParams struct {
 	// <p>分页偏移</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -2623,6 +2725,57 @@ func (r *DescribeAndroidInstanceLabelsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAndroidInstanceLabelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAndroidInstanceMCPTokensRequestParams struct {
+
+}
+
+type DescribeAndroidInstanceMCPTokensRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeAndroidInstanceMCPTokensRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAndroidInstanceMCPTokensRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAndroidInstanceMCPTokensRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAndroidInstanceMCPTokensResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAndroidInstanceMCPTokensResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAndroidInstanceMCPTokensResponseParams `json:"Response"`
+}
+
+func (r *DescribeAndroidInstanceMCPTokensResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAndroidInstanceMCPTokensResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4912,6 +5065,57 @@ func (r *RebootAndroidInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RebootAndroidInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewAndroidInstanceMCPTokenRequestParams struct {
+
+}
+
+type RenewAndroidInstanceMCPTokenRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *RenewAndroidInstanceMCPTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewAndroidInstanceMCPTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewAndroidInstanceMCPTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewAndroidInstanceMCPTokenResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RenewAndroidInstanceMCPTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewAndroidInstanceMCPTokenResponseParams `json:"Response"`
+}
+
+func (r *RenewAndroidInstanceMCPTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewAndroidInstanceMCPTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

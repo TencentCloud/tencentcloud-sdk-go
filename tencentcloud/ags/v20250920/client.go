@@ -2477,7 +2477,7 @@ func NewDescribeRegistryRecordVersionListResponse() (response *DescribeRegistryR
 }
 
 // DescribeRegistryRecordVersionList
-// 分页查询 Record 的 Version 列表。list 类接口不接入 CAM 转发鉴权。
+// RegistryId 必填。大写常量 MARKETPLACE 表示服务端主 YAML marketplace.registry_ids 配置的工具市场；真实 reg-xxx 表示具体 Registry。省略、空字符串、null 或其他大小写均拒绝。市场读取要求已认证身份，只返回配置来源内未删除、已审批的可读版本，文件还须 READY 和有效制品；不回退私有目录。 RecordId 市场可选、普通必填。固定版本查询用 DescribeRegistryRecord；record_id/version_id Filters 已删除。Filters 不扩大权限；市场默认浏览传 label=stable。普通模式保留 AppID 与 CAM，市场版本显式投影公开字段。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2501,7 +2501,7 @@ func (c *Client) DescribeRegistryRecordVersionList(request *DescribeRegistryReco
 }
 
 // DescribeRegistryRecordVersionList
-// 分页查询 Record 的 Version 列表。list 类接口不接入 CAM 转发鉴权。
+// RegistryId 必填。大写常量 MARKETPLACE 表示服务端主 YAML marketplace.registry_ids 配置的工具市场；真实 reg-xxx 表示具体 Registry。省略、空字符串、null 或其他大小写均拒绝。市场读取要求已认证身份，只返回配置来源内未删除、已审批的可读版本，文件还须 READY 和有效制品；不回退私有目录。 RecordId 市场可选、普通必填。固定版本查询用 DescribeRegistryRecord；record_id/version_id Filters 已删除。Filters 不扩大权限；市场默认浏览传 label=stable。普通模式保留 AppID 与 CAM，市场版本显式投影公开字段。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

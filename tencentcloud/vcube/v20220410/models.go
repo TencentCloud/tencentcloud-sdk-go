@@ -61,60 +61,63 @@ type AppInfo struct {
 }
 
 type ApplicationInfo struct {
-	// 应用名称
+	// <p>应用名称</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// Ios应用的唯一标识
+	// <p>Ios应用的唯一标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// 应用类型，formal： 正式应用，test：测试应用
+	// <p>应用类型，formal： 正式应用，test：测试应用</p>
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
-	// license数组
+	// <p>license数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Licenses []*License `json:"Licenses,omitnil,omitempty" name:"Licenses"`
 
-	// license 秘钥
+	// <p>license 秘钥</p>
 	LicenseKey *string `json:"LicenseKey,omitnil,omitempty" name:"LicenseKey"`
 
-	// 安卓应用的唯一标识
+	// <p>安卓应用的唯一标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
-	// 用户应用Id
+	// <p>用户应用Id</p>
 	ApplicationId *uint64 `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 视立方下载license的url
+	// <p>视立方下载license的url</p>
 	LicenseUrl *string `json:"LicenseUrl,omitnil,omitempty" name:"LicenseUrl"`
 
-	// 优图美视信息列表
+	// <p>优图美视信息列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	XMagics []*XMagicInfo `json:"XMagics,omitnil,omitempty" name:"XMagics"`
 
-	// Mac  进程名
+	// <p>Mac  进程名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MacBundleId *string `json:"MacBundleId,omitnil,omitempty" name:"MacBundleId"`
 
-	// windows 进程名
+	// <p>windows 进程名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WinProcessName *string `json:"WinProcessName,omitnil,omitempty" name:"WinProcessName"`
 
-	// web端Domain列表
+	// <p>web端Domain列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
-	// 账号AppId
+	// <p>账号AppId</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 扩展包名数量上限
+	// <p>扩展包名数量上限</p>
 	NameLimit *uint64 `json:"NameLimit,omitnil,omitempty" name:"NameLimit"`
+
+	// <p>linux 进程名</p>
+	LinuxProcessName *string `json:"LinuxProcessName,omitnil,omitempty" name:"LinuxProcessName"`
 }
 
 // Predefined struct for user

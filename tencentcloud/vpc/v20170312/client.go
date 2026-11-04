@@ -9187,6 +9187,9 @@ func NewDeleteHaVipResponse() (response *DeleteHaVipResponse) {
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_TERMINATIONPROTECTION = "UnsupportedOperation.TerminationProtection"
+//  UNSUPPORTEDOPERATION_TERMINATIONPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TerminationProtectionNotSupportIPv6"
+//  UNSUPPORTEDOPERATION_TRAFFICPROTECTION = "UnsupportedOperation.TrafficProtection"
 func (c *Client) DeleteHaVip(request *DeleteHaVipRequest) (response *DeleteHaVipResponse, err error) {
     return c.DeleteHaVipWithContext(context.Background(), request)
 }
@@ -9202,6 +9205,9 @@ func (c *Client) DeleteHaVip(request *DeleteHaVipRequest) (response *DeleteHaVip
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_TERMINATIONPROTECTION = "UnsupportedOperation.TerminationProtection"
+//  UNSUPPORTEDOPERATION_TERMINATIONPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TerminationProtectionNotSupportIPv6"
+//  UNSUPPORTEDOPERATION_TRAFFICPROTECTION = "UnsupportedOperation.TrafficProtection"
 func (c *Client) DeleteHaVipWithContext(ctx context.Context, request *DeleteHaVipRequest) (response *DeleteHaVipResponse, err error) {
     if request == nil {
         request = NewDeleteHaVipRequest()
@@ -23844,6 +23850,7 @@ func NewModifyHaVipAttributeResponse() (response *ModifyHaVipAttributeResponse) 
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_TRAFFICPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TrafficProtectionNotSupportIPv6"
 func (c *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest) (response *ModifyHaVipAttributeResponse, err error) {
     return c.ModifyHaVipAttributeWithContext(context.Background(), request)
 }
@@ -23858,6 +23865,7 @@ func (c *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest) (res
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_TRAFFICPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TrafficProtectionNotSupportIPv6"
 func (c *Client) ModifyHaVipAttributeWithContext(ctx context.Context, request *ModifyHaVipAttributeRequest) (response *ModifyHaVipAttributeResponse, err error) {
     if request == nil {
         request = NewModifyHaVipAttributeRequest()

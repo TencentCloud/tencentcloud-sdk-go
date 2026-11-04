@@ -3030,6 +3030,36 @@ type FieldTagInfo struct {
 	LabelValue *string `json:"LabelValue,omitnil,omitempty" name:"LabelValue"`
 }
 
+type FileArrivalConfig struct {
+	// <p>运行命中的文件所在COS桶名</p><p>举例：dlc-sh-store-139153****</p><p>入参不填，如果填写则忽略；</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// <p>运行命中的文件所在COS地域</p><p>举例：ap-shanghai</p><p>入参不填，如果填写则忽略；</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosRegion *string `json:"CosRegion,omitnil,omitempty" name:"CosRegion"`
+
+	// <p>文件存储路径</p><p>举例：cosn://dlc-sh-store-139153****/test/</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileStoragePath *string `json:"FileStoragePath,omitnil,omitempty" name:"FileStoragePath"`
+
+	// <p>文件名匹配规则</p><p>举例：</p><ul><li>空: 当前监听范围内的全部文件</li><li><code>*.csv: 任意以 .csv 结尾的文件名</code></li><li><code>orders_*.csv: orders_ 开头且以 .csv 结尾的文件名</code></li><li>orders.csv: 精确匹配 orders.csv</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileNamePattern *string `json:"FileNamePattern,omitnil,omitempty" name:"FileNamePattern"`
+
+	// <p>是否包含子目录</p><p>默认值：false</p><p>是否递归匹配子目录，默认 false</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Recursive *bool `json:"Recursive,omitnil,omitempty" name:"Recursive"`
+
+	// <p>最小触发间隔时间</p><p>参数格式：数字</p><p>默认值：300</p><p>单位：秒；默认 300秒（5 分钟）；60-86400 秒（1–1440 分钟）；两次触发之间的最小间隔。期间内到达的文件，需等待该时间结束后才会触发运行。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinTriggerIntervalTime *string `json:"MinTriggerIntervalTime,omitnil,omitempty" name:"MinTriggerIntervalTime"`
+
+	// <p>批次等待时间</p><p>参数格式：数字</p><p>默认值：120</p><p>单位：秒；默认 120秒（2 分钟）；60-3600 秒（1–60 分钟）；文件到达后等待该时长才触发运行。若等待期间再次有新文件到达，则重新开始计时。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchWaitTime *string `json:"BatchWaitTime,omitnil,omitempty" name:"BatchWaitTime"`
+}
+
 type FileConfig struct {
 	// <p>高级运行参数，变量替换用，map-json String,String</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4720,6 +4750,10 @@ type GetWorkflowTaskRunRsp struct {
 	// <p>计划调度时间</p><p>参数格式：毫秒时间戳（UTC）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduledTime *string `json:"ScheduledTime,omitnil,omitempty" name:"ScheduledTime"`
+
+	// <p>工作流调度文件到达方式配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileArrivalConfig *FileArrivalConfig `json:"FileArrivalConfig,omitnil,omitempty" name:"FileArrivalConfig"`
 }
 
 // Predefined struct for user
@@ -11992,6 +12026,10 @@ type WorkflowRun struct {
 	// <p>计划调度时间</p><p>参数格式：毫秒时间戳（UTC）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduledTime *string `json:"ScheduledTime,omitnil,omitempty" name:"ScheduledTime"`
+
+	// <p>工作流调度文件到达方式配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileArrivalConfig *FileArrivalConfig `json:"FileArrivalConfig,omitnil,omitempty" name:"FileArrivalConfig"`
 }
 
 type WorkflowRunBrief struct {
@@ -12300,6 +12338,10 @@ type WorkflowTaskRun struct {
 	// <p>计划调度时间</p><p>参数格式：毫秒时间戳，UTC</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduledTime *string `json:"ScheduledTime,omitnil,omitempty" name:"ScheduledTime"`
+
+	// <p>工作流调度文件到达方式配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileArrivalConfig *FileArrivalConfig `json:"FileArrivalConfig,omitnil,omitempty" name:"FileArrivalConfig"`
 }
 
 type WorkflowTriggerAdvancedConfiguration struct {
@@ -12352,6 +12394,10 @@ type WorkflowTriggerConfiguration struct {
 	// <p>高级配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedConfig *WorkflowTriggerAdvancedConfiguration `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+
+	// <p>工作流调度文件到达方式配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileArrivalConfig *FileArrivalConfig `json:"FileArrivalConfig,omitnil,omitempty" name:"FileArrivalConfig"`
 }
 
 type WorkspaceGroupInfo struct {

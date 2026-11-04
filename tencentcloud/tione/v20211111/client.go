@@ -847,6 +847,76 @@ func (c *Client) CreatePresignedNotebookUrlWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateRoleRequest() (request *CreateRoleRequest) {
+    request = &CreateRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreateRole")
+    
+    
+    return
+}
+
+func NewCreateRoleResponse() (response *CreateRoleResponse) {
+    response = &CreateRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRole
+// 创建自定义角色
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_PODIPNOTFOUND = "FailedOperation.PodIpNotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = "InternalError.QueryUserTMPCredentialFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
+    return c.CreateRoleWithContext(context.Background(), request)
+}
+
+// CreateRole
+// 创建自定义角色
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_PODIPNOTFOUND = "FailedOperation.PodIpNotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = "InternalError.QueryUserTMPCredentialFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) CreateRoleWithContext(ctx context.Context, request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
+    if request == nil {
+        request = NewCreateRoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateRole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTrainingModelRequest() (request *CreateTrainingModelRequest) {
     request = &CreateTrainingModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1821,6 +1891,84 @@ func (c *Client) DeleteNotebookWithContext(ctx context.Context, request *DeleteN
     return
 }
 
+func NewDeleteRoleRequest() (request *DeleteRoleRequest) {
+    request = &DeleteRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DeleteRole")
+    
+    
+    return
+}
+
+func NewDeleteRoleResponse() (response *DeleteRoleResponse) {
+    response = &DeleteRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRole
+// 删除权限角色
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETENOTEBOOKSTORAGEFAILED = "FailedOperation.DeleteNotebookStorageFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_RELEASESSHPORTFAILED = "FailedOperation.ReleaseSSHPortFailed"
+//  FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
+//  FAILEDOPERATION_UNSUBMITNOTALLOWTOSTOP = "FailedOperation.UnSubmitNotAllowToStop"
+//  FAILEDOPERATION_UNFREEZEBILLFAILED = "FailedOperation.UnfreezeBillFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteRole(request *DeleteRoleRequest) (response *DeleteRoleResponse, err error) {
+    return c.DeleteRoleWithContext(context.Background(), request)
+}
+
+// DeleteRole
+// 删除权限角色
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETENOTEBOOKSTORAGEFAILED = "FailedOperation.DeleteNotebookStorageFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_RELEASESSHPORTFAILED = "FailedOperation.ReleaseSSHPortFailed"
+//  FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
+//  FAILEDOPERATION_UNSUBMITNOTALLOWTOSTOP = "FailedOperation.UnSubmitNotAllowToStop"
+//  FAILEDOPERATION_UNFREEZEBILLFAILED = "FailedOperation.UnfreezeBillFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteRoleWithContext(ctx context.Context, request *DeleteRoleRequest) (response *DeleteRoleResponse, err error) {
+    if request == nil {
+        request = NewDeleteRoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteRole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTrainingModelRequest() (request *DeleteTrainingModelRequest) {
     request = &DeleteTrainingModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2013,6 +2161,64 @@ func (c *Client) DeleteTrainingTaskWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteTrainingTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccessRulesRequest() (request *DescribeAccessRulesRequest) {
+    request = &DescribeAccessRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeAccessRules")
+    
+    
+    return
+}
+
+func NewDescribeAccessRulesResponse() (response *DescribeAccessRulesResponse) {
+    response = &DescribeAccessRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccessRules
+// 列取访问权限规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAccessRules(request *DescribeAccessRulesRequest) (response *DescribeAccessRulesResponse, err error) {
+    return c.DescribeAccessRulesWithContext(context.Background(), request)
+}
+
+// DescribeAccessRules
+// 列取访问权限规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAccessRulesWithContext(ctx context.Context, request *DescribeAccessRulesRequest) (response *DescribeAccessRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeAccessRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -4247,6 +4453,180 @@ func (c *Client) DescribePublicAlgoVersionListWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeRoleRequest() (request *DescribeRoleRequest) {
+    request = &DescribeRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeRole")
+    
+    
+    return
+}
+
+func NewDescribeRoleResponse() (response *DescribeRoleResponse) {
+    response = &DescribeRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRole
+// 获取角色详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRole(request *DescribeRoleRequest) (response *DescribeRoleResponse, err error) {
+    return c.DescribeRoleWithContext(context.Background(), request)
+}
+
+// DescribeRole
+// 获取角色详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRoleWithContext(ctx context.Context, request *DescribeRoleRequest) (response *DescribeRoleResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeRole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRoleUsersRequest() (request *DescribeRoleUsersRequest) {
+    request = &DescribeRoleUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeRoleUsers")
+    
+    
+    return
+}
+
+func NewDescribeRoleUsersResponse() (response *DescribeRoleUsersResponse) {
+    response = &DescribeRoleUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRoleUsers
+// 获取角色下已授权的用户列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRoleUsers(request *DescribeRoleUsersRequest) (response *DescribeRoleUsersResponse, err error) {
+    return c.DescribeRoleUsersWithContext(context.Background(), request)
+}
+
+// DescribeRoleUsers
+// 获取角色下已授权的用户列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRoleUsersWithContext(ctx context.Context, request *DescribeRoleUsersRequest) (response *DescribeRoleUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoleUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeRoleUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoleUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRoleUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRolesRequest() (request *DescribeRolesRequest) {
+    request = &DescribeRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeRoles")
+    
+    
+    return
+}
+
+func NewDescribeRolesResponse() (response *DescribeRolesResponse) {
+    response = &DescribeRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRoles
+// 获取角色列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRoles(request *DescribeRolesRequest) (response *DescribeRolesResponse, err error) {
+    return c.DescribeRolesWithContext(context.Background(), request)
+}
+
+// DescribeRoles
+// 获取角色列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRolesWithContext(ctx context.Context, request *DescribeRolesRequest) (response *DescribeRolesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRolesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeRoles")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSubAccountLinuxUserInfosRequest() (request *DescribeSubAccountLinuxUserInfosRequest) {
     request = &DescribeSubAccountLinuxUserInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4689,6 +5069,1250 @@ func (c *Client) DescribeTrainingTasksWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeWorkspaceRequest() (request *DescribeWorkspaceRequest) {
+    request = &DescribeWorkspaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeWorkspace")
+    
+    
+    return
+}
+
+func NewDescribeWorkspaceResponse() (response *DescribeWorkspaceResponse) {
+    response = &DescribeWorkspaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkspace
+// 查询工作空间详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
+//  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
+//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_PAGELIMITEXCEEDED = "InvalidParameterValue.PageLimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeWorkspace(request *DescribeWorkspaceRequest) (response *DescribeWorkspaceResponse, err error) {
+    return c.DescribeWorkspaceWithContext(context.Background(), request)
+}
+
+// DescribeWorkspace
+// 查询工作空间详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
+//  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
+//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_PAGELIMITEXCEEDED = "InvalidParameterValue.PageLimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeWorkspaceWithContext(ctx context.Context, request *DescribeWorkspaceRequest) (response *DescribeWorkspaceResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkspaceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeWorkspace")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkspace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkspaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWorkspaceMembersRequest() (request *DescribeWorkspaceMembersRequest) {
+    request = &DescribeWorkspaceMembersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeWorkspaceMembers")
+    
+    
+    return
+}
+
+func NewDescribeWorkspaceMembersResponse() (response *DescribeWorkspaceMembersResponse) {
+    response = &DescribeWorkspaceMembersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkspaceMembers
+// 查询空间成员列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
+//  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
+//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_PAGELIMITEXCEEDED = "InvalidParameterValue.PageLimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeWorkspaceMembers(request *DescribeWorkspaceMembersRequest) (response *DescribeWorkspaceMembersResponse, err error) {
+    return c.DescribeWorkspaceMembersWithContext(context.Background(), request)
+}
+
+// DescribeWorkspaceMembers
+// 查询空间成员列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
+//  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
+//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_PAGELIMITEXCEEDED = "InvalidParameterValue.PageLimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeWorkspaceMembersWithContext(ctx context.Context, request *DescribeWorkspaceMembersRequest) (response *DescribeWorkspaceMembersResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkspaceMembersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeWorkspaceMembers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkspaceMembers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkspaceMembersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWorkspaceQuotaUsageRequest() (request *DescribeWorkspaceQuotaUsageRequest) {
+    request = &DescribeWorkspaceQuotaUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeWorkspaceQuotaUsage")
+    
+    
+    return
+}
+
+func NewDescribeWorkspaceQuotaUsageResponse() (response *DescribeWorkspaceQuotaUsageResponse) {
+    response = &DescribeWorkspaceQuotaUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkspaceQuotaUsage
+// ## DescribeWorkspaceQuotaUsage 接口文档
+//
+// 
+//
+// ### 接口描述
+//
+// 查询工作空间配额用量信息。该接口用于查询指定工作空间下某个子账号的配额使用情况，支持多种配额类型（CBS存储配额、Notebook开发机数量配额、托管按量资源规格限制）。
+//
+// 
+//
+// ### 错误码
+//
+// 
+//
+// | 错误码 | 说明 |
+//
+// |--------|------|
+//
+// | InvalidParameterValue | 参数值无效（如必填参数为空、QuotaType不在枚举范围内） |
+//
+// | FailedOperation.QueryDatabaseFail | 数据库查询失败 |
+//
+// 
+//
+// ### 示例
+//
+// 
+//
+// **请求示例**：
+//
+// ```json
+//
+// {
+//
+//   "QuotaType": "Notebook",
+//
+//   "SupervisorUin": "100012345678",
+//
+//   "SupervisorSubUin": "100012345679",
+//
+//   "TiProjectId": "ti-proj-123456"
+//
+// }
+//
+// ```
+//
+// 
+//
+// **响应示例**：
+//
+// ```json
+//
+// {
+//
+//   "QuotaType": "Notebook",
+//
+//   "QuotaEnabled": true,
+//
+//   "TotalQuota": 10,
+//
+//   "UsedQuota": 3,
+//
+// }
+//
+// ```
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeWorkspaceQuotaUsage(request *DescribeWorkspaceQuotaUsageRequest) (response *DescribeWorkspaceQuotaUsageResponse, err error) {
+    return c.DescribeWorkspaceQuotaUsageWithContext(context.Background(), request)
+}
+
+// DescribeWorkspaceQuotaUsage
+// ## DescribeWorkspaceQuotaUsage 接口文档
+//
+// 
+//
+// ### 接口描述
+//
+// 查询工作空间配额用量信息。该接口用于查询指定工作空间下某个子账号的配额使用情况，支持多种配额类型（CBS存储配额、Notebook开发机数量配额、托管按量资源规格限制）。
+//
+// 
+//
+// ### 错误码
+//
+// 
+//
+// | 错误码 | 说明 |
+//
+// |--------|------|
+//
+// | InvalidParameterValue | 参数值无效（如必填参数为空、QuotaType不在枚举范围内） |
+//
+// | FailedOperation.QueryDatabaseFail | 数据库查询失败 |
+//
+// 
+//
+// ### 示例
+//
+// 
+//
+// **请求示例**：
+//
+// ```json
+//
+// {
+//
+//   "QuotaType": "Notebook",
+//
+//   "SupervisorUin": "100012345678",
+//
+//   "SupervisorSubUin": "100012345679",
+//
+//   "TiProjectId": "ti-proj-123456"
+//
+// }
+//
+// ```
+//
+// 
+//
+// **响应示例**：
+//
+// ```json
+//
+// {
+//
+//   "QuotaType": "Notebook",
+//
+//   "QuotaEnabled": true,
+//
+//   "TotalQuota": 10,
+//
+//   "UsedQuota": 3,
+//
+// }
+//
+// ```
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeWorkspaceQuotaUsageWithContext(ctx context.Context, request *DescribeWorkspaceQuotaUsageRequest) (response *DescribeWorkspaceQuotaUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkspaceQuotaUsageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeWorkspaceQuotaUsage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkspaceQuotaUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkspaceQuotaUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWorkspaceQuotasRequest() (request *DescribeWorkspaceQuotasRequest) {
+    request = &DescribeWorkspaceQuotasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeWorkspaceQuotas")
+    
+    
+    return
+}
+
+func NewDescribeWorkspaceQuotasResponse() (response *DescribeWorkspaceQuotasResponse) {
+    response = &DescribeWorkspaceQuotasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkspaceQuotas
+// # DescribeWorkspaceQuotas 接口文档
+//
+// 
+//
+// ## 接口描述
+//
+// 
+//
+// 查询指定工作空间下的配额配置和配额列表。该接口用于获取主账号在某个工作空间下的配额管理配置，包括是否启用配额管理、默认配额值以及针对子账号或用户组的具体配额分配情况。
+//
+// 
+//
+// 支持三种配额类型：
+//
+// - **CBS**：CBS存储配额管理
+//
+// - **Notebook**：开发机数量配额管理
+//
+// - **PostPaySpec**：托管按量资源规格限制
+//
+// 
+//
+// 
+//
+// 
+//
+// ## 请求参数
+//
+// 
+//
+// ### 公共参数（HTTP Header）
+//
+// | 参数名 | 类型 | 必填 | 描述 |
+//
+// |--------|------|------|------|
+//
+// | X-TC-Uin | string | 是 | 主账号Uin |
+//
+// | X-TC-ProjectId | uint32 | 是 | 工作空间ID |
+//
+// 
+//
+// ### 请求体参数
+//
+// | 参数名 | 类型 | 必填 | 描述 |
+//
+// |--------|------|------|------|
+//
+// | QuotaType | string | 是 | 配额类型，可选值：<br>- `CBS`：CBS存储配额<br>- `Notebook`：开发机数量配额<br>- `PostPaySpec`：托管按量资源规格限制 |
+//
+// 
+//
+// ## 响应参数
+//
+// 
+//
+// | 参数名 | 类型 | 描述 |
+//
+// |--------|------|------|
+//
+// | QuotaType | string | 配额类型 |
+//
+// | QuotaEnabled | bool | 是否启用配额管理功能 |
+//
+// | DefaultQuota | WorkspaceQuota | 默认配额配置（当QuotaEnabled为false时为空对象） |
+//
+// | Quotas | ][WorkspaceQuota | 配额列表，包含所有子账号或用户组的配额配置（仅当QuotaEnabled为true时返回） |
+//
+// 
+//
+// ### WorkspaceQuota
+//
+// 
+//
+// | 参数名 | 类型 | 描述 |
+//
+// |--------|------|------|
+//
+// | Id | string | 配额ID，格式：<br>- 用户配额：`{quota_type}-{uin}-{subuin}-{TiProjectId}`<br>- 用户组配额：`{quota_type}-{uin}-{groupid}-{TiProjectId}`<br>- 默认配额：`{quota_type}-{uin}-default-{TiProjectId}` |
+//
+// | QuotaType | string | 配额类型 |
+//
+// | Uin | string | 主账号Uin |
+//
+// | SubUin | string | 子账号Uin（当TargetType为USER时有值） |
+//
+// | SubUinName | string | 子账号名称（当TargetType为USER时有值） |
+//
+// | QuotaValue | uint32 | 配额值：<br>- CBS：容量（GiB），默认100，范围10-10000<br>- Notebook：数量（个），默认1，范围1-999<br>- PostPaySpec：无意义，关注QuotaData字段 |
+//
+// | QuotaData | []string | 配额数据（JSON数组格式）：<br>- 当QuotaType为PostPaySpec时，存储允许使用的规格ID列表 |
+//
+// | TargetType | string | 配额目标类型：<br>- `USER`：用户配额<br>- `USER_GROUP`：用户组配额 |
+//
+// | GroupId | string | 用户组ID（当TargetType为USER_GROUP时有值） |
+//
+// | GroupName | string | 用户组名称（当TargetType为USER_GROUP时有值） |
+//
+// | TiProjectId | string | 工作空间ID |
+//
+// 
+//
+// ## 业务逻辑
+//
+// 
+//
+// 1. **参数校验**：验证QuotaType参数是否合法
+//
+// 2. **查询配额配置**：根据主账号Uin、工作空间ID和配额类型查询配额配置
+//
+// 3. **配置不存在**：
+//
+//    - 返回系统默认的配额启用状态和默认配额值
+//
+//    - CBS默认启用，默认值100GiB
+//
+//    - Notebook默认启用，默认值1个
+//
+//    - PostPaySpec默认不启用
+//
+// 4. **配置存在但未启用**：
+//
+//    - QuotaEnabled返回false
+//
+//    - DefaultQuota返回空对象
+//
+//    - Quotas不返回
+//
+// 5. **配置存在且已启用**：
+//
+//    - QuotaEnabled返回true
+//
+//    - DefaultQuota返回配置的默认配额值
+//
+//    - Quotas返回所有子账号或用户组的配额列表
+//
+//    - 自动反序列化QuotaData字段（JSON数组）
+//
+// 
+//
+// ## 使用场景
+//
+// 
+//
+// 1. **配额管理页面初始化**：获取当前工作空间的配额配置状态
+//
+// 2. **配额列表展示**：展示所有子账号或用户组的配额分配情况
+//
+// 3. **配额编辑前查询**：在修改配额前获取当前配置
+//
+// 4. **权限控制判断**：判断是否启用了配额管理功能
+//
+// 
+//
+// ## 错误码
+//
+// 
+//
+// | 错误码 | 描述 | 解决方案 |
+//
+// |--------|------|----------|
+//
+// | InvalidParameterValue | 参数值错误 | 检查QuotaType参数是否为合法值（CBS/Notebook/PostPaySpec） |
+//
+// | FailedOperation.QueryDatabaseFail | 数据库查询失败 | 稍后重试或联系管理员 |
+//
+// 
+//
+// ## 请求示例
+//
+// 
+//
+// ```json
+//
+// {
+//
+//   "QuotaType": "CBS"
+//
+// }
+//
+// ```
+//
+// 
+//
+// **HTTP Header:**
+//
+// ```
+//
+// X-TC-Uin: 100012345678
+//
+// X-TC-ProjectId: 123456
+//
+// ```
+//
+// 
+//
+// ## 响应示例
+//
+// 
+//
+// ### 示例1：配额已启用且有配额列表
+//
+// 
+//
+// ```json
+//
+// {
+//
+//   "QuotaType": "CBS",
+//
+//   "QuotaEnabled": true,
+//
+//   "DefaultQuota": {
+//
+//     "Id": "CBS-100012345678-default-123456",
+//
+//     "QuotaType": "CBS",
+//
+//     "Uin": "100012345678",
+//
+//     "SubUin": "",
+//
+//     "SubUinName": "",
+//
+//     "QuotaValue": 100,
+//
+//     "QuotaData": [],
+//
+//     "TargetType": "",
+//
+//     "GroupId": "",
+//
+//     "GroupName": "",
+//
+//     "TiProjectId": "123456"
+//
+//   },
+//
+//   "Quotas": [
+//
+//     {
+//
+//       "Id": "CBS-100012345678-100012345679-123456",
+//
+//       "QuotaType": "CBS",
+//
+//       "Uin": "100012345678",
+//
+//       "SubUin": "100012345679",
+//
+//       "SubUinName": "张三",
+//
+//       "QuotaValue": 200,
+//
+//       "QuotaData": [],
+//
+//       "TargetType": "USER",
+//
+//       "GroupId": "",
+//
+//       "GroupName": "",
+//
+//       "TiProjectId": "123456"
+//
+//     },
+//
+//     {
+//
+//       "Id": "CBS-100012345678-group001-123456",
+//
+//       "QuotaType": "CBS",
+//
+//       "Uin": "100012345678",
+//
+//       "SubUin": "",
+//
+//       "SubUinName": "",
+//
+//       "QuotaValue": 500,
+//
+//       "QuotaData": [],
+//
+//       "TargetType": "USER_GROUP",
+//
+//       "GroupId": "group001",
+//
+//       "GroupName": "开发组",
+//
+//       "TiProjectId": "123456"
+//
+//     }
+//
+//   ]
+//
+// }
+//
+// ```
+//
+// 
+//
+// ### 示例2：配额未启用
+//
+// 
+//
+// ```json
+//
+// {
+//
+//   "QuotaType": "PostPaySpec",
+//
+//   "QuotaEnabled": false,
+//
+//   "DefaultQuota": {},
+//
+//   "Quotas": []
+//
+// }
+//
+// ```
+//
+// 
+//
+// ### 示例3：PostPaySpec类型配额（带QuotaData）
+//
+// 
+//
+// ```json
+//
+// {
+//
+//   "QuotaType": "PostPaySpec",
+//
+//   "QuotaEnabled": true,
+//
+//   "DefaultQuota": {
+//
+//     "Id": "PostPaySpec-100012345678-default-123456",
+//
+//     "QuotaType": "PostPaySpec",
+//
+//     "Uin": "100012345678",
+//
+//     "SubUin": "",
+//
+//     "SubUinName": "",
+//
+//     "QuotaValue": 0,
+//
+//     "QuotaData": ["spec-001", "spec-002", "spec-003"],
+//
+//     "TargetType": "",
+//
+//     "GroupId": "",
+//
+//     "GroupName": "",
+//
+//     "TiProjectId": "123456"
+//
+//   },
+//
+//   "Quotas": [
+//
+//     {
+//
+//       "Id": "PostPaySpec-100012345678-100012345679-123456",
+//
+//       "QuotaType": "PostPaySpec",
+//
+//       "Uin": "100012345678",
+//
+//       "SubUin": "100012345679",
+//
+//       "SubUinName": "李四",
+//
+//       "QuotaValue": 0,
+//
+//       "QuotaData": ["spec-001", "spec-002"],
+//
+//       "TargetType": "USER",
+//
+//       "GroupId": "",
+//
+//       "GroupName": "",
+//
+//       "TiProjectId": "123456"
+//
+//     }
+//
+//   ]
+//
+// }
+//
+// ```
+//
+// 
+//
+// ## 注意事项
+//
+// 
+//
+// 1. **配额继承规则**：
+//
+//    - 如果子账号或用户组没有单独配置配额，则使用DefaultQuota的值
+//
+//    - 用户组配额优先级高于默认配额，用户配额优先级最高
+//
+// 
+//
+// 2. **QuotaData字段**：
+//
+//    - 仅在QuotaType为PostPaySpec时有实际意义
+//
+//    - 存储的是允许使用的规格ID列表
+//
+//    - 其他类型的配额该字段为空数组
+//
+// 
+//
+// 3. **TargetType字段**：
+//
+//    - DefaultQuota的TargetType为空字符串
+//
+//    - Quotas列表中的每个配额都有明确的TargetType
+//
+// 
+//
+// 4. **配额值单位**：
+//
+//    - CBS配额：GiB（1 GiB = 1024 MiB）
+//
+//    - Notebook配额：个数
+//
+// 
+//
+// 5. **性能优化**：
+//
+//    - 接口会一次性返回所有配额列表，避免多次查询
+//
+//    - 建议前端做好缓存，减少重复请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeWorkspaceQuotas(request *DescribeWorkspaceQuotasRequest) (response *DescribeWorkspaceQuotasResponse, err error) {
+    return c.DescribeWorkspaceQuotasWithContext(context.Background(), request)
+}
+
+// DescribeWorkspaceQuotas
+// # DescribeWorkspaceQuotas 接口文档
+//
+// 
+//
+// ## 接口描述
+//
+// 
+//
+// 查询指定工作空间下的配额配置和配额列表。该接口用于获取主账号在某个工作空间下的配额管理配置，包括是否启用配额管理、默认配额值以及针对子账号或用户组的具体配额分配情况。
+//
+// 
+//
+// 支持三种配额类型：
+//
+// - **CBS**：CBS存储配额管理
+//
+// - **Notebook**：开发机数量配额管理
+//
+// - **PostPaySpec**：托管按量资源规格限制
+//
+// 
+//
+// 
+//
+// 
+//
+// ## 请求参数
+//
+// 
+//
+// ### 公共参数（HTTP Header）
+//
+// | 参数名 | 类型 | 必填 | 描述 |
+//
+// |--------|------|------|------|
+//
+// | X-TC-Uin | string | 是 | 主账号Uin |
+//
+// | X-TC-ProjectId | uint32 | 是 | 工作空间ID |
+//
+// 
+//
+// ### 请求体参数
+//
+// | 参数名 | 类型 | 必填 | 描述 |
+//
+// |--------|------|------|------|
+//
+// | QuotaType | string | 是 | 配额类型，可选值：<br>- `CBS`：CBS存储配额<br>- `Notebook`：开发机数量配额<br>- `PostPaySpec`：托管按量资源规格限制 |
+//
+// 
+//
+// ## 响应参数
+//
+// 
+//
+// | 参数名 | 类型 | 描述 |
+//
+// |--------|------|------|
+//
+// | QuotaType | string | 配额类型 |
+//
+// | QuotaEnabled | bool | 是否启用配额管理功能 |
+//
+// | DefaultQuota | WorkspaceQuota | 默认配额配置（当QuotaEnabled为false时为空对象） |
+//
+// | Quotas | ][WorkspaceQuota | 配额列表，包含所有子账号或用户组的配额配置（仅当QuotaEnabled为true时返回） |
+//
+// 
+//
+// ### WorkspaceQuota
+//
+// 
+//
+// | 参数名 | 类型 | 描述 |
+//
+// |--------|------|------|
+//
+// | Id | string | 配额ID，格式：<br>- 用户配额：`{quota_type}-{uin}-{subuin}-{TiProjectId}`<br>- 用户组配额：`{quota_type}-{uin}-{groupid}-{TiProjectId}`<br>- 默认配额：`{quota_type}-{uin}-default-{TiProjectId}` |
+//
+// | QuotaType | string | 配额类型 |
+//
+// | Uin | string | 主账号Uin |
+//
+// | SubUin | string | 子账号Uin（当TargetType为USER时有值） |
+//
+// | SubUinName | string | 子账号名称（当TargetType为USER时有值） |
+//
+// | QuotaValue | uint32 | 配额值：<br>- CBS：容量（GiB），默认100，范围10-10000<br>- Notebook：数量（个），默认1，范围1-999<br>- PostPaySpec：无意义，关注QuotaData字段 |
+//
+// | QuotaData | []string | 配额数据（JSON数组格式）：<br>- 当QuotaType为PostPaySpec时，存储允许使用的规格ID列表 |
+//
+// | TargetType | string | 配额目标类型：<br>- `USER`：用户配额<br>- `USER_GROUP`：用户组配额 |
+//
+// | GroupId | string | 用户组ID（当TargetType为USER_GROUP时有值） |
+//
+// | GroupName | string | 用户组名称（当TargetType为USER_GROUP时有值） |
+//
+// | TiProjectId | string | 工作空间ID |
+//
+// 
+//
+// ## 业务逻辑
+//
+// 
+//
+// 1. **参数校验**：验证QuotaType参数是否合法
+//
+// 2. **查询配额配置**：根据主账号Uin、工作空间ID和配额类型查询配额配置
+//
+// 3. **配置不存在**：
+//
+//    - 返回系统默认的配额启用状态和默认配额值
+//
+//    - CBS默认启用，默认值100GiB
+//
+//    - Notebook默认启用，默认值1个
+//
+//    - PostPaySpec默认不启用
+//
+// 4. **配置存在但未启用**：
+//
+//    - QuotaEnabled返回false
+//
+//    - DefaultQuota返回空对象
+//
+//    - Quotas不返回
+//
+// 5. **配置存在且已启用**：
+//
+//    - QuotaEnabled返回true
+//
+//    - DefaultQuota返回配置的默认配额值
+//
+//    - Quotas返回所有子账号或用户组的配额列表
+//
+//    - 自动反序列化QuotaData字段（JSON数组）
+//
+// 
+//
+// ## 使用场景
+//
+// 
+//
+// 1. **配额管理页面初始化**：获取当前工作空间的配额配置状态
+//
+// 2. **配额列表展示**：展示所有子账号或用户组的配额分配情况
+//
+// 3. **配额编辑前查询**：在修改配额前获取当前配置
+//
+// 4. **权限控制判断**：判断是否启用了配额管理功能
+//
+// 
+//
+// ## 错误码
+//
+// 
+//
+// | 错误码 | 描述 | 解决方案 |
+//
+// |--------|------|----------|
+//
+// | InvalidParameterValue | 参数值错误 | 检查QuotaType参数是否为合法值（CBS/Notebook/PostPaySpec） |
+//
+// | FailedOperation.QueryDatabaseFail | 数据库查询失败 | 稍后重试或联系管理员 |
+//
+// 
+//
+// ## 请求示例
+//
+// 
+//
+// ```json
+//
+// {
+//
+//   "QuotaType": "CBS"
+//
+// }
+//
+// ```
+//
+// 
+//
+// **HTTP Header:**
+//
+// ```
+//
+// X-TC-Uin: 100012345678
+//
+// X-TC-ProjectId: 123456
+//
+// ```
+//
+// 
+//
+// ## 响应示例
+//
+// 
+//
+// ### 示例1：配额已启用且有配额列表
+//
+// 
+//
+// ```json
+//
+// {
+//
+//   "QuotaType": "CBS",
+//
+//   "QuotaEnabled": true,
+//
+//   "DefaultQuota": {
+//
+//     "Id": "CBS-100012345678-default-123456",
+//
+//     "QuotaType": "CBS",
+//
+//     "Uin": "100012345678",
+//
+//     "SubUin": "",
+//
+//     "SubUinName": "",
+//
+//     "QuotaValue": 100,
+//
+//     "QuotaData": [],
+//
+//     "TargetType": "",
+//
+//     "GroupId": "",
+//
+//     "GroupName": "",
+//
+//     "TiProjectId": "123456"
+//
+//   },
+//
+//   "Quotas": [
+//
+//     {
+//
+//       "Id": "CBS-100012345678-100012345679-123456",
+//
+//       "QuotaType": "CBS",
+//
+//       "Uin": "100012345678",
+//
+//       "SubUin": "100012345679",
+//
+//       "SubUinName": "张三",
+//
+//       "QuotaValue": 200,
+//
+//       "QuotaData": [],
+//
+//       "TargetType": "USER",
+//
+//       "GroupId": "",
+//
+//       "GroupName": "",
+//
+//       "TiProjectId": "123456"
+//
+//     },
+//
+//     {
+//
+//       "Id": "CBS-100012345678-group001-123456",
+//
+//       "QuotaType": "CBS",
+//
+//       "Uin": "100012345678",
+//
+//       "SubUin": "",
+//
+//       "SubUinName": "",
+//
+//       "QuotaValue": 500,
+//
+//       "QuotaData": [],
+//
+//       "TargetType": "USER_GROUP",
+//
+//       "GroupId": "group001",
+//
+//       "GroupName": "开发组",
+//
+//       "TiProjectId": "123456"
+//
+//     }
+//
+//   ]
+//
+// }
+//
+// ```
+//
+// 
+//
+// ### 示例2：配额未启用
+//
+// 
+//
+// ```json
+//
+// {
+//
+//   "QuotaType": "PostPaySpec",
+//
+//   "QuotaEnabled": false,
+//
+//   "DefaultQuota": {},
+//
+//   "Quotas": []
+//
+// }
+//
+// ```
+//
+// 
+//
+// ### 示例3：PostPaySpec类型配额（带QuotaData）
+//
+// 
+//
+// ```json
+//
+// {
+//
+//   "QuotaType": "PostPaySpec",
+//
+//   "QuotaEnabled": true,
+//
+//   "DefaultQuota": {
+//
+//     "Id": "PostPaySpec-100012345678-default-123456",
+//
+//     "QuotaType": "PostPaySpec",
+//
+//     "Uin": "100012345678",
+//
+//     "SubUin": "",
+//
+//     "SubUinName": "",
+//
+//     "QuotaValue": 0,
+//
+//     "QuotaData": ["spec-001", "spec-002", "spec-003"],
+//
+//     "TargetType": "",
+//
+//     "GroupId": "",
+//
+//     "GroupName": "",
+//
+//     "TiProjectId": "123456"
+//
+//   },
+//
+//   "Quotas": [
+//
+//     {
+//
+//       "Id": "PostPaySpec-100012345678-100012345679-123456",
+//
+//       "QuotaType": "PostPaySpec",
+//
+//       "Uin": "100012345678",
+//
+//       "SubUin": "100012345679",
+//
+//       "SubUinName": "李四",
+//
+//       "QuotaValue": 0,
+//
+//       "QuotaData": ["spec-001", "spec-002"],
+//
+//       "TargetType": "USER",
+//
+//       "GroupId": "",
+//
+//       "GroupName": "",
+//
+//       "TiProjectId": "123456"
+//
+//     }
+//
+//   ]
+//
+// }
+//
+// ```
+//
+// 
+//
+// ## 注意事项
+//
+// 
+//
+// 1. **配额继承规则**：
+//
+//    - 如果子账号或用户组没有单独配置配额，则使用DefaultQuota的值
+//
+//    - 用户组配额优先级高于默认配额，用户配额优先级最高
+//
+// 
+//
+// 2. **QuotaData字段**：
+//
+//    - 仅在QuotaType为PostPaySpec时有实际意义
+//
+//    - 存储的是允许使用的规格ID列表
+//
+//    - 其他类型的配额该字段为空数组
+//
+// 
+//
+// 3. **TargetType字段**：
+//
+//    - DefaultQuota的TargetType为空字符串
+//
+//    - Quotas列表中的每个配额都有明确的TargetType
+//
+// 
+//
+// 4. **配额值单位**：
+//
+//    - CBS配额：GiB（1 GiB = 1024 MiB）
+//
+//    - Notebook配额：个数
+//
+// 
+//
+// 5. **性能优化**：
+//
+//    - 接口会一次性返回所有配额列表，避免多次查询
+//
+//    - 建议前端做好缓存，减少重复请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeWorkspaceQuotasWithContext(ctx context.Context, request *DescribeWorkspaceQuotasRequest) (response *DescribeWorkspaceQuotasResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkspaceQuotasRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeWorkspaceQuotas")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkspaceQuotas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkspaceQuotasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWorkspacesRequest() (request *DescribeWorkspacesRequest) {
     request = &DescribeWorkspacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4712,16 +6336,8 @@ func NewDescribeWorkspacesResponse() (response *DescribeWorkspacesResponse) {
 // 查询工作空间列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
-//  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
-//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
-//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
-//  INVALIDPARAMETERVALUE_PAGELIMITEXCEEDED = "InvalidParameterValue.PageLimitExceeded"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeWorkspaces(request *DescribeWorkspacesRequest) (response *DescribeWorkspacesResponse, err error) {
     return c.DescribeWorkspacesWithContext(context.Background(), request)
 }
@@ -4730,16 +6346,8 @@ func (c *Client) DescribeWorkspaces(request *DescribeWorkspacesRequest) (respons
 // 查询工作空间列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
-//  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
-//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
-//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
-//  INVALIDPARAMETERVALUE_PAGELIMITEXCEEDED = "InvalidParameterValue.PageLimitExceeded"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeWorkspacesWithContext(ctx context.Context, request *DescribeWorkspacesRequest) (response *DescribeWorkspacesResponse, err error) {
     if request == nil {
         request = NewDescribeWorkspacesRequest()
@@ -5217,6 +6825,180 @@ func (c *Client) ModifyNotebookTagsWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyRoleRequest() (request *ModifyRoleRequest) {
+    request = &ModifyRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyRole")
+    
+    
+    return
+}
+
+func NewModifyRoleResponse() (response *ModifyRoleResponse) {
+    response = &ModifyRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRole
+// 修改自定义角色
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyRole(request *ModifyRoleRequest) (response *ModifyRoleResponse, err error) {
+    return c.ModifyRoleWithContext(context.Background(), request)
+}
+
+// ModifyRole
+// 修改自定义角色
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyRoleWithContext(ctx context.Context, request *ModifyRoleRequest) (response *ModifyRoleResponse, err error) {
+    if request == nil {
+        request = NewModifyRoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "ModifyRole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRoleAccessRulesRequest() (request *ModifyRoleAccessRulesRequest) {
+    request = &ModifyRoleAccessRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyRoleAccessRules")
+    
+    
+    return
+}
+
+func NewModifyRoleAccessRulesResponse() (response *ModifyRoleAccessRulesResponse) {
+    response = &ModifyRoleAccessRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRoleAccessRules
+// 修改自定义角色的权限规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyRoleAccessRules(request *ModifyRoleAccessRulesRequest) (response *ModifyRoleAccessRulesResponse, err error) {
+    return c.ModifyRoleAccessRulesWithContext(context.Background(), request)
+}
+
+// ModifyRoleAccessRules
+// 修改自定义角色的权限规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyRoleAccessRulesWithContext(ctx context.Context, request *ModifyRoleAccessRulesRequest) (response *ModifyRoleAccessRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyRoleAccessRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "ModifyRoleAccessRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRoleAccessRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRoleAccessRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRoleUserGrantRequest() (request *ModifyRoleUserGrantRequest) {
+    request = &ModifyRoleUserGrantRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyRoleUserGrant")
+    
+    
+    return
+}
+
+func NewModifyRoleUserGrantResponse() (response *ModifyRoleUserGrantResponse) {
+    response = &ModifyRoleUserGrantResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRoleUserGrant
+// 修改角色下用户的授权状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyRoleUserGrant(request *ModifyRoleUserGrantRequest) (response *ModifyRoleUserGrantResponse, err error) {
+    return c.ModifyRoleUserGrantWithContext(context.Background(), request)
+}
+
+// ModifyRoleUserGrant
+// 修改角色下用户的授权状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyRoleUserGrantWithContext(ctx context.Context, request *ModifyRoleUserGrantRequest) (response *ModifyRoleUserGrantResponse, err error) {
+    if request == nil {
+        request = NewModifyRoleUserGrantRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "ModifyRoleUserGrant")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRoleUserGrant require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRoleUserGrantResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyServiceGroupWeightsRequest() (request *ModifyServiceGroupWeightsRequest) {
     request = &ModifyServiceGroupWeightsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5313,6 +7095,206 @@ func (c *Client) ModifyServiceGroupWeightsWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyServiceGroupWeightsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserGrantRequest() (request *ModifyUserGrantRequest) {
+    request = &ModifyUserGrantRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyUserGrant")
+    
+    
+    return
+}
+
+func NewModifyUserGrantResponse() (response *ModifyUserGrantResponse) {
+    response = &ModifyUserGrantResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserGrant
+// 更新用户授权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLSSERVICENOTACTIVED = "FailedOperation.ClsServiceNotActived"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_INVALIDUSERTYPE = "FailedOperation.InvalidUserType"
+//  FAILEDOPERATION_KMSKEYNOTOPEN = "FailedOperation.KmsKeyNotOpen"
+//  FAILEDOPERATION_NOFREEBUCKET = "FailedOperation.NoFreeBucket"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_PROCESSING = "FailedOperation.Processing"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_REPOBINDBYINSTANCE = "FailedOperation.RepoBindByInstance"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_TIMEDOUT = "FailedOperation.Timedout"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyUserGrant(request *ModifyUserGrantRequest) (response *ModifyUserGrantResponse, err error) {
+    return c.ModifyUserGrantWithContext(context.Background(), request)
+}
+
+// ModifyUserGrant
+// 更新用户授权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLSSERVICENOTACTIVED = "FailedOperation.ClsServiceNotActived"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_INVALIDUSERTYPE = "FailedOperation.InvalidUserType"
+//  FAILEDOPERATION_KMSKEYNOTOPEN = "FailedOperation.KmsKeyNotOpen"
+//  FAILEDOPERATION_NOFREEBUCKET = "FailedOperation.NoFreeBucket"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_PROCESSING = "FailedOperation.Processing"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_REPOBINDBYINSTANCE = "FailedOperation.RepoBindByInstance"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_TIMEDOUT = "FailedOperation.Timedout"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyUserGrantWithContext(ctx context.Context, request *ModifyUserGrantRequest) (response *ModifyUserGrantResponse, err error) {
+    if request == nil {
+        request = NewModifyUserGrantRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "ModifyUserGrant")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserGrant require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserGrantResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWorkspaceMembersRequest() (request *ModifyWorkspaceMembersRequest) {
+    request = &ModifyWorkspaceMembersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyWorkspaceMembers")
+    
+    
+    return
+}
+
+func NewModifyWorkspaceMembersResponse() (response *ModifyWorkspaceMembersResponse) {
+    response = &ModifyWorkspaceMembersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyWorkspaceMembers
+// 更新空间用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLSSERVICENOTACTIVED = "FailedOperation.ClsServiceNotActived"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_INVALIDUSERTYPE = "FailedOperation.InvalidUserType"
+//  FAILEDOPERATION_KMSKEYNOTOPEN = "FailedOperation.KmsKeyNotOpen"
+//  FAILEDOPERATION_NOFREEBUCKET = "FailedOperation.NoFreeBucket"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_PROCESSING = "FailedOperation.Processing"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_REPOBINDBYINSTANCE = "FailedOperation.RepoBindByInstance"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_TIMEDOUT = "FailedOperation.Timedout"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyWorkspaceMembers(request *ModifyWorkspaceMembersRequest) (response *ModifyWorkspaceMembersResponse, err error) {
+    return c.ModifyWorkspaceMembersWithContext(context.Background(), request)
+}
+
+// ModifyWorkspaceMembers
+// 更新空间用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLSSERVICENOTACTIVED = "FailedOperation.ClsServiceNotActived"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_INVALIDUSERTYPE = "FailedOperation.InvalidUserType"
+//  FAILEDOPERATION_KMSKEYNOTOPEN = "FailedOperation.KmsKeyNotOpen"
+//  FAILEDOPERATION_NOFREEBUCKET = "FailedOperation.NoFreeBucket"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_PROCESSING = "FailedOperation.Processing"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_REPOBINDBYINSTANCE = "FailedOperation.RepoBindByInstance"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_TIMEDOUT = "FailedOperation.Timedout"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyWorkspaceMembersWithContext(ctx context.Context, request *ModifyWorkspaceMembersRequest) (response *ModifyWorkspaceMembersResponse, err error) {
+    if request == nil {
+        request = NewModifyWorkspaceMembersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "ModifyWorkspaceMembers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWorkspaceMembers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyWorkspaceMembersResponse()
     err = c.Send(request, response)
     return
 }

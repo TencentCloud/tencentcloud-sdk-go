@@ -719,6 +719,70 @@ func (c *Client) CreateAndroidInstanceLabelWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateAndroidInstanceMCPTokenRequest() (request *CreateAndroidInstanceMCPTokenRequest) {
+    request = &CreateAndroidInstanceMCPTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "CreateAndroidInstanceMCPToken")
+    
+    
+    return
+}
+
+func NewCreateAndroidInstanceMCPTokenResponse() (response *CreateAndroidInstanceMCPTokenResponse) {
+    response = &CreateAndroidInstanceMCPTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAndroidInstanceMCPToken
+// 创建安卓实例MCP token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_VERSIONCREATING = "OperationDenied.VersionCreating"
+//  OPERATIONDENIED_VERSIONLIMITEXCEEDED = "OperationDenied.VersionLimitExceeded"
+func (c *Client) CreateAndroidInstanceMCPToken(request *CreateAndroidInstanceMCPTokenRequest) (response *CreateAndroidInstanceMCPTokenResponse, err error) {
+    return c.CreateAndroidInstanceMCPTokenWithContext(context.Background(), request)
+}
+
+// CreateAndroidInstanceMCPToken
+// 创建安卓实例MCP token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_VERSIONCREATING = "OperationDenied.VersionCreating"
+//  OPERATIONDENIED_VERSIONLIMITEXCEEDED = "OperationDenied.VersionLimitExceeded"
+func (c *Client) CreateAndroidInstanceMCPTokenWithContext(ctx context.Context, request *CreateAndroidInstanceMCPTokenRequest) (response *CreateAndroidInstanceMCPTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateAndroidInstanceMCPTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "CreateAndroidInstanceMCPToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAndroidInstanceMCPToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAndroidInstanceMCPTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAndroidInstanceSSHRequest() (request *CreateAndroidInstanceSSHRequest) {
     request = &CreateAndroidInstanceSSHRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1499,6 +1563,68 @@ func (c *Client) DeleteAndroidInstanceLabelWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteAndroidInstanceMCPTokenRequest() (request *DeleteAndroidInstanceMCPTokenRequest) {
+    request = &DeleteAndroidInstanceMCPTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DeleteAndroidInstanceMCPToken")
+    
+    
+    return
+}
+
+func NewDeleteAndroidInstanceMCPTokenResponse() (response *DeleteAndroidInstanceMCPTokenResponse) {
+    response = &DeleteAndroidInstanceMCPTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAndroidInstanceMCPToken
+// 删除安卓实例 MCP token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAndroidInstanceMCPToken(request *DeleteAndroidInstanceMCPTokenRequest) (response *DeleteAndroidInstanceMCPTokenResponse, err error) {
+    return c.DeleteAndroidInstanceMCPTokenWithContext(context.Background(), request)
+}
+
+// DeleteAndroidInstanceMCPToken
+// 删除安卓实例 MCP token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAndroidInstanceMCPTokenWithContext(ctx context.Context, request *DeleteAndroidInstanceMCPTokenRequest) (response *DeleteAndroidInstanceMCPTokenResponse, err error) {
+    if request == nil {
+        request = NewDeleteAndroidInstanceMCPTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DeleteAndroidInstanceMCPToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAndroidInstanceMCPToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAndroidInstanceMCPTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAndroidAppsRequest() (request *DescribeAndroidAppsRequest) {
     request = &DescribeAndroidAppsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1791,6 +1917,66 @@ func (c *Client) DescribeAndroidInstanceLabelsWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeAndroidInstanceLabelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAndroidInstanceMCPTokensRequest() (request *DescribeAndroidInstanceMCPTokensRequest) {
+    request = &DescribeAndroidInstanceMCPTokensRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DescribeAndroidInstanceMCPTokens")
+    
+    
+    return
+}
+
+func NewDescribeAndroidInstanceMCPTokensResponse() (response *DescribeAndroidInstanceMCPTokensResponse) {
+    response = &DescribeAndroidInstanceMCPTokensResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAndroidInstanceMCPTokens
+// 查询安卓实例MCP Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAndroidInstanceMCPTokens(request *DescribeAndroidInstanceMCPTokensRequest) (response *DescribeAndroidInstanceMCPTokensResponse, err error) {
+    return c.DescribeAndroidInstanceMCPTokensWithContext(context.Background(), request)
+}
+
+// DescribeAndroidInstanceMCPTokens
+// 查询安卓实例MCP Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAndroidInstanceMCPTokensWithContext(ctx context.Context, request *DescribeAndroidInstanceMCPTokensRequest) (response *DescribeAndroidInstanceMCPTokensResponse, err error) {
+    if request == nil {
+        request = NewDescribeAndroidInstanceMCPTokensRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "DescribeAndroidInstanceMCPTokens")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAndroidInstanceMCPTokens require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAndroidInstanceMCPTokensResponse()
     err = c.Send(request, response)
     return
 }
@@ -3579,6 +3765,68 @@ func (c *Client) RebootAndroidInstancesWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewRebootAndroidInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRenewAndroidInstanceMCPTokenRequest() (request *RenewAndroidInstanceMCPTokenRequest) {
+    request = &RenewAndroidInstanceMCPTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "RenewAndroidInstanceMCPToken")
+    
+    
+    return
+}
+
+func NewRenewAndroidInstanceMCPTokenResponse() (response *RenewAndroidInstanceMCPTokenResponse) {
+    response = &RenewAndroidInstanceMCPTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RenewAndroidInstanceMCPToken
+// 续期安卓实例 MCP token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewAndroidInstanceMCPToken(request *RenewAndroidInstanceMCPTokenRequest) (response *RenewAndroidInstanceMCPTokenResponse, err error) {
+    return c.RenewAndroidInstanceMCPTokenWithContext(context.Background(), request)
+}
+
+// RenewAndroidInstanceMCPToken
+// 续期安卓实例 MCP token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewAndroidInstanceMCPTokenWithContext(ctx context.Context, request *RenewAndroidInstanceMCPTokenRequest) (response *RenewAndroidInstanceMCPTokenResponse, err error) {
+    if request == nil {
+        request = NewRenewAndroidInstanceMCPTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gs", APIVersion, "RenewAndroidInstanceMCPToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewAndroidInstanceMCPToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewAndroidInstanceMCPTokenResponse()
     err = c.Send(request, response)
     return
 }

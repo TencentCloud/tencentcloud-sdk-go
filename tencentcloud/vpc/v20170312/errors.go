@@ -1553,11 +1553,20 @@ const (
 	// 不支持使用系统预留的标签键。
 	UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = "UnsupportedOperation.TagSystemReservedTagKey"
 
+	// 资源删除保护中。
+	UNSUPPORTEDOPERATION_TERMINATIONPROTECTION = "UnsupportedOperation.TerminationProtection"
+
+	// 删除保护不支持IPv6。
+	UNSUPPORTEDOPERATION_TERMINATIONPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TerminationProtectionNotSupportIPv6"
+
 	// 流量镜像不支持目标Clb。
 	UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTCLB = "UnsupportedOperation.TrafficMirrorNotSupportClb"
 
 	// 流量镜像源、目的不可同端。
 	UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = "UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget"
+
+	// 资源流量保护中。
+	UNSUPPORTEDOPERATION_TRAFFICPROTECTION = "UnsupportedOperation.TrafficProtection"
 
 	// 流量保护不支持IPv6。
 	UNSUPPORTEDOPERATION_TRAFFICPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TrafficProtectionNotSupportIPv6"

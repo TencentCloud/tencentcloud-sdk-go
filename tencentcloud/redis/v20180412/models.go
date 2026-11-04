@@ -6015,6 +6015,9 @@ func (r *DescribeReplicationGroupResponse) FromJsonString(s string) error {
 type DescribeSSLStatusRequestParams struct {
 	// <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/redis/instance/list">Redis 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>证书下载格式类型，不传时默认 nginx。仅对自定义证书（CertSource=1）生效</p><p>枚举值：</p><ul><li>nginx： nginx可用</li><li>apache： apache可用</li><li>tomcat： tomcat可用</li><li>iis： iis可用</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
 type DescribeSSLStatusRequest struct {
@@ -6022,6 +6025,9 @@ type DescribeSSLStatusRequest struct {
 	
 	// <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/redis/instance/list">Redis 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>证书下载格式类型，不传时默认 nginx。仅对自定义证书（CertSource=1）生效</p><p>枚举值：</p><ul><li>nginx： nginx可用</li><li>apache： apache可用</li><li>tomcat： tomcat可用</li><li>iis： iis可用</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
 func (r *DescribeSSLStatusRequest) ToJsonString() string {
@@ -6037,6 +6043,7 @@ func (r *DescribeSSLStatusRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "ServiceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSSLStatusRequest has unknown keys!", "")
 	}
@@ -6065,6 +6072,30 @@ type DescribeSSLStatusResponseParams struct {
 
 	// <p>当前加密连接地址</p>
 	EncryptAddress *string `json:"EncryptAddress,omitnil,omitempty" name:"EncryptAddress"`
+
+	// <p>密钥来源</p><p>枚举值：</p><ul><li>0： 腾讯云提供</li><li>1： 自定义证书</li></ul>
+	CertSource *uint64 `json:"CertSource,omitnil,omitempty" name:"CertSource"`
+
+	// <p>证书有效性</p><p>枚举值：</p><ul><li>0： 有效</li><li>1： 即将过期（30天内）</li><li>2： 已过期</li><li>404： 证书已被删除</li><li>500： 查询异常</li></ul>
+	CertStatus *uint64 `json:"CertStatus,omitnil,omitempty" name:"CertStatus"`
+
+	// <p>SSL 证书服务的证书 ID，CertSource=1 时必填</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// <p>证书别名</p>
+	CertAlias *string `json:"CertAlias,omitnil,omitempty" name:"CertAlias"`
+
+	// <p>证书到期时间</p><p>参数格式：时间格式YYYY-MM-DD hh:mm:ss</p>
+	CertExpireTime *string `json:"CertExpireTime,omitnil,omitempty" name:"CertExpireTime"`
+
+	// <p>证书关联域名（SAN）</p><p>包括了IP</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>最低 TLS 版本</p><p>枚举值：</p><ul><li>TLSv1.0： TLSv1.0</li><li>TLSv1.1： TLSv1.1</li><li>TLSv1.2： TLSv1.2</li></ul>
+	SSLMinVersion *string `json:"SSLMinVersion,omitnil,omitempty" name:"SSLMinVersion"`
+
+	// <p>当前加密模式</p><p>枚举值：</p><ul><li>required： 强制加密</li><li>flexible： 兼容模式</li></ul>
+	EncryptionMode *string `json:"EncryptionMode,omitnil,omitempty" name:"EncryptionMode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7567,33 +7598,44 @@ type InstanceClusterShard struct {
 }
 
 type InstanceEnumParam struct {
-	// 参数名称。
+	// <p>参数名称。</p>
 	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
 
-	// 参数类型，例如：Enum。
+	// <p>参数类型，例如：Enum。</p>
 	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
 
-	// 参数值修改后是否需要重启。
-	// - true：需要。
-	// - false：不需要。
+	// <p>参数值修改后是否需要重启。</p><ul><li>true：需要。</li><li>false：不需要。</li></ul>
 	NeedRestart *string `json:"NeedRestart,omitnil,omitempty" name:"NeedRestart"`
 
-	// 参数默认值。
+	// <p>参数默认值。</p>
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
-	// 参数当前运行值。
+	// <p>参数当前运行值。</p>
 	CurrentValue *string `json:"CurrentValue,omitnil,omitempty" name:"CurrentValue"`
 
-	// 参数说明。
+	// <p>参数说明。</p>
 	Tips *string `json:"Tips,omitnil,omitempty" name:"Tips"`
 
-	// 参数可取的值。
+	// <p>参数可取的值。</p>
 	EnumValue []*string `json:"EnumValue,omitnil,omitempty" name:"EnumValue"`
 
-	// 参数修改状态。
-	// - 1: 修改中。
-	// - 2：修改完成。
+	// <p>参数修改状态。</p><ul><li>1: 修改中。</li><li>2：修改完成。</li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>参数类型</p><p>枚举值：</p><ul><li>redis： cache节点支持的参数</li><li>redis-interface： 代理proxy支持的参数</li><li>tendis： tendis支持的参数</li></ul>
+	ParamType *string `json:"ParamType,omitnil,omitempty" name:"ParamType"`
+
+	// <p>当前实例是否支持该特性</p>
+	FeatureSupported *bool `json:"FeatureSupported,omitnil,omitempty" name:"FeatureSupported"`
+
+	// <p>新特性上线日期</p><p>参数格式：时间格式YYYY-MM-DD</p>
+	NewFeatureOnlineTime *string `json:"NewFeatureOnlineTime,omitnil,omitempty" name:"NewFeatureOnlineTime"`
+
+	// <p>正则校验规则</p>
+	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// <p>输入格式描述</p>
+	InputDescription *string `json:"InputDescription,omitnil,omitempty" name:"InputDescription"`
 }
 
 type InstanceInfo struct {
@@ -7634,65 +7676,91 @@ type InstanceInfo struct {
 }
 
 type InstanceIntegerParam struct {
-	// 参数名
+	// <p>参数名</p>
 	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
 
-	// 参数类型：integer
+	// <p>参数类型：integer</p>
 	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
 
-	// 修改后是否需要重启：true，false
+	// <p>修改后是否需要重启：true，false</p>
 	NeedRestart *string `json:"NeedRestart,omitnil,omitempty" name:"NeedRestart"`
 
-	// 参数默认值
+	// <p>参数默认值</p>
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
-	// 当前运行参数值
+	// <p>当前运行参数值</p>
 	CurrentValue *string `json:"CurrentValue,omitnil,omitempty" name:"CurrentValue"`
 
-	// 参数说明
+	// <p>参数说明</p>
 	Tips *string `json:"Tips,omitnil,omitempty" name:"Tips"`
 
-	// 参数最小值
+	// <p>参数最小值</p>
 	Min *string `json:"Min,omitnil,omitempty" name:"Min"`
 
-	// 参数最大值
+	// <p>参数最大值</p>
 	Max *string `json:"Max,omitnil,omitempty" name:"Max"`
 
-	// 参数状态, 1: 修改中， 2：修改完成
+	// <p>参数状态, 1: 修改中， 2：修改完成</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 参数单位
+	// <p>参数单位</p>
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// <p>参数类型</p><p>枚举值：</p><ul><li>redis： cache节点支持的参数</li><li>redis-interface： 代理proxy支持的参数</li><li>tendis：  tendis支持的参数</li></ul>
+	ParamType *string `json:"ParamType,omitnil,omitempty" name:"ParamType"`
+
+	// <p>当前实例是否支持该特性</p>
+	FeatureSupported *bool `json:"FeatureSupported,omitnil,omitempty" name:"FeatureSupported"`
+
+	// <p>新特性上线日期</p><p>参数格式：时间格式YYYY-MM-DD</p>
+	NewFeatureOnlineTime *string `json:"NewFeatureOnlineTime,omitnil,omitempty" name:"NewFeatureOnlineTime"`
+
+	// <p>正则校验规则</p>
+	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// <p>输入格式描述</p>
+	InputDescription *string `json:"InputDescription,omitnil,omitempty" name:"InputDescription"`
 }
 
 type InstanceMultiParam struct {
-	// 参数名称。
+	// <p>参数名称。</p>
 	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
 
-	// 参数类型。例如：multi。
+	// <p>参数类型。例如：multi。</p>
 	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
 
-	// 参数修改后是否需要重启。
-	// - true：需要。
-	// - false：不需要。
+	// <p>参数修改后是否需要重启。</p><ul><li>true：需要。</li><li>false：不需要。</li></ul>
 	NeedRestart *string `json:"NeedRestart,omitnil,omitempty" name:"NeedRestart"`
 
-	// 参数默认值。
+	// <p>参数默认值。</p>
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
-	// 当前运行参数值。
+	// <p>当前运行参数值。</p>
 	CurrentValue *string `json:"CurrentValue,omitnil,omitempty" name:"CurrentValue"`
 
-	// 参数说明。
+	// <p>参数说明。</p>
 	Tips *string `json:"Tips,omitnil,omitempty" name:"Tips"`
 
-	// 参数枚举值。
+	// <p>参数枚举值。</p>
 	EnumValue []*string `json:"EnumValue,omitnil,omitempty" name:"EnumValue"`
 
-	// 参数修改的状态。
-	// - 1：修改中。
-	// - 2：修改完成。
+	// <p>参数修改的状态。</p><ul><li>1：修改中。</li><li>2：修改完成。</li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>参数类型</p><p>枚举值：</p><ul><li>redis： cache节点支持的参数</li><li>redis-interface： 代理proxy支持的参数</li><li>tendis： tendis支持的参数</li></ul>
+	ParamType *string `json:"ParamType,omitnil,omitempty" name:"ParamType"`
+
+	// <p>当前实例是否支持该特性</p>
+	FeatureSupported *bool `json:"FeatureSupported,omitnil,omitempty" name:"FeatureSupported"`
+
+	// <p>新特性上线日期</p><p>参数格式：参数格式：时间格式YYYY-MM-DD</p>
+	NewFeatureOnlineTime *string `json:"NewFeatureOnlineTime,omitnil,omitempty" name:"NewFeatureOnlineTime"`
+
+	// <p>正则校验规则</p>
+	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// <p>输入格式描述</p>
+	InputDescription *string `json:"InputDescription,omitnil,omitempty" name:"InputDescription"`
 }
 
 type InstanceNode struct {
@@ -7981,33 +8049,44 @@ type InstanceTagInfo struct {
 }
 
 type InstanceTextParam struct {
-	// 参数名称。
+	// <p>参数名称。</p>
 	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
 
-	// 参数类型。例如：text。
+	// <p>参数类型。例如：text。</p>
 	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
 
-	// 参数修改后是否需要重启。
-	// - true：需要。
-	// - false：不需要。
+	// <p>参数修改后是否需要重启。</p><ul><li>true：需要。</li><li>false：不需要。</li></ul>
 	NeedRestart *string `json:"NeedRestart,omitnil,omitempty" name:"NeedRestart"`
 
-	// 参数默认值。
+	// <p>参数默认值。</p>
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
-	// 参数当前运行值。
+	// <p>参数当前运行值。</p>
 	CurrentValue *string `json:"CurrentValue,omitnil,omitempty" name:"CurrentValue"`
 
-	// 参数说明。
+	// <p>参数说明。</p>
 	Tips *string `json:"Tips,omitnil,omitempty" name:"Tips"`
 
-	// 参数可取值。
+	// <p>参数可取值。</p>
 	TextValue []*string `json:"TextValue,omitnil,omitempty" name:"TextValue"`
 
-	// 参数修改状态。
-	// - 1: 修改中。
-	// - 2：修改完成。
+	// <p>参数修改状态。</p><ul><li>1: 修改中。</li><li>2：修改完成。</li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>参数类型</p><p>枚举值：</p><ul><li>redis： cache节点支持的参数</li><li>redis-interface： 代理proxy支持的参数</li><li>tendis： tendis支持的参数</li></ul>
+	ParamType *string `json:"ParamType,omitnil,omitempty" name:"ParamType"`
+
+	// <p>当前实例是否支持该特性</p>
+	FeatureSupported *bool `json:"FeatureSupported,omitnil,omitempty" name:"FeatureSupported"`
+
+	// <p>新特性上线日期</p><p>参数格式：时间格式YYYY-MM-DD</p>
+	NewFeatureOnlineTime *string `json:"NewFeatureOnlineTime,omitnil,omitempty" name:"NewFeatureOnlineTime"`
+
+	// <p>正则校验规则</p>
+	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// <p>输入格式描述</p>
+	InputDescription *string `json:"InputDescription,omitnil,omitempty" name:"InputDescription"`
 }
 
 type Instances struct {
@@ -8259,6 +8338,9 @@ type LogResult struct {
 
 	// <p>错误信息</p>
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// <p>proxy的节点ID</p>
+	Node *string `json:"Node,omitnil,omitempty" name:"Node"`
 }
 
 // Predefined struct for user
@@ -10323,6 +10405,23 @@ type OpenSSLRequestParams struct {
 
 	// <p>SSL地址类型。</p><p>枚举值：</p><ul><li>0： 不限。</li><li>1： 内网IPv4。</li><li>2： 内网IPv6。</li><li>3： 外网。</li><li>-1： 未指定。</li></ul><p>默认值：0</p>
 	AddressType *int64 `json:"AddressType,omitnil,omitempty" name:"AddressType"`
+
+	// <p>密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云提供</li><li>1： 用户自定义证书</li></ul><p>默认值：0</p>
+	CertSource *int64 `json:"CertSource,omitnil,omitempty" name:"CertSource"`
+
+	// <p>切换时间。（该参数废弃，不再生效）</p><p>枚举值：</p><ul><li>1： 维护时间窗操作：指开启SSL加密在设置的维护时间窗内执行。请通过接口DescribeMaintenanceWindow查询设置的维护时间窗时间段。</li><li>2： 立即操作：操作将立即执行，无需等待维护时间窗。系统默认设置为立即操作。</li></ul>
+	//
+	// Deprecated: SwitchOption is deprecated.
+	SwitchOption *int64 `json:"SwitchOption,omitnil,omitempty" name:"SwitchOption"`
+
+	// <p>SSL 证书服务的证书 ID，CertSource=1 时必填</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// <p>最低TLS版本</p><p>枚举值：</p><ul><li>TLSv1.0： TLSv1.0</li><li>TLSv1.1： TLSv1.1</li><li>TLSv1.2： TLSv1.2</li></ul>
+	SSLMinVersion *string `json:"SSLMinVersion,omitnil,omitempty" name:"SSLMinVersion"`
+
+	// <p>目标加密模式</p><p>枚举值：</p><ul><li>required： 强制加密</li><li>flexible： 兼容模式</li></ul><p>默认值：flexible</p>
+	EncryptionMode *string `json:"EncryptionMode,omitnil,omitempty" name:"EncryptionMode"`
 }
 
 type OpenSSLRequest struct {
@@ -10333,6 +10432,21 @@ type OpenSSLRequest struct {
 
 	// <p>SSL地址类型。</p><p>枚举值：</p><ul><li>0： 不限。</li><li>1： 内网IPv4。</li><li>2： 内网IPv6。</li><li>3： 外网。</li><li>-1： 未指定。</li></ul><p>默认值：0</p>
 	AddressType *int64 `json:"AddressType,omitnil,omitempty" name:"AddressType"`
+
+	// <p>密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云提供</li><li>1： 用户自定义证书</li></ul><p>默认值：0</p>
+	CertSource *int64 `json:"CertSource,omitnil,omitempty" name:"CertSource"`
+
+	// <p>切换时间。（该参数废弃，不再生效）</p><p>枚举值：</p><ul><li>1： 维护时间窗操作：指开启SSL加密在设置的维护时间窗内执行。请通过接口DescribeMaintenanceWindow查询设置的维护时间窗时间段。</li><li>2： 立即操作：操作将立即执行，无需等待维护时间窗。系统默认设置为立即操作。</li></ul>
+	SwitchOption *int64 `json:"SwitchOption,omitnil,omitempty" name:"SwitchOption"`
+
+	// <p>SSL 证书服务的证书 ID，CertSource=1 时必填</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// <p>最低TLS版本</p><p>枚举值：</p><ul><li>TLSv1.0： TLSv1.0</li><li>TLSv1.1： TLSv1.1</li><li>TLSv1.2： TLSv1.2</li></ul>
+	SSLMinVersion *string `json:"SSLMinVersion,omitnil,omitempty" name:"SSLMinVersion"`
+
+	// <p>目标加密模式</p><p>枚举值：</p><ul><li>required： 强制加密</li><li>flexible： 兼容模式</li></ul><p>默认值：flexible</p>
+	EncryptionMode *string `json:"EncryptionMode,omitnil,omitempty" name:"EncryptionMode"`
 }
 
 func (r *OpenSSLRequest) ToJsonString() string {
@@ -10349,6 +10463,11 @@ func (r *OpenSSLRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "AddressType")
+	delete(f, "CertSource")
+	delete(f, "SwitchOption")
+	delete(f, "CertId")
+	delete(f, "SSLMinVersion")
+	delete(f, "EncryptionMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenSSLRequest has unknown keys!", "")
 	}

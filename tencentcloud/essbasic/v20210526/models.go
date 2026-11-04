@@ -4792,7 +4792,7 @@ type ChannelDescribeOrganizationSealsRequestParams struct {
 	// <p>电子印章类型 , 可选类型如下: <ul><li><strong>OFFICIAL</strong>: 公章</li><li><strong>CONTRACT</strong>: 合同专用章;</li><li><strong>FINANCE</strong>: 财务专用章;</li><li><strong>PERSONNEL</strong>: 人事专用章</li><li><strong>INVOICE</strong>: 发票专用章</li><li><strong>LEGAL_PERSON_SEAL</strong>: 法定代表人章;</li><li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>: 员工执业章</li><li><strong>OTHER</strong>: 其他类型印章</li><li><strong>OTHER_XX</strong>: 其他印章子类型</li></ul>注:  <code>1.为空时查询所有类型的印章。</code><br>注:  <code>2.OTHER_XX该类型为其他印章子类型，如需使用，请联系对接客服申请开通。具体可传入的子类型值，需在申请开通后由客服提供。</code></p>
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
-	// <p>需查询的印章状态列表。</p><ul> <li>空，()仅查询启用状态的印章；</li> <li><strong>ALL</strong>，查询所有状态的印章；</li> <li><strong>CHECKING</strong>，查询待审核的印章；</li> <li><strong>SUCCESS</strong>，查询启用状态的印章；</li> <li><strong>FAIL</strong>，查询印章审核拒绝的印章；</li> <li><strong>DISABLE</strong>，查询已停用的印章；</li> <li><strong>STOPPED</strong>，查询已终止的印章；</li> <li><strong>VOID</strong>，查询已作废的印章；</li> <li><strong>INVALID</strong>，查询已失效的印章。</li> </ul>
+	// <p>需查询的印章状态数组。默认为空，仅查询启用状态的印章</p><p>枚举值：</p><ul><li>ALL： 所有状态</li><li>CHECKING： 待审核</li><li>CHECKING-SADM： 待超管审核</li><li>SUCCESS： 启用状态</li><li>FAIL： 审核拒绝</li><li>DISABLE： 已停用</li><li>STOPPED： 已终止</li><li>VOID： 已作废</li><li>INVALID： 已失效</li></ul>
 	SealStatuses []*string `json:"SealStatuses,omitnil,omitempty" name:"SealStatuses"`
 }
 
@@ -4817,7 +4817,7 @@ type ChannelDescribeOrganizationSealsRequest struct {
 	// <p>电子印章类型 , 可选类型如下: <ul><li><strong>OFFICIAL</strong>: 公章</li><li><strong>CONTRACT</strong>: 合同专用章;</li><li><strong>FINANCE</strong>: 财务专用章;</li><li><strong>PERSONNEL</strong>: 人事专用章</li><li><strong>INVOICE</strong>: 发票专用章</li><li><strong>LEGAL_PERSON_SEAL</strong>: 法定代表人章;</li><li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>: 员工执业章</li><li><strong>OTHER</strong>: 其他类型印章</li><li><strong>OTHER_XX</strong>: 其他印章子类型</li></ul>注:  <code>1.为空时查询所有类型的印章。</code><br>注:  <code>2.OTHER_XX该类型为其他印章子类型，如需使用，请联系对接客服申请开通。具体可传入的子类型值，需在申请开通后由客服提供。</code></p>
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
-	// <p>需查询的印章状态列表。</p><ul> <li>空，()仅查询启用状态的印章；</li> <li><strong>ALL</strong>，查询所有状态的印章；</li> <li><strong>CHECKING</strong>，查询待审核的印章；</li> <li><strong>SUCCESS</strong>，查询启用状态的印章；</li> <li><strong>FAIL</strong>，查询印章审核拒绝的印章；</li> <li><strong>DISABLE</strong>，查询已停用的印章；</li> <li><strong>STOPPED</strong>，查询已终止的印章；</li> <li><strong>VOID</strong>，查询已作废的印章；</li> <li><strong>INVALID</strong>，查询已失效的印章。</li> </ul>
+	// <p>需查询的印章状态数组。默认为空，仅查询启用状态的印章</p><p>枚举值：</p><ul><li>ALL： 所有状态</li><li>CHECKING： 待审核</li><li>CHECKING-SADM： 待超管审核</li><li>SUCCESS： 启用状态</li><li>FAIL： 审核拒绝</li><li>DISABLE： 已停用</li><li>STOPPED： 已终止</li><li>VOID： 已作废</li><li>INVALID： 已失效</li></ul>
 	SealStatuses []*string `json:"SealStatuses,omitnil,omitempty" name:"SealStatuses"`
 }
 
@@ -5444,48 +5444,46 @@ type ChannelRole struct {
 
 // Predefined struct for user
 type ChannelUpdateSealStatusRequestParams struct {
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 印章状态，目前支持传入以下类型：
-	// <ul><li>DISABLE-停用印章</li></ul>
+	// <p>印章状态，目前支持传入以下类型：</p><ul><li>ENABLE-启用印章</li><li>DISABLE-停用印章</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 印章ID
+	// <p>印章ID</p>
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 更新印章状态原因说明
+	// <p>更新印章状态原因说明</p>
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
-	// 操作者的信息
+	// <p>操作者的信息</p>
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 个性化配置字段，默认不传。
+	// <p>个性化配置字段，默认不传。</p>
 	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 type ChannelUpdateSealStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 印章状态，目前支持传入以下类型：
-	// <ul><li>DISABLE-停用印章</li></ul>
+	// <p>印章状态，目前支持传入以下类型：</p><ul><li>ENABLE-启用印章</li><li>DISABLE-停用印章</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 印章ID
+	// <p>印章ID</p>
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 更新印章状态原因说明
+	// <p>更新印章状态原因说明</p>
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
-	// 操作者的信息
+	// <p>操作者的信息</p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 个性化配置字段，默认不传。
+	// <p>个性化配置字段，默认不传。</p>
 	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
@@ -5515,10 +5513,10 @@ func (r *ChannelUpdateSealStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelUpdateSealStatusResponseParams struct {
-	// 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+	// <p>人脸验证操作人链接，用法可以参考&quot;<a href="https://qian.tencent.com/developers/company/openwxminiprogram/">跳转电子签小程序配置</a>&quot;，默认为空。</p>
 	SealOperatorVerifyPath *string `json:"SealOperatorVerifyPath,omitnil,omitempty" name:"SealOperatorVerifyPath"`
 
-	// 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+	// <p>人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。</p>
 	SealOperatorVerifyQrcodeUrl *string `json:"SealOperatorVerifyQrcodeUrl,omitnil,omitempty" name:"SealOperatorVerifyQrcodeUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11184,52 +11182,46 @@ type NeedReviewApproverInfo struct {
 }
 
 type OccupiedSeal struct {
-	// 电子印章编号
+	// <p>电子印章编号</p>
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 电子印章名称
+	// <p>电子印章名称</p>
 	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 
-	// 电子印章授权时间戳，单位秒
+	// <p>电子印章授权时间戳，单位秒</p>
 	CreateOn *int64 `json:"CreateOn,omitnil,omitempty" name:"CreateOn"`
 
-	// 电子印章授权人，电子签的UserId
+	// <p>电子印章授权人，电子签的UserId</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 电子印章策略Id
+	// <p>电子印章策略Id</p>
 	SealPolicyId *string `json:"SealPolicyId,omitnil,omitempty" name:"SealPolicyId"`
 
-	// 印章状态，有以下六种：CHECKING（审核中）SUCCESS（已启用）FAIL（审核拒绝）CHECKING-SADM（待超管审核）DISABLE（已停用）STOPPED（已终止）
+	// <p>印章状态</p><p>枚举值：</p><ul><li>CHECKING： 待审核</li><li>CHECKING-SADM： 待超管审核</li><li>SUCCESS： 启用状态</li><li>FAIL： 审核拒绝</li><li>DISABLE： 已停用</li><li>STOPPED： 已终止</li><li>VOID： 已作废</li><li>INVALID： 已失效</li></ul>
 	SealStatus *string `json:"SealStatus,omitnil,omitempty" name:"SealStatus"`
 
-	// 审核失败原因
+	// <p>审核失败原因</p>
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 
-	// 印章图片url，5分钟内有效
+	// <p>印章图片url，5分钟内有效</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 电子印章类型 , 可选类型如下: 
-	// <ul><li>**OFFICIAL**: (默认)公章</li>
-	// <li>**CONTRACT**: 合同专用章;</li>
-	// <li>**FINANCE**: 财务专用章;</li>
-	// <li>**PERSONNEL**: 人事专用章</li>
-	// <li>**INVOICE**: 发票专用章</li>
-	// </ul>
+	// <p>电子印章类型 , 可选类型如下: </p><ul><li>**OFFICIAL**: (默认)公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li></ul>
 	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
-	// 用印申请是否为永久授权
+	// <p>用印申请是否为永久授权</p>
 	IsAllTime *bool `json:"IsAllTime,omitnil,omitempty" name:"IsAllTime"`
 
-	// 授权人列表
+	// <p>授权人列表</p>
 	AuthorizedUsers []*AuthorizedUser `json:"AuthorizedUsers,omitnil,omitempty" name:"AuthorizedUsers"`
 
-	// 印章的真实宽度，单位毫米	
+	// <p>印章的真实宽度，单位毫米</p>
 	RealWidth *int64 `json:"RealWidth,omitnil,omitempty" name:"RealWidth"`
 
-	// 印章的真实高度，单位毫米	
+	// <p>印章的真实高度，单位毫米</p>
 	RealHeight *int64 `json:"RealHeight,omitnil,omitempty" name:"RealHeight"`
 
-	// 印章描述
+	// <p>印章描述</p>
 	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 }
 

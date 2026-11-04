@@ -145,67 +145,71 @@ type AspInfo struct {
 }
 
 type AutoBackupPolicy struct {
-	// 定期备份策略是否激活。
+	// <p>定期备份策略是否激活。</p>
 	IsActivated *bool `json:"IsActivated,omitnil,omitempty" name:"IsActivated"`
 
-	// 使用该定期备份策略创建出来的备份是否永久保留。
+	// <p>使用该定期备份策略创建出来的备份是否永久保留。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPermanent *bool `json:"IsPermanent,omitnil,omitempty" name:"IsPermanent"`
 
-	// 使用该定期备份策略创建出来的备份是否永久保留。
+	// <p>使用该定期备份策略创建出来的备份是否永久保留。</p>
 	NextTriggerTime *string `json:"NextTriggerTime,omitnil,omitempty" name:"NextTriggerTime"`
 
-	// NORMAL
+	// <p>NORMAL</p>
 	AutoBackupPolicyState *string `json:"AutoBackupPolicyState,omitnil,omitempty" name:"AutoBackupPolicyState"`
 
-	// 备份策略的名称。
+	// <p>备份策略的名称。</p>
 	AutoBackupPolicyName *string `json:"AutoBackupPolicyName,omitnil,omitempty" name:"AutoBackupPolicyName"`
 
-	// 定期备份的执行策略。
+	// <p>定期备份的执行策略。</p>
 	Policy []*Policy `json:"Policy,omitnil,omitempty" name:"Policy"`
 
-	// 备份策略ID。
+	// <p>备份策略ID。</p>
 	AutoBackupPolicyId *string `json:"AutoBackupPolicyId,omitnil,omitempty" name:"AutoBackupPolicyId"`
 
-	// 备份策略的创建时间。
+	// <p>备份策略的创建时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 使用该定期备份策略创建出来的备份保留天数。
+	// <p>使用该定期备份策略创建出来的备份保留天数。</p>
 	RetentionDays *uint64 `json:"RetentionDays,omitnil,omitempty" name:"RetentionDays"`
 
-	// 用户AppId。
+	// <p>用户AppId。</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 定期备份策略绑定的实例ID列表。
+	// <p>定期备份策略绑定的实例ID列表。</p>
 	InstanceIdSet []*string `json:"InstanceIdSet,omitnil,omitempty" name:"InstanceIdSet"`
 
-	// 该定期快照创建的快照最大保留月数
+	// <p>使用该定期备份策略创建的备份最大保留月数</p>
 	RetentionMonths *uint64 `json:"RetentionMonths,omitnil,omitempty" name:"RetentionMonths"`
 
-	// 该定期快照创建的快照最大保留数量
+	// <p>使用该定期备份策略创建的备份最大保留数量</p>
 	RetentionAmount *uint64 `json:"RetentionAmount,omitnil,omitempty" name:"RetentionAmount"`
 
-	// 创建人。
+	// <p>创建人。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 主账号uin。
+	// <p>主账号uin。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountUin *string `json:"AccountUin,omitnil,omitempty" name:"AccountUin"`
 
-	// 子账号uin。
+	// <p>子账号uin。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 
-	// 策略存储类型
+	// <p>策略存储类型</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 备份库ID
+	// <p>备份库ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
 
-	// 高级保留策略
+	// <p>高级保留策略</p>
 	AdvancedRetentionPolicy *AdvancedRetentionPolicy `json:"AdvancedRetentionPolicy,omitnil,omitempty" name:"AdvancedRetentionPolicy"`
+
+	// <p>备份资源信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupResourceInfos []*BackupResourceInfo `json:"BackupResourceInfos,omitnil,omitempty" name:"BackupResourceInfos"`
 }
 
 type AutomationServiceEnabled struct {
@@ -349,129 +353,145 @@ type BackupGroupRollbackTask struct {
 }
 
 type BackupInfo struct {
-	// 备份点ID
+	// <p>备份点ID</p>
 	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
-	// 备份名称
+	// <p>备份名称</p>
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 
-	// 所属计划ID
+	// <p>所属计划ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
-	// 策略ID
+	// <p>策略ID</p>
 	AspInstanceId *string `json:"AspInstanceId,omitnil,omitempty" name:"AspInstanceId"`
 
-	// 资源ID
+	// <p>资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 备份状态，取值如下：
-	// 0 备份完成
-	// 1 创建中（备份进行中）
-	// 2 部分成功（指定的备份路径中部分目录不存在）
-	// 3 恢复中（该备份点正在被恢复任务使用）
-	// 92  已取消
-	// 98 创建失败
-	// 99 已删除
-	// 100 删除中
+	// <p>备份状态，取值如下：<br>0 备份完成<br>1 创建中（备份进行中）<br>2 部分成功（指定的备份路径中部分目录不存在）<br>3 恢复中（该备份点正在被恢复任务使用）<br>92  已取消<br>98 创建失败<br>99 已删除<br>100 删除中</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 备份路径
+	// <p>备份路径</p>
 	BackupPaths []*string `json:"BackupPaths,omitnil,omitempty" name:"BackupPaths"`
 
-	// 包含文件类型
+	// <p>包含文件类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeFileTypes []*string `json:"IncludeFileTypes,omitnil,omitempty" name:"IncludeFileTypes"`
 
-	// 排除路径
+	// <p>排除路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludePatterns []*string `json:"ExcludePatterns,omitnil,omitempty" name:"ExcludePatterns"`
 
-	// 是否排除系统目录
+	// <p>是否排除系统目录</p>
 	ExcludeSystemDirectories *bool `json:"ExcludeSystemDirectories,omitnil,omitempty" name:"ExcludeSystemDirectories"`
 
-	// 备份库ID
+	// <p>备份库ID</p>
 	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
 
-	// 扫描文件数
+	// <p>扫描文件数</p>
 	ScannedFileCount *int64 `json:"ScannedFileCount,omitnil,omitempty" name:"ScannedFileCount"`
 
-	// 扫描大小(字节)
+	// <p>扫描大小(字节)</p>
 	ScannedSize *int64 `json:"ScannedSize,omitnil,omitempty" name:"ScannedSize"`
 
-	// 扫描大小(格式化)
+	// <p>扫描大小(格式化)</p>
 	ScannedSizeFormatted *string `json:"ScannedSizeFormatted,omitnil,omitempty" name:"ScannedSizeFormatted"`
 
-	// 已备份文件数量
+	// <p>已备份文件数量</p>
 	BackupFileCount *int64 `json:"BackupFileCount,omitnil,omitempty" name:"BackupFileCount"`
 
-	// 已备份大小(字节)
+	// <p>已备份大小(字节)</p>
 	BackupSize *int64 `json:"BackupSize,omitnil,omitempty" name:"BackupSize"`
 
-	// 已备份大小(格式化)
+	// <p>已备份大小(格式化)</p>
 	BackupSizeFormatted *string `json:"BackupSizeFormatted,omitnil,omitempty" name:"BackupSizeFormatted"`
 
-	// 备份进度(0-100)
+	// <p>备份进度(0-100)</p>
 	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	// 任务ID
+	// <p>任务ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 是否为永久保留
+	// <p>是否为永久保留</p>
 	IsPermanent *bool `json:"IsPermanent,omitnil,omitempty" name:"IsPermanent"`
 
-	// 到期时间
+	// <p>到期时间</p>
 	Deadline *string `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
-	// 不存在的路径信息
+	// <p>不存在的路径信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NonExistSourcePaths []*string `json:"NonExistSourcePaths,omitnil,omitempty" name:"NonExistSourcePaths"`
 
-	// 备份失败原因
+	// <p>备份失败原因</p>
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 
-	// 备份所属AppId
+	// <p>备份所属AppId</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 备份类型
+	// <p>备份类型</p>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>cos备份场景使用，标识是否清单生成中</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsInventoryPending *bool `json:"IsInventoryPending,omitnil,omitempty" name:"IsInventoryPending"`
+
+	// <p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableObjectAcl *bool `json:"EnableObjectAcl,omitnil,omitempty" name:"EnableObjectAcl"`
+
+	// <p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableObjectTags *bool `json:"EnableObjectTags,omitnil,omitempty" name:"EnableObjectTags"`
+
+	// <p>云上资源ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudResourceId *string `json:"CloudResourceId,omitnil,omitempty" name:"CloudResourceId"`
+
+	// <p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 type BackupInstance struct {
-	// 实例绑定的定期备份策略列表。
+	// <p>实例绑定的定期备份策略列表。</p>
 	AutoBackupPolicyIdSet []*string `json:"AutoBackupPolicyIdSet,omitnil,omitempty" name:"AutoBackupPolicyIdSet"`
 
-	// 实例ID。
+	// <p>实例ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户AppId。
+	// <p>用户AppId。</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 实例最新备份时间。
+	// <p>实例最新备份时间。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestBackupTime *string `json:"LatestBackupTime,omitnil,omitempty" name:"LatestBackupTime"`
 
-	// 实例的备份组ID列表。
+	// <p>实例的备份组ID列表。</p>
 	BackupGroupIdSet []*string `json:"BackupGroupIdSet,omitnil,omitempty" name:"BackupGroupIdSet"`
 
-	// 修改时间。
+	// <p>修改时间。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>备份数据量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupSizeMb *int64 `json:"BackupSizeMb,omitnil,omitempty" name:"BackupSizeMb"`
 }
 
 type BackupPlan struct {
@@ -511,6 +531,14 @@ type BackupPolicyOverview struct {
 
 	// 未绑定任何资源的策略数
 	UnboundCount *int64 `json:"UnboundCount,omitnil,omitempty" name:"UnboundCount"`
+}
+
+type BackupResourceInfo struct {
+	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>COS_AGENT： COS备份</li><li>CFS_AGENT： CFS文件备份</li><li>INSTANCE： CVM整机备份</li></ul>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>资源ID</p>
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 }
 
 type BackupVault struct {
@@ -572,12 +600,21 @@ type BasicServicesSettings struct {
 
 // Predefined struct for user
 type BindAutoBackupPolicyRequestParams struct {
+	// <p>备份策略ID</p>
+	AutoBackupPolicyId *string `json:"AutoBackupPolicyId,omitnil,omitempty" name:"AutoBackupPolicyId"`
 
+	// <p>实例ID列表</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type BindAutoBackupPolicyRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>备份策略ID</p>
+	AutoBackupPolicyId *string `json:"AutoBackupPolicyId,omitnil,omitempty" name:"AutoBackupPolicyId"`
+
+	// <p>实例ID列表</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 func (r *BindAutoBackupPolicyRequest) ToJsonString() string {
@@ -592,7 +629,8 @@ func (r *BindAutoBackupPolicyRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "AutoBackupPolicyId")
+	delete(f, "InstanceIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindAutoBackupPolicyRequest has unknown keys!", "")
 	}
@@ -822,68 +860,68 @@ type CopyPairPriceDetail struct {
 
 // Predefined struct for user
 type CreateAutoBackupPolicyRequestParams struct {
-	// 定期备份的执行策略。
+	// <p>定期备份的执行策略。</p>
 	Policy []*Policy `json:"Policy,omitnil,omitempty" name:"Policy"`
 
-	// 通过该定期备份策略创建的备份是否永久保留。false表示非永久保留，true表示永久保留，默认为false。
+	// <p>通过该定期备份策略创建的备份是否永久保留。false表示非永久保留，true表示永久保留，默认为false。</p>
 	IsPermanent *bool `json:"IsPermanent,omitnil,omitempty" name:"IsPermanent"`
 
-	// 定期备份策略的名称。
+	// <p>定期备份策略的名称。</p>
 	AutoBackupPolicyName *string `json:"AutoBackupPolicyName,omitnil,omitempty" name:"AutoBackupPolicyName"`
 
-	// 是否激活定期备份策略。
+	// <p>是否激活定期备份策略。</p>
 	IsActivated *bool `json:"IsActivated,omitnil,omitempty" name:"IsActivated"`
 
-	// 通过定期备份策略创建出的备份保留时间。
+	// <p>通过定期备份策略创建出的备份保留时间。本参数与 RetentionMonths、RetentionAmount 互斥，不可同时传入。当 IsPermanent 为 false 或不传时，RetentionDays / RetentionMonths / RetentionAmount / AdvancedRetentionPolicy 必须传入至少一项有效值。</p>
 	RetentionDays *uint64 `json:"RetentionDays,omitnil,omitempty" name:"RetentionDays"`
 
-	// 该定期备份策略创建的备份可以保留的月数，该参数不可与IsPermanent/RetentionDays参数冲突。
+	// <p>该定期备份策略创建的备份可以保留的月数。本参数与 RetentionDays、RetentionAmount 互斥，不可同时传入。当 IsPermanent 为 false 或不传时，RetentionDays / RetentionMonths / RetentionAmount / AdvancedRetentionPolicy 必须传入至少一项有效值。</p>
 	RetentionMonths *uint64 `json:"RetentionMonths,omitnil,omitempty" name:"RetentionMonths"`
 
-	// 通过该定期备份策略最多保留的备份个数，超过该个数限制后自动删除最先创建的备份，该参数不可与IsPermanent参数冲突。
+	// <p>通过该定期备份策略最多保留的备份个数，超过该个数限制后自动删除最先创建的备份。本参数与 RetentionDays、RetentionMonths互斥，不可同时传入。当 IsPermanent 为 false 或不传时，RetentionDays / RetentionMonths / RetentionAmount / AdvancedRetentionPolicy 必须传入至少一项有效值。</p>
 	RetentionAmount *uint64 `json:"RetentionAmount,omitnil,omitempty" name:"RetentionAmount"`
 
-	// 备份存储类型。COMMON表示走普通模式（不需要备份库），VAULT表示走备份库（必须关联一个备份库）。默认为COMMON
+	// <p>备份存储类型。COMMON表示走普通模式（不需要备份库），VAULT表示走备份库（必须关联一个备份库）。默认为COMMON</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 备份库ID，创建agent备份策略时必须指定。当StorageType为VAULT时必传。
+	// <p>备份库ID，创建agent备份策略时必须指定。当StorageType为VAULT时必传。</p>
 	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
 
-	// 定期备份高级保留策略，该参数不可与IsPermanent参数冲突。
+	// <p>定期备份高级保留策略，该参数不可与 IsPermanent 参数冲突。当 IsPermanent 为 false 或不传、且未传入 RetentionDays / RetentionMonths / RetentionAmount 时，必须传入本参数。</p>
 	AdvancedRetentionPolicy *AdvancedRetentionPolicy `json:"AdvancedRetentionPolicy,omitnil,omitempty" name:"AdvancedRetentionPolicy"`
 }
 
 type CreateAutoBackupPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 定期备份的执行策略。
+	// <p>定期备份的执行策略。</p>
 	Policy []*Policy `json:"Policy,omitnil,omitempty" name:"Policy"`
 
-	// 通过该定期备份策略创建的备份是否永久保留。false表示非永久保留，true表示永久保留，默认为false。
+	// <p>通过该定期备份策略创建的备份是否永久保留。false表示非永久保留，true表示永久保留，默认为false。</p>
 	IsPermanent *bool `json:"IsPermanent,omitnil,omitempty" name:"IsPermanent"`
 
-	// 定期备份策略的名称。
+	// <p>定期备份策略的名称。</p>
 	AutoBackupPolicyName *string `json:"AutoBackupPolicyName,omitnil,omitempty" name:"AutoBackupPolicyName"`
 
-	// 是否激活定期备份策略。
+	// <p>是否激活定期备份策略。</p>
 	IsActivated *bool `json:"IsActivated,omitnil,omitempty" name:"IsActivated"`
 
-	// 通过定期备份策略创建出的备份保留时间。
+	// <p>通过定期备份策略创建出的备份保留时间。本参数与 RetentionMonths、RetentionAmount 互斥，不可同时传入。当 IsPermanent 为 false 或不传时，RetentionDays / RetentionMonths / RetentionAmount / AdvancedRetentionPolicy 必须传入至少一项有效值。</p>
 	RetentionDays *uint64 `json:"RetentionDays,omitnil,omitempty" name:"RetentionDays"`
 
-	// 该定期备份策略创建的备份可以保留的月数，该参数不可与IsPermanent/RetentionDays参数冲突。
+	// <p>该定期备份策略创建的备份可以保留的月数。本参数与 RetentionDays、RetentionAmount 互斥，不可同时传入。当 IsPermanent 为 false 或不传时，RetentionDays / RetentionMonths / RetentionAmount / AdvancedRetentionPolicy 必须传入至少一项有效值。</p>
 	RetentionMonths *uint64 `json:"RetentionMonths,omitnil,omitempty" name:"RetentionMonths"`
 
-	// 通过该定期备份策略最多保留的备份个数，超过该个数限制后自动删除最先创建的备份，该参数不可与IsPermanent参数冲突。
+	// <p>通过该定期备份策略最多保留的备份个数，超过该个数限制后自动删除最先创建的备份。本参数与 RetentionDays、RetentionMonths互斥，不可同时传入。当 IsPermanent 为 false 或不传时，RetentionDays / RetentionMonths / RetentionAmount / AdvancedRetentionPolicy 必须传入至少一项有效值。</p>
 	RetentionAmount *uint64 `json:"RetentionAmount,omitnil,omitempty" name:"RetentionAmount"`
 
-	// 备份存储类型。COMMON表示走普通模式（不需要备份库），VAULT表示走备份库（必须关联一个备份库）。默认为COMMON
+	// <p>备份存储类型。COMMON表示走普通模式（不需要备份库），VAULT表示走备份库（必须关联一个备份库）。默认为COMMON</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 备份库ID，创建agent备份策略时必须指定。当StorageType为VAULT时必传。
+	// <p>备份库ID，创建agent备份策略时必须指定。当StorageType为VAULT时必传。</p>
 	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
 
-	// 定期备份高级保留策略，该参数不可与IsPermanent参数冲突。
+	// <p>定期备份高级保留策略，该参数不可与 IsPermanent 参数冲突。当 IsPermanent 为 false 或不传、且未传入 RetentionDays / RetentionMonths / RetentionAmount 时，必须传入本参数。</p>
 	AdvancedRetentionPolicy *AdvancedRetentionPolicy `json:"AdvancedRetentionPolicy,omitnil,omitempty" name:"AdvancedRetentionPolicy"`
 }
 
@@ -917,7 +955,7 @@ func (r *CreateAutoBackupPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAutoBackupPolicyResponseParams struct {
-	// 定期备份策略ID。
+	// <p>定期备份策略ID。</p>
 	AutoBackupPolicyId *string `json:"AutoBackupPolicyId,omitnil,omitempty" name:"AutoBackupPolicyId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1387,7 +1425,7 @@ type CreateFileBackupPlanRequestParams struct {
 	// <p>计划名称</p>
 	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 
-	// <p>实例配置列表，[1,20]</p>
+	// <p>实例配置列表，1~20 项，此参数必填。</p>
 	Resources []*ResourcePlan `json:"Resources,omitnil,omitempty" name:"Resources"`
 
 	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
@@ -1406,7 +1444,7 @@ type CreateFileBackupPlanRequest struct {
 	// <p>计划名称</p>
 	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 
-	// <p>实例配置列表，[1,20]</p>
+	// <p>实例配置列表，1~20 项，此参数必填。</p>
 	Resources []*ResourcePlan `json:"Resources,omitnil,omitempty" name:"Resources"`
 
 	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
@@ -1463,63 +1501,81 @@ func (r *CreateFileBackupPlanResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileBackupRequestParams struct {
-	// 资源ID列表
+	// <p>资源ID列表</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 计划ID
+	// <p>计划ID</p>
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
-	// 备份路径列表，1~20 个
+	// <p>备份路径列表，1~20 个</p>
 	BackupPaths []*string `json:"BackupPaths,omitnil,omitempty" name:"BackupPaths"`
 
-	// 包含文件类型，0~20 个
+	// <p>包含文件类型，0~20 个</p>
 	IncludeFileTypes []*string `json:"IncludeFileTypes,omitnil,omitempty" name:"IncludeFileTypes"`
 
-	// 排除文件路径列表，0~20 个
+	// <p>排除文件路径列表，0~20 个</p>
 	ExcludePatterns []*string `json:"ExcludePatterns,omitnil,omitempty" name:"ExcludePatterns"`
 
-	// 是否排除系统目录
+	// <p>是否排除系统目录</p>
 	ExcludeSystemDirectories *bool `json:"ExcludeSystemDirectories,omitnil,omitempty" name:"ExcludeSystemDirectories"`
 
-	// 备份库ID
+	// <p>备份库ID，此参数必填。</p>
 	BackupStorageId *string `json:"BackupStorageId,omitnil,omitempty" name:"BackupStorageId"`
 
-	// 备份到期时间
+	// <p>备份到期时间</p>
 	Deadline *string `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
-	// 备份名称
+	// <p>备份名称</p>
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul><p>默认值：false</p>
+	EnableObjectAcl *bool `json:"EnableObjectAcl,omitnil,omitempty" name:"EnableObjectAcl"`
+
+	// <p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul><p>默认值：false</p>
+	EnableObjectTags *bool `json:"EnableObjectTags,omitnil,omitempty" name:"EnableObjectTags"`
 }
 
 type CreateFileBackupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源ID列表
+	// <p>资源ID列表</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 计划ID
+	// <p>计划ID</p>
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
-	// 备份路径列表，1~20 个
+	// <p>备份路径列表，1~20 个</p>
 	BackupPaths []*string `json:"BackupPaths,omitnil,omitempty" name:"BackupPaths"`
 
-	// 包含文件类型，0~20 个
+	// <p>包含文件类型，0~20 个</p>
 	IncludeFileTypes []*string `json:"IncludeFileTypes,omitnil,omitempty" name:"IncludeFileTypes"`
 
-	// 排除文件路径列表，0~20 个
+	// <p>排除文件路径列表，0~20 个</p>
 	ExcludePatterns []*string `json:"ExcludePatterns,omitnil,omitempty" name:"ExcludePatterns"`
 
-	// 是否排除系统目录
+	// <p>是否排除系统目录</p>
 	ExcludeSystemDirectories *bool `json:"ExcludeSystemDirectories,omitnil,omitempty" name:"ExcludeSystemDirectories"`
 
-	// 备份库ID
+	// <p>备份库ID，此参数必填。</p>
 	BackupStorageId *string `json:"BackupStorageId,omitnil,omitempty" name:"BackupStorageId"`
 
-	// 备份到期时间
+	// <p>备份到期时间</p>
 	Deadline *string `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
-	// 备份名称
+	// <p>备份名称</p>
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul><p>默认值：false</p>
+	EnableObjectAcl *bool `json:"EnableObjectAcl,omitnil,omitempty" name:"EnableObjectAcl"`
+
+	// <p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul><p>默认值：false</p>
+	EnableObjectTags *bool `json:"EnableObjectTags,omitnil,omitempty" name:"EnableObjectTags"`
 }
 
 func (r *CreateFileBackupRequest) ToJsonString() string {
@@ -1543,6 +1599,9 @@ func (r *CreateFileBackupRequest) FromJsonString(s string) error {
 	delete(f, "BackupStorageId")
 	delete(f, "Deadline")
 	delete(f, "BackupName")
+	delete(f, "ResourceType")
+	delete(f, "EnableObjectAcl")
+	delete(f, "EnableObjectTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileBackupRequest has unknown keys!", "")
 	}
@@ -1551,7 +1610,7 @@ func (r *CreateFileBackupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileBackupResponseParams struct {
-	// 备份Id
+	// <p>备份Id</p>
 	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1576,14 +1635,38 @@ func (r *CreateFileBackupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileRestoreTaskRequestParams struct {
-	// 冲突处理策略：skip-跳过/"         "overwrite-覆盖/newer-保留较新的版本/"         "if_changed-内容变化时覆盖，默认overwrite
+	// <p>待恢复的备份ID</p>
+	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+
+	// <p>目标实例ID</p>
+	TargetResourceId *string `json:"TargetResourceId,omitnil,omitempty" name:"TargetResourceId"`
+
+	// <ol><li>恢复路径列表（1-500项）；2. CVM和CFS文件备份不传则使用备份点中所有路径，COS备份该参数必填；3. 必须是绝对路径；</li></ol>
+	RestorePaths []*string `json:"RestorePaths,omitnil,omitempty" name:"RestorePaths"`
+
+	// <p>目标位置</p><ol><li>不传则恢复到原始路径</li><li>cos恢复时不能以【/】开头</li></ol>
+	TargetLocation *string `json:"TargetLocation,omitnil,omitempty" name:"TargetLocation"`
+
+	// <p>冲突处理策略：skip-跳过/&quot;         &quot;overwrite-覆盖/newer-保留较新的版本/&quot;         &quot;if_changed-内容变化时覆盖，默认overwrite</p>
 	ConflictStrategy *string `json:"ConflictStrategy,omitnil,omitempty" name:"ConflictStrategy"`
 }
 
 type CreateFileRestoreTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 冲突处理策略：skip-跳过/"         "overwrite-覆盖/newer-保留较新的版本/"         "if_changed-内容变化时覆盖，默认overwrite
+	// <p>待恢复的备份ID</p>
+	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+
+	// <p>目标实例ID</p>
+	TargetResourceId *string `json:"TargetResourceId,omitnil,omitempty" name:"TargetResourceId"`
+
+	// <ol><li>恢复路径列表（1-500项）；2. CVM和CFS文件备份不传则使用备份点中所有路径，COS备份该参数必填；3. 必须是绝对路径；</li></ol>
+	RestorePaths []*string `json:"RestorePaths,omitnil,omitempty" name:"RestorePaths"`
+
+	// <p>目标位置</p><ol><li>不传则恢复到原始路径</li><li>cos恢复时不能以【/】开头</li></ol>
+	TargetLocation *string `json:"TargetLocation,omitnil,omitempty" name:"TargetLocation"`
+
+	// <p>冲突处理策略：skip-跳过/&quot;         &quot;overwrite-覆盖/newer-保留较新的版本/&quot;         &quot;if_changed-内容变化时覆盖，默认overwrite</p>
 	ConflictStrategy *string `json:"ConflictStrategy,omitnil,omitempty" name:"ConflictStrategy"`
 }
 
@@ -1599,6 +1682,10 @@ func (r *CreateFileRestoreTaskRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "BackupId")
+	delete(f, "TargetResourceId")
+	delete(f, "RestorePaths")
+	delete(f, "TargetLocation")
 	delete(f, "ConflictStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileRestoreTaskRequest has unknown keys!", "")
@@ -1608,6 +1695,9 @@ func (r *CreateFileRestoreTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileRestoreTaskResponseParams struct {
+	// <p>恢复任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2471,14 +2561,14 @@ func (r *DeleteDrillPairsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteFileBackupPlansRequestParams struct {
-	// 备份点 ID 列表
+	// <p>备份计划 ID 列表</p>
 	PlanIds []*string `json:"PlanIds,omitnil,omitempty" name:"PlanIds"`
 }
 
 type DeleteFileBackupPlansRequest struct {
 	*tchttp.BaseRequest
 	
-	// 备份点 ID 列表
+	// <p>备份计划 ID 列表</p>
 	PlanIds []*string `json:"PlanIds,omitnil,omitempty" name:"PlanIds"`
 }
 
@@ -2648,38 +2738,38 @@ type DeniedAction struct {
 
 // Predefined struct for user
 type DescribeAutoBackupPoliciesRequestParams struct {
-	// 过滤条件。支持以下过滤条件：\n"              "auto-backup-policy-id - 定期快照策略ID，如asp-xxx。\n"              "auto-backup-policy-state - 定期快照策略状态。\n"              "auto-backup-policy-name - 定期快照策略名称，支持模糊匹配。\n"              "tag - 按标签键值对过滤，需包含Key和/或Value。\n"              "tag-key - 按标签键过滤。\n"              "tag-value - 按标签值过滤。\n"              "tag:tag-key - 按指定标签键的标签值过滤。\n"              "vault-id - 备份库ID过滤。\n"              "storage-type - 存储类型过滤"              "（COMMON：普通模式，VAULT：备份库模式）。
+	// <p>过滤条件，支持以下Name：</p><ul><li>auto-backup-policy-id - 按定期备份策略ID过滤，如abp-xxx。</li><li>auto-backup-policy-state - 按定期备份策略状态过滤，如NORMAL。</li><li>auto-backup-policy-name - 按定期备份策略名称过滤，支持模糊匹配。</li><li>tag - 按标签键值对过滤，需包含Key和/或Value。</li><li>tag-key - 按标签键过滤。</li><li>tag-value - 按标签值过滤。</li><li>tag:tag-key - 按指定标签键的标签值过滤。</li><li>vault-id - 按备份库ID过滤。</li><li>storage-type - 按存储类型过滤：COMMON（普通模式）、VAULT（备份库模式）。</li></ul>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大1000
+	// <p>返回数量，默认20，最大1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
 type DescribeAutoBackupPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件。支持以下过滤条件：\n"              "auto-backup-policy-id - 定期快照策略ID，如asp-xxx。\n"              "auto-backup-policy-state - 定期快照策略状态。\n"              "auto-backup-policy-name - 定期快照策略名称，支持模糊匹配。\n"              "tag - 按标签键值对过滤，需包含Key和/或Value。\n"              "tag-key - 按标签键过滤。\n"              "tag-value - 按标签值过滤。\n"              "tag:tag-key - 按指定标签键的标签值过滤。\n"              "vault-id - 备份库ID过滤。\n"              "storage-type - 存储类型过滤"              "（COMMON：普通模式，VAULT：备份库模式）。
+	// <p>过滤条件，支持以下Name：</p><ul><li>auto-backup-policy-id - 按定期备份策略ID过滤，如abp-xxx。</li><li>auto-backup-policy-state - 按定期备份策略状态过滤，如NORMAL。</li><li>auto-backup-policy-name - 按定期备份策略名称过滤，支持模糊匹配。</li><li>tag - 按标签键值对过滤，需包含Key和/或Value。</li><li>tag-key - 按标签键过滤。</li><li>tag-value - 按标签值过滤。</li><li>tag:tag-key - 按指定标签键的标签值过滤。</li><li>vault-id - 按备份库ID过滤。</li><li>storage-type - 按存储类型过滤：COMMON（普通模式）、VAULT（备份库模式）。</li></ul>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大1000
+	// <p>返回数量，默认20，最大1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
@@ -2708,10 +2798,10 @@ func (r *DescribeAutoBackupPoliciesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAutoBackupPoliciesResponseParams struct {
-	// 符合条件的总数量。
+	// <p>符合条件的总数量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 备份策略列表详情。
+	// <p>备份策略列表详情。</p>
 	AutoBackupPolicySet []*AutoBackupPolicy `json:"AutoBackupPolicySet,omitnil,omitempty" name:"AutoBackupPolicySet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2736,38 +2826,38 @@ func (r *DescribeAutoBackupPoliciesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupGroupRollbackTasksRequestParams struct {
-	// 过滤条件，支持恢复任务ID（task-id）、备份组ID（backup-group-id）、源实例ID（source-instance-id）、目标实例ID（target-instance-id）、恢复状态（status）和回滚类型（rollback-type）过滤
+	// <p>过滤条件，支持恢复任务ID（task-id）、备份组ID（backup-group-id）、源实例ID（source-instance-id）、目标实例ID（target-instance-id）、恢复状态（status）和回滚类型（rollback-type）过滤</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大1000
+	// <p>返回数量，默认20，最大1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
 type DescribeBackupGroupRollbackTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件，支持恢复任务ID（task-id）、备份组ID（backup-group-id）、源实例ID（source-instance-id）、目标实例ID（target-instance-id）、恢复状态（status）和回滚类型（rollback-type）过滤
+	// <p>过滤条件，支持恢复任务ID（task-id）、备份组ID（backup-group-id）、源实例ID（source-instance-id）、目标实例ID（target-instance-id）、恢复状态（status）和回滚类型（rollback-type）过滤</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大1000
+	// <p>返回数量，默认20，最大1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
@@ -2796,10 +2886,10 @@ func (r *DescribeBackupGroupRollbackTasksRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeBackupGroupRollbackTasksResponseParams struct {
-	// 符合条件的总数量。
+	// <p>符合条件的总数量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 备份组恢复详情。
+	// <p>备份组恢复详情。</p>
 	RollbackTaskSet []*BackupGroupRollbackTask `json:"RollbackTaskSet,omitnil,omitempty" name:"RollbackTaskSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2890,10 +2980,10 @@ type DescribeBackupGroupsRequestParams struct {
 	// 返回数量，默认20，最大500
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段。目前支持CREATE_TIME。
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
@@ -2909,10 +2999,10 @@ type DescribeBackupGroupsRequest struct {
 	// 返回数量，默认20，最大500
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段。目前支持CREATE_TIME。
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
@@ -2969,38 +3059,38 @@ func (r *DescribeBackupGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupInstancesRequestParams struct {
-	// 过滤条件。;instance-id - Array of String - 是否必填：否 -（过滤条件）按实例ID过滤。;auto-backup-policy-id - Array of String - 是否必填：否 -（过滤条件）按照实例绑定的定期备份策略过滤。;auto-backup-policy-name - Array of String - 是否必填：否 -（过滤条件）按照云硬盘绑定的定期备份策略名称过滤。
+	// <p>过滤条件。;instance-id - Array of String - 是否必填：否 -（过滤条件）按实例ID过滤。;auto-backup-policy-id - Array of String - 是否必填：否 -（过滤条件）按照实例绑定的定期备份策略过滤。;auto-backup-policy-name - Array of String - 是否必填：否 -（过滤条件）按照云硬盘绑定的定期备份策略名称过滤。</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大500
+	// <p>返回数量，默认20，最大500</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
 type DescribeBackupInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件。;instance-id - Array of String - 是否必填：否 -（过滤条件）按实例ID过滤。;auto-backup-policy-id - Array of String - 是否必填：否 -（过滤条件）按照实例绑定的定期备份策略过滤。;auto-backup-policy-name - Array of String - 是否必填：否 -（过滤条件）按照云硬盘绑定的定期备份策略名称过滤。
+	// <p>过滤条件。;instance-id - Array of String - 是否必填：否 -（过滤条件）按实例ID过滤。;auto-backup-policy-id - Array of String - 是否必填：否 -（过滤条件）按照实例绑定的定期备份策略过滤。;auto-backup-policy-name - Array of String - 是否必填：否 -（过滤条件）按照云硬盘绑定的定期备份策略名称过滤。</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大500
+	// <p>返回数量，默认20，最大500</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
@@ -3029,10 +3119,10 @@ func (r *DescribeBackupInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupInstancesResponseParams struct {
-	// 符合条件的受保护实例总数量
+	// <p>符合条件的受保护实例总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 符合条件的受保护实例详情
+	// <p>符合条件的受保护实例详情</p>
 	BackupInstanceSet []*BackupInstance `json:"BackupInstanceSet,omitnil,omitempty" name:"BackupInstanceSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3092,7 +3182,7 @@ type DescribeBackupOverviewGeneralResponseParams struct {
 	// <p>整机备份（CVM 备份组）概览数据</p>
 	InstanceBackupOverview *InstanceBackupOverview `json:"InstanceBackupOverview,omitnil,omitempty" name:"InstanceBackupOverview"`
 
-	// <p>文件备份概览数据</p>
+	// <p>CVM文件备份概览数据</p>
 	FileBackupOverview *FileBackupOverview `json:"FileBackupOverview,omitnil,omitempty" name:"FileBackupOverview"`
 
 	// <p>备份策略概览</p>
@@ -3103,6 +3193,12 @@ type DescribeBackupOverviewGeneralResponseParams struct {
 
 	// <p>受保护资源概览</p>
 	ProtectedResourceOverview *ProtectedResourceOverview `json:"ProtectedResourceOverview,omitnil,omitempty" name:"ProtectedResourceOverview"`
+
+	// <p>CFS文件备份概览数据</p>
+	CFSAgentBackupOverview *FileBackupOverview `json:"CFSAgentBackupOverview,omitnil,omitempty" name:"CFSAgentBackupOverview"`
+
+	// <p>COS备份概览数据</p>
+	COSAgentBackupOverview *FileBackupOverview `json:"COSAgentBackupOverview,omitnil,omitempty" name:"COSAgentBackupOverview"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3135,10 +3231,10 @@ type DescribeBackupPlansRequestParams struct {
 	// 返回数量，默认20，最大100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
@@ -3154,10 +3250,10 @@ type DescribeBackupPlansRequest struct {
 	// 返回数量，默认20，最大100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
@@ -3271,44 +3367,44 @@ func (r *DescribeBackupVaultsDeniedActionsResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeBackupVaultsRequestParams struct {
-	// 备份库ID列表
+	// <p>备份库ID列表</p>
 	VaultIds []*string `json:"VaultIds,omitnil,omitempty" name:"VaultIds"`
 
-	// 过滤条件，支持instance-id和auto-backup-policy-id
+	// <p>过滤条件，支持vault-id、vault-name、status</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大1000
+	// <p>返回数量，默认20，最大100</p><p>取值范围：[1, 100]</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
 type DescribeBackupVaultsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 备份库ID列表
+	// <p>备份库ID列表</p>
 	VaultIds []*string `json:"VaultIds,omitnil,omitempty" name:"VaultIds"`
 
-	// 过滤条件，支持instance-id和auto-backup-policy-id
+	// <p>过滤条件，支持vault-id、vault-name、status</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大1000
+	// <p>返回数量，默认20，最大100</p><p>取值范围：[1, 100]</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
@@ -3338,10 +3434,10 @@ func (r *DescribeBackupVaultsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupVaultsResponseParams struct {
-	// 符合条件的总数量。
+	// <p>符合条件的总数量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 备份库列表详情。
+	// <p>备份库列表详情。</p>
 	BackupVaultSet []*BackupVault `json:"BackupVaultSet,omitnil,omitempty" name:"BackupVaultSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3496,7 +3592,7 @@ type DescribeCopyPairsRequestParams struct {
 	// <p>要查询复制对ID列表</p>
 	CopyPairIds []*string `json:"CopyPairIds,omitnil,omitempty" name:"CopyPairIds"`
 
-	// <p>过滤条件，详见过滤条件表。支持的Name：disaster-recovery-site-pair-id、target-resource-id、source-resource-id、copy-pair-id、copy-pair-name</p>
+	// <p>过滤条件。支持的Name：disaster-recovery-site-pair-id、target-resource-id、source-resource-id、copy-pair-id、copy-pair-name</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节</p>
@@ -3533,7 +3629,7 @@ type DescribeCopyPairsRequest struct {
 	// <p>要查询复制对ID列表</p>
 	CopyPairIds []*string `json:"CopyPairIds,omitnil,omitempty" name:"CopyPairIds"`
 
-	// <p>过滤条件，详见过滤条件表。支持的Name：disaster-recovery-site-pair-id、target-resource-id、source-resource-id、copy-pair-id、copy-pair-name</p>
+	// <p>过滤条件。支持的Name：disaster-recovery-site-pair-id、target-resource-id、source-resource-id、copy-pair-id、copy-pair-name</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节</p>
@@ -3782,50 +3878,50 @@ func (r *DescribeDisasterRecoveryOverviewResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeDisasterRecoveryProtectGroupsRequestParams struct {
-	// 要查询的容灾保护组产品类型，枚举值：DISK / INSTANCE / CFS。
+	// <p>要查询的容灾保护组产品类型，枚举值：DISK / INSTANCE / CFS。</p>
 	ProtectGroupType *string `json:"ProtectGroupType,omitnil,omitempty" name:"ProtectGroupType"`
 
-	// 要查询的容灾保护组ID列表。
+	// <p>要查询的容灾保护组ID列表。</p>
 	ProtectGroupIds []*string `json:"ProtectGroupIds,omitnil,omitempty" name:"ProtectGroupIds"`
 
-	// 过滤条件（过滤项由 core handler 定义，如 disaster-recovery-protect-group-id 等）。
+	// <p>过滤条件（过滤项由 core handler 定义，如 disaster-recovery-protect-group-id 等）。</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+	// <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+	// <p>返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 输出结果按升序还是降序
+	// <p>输出结果按升序还是降序</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 输出结果的排序字段
+	// <p>输出结果的排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
 type DescribeDisasterRecoveryProtectGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要查询的容灾保护组产品类型，枚举值：DISK / INSTANCE / CFS。
+	// <p>要查询的容灾保护组产品类型，枚举值：DISK / INSTANCE / CFS。</p>
 	ProtectGroupType *string `json:"ProtectGroupType,omitnil,omitempty" name:"ProtectGroupType"`
 
-	// 要查询的容灾保护组ID列表。
+	// <p>要查询的容灾保护组ID列表。</p>
 	ProtectGroupIds []*string `json:"ProtectGroupIds,omitnil,omitempty" name:"ProtectGroupIds"`
 
-	// 过滤条件（过滤项由 core handler 定义，如 disaster-recovery-protect-group-id 等）。
+	// <p>过滤条件（过滤项由 core handler 定义，如 disaster-recovery-protect-group-id 等）。</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+	// <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+	// <p>返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 输出结果按升序还是降序
+	// <p>输出结果按升序还是降序</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 输出结果的排序字段
+	// <p>输出结果的排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
@@ -3856,10 +3952,10 @@ func (r *DescribeDisasterRecoveryProtectGroupsRequest) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeDisasterRecoveryProtectGroupsResponseParams struct {
-	// 符合条件的容灾保护组总数
+	// <p>符合条件的容灾保护组总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 容灾保护组列表
+	// <p>容灾保护组列表</p>
 	ProtectGroupSet []*ProtectGroup `json:"ProtectGroupSet,omitnil,omitempty" name:"ProtectGroupSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3941,50 +4037,50 @@ func (r *DescribeDisasterRecoverySitePairsDeniedActionsResponse) FromJsonString(
 
 // Predefined struct for user
 type DescribeDisasterRecoverySitePairsRequestParams struct {
-	// 要查询的容灾策略产品类型。取值范围：DISK / INSTANCE / CFS。
+	// <p>要查询的容灾策略产品类型。取值范围：INSTANCE 。</p><p>枚举值：</p><ul><li>INSTANCE： CVM站点对</li></ul>
 	SitePairType *string `json:"SitePairType,omitnil,omitempty" name:"SitePairType"`
 
-	// 要查询的容灾策略ID列表。
+	// <p>要查询的容灾策略ID列表。</p>
 	SitePairIds []*string `json:"SitePairIds,omitnil,omitempty" name:"SitePairIds"`
 
-	// 过滤条件，详见定期快照过滤条件表。
+	// <p>过滤条件，详见定期快照过滤条件表。</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+	// <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+	// <p>返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 输出结果按升序还是降序，DESC表示降序，ASC表示升序
+	// <p>输出结果按升序还是降序，DESC表示降序，ASC表示升序</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 输出结果的排序字段
+	// <p>输出结果的排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
 type DescribeDisasterRecoverySitePairsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要查询的容灾策略产品类型。取值范围：DISK / INSTANCE / CFS。
+	// <p>要查询的容灾策略产品类型。取值范围：INSTANCE 。</p><p>枚举值：</p><ul><li>INSTANCE： CVM站点对</li></ul>
 	SitePairType *string `json:"SitePairType,omitnil,omitempty" name:"SitePairType"`
 
-	// 要查询的容灾策略ID列表。
+	// <p>要查询的容灾策略ID列表。</p>
 	SitePairIds []*string `json:"SitePairIds,omitnil,omitempty" name:"SitePairIds"`
 
-	// 过滤条件，详见定期快照过滤条件表。
+	// <p>过滤条件，详见定期快照过滤条件表。</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+	// <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+	// <p>返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 输出结果按升序还是降序，DESC表示降序，ASC表示升序
+	// <p>输出结果按升序还是降序，DESC表示降序，ASC表示升序</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 输出结果的排序字段
+	// <p>输出结果的排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
@@ -4015,10 +4111,10 @@ func (r *DescribeDisasterRecoverySitePairsRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeDisasterRecoverySitePairsResponseParams struct {
-	// 有效的容灾策略数量。
+	// <p>有效的容灾策略数量。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 容灾策略列表。
+	// <p>容灾策略列表。</p>
 	SitePairSet []*SitePair `json:"SitePairSet,omitnil,omitempty" name:"SitePairSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4240,7 +4336,7 @@ type DescribeDrillPairsRequestParams struct {
 	// 要查询演练对ID列表。
 	DrillPairIds []*string `json:"DrillPairIds,omitnil,omitempty" name:"DrillPairIds"`
 
-	// 过滤条件，详见定期快照过滤条件表。
+	// 过滤条件。
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
@@ -4265,7 +4361,7 @@ type DescribeDrillPairsRequest struct {
 	// 要查询演练对ID列表。
 	DrillPairIds []*string `json:"DrillPairIds,omitnil,omitempty" name:"DrillPairIds"`
 
-	// 过滤条件，详见定期快照过滤条件表。
+	// 过滤条件。
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
@@ -4336,12 +4432,51 @@ func (r *DescribeDrillPairsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileBackupObjectsRequestParams struct {
+	// <p>备份实例ID</p>
+	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
+	// <p>浏览路径</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>偏移量，默认0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，默认50，最大1000</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>排序字段</p><p>枚举值：</p><ul><li>name： 文件名称</li></ul><p>默认值：name</p>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>排序方式</p><p>枚举值：</p><ul><li>asc： 升序排序</li><li>desc： 降序排序</li></ul><p>默认值：asc</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>返回模式</p><p>枚举值：</p><ul><li>all： 返回目录和文件</li><li>dir： 仅返回目录</li><li>file： 仅返回文件（含符号连接）</li></ul>
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
 }
 
 type DescribeFileBackupObjectsRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>备份实例ID</p>
+	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+
+	// <p>浏览路径</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>偏移量，默认0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，默认50，最大1000</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>排序字段</p><p>枚举值：</p><ul><li>name： 文件名称</li></ul><p>默认值：name</p>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>排序方式</p><p>枚举值：</p><ul><li>asc： 升序排序</li><li>desc： 降序排序</li></ul><p>默认值：asc</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>返回模式</p><p>枚举值：</p><ul><li>all： 返回目录和文件</li><li>dir： 仅返回目录</li><li>file： 仅返回文件（含符号连接）</li></ul>
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
 }
 
 func (r *DescribeFileBackupObjectsRequest) ToJsonString() string {
@@ -4356,7 +4491,13 @@ func (r *DescribeFileBackupObjectsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "BackupId")
+	delete(f, "Path")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "Order")
+	delete(f, "ObjectType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileBackupObjectsRequest has unknown keys!", "")
 	}
@@ -4365,7 +4506,13 @@ func (r *DescribeFileBackupObjectsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileBackupObjectsResponseParams struct {
-	// 当前路径下包含的目录及文件总数
+	// <p>当前路径下包含的目录信息</p>
+	DirList []*FileInfo `json:"DirList,omitnil,omitempty" name:"DirList"`
+
+	// <p>当前路径下包含的文件信息</p>
+	FileList []*FileInfo `json:"FileList,omitnil,omitempty" name:"FileList"`
+
+	// <p>当前路径下包含的目录及文件总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4390,39 +4537,45 @@ func (r *DescribeFileBackupObjectsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileBackupPlansRequestParams struct {
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大500
+	// <p>返回数量，默认20，最大100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li><li>CreatedTime： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 过滤条件。支持: instance-id, plan-id, plan-name, status, auto-backup-policy-id
+	// <p>过滤条件。支持: instance-id, plan-id, plan-name, status, auto-backup-policy-id</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM 文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 type DescribeFileBackupPlansRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大500
+	// <p>返回数量，默认20，最大100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li><li>CreatedTime： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 过滤条件。支持: instance-id, plan-id, plan-name, status, auto-backup-policy-id
+	// <p>过滤条件。支持: instance-id, plan-id, plan-name, status, auto-backup-policy-id</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM 文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 func (r *DescribeFileBackupPlansRequest) ToJsonString() string {
@@ -4442,6 +4595,7 @@ func (r *DescribeFileBackupPlansRequest) FromJsonString(s string) error {
 	delete(f, "OrderField")
 	delete(f, "Order")
 	delete(f, "Filters")
+	delete(f, "ResourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileBackupPlansRequest has unknown keys!", "")
 	}
@@ -4450,10 +4604,10 @@ func (r *DescribeFileBackupPlansRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileBackupPlansResponseParams struct {
-	// 符合条件的计划总数量
+	// <p>符合条件的计划总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 符合条件的计划详情
+	// <p>符合条件的计划详情</p>
 	PlanSet []*PlanInfo `json:"PlanSet,omitnil,omitempty" name:"PlanSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4535,39 +4689,45 @@ func (r *DescribeFileBackupsDeniedActionsResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeFileBackupsRequestParams struct {
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大500
+	// <p>返回数量，默认20，最大100</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CreatedTime： 创建时间</li><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序排序</li><li>ASC： 升序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 过滤条件。支持: backup-id, plan-id, instance-id, status, backup-type, auto-backup-policy-id
+	// <p>过滤条件。支持: backup-id, plan-id, instance-id, status, backup-type, auto-backup-policy-id</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 type DescribeFileBackupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大500
+	// <p>返回数量，默认20，最大100</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CreatedTime： 创建时间</li><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序排序</li><li>ASC： 升序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 过滤条件。支持: backup-id, plan-id, instance-id, status, backup-type, auto-backup-policy-id
+	// <p>过滤条件。支持: backup-id, plan-id, instance-id, status, backup-type, auto-backup-policy-id</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 func (r *DescribeFileBackupsRequest) ToJsonString() string {
@@ -4587,6 +4747,7 @@ func (r *DescribeFileBackupsRequest) FromJsonString(s string) error {
 	delete(f, "OrderField")
 	delete(f, "Order")
 	delete(f, "Filters")
+	delete(f, "ResourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileBackupsRequest has unknown keys!", "")
 	}
@@ -4595,10 +4756,10 @@ func (r *DescribeFileBackupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileBackupsResponseParams struct {
-	// 符合条件的备份点总数量
+	// <p>符合条件的备份点总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 符合条件的备份点详情
+	// <p>符合条件的备份点详情</p>
 	BackupSet []*BackupInfo `json:"BackupSet,omitnil,omitempty" name:"BackupSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4623,39 +4784,45 @@ func (r *DescribeFileBackupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileRestoreTasksRequestParams struct {
-	// 过滤条件。支持: backup-id, task-id, instance-id, "         "target-instance-id, status
+	// <p>过滤条件。支持: backup-id, task-id, instance-id, &quot;         &quot;target-instance-id, status</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大500
+	// <p>返回数量，默认20，最大100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li><li>CreatedTime： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM 文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 type DescribeFileRestoreTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件。支持: backup-id, task-id, instance-id, "         "target-instance-id, status
+	// <p>过滤条件。支持: backup-id, task-id, instance-id, &quot;         &quot;target-instance-id, status</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大500
+	// <p>返回数量，默认20，最大100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li><li>CreatedTime： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM 文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 func (r *DescribeFileRestoreTasksRequest) ToJsonString() string {
@@ -4675,6 +4842,7 @@ func (r *DescribeFileRestoreTasksRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Order")
 	delete(f, "OrderField")
+	delete(f, "ResourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileRestoreTasksRequest has unknown keys!", "")
 	}
@@ -4683,10 +4851,10 @@ func (r *DescribeFileRestoreTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileRestoreTasksResponseParams struct {
-	// 符合条件的总数量。
+	// <p>符合条件的总数量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 恢复任务列表详情。
+	// <p>恢复任务列表详情。</p>
 	RestoreTaskSet []*RestoreTask `json:"RestoreTaskSet,omitnil,omitempty" name:"RestoreTaskSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4876,38 +5044,38 @@ func (r *DescribeProtectGroupsDeniedActionsResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeProtectedInstancesRequestParams struct {
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大500
+	// <p>返回数量，默认20，最大100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li><li>CreatedTime： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 过滤条件。支持: instance-id, agent-status
+	// <p>过滤条件。支持: instance-id, agent-status</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeProtectedInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量，默认0
+	// <p>偏移量，默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大500
+	// <p>返回数量，默认20，最大100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段
+	// <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li><li>CreatedTime： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序方式
+	// <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 过滤条件。支持: instance-id, agent-status
+	// <p>过滤条件。支持: instance-id, agent-status</p>
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -4936,10 +5104,10 @@ func (r *DescribeProtectedInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProtectedInstancesResponseParams struct {
-	// 符合条件的受保护实例总数量
+	// <p>符合条件的受保护实例总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 符合条件的受保护实例详情
+	// <p>符合条件的受保护实例详情</p>
 	InstanceSet []*ProtectInstance `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4967,7 +5135,7 @@ type DescribeSecurityGroupMappingsRequestParams struct {
 	// 安全组映射所属的站点对ID。
 	SitePairId *string `json:"SitePairId,omitnil,omitempty" name:"SitePairId"`
 
-	// 过滤条件，详见过滤条件表。支持的Name：src-security-group-id、target-security-group-id
+	// 过滤条件。支持的Name：src-security-group-id、target-security-group-id
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节
@@ -4989,7 +5157,7 @@ type DescribeSecurityGroupMappingsRequest struct {
 	// 安全组映射所属的站点对ID。
 	SitePairId *string `json:"SitePairId,omitnil,omitempty" name:"SitePairId"`
 
-	// 过滤条件，详见过滤条件表。支持的Name：src-security-group-id、target-security-group-id
+	// 过滤条件。支持的Name：src-security-group-id、target-security-group-id
 	Filters []*FilterModel `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节
@@ -5443,33 +5611,50 @@ type EnhancedService struct {
 }
 
 type FileBackupOverview struct {
-	// 整机备份点总数
+	// <p>备份点总数</p>
 	BackupCount *int64 `json:"BackupCount,omitnil,omitempty" name:"BackupCount"`
 
-	// 创建中数量
+	// <p>创建中数量</p>
 	CreatingBackupCount *int64 `json:"CreatingBackupCount,omitnil,omitempty" name:"CreatingBackupCount"`
 
-	// 失败数量
+	// <p>失败数量</p>
 	FailedBackupCount *int64 `json:"FailedBackupCount,omitnil,omitempty" name:"FailedBackupCount"`
 
-	// 已完成数量
+	// <p>已完成数量</p>
 	SuccessBackupCount *int64 `json:"SuccessBackupCount,omitnil,omitempty" name:"SuccessBackupCount"`
 
-	// 恢复中的总数量
+	// <p>恢复中的总数量</p>
 	RestoringBackupCount *int64 `json:"RestoringBackupCount,omitnil,omitempty" name:"RestoringBackupCount"`
 
-	// 整机备份总容量
+	// <p>备份总容量</p>
 	BackupSizeMb *int64 `json:"BackupSizeMb,omitnil,omitempty" name:"BackupSizeMb"`
 
-	// 受保护 CVM 资源数
+	// <p>受保护资源数</p>
 	BackupResourceCount *int64 `json:"BackupResourceCount,omitnil,omitempty" name:"BackupResourceCount"`
 }
 
+type FileInfo struct {
+	// 文件名称
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 文件大小，单位是Bytes
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 文件mtime
+	ModifyTime *int64 `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 文件ctime
+	ChangeTime *int64 `json:"ChangeTime,omitnil,omitempty" name:"ChangeTime"`
+
+	// 文件类型。取值包含"dir"、"file"、"symlink"
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
 type FilterModel struct {
-	// 过滤器名
+	// 过滤器名，此参数必填。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 过滤器值
+	// 过滤器值，此参数必填。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -6142,67 +6327,79 @@ func (r *ModifyFileBackupAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyFileBackupPlanRequestParams struct {
-	// 备份计划ID
+	// <p>备份计划ID，此参数必填。</p>
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
-	// 备份策略ID
+	// <p>备份策略ID</p>
 	//
 	// Deprecated: PolicyId is deprecated.
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 计划名称
+	// <p>计划名称</p>
 	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 
-	// 备份路径列表，1~20 个
+	// <p>备份路径列表，1~20 个</p>
 	BackupPaths []*string `json:"BackupPaths,omitnil,omitempty" name:"BackupPaths"`
 
-	// 包含文件类型，0~20 个
+	// <p>包含文件类型，0~20 个</p>
 	IncludeFileTypes []*string `json:"IncludeFileTypes,omitnil,omitempty" name:"IncludeFileTypes"`
 
-	// 排除文件路径列表，0~20 个
+	// <p>排除文件路径列表，0~20 个</p>
 	ExcludePatterns []*string `json:"ExcludePatterns,omitnil,omitempty" name:"ExcludePatterns"`
 
-	// 是否排除系统目录
+	// <p>是否排除系统目录</p>
 	ExcludeSystemDirectories *bool `json:"ExcludeSystemDirectories,omitnil,omitempty" name:"ExcludeSystemDirectories"`
 
-	// 备份库ID
+	// <p>备份库ID</p>
 	//
 	// Deprecated: BackupStorageId is deprecated.
 	BackupStorageId *string `json:"BackupStorageId,omitnil,omitempty" name:"BackupStorageId"`
 
-	// 计划状态，可选值：normal（正常）、paused（暂停）
+	// <p>计划状态，可选值：normal（正常）、paused（暂停）</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	EnableObjectAcl *bool `json:"EnableObjectAcl,omitnil,omitempty" name:"EnableObjectAcl"`
+
+	// <p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	EnableObjectTags *bool `json:"EnableObjectTags,omitnil,omitempty" name:"EnableObjectTags"`
 }
 
 type ModifyFileBackupPlanRequest struct {
 	*tchttp.BaseRequest
 	
-	// 备份计划ID
+	// <p>备份计划ID，此参数必填。</p>
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
-	// 备份策略ID
+	// <p>备份策略ID</p>
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 计划名称
+	// <p>计划名称</p>
 	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 
-	// 备份路径列表，1~20 个
+	// <p>备份路径列表，1~20 个</p>
 	BackupPaths []*string `json:"BackupPaths,omitnil,omitempty" name:"BackupPaths"`
 
-	// 包含文件类型，0~20 个
+	// <p>包含文件类型，0~20 个</p>
 	IncludeFileTypes []*string `json:"IncludeFileTypes,omitnil,omitempty" name:"IncludeFileTypes"`
 
-	// 排除文件路径列表，0~20 个
+	// <p>排除文件路径列表，0~20 个</p>
 	ExcludePatterns []*string `json:"ExcludePatterns,omitnil,omitempty" name:"ExcludePatterns"`
 
-	// 是否排除系统目录
+	// <p>是否排除系统目录</p>
 	ExcludeSystemDirectories *bool `json:"ExcludeSystemDirectories,omitnil,omitempty" name:"ExcludeSystemDirectories"`
 
-	// 备份库ID
+	// <p>备份库ID</p>
 	BackupStorageId *string `json:"BackupStorageId,omitnil,omitempty" name:"BackupStorageId"`
 
-	// 计划状态，可选值：normal（正常）、paused（暂停）
+	// <p>计划状态，可选值：normal（正常）、paused（暂停）</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	EnableObjectAcl *bool `json:"EnableObjectAcl,omitnil,omitempty" name:"EnableObjectAcl"`
+
+	// <p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	EnableObjectTags *bool `json:"EnableObjectTags,omitnil,omitempty" name:"EnableObjectTags"`
 }
 
 func (r *ModifyFileBackupPlanRequest) ToJsonString() string {
@@ -6226,6 +6423,8 @@ func (r *ModifyFileBackupPlanRequest) FromJsonString(s string) error {
 	delete(f, "ExcludeSystemDirectories")
 	delete(f, "BackupStorageId")
 	delete(f, "Status")
+	delete(f, "EnableObjectAcl")
+	delete(f, "EnableObjectTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFileBackupPlanRequest has unknown keys!", "")
 	}
@@ -6394,62 +6593,74 @@ type Placement struct {
 }
 
 type PlanInfo struct {
-	// 备份计划ID
+	// <p>备份计划ID</p>
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
-	// 计划关联的实例ID
+	// <p>计划关联的实例ID</p>
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 计划名称
+	// <p>计划名称</p>
 	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 
-	// 备份路径列表，1~20 个
+	// <p>备份路径列表，1~20 个</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupPaths []*string `json:"BackupPaths,omitnil,omitempty" name:"BackupPaths"`
 
-	// 包含文件类型，0~20 个
+	// <p>包含文件类型，0~20 个</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeFileTypes []*string `json:"IncludeFileTypes,omitnil,omitempty" name:"IncludeFileTypes"`
 
-	// 排除文件路径列表，0~20 个
+	// <p>排除文件路径列表，0~20 个</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludePatterns []*string `json:"ExcludePatterns,omitnil,omitempty" name:"ExcludePatterns"`
 
-	// 是否排除系统目录
+	// <p>是否排除系统目录</p>
 	ExcludeSystemDirectories *bool `json:"ExcludeSystemDirectories,omitnil,omitempty" name:"ExcludeSystemDirectories"`
 
-	// 备份库ID
+	// <p>备份库ID</p>
 	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
 
-	// 备份计划状态
+	// <p>备份计划状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 策略ID
+	// <p>策略ID</p>
 	AspId *string `json:"AspId,omitnil,omitempty" name:"AspId"`
 
-	// 策略名称
+	// <p>策略名称</p>
 	AspName *string `json:"AspName,omitnil,omitempty" name:"AspName"`
 
-	// 策略详情
+	// <p>策略详情</p>
 	AspPolicy *AspInfo `json:"AspPolicy,omitnil,omitempty" name:"AspPolicy"`
 
-	// 最近一次执行时间
+	// <p>最近一次执行时间</p>
 	LastExecuteTime *string `json:"LastExecuteTime,omitnil,omitempty" name:"LastExecuteTime"`
 
-	// 下次触发时间
+	// <p>下次触发时间</p>
 	NextTriggerTime *string `json:"NextTriggerTime,omitnil,omitempty" name:"NextTriggerTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 最近一次执行错误信息
+	// <p>最近一次执行错误信息</p>
 	LastTriggerError *string `json:"LastTriggerError,omitnil,omitempty" name:"LastTriggerError"`
 
-	// 备份数量
+	// <p>备份数量</p>
 	BackupCount *int64 `json:"BackupCount,omitnil,omitempty" name:"BackupCount"`
 
-	// 流控信息
+	// <p>流控信息</p>
 	FlowControlSettings []*FlowControlRule `json:"FlowControlSettings,omitnil,omitempty" name:"FlowControlSettings"`
+
+	// <p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableObjectAcl *bool `json:"EnableObjectAcl,omitnil,omitempty" name:"EnableObjectAcl"`
+
+	// <p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableObjectTags *bool `json:"EnableObjectTags,omitnil,omitempty" name:"EnableObjectTags"`
+
+	// <p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 type Policy struct {
@@ -6561,39 +6772,47 @@ type ProtectGroupDeniedAction struct {
 }
 
 type ProtectInstance struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 客户端ID
+	// <p>客户端ID</p>
 	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
 
-	// 客户端版本
+	// <p>客户端版本</p>
 	AgentVersion *string `json:"AgentVersion,omitnil,omitempty" name:"AgentVersion"`
 
-	// 客户端状态
+	// <p>客户端状态</p>
 	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
 
-	// 最后心跳时间
+	// <p>最后心跳时间</p>
 	LastHeartbeatTime *string `json:"LastHeartbeatTime,omitnil,omitempty" name:"LastHeartbeatTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 最新备份点中记录的 CVM 基础信息
+	// <p>最新备份点中记录的 CVM 基础信息</p>
 	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
-	// 该实例可用备份点数量
+	// <p>该实例可用备份点数量</p>
 	BackupCount *uint64 `json:"BackupCount,omitnil,omitempty" name:"BackupCount"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 最近一次备份时间
+	// <p>最近一次备份时间</p>
 	LatestBackupTime *string `json:"LatestBackupTime,omitnil,omitempty" name:"LatestBackupTime"`
 
-	// 离线原因
+	// <p>离线原因</p>
 	OfflineReason *string `json:"OfflineReason,omitnil,omitempty" name:"OfflineReason"`
+
+	// <p>备份数据量，单位为字节</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupSize *int64 `json:"BackupSize,omitnil,omitempty" name:"BackupSize"`
+
+	// <p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 type ProtectedResource struct {
@@ -6605,17 +6824,25 @@ type ProtectedResource struct {
 }
 
 type ProtectedResourceOverview struct {
-	// 受保护资源总数
+	// <p>受保护资源总数</p>
 	TotalProtectedCount *int64 `json:"TotalProtectedCount,omitnil,omitempty" name:"TotalProtectedCount"`
 
-	// 总资源数
+	// <p>总资源数</p>
 	TotalResourceCount *int64 `json:"TotalResourceCount,omitnil,omitempty" name:"TotalResourceCount"`
 
-	// CVM 受保护统计
+	// <p>CVM整机备份受保护统计</p>
 	Cvm *ResourceProtectStat `json:"Cvm,omitnil,omitempty" name:"Cvm"`
 
-	// CFS 受保护统计
+	// <p>CVM文件备份受保护统计</p>
 	CFS *ResourceProtectStat `json:"CFS,omitnil,omitempty" name:"CFS"`
+
+	// <p>CFS文件备份受保护统计</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CFSAgent *ResourceProtectStat `json:"CFSAgent,omitnil,omitempty" name:"CFSAgent"`
+
+	// <p>COS备份受保护统计</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	COSAgent *ResourceProtectStat `json:"COSAgent,omitnil,omitempty" name:"COSAgent"`
 }
 
 type ProtectedResourceStatus struct {
@@ -6780,23 +7007,29 @@ func (r *ReportJobProgressResponse) FromJsonString(s string) error {
 }
 
 type ResourcePlan struct {
-	// 云服务器实例 ID
+	// <p>云服务器实例 ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 备份路径，[0,20]
+	// <p>备份路径，[0,20]</p>
 	BackupPaths []*string `json:"BackupPaths,omitnil,omitempty" name:"BackupPaths"`
 
-	// 包含文件类型，[0,20]
+	// <p>包含文件类型，[0,20]</p>
 	IncludeFileTypes []*string `json:"IncludeFileTypes,omitnil,omitempty" name:"IncludeFileTypes"`
 
-	// 排除路径，[0,20]
+	// <p>排除路径，[0,20]</p>
 	ExcludePatterns []*string `json:"ExcludePatterns,omitnil,omitempty" name:"ExcludePatterns"`
 
-	// 是否排除系统目录
+	// <p>是否排除系统目录</p>
 	ExcludeSystemDirectories *bool `json:"ExcludeSystemDirectories,omitnil,omitempty" name:"ExcludeSystemDirectories"`
 
-	// 是否立即触发全量备份
+	// <p>是否立即触发全量备份</p>
 	ExecuteImmediately *bool `json:"ExecuteImmediately,omitnil,omitempty" name:"ExecuteImmediately"`
+
+	// <p>cos备份是否备份ACL</p>
+	EnableObjectAcl *bool `json:"EnableObjectAcl,omitnil,omitempty" name:"EnableObjectAcl"`
+
+	// <p>cos备份是否备份tag</p>
+	EnableObjectTags *bool `json:"EnableObjectTags,omitnil,omitempty" name:"EnableObjectTags"`
 }
 
 type ResourceProtectStat struct {

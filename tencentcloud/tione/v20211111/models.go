@@ -20,6 +20,20 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AccessRule struct {
+	// <p>模块</p>
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// <p>功能权限点</p>
+	ActionType []*string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// <p>数据权限点</p>
+	DataActionType []*string `json:"DataActionType,omitnil,omitempty" name:"DataActionType"`
+
+	// <p>功能权限点名称</p>
+	ActionTypeName []*string `json:"ActionTypeName,omitnil,omitempty" name:"ActionTypeName"`
+}
+
 type AggregatePublicAlgoVersion struct {
 	// 用于聚合的系列名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1689,6 +1703,77 @@ func (r *CreatePresignedNotebookUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRoleRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>角色名称</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>角色备注</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type CreateRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>角色名称</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>角色备注</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *CreateRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	delete(f, "RoleName")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRoleResponseParams struct {
+	// <p>角色ID</p>
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRoleResponseParams `json:"Response"`
+}
+
+func (r *CreateRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTrainingModelRequestParams struct {
 	// 导入方式
 	// MODEL：导入新模型
@@ -2301,6 +2386,20 @@ type DataPoint struct {
 type DataSetConfig struct {
 	// 数据集ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DataSourceBrief struct {
+	// <p>存储实例ID</p>
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+
+	// <p>存储实例名称</p>
+	StorageName *string `json:"StorageName,omitnil,omitempty" name:"StorageName"`
+
+	// <p>存储目录</p>
+	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
+
+	// <p>数据源读写权限，RW/RO</p>
+	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
 }
 
 type DataSourceInfo struct {
@@ -3158,6 +3257,67 @@ func (r *DeleteNotebookResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteRoleRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>角色ID</p>
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+}
+
+type DeleteRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>角色ID</p>
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+}
+
+func (r *DeleteRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	delete(f, "RoleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRoleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRoleResponseParams `json:"Response"`
+}
+
+func (r *DeleteRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteTrainingModelRequestParams struct {
 	// 模型ID
 	TrainingModelId *string `json:"TrainingModelId,omitnil,omitempty" name:"TrainingModelId"`
@@ -3362,6 +3522,75 @@ func (r *DeleteTrainingTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAccessRulesRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+}
+
+type DescribeAccessRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+}
+
+func (r *DescribeAccessRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccessRulesResponseParams struct {
+	// <p>当前用户有哪些权限</p>
+	AccessRules []*AccessRule `json:"AccessRules,omitnil,omitempty" name:"AccessRules"`
+
+	// <p>权限点全量集合</p>
+	FullAccessRules []*AccessRule `json:"FullAccessRules,omitnil,omitempty" name:"FullAccessRules"`
+
+	// <p>当前用户拥有的空间外角色</p>
+	GlobalRoles []*string `json:"GlobalRoles,omitnil,omitempty" name:"GlobalRoles"`
+
+	// <p>当前用户可见的空间列表</p>
+	Workspaces []*Workspace `json:"Workspaces,omitnil,omitempty" name:"Workspaces"`
+
+	// <p>当前用户有哪些空间外权限</p>
+	OutsideAccessRules []*AccessRule `json:"OutsideAccessRules,omitnil,omitempty" name:"OutsideAccessRules"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAccessRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccessRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccessRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAnnotatedTaskListRequestParams struct {
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -3530,7 +3759,7 @@ type DescribeBillingResourceGroupRequestParams struct {
 	// <p>资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>过滤条件<br>注意: </p><ol><li>Filter.Name 只支持以下枚举值:<br> InstanceId (资源组节点id)<br> InstanceStatus (资源组节点状态)</li><li>Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询</li><li>Filter.Negative: 是否取反，默认为false</li><li>Filter.Fuzzy: 是否模糊查询，默认为false</li><li>每次请求的Filters的上限为10，Filter.Values的上限为100</li></ol>
@@ -3555,7 +3784,7 @@ type DescribeBillingResourceGroupRequest struct {
 	// <p>资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>过滤条件<br>注意: </p><ol><li>Filter.Name 只支持以下枚举值:<br> InstanceId (资源组节点id)<br> InstanceStatus (资源组节点状态)</li><li>Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询</li><li>Filter.Negative: 是否取反，默认为false</li><li>Filter.Fuzzy: 是否模糊查询，默认为false</li><li>每次请求的Filters的上限为10，Filter.Values的上限为100</li></ol>
@@ -6009,6 +6238,288 @@ func (r *DescribePublicAlgoVersionListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRoleRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>角色ID</p>
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// <p>资源类型</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>偏移值</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>角色ID</p>
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// <p>资源类型</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>偏移值</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	delete(f, "RoleId")
+	delete(f, "ResourceType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRoleResponseParams struct {
+	// <p>角色ID</p>
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// <p>角色名称</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>角色类型</p>
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>权限规则列表</p>
+	AccessRules []*AccessRule `json:"AccessRules,omitnil,omitempty" name:"AccessRules"`
+
+	// <p>资源级权限列表</p>
+	ResourcePermissions []*ResourcePermission `json:"ResourcePermissions,omitnil,omitempty" name:"ResourcePermissions"`
+
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRoleResponseParams `json:"Response"`
+}
+
+func (r *DescribeRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRoleUsersRequestParams struct {
+	// <p>角色ID</p>
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+}
+
+type DescribeRoleUsersRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>角色ID</p>
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+}
+
+func (r *DescribeRoleUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRoleUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoleId")
+	delete(f, "TiProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRoleUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRoleUsersResponseParams struct {
+	// <p>符合过滤条件的用户总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>用户列表</p>
+	Users []*UserRoleInfo `json:"Users,omitnil,omitempty" name:"Users"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRoleUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRoleUsersResponseParams `json:"Response"`
+}
+
+func (r *DescribeRoleUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRoleUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRolesRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移值</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>排序方式</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段</p>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>是否返回绑定的用户数</p>
+	WithUserCount *bool `json:"WithUserCount,omitnil,omitempty" name:"WithUserCount"`
+}
+
+type DescribeRolesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移值</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>排序方式</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段</p>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>是否返回绑定的用户数</p>
+	WithUserCount *bool `json:"WithUserCount,omitnil,omitempty" name:"WithUserCount"`
+}
+
+func (r *DescribeRolesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRolesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	delete(f, "WithUserCount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRolesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRolesResponseParams struct {
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>角色列表</p>
+	Roles []*RoleInfo `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRolesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRolesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRolesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRolesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSubAccountLinuxUserInfosRequestParams struct {
 	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
@@ -6546,6 +7057,309 @@ func (r *DescribeTrainingTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTrainingTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkspaceMembersRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>排序字段</p>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>排序方式</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>是否包含角色信息</p>
+	WithRoles *bool `json:"WithRoles,omitnil,omitempty" name:"WithRoles"`
+}
+
+type DescribeWorkspaceMembersRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>排序字段</p>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>排序方式</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>是否包含角色信息</p>
+	WithRoles *bool `json:"WithRoles,omitnil,omitempty" name:"WithRoles"`
+}
+
+func (r *DescribeWorkspaceMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspaceMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "Order")
+	delete(f, "WithRoles")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkspaceMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkspaceMembersResponseParams struct {
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>用户列表</p>
+	Members []*UserRoleInfo `json:"Members,omitnil,omitempty" name:"Members"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkspaceMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkspaceMembersResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkspaceMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspaceMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkspaceQuotaUsageRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+}
+
+type DescribeWorkspaceQuotaUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+}
+
+func (r *DescribeWorkspaceQuotaUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspaceQuotaUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkspaceQuotaUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkspaceQuotaUsageResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkspaceQuotaUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkspaceQuotaUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkspaceQuotaUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspaceQuotaUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkspaceQuotasRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+}
+
+type DescribeWorkspaceQuotasRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+}
+
+func (r *DescribeWorkspaceQuotasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspaceQuotasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkspaceQuotasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkspaceQuotasResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkspaceQuotasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkspaceQuotasResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkspaceQuotasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspaceQuotasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkspaceRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>是否包含运行中的任务</p>
+	WithRunningTasks *bool `json:"WithRunningTasks,omitnil,omitempty" name:"WithRunningTasks"`
+
+	// <p>是否包含有管理权限的人员信息</p>
+	WithMembers *bool `json:"WithMembers,omitnil,omitempty" name:"WithMembers"`
+}
+
+type DescribeWorkspaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>是否包含运行中的任务</p>
+	WithRunningTasks *bool `json:"WithRunningTasks,omitnil,omitempty" name:"WithRunningTasks"`
+
+	// <p>是否包含有管理权限的人员信息</p>
+	WithMembers *bool `json:"WithMembers,omitnil,omitempty" name:"WithMembers"`
+}
+
+func (r *DescribeWorkspaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	delete(f, "WithRunningTasks")
+	delete(f, "WithMembers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkspaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkspaceResponseParams struct {
+	// <p>项目ID</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>运行中的任务信息</p>
+	RunningTasks []*WorkspaceTaskInfo `json:"RunningTasks,omitnil,omitempty" name:"RunningTasks"`
+
+	// <p>空间创建人信息</p>
+	Creator *UserBriefInfo `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// <p>当前空间拥有的角色信息</p>
+	OwnedRoles []*RoleBriefInfo `json:"OwnedRoles,omitnil,omitempty" name:"OwnedRoles"`
+
+	// <p>空间成员信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberInfo *MemberInfo `json:"MemberInfo,omitnil,omitempty" name:"MemberInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkspaceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkspaceResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkspaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7312,6 +8126,16 @@ type MaterialInfo struct {
 	// 训练任务挂载路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
+}
+
+type MemberInfo struct {
+	// <p>超管成员列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuperAdmins []*UserBriefInfo `json:"SuperAdmins,omitnil,omitempty" name:"SuperAdmins"`
+
+	// <p>空间内管理员列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Admins []*UserBriefInfo `json:"Admins,omitnil,omitempty" name:"Admins"`
 }
 
 type Message struct {
@@ -8422,6 +9246,207 @@ func (r *ModifyNotebookTagsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRoleAccessRulesRequestParams struct {
+
+}
+
+type ModifyRoleAccessRulesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ModifyRoleAccessRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoleAccessRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoleAccessRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRoleAccessRulesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRoleAccessRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRoleAccessRulesResponseParams `json:"Response"`
+}
+
+func (r *ModifyRoleAccessRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoleAccessRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRoleRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>角色ID</p>
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// <p>角色名称</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ModifyRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>角色ID</p>
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// <p>角色名称</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *ModifyRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	delete(f, "RoleId")
+	delete(f, "RoleName")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRoleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRoleResponseParams `json:"Response"`
+}
+
+func (r *ModifyRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRoleUserGrantRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>角色ID列表</p>
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
+
+	// <p>用户UIN列表</p>
+	SubUins []*string `json:"SubUins,omitnil,omitempty" name:"SubUins"`
+
+	// <p>授权方式</p>
+	Grant *string `json:"Grant,omitnil,omitempty" name:"Grant"`
+}
+
+type ModifyRoleUserGrantRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>角色ID列表</p>
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
+
+	// <p>用户UIN列表</p>
+	SubUins []*string `json:"SubUins,omitnil,omitempty" name:"SubUins"`
+
+	// <p>授权方式</p>
+	Grant *string `json:"Grant,omitnil,omitempty" name:"Grant"`
+}
+
+func (r *ModifyRoleUserGrantRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoleUserGrantRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	delete(f, "RoleIds")
+	delete(f, "SubUins")
+	delete(f, "Grant")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoleUserGrantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRoleUserGrantResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRoleUserGrantResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRoleUserGrantResponseParams `json:"Response"`
+}
+
+func (r *ModifyRoleUserGrantResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoleUserGrantResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyServiceGroupWeightsRequestParams struct {
 	// 服务组id
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
@@ -8490,6 +9515,135 @@ func (r *ModifyServiceGroupWeightsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyServiceGroupWeightsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserGrantRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>用户列表</p>
+	SubUins []*string `json:"SubUins,omitnil,omitempty" name:"SubUins"`
+
+	// <p>角色列表</p>
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
+
+	// <p>授权类型</p>
+	Grant *string `json:"Grant,omitnil,omitempty" name:"Grant"`
+}
+
+type ModifyUserGrantRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>用户列表</p>
+	SubUins []*string `json:"SubUins,omitnil,omitempty" name:"SubUins"`
+
+	// <p>角色列表</p>
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
+
+	// <p>授权类型</p>
+	Grant *string `json:"Grant,omitnil,omitempty" name:"Grant"`
+}
+
+func (r *ModifyUserGrantRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserGrantRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	delete(f, "SubUins")
+	delete(f, "RoleIds")
+	delete(f, "Grant")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserGrantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserGrantResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUserGrantResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserGrantResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserGrantResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserGrantResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyWorkspaceMembersRequestParams struct {
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+}
+
+type ModifyWorkspaceMembersRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+}
+
+func (r *ModifyWorkspaceMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWorkspaceMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWorkspaceMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyWorkspaceMembersResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyWorkspaceMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyWorkspaceMembersResponseParams `json:"Response"`
+}
+
+func (r *ModifyWorkspaceMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWorkspaceMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9595,6 +10749,29 @@ type ResourceInstanceRunningJobInfo struct {
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 }
 
+type ResourcePermission struct {
+	// <p>资源类型</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>资源ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>权限值</p>
+	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
+
+	// <p>资源名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>创建者子账号</p>
+	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// <p>创建者昵称</p>
+	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
+
+	// <p>数据源简要信息</p>
+	DataSourceBrief *DataSourceBrief `json:"DataSourceBrief,omitnil,omitempty" name:"DataSourceBrief"`
+}
+
 type ResourceSpec struct {
 	// 规格简称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9615,6 +10792,36 @@ type ResourceSupplyAttribute struct {
 
 	// <p>集群类型</p><p>枚举值：</p><ul><li>DEFAULT： 默认集群</li><li>THIRD： 第三方集群</li></ul><p>默认值：DEFAULT</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+}
+
+type RoleBriefInfo struct {
+	// <p>角色id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// <p>角色名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+}
+
+type RoleInfo struct {
+	// <p>角色ID</p>
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// <p>名称</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>角色类型。&quot;SYSTEM&quot; 内置角色，&quot;CUSTOMER&quot; 自定义角色</p>
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>绑定的用户数</p>
+	UserCount *int64 `json:"UserCount,omitnil,omitempty" name:"UserCount"`
 }
 
 type RollingUpdate struct {
@@ -11419,6 +12626,30 @@ type Usage struct {
 	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
 }
 
+type UserBriefInfo struct {
+	// <p>子用户uin</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// <p>子用户名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
+}
+
+type UserRoleInfo struct {
+	// <p>子账号</p>
+	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// <p>名称</p>
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>角色列表</p>
+	Roles []*RoleInfo `json:"Roles,omitnil,omitempty" name:"Roles"`
+}
+
 type VolumeMount struct {
 	// <p>cfs的配置信息</p>
 	CFSConfig *CFSConfig `json:"CFSConfig,omitnil,omitempty" name:"CFSConfig"`
@@ -11502,4 +12733,21 @@ type Workspace struct {
 
 	// <p>工作空间状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type WorkspaceTaskInfo struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务名称</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>任务类型</p>
+	ResourceTaskType *string `json:"ResourceTaskType,omitnil,omitempty" name:"ResourceTaskType"`
+
+	// <p>任务所属资源组</p>
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 }

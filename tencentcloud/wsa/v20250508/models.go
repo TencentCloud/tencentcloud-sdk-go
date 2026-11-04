@@ -32,7 +32,7 @@ type SearchProRequestParams struct {
 	Site *string `json:"Site,omitnil,omitempty" name:"Site"`
 
 	// <p>控制返回结果条数，可取值：cnt=10/20/30/40/50。（<strong>极速版不支持该参数</strong>）</p><p>枚举值：</p><ul><li>10： 返回10条结果</li><li>20： 返回20条结果</li><li>30： 返回30条结果</li><li>40： 返回40条结果</li><li>50： 返回50条结果</li></ul>
-	Cnt *uint64 `json:"Cnt,omitnil,omitempty" name:"Cnt"`
+	Cnt *int64 `json:"Cnt,omitnil,omitempty" name:"Cnt"`
 
 	// <p>垂直领域搜索。（<strong>极速版不支持该参数</strong>）</p><p>枚举值：</p><ul><li>gov： 政府</li><li>news： 新闻</li><li>acad： 学术</li><li>finance： 财经</li></ul>
 	Industry *string `json:"Industry,omitnil,omitempty" name:"Industry"`
@@ -57,7 +57,7 @@ type SearchProRequest struct {
 	Site *string `json:"Site,omitnil,omitempty" name:"Site"`
 
 	// <p>控制返回结果条数，可取值：cnt=10/20/30/40/50。（<strong>极速版不支持该参数</strong>）</p><p>枚举值：</p><ul><li>10： 返回10条结果</li><li>20： 返回20条结果</li><li>30： 返回30条结果</li><li>40： 返回40条结果</li><li>50： 返回50条结果</li></ul>
-	Cnt *uint64 `json:"Cnt,omitnil,omitempty" name:"Cnt"`
+	Cnt *int64 `json:"Cnt,omitnil,omitempty" name:"Cnt"`
 
 	// <p>垂直领域搜索。（<strong>极速版不支持该参数</strong>）</p><p>枚举值：</p><ul><li>gov： 政府</li><li>news： 新闻</li><li>acad： 学术</li><li>finance： 财经</li></ul>
 	Industry *string `json:"Industry,omitnil,omitempty" name:"Industry"`

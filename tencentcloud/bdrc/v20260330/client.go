@@ -150,6 +150,8 @@ func NewBindAutoBackupPolicyResponse() (response *BindAutoBackupPolicyResponse) 
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  MISSINGPARAMETER_MISSINGREQUIRED = "MissingParameter.MissingRequired"
 //  RESOURCENOTFOUND_AUTOBACKUPPOLICYNOTFOUND = "ResourceNotFound.AutoBackupPolicyNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 func (c *Client) BindAutoBackupPolicy(request *BindAutoBackupPolicyRequest) (response *BindAutoBackupPolicyResponse, err error) {
@@ -166,6 +168,8 @@ func (c *Client) BindAutoBackupPolicy(request *BindAutoBackupPolicyRequest) (res
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  MISSINGPARAMETER_MISSINGREQUIRED = "MissingParameter.MissingRequired"
 //  RESOURCENOTFOUND_AUTOBACKUPPOLICYNOTFOUND = "ResourceNotFound.AutoBackupPolicyNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 func (c *Client) BindAutoBackupPolicyWithContext(ctx context.Context, request *BindAutoBackupPolicyRequest) (response *BindAutoBackupPolicyResponse, err error) {
@@ -339,6 +343,7 @@ func NewCreateBackupVaultResponse() (response *CreateBackupVaultResponse) {
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  LIMITEXCEEDED_BACKUPVAULTOUTOFQUOTA = "LimitExceeded.BackupVaultOutOfQuota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateBackupVault(request *CreateBackupVaultRequest) (response *CreateBackupVaultResponse, err error) {
     return c.CreateBackupVaultWithContext(context.Background(), request)
@@ -353,6 +358,7 @@ func (c *Client) CreateBackupVault(request *CreateBackupVaultRequest) (response 
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  LIMITEXCEEDED_BACKUPVAULTOUTOFQUOTA = "LimitExceeded.BackupVaultOutOfQuota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateBackupVaultWithContext(ctx context.Context, request *CreateBackupVaultRequest) (response *CreateBackupVaultResponse, err error) {
     if request == nil {
@@ -586,17 +592,32 @@ func NewCreateFileBackupResponse() (response *CreateFileBackupResponse) {
 // 本接口用于创建文件备份点
 //
 // 可能返回的错误码:
+//  INTERNALERROR_BILLINGDELIVERYTIMEOUT = "InternalError.BillingDeliveryTimeout"
+//  INTERNALERROR_CLOUDAPITIMEOUT = "InternalError.CloudApiTimeout"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INTERNALERROR_COSBUCKETCHECKFAILED = "InternalError.CosBucketCheckFailed"
 //  INTERNALERROR_CVMQUERYFAILED = "InternalError.CvmQueryFailed"
 //  INTERNALERROR_INITREPOSITORYFAILED = "InternalError.InitRepositoryFailed"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 //  INVALIDPARAMETER_PATHNESTED = "InvalidParameter.PathNested"
 //  INVALIDPARAMETERVALUE_VAULTSTATEERROR = "InvalidParameterValue.VaultStateError"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_AGENTNOTINSTALLED = "ResourceNotFound.AgentNotInstalled"
+//  RESOURCENOTFOUND_BACKUPPLANNOTEXIST = "ResourceNotFound.BackupPlanNotExist"
+//  RESOURCENOTFOUND_BACKUPSOURCENOTEXIST = "ResourceNotFound.BackupSourceNotExist"
+//  RESOURCENOTFOUND_COSBUCKETNOTFOUND = "ResourceNotFound.CosBucketNotFound"
+//  RESOURCENOTFOUND_ENIPOOLNOTCONFIGURED = "ResourceNotFound.EniPoolNotConfigured"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_VAULTNOTEXIST = "ResourceNotFound.VaultNotExist"
+//  UNAUTHORIZEDOPERATION_COSBUCKETFORBIDDEN = "UnauthorizedOperation.CosBucketForbidden"
+//  UNAUTHORIZEDOPERATION_HASNOSTRATEGY = "UnauthorizedOperation.HasNoStrategy"
 //  UNAUTHORIZEDOPERATION_LACKOFQUALIFICATION = "UnauthorizedOperation.LackOfQualification"
+//  UNAUTHORIZEDOPERATION_ROLENOTEXISTS = "UnauthorizedOperation.RoleNotExists"
 //  UNSUPPORTEDOPERATION_AGENTNOTACTIVE = "UnsupportedOperation.AgentNotActive"
+//  UNSUPPORTEDOPERATION_BACKUPJOBCONFLICT = "UnsupportedOperation.BackupJobConflict"
 //  UNSUPPORTEDOPERATION_FILEBACKUPRESTORECONFLICT = "UnsupportedOperation.FileBackupRestoreConflict"
 //  UNSUPPORTEDOPERATION_FILEBACKUPTASKDUPLICATE = "UnsupportedOperation.FileBackupTaskDuplicate"
+//  UNSUPPORTEDOPERATION_INSTANCESNAPSHOTROLLBACKING = "UnsupportedOperation.InstanceSnapshotRollbacking"
 func (c *Client) CreateFileBackup(request *CreateFileBackupRequest) (response *CreateFileBackupResponse, err error) {
     return c.CreateFileBackupWithContext(context.Background(), request)
 }
@@ -605,17 +626,32 @@ func (c *Client) CreateFileBackup(request *CreateFileBackupRequest) (response *C
 // 本接口用于创建文件备份点
 //
 // 可能返回的错误码:
+//  INTERNALERROR_BILLINGDELIVERYTIMEOUT = "InternalError.BillingDeliveryTimeout"
+//  INTERNALERROR_CLOUDAPITIMEOUT = "InternalError.CloudApiTimeout"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INTERNALERROR_COSBUCKETCHECKFAILED = "InternalError.CosBucketCheckFailed"
 //  INTERNALERROR_CVMQUERYFAILED = "InternalError.CvmQueryFailed"
 //  INTERNALERROR_INITREPOSITORYFAILED = "InternalError.InitRepositoryFailed"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 //  INVALIDPARAMETER_PATHNESTED = "InvalidParameter.PathNested"
 //  INVALIDPARAMETERVALUE_VAULTSTATEERROR = "InvalidParameterValue.VaultStateError"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_AGENTNOTINSTALLED = "ResourceNotFound.AgentNotInstalled"
+//  RESOURCENOTFOUND_BACKUPPLANNOTEXIST = "ResourceNotFound.BackupPlanNotExist"
+//  RESOURCENOTFOUND_BACKUPSOURCENOTEXIST = "ResourceNotFound.BackupSourceNotExist"
+//  RESOURCENOTFOUND_COSBUCKETNOTFOUND = "ResourceNotFound.CosBucketNotFound"
+//  RESOURCENOTFOUND_ENIPOOLNOTCONFIGURED = "ResourceNotFound.EniPoolNotConfigured"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_VAULTNOTEXIST = "ResourceNotFound.VaultNotExist"
+//  UNAUTHORIZEDOPERATION_COSBUCKETFORBIDDEN = "UnauthorizedOperation.CosBucketForbidden"
+//  UNAUTHORIZEDOPERATION_HASNOSTRATEGY = "UnauthorizedOperation.HasNoStrategy"
 //  UNAUTHORIZEDOPERATION_LACKOFQUALIFICATION = "UnauthorizedOperation.LackOfQualification"
+//  UNAUTHORIZEDOPERATION_ROLENOTEXISTS = "UnauthorizedOperation.RoleNotExists"
 //  UNSUPPORTEDOPERATION_AGENTNOTACTIVE = "UnsupportedOperation.AgentNotActive"
+//  UNSUPPORTEDOPERATION_BACKUPJOBCONFLICT = "UnsupportedOperation.BackupJobConflict"
 //  UNSUPPORTEDOPERATION_FILEBACKUPRESTORECONFLICT = "UnsupportedOperation.FileBackupRestoreConflict"
 //  UNSUPPORTEDOPERATION_FILEBACKUPTASKDUPLICATE = "UnsupportedOperation.FileBackupTaskDuplicate"
+//  UNSUPPORTEDOPERATION_INSTANCESNAPSHOTROLLBACKING = "UnsupportedOperation.InstanceSnapshotRollbacking"
 func (c *Client) CreateFileBackupWithContext(ctx context.Context, request *CreateFileBackupRequest) (response *CreateFileBackupResponse, err error) {
     if request == nil {
         request = NewCreateFileBackupRequest()
@@ -656,6 +692,7 @@ func NewCreateFileBackupPlanResponse() (response *CreateFileBackupPlanResponse) 
 // 本接口用于创建备份计划
 //
 // 可能返回的错误码:
+//  INTERNALERROR_COSBUCKETCHECKFAILED = "InternalError.CosBucketCheckFailed"
 //  INTERNALERROR_CVMQUERYFAILED = "InternalError.CvmQueryFailed"
 //  INVALIDPARAMETER_PATHNESTED = "InvalidParameter.PathNested"
 //  INVALIDPARAMETER_POLICYNOTSUPPORTVAULT = "InvalidParameter.PolicyNotSupportVault"
@@ -665,8 +702,14 @@ func NewCreateFileBackupPlanResponse() (response *CreateFileBackupPlanResponse) 
 //  INVALIDPARAMETERVALUE_POLICYNOTAVAILABLE = "InvalidParameterValue.PolicyNotAvailable"
 //  INVALIDPARAMETERVALUE_VAULTSTATEERROR = "InvalidParameterValue.VaultStateError"
 //  RESOURCENOTFOUND_AGENTNOTINSTALLED = "ResourceNotFound.AgentNotInstalled"
+//  RESOURCENOTFOUND_BACKUPSOURCENOTEXIST = "ResourceNotFound.BackupSourceNotExist"
+//  RESOURCENOTFOUND_CFSFILESYSTEMNOTFOUND = "ResourceNotFound.CfsFilesystemNotFound"
+//  RESOURCENOTFOUND_COSBUCKETNOTFOUND = "ResourceNotFound.CosBucketNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_VAULTNOTEXIST = "ResourceNotFound.VaultNotExist"
+//  UNAUTHORIZEDOPERATION_COSBUCKETFORBIDDEN = "UnauthorizedOperation.CosBucketForbidden"
 //  UNSUPPORTEDOPERATION_AGENTNOTACTIVE = "UnsupportedOperation.AgentNotActive"
+//  UNSUPPORTEDOPERATION_BACKUPPLANPATHSCONFLICT = "UnsupportedOperation.BackupPlanPathsConflict"
 func (c *Client) CreateFileBackupPlan(request *CreateFileBackupPlanRequest) (response *CreateFileBackupPlanResponse, err error) {
     return c.CreateFileBackupPlanWithContext(context.Background(), request)
 }
@@ -675,6 +718,7 @@ func (c *Client) CreateFileBackupPlan(request *CreateFileBackupPlanRequest) (res
 // 本接口用于创建备份计划
 //
 // 可能返回的错误码:
+//  INTERNALERROR_COSBUCKETCHECKFAILED = "InternalError.CosBucketCheckFailed"
 //  INTERNALERROR_CVMQUERYFAILED = "InternalError.CvmQueryFailed"
 //  INVALIDPARAMETER_PATHNESTED = "InvalidParameter.PathNested"
 //  INVALIDPARAMETER_POLICYNOTSUPPORTVAULT = "InvalidParameter.PolicyNotSupportVault"
@@ -684,8 +728,14 @@ func (c *Client) CreateFileBackupPlan(request *CreateFileBackupPlanRequest) (res
 //  INVALIDPARAMETERVALUE_POLICYNOTAVAILABLE = "InvalidParameterValue.PolicyNotAvailable"
 //  INVALIDPARAMETERVALUE_VAULTSTATEERROR = "InvalidParameterValue.VaultStateError"
 //  RESOURCENOTFOUND_AGENTNOTINSTALLED = "ResourceNotFound.AgentNotInstalled"
+//  RESOURCENOTFOUND_BACKUPSOURCENOTEXIST = "ResourceNotFound.BackupSourceNotExist"
+//  RESOURCENOTFOUND_CFSFILESYSTEMNOTFOUND = "ResourceNotFound.CfsFilesystemNotFound"
+//  RESOURCENOTFOUND_COSBUCKETNOTFOUND = "ResourceNotFound.CosBucketNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_VAULTNOTEXIST = "ResourceNotFound.VaultNotExist"
+//  UNAUTHORIZEDOPERATION_COSBUCKETFORBIDDEN = "UnauthorizedOperation.CosBucketForbidden"
 //  UNSUPPORTEDOPERATION_AGENTNOTACTIVE = "UnsupportedOperation.AgentNotActive"
+//  UNSUPPORTEDOPERATION_BACKUPPLANPATHSCONFLICT = "UnsupportedOperation.BackupPlanPathsConflict"
 func (c *Client) CreateFileBackupPlanWithContext(ctx context.Context, request *CreateFileBackupPlanRequest) (response *CreateFileBackupPlanResponse, err error) {
     if request == nil {
         request = NewCreateFileBackupPlanRequest()
@@ -723,33 +773,47 @@ func NewCreateFileRestoreTaskResponse() (response *CreateFileRestoreTaskResponse
 }
 
 // CreateFileRestoreTask
-// 创建恢复任务
+// 创建恢复任务。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INTERNALERROR_COSBUCKETCHECKFAILED = "InternalError.CosBucketCheckFailed"
+//  INTERNALERROR_RESTORETASKENQUEUEPENDING = "InternalError.RestoreTaskEnqueuePending"
 //  INVALIDPARAMETERVALUE_INVALIDCONFLICTSTRATEGY = "InvalidParameterValue.InvalidConflictStrategy"
 //  INVALIDPARAMETERVALUE_PATHTOOLONG = "InvalidParameterValue.PathTooLong"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_AGENTNOTINSTALLED = "ResourceNotFound.AgentNotInstalled"
 //  RESOURCENOTFOUND_FILEBACKUPNOTEXIST = "ResourceNotFound.FileBackupNotExist"
+//  RESOURCENOTFOUND_RESTORETARGETNOTEXIST = "ResourceNotFound.RestoreTargetNotExist"
 //  UNSUPPORTEDOPERATION_AGENTNOTACTIVE = "UnsupportedOperation.AgentNotActive"
 //  UNSUPPORTEDOPERATION_FILEBACKUPRESTORECONFLICT = "UnsupportedOperation.FileBackupRestoreConflict"
 //  UNSUPPORTEDOPERATION_FILEBACKUPSTATEERROR = "UnsupportedOperation.FileBackupStateError"
 //  UNSUPPORTEDOPERATION_INSTANCESNAPSHOTROLLBACKING = "UnsupportedOperation.InstanceSnapshotRollbacking"
+//  UNSUPPORTEDOPERATION_RESTOREJOBCONFLICT = "UnsupportedOperation.RestoreJobConflict"
 func (c *Client) CreateFileRestoreTask(request *CreateFileRestoreTaskRequest) (response *CreateFileRestoreTaskResponse, err error) {
     return c.CreateFileRestoreTaskWithContext(context.Background(), request)
 }
 
 // CreateFileRestoreTask
-// 创建恢复任务
+// 创建恢复任务。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INTERNALERROR_COSBUCKETCHECKFAILED = "InternalError.CosBucketCheckFailed"
+//  INTERNALERROR_RESTORETASKENQUEUEPENDING = "InternalError.RestoreTaskEnqueuePending"
 //  INVALIDPARAMETERVALUE_INVALIDCONFLICTSTRATEGY = "InvalidParameterValue.InvalidConflictStrategy"
 //  INVALIDPARAMETERVALUE_PATHTOOLONG = "InvalidParameterValue.PathTooLong"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_AGENTNOTINSTALLED = "ResourceNotFound.AgentNotInstalled"
 //  RESOURCENOTFOUND_FILEBACKUPNOTEXIST = "ResourceNotFound.FileBackupNotExist"
+//  RESOURCENOTFOUND_RESTORETARGETNOTEXIST = "ResourceNotFound.RestoreTargetNotExist"
 //  UNSUPPORTEDOPERATION_AGENTNOTACTIVE = "UnsupportedOperation.AgentNotActive"
 //  UNSUPPORTEDOPERATION_FILEBACKUPRESTORECONFLICT = "UnsupportedOperation.FileBackupRestoreConflict"
 //  UNSUPPORTEDOPERATION_FILEBACKUPSTATEERROR = "UnsupportedOperation.FileBackupStateError"
 //  UNSUPPORTEDOPERATION_INSTANCESNAPSHOTROLLBACKING = "UnsupportedOperation.InstanceSnapshotRollbacking"
+//  UNSUPPORTEDOPERATION_RESTOREJOBCONFLICT = "UnsupportedOperation.RestoreJobConflict"
 func (c *Client) CreateFileRestoreTaskWithContext(ctx context.Context, request *CreateFileRestoreTaskRequest) (response *CreateFileRestoreTaskResponse, err error) {
     if request == nil {
         request = NewCreateFileRestoreTaskRequest()
@@ -1111,8 +1175,13 @@ func NewDeleteBackupVaultsResponse() (response *DeleteBackupVaultsResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  OPERATIONDENIED_BACKUPVAULTDELETING = "OperationDenied.BackupVaultDeleting"
+//  OPERATIONDENIED_BACKUPVAULTHASFILEBACKUP = "OperationDenied.BackupVaultHasFileBackup"
+//  OPERATIONDENIED_BACKUPVAULTHASPOLICY = "OperationDenied.BackupVaultHasPolicy"
+//  RESOURCENOTFOUND_BACKUPVAULTNOTFOUND = "ResourceNotFound.BackupVaultNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNSUPPORTEDOPERATION_BACKUPVAULTSTATEERROR = "UnsupportedOperation.BackupVaultStateError"
 func (c *Client) DeleteBackupVaults(request *DeleteBackupVaultsRequest) (response *DeleteBackupVaultsResponse, err error) {
     return c.DeleteBackupVaultsWithContext(context.Background(), request)
 }
@@ -1122,8 +1191,13 @@ func (c *Client) DeleteBackupVaults(request *DeleteBackupVaultsRequest) (respons
 //
 // 可能返回的错误码:
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  OPERATIONDENIED_BACKUPVAULTDELETING = "OperationDenied.BackupVaultDeleting"
+//  OPERATIONDENIED_BACKUPVAULTHASFILEBACKUP = "OperationDenied.BackupVaultHasFileBackup"
+//  OPERATIONDENIED_BACKUPVAULTHASPOLICY = "OperationDenied.BackupVaultHasPolicy"
+//  RESOURCENOTFOUND_BACKUPVAULTNOTFOUND = "ResourceNotFound.BackupVaultNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNSUPPORTEDOPERATION_BACKUPVAULTSTATEERROR = "UnsupportedOperation.BackupVaultStateError"
 func (c *Client) DeleteBackupVaultsWithContext(ctx context.Context, request *DeleteBackupVaultsRequest) (response *DeleteBackupVaultsResponse, err error) {
     if request == nil {
         request = NewDeleteBackupVaultsRequest()
@@ -1552,8 +1626,11 @@ func NewDeleteFileBackupsResponse() (response *DeleteFileBackupsResponse) {
 // 删除文件备份点
 //
 // 可能返回的错误码:
+//  INTERNALERROR_BALANCERECORDFAILED = "InternalError.BalanceRecordFailed"
+//  INTERNALERROR_DATABASEDEADLOCK = "InternalError.DatabaseDeadlock"
 //  INTERNALERROR_PARTIALDELETEFAILED = "InternalError.PartialDeleteFailed"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  RESOURCENOTFOUND_FILEBACKUPNOTEXIST = "ResourceNotFound.FileBackupNotExist"
 //  UNSUPPORTEDOPERATION_FILEBACKUPSTATEERROR = "UnsupportedOperation.FileBackupStateError"
 func (c *Client) DeleteFileBackups(request *DeleteFileBackupsRequest) (response *DeleteFileBackupsResponse, err error) {
     return c.DeleteFileBackupsWithContext(context.Background(), request)
@@ -1563,8 +1640,11 @@ func (c *Client) DeleteFileBackups(request *DeleteFileBackupsRequest) (response 
 // 删除文件备份点
 //
 // 可能返回的错误码:
+//  INTERNALERROR_BALANCERECORDFAILED = "InternalError.BalanceRecordFailed"
+//  INTERNALERROR_DATABASEDEADLOCK = "InternalError.DatabaseDeadlock"
 //  INTERNALERROR_PARTIALDELETEFAILED = "InternalError.PartialDeleteFailed"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  RESOURCENOTFOUND_FILEBACKUPNOTEXIST = "ResourceNotFound.FileBackupNotExist"
 //  UNSUPPORTEDOPERATION_FILEBACKUPSTATEERROR = "UnsupportedOperation.FileBackupStateError"
 func (c *Client) DeleteFileBackupsWithContext(ctx context.Context, request *DeleteFileBackupsRequest) (response *DeleteFileBackupsResponse, err error) {
     if request == nil {
@@ -1958,8 +2038,13 @@ func NewDescribeBackupOverviewGeneralResponse() (response *DescribeBackupOvervie
 // 查询备份概览信息
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDVALUE = "InvalidParameterValue.InvalidValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 func (c *Client) DescribeBackupOverviewGeneral(request *DescribeBackupOverviewGeneralRequest) (response *DescribeBackupOverviewGeneralResponse, err error) {
     return c.DescribeBackupOverviewGeneralWithContext(context.Background(), request)
 }
@@ -1968,8 +2053,13 @@ func (c *Client) DescribeBackupOverviewGeneral(request *DescribeBackupOverviewGe
 // 查询备份概览信息
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDVALUE = "InvalidParameterValue.InvalidValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 func (c *Client) DescribeBackupOverviewGeneralWithContext(ctx context.Context, request *DescribeBackupOverviewGeneralRequest) (response *DescribeBackupOverviewGeneralResponse, err error) {
     if request == nil {
         request = NewDescribeBackupOverviewGeneralRequest()
@@ -2909,6 +2999,7 @@ func NewDescribeFileBackupObjectsResponse() (response *DescribeFileBackupObjects
 //  INTERNALERROR_SNAPSHOTTREEQUERYFAILED = "InternalError.SnapshotTreeQueryFailed"
 //  INVALIDPARAMETERVALUE_INVALIDORDERDIRECTION = "InvalidParameterValue.InvalidOrderDirection"
 //  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 //  UNSUPPORTEDOPERATION_FILEBACKUPSTATEERROR = "UnsupportedOperation.FileBackupStateError"
 //  UNSUPPORTEDOPERATION_SNAPSHOTUNAVAILABLE = "UnsupportedOperation.SnapshotUnavailable"
 func (c *Client) DescribeFileBackupObjects(request *DescribeFileBackupObjectsRequest) (response *DescribeFileBackupObjectsResponse, err error) {
@@ -2922,6 +3013,7 @@ func (c *Client) DescribeFileBackupObjects(request *DescribeFileBackupObjectsReq
 //  INTERNALERROR_SNAPSHOTTREEQUERYFAILED = "InternalError.SnapshotTreeQueryFailed"
 //  INVALIDPARAMETERVALUE_INVALIDORDERDIRECTION = "InvalidParameterValue.InvalidOrderDirection"
 //  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 //  UNSUPPORTEDOPERATION_FILEBACKUPSTATEERROR = "UnsupportedOperation.FileBackupStateError"
 //  UNSUPPORTEDOPERATION_SNAPSHOTUNAVAILABLE = "UnsupportedOperation.SnapshotUnavailable"
 func (c *Client) DescribeFileBackupObjectsWithContext(ctx context.Context, request *DescribeFileBackupObjectsRequest) (response *DescribeFileBackupObjectsResponse, err error) {
@@ -3723,6 +3815,7 @@ func NewModifyBackupVaultAttributeResponse() (response *ModifyBackupVaultAttribu
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BACKUPVAULTNOTFOUND = "ResourceNotFound.BackupVaultNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 func (c *Client) ModifyBackupVaultAttribute(request *ModifyBackupVaultAttributeRequest) (response *ModifyBackupVaultAttributeResponse, err error) {
@@ -3734,6 +3827,7 @@ func (c *Client) ModifyBackupVaultAttribute(request *ModifyBackupVaultAttributeR
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BACKUPVAULTNOTFOUND = "ResourceNotFound.BackupVaultNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 func (c *Client) ModifyBackupVaultAttributeWithContext(ctx context.Context, request *ModifyBackupVaultAttributeRequest) (response *ModifyBackupVaultAttributeResponse, err error) {
@@ -4314,6 +4408,7 @@ func NewReportJobProgressResponse() (response *ReportJobProgressResponse) {
 // 本接口用于上报Agent任务信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DATABASEDEADLOCK = "InternalError.DatabaseDeadlock"
 //  INVALIDPARAMETERVALUE_INVALIDFORMAT = "InvalidParameterValue.InvalidFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPROGRESS = "InvalidParameterValue.InvalidProgress"
 //  INVALIDPARAMETERVALUE_INVALIDSTATUSTRANSITION = "InvalidParameterValue.InvalidStatusTransition"
@@ -4327,6 +4422,7 @@ func (c *Client) ReportJobProgress(request *ReportJobProgressRequest) (response 
 // 本接口用于上报Agent任务信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DATABASEDEADLOCK = "InternalError.DatabaseDeadlock"
 //  INVALIDPARAMETERVALUE_INVALIDFORMAT = "InvalidParameterValue.InvalidFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPROGRESS = "InvalidParameterValue.InvalidProgress"
 //  INVALIDPARAMETERVALUE_INVALIDSTATUSTRANSITION = "InvalidParameterValue.InvalidStatusTransition"
@@ -4649,6 +4745,7 @@ func NewUnbindAutoBackupPolicyResponse() (response *UnbindAutoBackupPolicyRespon
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  MISSINGPARAMETER_MISSINGREQUIRED = "MissingParameter.MissingRequired"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 func (c *Client) UnbindAutoBackupPolicy(request *UnbindAutoBackupPolicyRequest) (response *UnbindAutoBackupPolicyResponse, err error) {
@@ -4662,6 +4759,7 @@ func (c *Client) UnbindAutoBackupPolicy(request *UnbindAutoBackupPolicyRequest) 
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  MISSINGPARAMETER_MISSINGREQUIRED = "MissingParameter.MissingRequired"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 func (c *Client) UnbindAutoBackupPolicyWithContext(ctx context.Context, request *UnbindAutoBackupPolicyRequest) (response *UnbindAutoBackupPolicyResponse, err error) {

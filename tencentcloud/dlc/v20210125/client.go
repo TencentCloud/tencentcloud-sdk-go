@@ -20289,6 +20289,10 @@ func NewRunJobSpecResponse() (response *RunJobSpecResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER_CLUSTERGROUPNOTFOUND = "InvalidParameter.ClusterGroupNotFound"
+//  INVALIDPARAMETER_FLOWIDREQUIRESEXECUTIONID = "InvalidParameter.FlowIdRequiresExecutionId"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDJOBSOURCE = "InvalidParameter.InvalidJobSource"
 func (c *Client) RunJobSpec(request *RunJobSpecRequest) (response *RunJobSpecResponse, err error) {
     return c.RunJobSpecWithContext(context.Background(), request)
 }
@@ -20298,6 +20302,10 @@ func (c *Client) RunJobSpec(request *RunJobSpecRequest) (response *RunJobSpecRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER_CLUSTERGROUPNOTFOUND = "InvalidParameter.ClusterGroupNotFound"
+//  INVALIDPARAMETER_FLOWIDREQUIRESEXECUTIONID = "InvalidParameter.FlowIdRequiresExecutionId"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDJOBSOURCE = "InvalidParameter.InvalidJobSource"
 func (c *Client) RunJobSpecWithContext(ctx context.Context, request *RunJobSpecRequest) (response *RunJobSpecResponse, err error) {
     if request == nil {
         request = NewRunJobSpecRequest()
@@ -20339,6 +20347,10 @@ func NewSetOptimizerPolicyResponse() (response *SetOptimizerPolicyResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER_CLUSTERGROUPNOTFOUND = "InvalidParameter.ClusterGroupNotFound"
+//  INVALIDPARAMETER_FLOWIDREQUIRESEXECUTIONID = "InvalidParameter.FlowIdRequiresExecutionId"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDJOBSOURCE = "InvalidParameter.InvalidJobSource"
 func (c *Client) SetOptimizerPolicy(request *SetOptimizerPolicyRequest) (response *SetOptimizerPolicyResponse, err error) {
     return c.SetOptimizerPolicyWithContext(context.Background(), request)
 }
@@ -20348,6 +20360,10 @@ func (c *Client) SetOptimizerPolicy(request *SetOptimizerPolicyRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER_CLUSTERGROUPNOTFOUND = "InvalidParameter.ClusterGroupNotFound"
+//  INVALIDPARAMETER_FLOWIDREQUIRESEXECUTIONID = "InvalidParameter.FlowIdRequiresExecutionId"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDJOBSOURCE = "InvalidParameter.InvalidJobSource"
 func (c *Client) SetOptimizerPolicyWithContext(ctx context.Context, request *SetOptimizerPolicyRequest) (response *SetOptimizerPolicyResponse, err error) {
     if request == nil {
         request = NewSetOptimizerPolicyRequest()

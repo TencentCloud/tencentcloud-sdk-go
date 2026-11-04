@@ -2506,6 +2506,14 @@ type Element struct {
 	AnswerElement *AnswerElement `json:"AnswerElement,omitnil,omitempty" name:"AnswerElement"`
 }
 
+type EmbeddingObject struct {
+	// 输入文本在 Inputs 列表中的索引，从 0 开始。
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 向量化结果，维度由所选模型决定。
+	Embedding []*float64 `json:"Embedding,omitnil,omitempty" name:"Embedding"`
+}
+
 type Encryption struct {
 	// 有加密需求的用户，接入传入kms的CiphertextBlob（Base64编码），关于数据加密可查阅[敏感数据加密指引](https://cloud.tencent.com/document/product/866/106048)文档。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4159,6 +4167,188 @@ type GeneralMachineItem struct {
 
 	// 税额
 	Tax *string `json:"Tax,omitnil,omitempty" name:"Tax"`
+}
+
+// Predefined struct for user
+type GenerateTextEmbeddingRequestParams struct {
+	// <p>选择生成向量的模型（不同模型计费单价不同）。取值：</p><ul><li>0：text-embedding-0.6b</li><li>1：text-embedding-4b</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>输入文本列表。单次最多 7 条，单条不超过 2000 字符。</p>
+	Inputs []*string `json:"Inputs,omitnil,omitempty" name:"Inputs"`
+
+	// <p>文本向量化类型。取值：</p><ul><li>query：查询文本，用于检索场景的查询侧</li><li>document：文档文本，用于检索场景的文档侧</li></ul><p>默认为 document</p>
+	TextType *string `json:"TextType,omitnil,omitempty" name:"TextType"`
+
+	// <p>自定义任务指令词，用于指定向量化任务。最大 2000 字符。不传时按 TextType 使用系统默认指令词。</p>
+	Instruction *string `json:"Instruction,omitnil,omitempty" name:"Instruction"`
+}
+
+type GenerateTextEmbeddingRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>选择生成向量的模型（不同模型计费单价不同）。取值：</p><ul><li>0：text-embedding-0.6b</li><li>1：text-embedding-4b</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>输入文本列表。单次最多 7 条，单条不超过 2000 字符。</p>
+	Inputs []*string `json:"Inputs,omitnil,omitempty" name:"Inputs"`
+
+	// <p>文本向量化类型。取值：</p><ul><li>query：查询文本，用于检索场景的查询侧</li><li>document：文档文本，用于检索场景的文档侧</li></ul><p>默认为 document</p>
+	TextType *string `json:"TextType,omitnil,omitempty" name:"TextType"`
+
+	// <p>自定义任务指令词，用于指定向量化任务。最大 2000 字符。不传时按 TextType 使用系统默认指令词。</p>
+	Instruction *string `json:"Instruction,omitnil,omitempty" name:"Instruction"`
+}
+
+func (r *GenerateTextEmbeddingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateTextEmbeddingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Model")
+	delete(f, "Inputs")
+	delete(f, "TextType")
+	delete(f, "Instruction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateTextEmbeddingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateTextEmbeddingResponseParams struct {
+	// <p>向量化结果列表。顺序与输入 Inputs 列表一一对应。</p>
+	Data []*EmbeddingObject `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>输入 Token 数。</p>
+	InputTokens *int64 `json:"InputTokens,omitnil,omitempty" name:"InputTokens"`
+
+	// <p>总 Token 数。</p>
+	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GenerateTextEmbeddingResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateTextEmbeddingResponseParams `json:"Response"`
+}
+
+func (r *GenerateTextEmbeddingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateTextEmbeddingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateVLEmbeddingRequestParams struct {
+	// <p>选择生成向量的模型。取值：</p><ul><li>0：vl-embedding-4b</li><li>1：vl-embedding-8b</li><li>2：vl-embedding-2b</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>内容类型标识。取值：</p><ul><li>1：文本</li><li>2：图像 URL</li><li>3：视频 URL</li><li>4：图文混合</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>文本内容。仅当 Type 为 1 或 4 时必填，单条文本不超过 2000 字符。</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>图像地址，支持公网 http/https 链接或 base64 内容。仅当 Type 为 2 或 4 时必填。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>视频地址，支持公网 http/https 链接或 base64 内容。仅当 Type 为 3 时必填。</p>
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
+
+	// <p>检索场景，未传入该参数时将自动匹配。取值：</p><ul><li>0：自动匹配</li><li>1：图搜图（找同款、相似图），仅 Type 为 2 或 4 时可用</li><li>2：图文搜图（图 + 问题），仅 Type 为 4 时可用</li><li>3：文搜图（纯文本搜图），仅 Type 为 1 或 4 时可用</li><li>4：文搜视频（纯文本搜视频），仅 Type 为 1 或 4 时可用</li><li>5：图搜视频、图文搜视频，仅 Type 为 2 或 4 时可用</li></ul>
+	SearchMode *string `json:"SearchMode,omitnil,omitempty" name:"SearchMode"`
+}
+
+type GenerateVLEmbeddingRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>选择生成向量的模型。取值：</p><ul><li>0：vl-embedding-4b</li><li>1：vl-embedding-8b</li><li>2：vl-embedding-2b</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>内容类型标识。取值：</p><ul><li>1：文本</li><li>2：图像 URL</li><li>3：视频 URL</li><li>4：图文混合</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>文本内容。仅当 Type 为 1 或 4 时必填，单条文本不超过 2000 字符。</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>图像地址，支持公网 http/https 链接或 base64 内容。仅当 Type 为 2 或 4 时必填。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>视频地址，支持公网 http/https 链接或 base64 内容。仅当 Type 为 3 时必填。</p>
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
+
+	// <p>检索场景，未传入该参数时将自动匹配。取值：</p><ul><li>0：自动匹配</li><li>1：图搜图（找同款、相似图），仅 Type 为 2 或 4 时可用</li><li>2：图文搜图（图 + 问题），仅 Type 为 4 时可用</li><li>3：文搜图（纯文本搜图），仅 Type 为 1 或 4 时可用</li><li>4：文搜视频（纯文本搜视频），仅 Type 为 1 或 4 时可用</li><li>5：图搜视频、图文搜视频，仅 Type 为 2 或 4 时可用</li></ul>
+	SearchMode *string `json:"SearchMode,omitnil,omitempty" name:"SearchMode"`
+}
+
+func (r *GenerateVLEmbeddingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateVLEmbeddingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Model")
+	delete(f, "Type")
+	delete(f, "Text")
+	delete(f, "ImageUrl")
+	delete(f, "VideoUrl")
+	delete(f, "SearchMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateVLEmbeddingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateVLEmbeddingResponseParams struct {
+	// <p>向量化结果列表。单条图文混合输入可能返回多个向量。</p>
+	Data []*EmbeddingObject `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>输入 Token 数，多模态场景含图像、视频折算的 Token。</p>
+	InputTokens *int64 `json:"InputTokens,omitnil,omitempty" name:"InputTokens"`
+
+	// <p>总 Token 数。</p>
+	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GenerateVLEmbeddingResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateVLEmbeddingResponseParams `json:"Response"`
+}
+
+func (r *GenerateVLEmbeddingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateVLEmbeddingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -1511,6 +1511,12 @@ type DBEngineInfo struct {
 
 	// <p>是否支持Serverless模式</p>
 	IsSupportServerless *bool `json:"IsSupportServerless,omitnil,omitempty" name:"IsSupportServerless"`
+
+	// <p>是否支持透明加密</p>
+	IsSupportTDE *bool `json:"IsSupportTDE,omitnil,omitempty" name:"IsSupportTDE"`
+
+	// <p>是否支持密码复杂度</p>
+	IsSupportPasswordComplexity *bool `json:"IsSupportPasswordComplexity,omitnil,omitempty" name:"IsSupportPasswordComplexity"`
 }
 
 type DBParamValue struct {
@@ -5922,6 +5928,10 @@ type SlowLogData struct {
 	// <p>执行计划</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Explain []*Explain `json:"Explain,omitnil,omitempty" name:"Explain"`
+
+	// <p>执行计划树</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExplainTree *string `json:"ExplainTree,omitnil,omitempty" name:"ExplainTree"`
 }
 
 type StandbyDBInstanceRelation struct {
