@@ -137,6 +137,9 @@ const (
 	// Topic隔离
 	FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 
+	// 更新数据失败
+	FAILEDOPERATION_UPDATE = "FailedOperation.Update"
+
 	// 当前函数状态无法更新代码，请在状态为正常时更新。
 	FAILEDOPERATION_UPDATEFUNCTIONCODE = "FailedOperation.UpdateFunctionCode"
 
@@ -328,6 +331,9 @@ const (
 
 	// HTTP访问服务域名不存在
 	RESOURCENOTFOUND_HTTPSERVICEDOMAIN = "ResourceNotFound.HTTPServiceDomain"
+
+	// http访问服务资源不存在
+	RESOURCENOTFOUND_HTTPSERVICERESOURCE = "ResourceNotFound.HTTPServiceResource"
 
 	// 数据库实例不存在。
 	RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"

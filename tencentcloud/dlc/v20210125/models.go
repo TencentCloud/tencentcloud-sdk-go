@@ -130,6 +130,15 @@ type AddDeploymentRequestParams struct {
 
 	// <p>NetworkConfig</p>
 	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
+	// <p>可选：创建时一并挂载的 LoRA 模型版本（首次启动即生效）</p>
+	LoraBindings []*LoraAdapterBinding `json:"LoraBindings,omitnil,omitempty" name:"LoraBindings"`
+
+	// <p>用户上传代码包的原始文件名（详情页「代码引用」回显用）</p>
+	CodePackageOriginalName *string `json:"CodePackageOriginalName,omitnil,omitempty" name:"CodePackageOriginalName"`
+
+	// <p>代码包 URI（Git URL / COS URI）</p>
+	CodePackageUri *string `json:"CodePackageUri,omitnil,omitempty" name:"CodePackageUri"`
 }
 
 type AddDeploymentRequest struct {
@@ -173,6 +182,15 @@ type AddDeploymentRequest struct {
 
 	// <p>NetworkConfig</p>
 	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
+	// <p>可选：创建时一并挂载的 LoRA 模型版本（首次启动即生效）</p>
+	LoraBindings []*LoraAdapterBinding `json:"LoraBindings,omitnil,omitempty" name:"LoraBindings"`
+
+	// <p>用户上传代码包的原始文件名（详情页「代码引用」回显用）</p>
+	CodePackageOriginalName *string `json:"CodePackageOriginalName,omitnil,omitempty" name:"CodePackageOriginalName"`
+
+	// <p>代码包 URI（Git URL / COS URI）</p>
+	CodePackageUri *string `json:"CodePackageUri,omitnil,omitempty" name:"CodePackageUri"`
 }
 
 func (r *AddDeploymentRequest) ToJsonString() string {
@@ -200,6 +218,9 @@ func (r *AddDeploymentRequest) FromJsonString(s string) error {
 	delete(f, "Image")
 	delete(f, "AdvancedOptions")
 	delete(f, "NetworkConfig")
+	delete(f, "LoraBindings")
+	delete(f, "CodePackageOriginalName")
+	delete(f, "CodePackageUri")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddDeploymentRequest has unknown keys!", "")
 	}
@@ -255,6 +276,18 @@ type AddDeploymentResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoscalingEnabled *bool `json:"AutoscalingEnabled,omitnil,omitempty" name:"AutoscalingEnabled"`
 
+	// <p>最小副本数（自动伸缩时使用）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinReplicas *int64 `json:"MinReplicas,omitnil,omitempty" name:"MinReplicas"`
+
+	// <p>最大副本数（自动伸缩时使用）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxReplicas *int64 `json:"MaxReplicas,omitnil,omitempty" name:"MaxReplicas"`
+
+	// <p>弹性伸缩配置（JSON 字符串）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoscalerOptions *string `json:"AutoscalerOptions,omitnil,omitempty" name:"AutoscalerOptions"`
+
 	// <p>模型存储配置（Catalog JSON，记录模型 COS 挂载信息）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelStorageConfig *string `json:"ModelStorageConfig,omitnil,omitempty" name:"ModelStorageConfig"`
@@ -279,6 +312,10 @@ type AddDeploymentResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NeutrinoServeId *string `json:"NeutrinoServeId,omitnil,omitempty" name:"NeutrinoServeId"`
 
+	// <p>Ray Dashboard 访问地址（通过 Ingress 代理，仅 Running 状态的部署有值）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RayDashboardUrl *string `json:"RayDashboardUrl,omitnil,omitempty" name:"RayDashboardUrl"`
+
 	// <p>资源分区 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
@@ -298,6 +335,15 @@ type AddDeploymentResponseParams struct {
 
 	// <p>高级参数</p>
 	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
+
+	// <p>用户代码包 URL</p>
+	CodePackageUri *string `json:"CodePackageUri,omitnil,omitempty" name:"CodePackageUri"`
+
+	// <p>用户上传代码包的原始文件名</p>
+	CodePackageOriginalName *string `json:"CodePackageOriginalName,omitnil,omitempty" name:"CodePackageOriginalName"`
+
+	// <p>部署当前挂载的 LoRA 模型版本列表。</p>
+	LoraBindings []*LoraItem `json:"LoraBindings,omitnil,omitempty" name:"LoraBindings"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3717,6 +3763,9 @@ type CreateBenchmarkTaskRequestParams struct {
 
 	// <p>评测容器计费项规格倍数</p>
 	Spec *int64 `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// <p>评测路由模型（可选）：基座或 &quot;&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;&quot;，不传默认压测基座</p>
+	ModelIdentifier *string `json:"ModelIdentifier,omitnil,omitempty" name:"ModelIdentifier"`
 }
 
 type CreateBenchmarkTaskRequest struct {
@@ -3763,6 +3812,9 @@ type CreateBenchmarkTaskRequest struct {
 
 	// <p>评测容器计费项规格倍数</p>
 	Spec *int64 `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// <p>评测路由模型（可选）：基座或 &quot;&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;&quot;，不传默认压测基座</p>
+	ModelIdentifier *string `json:"ModelIdentifier,omitnil,omitempty" name:"ModelIdentifier"`
 }
 
 func (r *CreateBenchmarkTaskRequest) ToJsonString() string {
@@ -3791,6 +3843,7 @@ func (r *CreateBenchmarkTaskRequest) FromJsonString(s string) error {
 	delete(f, "Queue")
 	delete(f, "BillingItem")
 	delete(f, "Spec")
+	delete(f, "ModelIdentifier")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBenchmarkTaskRequest has unknown keys!", "")
 	}
@@ -3861,6 +3914,9 @@ type CreateBenchmarkTaskResponseParams struct {
 
 	// <p>评测容器自身使用的资源规格</p>
 	Resources *BenchmarkResourceInfo `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// <p>&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;</p>
+	ModelIdentifier *string `json:"ModelIdentifier,omitnil,omitempty" name:"ModelIdentifier"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5042,6 +5098,24 @@ type CreateInferenceModelRequestParams struct {
 
 	// <p>模型上传来源类型</p><p>枚举值：</p><ul><li>Local： 本地上传</li><li>COS： COS上传</li><li>CFS： CFS上传</li><li>CFSTurbo： CFSTurbo上传</li><li>GooseFS： GooseFS上传</li></ul>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// <p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+	ModelSource *string `json:"ModelSource,omitnil,omitempty" name:"ModelSource"`
+
+	// <p>注册元信息（携带即注册语义：storageUri 为训练产物根，零拷贝引用）</p>
+	RegisterMeta *RegisterMeta `json:"RegisterMeta,omitnil,omitempty" name:"RegisterMeta"`
+
+	// <p>产物文件树（可选，仅注册语义下有意义；结构同 GetModelFiles 响应 FileNode）</p>
+	FileList []*FileNode `json:"FileList,omitnil,omitempty" name:"FileList"`
+
+	// <p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+	BaseModelUid *string `json:"BaseModelUid,omitnil,omitempty" name:"BaseModelUid"`
+
+	// <p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+	BaseModelVersionUid *string `json:"BaseModelVersionUid,omitnil,omitempty" name:"BaseModelVersionUid"`
+
+	// <p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
 }
 
 type CreateInferenceModelRequest struct {
@@ -5088,6 +5162,24 @@ type CreateInferenceModelRequest struct {
 
 	// <p>模型上传来源类型</p><p>枚举值：</p><ul><li>Local： 本地上传</li><li>COS： COS上传</li><li>CFS： CFS上传</li><li>CFSTurbo： CFSTurbo上传</li><li>GooseFS： GooseFS上传</li></ul>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// <p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+	ModelSource *string `json:"ModelSource,omitnil,omitempty" name:"ModelSource"`
+
+	// <p>注册元信息（携带即注册语义：storageUri 为训练产物根，零拷贝引用）</p>
+	RegisterMeta *RegisterMeta `json:"RegisterMeta,omitnil,omitempty" name:"RegisterMeta"`
+
+	// <p>产物文件树（可选，仅注册语义下有意义；结构同 GetModelFiles 响应 FileNode）</p>
+	FileList []*FileNode `json:"FileList,omitnil,omitempty" name:"FileList"`
+
+	// <p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+	BaseModelUid *string `json:"BaseModelUid,omitnil,omitempty" name:"BaseModelUid"`
+
+	// <p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+	BaseModelVersionUid *string `json:"BaseModelVersionUid,omitnil,omitempty" name:"BaseModelVersionUid"`
+
+	// <p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
 }
 
 func (r *CreateInferenceModelRequest) ToJsonString() string {
@@ -5116,6 +5208,12 @@ func (r *CreateInferenceModelRequest) FromJsonString(s string) error {
 	delete(f, "ResourceTags")
 	delete(f, "GooseFSConfig")
 	delete(f, "StorageType")
+	delete(f, "ModelSource")
+	delete(f, "RegisterMeta")
+	delete(f, "FileList")
+	delete(f, "BaseModelUid")
+	delete(f, "BaseModelVersionUid")
+	delete(f, "ModelCategory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInferenceModelRequest has unknown keys!", "")
 	}
@@ -5187,6 +5285,27 @@ type CreateInferenceModelResponseParams struct {
 
 	// <p>系统标签列表（TagKey-TagValue）</p>
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// <p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+	ModelSource *string `json:"ModelSource,omitnil,omitempty" name:"ModelSource"`
+
+	// <p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
+
+	// <p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+	BaseModelUid *string `json:"BaseModelUid,omitnil,omitempty" name:"BaseModelUid"`
+
+	// <p>最新版本的全局唯一标识（VersionUid）。CreateInferenceModel 返回时即初始版本的 VersionUid</p>
+	LatestVersionUid *string `json:"LatestVersionUid,omitnil,omitempty" name:"LatestVersionUid"`
+
+	// <p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+	BaseModelVersionUid *string `json:"BaseModelVersionUid,omitnil,omitempty" name:"BaseModelVersionUid"`
+
+	// <p>LoRA 基座模型名称（仅 ModelCategory=LoRA 且基座存在时有值；列表展示「基座模型及版本」用）</p>
+	BaseModelName *string `json:"BaseModelName,omitnil,omitempty" name:"BaseModelName"`
+
+	// <p>LoRA 基座模型版本号（如 v2；仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+	BaseModelVersion *string `json:"BaseModelVersion,omitnil,omitempty" name:"BaseModelVersion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5278,6 +5397,9 @@ type CreateInferenceServiceRequestParams struct {
 
 	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
 	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
+	// <p>可选：创建时一并挂载的 LoRA 模型版本（首次启动即生效）</p>
+	LoraBindings []*LoraAdapterBinding `json:"LoraBindings,omitnil,omitempty" name:"LoraBindings"`
 }
 
 type CreateInferenceServiceRequest struct {
@@ -5351,6 +5473,9 @@ type CreateInferenceServiceRequest struct {
 
 	// <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
 	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
+	// <p>可选：创建时一并挂载的 LoRA 模型版本（首次启动即生效）</p>
+	LoraBindings []*LoraAdapterBinding `json:"LoraBindings,omitnil,omitempty" name:"LoraBindings"`
 }
 
 func (r *CreateInferenceServiceRequest) ToJsonString() string {
@@ -5388,6 +5513,7 @@ func (r *CreateInferenceServiceRequest) FromJsonString(s string) error {
 	delete(f, "IsCustom")
 	delete(f, "RuntimeEnv")
 	delete(f, "NetworkConfig")
+	delete(f, "LoraBindings")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInferenceServiceRequest has unknown keys!", "")
 	}
@@ -6727,8 +6853,14 @@ type CreateMlflowServerRequestParams struct {
 	// <p>MlFlow的资源配置</p>
 	ResourceConfig *MlFlowResourceConfig `json:"ResourceConfig,omitnil,omitempty" name:"ResourceConfig"`
 
+	// <p>启动参数（可选，单个字符串，如 &quot;--workers 4&quot;）；分词后追加在平台固定命令之后，下次 start 时生效。平台保留参数（--host/--port/--backend-store-uri 等）不允许指定；不传或空白为默认命令</p>
+	ServerArgs *string `json:"ServerArgs,omitnil,omitempty" name:"ServerArgs"`
+
 	// <p>标签列表（TagKey-TagValue），用于将 MLflow Server 与腾讯云标签系统中的标签绑定</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>描述信息（可选，纯文本，不允许换行，最长 1024）；不传或空白为未填写</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateMlflowServerRequest struct {
@@ -6755,8 +6887,14 @@ type CreateMlflowServerRequest struct {
 	// <p>MlFlow的资源配置</p>
 	ResourceConfig *MlFlowResourceConfig `json:"ResourceConfig,omitnil,omitempty" name:"ResourceConfig"`
 
+	// <p>启动参数（可选，单个字符串，如 &quot;--workers 4&quot;）；分词后追加在平台固定命令之后，下次 start 时生效。平台保留参数（--host/--port/--backend-store-uri 等）不允许指定；不传或空白为默认命令</p>
+	ServerArgs *string `json:"ServerArgs,omitnil,omitempty" name:"ServerArgs"`
+
 	// <p>标签列表（TagKey-TagValue），用于将 MLflow Server 与腾讯云标签系统中的标签绑定</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>描述信息（可选，纯文本，不允许换行，最长 1024）；不传或空白为未填写</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateMlflowServerRequest) ToJsonString() string {
@@ -6778,7 +6916,9 @@ func (r *CreateMlflowServerRequest) FromJsonString(s string) error {
 	delete(f, "StorageConfig")
 	delete(f, "StorageMode")
 	delete(f, "ResourceConfig")
+	delete(f, "ServerArgs")
 	delete(f, "Tags")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMlflowServerRequest has unknown keys!", "")
 	}
@@ -6832,6 +6972,15 @@ type CreateModelVersionRequestParams struct {
 
 	// <p>模型上传路径类型</p><p>枚举值：</p><ul><li>LOCAL： 本地上传</li><li>CFS： CFS上传</li><li>COS： COS上传</li><li>CFSTurbo： CFSTurbo上传</li><li>GooseFS： GooseFS上传</li></ul><p>选择cos、cfs、cfstrubo则必须要传storageuri，选择local时不能传递goosefsconfig</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// <p>模型来源标识（可选；有 RegisterMeta 时必填；须与模型现有来源一致）</p>
+	ModelSource *string `json:"ModelSource,omitnil,omitempty" name:"ModelSource"`
+
+	// <p>注册元信息（仅注册语义创建的版本有值，与创建请求 RegisterMeta 结构一致）</p>
+	RegisterMeta *RegisterMeta `json:"RegisterMeta,omitnil,omitempty" name:"RegisterMeta"`
+
+	// <p>产物文件树（可选，仅注册语义下有意义；结构同 GetModelFiles 响应 FileNode）</p>
+	FileList []*FileNode `json:"FileList,omitnil,omitempty" name:"FileList"`
 }
 
 type CreateModelVersionRequest struct {
@@ -6857,6 +7006,15 @@ type CreateModelVersionRequest struct {
 
 	// <p>模型上传路径类型</p><p>枚举值：</p><ul><li>LOCAL： 本地上传</li><li>CFS： CFS上传</li><li>COS： COS上传</li><li>CFSTurbo： CFSTurbo上传</li><li>GooseFS： GooseFS上传</li></ul><p>选择cos、cfs、cfstrubo则必须要传storageuri，选择local时不能传递goosefsconfig</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// <p>模型来源标识（可选；有 RegisterMeta 时必填；须与模型现有来源一致）</p>
+	ModelSource *string `json:"ModelSource,omitnil,omitempty" name:"ModelSource"`
+
+	// <p>注册元信息（仅注册语义创建的版本有值，与创建请求 RegisterMeta 结构一致）</p>
+	RegisterMeta *RegisterMeta `json:"RegisterMeta,omitnil,omitempty" name:"RegisterMeta"`
+
+	// <p>产物文件树（可选，仅注册语义下有意义；结构同 GetModelFiles 响应 FileNode）</p>
+	FileList []*FileNode `json:"FileList,omitnil,omitempty" name:"FileList"`
 }
 
 func (r *CreateModelVersionRequest) ToJsonString() string {
@@ -6878,6 +7036,9 @@ func (r *CreateModelVersionRequest) FromJsonString(s string) error {
 	delete(f, "UseCustomStorage")
 	delete(f, "GooseFSConfig")
 	delete(f, "StorageType")
+	delete(f, "ModelSource")
+	delete(f, "RegisterMeta")
+	delete(f, "FileList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelVersionRequest has unknown keys!", "")
 	}
@@ -6919,6 +7080,18 @@ type CreateModelVersionResponseParams struct {
 
 	// <p>是否使用用户自带存储桶（true=用户自带桶，false=平台托管）</p>
 	UseCustomStorage *bool `json:"UseCustomStorage,omitnil,omitempty" name:"UseCustomStorage"`
+
+	// <p>注册元信息（仅注册语义创建的版本有值，与创建请求 RegisterMeta 结构一致）</p>
+	RegisterMeta *RegisterMeta `json:"RegisterMeta,omitnil,omitempty" name:"RegisterMeta"`
+
+	// <p>版本业务唯一标识；LoRA 模型版本挂载到部署时以此引用</p>
+	VersionUid *string `json:"VersionUid,omitnil,omitempty" name:"VersionUid"`
+
+	// <p>LoRA Adapter 元信息（仅 LoRA 模型版本有值，解析自 adapter_config.json）</p>
+	LoraMeta *LoraVersionMeta `json:"LoraMeta,omitnil,omitempty" name:"LoraMeta"`
+
+	// <p>LoRA pool 异步导入状态（Importing/Ready/Failed；NULL=就绪），未就绪不能挂载</p>
+	PoolImportStatus *string `json:"PoolImportStatus,omitnil,omitempty" name:"PoolImportStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -21344,6 +21517,9 @@ type DescribeTrainingCheckpointsResponseParams struct {
 	// <p>存储路径（COS 桶路径或 CFS/GooseFSx 挂载路径）</p>
 	StoragePath *string `json:"StoragePath,omitnil,omitempty" name:"StoragePath"`
 
+	// <p>训练产物根的完整存储 URI（注册推理模型用，如 cos://bucket/path/、cfs://fs-id/path/）；作为 CreateInferenceModel / CreateModelVersion 的 StorageUri 传回（配合 UseCustomStorage=true）</p>
+	ArtifactRootUri *string `json:"ArtifactRootUri,omitnil,omitempty" name:"ArtifactRootUri"`
+
 	// <p>错误或提示信息（仅在请求异常时有值）</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
@@ -23929,6 +24105,27 @@ type GetInferenceModelResponseParams struct {
 	// <p>系统标签列表（TagKey-TagValue）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// <p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
+
+	// <p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+	BaseModelUid *string `json:"BaseModelUid,omitnil,omitempty" name:"BaseModelUid"`
+
+	// <p>最新版本的全局唯一标识（VersionUid）。CreateInferenceModel 返回时即初始版本的 VersionUid</p>
+	LatestVersionUid *string `json:"LatestVersionUid,omitnil,omitempty" name:"LatestVersionUid"`
+
+	// <p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+	BaseModelVersionUid *string `json:"BaseModelVersionUid,omitnil,omitempty" name:"BaseModelVersionUid"`
+
+	// <p>LoRA 基座模型名称（仅 ModelCategory=LoRA 且基座存在时有值；列表展示「基座模型及版本」用）</p>
+	BaseModelName *string `json:"BaseModelName,omitnil,omitempty" name:"BaseModelName"`
+
+	// <p>LoRA 基座模型版本号（如 v2；仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+	BaseModelVersion *string `json:"BaseModelVersion,omitnil,omitempty" name:"BaseModelVersion"`
+
+	// <p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+	ModelSource *string `json:"ModelSource,omitnil,omitempty" name:"ModelSource"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -27242,6 +27439,27 @@ type InferenceModelInfo struct {
 	// <p>系统标签列表（TagKey-TagValue）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// <p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+	ModelSource *string `json:"ModelSource,omitnil,omitempty" name:"ModelSource"`
+
+	// <p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
+
+	// <p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+	BaseModelUid *string `json:"BaseModelUid,omitnil,omitempty" name:"BaseModelUid"`
+
+	// <p>最新版本的全局唯一标识（VersionUid）。CreateInferenceModel 返回时即初始版本的 VersionUid</p>
+	LatestVersionUid *string `json:"LatestVersionUid,omitnil,omitempty" name:"LatestVersionUid"`
+
+	// <p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+	BaseModelVersionUid *string `json:"BaseModelVersionUid,omitnil,omitempty" name:"BaseModelVersionUid"`
+
+	// <p>LoRA 基座模型名称（仅 ModelCategory=LoRA 且基座存在时有值；列表展示「基座模型及版本」用）</p>
+	BaseModelName *string `json:"BaseModelName,omitnil,omitempty" name:"BaseModelName"`
+
+	// <p>LoRA 基座模型版本号（如 v2；仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+	BaseModelVersion *string `json:"BaseModelVersion,omitnil,omitempty" name:"BaseModelVersion"`
 }
 
 type InferenceServiceInfo struct {
@@ -31576,6 +31794,57 @@ func (r *LockMetaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LoraAdapterBinding struct {
+	// <p>LoRA 模型版本 UID（ListModelVersions 返回的 VersionUid；该模型须以部署基座为 BaseModelUid）</p>
+	ModelVersionUid *string `json:"ModelVersionUid,omitnil,omitempty" name:"ModelVersionUid"`
+}
+
+type LoraItem struct {
+	// <p>模型版本 UID</p>
+	ModelVersionUid *string `json:"ModelVersionUid,omitnil,omitempty" name:"ModelVersionUid"`
+
+	// <p>模型 UID</p>
+	ModelUid *string `json:"ModelUid,omitnil,omitempty" name:"ModelUid"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>别名</p>
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// <p>Lora Rank</p>
+	AdapterRank *int64 `json:"AdapterRank,omitnil,omitempty" name:"AdapterRank"`
+}
+
+type LoraVersionMeta struct {
+	// <p>Lora Rank</p>
+	Rank *int64 `json:"Rank,omitnil,omitempty" name:"Rank"`
+
+	// <p>Lora Alpha</p>
+	Alpha *int64 `json:"Alpha,omitnil,omitempty" name:"Alpha"`
+
+	// <p>LoRA dropout</p>
+	Dropout *float64 `json:"Dropout,omitnil,omitempty" name:"Dropout"`
+
+	// <p>注入的目标模块</p>
+	TargetModules []*string `json:"TargetModules,omitnil,omitempty" name:"TargetModules"`
+
+	// <p>PEFT 类型（如 LORA）</p>
+	PEFTType *string `json:"PEFTType,omitnil,omitempty" name:"PEFTType"`
+
+	// <p>任务类型（如 CAUSAL_LM）</p>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>训练时声明的基座名称或路径（base_model_name_or_path）</p>
+	BaseModelNameOrPath *string `json:"BaseModelNameOrPath,omitnil,omitempty" name:"BaseModelNameOrPath"`
+
+	// <p>最大 rank（含 rank_pattern 分模块 rank；仅当其大于 Rank 时返回）</p>
+	MaxRank *int64 `json:"MaxRank,omitnil,omitempty" name:"MaxRank"`
+}
+
 type MCPTaskInfo struct {
 	// <p>任务 ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -31839,11 +32108,23 @@ type MlFlowServerInfo struct {
 	// <p>存储模式</p><p>枚举值：</p><ul><li>cos： cos 对象存储</li><li>cfs： cfs 文件系统存储</li></ul>
 	StorageMode *string `json:"StorageMode,omitnil,omitempty" name:"StorageMode"`
 
+	// <p>启动参数（用户自定义；null = 默认命令，编辑弹窗预填用）</p>
+	ServerArgs *string `json:"ServerArgs,omitnil,omitempty" name:"ServerArgs"`
+
+	// <p>描述信息（纯文本；null = 未填写）</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
 	// <p>应用 ID</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// <p>创建者 UIN</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>创建人子账号 UIN（实际提交者，存量数据可能为空）</p>
+	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
+
+	// <p>创建人子账号名称（CAM 动态回填，非持久化；查询失败时为空）</p>
+	SubAccountName *string `json:"SubAccountName,omitnil,omitempty" name:"SubAccountName"`
 
 	// <p>创建时间（epoch 毫秒）</p><p>单位：毫秒</p>
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
@@ -31857,6 +32138,21 @@ type MlFlowServerInfo struct {
 	// <p>标签列表（TagKey-TagValue）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>最近一次成功探测 Deployment 的时间（epoch millis，Neutrino 透传）；NULL=尚未成功探测过。</p>
+	LastProbeSuccessTime *int64 `json:"LastProbeSuccessTime,omitnil,omitempty" name:"LastProbeSuccessTime"`
+
+	// <p>最近一次成功探测后的连续失败次数（&gt;0 表示当前 Status 可能过期）</p>
+	ConsecutiveProbeFailures *int64 `json:"ConsecutiveProbeFailures,omitnil,omitempty" name:"ConsecutiveProbeFailures"`
+
+	// <p>最近一次探测失败原因（Neutrino 透传，仅诊断展示）</p>
+	LastProbeError *string `json:"LastProbeError,omitnil,omitempty" name:"LastProbeError"`
+
+	// <p>关联训练实例总数（ray-nexus 侧统计，仅 ListMlflowServers 返回；详情/监控请用 QueryMlFlowServerInstanceStats）</p>
+	TotalInstanceCount *int64 `json:"TotalInstanceCount,omitnil,omitempty" name:"TotalInstanceCount"`
+
+	// <p>关联的运行中（RUNNING）训练实例数（仅 ListMlflowServers 返回；详情/监控请用 QueryMlflowServerInstanceStats）</p>
+	RunningInstanceCount *int64 `json:"RunningInstanceCount,omitnil,omitempty" name:"RunningInstanceCount"`
 }
 
 type ModelVersionInfo struct {
@@ -35452,6 +35748,17 @@ type RegionInfo struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
+type RegisterMeta struct {
+	// <p>Checkpoint 子路径不能为空</p>
+	CheckpointSubPath *string `json:"CheckpointSubPath,omitnil,omitempty" name:"CheckpointSubPath"`
+
+	// <p>来源训练实例标识（接入方自定义语义，可选）</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>接入方扩展键值列表（原样落库，平台不解释）</p>
+	Extras []*KVPair `json:"Extras,omitnil,omitempty" name:"Extras"`
+}
+
 // Predefined struct for user
 type RegisterThirdPartyAccessUserRequestParams struct {
 
@@ -35757,6 +36064,9 @@ type RerunBenchmarkTaskResponseParams struct {
 
 	// <p>与本次评测关联的部署及其资源规格</p>
 	DeploymentResources []*DeploymentResourceInfo `json:"DeploymentResources,omitnil,omitempty" name:"DeploymentResources"`
+
+	// <p>评测路由模型（可选）：基座或 &quot;&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;&quot;，不传默认压测基座</p>
+	ModelIdentifier *string `json:"ModelIdentifier,omitnil,omitempty" name:"ModelIdentifier"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -36097,6 +36407,9 @@ type RestartDeploymentResponseParams struct {
 	// <p>资源分区名称</p>
 	ResourcePartitionName *string `json:"ResourcePartitionName,omitnil,omitempty" name:"ResourcePartitionName"`
 
+	// <p>部署当前挂载的 LoRA 模型版本列表。</p>
+	LoraBindings []*LoraItem `json:"LoraBindings,omitnil,omitempty" name:"LoraBindings"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -36287,6 +36600,9 @@ type ResultRow struct {
 type ResumeTrainingJobInstanceRequestParams struct {
 	// <p>训练实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>续训指定的源 checkpoint 子目录（相对源实例 checkpoint 根；空 = 自动选最新）</p>
+	ResumeCheckpointSubDir *string `json:"ResumeCheckpointSubDir,omitnil,omitempty" name:"ResumeCheckpointSubDir"`
 }
 
 type ResumeTrainingJobInstanceRequest struct {
@@ -36294,6 +36610,9 @@ type ResumeTrainingJobInstanceRequest struct {
 	
 	// <p>训练实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>续训指定的源 checkpoint 子目录（相对源实例 checkpoint 根；空 = 自动选最新）</p>
+	ResumeCheckpointSubDir *string `json:"ResumeCheckpointSubDir,omitnil,omitempty" name:"ResumeCheckpointSubDir"`
 }
 
 func (r *ResumeTrainingJobInstanceRequest) ToJsonString() string {
@@ -36309,6 +36628,7 @@ func (r *ResumeTrainingJobInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "ResumeCheckpointSubDir")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeTrainingJobInstanceRequest has unknown keys!", "")
 	}
@@ -37863,6 +38183,9 @@ type StopBenchmarkTaskResponseParams struct {
 	// <p>发生错误时的错误信息</p>
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
+	// <p>评测路由模型（可选）：基座或 &quot;&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;&quot;，不传默认压测基座</p>
+	ModelIdentifier *string `json:"ModelIdentifier,omitnil,omitempty" name:"ModelIdentifier"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -38014,6 +38337,9 @@ type StopDeploymentResponseParams struct {
 
 	// <p>资源分区名称</p>
 	ResourcePartitionName *string `json:"ResourcePartitionName,omitnil,omitempty" name:"ResourcePartitionName"`
+
+	// <p>部署当前挂载的 LoRA 模型版本列表。</p>
+	LoraBindings []*LoraItem `json:"LoraBindings,omitnil,omitempty" name:"LoraBindings"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -40139,6 +40465,12 @@ type TrainingJobInstance struct {
 	// <p>创建人</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
+	// <p>子账号 UIN</p>
+	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
+
+	// <p>子账号名称</p>
+	SubAccountName *string `json:"SubAccountName,omitnil,omitempty" name:"SubAccountName"`
+
 	// <p>创建时间（毫秒时间戳）</p>
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
@@ -40207,6 +40539,12 @@ type TrainingJobInstance struct {
 
 	// <p>创建实例时的断点续训意图声明快照（仅详情返回）</p>
 	ResumeTraining *bool `json:"ResumeTraining,omitnil,omitempty" name:"ResumeTraining"`
+
+	// <p>自定义网络配置</p>
+	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
+
+	// <p>断点续训来源实例 ID（仅续训产生的实例有值，仅详情返回）</p>
+	ResumeSourceInstanceId *string `json:"ResumeSourceInstanceId,omitnil,omitempty" name:"ResumeSourceInstanceId"`
 }
 
 type TrainingJobSpec struct {
@@ -40478,6 +40816,30 @@ type TrainingTuningParams struct {
 
 	// <p>vLLM GPU memory utilization，默认 0.5</p>
 	GpuMemoryUtilization *float64 `json:"GpuMemoryUtilization,omitnil,omitempty" name:"GpuMemoryUtilization"`
+
+	// <p>Actor Token 上限 / GPU</p>
+	PPOMaxTokenLenPerGpu *int64 `json:"PPOMaxTokenLenPerGpu,omitnil,omitempty" name:"PPOMaxTokenLenPerGpu"`
+
+	// <p>LogProb Token 上限 / GPU</p>
+	LogProbMaxTokenLenPerGpu *int64 `json:"LogProbMaxTokenLenPerGpu,omitnil,omitempty" name:"LogProbMaxTokenLenPerGpu"`
+
+	// <p>Actor 参数 Offload</p>
+	ActorParamOffload *bool `json:"ActorParamOffload,omitnil,omitempty" name:"ActorParamOffload"`
+
+	// <p>优化器 Offload</p>
+	ActorOptimizerOffload *bool `json:"ActorOptimizerOffload,omitnil,omitempty" name:"ActorOptimizerOffload"`
+
+	// <p>Ref 参数 Offload</p>
+	RefParamOffload *bool `json:"RefParamOffload,omitnil,omitempty" name:"RefParamOffload"`
+
+	// <p>Actor Micro Batch / GPU</p>
+	PPOMicroBatchSizePerGpu *int64 `json:"PPOMicroBatchSizePerGpu,omitnil,omitempty" name:"PPOMicroBatchSizePerGpu"`
+
+	// <p>LogProb Micro Batch / GPU</p>
+	RollOutLogProbMicroBatchSizePerGpu *int64 `json:"RollOutLogProbMicroBatchSizePerGpu,omitnil,omitempty" name:"RollOutLogProbMicroBatchSizePerGpu"`
+
+	// <p>直接追加为命令行 override，优先级最高</p>
+	GRPORawOverrides *string `json:"GRPORawOverrides,omitnil,omitempty" name:"GRPORawOverrides"`
 }
 
 type TruncatePartitioning struct {
@@ -41195,6 +41557,24 @@ type UpdateDeploymentRequestParams struct {
 
 	// <p>是否启用弹性伸缩</p>
 	AutoscalingEnabled *bool `json:"AutoscalingEnabled,omitnil,omitempty" name:"AutoscalingEnabled"`
+
+	// <p>代码包 URI（可选，未传时从 primary deployment 继承）</p>
+	CodePackageUri *string `json:"CodePackageUri,omitnil,omitempty" name:"CodePackageUri"`
+
+	// <p>代码包原始文件名（可选，详情页「代码引用」回显用，仅记录不参与业务逻辑）</p>
+	CodePackageOriginalName *string `json:"CodePackageOriginalName,omitnil,omitempty" name:"CodePackageOriginalName"`
+
+	// <p>CR / PodSpec overrides JSON（可选）</p>
+	CrOverrides *string `json:"CrOverrides,omitnil,omitempty" name:"CrOverrides"`
+
+	// <p>Head 节点高可用开关（可选，不传或 true 为开启，仅 false 为关闭；与当前值不同会触发服务重建）</p>
+	HeadHighAvailabilityEnabled *bool `json:"HeadHighAvailabilityEnabled,omitnil,omitempty" name:"HeadHighAvailabilityEnabled"`
+
+	// <p>可选：创建时一并挂载的 LoRA 模型版本（首次启动即生效）</p>
+	LoraBindings []*LoraAdapterBinding `json:"LoraBindings,omitnil,omitempty" name:"LoraBindings"`
+
+	// <p>ray runtime env 字段</p>
+	RuntimeEnv *string `json:"RuntimeEnv,omitnil,omitempty" name:"RuntimeEnv"`
 }
 
 type UpdateDeploymentRequest struct {
@@ -41214,6 +41594,24 @@ type UpdateDeploymentRequest struct {
 
 	// <p>是否启用弹性伸缩</p>
 	AutoscalingEnabled *bool `json:"AutoscalingEnabled,omitnil,omitempty" name:"AutoscalingEnabled"`
+
+	// <p>代码包 URI（可选，未传时从 primary deployment 继承）</p>
+	CodePackageUri *string `json:"CodePackageUri,omitnil,omitempty" name:"CodePackageUri"`
+
+	// <p>代码包原始文件名（可选，详情页「代码引用」回显用，仅记录不参与业务逻辑）</p>
+	CodePackageOriginalName *string `json:"CodePackageOriginalName,omitnil,omitempty" name:"CodePackageOriginalName"`
+
+	// <p>CR / PodSpec overrides JSON（可选）</p>
+	CrOverrides *string `json:"CrOverrides,omitnil,omitempty" name:"CrOverrides"`
+
+	// <p>Head 节点高可用开关（可选，不传或 true 为开启，仅 false 为关闭；与当前值不同会触发服务重建）</p>
+	HeadHighAvailabilityEnabled *bool `json:"HeadHighAvailabilityEnabled,omitnil,omitempty" name:"HeadHighAvailabilityEnabled"`
+
+	// <p>可选：创建时一并挂载的 LoRA 模型版本（首次启动即生效）</p>
+	LoraBindings []*LoraAdapterBinding `json:"LoraBindings,omitnil,omitempty" name:"LoraBindings"`
+
+	// <p>ray runtime env 字段</p>
+	RuntimeEnv *string `json:"RuntimeEnv,omitnil,omitempty" name:"RuntimeEnv"`
 }
 
 func (r *UpdateDeploymentRequest) ToJsonString() string {
@@ -41233,6 +41631,12 @@ func (r *UpdateDeploymentRequest) FromJsonString(s string) error {
 	delete(f, "Engine")
 	delete(f, "Replicas")
 	delete(f, "AutoscalingEnabled")
+	delete(f, "CodePackageUri")
+	delete(f, "CodePackageOriginalName")
+	delete(f, "CrOverrides")
+	delete(f, "HeadHighAvailabilityEnabled")
+	delete(f, "LoraBindings")
+	delete(f, "RuntimeEnv")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDeploymentRequest has unknown keys!", "")
 	}
@@ -41312,6 +41716,9 @@ type UpdateDeploymentResponseParams struct {
 
 	// <p>高级参数</p>
 	AdvancedOptions *string `json:"AdvancedOptions,omitnil,omitempty" name:"AdvancedOptions"`
+
+	// <p>部署当前挂载的 LoRA 模型版本列表。</p>
+	LoraBindings []*LoraItem `json:"LoraBindings,omitnil,omitempty" name:"LoraBindings"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -41533,6 +41940,27 @@ type UpdateInferenceModelResponseParams struct {
 	// <p>系统标签列表（TagKey-TagValue）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// <p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
+
+	// <p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+	BaseModelUid *string `json:"BaseModelUid,omitnil,omitempty" name:"BaseModelUid"`
+
+	// <p>最新版本的全局唯一标识（VersionUid）。CreateInferenceModel 返回时即初始版本的 VersionUid</p>
+	LatestVersionUid *string `json:"LatestVersionUid,omitnil,omitempty" name:"LatestVersionUid"`
+
+	// <p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+	BaseModelVersionUid *string `json:"BaseModelVersionUid,omitnil,omitempty" name:"BaseModelVersionUid"`
+
+	// <p>LoRA 基座模型名称（仅 ModelCategory=LoRA 且基座存在时有值；列表展示「基座模型及版本」用）</p>
+	BaseModelName *string `json:"BaseModelName,omitnil,omitempty" name:"BaseModelName"`
+
+	// <p>LoRA 基座模型版本号（如 v2；仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+	BaseModelVersion *string `json:"BaseModelVersion,omitnil,omitempty" name:"BaseModelVersion"`
+
+	// <p>模型来源标识（可选；有 RegisterMeta 时必填，须在平台值域登记表内）</p>
+	ModelSource *string `json:"ModelSource,omitnil,omitempty" name:"ModelSource"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

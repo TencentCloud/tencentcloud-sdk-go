@@ -7133,6 +7133,157 @@ type QrcodeResultsInfo struct {
 	Position *QrcodePositionObj `json:"Position,omitnil,omitempty" name:"Position"`
 }
 
+// Predefined struct for user
+type QueryEnterpriseBasicInfoRequestParams struct {
+	// <p>统一社会信用代码。CreditCode、EntName 必须提供一个，如果都提供，只使用 CreditCode。</p>
+	CreditCode *string `json:"CreditCode,omitnil,omitempty" name:"CreditCode"`
+
+	// <p>企业名称。CreditCode、EntName 必须提供一个，如果都提供，只使用 CreditCode。</p>
+	EntName *string `json:"EntName,omitnil,omitempty" name:"EntName"`
+}
+
+type QueryEnterpriseBasicInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>统一社会信用代码。CreditCode、EntName 必须提供一个，如果都提供，只使用 CreditCode。</p>
+	CreditCode *string `json:"CreditCode,omitnil,omitempty" name:"CreditCode"`
+
+	// <p>企业名称。CreditCode、EntName 必须提供一个，如果都提供，只使用 CreditCode。</p>
+	EntName *string `json:"EntName,omitnil,omitempty" name:"EntName"`
+}
+
+func (r *QueryEnterpriseBasicInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryEnterpriseBasicInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CreditCode")
+	delete(f, "EntName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryEnterpriseBasicInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryEnterpriseBasicInfoResponseParams struct {
+	// <p>请求状态。<br>枚举值：<br>0：成功，计费；<br>1：系统异常，不计费；<br>2：查询无结果，不计费。</p>
+	StatusCode *int64 `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
+
+	// <p>统一社会信用代码。</p>
+	CreditCode *string `json:"CreditCode,omitnil,omitempty" name:"CreditCode"`
+
+	// <p>企业名称。</p>
+	EntName *string `json:"EntName,omitnil,omitempty" name:"EntName"`
+
+	// <p>主体类型。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>法人代表。</p>
+	LrName *string `json:"LrName,omitnil,omitempty" name:"LrName"`
+
+	// <p>注册资本。</p>
+	Capital *string `json:"Capital,omitnil,omitempty" name:"Capital"`
+
+	// <p>企业登记住所或注册地址。</p>
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// <p>经营范围。</p>
+	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
+
+	// <p>登记机关。</p>
+	RegistrationAuthority *string `json:"RegistrationAuthority,omitnil,omitempty" name:"RegistrationAuthority"`
+
+	// <p>经营状态（标准化），枚举值：<br>1：开业（在营）；<br>2：迁出；<br>3：注销；<br>4：吊销；<br>5：撤销；<br>6：停业；<br>7：撤销登记；<br>0：其他；/：无法查询。</p>
+	OperatingStatus *string `json:"OperatingStatus,omitnil,omitempty" name:"OperatingStatus"`
+
+	// <p>经营状态（原始值）。</p>
+	RawOperatingStatus *string `json:"RawOperatingStatus,omitnil,omitempty" name:"RawOperatingStatus"`
+
+	// <p>成立日期。</p>
+	SetDate *string `json:"SetDate,omitnil,omitempty" name:"SetDate"`
+
+	// <p>营业期限：一般包括营业开始时间和结束时间<br>参数格式：yyyy-MM-dd/yyyy-MM-dd<br>无固定期限的格式为：yyyy-MM-dd/<br>部分企业历史数据可能为空，将返回：/<br>无法查询，将返回：/</p>
+	OperatingPeriod *string `json:"OperatingPeriod,omitnil,omitempty" name:"OperatingPeriod"`
+
+	// <p>核准日期。</p>
+	ApprovalDate *string `json:"ApprovalDate,omitnil,omitempty" name:"ApprovalDate"`
+
+	// <p>所在省份。</p>
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// <p>所在省份的行政区划代码。</p>
+	ProvinceCode *string `json:"ProvinceCode,omitnil,omitempty" name:"ProvinceCode"`
+
+	// <p>所在城市。</p>
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// <p>所在城市的行政区划代码。</p>
+	CityCode *string `json:"CityCode,omitnil,omitempty" name:"CityCode"`
+
+	// <p>所在区县。</p>
+	District *string `json:"District,omitnil,omitempty" name:"District"`
+
+	// <p>所在区县的行政区划代码。</p>
+	DistrictCode *string `json:"DistrictCode,omitnil,omitempty" name:"DistrictCode"`
+
+	// <p>注册资本币种。</p>
+	CapitalCurrency *string `json:"CapitalCurrency,omitnil,omitempty" name:"CapitalCurrency"`
+
+	// <p>组织机构代码。</p>
+	OrganizationCode *string `json:"OrganizationCode,omitnil,omitempty" name:"OrganizationCode"`
+
+	// <p>企业英文名称。</p>
+	EnglishName *string `json:"EnglishName,omitnil,omitempty" name:"EnglishName"`
+
+	// <p>企业曾用名列表。</p>
+	FormerNames []*string `json:"FormerNames,omitnil,omitempty" name:"FormerNames"`
+
+	// <p>原注册号。</p>
+	OriginalRegNum *string `json:"OriginalRegNum,omitnil,omitempty" name:"OriginalRegNum"`
+
+	// <p>实收资本。</p>
+	PaidInCapital *string `json:"PaidInCapital,omitnil,omitempty" name:"PaidInCapital"`
+
+	// <p>吊销日期。</p>
+	RevokeDate *string `json:"RevokeDate,omitnil,omitempty" name:"RevokeDate"`
+
+	// <p>吊销原因。</p>
+	RevokeReason *string `json:"RevokeReason,omitnil,omitempty" name:"RevokeReason"`
+
+	// <p>注销日期。</p>
+	CancellationDate *string `json:"CancellationDate,omitnil,omitempty" name:"CancellationDate"`
+
+	// <p>注销原因。</p>
+	CancellationReason *string `json:"CancellationReason,omitnil,omitempty" name:"CancellationReason"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryEnterpriseBasicInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryEnterpriseBasicInfoResponseParams `json:"Response"`
+}
+
+func (r *QueryEnterpriseBasicInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryEnterpriseBasicInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type QuestionInfo struct {
 	// <p>旋转角度</p>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`

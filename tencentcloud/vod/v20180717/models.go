@@ -3996,6 +3996,9 @@ type CloneVoiceAsyncRequestParams struct {
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
+	// <p>模型名，不填默认为MiniMax模型。</p> 枚举值： <ul><li>MiniMax</li><li>ElevenLabs</li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
 	// <p>克隆音频base64编码。</p>
 	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
 
@@ -4008,7 +4011,7 @@ type CloneVoiceAsyncRequestParams struct {
 	// <p>语言增强，如 "zh" "en" "auto"，默认 "auto"</p>
 	LanguageBoost *string `json:"LanguageBoost,omitnil,omitempty" name:"LanguageBoost"`
 
-	// <p>音色克隆拓展参数。<code>ExtParam</code> 支持的字段：</p><ul>  <li><code>text</code> (string)：试听合成文本，最大 <code>1000</code> 字符；非空时必须同时传 <code>tts_model</code>，克隆成功后返回试听音频 <code>DemoAudio</code>。</li>  <li><code>model</code> (string)：克隆模型，缺省 <code>minimax-voice-clone</code>。</li>  <li><code>tts_model</code> (string)：合成试听音频用的模型，可选 <code>minimax-speech-2.8-hd</code>、<code>minimax-speech-2.8-turbo</code>、<code>minimax-speech-2.6-hd</code>、<code>minimax-speech-2.6-turbo</code>、<code>minimax-speech-02-hd</code>、<code>minimax-speech-02-turbo</code>；<code>text</code> 非空时必填。</li>  <li><code>text_lang</code> (string)：试听文本语言。</li>  <li><code>voice_profile</code> (object)：音色画像，可选字段：    <ul>      <li><code>name</code> (string)：音色名称。</li>      <li><code>description</code> (string)：音色描述。</li>      <li><code>gender</code> (string)：性别，可选 <code>male</code> / <code>female</code> / <code>unknown</code>。</li>      <li><code>age</code> (string)：年龄段，可选 <code>child</code> / <code>teenager</code> / <code>youth</code> / <code>middle_aged</code> / <code>senior</code> / <code>unknown</code>。</li>      <li><code>languages</code> (string[])：支持语言，如 <code>["zh", "en"]</code>。</li>      <li><code>labels</code> (string[])：音色标签，如 <code>["磁性"]</code>。</li>      <li><code>scenes</code> (string[])：适用场景，如 <code>["解说"]</code>。</li>    </ul>  </li></ul>
+	// <p><strong>ExtParam</strong> JSON 字符串字段，用于指定各模型的高级音色参数。</p><hr><h3 id="Clone">通用参数</h3><ul><li>text（string）：试听文本，最大 1000 字符；传入后返回试听音频 DemoAudio</li><li>tts_model（string）：试听文本合成模型，text 非空时必填；按 ModelName 模型系列白名单校验</li><li>text_lang（string）：试听文本语言，如 zh</li><li>voice_profile.name（string）：音色名称</li><li>voice_profile.description（string）：音色描述</li><li>voice_profile.gender（string）：性别，可选 male、female、unknown</li><li>voice_profile.age（string）：年龄段，可选 child、teenager、youth、middle_aged、senior、unknown</li><li>voice_profile.languages（array of string）：语言，如 ["zh"]</li><li>voice_profile.labels（array of string）：标签，如 ["磁性"]</li><li>voice_profile.scenes（array of string）：场景，如 ["解说"]</li></ul><hr><h3 id="CloneElevenLabs">ElevenLabs</h3><ul><li>voice_name（string）：音色名称；未传时回退取 voice_profile.name，两者都缺时使用默认名称</li><li>description（string）：音色描述；未传时回退取 voice_profile.description</li><li>labels（map&lt;string,string&gt;）：音色标签，官方推荐键 language、accent、gender、age；最多 16 项，键值各不超过 256 字节</li><li>remove_background_noise（boolean）：是否用音频隔离模型去除背景噪声，默认 false；样本本身无噪声时开启可能降低质量</li></ul><hr>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 
 	// <p>标识来源上下文，用于透传用户请求信息，在回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
@@ -4024,6 +4027,9 @@ type CloneVoiceAsyncRequest struct {
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
+	// <p>模型名，不填默认为MiniMax模型。</p> 枚举值： <ul><li>MiniMax</li><li>ElevenLabs</li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
 	// <p>克隆音频base64编码。</p>
 	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
 
@@ -4036,7 +4042,7 @@ type CloneVoiceAsyncRequest struct {
 	// <p>语言增强，如 "zh" "en" "auto"，默认 "auto"</p>
 	LanguageBoost *string `json:"LanguageBoost,omitnil,omitempty" name:"LanguageBoost"`
 
-	// <p>音色克隆拓展参数。<code>ExtParam</code> 支持的字段：</p><ul>  <li><code>text</code> (string)：试听合成文本，最大 <code>1000</code> 字符；非空时必须同时传 <code>tts_model</code>，克隆成功后返回试听音频 <code>DemoAudio</code>。</li>  <li><code>model</code> (string)：克隆模型，缺省 <code>minimax-voice-clone</code>。</li>  <li><code>tts_model</code> (string)：合成试听音频用的模型，可选 <code>minimax-speech-2.8-hd</code>、<code>minimax-speech-2.8-turbo</code>、<code>minimax-speech-2.6-hd</code>、<code>minimax-speech-2.6-turbo</code>、<code>minimax-speech-02-hd</code>、<code>minimax-speech-02-turbo</code>；<code>text</code> 非空时必填。</li>  <li><code>text_lang</code> (string)：试听文本语言。</li>  <li><code>voice_profile</code> (object)：音色画像，可选字段：    <ul>      <li><code>name</code> (string)：音色名称。</li>      <li><code>description</code> (string)：音色描述。</li>      <li><code>gender</code> (string)：性别，可选 <code>male</code> / <code>female</code> / <code>unknown</code>。</li>      <li><code>age</code> (string)：年龄段，可选 <code>child</code> / <code>teenager</code> / <code>youth</code> / <code>middle_aged</code> / <code>senior</code> / <code>unknown</code>。</li>      <li><code>languages</code> (string[])：支持语言，如 <code>["zh", "en"]</code>。</li>      <li><code>labels</code> (string[])：音色标签，如 <code>["磁性"]</code>。</li>      <li><code>scenes</code> (string[])：适用场景，如 <code>["解说"]</code>。</li>    </ul>  </li></ul>
+	// <p><strong>ExtParam</strong> JSON 字符串字段，用于指定各模型的高级音色参数。</p><hr><h3 id="Clone">通用参数</h3><ul><li>text（string）：试听文本，最大 1000 字符；传入后返回试听音频 DemoAudio</li><li>tts_model（string）：试听文本合成模型，text 非空时必填；按 ModelName 模型系列白名单校验</li><li>text_lang（string）：试听文本语言，如 zh</li><li>voice_profile.name（string）：音色名称</li><li>voice_profile.description（string）：音色描述</li><li>voice_profile.gender（string）：性别，可选 male、female、unknown</li><li>voice_profile.age（string）：年龄段，可选 child、teenager、youth、middle_aged、senior、unknown</li><li>voice_profile.languages（array of string）：语言，如 ["zh"]</li><li>voice_profile.labels（array of string）：标签，如 ["磁性"]</li><li>voice_profile.scenes（array of string）：场景，如 ["解说"]</li></ul><hr><h3 id="CloneElevenLabs">ElevenLabs</h3><ul><li>voice_name（string）：音色名称；未传时回退取 voice_profile.name，两者都缺时使用默认名称</li><li>description（string）：音色描述；未传时回退取 voice_profile.description</li><li>labels（map&lt;string,string&gt;）：音色标签，官方推荐键 language、accent、gender、age；最多 16 项，键值各不超过 256 字节</li><li>remove_background_noise（boolean）：是否用音频隔离模型去除背景噪声，默认 false；样本本身无噪声时开启可能降低质量</li></ul><hr>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 
 	// <p>标识来源上下文，用于透传用户请求信息，在回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
@@ -4059,6 +4065,7 @@ func (r *CloneVoiceAsyncRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SubAppId")
+	delete(f, "ModelName")
 	delete(f, "AudioData")
 	delete(f, "AudioUrl")
 	delete(f, "AudioFileId")
@@ -4134,6 +4141,9 @@ type CloneVoiceSyncRequestParams struct {
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
+	// <p>模型名，不填默认为MiniMax模型。</p> 枚举值： <ul><li>MiniMax</li><li>ElevenLabs</li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
 	// <p>克隆音频base64编码。</p>
 	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
 
@@ -4146,7 +4156,7 @@ type CloneVoiceSyncRequestParams struct {
 	// <p>语言增强，如 "zh" "en" "auto"，默认 "auto"</p>
 	LanguageBoost *string `json:"LanguageBoost,omitnil,omitempty" name:"LanguageBoost"`
 
-	// <p>同步音色克隆拓展参数。<code>ExtParam</code> 支持的字段：</p><ul>  <li><code>text</code> (string)：试听合成文本，最大 <code>1000</code> 字符；非空时必须同时传 <code>tts_model</code>，克隆成功后返回试听音频 <code>DemoAudio</code>。</li>  <li><code>model</code> (string)：克隆模型，缺省 <code>minimax-voice-clone</code>。</li>  <li><code>tts_model</code> (string)：合成试听音频用的模型，可选 <code>minimax-speech-2.8-hd</code>、<code>minimax-speech-2.8-turbo</code>、<code>minimax-speech-2.6-hd</code>、<code>minimax-speech-2.6-turbo</code>、<code>minimax-speech-02-hd</code>、<code>minimax-speech-02-turbo</code>；<code>text</code> 非空时必填。</li>  <li><code>text_lang</code> (string)：试听文本语言。</li>  <li><code>voice_profile</code> (object)：音色画像，可选字段：    <ul>      <li><code>name</code> (string)：音色名称。</li>      <li><code>description</code> (string)：音色描述。</li>      <li><code>gender</code> (string)：性别，可选 <code>male</code> / <code>female</code> / <code>unknown</code>。</li>      <li><code>age</code> (string)：年龄段，可选 <code>child</code> / <code>teenager</code> / <code>youth</code> / <code>middle_aged</code> / <code>senior</code> / <code>unknown</code>。</li>      <li><code>languages</code> (string[])：支持语言，如 <code>["zh", "en"]</code>。</li>      <li><code>labels</code> (string[])：音色标签，如 <code>["磁性"]</code>。</li>      <li><code>scenes</code> (string[])：适用场景，如 <code>["解说"]</code>。</li>    </ul>  </li></ul>
+	// <p><strong>ExtParam</strong> JSON 字符串字段，用于指定各模型的高级音色参数。</p><hr><h3 id="Clone">通用参数</h3><ul><li>text（string）：试听文本，最大 1000 字符；传入后返回试听音频 DemoAudio</li><li>tts_model（string）：试听文本合成模型，text 非空时必填；按 ModelName 模型系列白名单校验</li><li>text_lang（string）：试听文本语言，如 zh</li><li>voice_profile.name（string）：音色名称</li><li>voice_profile.description（string）：音色描述</li><li>voice_profile.gender（string）：性别，可选 male、female、unknown</li><li>voice_profile.age（string）：年龄段，可选 child、teenager、youth、middle_aged、senior、unknown</li><li>voice_profile.languages（array of string）：语言，如 ["zh"]</li><li>voice_profile.labels（array of string）：标签，如 ["磁性"]</li><li>voice_profile.scenes（array of string）：场景，如 ["解说"]</li></ul><hr><h3 id="CloneElevenLabs">ElevenLabs</h3><ul><li>voice_name（string）：音色名称；未传时回退取 voice_profile.name，两者都缺时使用默认名称</li><li>description（string）：音色描述；未传时回退取 voice_profile.description</li><li>labels（map&lt;string,string&gt;）：音色标签，官方推荐键 language、accent、gender、age；最多 16 项，键值各不超过 256 字节</li><li>remove_background_noise（boolean）：是否用音频隔离模型去除背景噪声，默认 false；样本本身无噪声时开启可能降低质量</li></ul><hr>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 }
 
@@ -4156,6 +4166,9 @@ type CloneVoiceSyncRequest struct {
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
+	// <p>模型名，不填默认为MiniMax模型。</p> 枚举值： <ul><li>MiniMax</li><li>ElevenLabs</li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
 	// <p>克隆音频base64编码。</p>
 	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
 
@@ -4168,7 +4181,7 @@ type CloneVoiceSyncRequest struct {
 	// <p>语言增强，如 "zh" "en" "auto"，默认 "auto"</p>
 	LanguageBoost *string `json:"LanguageBoost,omitnil,omitempty" name:"LanguageBoost"`
 
-	// <p>同步音色克隆拓展参数。<code>ExtParam</code> 支持的字段：</p><ul>  <li><code>text</code> (string)：试听合成文本，最大 <code>1000</code> 字符；非空时必须同时传 <code>tts_model</code>，克隆成功后返回试听音频 <code>DemoAudio</code>。</li>  <li><code>model</code> (string)：克隆模型，缺省 <code>minimax-voice-clone</code>。</li>  <li><code>tts_model</code> (string)：合成试听音频用的模型，可选 <code>minimax-speech-2.8-hd</code>、<code>minimax-speech-2.8-turbo</code>、<code>minimax-speech-2.6-hd</code>、<code>minimax-speech-2.6-turbo</code>、<code>minimax-speech-02-hd</code>、<code>minimax-speech-02-turbo</code>；<code>text</code> 非空时必填。</li>  <li><code>text_lang</code> (string)：试听文本语言。</li>  <li><code>voice_profile</code> (object)：音色画像，可选字段：    <ul>      <li><code>name</code> (string)：音色名称。</li>      <li><code>description</code> (string)：音色描述。</li>      <li><code>gender</code> (string)：性别，可选 <code>male</code> / <code>female</code> / <code>unknown</code>。</li>      <li><code>age</code> (string)：年龄段，可选 <code>child</code> / <code>teenager</code> / <code>youth</code> / <code>middle_aged</code> / <code>senior</code> / <code>unknown</code>。</li>      <li><code>languages</code> (string[])：支持语言，如 <code>["zh", "en"]</code>。</li>      <li><code>labels</code> (string[])：音色标签，如 <code>["磁性"]</code>。</li>      <li><code>scenes</code> (string[])：适用场景，如 <code>["解说"]</code>。</li>    </ul>  </li></ul>
+	// <p><strong>ExtParam</strong> JSON 字符串字段，用于指定各模型的高级音色参数。</p><hr><h3 id="Clone">通用参数</h3><ul><li>text（string）：试听文本，最大 1000 字符；传入后返回试听音频 DemoAudio</li><li>tts_model（string）：试听文本合成模型，text 非空时必填；按 ModelName 模型系列白名单校验</li><li>text_lang（string）：试听文本语言，如 zh</li><li>voice_profile.name（string）：音色名称</li><li>voice_profile.description（string）：音色描述</li><li>voice_profile.gender（string）：性别，可选 male、female、unknown</li><li>voice_profile.age（string）：年龄段，可选 child、teenager、youth、middle_aged、senior、unknown</li><li>voice_profile.languages（array of string）：语言，如 ["zh"]</li><li>voice_profile.labels（array of string）：标签，如 ["磁性"]</li><li>voice_profile.scenes（array of string）：场景，如 ["解说"]</li></ul><hr><h3 id="CloneElevenLabs">ElevenLabs</h3><ul><li>voice_name（string）：音色名称；未传时回退取 voice_profile.name，两者都缺时使用默认名称</li><li>description（string）：音色描述；未传时回退取 voice_profile.description</li><li>labels（map&lt;string,string&gt;）：音色标签，官方推荐键 language、accent、gender、age；最多 16 项，键值各不超过 256 字节</li><li>remove_background_noise（boolean）：是否用音频隔离模型去除背景噪声，默认 false；样本本身无噪声时开启可能降低质量</li></ul><hr>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 }
 
@@ -4185,6 +4198,7 @@ func (r *CloneVoiceSyncRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SubAppId")
+	delete(f, "ModelName")
 	delete(f, "AudioData")
 	delete(f, "AudioUrl")
 	delete(f, "AudioFileId")
@@ -12590,6 +12604,9 @@ type DeleteVoiceRequestParams struct {
 	// <p>音色Id</p>
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 
+	// <p>模型名，不填默认为MiniMax模型。</p> 枚举值：<ul><li><p>MiniMax </p></li><li><p>ElevenLabs</p></li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
@@ -12599,6 +12616,9 @@ type DeleteVoiceRequest struct {
 	
 	// <p>音色Id</p>
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>模型名，不填默认为MiniMax模型。</p> 枚举值：<ul><li><p>MiniMax </p></li><li><p>ElevenLabs</p></li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -12617,6 +12637,7 @@ func (r *DeleteVoiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "VoiceId")
+	delete(f, "ModelName")
 	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVoiceRequest has unknown keys!", "")
@@ -18523,6 +18544,9 @@ type DescribeVoicesRequestParams struct {
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
+	// <p>模型名，不填默认为MiniMax模型。</p>枚举值：<ul><li><p>MiniMax</p></li><li><p>ElevenLabs</p></li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
 	// <p>音色ID</p>
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 
@@ -18559,6 +18583,9 @@ type DescribeVoicesRequest struct {
 	
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>模型名，不填默认为MiniMax模型。</p>枚举值：<ul><li><p>MiniMax</p></li><li><p>ElevenLabs</p></li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// <p>音色ID</p>
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
@@ -18604,6 +18631,7 @@ func (r *DescribeVoicesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SubAppId")
+	delete(f, "ModelName")
 	delete(f, "VoiceId")
 	delete(f, "VoiceType")
 	delete(f, "VoiceName")
@@ -18627,6 +18655,9 @@ type DescribeVoicesResponseParams struct {
 
 	// <p>可用音色总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>可用音色槽位信息</p>
+	VoiceSlot *VoiceSlotInfo `json:"VoiceSlot,omitnil,omitempty" name:"VoiceSlot"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -18887,13 +18918,16 @@ type DesignVoiceAsyncRequestParams struct {
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
+	// <p>模型名，不填默认为MiniMax模型。</p> 枚举值： <ul><li>MiniMax</li><li>ElevenLabs</li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
 	// <p>音色设置</p>
 	VoiceSettings *VoiceSettings `json:"VoiceSettings,omitnil,omitempty" name:"VoiceSettings"`
 
 	// <p>试听合成文本，最大 500 字符</p>
 	PreviewText *string `json:"PreviewText,omitnil,omitempty" name:"PreviewText"`
 
-	// <p>扩展参数，json字符串</p>
+	// <p><strong>ExtParam</strong> JSON 字符串字段，用于指定各模型的高级设计参数。</p><hr><h3 id="ElevenLabs">ElevenLabs</h3><ul><li>model_id（string）：TTV 模型，可选 eleven_multilingual_ttv_v2（默认）、eleven_ttv_v3</li><li>voice_name（string）：音色名称，用于设计完成后正式创建音色</li><li>labels（map&lt;string,string&gt;）：音色标签，最多 16 项，键值各不超过 256 字节</li><li>auto_generate_text（boolean）：是否自动生成与描述匹配的试听文本，默认 false</li><li>loudness（float）：音量，取值范围 [-1, 1]，默认 0.5</li><li>seed（integer）：采样种子，取值范围 [0, 2147483647]</li><li>guidance_scale（float）：提示词遵循程度，取值范围 [0, 100]，默认 5</li><li>quality（float）：输出质量，取值范围 [-1, 1]，越高质量越好但多样性越低</li><li>should_enhance（boolean）：是否用 AI 扩写音色描述，默认 false</li><li>reference_audio_base64（string）：参考音频 base64，仅 eleven_ttv_v3 支持</li><li>prompt_strength（float）：提示词与参考音频权重，取值范围 [0, 1]，仅 eleven_ttv_v3 支持</li><li>audio_setting.format（string）：音频格式，可选 mp3、opus、alaw、pcm</li><li>audio_setting.sample_rate（integer）：采样率，与 format 组合受限</li><li>audio_setting.bitrate（integer）：比特率，需与 format、sample_rate 匹配</li></ul><hr>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 
 	// <p>标识来源上下文，用于透传用户请求信息，在回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
@@ -18912,13 +18946,16 @@ type DesignVoiceAsyncRequest struct {
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
+	// <p>模型名，不填默认为MiniMax模型。</p> 枚举值： <ul><li>MiniMax</li><li>ElevenLabs</li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
 	// <p>音色设置</p>
 	VoiceSettings *VoiceSettings `json:"VoiceSettings,omitnil,omitempty" name:"VoiceSettings"`
 
 	// <p>试听合成文本，最大 500 字符</p>
 	PreviewText *string `json:"PreviewText,omitnil,omitempty" name:"PreviewText"`
 
-	// <p>扩展参数，json字符串</p>
+	// <p><strong>ExtParam</strong> JSON 字符串字段，用于指定各模型的高级设计参数。</p><hr><h3 id="ElevenLabs">ElevenLabs</h3><ul><li>model_id（string）：TTV 模型，可选 eleven_multilingual_ttv_v2（默认）、eleven_ttv_v3</li><li>voice_name（string）：音色名称，用于设计完成后正式创建音色</li><li>labels（map&lt;string,string&gt;）：音色标签，最多 16 项，键值各不超过 256 字节</li><li>auto_generate_text（boolean）：是否自动生成与描述匹配的试听文本，默认 false</li><li>loudness（float）：音量，取值范围 [-1, 1]，默认 0.5</li><li>seed（integer）：采样种子，取值范围 [0, 2147483647]</li><li>guidance_scale（float）：提示词遵循程度，取值范围 [0, 100]，默认 5</li><li>quality（float）：输出质量，取值范围 [-1, 1]，越高质量越好但多样性越低</li><li>should_enhance（boolean）：是否用 AI 扩写音色描述，默认 false</li><li>reference_audio_base64（string）：参考音频 base64，仅 eleven_ttv_v3 支持</li><li>prompt_strength（float）：提示词与参考音频权重，取值范围 [0, 1]，仅 eleven_ttv_v3 支持</li><li>audio_setting.format（string）：音频格式，可选 mp3、opus、alaw、pcm</li><li>audio_setting.sample_rate（integer）：采样率，与 format 组合受限</li><li>audio_setting.bitrate（integer）：比特率，需与 format、sample_rate 匹配</li></ul><hr>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 
 	// <p>标识来源上下文，用于透传用户请求信息，在回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
@@ -18942,6 +18979,7 @@ func (r *DesignVoiceAsyncRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Prompt")
 	delete(f, "SubAppId")
+	delete(f, "ModelName")
 	delete(f, "VoiceSettings")
 	delete(f, "PreviewText")
 	delete(f, "ExtParam")
@@ -34304,13 +34342,19 @@ type TextToSpeechAsyncRequestParams struct {
 	// <p>音色ID</p>
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 
+	// <p>模型系列，区分大小写，默认 MiniMax。</p><p>枚举值：</p><ul><li>MiniMax</li><li>ElevenLabs</li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本，不填时使用该模型系列的默认版本。</p><p>各模型支持版本：</p><ul><li><p>MiniMax：minimax-speech-2.8-hd（默认）、minimax-speech-2.8-turbo、minimax-speech-2.6-hd、minimax-speech-2.6-turbo、minimax-speech-02-hd、minimax-speech-02-turbo</p></li><li><p>ElevenLabs：custom-model-ll-v3（默认）、custom-model-ll-mlv2、custom-model-ll-fv2.5、custom-model-ll-fv2、custom-model-ll-v4、custom-model-ll-v4tb</p></li></ul>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
 	// <p>语言增强，如 "zh" "en" "auto"，默认 "auto"</p>
 	LanguageBoost *string `json:"LanguageBoost,omitnil,omitempty" name:"LanguageBoost"`
 
-	// <p>文本合成语音（异步）拓展参数。ExtParam 支持的字段：</p><ul><li>model (string)：合成模型，可选 minimax-speech-2.8-hd、minimax-speech-2.8-turbo、minimax-speech-2.6-hd、minimax-speech-2.6-turbo、minimax-speech-02-hd、minimax-speech-02-turbo；默认 minimax-speech-2.8-hd。</li><li>text_lang (string)：文本语言，如 zh / en；与入参 LanguageBoost 同义，同时传入时以 ExtParam 为准。</li><li>audio_setting (object)：音频输出与音色微调参数（注意：异步接口的语速、音量、音调、情绪均在 audio_setting 下，与同步接口的 voice_setting 不同），可选字段：<ul><li>speed (float)：语速，[0.5, 2.0]，默认 1.0。</li><li>vol (float)：音量，(0, 10]，默认 1.0。</li><li>pitch (int)：音调，[-12, 12]，默认 0。</li><li>emotion (string)：情绪，可选 happy / sad / angry / fearful / disgusted / surprised / calm / fluent / whisper。</li><li>sample_rate (int)：采样率，可选 8000 / 16000 / 22050 / 24000 / 32000 / 44100，默认 16000。</li><li>format (string)：音频格式，可选 mp3 / wav，默认 wav。</li><li>duration (float)：目标时长（秒）。</li><li>cut_silence (bool)：是否裁剪静音段。</li></ul></li></ul>
+	// <p><strong>ExtParam</strong> 是 JSON 字符串字段，用于指定各模型的高级合成参数。字段名中的 . 表示嵌套对象，如 req_params.audio_params.speech_rate，需按层级组成本地 JSON 对象后整体转义传入。未列出的字段不生效。</p><hr><h3 id="MiniMax">MiniMax</h3><ul><li>model（string）：合成模型，可选 minimax-speech-2.8-hd、minimax-speech-2.8-turbo、minimax-speech-2.6-hd、minimax-speech-2.6-turbo、minimax-speech-02-hd、minimax-speech-02-turbo，默认 minimax-speech-2.8-hd</li><li>voice_setting.speed（float）：语速，取值范围 [0.5, 2.0]，默认 1.0</li><li>voice_setting.vol（float）：音量，取值范围 (0, 10]，默认 1.0</li><li>voice_setting.pitch（integer）：音调，取值范围 [-12, 12]，默认 0</li><li>voice_setting.emotion（string）：情绪，可选 happy、sad、angry、fearful、disgusted、surprised、calm、fluent、whisper</li><li>audio_setting.format（string）：音频格式，可选 mp3、wav，默认 wav</li><li>audio_setting.sample_rate（integer）：采样率，可选 8000、16000、22050、24000、32000、44100，默认 16000</li><li>audio_setting.duration（float）：目标时长，单位秒</li><li>audio_setting.cut_silence（boolean）：是否裁剪静音段</li></ul><hr><h3 id="ElevenLabs">ElevenLabs</h3><ul><li>language_code（string）：语言代码（ISO 639-1），用于强制语种与文本归一化</li><li>previous_text（string）：上一段文本（衔接上下文）</li><li>next_text（string）：下一段文本</li><li>seed（integer）：确定性采样种子，范围 [0, 4294967295]</li><li>apply_text_normalization（string）：文本规范化，可选 auto、on、off</li><li>apply_language_text_normalization（boolean）：是否启用语种相关的文本规范化</li><li>voice_settings.stability（float）：稳定性，默认 0.5</li><li>voice_settings.similarity_boost（float）：音色相似度，默认 0.75</li><li>voice_settings.style（float）：风格夸张度，默认 0</li><li>voice_settings.use_speaker_boost（boolean）：是否增强音色相似度，默认 true</li><li>voice_settings.speed（float）：语速，取值范围 [0.5, 2.0]，默认 1.0</li><li>audio_setting.format（string）：音频格式，可选 mp3、opus、alaw、pcm</li><li>audio_setting.sample_rate（integer）：采样率，需与 format 匹配</li><li>audio_setting.bitrate（integer）：比特率，需与 format、sample_rate 匹配</li></ul><hr>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 
 	// <p>输出相关参数</p><p>可以指定输出形式等。默认输出音频url。</p>
@@ -34332,13 +34376,19 @@ type TextToSpeechAsyncRequest struct {
 	// <p>音色ID</p>
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 
+	// <p>模型系列，区分大小写，默认 MiniMax。</p><p>枚举值：</p><ul><li>MiniMax</li><li>ElevenLabs</li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本，不填时使用该模型系列的默认版本。</p><p>各模型支持版本：</p><ul><li><p>MiniMax：minimax-speech-2.8-hd（默认）、minimax-speech-2.8-turbo、minimax-speech-2.6-hd、minimax-speech-2.6-turbo、minimax-speech-02-hd、minimax-speech-02-turbo</p></li><li><p>ElevenLabs：custom-model-ll-v3（默认）、custom-model-ll-mlv2、custom-model-ll-fv2.5、custom-model-ll-fv2、custom-model-ll-v4、custom-model-ll-v4tb</p></li></ul>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
 	// <p>语言增强，如 "zh" "en" "auto"，默认 "auto"</p>
 	LanguageBoost *string `json:"LanguageBoost,omitnil,omitempty" name:"LanguageBoost"`
 
-	// <p>文本合成语音（异步）拓展参数。ExtParam 支持的字段：</p><ul><li>model (string)：合成模型，可选 minimax-speech-2.8-hd、minimax-speech-2.8-turbo、minimax-speech-2.6-hd、minimax-speech-2.6-turbo、minimax-speech-02-hd、minimax-speech-02-turbo；默认 minimax-speech-2.8-hd。</li><li>text_lang (string)：文本语言，如 zh / en；与入参 LanguageBoost 同义，同时传入时以 ExtParam 为准。</li><li>audio_setting (object)：音频输出与音色微调参数（注意：异步接口的语速、音量、音调、情绪均在 audio_setting 下，与同步接口的 voice_setting 不同），可选字段：<ul><li>speed (float)：语速，[0.5, 2.0]，默认 1.0。</li><li>vol (float)：音量，(0, 10]，默认 1.0。</li><li>pitch (int)：音调，[-12, 12]，默认 0。</li><li>emotion (string)：情绪，可选 happy / sad / angry / fearful / disgusted / surprised / calm / fluent / whisper。</li><li>sample_rate (int)：采样率，可选 8000 / 16000 / 22050 / 24000 / 32000 / 44100，默认 16000。</li><li>format (string)：音频格式，可选 mp3 / wav，默认 wav。</li><li>duration (float)：目标时长（秒）。</li><li>cut_silence (bool)：是否裁剪静音段。</li></ul></li></ul>
+	// <p><strong>ExtParam</strong> 是 JSON 字符串字段，用于指定各模型的高级合成参数。字段名中的 . 表示嵌套对象，如 req_params.audio_params.speech_rate，需按层级组成本地 JSON 对象后整体转义传入。未列出的字段不生效。</p><hr><h3 id="MiniMax">MiniMax</h3><ul><li>model（string）：合成模型，可选 minimax-speech-2.8-hd、minimax-speech-2.8-turbo、minimax-speech-2.6-hd、minimax-speech-2.6-turbo、minimax-speech-02-hd、minimax-speech-02-turbo，默认 minimax-speech-2.8-hd</li><li>voice_setting.speed（float）：语速，取值范围 [0.5, 2.0]，默认 1.0</li><li>voice_setting.vol（float）：音量，取值范围 (0, 10]，默认 1.0</li><li>voice_setting.pitch（integer）：音调，取值范围 [-12, 12]，默认 0</li><li>voice_setting.emotion（string）：情绪，可选 happy、sad、angry、fearful、disgusted、surprised、calm、fluent、whisper</li><li>audio_setting.format（string）：音频格式，可选 mp3、wav，默认 wav</li><li>audio_setting.sample_rate（integer）：采样率，可选 8000、16000、22050、24000、32000、44100，默认 16000</li><li>audio_setting.duration（float）：目标时长，单位秒</li><li>audio_setting.cut_silence（boolean）：是否裁剪静音段</li></ul><hr><h3 id="ElevenLabs">ElevenLabs</h3><ul><li>language_code（string）：语言代码（ISO 639-1），用于强制语种与文本归一化</li><li>previous_text（string）：上一段文本（衔接上下文）</li><li>next_text（string）：下一段文本</li><li>seed（integer）：确定性采样种子，范围 [0, 4294967295]</li><li>apply_text_normalization（string）：文本规范化，可选 auto、on、off</li><li>apply_language_text_normalization（boolean）：是否启用语种相关的文本规范化</li><li>voice_settings.stability（float）：稳定性，默认 0.5</li><li>voice_settings.similarity_boost（float）：音色相似度，默认 0.75</li><li>voice_settings.style（float）：风格夸张度，默认 0</li><li>voice_settings.use_speaker_boost（boolean）：是否增强音色相似度，默认 true</li><li>voice_settings.speed（float）：语速，取值范围 [0.5, 2.0]，默认 1.0</li><li>audio_setting.format（string）：音频格式，可选 mp3、opus、alaw、pcm</li><li>audio_setting.sample_rate（integer）：采样率，需与 format 匹配</li><li>audio_setting.bitrate（integer）：比特率，需与 format、sample_rate 匹配</li></ul><hr>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 
 	// <p>输出相关参数</p><p>可以指定输出形式等。默认输出音频url。</p>
@@ -34365,6 +34415,8 @@ func (r *TextToSpeechAsyncRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Text")
 	delete(f, "VoiceId")
+	delete(f, "ModelName")
+	delete(f, "ModelVersion")
 	delete(f, "SubAppId")
 	delete(f, "LanguageBoost")
 	delete(f, "ExtParam")
@@ -34447,6 +34499,12 @@ type TextToSpeechSyncRequestParams struct {
 	// <p>音色Id，指定音色合成时填写，支持系统音色和设计、克隆音色。</p>
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 
+	// <p>模型系列，区分大小写，默认 MiniMax。</p><p>枚举值：</p><ul><li>MiniMax</li><li>ElevenLabs</li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本，不填时使用该模型系列的默认版本。</p><p>各模型支持版本：</p><ul><li><p>MiniMax：minimax-speech-2.8-hd（默认）、minimax-speech-2.8-turbo、minimax-speech-2.6-hd、minimax-speech-2.6-turbo、minimax-speech-02-hd、minimax-speech-02-turbo</p></li><li><p>ElevenLabs：custom-model-ll-v3（默认）、custom-model-ll-mlv2、custom-model-ll-fv2.5、custom-model-ll-fv2、custom-model-ll-v4、custom-model-ll-v4tb</p></li></ul>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
@@ -34456,7 +34514,7 @@ type TextToSpeechSyncRequestParams struct {
 	// <p>输出相关参数</p><p>可以指定输出形式等。默认输出音频URL。</p>
 	Output *TextToSpeechSyncOutputOption `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// <p>同步语音合成拓展参数。<code>ExtParam</code> 支持的字段：</p><ul>  <li><code>model</code> (string)：合成模型，可选 <code>minimax-speech-2.8-hd</code>、<code>minimax-speech-2.8-turbo</code>、<code>minimax-speech-2.6-hd</code>、<code>minimax-speech-2.6-turbo</code>、<code>minimax-speech-02-hd</code>、<code>minimax-speech-02-turbo</code>；默认 <code>minimax-speech-2.8-hd</code>。</li>  <li><code>voice_setting</code> (object)：音色微调，可选字段：    <ul>      <li><code>speed</code> (float)：语速，<code>[0.5, 2.0]</code>，默认 <code>1.0</code>。</li>      <li><code>vol</code> (float)：音量，<code>(0, 10]</code>，默认 <code>1.0</code>。</li>      <li><code>pitch</code> (int)：音调，<code>[-12, 12]</code>，默认 <code>0</code>。</li>      <li><code>emotion</code> (string)：情绪，可选 <code>happy</code> / <code>sad</code> / <code>angry</code> / <code>fearful</code> / <code>disgusted</code> / <code>surprised</code> / <code>calm</code> / <code>fluent</code> / <code>whisper</code>。</li>    </ul>  </li>  <li><code>audio_setting</code> (object)：音频输出参数，可选字段：    <ul>      <li><code>sample_rate</code> (int)：采样率，可选 <code>8000</code> / <code>16000</code> / <code>22050</code> / <code>24000</code> / <code>32000</code> / <code>44100</code>，默认 <code>16000</code>。</li>      <li><code>format</code> (string)：音频格式，可选 <code>mp3</code> / <code>wav</code>，默认 <code>wav</code>。</li>      <li><code>duration</code> (float)：目标时长（秒）。</li>      <li><code>cut_silence</code> (bool)：是否裁剪静音段。</li>    </ul>  </li></ul>
+	// <p><strong>ExtParam</strong> 是 JSON 字符串字段，用于指定各模型的高级合成参数。字段名中的 . 表示嵌套对象，如 req_params.audio_params.speech_rate，需按层级组成本地 JSON 对象后整体转义传入。未列出的字段不生效。</p><hr><h3 id="MiniMax">MiniMax</h3><ul><li>model（string）：合成模型，可选 minimax-speech-2.8-hd、minimax-speech-2.8-turbo、minimax-speech-2.6-hd、minimax-speech-2.6-turbo、minimax-speech-02-hd、minimax-speech-02-turbo，默认 minimax-speech-2.8-hd</li><li>voice_setting.speed（float）：语速，取值范围 [0.5, 2.0]，默认 1.0</li><li>voice_setting.vol（float）：音量，取值范围 (0, 10]，默认 1.0</li><li>voice_setting.pitch（integer）：音调，取值范围 [-12, 12]，默认 0</li><li>voice_setting.emotion（string）：情绪，可选 happy、sad、angry、fearful、disgusted、surprised、calm、fluent、whisper</li><li>audio_setting.format（string）：音频格式，可选 mp3、wav，默认 wav</li><li>audio_setting.sample_rate（integer）：采样率，可选 8000、16000、22050、24000、32000、44100，默认 16000</li><li>audio_setting.duration（float）：目标时长，单位秒</li><li>audio_setting.cut_silence（boolean）：是否裁剪静音段</li></ul><hr><h3 id="ElevenLabs">ElevenLabs</h3><ul><li>language_code（string）：语言代码（ISO 639-1），用于强制语种与文本归一化</li><li>previous_text（string）：上一段文本（衔接上下文）</li><li>next_text（string）：下一段文本</li><li>seed（integer）：确定性采样种子，范围 [0, 4294967295]</li><li>apply_text_normalization（string）：文本规范化，可选 auto、on、off</li><li>apply_language_text_normalization（boolean）：是否启用语种相关的文本规范化</li><li>voice_settings.stability（float）：稳定性，默认 0.5</li><li>voice_settings.similarity_boost（float）：音色相似度，默认 0.75</li><li>voice_settings.style（float）：风格夸张度，默认 0</li><li>voice_settings.use_speaker_boost（boolean）：是否增强音色相似度，默认 true</li><li>voice_settings.speed（float）：语速，取值范围 [0.5, 2.0]，默认 1.0</li><li>audio_setting.format（string）：音频格式，可选 mp3、opus、alaw、pcm</li><li>audio_setting.sample_rate（integer）：采样率，需与 format 匹配</li><li>audio_setting.bitrate（integer）：比特率，需与 format、sample_rate 匹配</li></ul><hr>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 }
 
@@ -34469,6 +34527,12 @@ type TextToSpeechSyncRequest struct {
 	// <p>音色Id，指定音色合成时填写，支持系统音色和设计、克隆音色。</p>
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 
+	// <p>模型系列，区分大小写，默认 MiniMax。</p><p>枚举值：</p><ul><li>MiniMax</li><li>ElevenLabs</li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本，不填时使用该模型系列的默认版本。</p><p>各模型支持版本：</p><ul><li><p>MiniMax：minimax-speech-2.8-hd（默认）、minimax-speech-2.8-turbo、minimax-speech-2.6-hd、minimax-speech-2.6-turbo、minimax-speech-02-hd、minimax-speech-02-turbo</p></li><li><p>ElevenLabs：custom-model-ll-v3（默认）、custom-model-ll-mlv2、custom-model-ll-fv2.5、custom-model-ll-fv2、custom-model-ll-v4、custom-model-ll-v4tb</p></li></ul>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
@@ -34478,7 +34542,7 @@ type TextToSpeechSyncRequest struct {
 	// <p>输出相关参数</p><p>可以指定输出形式等。默认输出音频URL。</p>
 	Output *TextToSpeechSyncOutputOption `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// <p>同步语音合成拓展参数。<code>ExtParam</code> 支持的字段：</p><ul>  <li><code>model</code> (string)：合成模型，可选 <code>minimax-speech-2.8-hd</code>、<code>minimax-speech-2.8-turbo</code>、<code>minimax-speech-2.6-hd</code>、<code>minimax-speech-2.6-turbo</code>、<code>minimax-speech-02-hd</code>、<code>minimax-speech-02-turbo</code>；默认 <code>minimax-speech-2.8-hd</code>。</li>  <li><code>voice_setting</code> (object)：音色微调，可选字段：    <ul>      <li><code>speed</code> (float)：语速，<code>[0.5, 2.0]</code>，默认 <code>1.0</code>。</li>      <li><code>vol</code> (float)：音量，<code>(0, 10]</code>，默认 <code>1.0</code>。</li>      <li><code>pitch</code> (int)：音调，<code>[-12, 12]</code>，默认 <code>0</code>。</li>      <li><code>emotion</code> (string)：情绪，可选 <code>happy</code> / <code>sad</code> / <code>angry</code> / <code>fearful</code> / <code>disgusted</code> / <code>surprised</code> / <code>calm</code> / <code>fluent</code> / <code>whisper</code>。</li>    </ul>  </li>  <li><code>audio_setting</code> (object)：音频输出参数，可选字段：    <ul>      <li><code>sample_rate</code> (int)：采样率，可选 <code>8000</code> / <code>16000</code> / <code>22050</code> / <code>24000</code> / <code>32000</code> / <code>44100</code>，默认 <code>16000</code>。</li>      <li><code>format</code> (string)：音频格式，可选 <code>mp3</code> / <code>wav</code>，默认 <code>wav</code>。</li>      <li><code>duration</code> (float)：目标时长（秒）。</li>      <li><code>cut_silence</code> (bool)：是否裁剪静音段。</li>    </ul>  </li></ul>
+	// <p><strong>ExtParam</strong> 是 JSON 字符串字段，用于指定各模型的高级合成参数。字段名中的 . 表示嵌套对象，如 req_params.audio_params.speech_rate，需按层级组成本地 JSON 对象后整体转义传入。未列出的字段不生效。</p><hr><h3 id="MiniMax">MiniMax</h3><ul><li>model（string）：合成模型，可选 minimax-speech-2.8-hd、minimax-speech-2.8-turbo、minimax-speech-2.6-hd、minimax-speech-2.6-turbo、minimax-speech-02-hd、minimax-speech-02-turbo，默认 minimax-speech-2.8-hd</li><li>voice_setting.speed（float）：语速，取值范围 [0.5, 2.0]，默认 1.0</li><li>voice_setting.vol（float）：音量，取值范围 (0, 10]，默认 1.0</li><li>voice_setting.pitch（integer）：音调，取值范围 [-12, 12]，默认 0</li><li>voice_setting.emotion（string）：情绪，可选 happy、sad、angry、fearful、disgusted、surprised、calm、fluent、whisper</li><li>audio_setting.format（string）：音频格式，可选 mp3、wav，默认 wav</li><li>audio_setting.sample_rate（integer）：采样率，可选 8000、16000、22050、24000、32000、44100，默认 16000</li><li>audio_setting.duration（float）：目标时长，单位秒</li><li>audio_setting.cut_silence（boolean）：是否裁剪静音段</li></ul><hr><h3 id="ElevenLabs">ElevenLabs</h3><ul><li>language_code（string）：语言代码（ISO 639-1），用于强制语种与文本归一化</li><li>previous_text（string）：上一段文本（衔接上下文）</li><li>next_text（string）：下一段文本</li><li>seed（integer）：确定性采样种子，范围 [0, 4294967295]</li><li>apply_text_normalization（string）：文本规范化，可选 auto、on、off</li><li>apply_language_text_normalization（boolean）：是否启用语种相关的文本规范化</li><li>voice_settings.stability（float）：稳定性，默认 0.5</li><li>voice_settings.similarity_boost（float）：音色相似度，默认 0.75</li><li>voice_settings.style（float）：风格夸张度，默认 0</li><li>voice_settings.use_speaker_boost（boolean）：是否增强音色相似度，默认 true</li><li>voice_settings.speed（float）：语速，取值范围 [0.5, 2.0]，默认 1.0</li><li>audio_setting.format（string）：音频格式，可选 mp3、opus、alaw、pcm</li><li>audio_setting.sample_rate（integer）：采样率，需与 format 匹配</li><li>audio_setting.bitrate（integer）：比特率，需与 format、sample_rate 匹配</li></ul><hr>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 }
 
@@ -34496,6 +34560,8 @@ func (r *TextToSpeechSyncRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Text")
 	delete(f, "VoiceId")
+	delete(f, "ModelName")
+	delete(f, "ModelVersion")
 	delete(f, "SubAppId")
 	delete(f, "LanguageBoost")
 	delete(f, "Output")
@@ -34889,6 +34955,9 @@ type UpdateVoiceRequestParams struct {
 	// <p>更新音色字段</p>
 	VoiceFields *VoiceUpdateFields `json:"VoiceFields,omitnil,omitempty" name:"VoiceFields"`
 
+	// <p>模型名，不填默认为MiniMax模型。</p> 枚举值： <ul><li>MiniMax </li><li>ElevenLabs</li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
@@ -34904,6 +34973,9 @@ type UpdateVoiceRequest struct {
 
 	// <p>更新音色字段</p>
 	VoiceFields *VoiceUpdateFields `json:"VoiceFields,omitnil,omitempty" name:"VoiceFields"`
+
+	// <p>模型名，不填默认为MiniMax模型。</p> 枚举值： <ul><li>MiniMax </li><li>ElevenLabs</li></ul>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
 	SubAppId *string `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -34926,6 +34998,7 @@ func (r *UpdateVoiceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VoiceId")
 	delete(f, "VoiceFields")
+	delete(f, "ModelName")
 	delete(f, "SubAppId")
 	delete(f, "ExtParam")
 	if len(f) > 0 {
@@ -35779,6 +35852,17 @@ type VoiceSettings struct {
 
 	// <p>使用场景</p>
 	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
+}
+
+type VoiceSlotInfo struct {
+	// <p>音色限制数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>音色限制剩余数</p>
+	Remaining *int64 `json:"Remaining,omitnil,omitempty" name:"Remaining"`
+
+	// <p>音色限制已用数</p>
+	Used *int64 `json:"Used,omitnil,omitempty" name:"Used"`
 }
 
 type VoiceUpdateFields struct {

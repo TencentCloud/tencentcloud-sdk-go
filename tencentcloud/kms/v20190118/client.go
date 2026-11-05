@@ -144,6 +144,7 @@ func NewAsymmetricRsaDecryptResponse() (response *AsymmetricRsaDecryptResponse) 
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDKEYUSAGEINCURRENTREGION = "UnsupportedOperation.UnsupportedKeyUsageInCurrentRegion"
 func (c *Client) AsymmetricRsaDecrypt(request *AsymmetricRsaDecryptRequest) (response *AsymmetricRsaDecryptResponse, err error) {
     return c.AsymmetricRsaDecryptWithContext(context.Background(), request)
 }
@@ -160,6 +161,7 @@ func (c *Client) AsymmetricRsaDecrypt(request *AsymmetricRsaDecryptRequest) (res
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDKEYUSAGEINCURRENTREGION = "UnsupportedOperation.UnsupportedKeyUsageInCurrentRegion"
 func (c *Client) AsymmetricRsaDecryptWithContext(ctx context.Context, request *AsymmetricRsaDecryptRequest) (response *AsymmetricRsaDecryptResponse, err error) {
     if request == nil {
         request = NewAsymmetricRsaDecryptRequest()
@@ -4066,6 +4068,7 @@ func NewSignByAsymmetricKeyResponse() (response *SignByAsymmetricKeyResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDKEYUSAGEINCURRENTREGION = "UnsupportedOperation.UnsupportedKeyUsageInCurrentRegion"
 func (c *Client) SignByAsymmetricKey(request *SignByAsymmetricKeyRequest) (response *SignByAsymmetricKeyResponse, err error) {
     return c.SignByAsymmetricKeyWithContext(context.Background(), request)
 }
@@ -4084,6 +4087,7 @@ func (c *Client) SignByAsymmetricKey(request *SignByAsymmetricKeyRequest) (respo
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDKEYUSAGEINCURRENTREGION = "UnsupportedOperation.UnsupportedKeyUsageInCurrentRegion"
 func (c *Client) SignByAsymmetricKeyWithContext(ctx context.Context, request *SignByAsymmetricKeyRequest) (response *SignByAsymmetricKeyResponse, err error) {
     if request == nil {
         request = NewSignByAsymmetricKeyRequest()
@@ -4441,6 +4445,7 @@ func NewVerifyByAsymmetricKeyResponse() (response *VerifyByAsymmetricKeyResponse
 //  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDKEYUSAGEINCURRENTREGION = "UnsupportedOperation.UnsupportedKeyUsageInCurrentRegion"
 func (c *Client) VerifyByAsymmetricKey(request *VerifyByAsymmetricKeyRequest) (response *VerifyByAsymmetricKeyResponse, err error) {
     return c.VerifyByAsymmetricKeyWithContext(context.Background(), request)
 }
@@ -4456,6 +4461,7 @@ func (c *Client) VerifyByAsymmetricKey(request *VerifyByAsymmetricKeyRequest) (r
 //  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDKEYUSAGEINCURRENTREGION = "UnsupportedOperation.UnsupportedKeyUsageInCurrentRegion"
 func (c *Client) VerifyByAsymmetricKeyWithContext(ctx context.Context, request *VerifyByAsymmetricKeyRequest) (response *VerifyByAsymmetricKeyResponse, err error) {
     if request == nil {
         request = NewVerifyByAsymmetricKeyRequest()

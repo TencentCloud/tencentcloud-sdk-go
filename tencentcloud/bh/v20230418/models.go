@@ -2101,80 +2101,98 @@ func (r *CreateOperationTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateResourceRequestParams struct {
-	// 部署region
+	// <p>部署region</p>
 	DeployRegion *string `json:"DeployRegion,omitnil,omitempty" name:"DeployRegion"`
 
-	// 部署堡垒机的VpcId
+	// <p>部署堡垒机的VpcId</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 部署堡垒机的SubnetId
+	// <p>部署堡垒机的SubnetId</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 资源类型。取值:standard/pro
+	// <p>资源类型。取值:standard/pro</p>
 	ResourceEdition *string `json:"ResourceEdition,omitnil,omitempty" name:"ResourceEdition"`
 
-	// 资源节点数
+	// <p>资源节点数</p>
 	ResourceNode *int64 `json:"ResourceNode,omitnil,omitempty" name:"ResourceNode"`
 
-	// 计费周期
+	// <p>计费周期</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 计费时长
+	// <p>计费时长</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 计费模式 1预付费
+	// <p>计费模式 1预付费</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 自动续费
+	// <p>自动续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 部署zone
+	// <p>零信任堡垒机功能包</p><p>枚举值：</p><ul><li>0： 不开通</li><li>1： 付费版（含 20 用户 / 10Mbps 带宽）</li></ul>
+	IOAResource *uint64 `json:"IOAResource,omitnil,omitempty" name:"IOAResource"`
+
+	// <p>零信任用户扩展包，1 个 = 20 用户</p><p>取值范围：[0, 999]</p>
+	PackageIOAUserCount *uint64 `json:"PackageIOAUserCount,omitnil,omitempty" name:"PackageIOAUserCount"`
+
+	// <p>零信任带宽扩展包，1 个 = 4Mbps</p><p>取值范围：[0, 509]</p>
+	PackageIOABandwidth *uint64 `json:"PackageIOABandwidth,omitnil,omitempty" name:"PackageIOABandwidth"`
+
+	// <p>部署zone</p>
 	DeployZone *string `json:"DeployZone,omitnil,omitempty" name:"DeployZone"`
 
-	// 0非试用版，1试用版
+	// <p>0非试用版，1试用版</p>
 	Trial *uint64 `json:"Trial,omitnil,omitempty" name:"Trial"`
 
-	// 是否共享clb，0：不共享，1：共享
+	// <p>是否共享clb</p><p>枚举值：</p><ul><li>0： 不共享</li><li>1： 共享</li></ul><p>默认值：0</p><p>公有云传0</p>
 	ShareClb *uint64 `json:"ShareClb,omitnil,omitempty" name:"ShareClb"`
 }
 
 type CreateResourceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署region
+	// <p>部署region</p>
 	DeployRegion *string `json:"DeployRegion,omitnil,omitempty" name:"DeployRegion"`
 
-	// 部署堡垒机的VpcId
+	// <p>部署堡垒机的VpcId</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 部署堡垒机的SubnetId
+	// <p>部署堡垒机的SubnetId</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 资源类型。取值:standard/pro
+	// <p>资源类型。取值:standard/pro</p>
 	ResourceEdition *string `json:"ResourceEdition,omitnil,omitempty" name:"ResourceEdition"`
 
-	// 资源节点数
+	// <p>资源节点数</p>
 	ResourceNode *int64 `json:"ResourceNode,omitnil,omitempty" name:"ResourceNode"`
 
-	// 计费周期
+	// <p>计费周期</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 计费时长
+	// <p>计费时长</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 计费模式 1预付费
+	// <p>计费模式 1预付费</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 自动续费
+	// <p>自动续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 部署zone
+	// <p>零信任堡垒机功能包</p><p>枚举值：</p><ul><li>0： 不开通</li><li>1： 付费版（含 20 用户 / 10Mbps 带宽）</li></ul>
+	IOAResource *uint64 `json:"IOAResource,omitnil,omitempty" name:"IOAResource"`
+
+	// <p>零信任用户扩展包，1 个 = 20 用户</p><p>取值范围：[0, 999]</p>
+	PackageIOAUserCount *uint64 `json:"PackageIOAUserCount,omitnil,omitempty" name:"PackageIOAUserCount"`
+
+	// <p>零信任带宽扩展包，1 个 = 4Mbps</p><p>取值范围：[0, 509]</p>
+	PackageIOABandwidth *uint64 `json:"PackageIOABandwidth,omitnil,omitempty" name:"PackageIOABandwidth"`
+
+	// <p>部署zone</p>
 	DeployZone *string `json:"DeployZone,omitnil,omitempty" name:"DeployZone"`
 
-	// 0非试用版，1试用版
+	// <p>0非试用版，1试用版</p>
 	Trial *uint64 `json:"Trial,omitnil,omitempty" name:"Trial"`
 
-	// 是否共享clb，0：不共享，1：共享
+	// <p>是否共享clb</p><p>枚举值：</p><ul><li>0： 不共享</li><li>1： 共享</li></ul><p>默认值：0</p><p>公有云传0</p>
 	ShareClb *uint64 `json:"ShareClb,omitnil,omitempty" name:"ShareClb"`
 }
 
@@ -2199,6 +2217,9 @@ func (r *CreateResourceRequest) FromJsonString(s string) error {
 	delete(f, "TimeSpan")
 	delete(f, "PayMode")
 	delete(f, "AutoRenewFlag")
+	delete(f, "IOAResource")
+	delete(f, "PackageIOAUserCount")
+	delete(f, "PackageIOABandwidth")
 	delete(f, "DeployZone")
 	delete(f, "Trial")
 	delete(f, "ShareClb")
@@ -2210,7 +2231,7 @@ func (r *CreateResourceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateResourceResponseParams struct {
-	// 实例Id
+	// <p>实例Id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8506,59 +8527,77 @@ func (r *ModifyReconnectionSettingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyResourceRequestParams struct {
-	// 需要开通服务的资源ID
+	// <p>需要开通服务的资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 状态
+	// <p>状态</p>
 	//
 	// Deprecated: Status is deprecated.
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例版本
+	// <p>实例版本</p>
 	ResourceEdition *string `json:"ResourceEdition,omitnil,omitempty" name:"ResourceEdition"`
 
-	// 资源节点数
+	// <p>资源节点数</p>
 	ResourceNode *int64 `json:"ResourceNode,omitnil,omitempty" name:"ResourceNode"`
 
-	// 自动续费
+	// <p>自动续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 带宽扩展包个数(4M)
+	// <p>带宽扩展包个数(4M)</p>
 	PackageBandwidth *int64 `json:"PackageBandwidth,omitnil,omitempty" name:"PackageBandwidth"`
 
-	// 授权点数扩展包个数(50点)
+	// <p>授权点数扩展包个数(50点)</p>
 	PackageNode *int64 `json:"PackageNode,omitnil,omitempty" name:"PackageNode"`
 
-	// 日志投递
+	// <p>日志投递</p>
 	LogDelivery *int64 `json:"LogDelivery,omitnil,omitempty" name:"LogDelivery"`
+
+	// <p>零信任堡垒机功能包</p><p>枚举值：</p><ul><li>0： 不开通</li><li>1： 付费版（含 20 用户 / 10Mbps 带宽）</li></ul><p>默认值：0</p>
+	IOAResource *uint64 `json:"IOAResource,omitnil,omitempty" name:"IOAResource"`
+
+	// <p>零信任用户扩展包，1 个 = 20 用户</p><p>取值范围：[0, 999]</p>
+	PackageIOAUserCount *uint64 `json:"PackageIOAUserCount,omitnil,omitempty" name:"PackageIOAUserCount"`
+
+	// <p>零信任带宽扩展包，1 个 = 4Mbps</p><p>取值范围：[0, 509]</p>
+	PackageIOABandwidth *uint64 `json:"PackageIOABandwidth,omitnil,omitempty" name:"PackageIOABandwidth"`
 }
 
 type ModifyResourceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要开通服务的资源ID
+	// <p>需要开通服务的资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 状态
+	// <p>状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例版本
+	// <p>实例版本</p>
 	ResourceEdition *string `json:"ResourceEdition,omitnil,omitempty" name:"ResourceEdition"`
 
-	// 资源节点数
+	// <p>资源节点数</p>
 	ResourceNode *int64 `json:"ResourceNode,omitnil,omitempty" name:"ResourceNode"`
 
-	// 自动续费
+	// <p>自动续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 带宽扩展包个数(4M)
+	// <p>带宽扩展包个数(4M)</p>
 	PackageBandwidth *int64 `json:"PackageBandwidth,omitnil,omitempty" name:"PackageBandwidth"`
 
-	// 授权点数扩展包个数(50点)
+	// <p>授权点数扩展包个数(50点)</p>
 	PackageNode *int64 `json:"PackageNode,omitnil,omitempty" name:"PackageNode"`
 
-	// 日志投递
+	// <p>日志投递</p>
 	LogDelivery *int64 `json:"LogDelivery,omitnil,omitempty" name:"LogDelivery"`
+
+	// <p>零信任堡垒机功能包</p><p>枚举值：</p><ul><li>0： 不开通</li><li>1： 付费版（含 20 用户 / 10Mbps 带宽）</li></ul><p>默认值：0</p>
+	IOAResource *uint64 `json:"IOAResource,omitnil,omitempty" name:"IOAResource"`
+
+	// <p>零信任用户扩展包，1 个 = 20 用户</p><p>取值范围：[0, 999]</p>
+	PackageIOAUserCount *uint64 `json:"PackageIOAUserCount,omitnil,omitempty" name:"PackageIOAUserCount"`
+
+	// <p>零信任带宽扩展包，1 个 = 4Mbps</p><p>取值范围：[0, 509]</p>
+	PackageIOABandwidth *uint64 `json:"PackageIOABandwidth,omitnil,omitempty" name:"PackageIOABandwidth"`
 }
 
 func (r *ModifyResourceRequest) ToJsonString() string {
@@ -8581,6 +8620,9 @@ func (r *ModifyResourceRequest) FromJsonString(s string) error {
 	delete(f, "PackageBandwidth")
 	delete(f, "PackageNode")
 	delete(f, "LogDelivery")
+	delete(f, "IOAResource")
+	delete(f, "PackageIOAUserCount")
+	delete(f, "PackageIOABandwidth")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourceRequest has unknown keys!", "")
 	}

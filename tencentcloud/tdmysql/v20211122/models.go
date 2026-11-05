@@ -516,6 +516,17 @@ func (r *CancelIsolateDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CharsetCollationItem struct {
+	// <p>字符集</p>
+	CharsetName *string `json:"CharsetName,omitnil,omitempty" name:"CharsetName"`
+
+	// <p>排序规则</p>
+	Collations []*string `json:"Collations,omitnil,omitempty" name:"Collations"`
+
+	// <p>默认的排序规则</p>
+	DefaultCollation *string `json:"DefaultCollation,omitnil,omitempty" name:"DefaultCollation"`
+}
+
 type CloneInstanceModel struct {
 	// 克隆任务结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -786,9 +797,6 @@ func (r *CreateCloneInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDBInstancesRequestParams struct {
-	// <p>创建实例区域</p>
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
 	// <p>字符型vpcid</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
@@ -809,6 +817,9 @@ type CreateDBInstancesRequestParams struct {
 
 	// <p>创建实例个数，上限为10</p>
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
+	// <p>创建实例区域</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// <p>全能型副本数量</p>
 	FullReplications *int64 `json:"FullReplications,omitnil,omitempty" name:"FullReplications"`
@@ -890,14 +901,14 @@ type CreateDBInstancesRequestParams struct {
 
 	// <p>SVLS 实例的自动变配相关限制</p><p>入参限制：传入时 AutoScaleConfig 参数不再生效</p>
 	AutoScaleConfigs []*AutoScalingConfig `json:"AutoScaleConfigs,omitnil,omitempty" name:"AutoScaleConfigs"`
+
+	// <p>密码复杂度</p>
+	PasswordComplexity *PasswordComplexity `json:"PasswordComplexity,omitnil,omitempty" name:"PasswordComplexity"`
 }
 
 type CreateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>创建实例区域</p>
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
 	// <p>字符型vpcid</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
@@ -918,6 +929,9 @@ type CreateDBInstancesRequest struct {
 
 	// <p>创建实例个数，上限为10</p>
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
+	// <p>创建实例区域</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// <p>全能型副本数量</p>
 	FullReplications *int64 `json:"FullReplications,omitnil,omitempty" name:"FullReplications"`
@@ -999,6 +1013,9 @@ type CreateDBInstancesRequest struct {
 
 	// <p>SVLS 实例的自动变配相关限制</p><p>入参限制：传入时 AutoScaleConfig 参数不再生效</p>
 	AutoScaleConfigs []*AutoScalingConfig `json:"AutoScaleConfigs,omitnil,omitempty" name:"AutoScaleConfigs"`
+
+	// <p>密码复杂度</p>
+	PasswordComplexity *PasswordComplexity `json:"PasswordComplexity,omitnil,omitempty" name:"PasswordComplexity"`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -1013,7 +1030,6 @@ func (r *CreateDBInstancesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Zone")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
 	delete(f, "SpecCode")
@@ -1021,6 +1037,7 @@ func (r *CreateDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "StorageNodeNum")
 	delete(f, "Replications")
 	delete(f, "InstanceCount")
+	delete(f, "Zone")
 	delete(f, "FullReplications")
 	delete(f, "CreateVersion")
 	delete(f, "InstanceName")
@@ -1048,6 +1065,7 @@ func (r *CreateDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Password")
 	delete(f, "EncryptionEnable")
 	delete(f, "AutoScaleConfigs")
+	delete(f, "PasswordComplexity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstancesRequest has unknown keys!", "")
 	}
@@ -1759,6 +1777,9 @@ func (r *DescribeDBCharsetsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBCharsetsResponseParams struct {
+	// <p>字符集与排序规则对应列表</p>
+	CharsetCollations []*CharsetCollationItem `json:"CharsetCollations,omitnil,omitempty" name:"CharsetCollations"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2060,6 +2081,12 @@ type DescribeDBInstanceDetailResponseParams struct {
 
 	// <p>serverless自动变配配置</p>
 	AutoScaleConfigs []*AutoScalingConfig `json:"AutoScaleConfigs,omitnil,omitempty" name:"AutoScaleConfigs"`
+
+	// <p>SSL开启状态</p>
+	SSLStatus *string `json:"SSLStatus,omitnil,omitempty" name:"SSLStatus"`
+
+	// <p>字符集的排序规则</p>
+	Collation *string `json:"Collation,omitnil,omitempty" name:"Collation"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3693,6 +3720,9 @@ type DescribeSpecsRequestParams struct {
 
 	// <p>可用区组合列表</p>
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeSpecsRequest struct {
@@ -3706,6 +3736,9 @@ type DescribeSpecsRequest struct {
 
 	// <p>可用区组合列表</p>
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *DescribeSpecsRequest) ToJsonString() string {
@@ -3723,6 +3756,7 @@ func (r *DescribeSpecsRequest) FromJsonString(s string) error {
 	delete(f, "FullReplications")
 	delete(f, "IsExclusiveInstance")
 	delete(f, "Zones")
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSpecsRequest has unknown keys!", "")
 	}
@@ -5599,10 +5633,35 @@ type ParamDesc struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
+type PasswordComplexity struct {
+	// <p>是否开启密码复杂度</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// <p>大写和小写字符的最小长度</p><p>取值范围：[1, 16]</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MixedCaseCount *uint64 `json:"MixedCaseCount,omitnil,omitempty" name:"MixedCaseCount"`
+
+	// <p>数字字符的最小长度</p><p>取值范围：[1, 16]</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumberCount *uint64 `json:"NumberCount,omitnil,omitempty" name:"NumberCount"`
+
+	// <p>特殊字符的最小长度</p><p>取值范围：[1, 16]</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecialCharCount *uint64 `json:"SpecialCharCount,omitnil,omitempty" name:"SpecialCharCount"`
+
+	// <p>密码的最小长度</p><p>取值范围：[8, 64]</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
+}
+
 // Predefined struct for user
 type ResetDbaAdminPrivilegesRequestParams struct {
 	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>DbaAdmin的host</p>
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 }
 
 type ResetDbaAdminPrivilegesRequest struct {
@@ -5610,6 +5669,9 @@ type ResetDbaAdminPrivilegesRequest struct {
 	
 	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>DbaAdmin的host</p>
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 }
 
 func (r *ResetDbaAdminPrivilegesRequest) ToJsonString() string {
@@ -5625,6 +5687,7 @@ func (r *ResetDbaAdminPrivilegesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "Host")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetDbaAdminPrivilegesRequest has unknown keys!", "")
 	}

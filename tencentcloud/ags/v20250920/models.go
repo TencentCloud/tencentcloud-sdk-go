@@ -2798,6 +2798,9 @@ type DescribePreCacheImageTaskResponseParams struct {
 	// <p>镜像预热存储大小</p><p>单位：Byte</p>
 	CachedImageSizeBytes *int64 `json:"CachedImageSizeBytes,omitnil,omitempty" name:"CachedImageSizeBytes"`
 
+	// <p>镜像预热完成时间</p>
+	ReadyTime *string `json:"ReadyTime,omitnil,omitempty" name:"ReadyTime"`
+
 	// <p>该预热镜像最近一次被沙箱实例使用时间</p>
 	LastUsedTime *string `json:"LastUsedTime,omitnil,omitempty" name:"LastUsedTime"`
 
@@ -4787,6 +4790,9 @@ type PreCacheImage struct {
 
 	// <p>镜像预热存储大小</p><p>单位：Byte</p>
 	CachedImageSizeBytes *int64 `json:"CachedImageSizeBytes,omitnil,omitempty" name:"CachedImageSizeBytes"`
+
+	// <p>镜像预热完成时间</p>
+	ReadyTime *string `json:"ReadyTime,omitnil,omitempty" name:"ReadyTime"`
 
 	// <p>该预热镜像最近一次被沙箱实例使用时间</p>
 	LastUsedTime *string `json:"LastUsedTime,omitnil,omitempty" name:"LastUsedTime"`

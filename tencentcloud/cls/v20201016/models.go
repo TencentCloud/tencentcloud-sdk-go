@@ -3010,7 +3010,7 @@ func (r *CreateConfigExtraResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConfigRequestParams struct {
-	// <p>采集配置名称</p><ul><li>名称种不得包含特殊字符｜</li><li>名称最长255字符，超过截断</li></ul>
+	// <p>采集配置名称- 名称中不得包含特殊字符&quot;|&quot;</p><p>名称最长255字符，超过截断</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>采集配置所属日志主题ID即TopicId</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
@@ -3041,7 +3041,7 @@ type CreateConfigRequestParams struct {
 type CreateConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>采集配置名称</p><ul><li>名称种不得包含特殊字符｜</li><li>名称最长255字符，超过截断</li></ul>
+	// <p>采集配置名称- 名称中不得包含特殊字符&quot;|&quot;</p><p>名称最长255字符，超过截断</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>采集配置所属日志主题ID即TopicId</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
@@ -21257,26 +21257,26 @@ func (r *ModifyLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLogsetRequestParams struct {
-	// 日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
+	// <p>日志集Id。通过 <a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志集名字。- 最大支持255个字符。不支持`|`字符。
+	// <p>日志集名字。- 最大支持255个字符。不支持&quot;|&quot;字符。</p>
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
-	// 日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。
+	// <p>日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ModifyLogsetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
+	// <p>日志集Id。通过 <a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志集名字。- 最大支持255个字符。不支持`|`字符。
+	// <p>日志集名字。- 最大支持255个字符。不支持&quot;|&quot;字符。</p>
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
-	// 日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。
+	// <p>日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 

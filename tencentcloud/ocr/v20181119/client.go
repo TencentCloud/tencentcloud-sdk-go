@@ -4355,6 +4355,68 @@ func (c *Client) QrcodeOCRWithContext(ctx context.Context, request *QrcodeOCRReq
     return
 }
 
+func NewQueryEnterpriseBasicInfoRequest() (request *QueryEnterpriseBasicInfoRequest) {
+    request = &QueryEnterpriseBasicInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "QueryEnterpriseBasicInfo")
+    
+    
+    return
+}
+
+func NewQueryEnterpriseBasicInfoResponse() (response *QueryEnterpriseBasicInfoResponse) {
+    response = &QueryEnterpriseBasicInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryEnterpriseBasicInfo
+// 本接口用于查询企业基本信息。输入企业名称或统一社会信用代码，返回企业名称、统一社会信用代码、法定代表人、登记机关、经营期限、经营状态、经营范围、注册地址、主体类型、成立日期、核准日期、行政区划等企业登记信息。部分出参可能无法查得，具体以实际查询结果为准。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) QueryEnterpriseBasicInfo(request *QueryEnterpriseBasicInfoRequest) (response *QueryEnterpriseBasicInfoResponse, err error) {
+    return c.QueryEnterpriseBasicInfoWithContext(context.Background(), request)
+}
+
+// QueryEnterpriseBasicInfo
+// 本接口用于查询企业基本信息。输入企业名称或统一社会信用代码，返回企业名称、统一社会信用代码、法定代表人、登记机关、经营期限、经营状态、经营范围、注册地址、主体类型、成立日期、核准日期、行政区划等企业登记信息。部分出参可能无法查得，具体以实际查询结果为准。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) QueryEnterpriseBasicInfoWithContext(ctx context.Context, request *QueryEnterpriseBasicInfoRequest) (response *QueryEnterpriseBasicInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryEnterpriseBasicInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "QueryEnterpriseBasicInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryEnterpriseBasicInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryEnterpriseBasicInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQuestionOCRRequest() (request *QuestionOCRRequest) {
     request = &QuestionOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

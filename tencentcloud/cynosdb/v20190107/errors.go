@@ -365,8 +365,14 @@ const (
 	// 传入了无效的地域
 	OPERATIONDENIED_INVALIDREGIONFORROLLBACKNEWCLUSTER = "OperationDenied.InvalidRegionForRollbackNewCluster"
 
+	// 该集群有创建中或恢复中的实例，暂不支持转为serverless
+	OPERATIONDENIED_INVALIDSTATUSINSTANCENOTSWITCHSLSERROR = "OperationDenied.InvalidStatusInstanceNotSwitchSlsError"
+
 	// 不是{{1}}的回档集群
 	OPERATIONDENIED_ISNOTROLLBACKCLUSTERERROR = "OperationDenied.IsNotRollbackClusterError"
+
+	// 集群有隔离中或已隔离的实例，暂不支持转为serverless。请先下线隔离中或已隔离的实例
+	OPERATIONDENIED_ISOLATEDINSTANCENOTSWITCHSLSERROR = "OperationDenied.IsolatedInstanceNotSwitchSlsError"
 
 	// 响应大小超限制:{{1}}， 请减少查询数量。
 	OPERATIONDENIED_LENGTHOVERLIMIT = "OperationDenied.LengthOverLimit"
@@ -383,11 +389,17 @@ const (
 	// 没有可用资源。
 	OPERATIONDENIED_NOAVALIABLERESOUCEERROR = "OperationDenied.NoAvaliableResouceError"
 
+	// 该集群因开启了{{1}}功能，暂不支持转为serverless。如需转serverless请先关闭相关服务特性。
+	OPERATIONDENIED_NOTSWITCHSLSERROR = "OperationDenied.NotSwitchSlsError"
+
 	// 仅新存储架构2.0支持存储压缩功能
 	OPERATIONDENIED_ONLYNEWSTORAGESUPPORTSTORAGECOMPRESSIONERROR = "OperationDenied.OnlyNewStorageSupportStorageCompressionError"
 
 	// 您没有权限操作该资源（进行该操作）。
 	OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+
+	// 规格{{1}}库存售罄
+	OPERATIONDENIED_OUTOFSTOCKERROR = "OperationDenied.OutOfStockError"
 
 	// 暂停状态的serverless不允许修改多可用区。
 	OPERATIONDENIED_PAUSEDSLSNOTALLOWMODIFYSLAVE = "OperationDenied.PausedSlsNotAllowModifySlave"
@@ -424,6 +436,15 @@ const (
 
 	// serverless实例当前状态不允许该操作。
 	OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
+
+	// 备可用区不支持sls
+	OPERATIONDENIED_SLAVENOTSUPPORTSERVERLESSERROR = "OperationDenied.SlaveNotSupportServerlessError"
+
+	// 获取库存失败。
+	OPERATIONDENIED_SPECSTOCKCHECKERROR = "OperationDenied.SpecStockCheckError"
+
+	// 规格{{1}}库存不足。实际库存:{{2}}，期望库存:{{3}}。
+	OPERATIONDENIED_STOCKOUTSERROR = "OperationDenied.StockoutsError"
 
 	// 任务冲突检查不通过。
 	OPERATIONDENIED_TASKCONFLICTERROR = "OperationDenied.TaskConflictError"

@@ -6821,6 +6821,9 @@ type Instance struct {
 
 	// <p>分区置放群组的分区号，具体取决于所选置放群组的分区数量(功能灰度中)</p>
 	PartitionNumber *int64 `json:"PartitionNumber,omitnil,omitempty" name:"PartitionNumber"`
+
+	// <p>逻辑超节点标识</p>
+	SuperNodeId *string `json:"SuperNodeId,omitnil,omitempty" name:"SuperNodeId"`
 }
 
 type InstanceAttribute struct {

@@ -2624,6 +2624,9 @@ type ClusterInstanceDetail struct {
 	// <p>serverless实例子状态</p>
 	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
 
+	// <p>实例Serverless弹性配置信息</p>
+	ServerlessQuotaInfo *InstanceServerlessQuotaInfo `json:"ServerlessQuotaInfo,omitnil,omitempty" name:"ServerlessQuotaInfo"`
+
 	// <p>AI优化器状态</p>
 	AIOptimizerStatus *AIOptimizerStatus `json:"AIOptimizerStatus,omitnil,omitempty" name:"AIOptimizerStatus"`
 
@@ -2801,6 +2804,17 @@ type ClusterReadOnlyValue struct {
 
 	// 只读开关值
 	ReadOnlyValue *string `json:"ReadOnlyValue,omitnil,omitempty" name:"ReadOnlyValue"`
+}
+
+type ClusterServerlessQuotaConfig struct {
+	// <p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>实例Serverless弹性CCU上限</p>
+	MaxCcu *float64 `json:"MaxCcu,omitnil,omitempty" name:"MaxCcu"`
+
+	// <p>实例Serverless弹性状态</p><p>枚举值：</p><ul><li>opening： 开启中</li><li>opened： 已开启</li><li>closing： 关闭中</li><li>closed： 已关闭</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ClusterServerlessScalePlan struct {
@@ -3827,6 +3841,9 @@ type CreateClustersRequestParams struct {
 
 	// <p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。</p><p>取值范围：[1000, 4294967295]</p><p>单位：毫秒</p><p>默认值：10000</p>
 	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
+
+	// <p>集群实例Serverless弹性配置</p>
+	ServerlessQuotaConfigs []*ServerlessQuotaConfig `json:"ServerlessQuotaConfigs,omitnil,omitempty" name:"ServerlessQuotaConfigs"`
 }
 
 type CreateClustersRequest struct {
@@ -3978,6 +3995,9 @@ type CreateClustersRequest struct {
 
 	// <p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。</p><p>取值范围：[1000, 4294967295]</p><p>单位：毫秒</p><p>默认值：10000</p>
 	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
+
+	// <p>集群实例Serverless弹性配置</p>
+	ServerlessQuotaConfigs []*ServerlessQuotaConfig `json:"ServerlessQuotaConfigs,omitnil,omitempty" name:"ServerlessQuotaConfigs"`
 }
 
 func (r *CreateClustersRequest) ToJsonString() string {
@@ -4041,6 +4061,7 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 	delete(f, "CynosVersion")
 	delete(f, "SyncWay")
 	delete(f, "SemiSyncTimeout")
+	delete(f, "ServerlessQuotaConfigs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClustersRequest has unknown keys!", "")
 	}
@@ -5813,6 +5834,9 @@ type CynosdbInstance struct {
 
 	// <p>实例当前所在可用区</p>
 	RealZone *string `json:"RealZone,omitnil,omitempty" name:"RealZone"`
+
+	// <p>实例Serverless弹性信息</p>
+	ServerlessQuotaInfo *InstanceServerlessQuotaInfo `json:"ServerlessQuotaInfo,omitnil,omitempty" name:"ServerlessQuotaInfo"`
 }
 
 type CynosdbInstanceDetail struct {
@@ -5932,6 +5956,9 @@ type CynosdbInstanceDetail struct {
 
 	// <p>存储版本</p><p>枚举值：</p><ul><li>1.0： 1.0版本存储</li><li>2.0： 2.0版本存储</li></ul>
 	StorageVersion *string `json:"StorageVersion,omitnil,omitempty" name:"StorageVersion"`
+
+	// <p>实例Serverless弹性信息</p>
+	ServerlessQuotaInfo *InstanceServerlessQuotaInfo `json:"ServerlessQuotaInfo,omitnil,omitempty" name:"ServerlessQuotaInfo"`
 }
 
 type CynosdbInstanceGroup struct {
@@ -10518,6 +10545,73 @@ func (r *DescribeInstanceParamsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceServerlessQuotaRequestParams struct {
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+}
+
+type DescribeInstanceServerlessQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+}
+
+func (r *DescribeInstanceServerlessQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceServerlessQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "InstanceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceServerlessQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceServerlessQuotaResponseParams struct {
+	// <p>集群实例Serveless弹性配置</p>
+	QuotaConfigs []*ClusterServerlessQuotaConfig `json:"QuotaConfigs,omitnil,omitempty" name:"QuotaConfigs"`
+
+	// <p>集群实例Serverless弹性状态</p>
+	InstanceQuotas []*InstanceServerlessQuotaInfo `json:"InstanceQuotas,omitnil,omitempty" name:"InstanceQuotas"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceServerlessQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceServerlessQuotaResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceServerlessQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceServerlessQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16023,6 +16117,23 @@ type InstanceParamItem struct {
 
 	// 实例参数列表
 	ParamsItems []*ParamItemDetail `json:"ParamsItems,omitnil,omitempty" name:"ParamsItems"`
+}
+
+type InstanceServerlessQuotaInfo struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>最大CCU规格</p>
+	MaxCcu *float64 `json:"MaxCcu,omitnil,omitempty" name:"MaxCcu"`
+
+	// <p>实例Serverless弹性开启状态</p><p>枚举值：</p><ul><li>opening： 开启中</li><li>opened： 已开启</li><li>closing： 关闭中</li><li>closed： 已关闭</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>开启Serverless弹性的时间</p>
+	EnableTime *string `json:"EnableTime,omitnil,omitempty" name:"EnableTime"`
 }
 
 type InstanceSet struct {
@@ -24422,6 +24533,17 @@ type SecurityGroup struct {
 	SecurityGroupRemark *string `json:"SecurityGroupRemark,omitnil,omitempty" name:"SecurityGroupRemark"`
 }
 
+type ServerlessQuotaConfig struct {
+	// <p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>最大CCU</p>
+	MaxCcu *float64 `json:"MaxCcu,omitnil,omitempty" name:"MaxCcu"`
+
+	// <p>开关</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
 type ServerlessSpec struct {
 	// <p>cpu最小值</p>
 	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
@@ -24458,6 +24580,70 @@ type ServerlessZoneStockInfo struct {
 
 	// 从可用区库存信息
 	SlaveZoneStockInfos []*SlaveZoneStockInfo `json:"SlaveZoneStockInfos,omitnil,omitempty" name:"SlaveZoneStockInfos"`
+}
+
+// Predefined struct for user
+type SetInstanceServerlessQuotaRequestParams struct {
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>实例SLS规格配置</p>
+	ServerlessQuotaConfigs []*ServerlessQuotaConfig `json:"ServerlessQuotaConfigs,omitnil,omitempty" name:"ServerlessQuotaConfigs"`
+}
+
+type SetInstanceServerlessQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>实例SLS规格配置</p>
+	ServerlessQuotaConfigs []*ServerlessQuotaConfig `json:"ServerlessQuotaConfigs,omitnil,omitempty" name:"ServerlessQuotaConfigs"`
+}
+
+func (r *SetInstanceServerlessQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetInstanceServerlessQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ServerlessQuotaConfigs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetInstanceServerlessQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetInstanceServerlessQuotaResponseParams struct {
+	// <p>任务id</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetInstanceServerlessQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *SetInstanceServerlessQuotaResponseParams `json:"Response"`
+}
+
+func (r *SetInstanceServerlessQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetInstanceServerlessQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

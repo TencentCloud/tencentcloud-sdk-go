@@ -6521,6 +6521,86 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeInstanceServerlessQuotaRequest() (request *DescribeInstanceServerlessQuotaRequest) {
+    request = &DescribeInstanceServerlessQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstanceServerlessQuota")
+    
+    
+    return
+}
+
+func NewDescribeInstanceServerlessQuotaResponse() (response *DescribeInstanceServerlessQuotaResponse) {
+    response = &DescribeInstanceServerlessQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceServerlessQuota
+// 查询集群设置的serverless弹性配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_SPECNOTFOUNDERROR = "FailedOperation.SpecNotFoundError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_INVALIDSTATUSINSTANCENOTSWITCHSLSERROR = "OperationDenied.InvalidStatusInstanceNotSwitchSlsError"
+//  OPERATIONDENIED_ISOLATEDINSTANCENOTSWITCHSLSERROR = "OperationDenied.IsolatedInstanceNotSwitchSlsError"
+//  OPERATIONDENIED_NOTSWITCHSLSERROR = "OperationDenied.NotSwitchSlsError"
+//  OPERATIONDENIED_OUTOFSTOCKERROR = "OperationDenied.OutOfStockError"
+//  OPERATIONDENIED_SLAVENOTSUPPORTSERVERLESSERROR = "OperationDenied.SlaveNotSupportServerlessError"
+//  OPERATIONDENIED_SPECSTOCKCHECKERROR = "OperationDenied.SpecStockCheckError"
+//  OPERATIONDENIED_STOCKOUTSERROR = "OperationDenied.StockoutsError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceServerlessQuota(request *DescribeInstanceServerlessQuotaRequest) (response *DescribeInstanceServerlessQuotaResponse, err error) {
+    return c.DescribeInstanceServerlessQuotaWithContext(context.Background(), request)
+}
+
+// DescribeInstanceServerlessQuota
+// 查询集群设置的serverless弹性配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_SPECNOTFOUNDERROR = "FailedOperation.SpecNotFoundError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_INVALIDSTATUSINSTANCENOTSWITCHSLSERROR = "OperationDenied.InvalidStatusInstanceNotSwitchSlsError"
+//  OPERATIONDENIED_ISOLATEDINSTANCENOTSWITCHSLSERROR = "OperationDenied.IsolatedInstanceNotSwitchSlsError"
+//  OPERATIONDENIED_NOTSWITCHSLSERROR = "OperationDenied.NotSwitchSlsError"
+//  OPERATIONDENIED_OUTOFSTOCKERROR = "OperationDenied.OutOfStockError"
+//  OPERATIONDENIED_SLAVENOTSUPPORTSERVERLESSERROR = "OperationDenied.SlaveNotSupportServerlessError"
+//  OPERATIONDENIED_SPECSTOCKCHECKERROR = "OperationDenied.SpecStockCheckError"
+//  OPERATIONDENIED_STOCKOUTSERROR = "OperationDenied.StockoutsError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceServerlessQuotaWithContext(ctx context.Context, request *DescribeInstanceServerlessQuotaRequest) (response *DescribeInstanceServerlessQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceServerlessQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeInstanceServerlessQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceServerlessQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceServerlessQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceSlowQueriesRequest() (request *DescribeInstanceSlowQueriesRequest) {
     request = &DescribeInstanceSlowQueriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15669,6 +15749,86 @@ func (c *Client) SearchClusterTablesWithContext(ctx context.Context, request *Se
     request.SetContext(ctx)
     
     response = NewSearchClusterTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetInstanceServerlessQuotaRequest() (request *SetInstanceServerlessQuotaRequest) {
+    request = &SetInstanceServerlessQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "SetInstanceServerlessQuota")
+    
+    
+    return
+}
+
+func NewSetInstanceServerlessQuotaResponse() (response *SetInstanceServerlessQuotaResponse) {
+    response = &SetInstanceServerlessQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetInstanceServerlessQuota
+// 将普通集群转换为Serverless集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_SPECNOTFOUNDERROR = "FailedOperation.SpecNotFoundError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_INVALIDSTATUSINSTANCENOTSWITCHSLSERROR = "OperationDenied.InvalidStatusInstanceNotSwitchSlsError"
+//  OPERATIONDENIED_ISOLATEDINSTANCENOTSWITCHSLSERROR = "OperationDenied.IsolatedInstanceNotSwitchSlsError"
+//  OPERATIONDENIED_NOTSWITCHSLSERROR = "OperationDenied.NotSwitchSlsError"
+//  OPERATIONDENIED_OUTOFSTOCKERROR = "OperationDenied.OutOfStockError"
+//  OPERATIONDENIED_SLAVENOTSUPPORTSERVERLESSERROR = "OperationDenied.SlaveNotSupportServerlessError"
+//  OPERATIONDENIED_SPECSTOCKCHECKERROR = "OperationDenied.SpecStockCheckError"
+//  OPERATIONDENIED_STOCKOUTSERROR = "OperationDenied.StockoutsError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) SetInstanceServerlessQuota(request *SetInstanceServerlessQuotaRequest) (response *SetInstanceServerlessQuotaResponse, err error) {
+    return c.SetInstanceServerlessQuotaWithContext(context.Background(), request)
+}
+
+// SetInstanceServerlessQuota
+// 将普通集群转换为Serverless集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_SPECNOTFOUNDERROR = "FailedOperation.SpecNotFoundError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_INVALIDSTATUSINSTANCENOTSWITCHSLSERROR = "OperationDenied.InvalidStatusInstanceNotSwitchSlsError"
+//  OPERATIONDENIED_ISOLATEDINSTANCENOTSWITCHSLSERROR = "OperationDenied.IsolatedInstanceNotSwitchSlsError"
+//  OPERATIONDENIED_NOTSWITCHSLSERROR = "OperationDenied.NotSwitchSlsError"
+//  OPERATIONDENIED_OUTOFSTOCKERROR = "OperationDenied.OutOfStockError"
+//  OPERATIONDENIED_SLAVENOTSUPPORTSERVERLESSERROR = "OperationDenied.SlaveNotSupportServerlessError"
+//  OPERATIONDENIED_SPECSTOCKCHECKERROR = "OperationDenied.SpecStockCheckError"
+//  OPERATIONDENIED_STOCKOUTSERROR = "OperationDenied.StockoutsError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) SetInstanceServerlessQuotaWithContext(ctx context.Context, request *SetInstanceServerlessQuotaRequest) (response *SetInstanceServerlessQuotaResponse, err error) {
+    if request == nil {
+        request = NewSetInstanceServerlessQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "SetInstanceServerlessQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetInstanceServerlessQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetInstanceServerlessQuotaResponse()
     err = c.Send(request, response)
     return
 }

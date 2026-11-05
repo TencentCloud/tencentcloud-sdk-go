@@ -20,6 +20,11 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type A2AConfig struct {
+	// <p>企业共享开关</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
 type AICallConfig struct {
 	// 数智人配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -176,7 +181,7 @@ type AgentExternalToolConfig struct {
 }
 
 type AgentInput struct {
-	// <p>输入来源类型：0 用户输入，3 自定义变量（API参数）</p>
+	// <p>输入来源类型</p><p>枚举值：</p><ul><li>1： 用户输入</li><li>2： 系统变量</li><li>3： 自定义变量（API参数）</li><li>4： 环境变量</li><li>5： 应用变量</li><li>6： 工具参数</li></ul>
 	InputType *int64 `json:"InputType,omitnil,omitempty" name:"InputType"`
 
 	// <p>用户手写输入</p>
@@ -632,6 +637,10 @@ type App struct {
 	// <p>应用挂载云盘</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileVolumeMountList []*FileVolumeMount `json:"FileVolumeMountList,omitnil,omitempty" name:"FileVolumeMountList"`
+
+	// <p>A2A配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	A2AConfig *A2AConfig `json:"A2AConfig,omitnil,omitempty" name:"A2AConfig"`
 }
 
 type AppAdvancedConf struct {
@@ -3371,6 +3380,9 @@ type CreateReleaseRequestParams struct {
 
 	// <p>portal配置</p>
 	PortalShareConfig *PortalShareConfig `json:"PortalShareConfig,omitnil,omitempty" name:"PortalShareConfig"`
+
+	// <p>A2A配置</p>
+	A2AConfig *A2AConfig `json:"A2AConfig,omitnil,omitempty" name:"A2AConfig"`
 }
 
 type CreateReleaseRequest struct {
@@ -3399,6 +3411,9 @@ type CreateReleaseRequest struct {
 
 	// <p>portal配置</p>
 	PortalShareConfig *PortalShareConfig `json:"PortalShareConfig,omitnil,omitempty" name:"PortalShareConfig"`
+
+	// <p>A2A配置</p>
+	A2AConfig *A2AConfig `json:"A2AConfig,omitnil,omitempty" name:"A2AConfig"`
 }
 
 func (r *CreateReleaseRequest) ToJsonString() string {
@@ -3421,6 +3436,7 @@ func (r *CreateReleaseRequest) FromJsonString(s string) error {
 	delete(f, "IsDevToRelease")
 	delete(f, "IsPublishAsTemplate")
 	delete(f, "PortalShareConfig")
+	delete(f, "A2AConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReleaseRequest has unknown keys!", "")
 	}
@@ -5654,7 +5670,7 @@ type DescribeAppRequestParams struct {
 	// <p>应用域: ADP_DOMAIN_DEV(1)=开发域, ADP_DOMAIN_PROD(2)=发布域。枚举值: 1:开发域, 2:生产域</p>
 	Domain *int64 `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// <p>字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表),CorpShareConfig(企业共享配置), FileVolumeMountList(云盘挂载列表)</p>
+	// <p>字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表),CorpShareConfig(企业共享配置), FileVolumeMountList(云盘挂载列表), A2AConfig(A2A启用配置)</p>
 	FieldMask *FieldMask `json:"FieldMask,omitnil,omitempty" name:"FieldMask"`
 
 	// <p>特殊状态类型(当FieldMask包含SpecialStatusInfo时必填)。枚举值: 1:回滚状态, 2:首次导入状态</p>
@@ -5670,7 +5686,7 @@ type DescribeAppRequest struct {
 	// <p>应用域: ADP_DOMAIN_DEV(1)=开发域, ADP_DOMAIN_PROD(2)=发布域。枚举值: 1:开发域, 2:生产域</p>
 	Domain *int64 `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// <p>字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表),CorpShareConfig(企业共享配置), FileVolumeMountList(云盘挂载列表)</p>
+	// <p>字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表),CorpShareConfig(企业共享配置), FileVolumeMountList(云盘挂载列表), A2AConfig(A2A启用配置)</p>
 	FieldMask *FieldMask `json:"FieldMask,omitnil,omitempty" name:"FieldMask"`
 
 	// <p>特殊状态类型(当FieldMask包含SpecialStatusInfo时必填)。枚举值: 1:回滚状态, 2:首次导入状态</p>
@@ -14049,6 +14065,10 @@ type ReleaseSummary struct {
 	// <p>portal配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PortalShareConfig *PortalShareConfig `json:"PortalShareConfig,omitnil,omitempty" name:"PortalShareConfig"`
+
+	// <p>A2A配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	A2AConfig *A2AConfig `json:"A2AConfig,omitnil,omitempty" name:"A2AConfig"`
 }
 
 type ReplyContent struct {

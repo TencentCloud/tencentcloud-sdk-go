@@ -1402,38 +1402,44 @@ type DevicePayModeInfo struct {
 
 // Predefined struct for user
 type DownloadActiveDeviceCountRequestParams struct {
-	// 查询粒度。0:day, 1:week, 2:month, 不传默认为day
+	// <p>查询粒度。0:day, 1:week, 2:month, 不传默认为day</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 开始时间。单位秒
+	// <p>开始时间。单位秒</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。单位秒
+	// <p>结束时间。单位秒</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 设备组, 不传查询全部
+	// <p>设备组, 不传查询全部</p>
 	DevGroup *string `json:"DevGroup,omitnil,omitempty" name:"DevGroup"`
 
-	// license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+	// <p>应用ID，指控制台上设备管理中的动态设备应用ID，不传查询全部。</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// <p>license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权</p>
 	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 }
 
 type DownloadActiveDeviceCountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询粒度。0:day, 1:week, 2:month, 不传默认为day
+	// <p>查询粒度。0:day, 1:week, 2:month, 不传默认为day</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 开始时间。单位秒
+	// <p>开始时间。单位秒</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。单位秒
+	// <p>结束时间。单位秒</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 设备组, 不传查询全部
+	// <p>设备组, 不传查询全部</p>
 	DevGroup *string `json:"DevGroup,omitnil,omitempty" name:"DevGroup"`
 
-	// license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+	// <p>应用ID，指控制台上设备管理中的动态设备应用ID，不传查询全部。</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// <p>license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权</p>
 	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 }
 
@@ -1453,6 +1459,7 @@ func (r *DownloadActiveDeviceCountRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "DevGroup")
+	delete(f, "ApplicationId")
 	delete(f, "LicenseType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadActiveDeviceCountRequest has unknown keys!", "")
@@ -1462,7 +1469,7 @@ func (r *DownloadActiveDeviceCountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DownloadActiveDeviceCountResponseParams struct {
-	// URL地址
+	// <p>URL地址</p>
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1608,38 +1615,44 @@ type GatewayInfo struct {
 
 // Predefined struct for user
 type GetActiveDeviceCountRequestParams struct {
-	// 查询粒度。0:day, 1:week, 2:month, 不传默认为day
+	// <p>查询粒度。0:day, 1:week, 2:month, 不传默认为day</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 开始时间。单位秒
+	// <p>开始时间。单位秒</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。单位秒
+	// <p>结束时间。单位秒</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 设备组, 不传查询全部
+	// <p>设备组, 不传查询全部</p>
 	DevGroup *string `json:"DevGroup,omitnil,omitempty" name:"DevGroup"`
 
-	// license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+	// <p>应用ID，指控制台上设备管理中的动态设备应用ID，不传查询全部。</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// <p>license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权</p>
 	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 }
 
 type GetActiveDeviceCountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询粒度。0:day, 1:week, 2:month, 不传默认为day
+	// <p>查询粒度。0:day, 1:week, 2:month, 不传默认为day</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 开始时间。单位秒
+	// <p>开始时间。单位秒</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。单位秒
+	// <p>结束时间。单位秒</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 设备组, 不传查询全部
+	// <p>设备组, 不传查询全部</p>
 	DevGroup *string `json:"DevGroup,omitnil,omitempty" name:"DevGroup"`
 
-	// license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+	// <p>应用ID，指控制台上设备管理中的动态设备应用ID，不传查询全部。</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// <p>license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权</p>
 	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 }
 
@@ -1659,6 +1672,7 @@ func (r *GetActiveDeviceCountRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "DevGroup")
+	delete(f, "ApplicationId")
 	delete(f, "LicenseType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetActiveDeviceCountRequest has unknown keys!", "")
@@ -1668,25 +1682,25 @@ func (r *GetActiveDeviceCountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetActiveDeviceCountResponseParams struct {
-	// 激活设备统计
+	// <p>激活设备统计</p>
 	ActiveDeviceList []*ActiveDeviceList `json:"ActiveDeviceList,omitnil,omitempty" name:"ActiveDeviceList"`
 
-	// 查询粒度，0:day, 1:week, 2:month, 不传默认为day
+	// <p>查询粒度，0:day, 1:week, 2:month, 不传默认为day</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 设备组
+	// <p>设备组</p>
 	DevGroup *string `json:"DevGroup,omitnil,omitempty" name:"DevGroup"`
 
-	// license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+	// <p>license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权</p>
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 租户ID
+	// <p>租户ID</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

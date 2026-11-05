@@ -3667,6 +3667,64 @@ func (c *Client) DescribeEnvAccountCircleWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeEnvInfoRequest() (request *DescribeEnvInfoRequest) {
+    request = &DescribeEnvInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvInfo")
+    
+    
+    return
+}
+
+func NewDescribeEnvInfoResponse() (response *DescribeEnvInfoResponse) {
+    response = &DescribeEnvInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEnvInfo
+// 查询环境详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribeEnvInfo(request *DescribeEnvInfoRequest) (response *DescribeEnvInfoResponse, err error) {
+    return c.DescribeEnvInfoWithContext(context.Background(), request)
+}
+
+// DescribeEnvInfo
+// 查询环境详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribeEnvInfoWithContext(ctx context.Context, request *DescribeEnvInfoRequest) (response *DescribeEnvInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEnvInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEnvInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnvLimitRequest() (request *DescribeEnvLimitRequest) {
     request = &DescribeEnvLimitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6614,6 +6672,7 @@ func NewModifyHTTPServiceRouteResponse() (response *ModifyHTTPServiceRouteRespon
 //  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
 //  OPERATIONDENIED_HTTPSERVICEDOMAINEOFROZEN = "OperationDenied.HTTPServiceDomainEOFrozen"
 //  OPERATIONDENIED_HTTPSERVICEDOMAINPROCESSING = "OperationDenied.HTTPServiceDomainProcessing"
+//  RESOURCENOTFOUND_HTTPSERVICERESOURCE = "ResourceNotFound.HTTPServiceResource"
 func (c *Client) ModifyHTTPServiceRoute(request *ModifyHTTPServiceRouteRequest) (response *ModifyHTTPServiceRouteResponse, err error) {
     return c.ModifyHTTPServiceRouteWithContext(context.Background(), request)
 }
@@ -6628,6 +6687,7 @@ func (c *Client) ModifyHTTPServiceRoute(request *ModifyHTTPServiceRouteRequest) 
 //  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
 //  OPERATIONDENIED_HTTPSERVICEDOMAINEOFROZEN = "OperationDenied.HTTPServiceDomainEOFrozen"
 //  OPERATIONDENIED_HTTPSERVICEDOMAINPROCESSING = "OperationDenied.HTTPServiceDomainProcessing"
+//  RESOURCENOTFOUND_HTTPSERVICERESOURCE = "ResourceNotFound.HTTPServiceResource"
 func (c *Client) ModifyHTTPServiceRouteWithContext(ctx context.Context, request *ModifyHTTPServiceRouteRequest) (response *ModifyHTTPServiceRouteResponse, err error) {
     if request == nil {
         request = NewModifyHTTPServiceRouteRequest()
@@ -7632,6 +7692,7 @@ func NewRunCommandsResponse() (response *RunCommandsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  FAILEDOPERATION_UPDATE = "FailedOperation.Update"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -7652,6 +7713,7 @@ func (c *Client) RunCommands(request *RunCommandsRequest) (response *RunCommands
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  FAILEDOPERATION_UPDATE = "FailedOperation.Update"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

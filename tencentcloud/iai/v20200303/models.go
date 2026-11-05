@@ -745,99 +745,57 @@ func (r *CopyPersonResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFaceRequestParams struct {
-	// 人员ID，取值为创建人员接口中的PersonId。
+	// <p>人员ID，取值为创建人员接口中的PersonId。</p>
 	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
-	// 图片 base64 数据。
-	// - base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-	// - 人员人脸总数量不可超过5张。
-	// - 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片 base64 数据。</p><ul><li>base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。</li><li>人员人脸总数量不可超过5张。</li><li>若图片中包含多张人脸，只选取其中人脸面积最大的人脸。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 图片的 Url 。
-	// - 对应图片 base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-	// - Url、Image必须提供一个，如果都提供，只使用 Url。  
-	// - 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// - 非腾讯云存储的Url速度和稳定性可能受一定影响。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	// - 人员人脸总数量不可超过5张。
-	// - 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+	// <p>图片的 Url 。</p><ul><li>对应图片 base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。</li><li>Url、Image必须提供一个，如果都提供，只使用 Url。  </li><li>图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 </li><li>非腾讯云存储的Url速度和稳定性可能受一定影响。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li><li>人员人脸总数量不可超过5张。</li><li>若图片中包含多张人脸，只选取其中人脸面积最大的人脸。</li></ul>
 	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 
-	// 只有和该人员已有的人脸相似度超过FaceMatchThreshold值的人脸，才能增加人脸成功。 
-	// - 默认值60分。
-	// - 取值范围：[0,100] 。
+	// <p>只有和该人员已有的人脸相似度超过FaceMatchThreshold值的人脸，才能增加人脸成功。 </p><ul><li>默认值60分。</li><li>取值范围：[0,100] 。</li></ul>
 	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitnil,omitempty" name:"FaceMatchThreshold"`
 
-	// 图片质量控制。 
-	// - 取值范围：
-	// 0: 不进行控制； 
-	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
-	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
-	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-	// - 默认 0。 
-	// - 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	// <p>图片质量控制。 </p><ul><li>取值范围：<br>0: 不进行控制；<br>1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况；<br>2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况；<br>3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况；<br>4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； </li><li>默认 0。 </li><li>若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。</li></ul>
 	QualityControl *uint64 `json:"QualityControl,omitnil,omitempty" name:"QualityControl"`
 
-	// 是否开启图片旋转识别支持。
-	// - 取值范围：0为不开启，1为开启。
-	// - 默认为0。
-	// - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
-	// - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+	// <p>是否开启图片旋转识别支持。</p><ul><li>取值范围：0为不开启，1为开启。</li><li>默认为0。</li><li>本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。</li><li>若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。</li></ul>
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitnil,omitempty" name:"NeedRotateDetection"`
+
+	// <p>是否需要对请求信息进行全包体加密。支持的加密算法:AES-256-CBC。有加密需求的用户可使用此参数。</p>
+	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// <p>加密后的密文。加密前的数据格式如下:{&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}。</p>
+	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
 type CreateFaceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 人员ID，取值为创建人员接口中的PersonId。
+	// <p>人员ID，取值为创建人员接口中的PersonId。</p>
 	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
-	// 图片 base64 数据。
-	// - base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-	// - 人员人脸总数量不可超过5张。
-	// - 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片 base64 数据。</p><ul><li>base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。</li><li>人员人脸总数量不可超过5张。</li><li>若图片中包含多张人脸，只选取其中人脸面积最大的人脸。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 图片的 Url 。
-	// - 对应图片 base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-	// - Url、Image必须提供一个，如果都提供，只使用 Url。  
-	// - 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// - 非腾讯云存储的Url速度和稳定性可能受一定影响。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	// - 人员人脸总数量不可超过5张。
-	// - 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+	// <p>图片的 Url 。</p><ul><li>对应图片 base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。</li><li>Url、Image必须提供一个，如果都提供，只使用 Url。  </li><li>图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 </li><li>非腾讯云存储的Url速度和稳定性可能受一定影响。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li><li>人员人脸总数量不可超过5张。</li><li>若图片中包含多张人脸，只选取其中人脸面积最大的人脸。</li></ul>
 	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
 
-	// 只有和该人员已有的人脸相似度超过FaceMatchThreshold值的人脸，才能增加人脸成功。 
-	// - 默认值60分。
-	// - 取值范围：[0,100] 。
+	// <p>只有和该人员已有的人脸相似度超过FaceMatchThreshold值的人脸，才能增加人脸成功。 </p><ul><li>默认值60分。</li><li>取值范围：[0,100] 。</li></ul>
 	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitnil,omitempty" name:"FaceMatchThreshold"`
 
-	// 图片质量控制。 
-	// - 取值范围：
-	// 0: 不进行控制； 
-	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
-	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
-	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-	// - 默认 0。 
-	// - 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	// <p>图片质量控制。 </p><ul><li>取值范围：<br>0: 不进行控制；<br>1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况；<br>2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况；<br>3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况；<br>4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； </li><li>默认 0。 </li><li>若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。</li></ul>
 	QualityControl *uint64 `json:"QualityControl,omitnil,omitempty" name:"QualityControl"`
 
-	// 是否开启图片旋转识别支持。
-	// - 取值范围：0为不开启，1为开启。
-	// - 默认为0。
-	// - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
-	// - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+	// <p>是否开启图片旋转识别支持。</p><ul><li>取值范围：0为不开启，1为开启。</li><li>默认为0。</li><li>本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。</li><li>若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。</li></ul>
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitnil,omitempty" name:"NeedRotateDetection"`
+
+	// <p>是否需要对请求信息进行全包体加密。支持的加密算法:AES-256-CBC。有加密需求的用户可使用此参数。</p>
+	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// <p>加密后的密文。加密前的数据格式如下:{&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}。</p>
+	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
 func (r *CreateFaceRequest) ToJsonString() string {
@@ -858,6 +816,8 @@ func (r *CreateFaceRequest) FromJsonString(s string) error {
 	delete(f, "FaceMatchThreshold")
 	delete(f, "QualityControl")
 	delete(f, "NeedRotateDetection")
+	delete(f, "Encryption")
+	delete(f, "EncryptedBody")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFaceRequest has unknown keys!", "")
 	}
@@ -866,31 +826,22 @@ func (r *CreateFaceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFaceResponseParams struct {
-	// 加入成功的人脸数量。
+	// <p>加入成功的人脸数量。</p>
 	SucFaceNum *uint64 `json:"SucFaceNum,omitnil,omitempty" name:"SucFaceNum"`
 
-	// 加入成功的人脸ID列表。
+	// <p>加入成功的人脸ID列表。</p>
 	SucFaceIds []*string `json:"SucFaceIds,omitnil,omitempty" name:"SucFaceIds"`
 
-	// 每张人脸图片添加结果。
-	// - 其他非 0 值代表算法服务异常，取值范围：
-	// -1101 代表未检测到人脸。
-	// -1102 代表图片解码失败。
-	// -1109 代表图片尺寸过大或者过小。
-	// -1601代表不符合图片质量控制要求。
-	// -1604 代表人脸相似度没有超过FaceMatchThreshold。 
-	// - RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
+	// <p>每张人脸图片添加结果。</p><ul><li>其他非 0 值代表算法服务异常，取值范围：<br>-1101 代表未检测到人脸。<br>-1102 代表图片解码失败。<br>-1109 代表图片尺寸过大或者过小。<br>-1601代表不符合图片质量控制要求。<br>-1604 代表人脸相似度没有超过FaceMatchThreshold。 </li><li>RetCode的顺序和入参中 Images 或 Urls 的顺序一致。</li></ul>
 	RetCode []*int64 `json:"RetCode,omitnil,omitempty" name:"RetCode"`
 
-	// 加入成功的人脸索引。
-	// - 索引顺序和入参中 Images 或 Urls 的顺序一致。 
-	// - 例如， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。
+	// <p>加入成功的人脸索引。</p><ul><li>索引顺序和入参中 Images 或 Urls 的顺序一致。 </li><li>例如， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。</li></ul>
 	SucIndexes []*uint64 `json:"SucIndexes,omitnil,omitempty" name:"SucIndexes"`
 
-	// 加入成功的人脸框位置。顺序和入参中 Images 或 Urls 的顺序一致。
+	// <p>加入成功的人脸框位置。顺序和入参中 Images 或 Urls 的顺序一致。</p>
 	SucFaceRects []*FaceRect `json:"SucFaceRects,omitnil,omitempty" name:"SucFaceRects"`
 
-	// 人脸识别所用的算法模型版本。
+	// <p>人脸识别所用的算法模型版本。</p>
 	FaceModelVersion *string `json:"FaceModelVersion,omitnil,omitempty" name:"FaceModelVersion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1016,137 +967,81 @@ func (r *CreateGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePersonRequestParams struct {
-	// 待加入的人员库ID，取值为创建人员库接口中的GroupId。
+	// <p>待加入的人员库ID，取值为创建人员库接口中的GroupId。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 人员名称。[1，60]个字符，可修改，可重复。
+	// <p>人员名称。[1，60]个字符，可修改，可重复。</p>
 	PersonName *string `json:"PersonName,omitnil,omitempty" name:"PersonName"`
 
-	// 人员ID。
-	// - 单个腾讯云账号下不可修改，不可重复。
-	// - 支持英文、数字、-%@#&_，长度限制64B。
+	// <p>人员ID。</p><ul><li>单个腾讯云账号下不可修改，不可重复。</li><li>支持英文、数字、-%@#&amp;_，长度限制64B。</li></ul>
 	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
-	// 性别。
-	// - 取值范围：0代表未填写，1代表男性，2代表女性。
+	// <p>性别。</p><ul><li>取值范围：0代表未填写，1代表男性，2代表女性。</li></ul>
 	Gender *int64 `json:"Gender,omitnil,omitempty" name:"Gender"`
 
-	// 人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。
+	// <p>人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。</p>
 	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitnil,omitempty" name:"PersonExDescriptionInfos"`
 
-	// 图片 base64 数据。
-	// - base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片 base64 数据。</p><ul><li>base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 图片的 Url 。
-	// - 对应图片 base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-	// - Url、Image必须提供一个，如果都提供，只使用 Url。  
-	// - 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// - 非腾讯云存储的Url速度和稳定性可能受一定影响。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片的 Url 。</p><ul><li>对应图片 base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。</li><li>Url、Image必须提供一个，如果都提供，只使用 Url。  </li><li>图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 </li><li>非腾讯云存储的Url速度和稳定性可能受一定影响。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 此参数用于控制判断 Image 或 Url 中图片包含的人脸，是否在人员库中已有疑似的同一人。 
-	// - 如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 
-	// - 如果判断没有，则完成创建人员。 
-	// - 取值范围：
-	// 0: 不进行判断，无论是否有疑似同一人在库中均完成入库； 
-	// 1:较低的同一人判断要求（百一误识别率）； 
-	// 2: 一般的同一人判断要求（千一误识别率）； 
-	// 3: 较高的同一人判断要求（万一误识别率）； 
-	// 4: 很高的同一人判断要求（十万一误识别率）。 
-	// - 默认 0。  
-	// - 注： 要求越高，则疑似同一人的概率越小。不同要求对应的误识别率仅为参考值，您可以根据实际情况调整。
+	// <p>此参数用于控制判断 Image 或 Url 中图片包含的人脸，是否在人员库中已有疑似的同一人。 </p><ul><li>如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 </li><li>如果判断没有，则完成创建人员。 </li><li>取值范围：<br>0: 不进行判断，无论是否有疑似同一人在库中均完成入库；<br>1:较低的同一人判断要求（百一误识别率）；<br>2: 一般的同一人判断要求（千一误识别率）；<br>3: 较高的同一人判断要求（万一误识别率）；<br>4: 很高的同一人判断要求（十万一误识别率）。 </li><li>默认 0。  </li><li>注： 要求越高，则疑似同一人的概率越小。不同要求对应的误识别率仅为参考值，您可以根据实际情况调整。</li></ul>
 	UniquePersonControl *uint64 `json:"UniquePersonControl,omitnil,omitempty" name:"UniquePersonControl"`
 
-	// 图片质量控制。 
-	// - 取值范围：
-	// 0: 不进行控制； 
-	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
-	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
-	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-	// - 默认 0。 
-	// - 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	// <p>图片质量控制。 </p><ul><li>取值范围：<br>0: 不进行控制；<br>1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况；<br>2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况；<br>3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况；<br>4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； </li><li>默认 0。 </li><li>若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。</li></ul>
 	QualityControl *uint64 `json:"QualityControl,omitnil,omitempty" name:"QualityControl"`
 
-	// 是否开启图片旋转识别支持。
-	// - 取值范围：0为不开启，1为开启。
-	// - 默认为0。
-	// - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
-	// - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+	// <p>是否开启图片旋转识别支持。</p><ul><li>取值范围：0为不开启，1为开启。</li><li>默认为0。</li><li>本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。</li><li>若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。</li></ul>
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitnil,omitempty" name:"NeedRotateDetection"`
+
+	// <p>是否需要对请求信息进行全包体加密。支持的加密算法:AES-256-CBC。有加密需求的用户可使用此参数。</p>
+	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// <p>加密后的密文。加密前的数据格式如下:{&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}。</p>
+	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
 type CreatePersonRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待加入的人员库ID，取值为创建人员库接口中的GroupId。
+	// <p>待加入的人员库ID，取值为创建人员库接口中的GroupId。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 人员名称。[1，60]个字符，可修改，可重复。
+	// <p>人员名称。[1，60]个字符，可修改，可重复。</p>
 	PersonName *string `json:"PersonName,omitnil,omitempty" name:"PersonName"`
 
-	// 人员ID。
-	// - 单个腾讯云账号下不可修改，不可重复。
-	// - 支持英文、数字、-%@#&_，长度限制64B。
+	// <p>人员ID。</p><ul><li>单个腾讯云账号下不可修改，不可重复。</li><li>支持英文、数字、-%@#&amp;_，长度限制64B。</li></ul>
 	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
-	// 性别。
-	// - 取值范围：0代表未填写，1代表男性，2代表女性。
+	// <p>性别。</p><ul><li>取值范围：0代表未填写，1代表男性，2代表女性。</li></ul>
 	Gender *int64 `json:"Gender,omitnil,omitempty" name:"Gender"`
 
-	// 人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。
+	// <p>人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。</p>
 	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitnil,omitempty" name:"PersonExDescriptionInfos"`
 
-	// 图片 base64 数据。
-	// - base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片 base64 数据。</p><ul><li>base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 图片的 Url 。
-	// - 对应图片 base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
-	// - Url、Image必须提供一个，如果都提供，只使用 Url。  
-	// - 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// - 非腾讯云存储的Url速度和稳定性可能受一定影响。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片的 Url 。</p><ul><li>对应图片 base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。</li><li>Url、Image必须提供一个，如果都提供，只使用 Url。  </li><li>图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 </li><li>非腾讯云存储的Url速度和稳定性可能受一定影响。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 此参数用于控制判断 Image 或 Url 中图片包含的人脸，是否在人员库中已有疑似的同一人。 
-	// - 如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 
-	// - 如果判断没有，则完成创建人员。 
-	// - 取值范围：
-	// 0: 不进行判断，无论是否有疑似同一人在库中均完成入库； 
-	// 1:较低的同一人判断要求（百一误识别率）； 
-	// 2: 一般的同一人判断要求（千一误识别率）； 
-	// 3: 较高的同一人判断要求（万一误识别率）； 
-	// 4: 很高的同一人判断要求（十万一误识别率）。 
-	// - 默认 0。  
-	// - 注： 要求越高，则疑似同一人的概率越小。不同要求对应的误识别率仅为参考值，您可以根据实际情况调整。
+	// <p>此参数用于控制判断 Image 或 Url 中图片包含的人脸，是否在人员库中已有疑似的同一人。 </p><ul><li>如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 </li><li>如果判断没有，则完成创建人员。 </li><li>取值范围：<br>0: 不进行判断，无论是否有疑似同一人在库中均完成入库；<br>1:较低的同一人判断要求（百一误识别率）；<br>2: 一般的同一人判断要求（千一误识别率）；<br>3: 较高的同一人判断要求（万一误识别率）；<br>4: 很高的同一人判断要求（十万一误识别率）。 </li><li>默认 0。  </li><li>注： 要求越高，则疑似同一人的概率越小。不同要求对应的误识别率仅为参考值，您可以根据实际情况调整。</li></ul>
 	UniquePersonControl *uint64 `json:"UniquePersonControl,omitnil,omitempty" name:"UniquePersonControl"`
 
-	// 图片质量控制。 
-	// - 取值范围：
-	// 0: 不进行控制； 
-	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
-	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
-	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
-	// - 默认 0。 
-	// - 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	// <p>图片质量控制。 </p><ul><li>取值范围：<br>0: 不进行控制；<br>1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况；<br>2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况；<br>3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况；<br>4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； </li><li>默认 0。 </li><li>若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。</li></ul>
 	QualityControl *uint64 `json:"QualityControl,omitnil,omitempty" name:"QualityControl"`
 
-	// 是否开启图片旋转识别支持。
-	// - 取值范围：0为不开启，1为开启。
-	// - 默认为0。
-	// - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
-	// - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+	// <p>是否开启图片旋转识别支持。</p><ul><li>取值范围：0为不开启，1为开启。</li><li>默认为0。</li><li>本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。</li><li>若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。</li></ul>
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitnil,omitempty" name:"NeedRotateDetection"`
+
+	// <p>是否需要对请求信息进行全包体加密。支持的加密算法:AES-256-CBC。有加密需求的用户可使用此参数。</p>
+	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// <p>加密后的密文。加密前的数据格式如下:{&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}。</p>
+	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
 func (r *CreatePersonRequest) ToJsonString() string {
@@ -1171,6 +1066,8 @@ func (r *CreatePersonRequest) FromJsonString(s string) error {
 	delete(f, "UniquePersonControl")
 	delete(f, "QualityControl")
 	delete(f, "NeedRotateDetection")
+	delete(f, "Encryption")
+	delete(f, "EncryptedBody")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePersonRequest has unknown keys!", "")
 	}
@@ -1179,18 +1076,17 @@ func (r *CreatePersonRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePersonResponseParams struct {
-	// 人脸图片唯一标识。
+	// <p>人脸图片唯一标识。</p>
 	FaceId *string `json:"FaceId,omitnil,omitempty" name:"FaceId"`
 
-	// 检测出的人脸框的位置。
+	// <p>检测出的人脸框的位置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaceRect *FaceRect `json:"FaceRect,omitnil,omitempty" name:"FaceRect"`
 
-	// 疑似同一人的PersonId。 
-	// - 当 UniquePersonControl 参数不为0且人员库中有疑似的同一人，此参数才有意义。
+	// <p>疑似同一人的PersonId。 </p><ul><li>当 UniquePersonControl 参数不为0且人员库中有疑似的同一人，此参数才有意义。</li></ul>
 	SimilarPersonId *string `json:"SimilarPersonId,omitnil,omitempty" name:"SimilarPersonId"`
 
-	// 人脸识别所用的算法模型版本。
+	// <p>人脸识别所用的算法模型版本。</p>
 	FaceModelVersion *string `json:"FaceModelVersion,omitnil,omitempty" name:"FaceModelVersion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1987,6 +1883,28 @@ func (r *DetectLiveFaceAccurateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DetectLiveFaceAccurateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Encryption struct {
+	// <p>在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptList []*string `json:"EncryptList,omitnil,omitempty" name:"EncryptList"`
+
+	// <p>加密后的对称密钥，关于密钥的生成和使用请查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CiphertextBlob *string `json:"CiphertextBlob,omitnil,omitempty" name:"CiphertextBlob"`
+
+	// <p>有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Iv *string `json:"Iv,omitnil,omitempty" name:"Iv"`
+
+	// <p>加密使用的算法（支持&#39;AES-256-CBC&#39;），不传默认为&#39;AES-256-CBC&#39;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Algorithm *string `json:"Algorithm,omitnil,omitempty" name:"Algorithm"`
+
+	// <p>SM4-GCM算法生成的消息摘要（校验消息完整性时使用），暂不支持。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*string `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type Eye struct {
@@ -3332,145 +3250,81 @@ func (r *RevertGroupFaceModelVersionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchFacesRequestParams struct {
-	// 希望搜索的人员库列表，上限100个。
-	// - 数组元素取值为创建人员库接口中的GroupId。
-	// - 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
+	// <p>希望搜索的人员库列表，上限100个。</p><ul><li>数组元素取值为创建人员库接口中的GroupId。</li><li>不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。</li></ul>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 图片 base64 数据。
-	// - base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
-	// - 所有格式的图片短边像素不小于64。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片 base64 数据。</p><ul><li>base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。</li><li>所有格式的图片短边像素不小于64。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 图片的 Url 。
-	// - 对应图片 base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
-	// - 所有格式的图片短边像素不小于64。
-	// - Url、Image必须提供一个，如果都提供，只使用 Url。  
-	// - 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// - 非腾讯云存储的Url速度和稳定性可能受一定影响。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片的 Url 。</p><ul><li>对应图片 base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。</li><li>所有格式的图片短边像素不小于64。</li><li>Url、Image必须提供一个，如果都提供，只使用 Url。  </li><li>图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 </li><li>非腾讯云存储的Url速度和稳定性可能受一定影响。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 最多识别的人脸数目。
-	// - 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
-	// - MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 
-	// - 例如：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+	// <p>最多识别的人脸数目。</p><ul><li>默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 </li><li>MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 </li><li>例如：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。</li></ul>
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitnil,omitempty" name:"MaxFaceNum"`
 
-	// 人脸长和宽的最小尺寸，单位为像素。
-	// - 默认为34。
-	// - 低于34的人脸图片无法被识别。
-	// - 建议设置为80。
+	// <p>人脸长和宽的最小尺寸，单位为像素。</p><ul><li>默认为34。</li><li>低于34的人脸图片无法被识别。</li><li>建议设置为80。</li></ul>
 	MinFaceSize *uint64 `json:"MinFaceSize,omitnil,omitempty" name:"MinFaceSize"`
 
-	// 单张被识别的人脸返回的最相似人员数量。
-	// - 默认值为5，最大值为100。 
-	// - 例如，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
-	// - 值越大，需要处理的时间越长。
-	// - 建议不要超过10。
+	// <p>单张被识别的人脸返回的最相似人员数量。</p><ul><li>默认值为5，最大值为100。 </li><li>例如，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。</li><li>值越大，需要处理的时间越长。</li><li>建议不要超过10。</li></ul>
 	MaxPersonNum *uint64 `json:"MaxPersonNum,omitnil,omitempty" name:"MaxPersonNum"`
 
-	// 是否返回人员具体信息。
-	// - 取值范围：0 为关闭，1 为开启。
-	// - 默认为 0。
-	// - 其他非0非1值默认为0。
+	// <p>是否返回人员具体信息。</p><ul><li>取值范围：0 为关闭，1 为开启。</li><li>默认为 0。</li><li>其他非0非1值默认为0。</li></ul>
 	NeedPersonInfo *int64 `json:"NeedPersonInfo,omitnil,omitempty" name:"NeedPersonInfo"`
 
-	// 图片质量控制。 
-	// - 取值范围：
-	// 0: 不进行控制。
-	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
-	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。
-	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。
-	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。
-	// - 默认 0。 
-	// - 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	// <p>图片质量控制。 </p><ul><li>取值范围：<br>0: 不进行控制。<br>1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。<br>2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。<br>3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。<br>4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。</li><li>默认 0。 </li><li>若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。</li></ul>
 	QualityControl *uint64 `json:"QualityControl,omitnil,omitempty" name:"QualityControl"`
 
-	// 出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
+	// <p>出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。</p>
 	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitnil,omitempty" name:"FaceMatchThreshold"`
 
-	// 是否开启图片旋转识别支持。
-	// - 取值范围：0为不开启，1为开启。
-	// - 默认为0。
-	// - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
-	// - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+	// <p>是否开启图片旋转识别支持。</p><ul><li>取值范围：0为不开启，1为开启。</li><li>默认为0。</li><li>本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。</li><li>若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。</li></ul>
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitnil,omitempty" name:"NeedRotateDetection"`
+
+	// <p>是否需要对请求信息进行全包体加密。支持的加密算法:AES-256-CBC。有加密需求的用户可使用此参数。</p>
+	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// <p>加密后的密文。加密前的数据格式如下:{&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}。</p>
+	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
 type SearchFacesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 希望搜索的人员库列表，上限100个。
-	// - 数组元素取值为创建人员库接口中的GroupId。
-	// - 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
+	// <p>希望搜索的人员库列表，上限100个。</p><ul><li>数组元素取值为创建人员库接口中的GroupId。</li><li>不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。</li></ul>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 图片 base64 数据。
-	// - base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
-	// - 所有格式的图片短边像素不小于64。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片 base64 数据。</p><ul><li>base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。</li><li>所有格式的图片短边像素不小于64。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 图片的 Url 。
-	// - 对应图片 base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
-	// - 所有格式的图片短边像素不小于64。
-	// - Url、Image必须提供一个，如果都提供，只使用 Url。  
-	// - 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// - 非腾讯云存储的Url速度和稳定性可能受一定影响。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片的 Url 。</p><ul><li>对应图片 base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。</li><li>所有格式的图片短边像素不小于64。</li><li>Url、Image必须提供一个，如果都提供，只使用 Url。  </li><li>图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 </li><li>非腾讯云存储的Url速度和稳定性可能受一定影响。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 最多识别的人脸数目。
-	// - 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
-	// - MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 
-	// - 例如：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+	// <p>最多识别的人脸数目。</p><ul><li>默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 </li><li>MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 </li><li>例如：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。</li></ul>
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitnil,omitempty" name:"MaxFaceNum"`
 
-	// 人脸长和宽的最小尺寸，单位为像素。
-	// - 默认为34。
-	// - 低于34的人脸图片无法被识别。
-	// - 建议设置为80。
+	// <p>人脸长和宽的最小尺寸，单位为像素。</p><ul><li>默认为34。</li><li>低于34的人脸图片无法被识别。</li><li>建议设置为80。</li></ul>
 	MinFaceSize *uint64 `json:"MinFaceSize,omitnil,omitempty" name:"MinFaceSize"`
 
-	// 单张被识别的人脸返回的最相似人员数量。
-	// - 默认值为5，最大值为100。 
-	// - 例如，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
-	// - 值越大，需要处理的时间越长。
-	// - 建议不要超过10。
+	// <p>单张被识别的人脸返回的最相似人员数量。</p><ul><li>默认值为5，最大值为100。 </li><li>例如，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。</li><li>值越大，需要处理的时间越长。</li><li>建议不要超过10。</li></ul>
 	MaxPersonNum *uint64 `json:"MaxPersonNum,omitnil,omitempty" name:"MaxPersonNum"`
 
-	// 是否返回人员具体信息。
-	// - 取值范围：0 为关闭，1 为开启。
-	// - 默认为 0。
-	// - 其他非0非1值默认为0。
+	// <p>是否返回人员具体信息。</p><ul><li>取值范围：0 为关闭，1 为开启。</li><li>默认为 0。</li><li>其他非0非1值默认为0。</li></ul>
 	NeedPersonInfo *int64 `json:"NeedPersonInfo,omitnil,omitempty" name:"NeedPersonInfo"`
 
-	// 图片质量控制。 
-	// - 取值范围：
-	// 0: 不进行控制。
-	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
-	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。
-	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。
-	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。
-	// - 默认 0。 
-	// - 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	// <p>图片质量控制。 </p><ul><li>取值范围：<br>0: 不进行控制。<br>1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。<br>2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。<br>3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。<br>4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。</li><li>默认 0。 </li><li>若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。</li></ul>
 	QualityControl *uint64 `json:"QualityControl,omitnil,omitempty" name:"QualityControl"`
 
-	// 出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
+	// <p>出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。</p>
 	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitnil,omitempty" name:"FaceMatchThreshold"`
 
-	// 是否开启图片旋转识别支持。
-	// - 取值范围：0为不开启，1为开启。
-	// - 默认为0。
-	// - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
-	// - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+	// <p>是否开启图片旋转识别支持。</p><ul><li>取值范围：0为不开启，1为开启。</li><li>默认为0。</li><li>本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。</li><li>若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。</li></ul>
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitnil,omitempty" name:"NeedRotateDetection"`
+
+	// <p>是否需要对请求信息进行全包体加密。支持的加密算法:AES-256-CBC。有加密需求的用户可使用此参数。</p>
+	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// <p>加密后的密文。加密前的数据格式如下:{&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}。</p>
+	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
 func (r *SearchFacesRequest) ToJsonString() string {
@@ -3495,6 +3349,8 @@ func (r *SearchFacesRequest) FromJsonString(s string) error {
 	delete(f, "QualityControl")
 	delete(f, "FaceMatchThreshold")
 	delete(f, "NeedRotateDetection")
+	delete(f, "Encryption")
+	delete(f, "EncryptedBody")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchFacesRequest has unknown keys!", "")
 	}
@@ -3503,13 +3359,13 @@ func (r *SearchFacesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchFacesResponseParams struct {
-	// 识别结果。
+	// <p>识别结果。</p>
 	Results []*Result `json:"Results,omitnil,omitempty" name:"Results"`
 
-	// 搜索的人员库中包含的人脸数。
+	// <p>搜索的人员库中包含的人脸数。</p>
 	FaceNum *uint64 `json:"FaceNum,omitnil,omitempty" name:"FaceNum"`
 
-	// 人脸识别所用的算法模型版本。
+	// <p>人脸识别所用的算法模型版本。</p>
 	FaceModelVersion *string `json:"FaceModelVersion,omitnil,omitempty" name:"FaceModelVersion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3736,145 +3592,81 @@ func (r *SearchFacesReturnsByGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchPersonsRequestParams struct {
-	// 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。
+	// <p>希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。</p>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 图片 base64 数据。
-	// - base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
-	// - 所有格式的图片短边像素不小于64。
-	// - 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片 base64 数据。</p><ul><li>base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。</li><li>所有格式的图片短边像素不小于64。</li><li>若图片中包含多张人脸，只选取其中人脸面积最大的人脸。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 图片的 Url 。
-	// - 对应图片 base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
-	// - 所有格式的图片短边像素不小于64。
-	// - Url、Image必须提供一个，如果都提供，只使用 Url。
-	// - 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
-	// - 非腾讯云存储的Url速度和稳定性可能受一定影响。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片的 Url 。</p><ul><li>对应图片 base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。</li><li>所有格式的图片短边像素不小于64。</li><li>Url、Image必须提供一个，如果都提供，只使用 Url。</li><li>图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。</li><li>非腾讯云存储的Url速度和稳定性可能受一定影响。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 最多识别的人脸数目。
-	// - 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
-	// - MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
-	// - 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+	// <p>最多识别的人脸数目。</p><ul><li>默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。</li><li>MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。</li><li>例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。</li></ul>
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitnil,omitempty" name:"MaxFaceNum"`
 
-	// 人脸长和宽的最小尺寸，单位为像素。
-	// - 默认为34。
-	// - 低于34将影响搜索精度。
-	// - 建议设置为80。
+	// <p>人脸长和宽的最小尺寸，单位为像素。</p><ul><li>默认为34。</li><li>低于34将影响搜索精度。</li><li>建议设置为80。</li></ul>
 	MinFaceSize *uint64 `json:"MinFaceSize,omitnil,omitempty" name:"MinFaceSize"`
 
-	// 单张被识别的人脸返回的最相似人员数量。
-	// - 默认值为5，最大值为100。
-	// - 例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
-	// - 值越大，需要处理的时间越长。建议不要超过10。
+	// <p>单张被识别的人脸返回的最相似人员数量。</p><ul><li>默认值为5，最大值为100。</li><li>例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。</li><li>值越大，需要处理的时间越长。建议不要超过10。</li></ul>
 	MaxPersonNum *uint64 `json:"MaxPersonNum,omitnil,omitempty" name:"MaxPersonNum"`
 
-	// 图片质量控制。 
-	// - 取值范围：
-	// 0: 不进行控制。
-	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
-	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。
-	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。
-	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。
-	// - 默认 0。 
-	// - 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	// <p>图片质量控制。 </p><ul><li>取值范围：<br>0: 不进行控制。<br>1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。<br>2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。<br>3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。<br>4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。</li><li>默认 0。 </li><li>若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。</li></ul>
 	QualityControl *uint64 `json:"QualityControl,omitnil,omitempty" name:"QualityControl"`
 
-	// 出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。
-	// - 默认为0。
-	// - 取值范围：[0.0,100.0) 。
+	// <p>出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。</p><ul><li>默认为0。</li><li>取值范围：[0.0,100.0) 。</li></ul>
 	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitnil,omitempty" name:"FaceMatchThreshold"`
 
-	// 是否返回人员具体信息。
-	// - 取值范围：0 为关闭，1 为开启。
-	// - 默认为 0。
-	// - 其他非0非1值默认为0
+	// <p>是否返回人员具体信息。</p><ul><li>取值范围：0 为关闭，1 为开启。</li><li>默认为 0。</li><li>其他非0非1值默认为0</li></ul>
 	NeedPersonInfo *int64 `json:"NeedPersonInfo,omitnil,omitempty" name:"NeedPersonInfo"`
 
-	// 是否开启图片旋转识别支持。
-	// - 取值范围：0为不开启，1为开启。
-	// - 默认为0。
-	// - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
-	// - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+	// <p>是否开启图片旋转识别支持。</p><ul><li>取值范围：0为不开启，1为开启。</li><li>默认为0。</li><li>本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。</li><li>若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。</li></ul>
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitnil,omitempty" name:"NeedRotateDetection"`
+
+	// <p>是否需要对请求信息进行全包体加密。支持的加密算法:AES-256-CBC。有加密需求的用户可使用此参数。</p>
+	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// <p>加密后的密文。加密前的数据格式如下:{&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}。</p>
+	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
 type SearchPersonsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。
+	// <p>希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。</p>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 图片 base64 数据。
-	// - base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
-	// - 所有格式的图片短边像素不小于64。
-	// - 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片 base64 数据。</p><ul><li>base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。</li><li>所有格式的图片短边像素不小于64。</li><li>若图片中包含多张人脸，只选取其中人脸面积最大的人脸。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 图片的 Url 。
-	// - 对应图片 base64 编码后大小不可超过5M。
-	// - jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
-	// - 所有格式的图片短边像素不小于64。
-	// - Url、Image必须提供一个，如果都提供，只使用 Url。
-	// - 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
-	// - 非腾讯云存储的Url速度和稳定性可能受一定影响。
-	// - 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// <p>图片的 Url 。</p><ul><li>对应图片 base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。</li><li>所有格式的图片短边像素不小于64。</li><li>Url、Image必须提供一个，如果都提供，只使用 Url。</li><li>图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。</li><li>非腾讯云存储的Url速度和稳定性可能受一定影响。</li><li>支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 最多识别的人脸数目。
-	// - 默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
-	// - MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
-	// - 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+	// <p>最多识别的人脸数目。</p><ul><li>默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。</li><li>MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。</li><li>例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。</li></ul>
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitnil,omitempty" name:"MaxFaceNum"`
 
-	// 人脸长和宽的最小尺寸，单位为像素。
-	// - 默认为34。
-	// - 低于34将影响搜索精度。
-	// - 建议设置为80。
+	// <p>人脸长和宽的最小尺寸，单位为像素。</p><ul><li>默认为34。</li><li>低于34将影响搜索精度。</li><li>建议设置为80。</li></ul>
 	MinFaceSize *uint64 `json:"MinFaceSize,omitnil,omitempty" name:"MinFaceSize"`
 
-	// 单张被识别的人脸返回的最相似人员数量。
-	// - 默认值为5，最大值为100。
-	// - 例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
-	// - 值越大，需要处理的时间越长。建议不要超过10。
+	// <p>单张被识别的人脸返回的最相似人员数量。</p><ul><li>默认值为5，最大值为100。</li><li>例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。</li><li>值越大，需要处理的时间越长。建议不要超过10。</li></ul>
 	MaxPersonNum *uint64 `json:"MaxPersonNum,omitnil,omitempty" name:"MaxPersonNum"`
 
-	// 图片质量控制。 
-	// - 取值范围：
-	// 0: 不进行控制。
-	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。
-	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。
-	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。
-	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。
-	// - 默认 0。 
-	// - 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	// <p>图片质量控制。 </p><ul><li>取值范围：<br>0: 不进行控制。<br>1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况。<br>2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况。<br>3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况。<br>4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题。</li><li>默认 0。 </li><li>若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。</li></ul>
 	QualityControl *uint64 `json:"QualityControl,omitnil,omitempty" name:"QualityControl"`
 
-	// 出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。
-	// - 默认为0。
-	// - 取值范围：[0.0,100.0) 。
+	// <p>出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。</p><ul><li>默认为0。</li><li>取值范围：[0.0,100.0) 。</li></ul>
 	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitnil,omitempty" name:"FaceMatchThreshold"`
 
-	// 是否返回人员具体信息。
-	// - 取值范围：0 为关闭，1 为开启。
-	// - 默认为 0。
-	// - 其他非0非1值默认为0
+	// <p>是否返回人员具体信息。</p><ul><li>取值范围：0 为关闭，1 为开启。</li><li>默认为 0。</li><li>其他非0非1值默认为0</li></ul>
 	NeedPersonInfo *int64 `json:"NeedPersonInfo,omitnil,omitempty" name:"NeedPersonInfo"`
 
-	// 是否开启图片旋转识别支持。
-	// - 取值范围：0为不开启，1为开启。
-	// - 默认为0。
-	// - 本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。
-	// - 若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+	// <p>是否开启图片旋转识别支持。</p><ul><li>取值范围：0为不开启，1为开启。</li><li>默认为0。</li><li>本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。</li><li>若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。</li></ul>
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitnil,omitempty" name:"NeedRotateDetection"`
+
+	// <p>是否需要对请求信息进行全包体加密。支持的加密算法:AES-256-CBC。有加密需求的用户可使用此参数。</p>
+	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// <p>加密后的密文。加密前的数据格式如下:{&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}。</p>
+	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
 func (r *SearchPersonsRequest) ToJsonString() string {
@@ -3899,6 +3691,8 @@ func (r *SearchPersonsRequest) FromJsonString(s string) error {
 	delete(f, "FaceMatchThreshold")
 	delete(f, "NeedPersonInfo")
 	delete(f, "NeedRotateDetection")
+	delete(f, "Encryption")
+	delete(f, "EncryptedBody")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchPersonsRequest has unknown keys!", "")
 	}
@@ -3907,13 +3701,13 @@ func (r *SearchPersonsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchPersonsResponseParams struct {
-	// 识别结果。
+	// <p>识别结果。</p>
 	Results []*Result `json:"Results,omitnil,omitempty" name:"Results"`
 
-	// 搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
+	// <p>搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。</p>
 	PersonNum *uint64 `json:"PersonNum,omitnil,omitempty" name:"PersonNum"`
 
-	// 人脸识别所用的算法模型版本。
+	// <p>人脸识别所用的算法模型版本。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaceModelVersion *string `json:"FaceModelVersion,omitnil,omitempty" name:"FaceModelVersion"`
 

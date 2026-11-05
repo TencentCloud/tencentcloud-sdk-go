@@ -57050,7 +57050,7 @@ type HostKBRisk struct {
 	// <p>受影响主机数</p>
 	EffectHostCount *uint64 `json:"EffectHostCount,omitnil,omitempty" name:"EffectHostCount"`
 
-	// <p>最近扫描时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ</p>
+	// <p>最近扫描时间<br>参数格式：YYYY-MM-DD HH:mm:ss</p>
 	LatestScanTime *string `json:"LatestScanTime,omitnil,omitempty" name:"LatestScanTime"`
 
 	// <p>所属账号列表</p>
@@ -57058,6 +57058,12 @@ type HostKBRisk struct {
 
 	// <p>修复状态<br>枚举值：<br>PENDING：待修复<br>SCANNING：扫描中<br>FIXED：已修复<br>IGNORED：已加白<br>FIXING：修复中<br>FIX_FAILED：修复失败</p>
 	RiskStatus *string `json:"RiskStatus,omitnil,omitempty" name:"RiskStatus"`
+
+	// <p>是否最新补丁</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	IsNew *bool `json:"IsNew,omitnil,omitempty" name:"IsNew"`
+
+	// <p>修复任务id</p>
+	FixTaskId *string `json:"FixTaskId,omitnil,omitempty" name:"FixTaskId"`
 }
 
 type HostLoginWhiteObj struct {
@@ -57180,6 +57186,12 @@ type HostVulRisk struct {
 
 	// <p>漏洞详细信息</p>
 	VulDetail *VulDetailInfo `json:"VulDetail,omitnil,omitempty" name:"VulDetail"`
+
+	// <p>修复任务ID</p>
+	FixTaskId *string `json:"FixTaskId,omitnil,omitempty" name:"FixTaskId"`
+
+	// <p>当前用户可见范围内存在至少一台支持自动修复的主机时为 1，否则为 0</p><p>单位：1</p>
+	SupportAutoFix *uint64 `json:"SupportAutoFix,omitnil,omitempty" name:"SupportAutoFix"`
 }
 
 type IPIntelInfo struct {
@@ -58828,46 +58840,74 @@ type KBFixSummaryItem struct {
 }
 
 type KBUpdateMachineItem struct {
-	// <p>KB补丁ID</p>
+	// KB补丁ID
 	KBId *int64 `json:"KBId,omitnil,omitempty" name:"KBId"`
 
-	// <p>主机实例ID</p>
+	// 主机实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// <p>主机名称</p>
+	// 主机名称
 	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
-	// <p>主机IP</p>
+	// 主机IP
 	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
-	// <p>公网IP</p>
+	// 公网IP
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
-	// <p>操作系统名称</p>
+	// 操作系统名称
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
 
-	// <p>主机在线状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线</p>
+	// 主机在线状态
+	// 枚举值：
+	// ONLINE：在线
+	// OFFLINE：离线
 	MachineStatus *string `json:"MachineStatus,omitnil,omitempty" name:"MachineStatus"`
 
-	// <p>是否支持自动更新补丁<br>枚举值：<br>0：不支持<br>1：支持</p>
+	// 主机运行状态
+	// 枚举值：
+	// RUNNING：运行中
+	// STOPPED：已停止
+	// EXPIRED：待回收
+	HostStatus *string `json:"HostStatus,omitnil,omitempty" name:"HostStatus"`
+
+	// 是否支持自动更新补丁
+	// 枚举值：
+	// 0：不支持
+	// 1：支持
 	SupportAutoFix *int64 `json:"SupportAutoFix,omitnil,omitempty" name:"SupportAutoFix"`
 
-	// <p>当前修复状态<br>枚举值：<br>0：未修复<br>1：修复中<br>2：修复失败<br>3：修复成功<br>4：修复超时</p>
+	// 当前修复状态
+	// 枚举值：
+	// 0：未修复
+	// 1：修复中
+	// 2：修复失败
+	// 3：修复成功
+	// 4：修复超时
 	FixStatus *int64 `json:"FixStatus,omitnil,omitempty" name:"FixStatus"`
 
-	// <p>最近一次修复时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+	// 最近一次修复时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
 	LatestFixTime *string `json:"LatestFixTime,omitnil,omitempty" name:"LatestFixTime"`
 
-	// <p>不可修复原因，SupportAutoFix为0时返回</p>
+	// 不可修复原因，SupportAutoFix为0时返回
 	NotFixableReason *string `json:"NotFixableReason,omitnil,omitempty" name:"NotFixableReason"`
 
-	// <p>资产标签列表</p>
+	// 不可修复原因关联动作，SupportAutoFix为0且存在可引导动作时返回
+	NotFixableAction *VulFixableMachineAction `json:"NotFixableAction,omitnil,omitempty" name:"NotFixableAction"`
+
+	// 资产标签列表
 	TagItems []*MiniTagItem `json:"TagItems,omitnil,omitempty" name:"TagItems"`
 
-	// <p>所属账号AppId</p>
+	// 所属账号AppId
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// <p>付费版本信息<br>枚举值：<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版</p>
+	// 付费版本信息
+	// 枚举值：
+	// BASIC：基础版
+	// PRO：专业版
+	// ULTIMATE：旗舰版
+	// PRO_LH：轻量版
 	PayVersion *string `json:"PayVersion,omitnil,omitempty" name:"PayVersion"`
 }
 
@@ -76485,6 +76525,9 @@ type VPRExplainDimensionItem struct {
 
 	// <p>标签描述</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>危害等级</p><p>枚举值：</p><ul><li>LOW： 低危</li><li>MEDIUM： 中危</li><li>HIGH： 高危</li><li>CRITICAL： 严重</li></ul>
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 }
 
 type VPRExplainInfo struct {
@@ -77195,6 +77238,15 @@ type VulDetailInfo struct {
 
 	// <p>漏洞影响产品</p>
 	AffectVendorProduct []*VulVendorProduct `json:"AffectVendorProduct,omitnil,omitempty" name:"AffectVendorProduct"`
+
+	// <p>VPR暴露面信息</p>
+	VPRExplainInfo *VPRExplainInfo `json:"VPRExplainInfo,omitnil,omitempty" name:"VPRExplainInfo"`
+
+	// <p>最近扫描任务id(应急漏洞)</p>
+	ScanTaskId *uint64 `json:"ScanTaskId,omitnil,omitempty" name:"ScanTaskId"`
+
+	// <p>影响资产数(应急漏洞)</p>
+	AffectAsset *uint64 `json:"AffectAsset,omitnil,omitempty" name:"AffectAsset"`
 }
 
 type VulFixItem struct {
@@ -77252,7 +77304,7 @@ type VulFixSummaryItem struct {
 	// <p>修复后是否需要重启系统</p>
 	NeedReboot *bool `json:"NeedReboot,omitnil,omitempty" name:"NeedReboot"`
 
-	// <p>是否支持一键修复true-支持 false-不支持</p>
+	// <p>是否支持一键修复</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
 	FixSwitch *bool `json:"FixSwitch,omitnil,omitempty" name:"FixSwitch"`
 }
 
@@ -77293,6 +77345,18 @@ type VulFixTaskDetailItem struct {
 	// <p>异常提示信息</p>
 	ExceptionMessage *string `json:"ExceptionMessage,omitnil,omitempty" name:"ExceptionMessage"`
 
+	// <p>结构化错误码（如 VF-INS-002、VF-AG-013）</p>
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>结构化失败原因</p>
+	ErrorReason *string `json:"ErrorReason,omitnil,omitempty" name:"ErrorReason"`
+
+	// <p>结构化解决方案</p>
+	ErrorSolution *string `json:"ErrorSolution,omitnil,omitempty" name:"ErrorSolution"`
+
+	// <p>原始错误信息（不做翻译）</p>
+	RawErrorMessage *string `json:"RawErrorMessage,omitnil,omitempty" name:"RawErrorMessage"`
+
 	// <p>修复启动时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
@@ -77307,6 +77371,12 @@ type VulFixTaskDetailItem struct {
 
 	// <p>快照创建失败原因（当 SnapshotStatus=3 时有值）</p>
 	SnapshotFailReason *string `json:"SnapshotFailReason,omitnil,omitempty" name:"SnapshotFailReason"`
+
+	// <p>机器类型</p><p>枚举值：</p><ul><li>CVM： 腾讯云cvm</li><li>Other： 混合云机器</li></ul>
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
+	// <p>快照是否复用</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	SnapshotReused *bool `json:"SnapshotReused,omitnil,omitempty" name:"SnapshotReused"`
 }
 
 type VulFixTaskInfo struct {
@@ -77442,6 +77512,17 @@ type VulFixTaskItem struct {
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
+type VulFixableMachineAction struct {
+	// 动作类型
+	// 枚举值：
+	// UPGRADE_PROTECTION：升级防护
+	// REINSTALL_CLIENT：重新安装客户端
+	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 动作按钮文案
+	ActionText *string `json:"ActionText,omitnil,omitempty" name:"ActionText"`
+}
+
 type VulFixableMachineItem struct {
 	// <p>漏洞ID列表，按 SupportAutoFix 维度分组：SupportAutoFix=1 时为可修复的漏洞ID，SupportAutoFix=0 时为不可修复的漏洞ID</p>
 	VulIds []*int64 `json:"VulIds,omitnil,omitempty" name:"VulIds"`
@@ -77467,6 +77548,9 @@ type VulFixableMachineItem struct {
 	// <p>主机在线状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线</p>
 	MachineStatus *string `json:"MachineStatus,omitnil,omitempty" name:"MachineStatus"`
 
+	// <p>主机运行状态</p><p>枚举值：</p><ul><li>RUNNING： 运行中</li><li>STOPPED： 已停止</li><li>EXPIRED： 待回收</li></ul>
+	HostStatus *string `json:"HostStatus,omitnil,omitempty" name:"HostStatus"`
+
 	// <p>是否支持自动修复<br>枚举值：<br>0：不支持<br>1：支持</p>
 	SupportAutoFix *int64 `json:"SupportAutoFix,omitnil,omitempty" name:"SupportAutoFix"`
 
@@ -77478,6 +77562,12 @@ type VulFixableMachineItem struct {
 
 	// <p>不可修复原因，SupportAutoFix为0时返回</p>
 	NotFixableReason *string `json:"NotFixableReason,omitnil,omitempty" name:"NotFixableReason"`
+
+	// <p>不可修复原因码，SupportAutoFix为0时返回<br>枚举值：<br>BASIC_VERSION：基础版主机不支持一键修复<br>HOST_STOPPED：主机已关机<br>CLIENT_OFFLINE：主机防护客户端已离线<br>PATCH_UNAVAILABLE：官方已停止发布该系统版本的安全补丁<br>SOURCE_COMPILED：源码编译安装，不支持一键修复</p>
+	NotFixableReasonCode *string `json:"NotFixableReasonCode,omitnil,omitempty" name:"NotFixableReasonCode"`
+
+	// <p>不可修复原因关联动作，SupportAutoFix为0且存在可引导动作时返回</p>
+	NotFixableAction *VulFixableMachineAction `json:"NotFixableAction,omitnil,omitempty" name:"NotFixableAction"`
 
 	// <p>修复命令列表，SupportAutoFix为1时返回</p>
 	FixCommands []*string `json:"FixCommands,omitnil,omitempty" name:"FixCommands"`
@@ -77531,6 +77621,9 @@ type VulFixedItem struct {
 
 	// <p>VPR评级依据</p>
 	VPRExplainInfo *VPRExplainInfo `json:"VPRExplainInfo,omitnil,omitempty" name:"VPRExplainInfo"`
+
+	// <p>修复方式：AUTO_FIX-一键修复 MANUAL_FIX-手动修复 </p>
+	RepairMethod *string `json:"RepairMethod,omitnil,omitempty" name:"RepairMethod"`
 }
 
 type VulHostBriefInfo struct {
@@ -77546,7 +77639,7 @@ type VulHostBriefInfo struct {
 	// <p>内网 IP 地址</p>
 	PrivateIP *string `json:"PrivateIP,omitnil,omitempty" name:"PrivateIP"`
 
-	// <p>防护版本<br>枚举值：<br>NONE：无防护<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版<br>PRO_LH：轻量版</p>
+	// <p>防护版本枚举值 BASIC：基础版PRO：专业版ULTIMATE：旗舰版PRO_LH：轻量版</p>
 	DefendVersion *string `json:"DefendVersion,omitnil,omitempty" name:"DefendVersion"`
 
 	// <p>漏洞防御状态<br>枚举值：<br>ENABLED：已开启<br>NOT_SUPPORTED：不支持<br>NOT_ENABLED：未开启</p>
@@ -77555,7 +77648,7 @@ type VulHostBriefInfo struct {
 	// <p>所属账号信息</p>
 	Account *AccountBriefInfo `json:"Account,omitnil,omitempty" name:"Account"`
 
-	// <p>云主机实例状态<br>枚举值：<br>RUNNING：运行中<br>STOPPED：已停止<br>UNKNOWN：未知</p>
+	// <p>云主机实例状态</p><p>枚举值：</p><ul><li>RUNNING： 运行中</li><li>STOPPED： 已停止</li><li>EXPIRED： 待回收</li></ul>
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
 	// <p>修复状态枚举值</p><p>枚举值：</p><ul><li>PENDING： 待修复</li><li>SCANNING： 扫描中</li><li>FIXED： 已修复</li><li>IGNORED： 已忽略</li><li>FIXING： 修复中</li><li>FIX_FAILED： 修复失败</li><li>NEED_REBOOT： 修复待重启</li></ul>
@@ -77572,6 +77665,9 @@ type VulHostBriefInfo struct {
 
 	// <p>云上标签列表（云资产侧 Tag）</p>
 	CloudTag []*Tag `json:"CloudTag,omitnil,omitempty" name:"CloudTag"`
+
+	// <p>VPR评级解释卡片</p>
+	VPRExplainInfo *VPRExplainInfo `json:"VPRExplainInfo,omitnil,omitempty" name:"VPRExplainInfo"`
 }
 
 type VulImpactComponentInfo struct {

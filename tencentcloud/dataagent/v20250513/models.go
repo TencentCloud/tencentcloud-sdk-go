@@ -511,27 +511,33 @@ func (r *DeleteChunkResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDataAgentSessionRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 会话ID
+	// <p>会话ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 批量删除 会话id 列表
+	// <p>批量删除 会话id 列表</p>
 	SessionIds []*string `json:"SessionIds,omitnil,omitempty" name:"SessionIds"`
+
+	// <p>上下文</p>
+	SurfaceContext *SurfaceContext `json:"SurfaceContext,omitnil,omitempty" name:"SurfaceContext"`
 }
 
 type DeleteDataAgentSessionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 会话ID
+	// <p>会话ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 批量删除 会话id 列表
+	// <p>批量删除 会话id 列表</p>
 	SessionIds []*string `json:"SessionIds,omitnil,omitempty" name:"SessionIds"`
+
+	// <p>上下文</p>
+	SurfaceContext *SurfaceContext `json:"SurfaceContext,omitnil,omitempty" name:"SurfaceContext"`
 }
 
 func (r *DeleteDataAgentSessionRequest) ToJsonString() string {
@@ -549,6 +555,7 @@ func (r *DeleteDataAgentSessionRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "SessionId")
 	delete(f, "SessionIds")
+	delete(f, "SurfaceContext")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDataAgentSessionRequest has unknown keys!", "")
 	}
@@ -557,10 +564,10 @@ func (r *DeleteDataAgentSessionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDataAgentSessionResponseParams struct {
-	// 删除的会话ID
+	// <p>删除的会话ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 删除的会话ID列表
+	// <p>删除的会话ID列表</p>
 	SessionIds []*string `json:"SessionIds,omitnil,omitempty" name:"SessionIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1800,6 +1807,9 @@ type QueryUserSessionDetailRequestParams struct {
 
 	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>上下文</p>
+	SurfaceContext *SurfaceContext `json:"SurfaceContext,omitnil,omitempty" name:"SurfaceContext"`
 }
 
 type QueryUserSessionDetailRequest struct {
@@ -1816,6 +1826,9 @@ type QueryUserSessionDetailRequest struct {
 
 	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>上下文</p>
+	SurfaceContext *SurfaceContext `json:"SurfaceContext,omitnil,omitempty" name:"SurfaceContext"`
 }
 
 func (r *QueryUserSessionDetailRequest) ToJsonString() string {
@@ -1834,6 +1847,7 @@ func (r *QueryUserSessionDetailRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "InstanceId")
+	delete(f, "SurfaceContext")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryUserSessionDetailRequest has unknown keys!", "")
 	}
@@ -1856,6 +1870,9 @@ type QueryUserSessionDetailResponseParams struct {
 
 	// <p>运行中的聊天请求, 返回为json字符串</p>
 	RunRecord *string `json:"RunRecord,omitnil,omitempty" name:"RunRecord"`
+
+	// <p>会话归属信息</p>
+	SessionTargetInfo *SessionTargetInfo `json:"SessionTargetInfo,omitnil,omitempty" name:"SessionTargetInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1910,6 +1927,35 @@ type RecordList struct {
 
 	// <p>模型信息</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+}
+
+type SessionTargetInfo struct {
+	// <p>targetID</p>
+	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+
+	// <p>targetType</p>
+	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+
+	// <p>target名称</p>
+	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
+
+	// <p>资源名称</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>最后活跃时间</p><p>参数格式：2026-11-05 14:30:00</p>
+	LastInteractionTime *string `json:"LastInteractionTime,omitnil,omitempty" name:"LastInteractionTime"`
+
+	// <p>上下文</p>
+	SurfaceContext *SurfaceContext `json:"SurfaceContext,omitnil,omitempty" name:"SurfaceContext"`
+
+	// <p>是否保存</p>
+	Saved *bool `json:"Saved,omitnil,omitempty" name:"Saved"`
+
+	// <p>保存时间</p>
+	SavedAt *string `json:"SavedAt,omitnil,omitempty" name:"SavedAt"`
+
+	// <p>是否删除</p>
+	Deleted *bool `json:"Deleted,omitnil,omitempty" name:"Deleted"`
 }
 
 // Predefined struct for user
@@ -1974,6 +2020,11 @@ func (r *StopChatAIResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopChatAIResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SurfaceContext struct {
+	// <p>地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type Thinking struct {

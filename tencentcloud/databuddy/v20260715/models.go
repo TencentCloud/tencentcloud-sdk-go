@@ -11038,7 +11038,7 @@ type UpdateWorkflowRequestParams struct {
 	// <p>待更新的工作流ID，可通过 ListWorkflows 获取。必填</p>
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// <p>需要清空的字段名列表，用于将指定字段重置为空</p>
+	// <p>需要清空的字段名列表，用于将指定字段重置为空。每项为斜杠分隔的字段路径（如 /BaseInfo/Description、/ParamList:[参数ID]），路径段与 NewSetting 字段名一致；列表字段用 字段名:[主键值] 定位单个元素、不带 [] 表示清空整个列表；workflowId、workspaceId、baseInfo 等标识类受保护字段不可删除，路径无效或未命中将返回 InvalidParameterValue 报错。</p>
 	FieldToRemoveList []*string `json:"FieldToRemoveList,omitnil,omitempty" name:"FieldToRemoveList"`
 
 	// <p>更新后的工作流配置，仅传入需要变更的部分即可</p>
@@ -11054,7 +11054,7 @@ type UpdateWorkflowRequest struct {
 	// <p>待更新的工作流ID，可通过 ListWorkflows 获取。必填</p>
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// <p>需要清空的字段名列表，用于将指定字段重置为空</p>
+	// <p>需要清空的字段名列表，用于将指定字段重置为空。每项为斜杠分隔的字段路径（如 /BaseInfo/Description、/ParamList:[参数ID]），路径段与 NewSetting 字段名一致；列表字段用 字段名:[主键值] 定位单个元素、不带 [] 表示清空整个列表；workflowId、workspaceId、baseInfo 等标识类受保护字段不可删除，路径无效或未命中将返回 InvalidParameterValue 报错。</p>
 	FieldToRemoveList []*string `json:"FieldToRemoveList,omitnil,omitempty" name:"FieldToRemoveList"`
 
 	// <p>更新后的工作流配置，仅传入需要变更的部分即可</p>
@@ -12051,43 +12051,43 @@ type WorkflowRunBrief struct {
 }
 
 type WorkflowTask struct {
-	// 任务参数
+	// <p>任务参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamList []*ParamInfo `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 
-	// 任务依赖
+	// <p>任务依赖</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependOnList []*DependOnBrief `json:"DependOnList,omitnil,omitempty" name:"DependOnList"`
 
-	// 任务ID，创建时无需传入，由服务端生成
+	// <p>任务ID，创建时无需传入，由服务端生成</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 任务类型
+	// <p>任务类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *TaskType `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 资源组ID，可通过资源组相关接口获取
+	// <p>计算资源组ID，计算资源取值通过 ListComputeResourceOptions 接口获取，入参 ResourceTypes 需按任务类型传值：DATA_INTEGRATION 传 [1]（平台集群），PYTHON/NOTEBOOK/RAY_JOB/DATA_QUALITY/IF_ELSE 传 [2]（作业集群），SQL 传 [2,3]（交互式+作业集群），其余任务类型无需填写本字段。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 任务描述
+	// <p>任务描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 任务告警
+	// <p>任务告警</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alarm *AlarmBrief `json:"Alarm,omitnil,omitempty" name:"Alarm"`
 
-	// 监控指标
+	// <p>监控指标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorMetric *MonitorMetricBrief `json:"MonitorMetric,omitnil,omitempty" name:"MonitorMetric"`
 
-	// 任务重试策略
+	// <p>任务重试策略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskRetryStrategy *TaskRetryStrategy `json:"TaskRetryStrategy,omitnil,omitempty" name:"TaskRetryStrategy"`
 
@@ -12095,11 +12095,11 @@ type WorkflowTask struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependOnRunCondition *string `json:"DependOnRunCondition,omitnil,omitempty" name:"DependOnRunCondition"`
 
-	// 任务X坐标
+	// <p>任务X坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LeftCoordinate *float64 `json:"LeftCoordinate,omitnil,omitempty" name:"LeftCoordinate"`
 
-	// 任务Y坐标
+	// <p>任务Y坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopCoordinate *float64 `json:"TopCoordinate,omitnil,omitempty" name:"TopCoordinate"`
 

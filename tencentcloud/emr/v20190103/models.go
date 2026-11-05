@@ -6138,7 +6138,7 @@ type DescribeNodeSpec struct {
 
 // Predefined struct for user
 type DescribeNodeSpecRequestParams struct {
-	// <p>可用区Id，可以通过https://document.capi.woa.com/document/api/1605/76892查询相关信息</p>
+	// <p>可用区Id，可以通过<a href="https://cloud.tencent.com/document/product/1596/77929">可用区列表</a>查询相关信息</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// <p>0,按量，1包年包月，99按量+包年包月，错填将不会展示费用信息</p>
@@ -6166,7 +6166,7 @@ type DescribeNodeSpecRequestParams struct {
 type DescribeNodeSpecRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>可用区Id，可以通过https://document.capi.woa.com/document/api/1605/76892查询相关信息</p>
+	// <p>可用区Id，可以通过<a href="https://cloud.tencent.com/document/product/1596/77929">可用区列表</a>查询相关信息</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// <p>0,按量，1包年包月，99按量+包年包月，错填将不会展示费用信息</p>

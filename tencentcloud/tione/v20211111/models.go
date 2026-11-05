@@ -1485,6 +1485,12 @@ type CreateNotebookRequestParams struct {
 
 	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>资源供应属性</p>
+	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
+
+	// <p>队列ID</p>
+	Queues []*string `json:"Queues,omitnil,omitempty" name:"Queues"`
 }
 
 type CreateNotebookRequest struct {
@@ -1567,6 +1573,12 @@ type CreateNotebookRequest struct {
 
 	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>资源供应属性</p>
+	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
+
+	// <p>队列ID</p>
+	Queues []*string `json:"Queues,omitnil,omitempty" name:"Queues"`
 }
 
 func (r *CreateNotebookRequest) ToJsonString() string {
@@ -1607,6 +1619,8 @@ func (r *CreateNotebookRequest) FromJsonString(s string) error {
 	delete(f, "SSHConfig")
 	delete(f, "VolumeSourceGooseFS")
 	delete(f, "Description")
+	delete(f, "ResourceSupplyAttribute")
+	delete(f, "Queues")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookRequest has unknown keys!", "")
 	}
@@ -11507,6 +11521,9 @@ type SmartRouterResourceSpec struct {
 	// <p>资源供应属性（潮汐/竞价等供应模式），公有云场景用于指定机器来源类型。仅区分供应来源，计费/部署/伸缩仍按后付费处理（ChargeType 恒为 POSTPAID_BY_HOUR）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
+
+	// <p>资源组类型（output only，查询时回显供前端区分资源组表单）。枚举值：NORMAL（托管资源组）/ SW（纳管资源组）。按量计费（ChargeType=POSTPAID_BY_HOUR）时为空；写入时仍以查询到的资源组实际类型为准，调用方无需传入</p>
+	ResourceGroupSWType *string `json:"ResourceGroupSWType,omitnil,omitempty" name:"ResourceGroupSWType"`
 }
 
 type Spec struct {
