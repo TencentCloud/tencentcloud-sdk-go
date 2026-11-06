@@ -98,6 +98,9 @@ const (
 	// 声纹音频检测出现异常。
 	FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
 
+	// 声纹不存在或已被删除。
+	FAILEDOPERATION_VOICEPRINTNOTFOUND = "FailedOperation.VoicePrintNotFound"
+
 	// 单用户声纹注册数量受限,请联系我们调整到合理值。
 	FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
 
@@ -118,6 +121,9 @@ const (
 
 	// ES查询异常。
 	INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
+
+	// 访问 COS 对象存储失败。
+	INTERNALERROR_FAILACCESSCOS = "InternalError.FailAccessCOS"
 
 	// 访问数据库失败。
 	INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
@@ -155,8 +161,20 @@ const (
 	// 音频编码参数错误。
 	INVALIDPARAMETER_AUDIOENCODEPARAMS = "InvalidParameter.AudioEncodeParams"
 
+	// 音频格式非法（仅支持 pcm/wav）或 Base64 解码失败。
+	INVALIDPARAMETER_AUDIOFORMAT = "InvalidParameter.AudioFormat"
+
 	// 无效的参考音频
 	INVALIDPARAMETER_AUDIOPROMPT = "InvalidParameter.AudioPrompt"
+
+	// 音频数据大小超过 2MB。
+	INVALIDPARAMETER_AUDIOTOOLARGE = "InvalidParameter.AudioTooLarge"
+
+	// 音频时长超过 45 秒。
+	INVALIDPARAMETER_AUDIOTOOLONG = "InvalidParameter.AudioTooLong"
+
+	// 音频有效时长不足 10 秒。
+	INVALIDPARAMETER_AUDIOTOOSHORT = "InvalidParameter.AudioTooShort"
 
 	// BackgroundImageUrl参数错误。
 	INVALIDPARAMETER_BACKGROUNDIMAGEURL = "InvalidParameter.BackgroundImageUrl"
@@ -326,8 +344,17 @@ const (
 	// AppId无效。
 	INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = "InvalidParameterValue.ErrorInvalidAppid"
 
+	// 无效的 SpeakerId。
+	INVALIDPARAMETERVALUE_INVALIDSDKAPPID = "InvalidParameterValue.InvalidSdkAppId"
+
+	// 无效的 SpeakerId（为空或格式非法）。
+	INVALIDPARAMETERVALUE_INVALIDSPEAKERID = "InvalidParameterValue.InvalidSpeakerId"
+
 	// 非法的VocabId。
 	INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
+
+	// 无效的 VoicePrintId（为空、格式非法或批量数量超限）。
+	INVALIDPARAMETERVALUE_INVALIDVOICEPRINTID = "InvalidParameterValue.InvalidVoicePrintId"
 
 	// 热词weight参数无效
 	INVALIDPARAMETERVALUE_INVALIDWORDWEIGHT = "InvalidParameterValue.InvalidWordWeight"
@@ -346,6 +373,9 @@ const (
 
 	// 克隆超过最大数量
 	LIMITEXCEEDED_VOICECLONEMAXNUMLIMIT = "LimitExceeded.VoiceCloneMaxNumLimit"
+
+	// 声纹库数量已达上限。
+	LIMITEXCEEDED_VOICEPRINTFULL = "LimitExceeded.VoicePrintFull"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"

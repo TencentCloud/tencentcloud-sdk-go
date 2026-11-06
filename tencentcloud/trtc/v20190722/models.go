@@ -358,6 +358,79 @@ type AudioSegments struct {
 	FinishTime *float64 `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 }
 
+// Predefined struct for user
+type BatchDeleteTRTCVoicePrintRequestParams struct {
+	// 待批量删除的声纹 ID 列表，最多 50 个；请求内自动去重；按 (AppId, SdkAppId, VoicePrintId) 做数据隔离
+	VoicePrintIds []*string `json:"VoicePrintIds,omitnil,omitempty" name:"VoicePrintIds"`
+
+	// SdkappId
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+type BatchDeleteTRTCVoicePrintRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待批量删除的声纹 ID 列表，最多 50 个；请求内自动去重；按 (AppId, SdkAppId, VoicePrintId) 做数据隔离
+	VoicePrintIds []*string `json:"VoicePrintIds,omitnil,omitempty" name:"VoicePrintIds"`
+
+	// SdkappId
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+func (r *BatchDeleteTRTCVoicePrintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteTRTCVoicePrintRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoicePrintIds")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeleteTRTCVoicePrintRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDeleteTRTCVoicePrintResponseParams struct {
+	// 成功删除的声纹数量（按数据库实际删除行数统计）
+	SuccessCount *uint64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// 失败的声纹数量（通常是因为声纹不存在）
+	FailCount *uint64 `json:"FailCount,omitnil,omitempty" name:"FailCount"`
+
+	// 每个 VoicePrintId 的处理结果列表，元素为 VoicePrintBatchDeleteResult结构：{ VoiceprintId:string, ErrorCode:string, ErrorMessage:string }，成功项仅返回 VoiceprintId，失败项带 ErrorCode/ErrorMessage。
+	Results []*VoicePrintBatchDeleteResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 结果描述，成功时为 batch delete completed: X succeeded, Y failed
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchDeleteTRTCVoicePrintResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchDeleteTRTCVoicePrintResponseParams `json:"Response"`
+}
+
+func (r *BatchDeleteTRTCVoicePrintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteTRTCVoicePrintResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CloudModerationStorage struct {
 	// 腾讯云对象存储COS以及第三方云存储账号信息
 	// 0：腾讯云对象存储 COS
@@ -530,6 +603,91 @@ func (r *ControlAIConversationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ControlVoiceConversationRequestParams struct {
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>控制指令。</p><p>枚举值：</p><ul><li>&quot;Interrupt&quot;： 强制打断</li><li>&quot;invokellm&quot;： 文本注入 LLM：向当前对话上下文注入一段文本，触发一轮 LLM 回复。<code>S2S</code>模式不支持该指令</li><li>invoketts： 文本注入TTS：向当前TTS注入文本，触发TTS播报。<code>S2S</code>模式不支持该指令</li></ul>
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// <p>注入LLM的配置，<code>Command=invokellm</code> 时必填</p>
+	InvokeLLM *VoiceConversationInvokeLLM `json:"InvokeLLM,omitnil,omitempty" name:"InvokeLLM"`
+
+	// <p>注入TTS的配置，<code>Command=invoketts</code> 时必填</p>
+	InvokeTTS *VoiceConversationInvokeTTS `json:"InvokeTTS,omitnil,omitempty" name:"InvokeTTS"`
+}
+
+type ControlVoiceConversationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>控制指令。</p><p>枚举值：</p><ul><li>&quot;Interrupt&quot;： 强制打断</li><li>&quot;invokellm&quot;： 文本注入 LLM：向当前对话上下文注入一段文本，触发一轮 LLM 回复。<code>S2S</code>模式不支持该指令</li><li>invoketts： 文本注入TTS：向当前TTS注入文本，触发TTS播报。<code>S2S</code>模式不支持该指令</li></ul>
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// <p>注入LLM的配置，<code>Command=invokellm</code> 时必填</p>
+	InvokeLLM *VoiceConversationInvokeLLM `json:"InvokeLLM,omitnil,omitempty" name:"InvokeLLM"`
+
+	// <p>注入TTS的配置，<code>Command=invoketts</code> 时必填</p>
+	InvokeTTS *VoiceConversationInvokeTTS `json:"InvokeTTS,omitnil,omitempty" name:"InvokeTTS"`
+}
+
+func (r *ControlVoiceConversationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlVoiceConversationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	delete(f, "Command")
+	delete(f, "InvokeLLM")
+	delete(f, "InvokeTTS")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlVoiceConversationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ControlVoiceConversationResponseParams struct {
+	// <p>对话任务的唯一Id。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ControlVoiceConversationResponse struct {
+	*tchttp.BaseResponse
+	Response *ControlVoiceConversationResponseParams `json:"Response"`
+}
+
+func (r *ControlVoiceConversationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlVoiceConversationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAudioModerationSyncRequestParams struct {
 	// <p>sdkappid app账号</p>
 	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
@@ -686,6 +844,9 @@ type CreateCloudModerationRequestParams struct {
 
 	// <p>任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。</p>
 	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitnil,omitempty" name:"ResourceExpiredHour"`
+
+	// <p>客户自定义扩展字段，服务端完全不解析，只做透传，在事件回调中原样返回</p><p>入参限制：总字符数≤4KB</p>
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 }
 
 type CreateCloudModerationRequest struct {
@@ -714,6 +875,9 @@ type CreateCloudModerationRequest struct {
 
 	// <p>任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。</p>
 	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitnil,omitempty" name:"ResourceExpiredHour"`
+
+	// <p>客户自定义扩展字段，服务端完全不解析，只做透传，在事件回调中原样返回</p><p>入参限制：总字符数≤4KB</p>
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 }
 
 func (r *CreateCloudModerationRequest) ToJsonString() string {
@@ -736,6 +900,7 @@ func (r *CreateCloudModerationRequest) FromJsonString(s string) error {
 	delete(f, "ModerationStorageParams")
 	delete(f, "RoomIdType")
 	delete(f, "ResourceExpiredHour")
+	delete(f, "Extra")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudModerationRequest has unknown keys!", "")
 	}
@@ -1400,6 +1565,133 @@ func (r *CreateRecognizeVocabV3Response) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateVoiceConversationRequestParams struct {
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#roomid">RoomId</a>，对话的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。</p>
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>房间信息RoomType，必须和对话的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。</p><p>枚举值：</p><ul><li>0： 数字房间号</li><li>1： 字符串房间号</li></ul><p>默认值：0</p>
+	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
+
+	// <p>对话机器人相关配置。</p>
+	AgentConfig *VoiceConversationConfig `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// <p>对话链路模式：<code>Cascade</code>（默认，三段式）/ <code>S2S</code>（端到端语音大模型）。</p><p>枚举值：</p><ul><li>Cascade： 默认，三段式</li><li>S2S： 端到端语音大模型</li></ul><p>默认值：Cascade</p>
+	ConversationMode *string `json:"ConversationMode,omitnil,omitempty" name:"ConversationMode"`
+
+	// <p>端到端语音大模型配置。<strong>仅 <code>S2S</code> 模式必填</strong>；<code>Cascade</code> 模式忽略。</p>
+	S2SConfig *VoiceConversationS2SConfig `json:"S2SConfig,omitnil,omitempty" name:"S2SConfig"`
+
+	// <p>语音识别配置。<strong>仅 <code>Cascade</code> 模式必填</strong>；<code>S2S</code> 模式忽略。</p>
+	STTConfig *VoiceConversationSTTConfig `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// <p>大模型配置。<strong>仅 <code>Cascade</code> 模式必填</strong>；<code>S2S</code> 模式忽略。</p>
+	LLMConfig *VoiceConversationLLMConfig `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// <p>语音合成配置。<strong>仅 <code>Cascade</code> 模式必填</strong>；<code>S2S</code> 模式忽略。</p>
+	TTSConfig *VoiceConversationTTSConfig `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// <p>对话控制配置，<code>S2S</code> 模式不支持填写该参数。</p>
+	DialogConfig *VoiceConversationDialogConfig `json:"DialogConfig,omitnil,omitempty" name:"DialogConfig"`
+
+	// <p>视觉理解配置，<code>S2S</code> 模式不支持填写该参数。</p>
+	VisionConfig *VoiceConversationVisionConfig `json:"VisionConfig,omitnil,omitempty" name:"VisionConfig"`
+}
+
+type CreateVoiceConversationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#roomid">RoomId</a>，对话的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。</p>
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>房间信息RoomType，必须和对话的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。</p><p>枚举值：</p><ul><li>0： 数字房间号</li><li>1： 字符串房间号</li></ul><p>默认值：0</p>
+	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
+
+	// <p>对话机器人相关配置。</p>
+	AgentConfig *VoiceConversationConfig `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// <p>对话链路模式：<code>Cascade</code>（默认，三段式）/ <code>S2S</code>（端到端语音大模型）。</p><p>枚举值：</p><ul><li>Cascade： 默认，三段式</li><li>S2S： 端到端语音大模型</li></ul><p>默认值：Cascade</p>
+	ConversationMode *string `json:"ConversationMode,omitnil,omitempty" name:"ConversationMode"`
+
+	// <p>端到端语音大模型配置。<strong>仅 <code>S2S</code> 模式必填</strong>；<code>Cascade</code> 模式忽略。</p>
+	S2SConfig *VoiceConversationS2SConfig `json:"S2SConfig,omitnil,omitempty" name:"S2SConfig"`
+
+	// <p>语音识别配置。<strong>仅 <code>Cascade</code> 模式必填</strong>；<code>S2S</code> 模式忽略。</p>
+	STTConfig *VoiceConversationSTTConfig `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
+
+	// <p>大模型配置。<strong>仅 <code>Cascade</code> 模式必填</strong>；<code>S2S</code> 模式忽略。</p>
+	LLMConfig *VoiceConversationLLMConfig `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// <p>语音合成配置。<strong>仅 <code>Cascade</code> 模式必填</strong>；<code>S2S</code> 模式忽略。</p>
+	TTSConfig *VoiceConversationTTSConfig `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// <p>对话控制配置，<code>S2S</code> 模式不支持填写该参数。</p>
+	DialogConfig *VoiceConversationDialogConfig `json:"DialogConfig,omitnil,omitempty" name:"DialogConfig"`
+
+	// <p>视觉理解配置，<code>S2S</code> 模式不支持填写该参数。</p>
+	VisionConfig *VoiceConversationVisionConfig `json:"VisionConfig,omitnil,omitempty" name:"VisionConfig"`
+}
+
+func (r *CreateVoiceConversationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVoiceConversationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "RoomIdType")
+	delete(f, "AgentConfig")
+	delete(f, "ConversationMode")
+	delete(f, "S2SConfig")
+	delete(f, "STTConfig")
+	delete(f, "LLMConfig")
+	delete(f, "TTSConfig")
+	delete(f, "DialogConfig")
+	delete(f, "VisionConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVoiceConversationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVoiceConversationResponseParams struct {
+	// <p>用于唯一标识对话任务，由腾讯云服务端生成，后续查询、控制等请求都需要携带TaskID参数。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVoiceConversationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVoiceConversationResponseParams `json:"Response"`
+}
+
+func (r *CreateVoiceConversationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVoiceConversationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCloudModerationRequestParams struct {
 	// <p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -1838,6 +2130,137 @@ func (r *DeleteRecognizeVocabV3Response) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteRecognizeVocabV3Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTRTCVoicePrintRequestParams struct {
+	// 待删除的声纹 ID（由 RegisterTRTCVoicePrint返回）。删除为软删，按 (AppId, SdkAppId, VoicePrintId) 做数据隔离。
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// SdkappId
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+type DeleteTRTCVoicePrintRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除的声纹 ID（由 RegisterTRTCVoicePrint返回）。删除为软删，按 (AppId, SdkAppId, VoicePrintId) 做数据隔离。
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// SdkappId
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+func (r *DeleteTRTCVoicePrintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTRTCVoicePrintRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoicePrintId")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTRTCVoicePrintRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTRTCVoicePrintResponseParams struct {
+	// 已删除的声纹 ID（回显，便于调用方核对）
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 结果描述，成功时为 voiceprint deleted successfully
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTRTCVoicePrintResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTRTCVoicePrintResponseParams `json:"Response"`
+}
+
+func (r *DeleteTRTCVoicePrintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTRTCVoicePrintResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVoiceConversationRequestParams struct {
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteVoiceConversationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteVoiceConversationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVoiceConversationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVoiceConversationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVoiceConversationResponseParams struct {
+	// <p>对话任务的唯一Id。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVoiceConversationResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVoiceConversationResponseParams `json:"Response"`
+}
+
+func (r *DeleteVoiceConversationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVoiceConversationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3625,89 +4048,6 @@ func (r *DescribeTRTCMarketScaleDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeTRTCMarketScaleMetricDataRequestParams struct {
-	// 用户SdkAppId
-	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
-
-	// 查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 查询结束时间，格式为YYYY-MM-DD。
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 返回数据的粒度，支持设为以下值：
-	// d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
-	// h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
-	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
-}
-
-type DescribeTRTCMarketScaleMetricDataRequest struct {
-	*tchttp.BaseRequest
-	
-	// 用户SdkAppId
-	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
-
-	// 查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 查询结束时间，格式为YYYY-MM-DD。
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 返回数据的粒度，支持设为以下值：
-	// d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
-	// h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
-	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
-}
-
-func (r *DescribeTRTCMarketScaleMetricDataRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTRTCMarketScaleMetricDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SdkAppId")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "Period")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTRTCMarketScaleMetricDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeTRTCMarketScaleMetricDataResponseParams struct {
-	// TRTC监控数据出参
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *TRTCDataResp `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeTRTCMarketScaleMetricDataResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeTRTCMarketScaleMetricDataResponseParams `json:"Response"`
-}
-
-func (r *DescribeTRTCMarketScaleMetricDataResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTRTCMarketScaleMetricDataResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeTRTCRealTimeQualityDataRequestParams struct {
 	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -3953,6 +4293,83 @@ func (r *DescribeTRTCSegmentModerationUsageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTRTCSegmentModerationUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCVoicePrintRequestParams struct {
+	// SdkappId
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 分页起始偏移，0 或不传表示从第一条开始
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页返回数量，默认 20，最大 100；超过最大值会被截断到 100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeTRTCVoicePrintRequest struct {
+	*tchttp.BaseRequest
+	
+	// SdkappId
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 分页起始偏移，0 或不传表示从第一条开始
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页返回数量，默认 20，最大 100；超过最大值会被截断到 100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTRTCVoicePrintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCVoicePrintRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTRTCVoicePrintRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCVoicePrintResponseParams struct {
+	// 当前 (AppId, SdkAppId) 下的声纹总数（仅计活跃状态）
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 声纹条目列表，元素为 TRTCVoicePrintItem 结构：{ VoicePrintId:string, SpeakerId:string, CreateTime:string(ISO8601), UpdateTime:string(ISO8601) }。
+	VoicePrintList []*TRTCVoicePrintItem `json:"VoicePrintList,omitnil,omitempty" name:"VoicePrintList"`
+
+	// 结果描述，成功时为 query voiceprint list successfully
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTRTCVoicePrintResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTRTCVoicePrintResponseParams `json:"Response"`
+}
+
+func (r *DescribeTRTCVoicePrintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCVoicePrintResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4358,7 +4775,7 @@ func (r *DescribeUserEventResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserInfoRequestParams struct {
-	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
+	// 通话 ID（唯一标识一次通话）， 需通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
 	CommId *string `json:"CommId,omitnil,omitempty" name:"CommId"`
 
 	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）注意：最大支持查询14天内的数据
@@ -4387,7 +4804,7 @@ type DescribeUserInfoRequestParams struct {
 type DescribeUserInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
+	// 通话 ID（唯一标识一次通话）， 需通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
 	CommId *string `json:"CommId,omitnil,omitempty" name:"CommId"`
 
 	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）注意：最大支持查询14天内的数据
@@ -4463,6 +4880,86 @@ func (r *DescribeUserInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVoiceConversationRequestParams struct {
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>查询任务状态</p><p>枚举值：</p><ul><li>0： 不查询对话上下文历史</li><li>1： 查询对话上下文历史</li></ul><p>默认值：0</p>
+	DescribeType *uint64 `json:"DescribeType,omitnil,omitempty" name:"DescribeType"`
+}
+
+type DescribeVoiceConversationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>查询任务状态</p><p>枚举值：</p><ul><li>0： 不查询对话上下文历史</li><li>1： 查询对话上下文历史</li></ul><p>默认值：0</p>
+	DescribeType *uint64 `json:"DescribeType,omitnil,omitempty" name:"DescribeType"`
+}
+
+func (r *DescribeVoiceConversationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVoiceConversationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	delete(f, "DescribeType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVoiceConversationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVoiceConversationResponseParams struct {
+	// <p>任务启动时间</p><p>单位：毫秒</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>转录任务状态。</p><p>枚举值：</p><ul><li>Idle： 表示当前转录任务空闲中 </li><li>InProgress： 表示当前转录任务正在进行中</li><li>Exited： 表示当前转录任务正在退出的过程中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>转录任务的唯一Id。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>历史对话信息。</p>
+	HistoryContents []*VoiceConversationHistoryContent `json:"HistoryContents,omitnil,omitempty" name:"HistoryContents"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVoiceConversationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVoiceConversationResponseParams `json:"Response"`
+}
+
+func (r *DescribeVoiceConversationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVoiceConversationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5095,6 +5592,14 @@ type InvokeLLM struct {
 	ExperimentalParams *string `json:"ExperimentalParams,omitnil,omitempty" name:"ExperimentalParams"`
 }
 
+type KeyValueItem struct {
+	// <p>Key</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>Value</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type LayoutParams struct {
 	// 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板;3为画中画模板;4为自定义模板。
 	Template *uint64 `json:"Template,omitnil,omitempty" name:"Template"`
@@ -5517,42 +6022,34 @@ type McuWaterMarkText struct {
 }
 
 type MixLayout struct {
-	// 画布上该画面左上角的 y 轴坐标，取值范围 [0, 1920]，不能超过画布的高。
+	// <p>画布上该画面左上角的 y 轴坐标，取值范围 [0, 1920]，不能超过画布的高。</p>
 	Top *uint64 `json:"Top,omitnil,omitempty" name:"Top"`
 
-	// 画布上该画面左上角的 x 轴坐标，取值范围 [0, 1920]，不能超过画布的宽。
+	// <p>画布上该画面左上角的 x 轴坐标，取值范围 [0, 1920]，不能超过画布的宽。</p>
 	Left *uint64 `json:"Left,omitnil,omitempty" name:"Left"`
 
-	// 画布上该画面宽度的相对值，取值范围 [0, 1920]，与Left相加不应超过画布的宽。
+	// <p>画布上该画面宽度的相对值，取值范围 [0, 1920]，与Left相加不应超过画布的宽。</p>
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 画布上该画面高度的相对值，取值范围 [0, 1920]，与Top相加不应超过画布的高。
+	// <p>画布上该画面高度的相对值，取值范围 [0, 1920]，与Top相加不应超过画布的高。</p>
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 字符串内容为待显示在该画面的主播对应的UserId，如果不指定，会按照主播加入房间的顺序匹配。
+	// <p>字符串内容为待显示在该画面的主播对应的UserId，如果不指定，会按照主播加入房间的顺序匹配。</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 画布的透明度值，取值范围[0, 255]。0表示不透明，255表示全透明。默认值为0。
+	// <p>画布的透明度值，取值范围[0, 255]。0表示不透明，255表示全透明。默认值为0。</p>
 	Alpha *uint64 `json:"Alpha,omitnil,omitempty" name:"Alpha"`
 
-	// 0 ：拉伸模式，这个模式下整个视频内容会全部显示，并填满子画面，在源视频和目的视频宽高比不一致的时候，画面不会缺少内容，但是画面可能产生形变；
-	// 
-	// 1 ：剪裁模式（默认），这个模式下会严格按照目的视频的宽高比对源视频剪裁之后再拉伸，并填满子画面画布，在源视频和目的视频宽高比不一致的时候，画面保持不变形，但是会被剪裁；
-	// 
-	// 2 ：填黑模式，这个模式下会严格保持源视频的宽高比进行等比缩放，在源视频和目的视频宽高比不一致的时候，画面的上下侧边缘或者左右侧边缘会露出子画面画布的背景；
-	// 
-	// 3 ：智能拉伸模式，这个模式类似剪裁模式，区别是在源视频和目的视频宽高比不一致的时候，限制了最大剪裁比例为画面的宽度或者高度的20%；
+	// <p>画布上该画面的渲染模式</p><p>枚举值：</p><ul><li>0： 拉伸模式，这个模式下整个视频内容会全部显示，并填满子画面，在源视频和目的视频宽高比不一致的时候，画面不会缺少内容，但是画面可能产生形变；</li><li>1： 剪裁模式（默认），这个模式下会严格按照目的视频的宽高比对源视频剪裁之后再拉伸，并填满子画面画布，在源视频和目的视频宽高比不一致的时候，画面保持不变形，但是会被剪裁；</li><li>2： 填黑模式，这个模式下会严格保持源视频的宽高比进行等比缩放，在源视频和目的视频宽高比不一致的时候，画面的上下侧边缘或者左右侧边缘会露出子画面画布的背景；</li><li>3： 智能拉伸模式，这个模式类似剪裁模式，区别是在源视频和目的视频宽高比不一致的时候，限制了最大剪裁比例为画面的宽度或者高度的20%；</li></ul>
 	RenderMode *uint64 `json:"RenderMode,omitnil,omitempty" name:"RenderMode"`
 
-	// 对应订阅流的主辅路标识：
-	// 0：主流（默认）；
-	// 1：辅流；
+	// <p>对应订阅流的主辅路标识：<br>0：主流（默认）；<br>1：辅流；</p>
 	MediaId *uint64 `json:"MediaId,omitnil,omitempty" name:"MediaId"`
 
-	// 该画布的图层顺序, 这个值越小表示图层越靠后。默认值为0。
+	// <p>该画布的图层顺序, 这个值越小表示图层越靠后。默认值为0。</p>
 	ImageLayer *uint64 `json:"ImageLayer,omitnil,omitempty" name:"ImageLayer"`
 
-	// 图片的url地址， 只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+	// <p>图片的url地址， 只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 &#39;-&#39;, &#39;.&#39;, &#39;_&#39;, &#39;~&#39;, &#39;:&#39;, &#39;/&#39;, &#39;?&#39;, &#39;#&#39;, &#39;[&#39;, &#39;]&#39; &#39;@&#39;, &#39;!&#39;, &#39;&amp;&#39;, &#39;(&#39;, &#39;)&#39;, &#39;*&#39;, &#39;+&#39;, &#39;,&#39;, &#39;%&#39;, &#39;=&#39;</p>
 	SubBackgroundImage *string `json:"SubBackgroundImage,omitnil,omitempty" name:"SubBackgroundImage"`
 }
 
@@ -6031,6 +6528,98 @@ func (r *ModifyPictureResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyVoiceConversationRequestParams struct {
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>需要保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。</p>
+	SequenceNumber *uint64 `json:"SequenceNumber,omitnil,omitempty" name:"SequenceNumber"`
+
+	// <p>大模型配置。<strong>仅 <code>Cascade</code> 模式生效</strong>；<code>S2S</code> 模式报错。</p>
+	LLMConfig *VoiceConversationLLMConfig `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// <p>端到端语音大模型配置。仅 <strong><code>S2S</code> 模式</strong>生效；<code>Cascade</code> 报错。</p>
+	S2SConfig *VoiceConversationS2SConfig `json:"S2SConfig,omitnil,omitempty" name:"S2SConfig"`
+
+	// <p>对话控制配置。<strong>仅 <code>Cascade</code> 模式生效</strong>。</p>
+	DialogConfig *VoiceConversationDialogConfig `json:"DialogConfig,omitnil,omitempty" name:"DialogConfig"`
+}
+
+type ModifyVoiceConversationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>需要保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。</p>
+	SequenceNumber *uint64 `json:"SequenceNumber,omitnil,omitempty" name:"SequenceNumber"`
+
+	// <p>大模型配置。<strong>仅 <code>Cascade</code> 模式生效</strong>；<code>S2S</code> 模式报错。</p>
+	LLMConfig *VoiceConversationLLMConfig `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
+
+	// <p>端到端语音大模型配置。仅 <strong><code>S2S</code> 模式</strong>生效；<code>Cascade</code> 报错。</p>
+	S2SConfig *VoiceConversationS2SConfig `json:"S2SConfig,omitnil,omitempty" name:"S2SConfig"`
+
+	// <p>对话控制配置。<strong>仅 <code>Cascade</code> 模式生效</strong>。</p>
+	DialogConfig *VoiceConversationDialogConfig `json:"DialogConfig,omitnil,omitempty" name:"DialogConfig"`
+}
+
+func (r *ModifyVoiceConversationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVoiceConversationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	delete(f, "SequenceNumber")
+	delete(f, "LLMConfig")
+	delete(f, "S2SConfig")
+	delete(f, "DialogConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVoiceConversationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVoiceConversationResponseParams struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyVoiceConversationResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyVoiceConversationResponseParams `json:"Response"`
+}
+
+func (r *ModifyVoiceConversationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVoiceConversationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type OneSdkAppIdTranscodeTimeUsagesInfo struct {
 	// 旁路转码时长查询结果数组
 	SdkAppIdTranscodeTimeUsages []*SdkAppIdTrtcMcuTranscodeTimeUsage `json:"SdkAppIdTranscodeTimeUsages,omitnil,omitempty" name:"SdkAppIdTranscodeTimeUsages"`
@@ -6282,6 +6871,96 @@ type RecordUsage struct {
 
 	// 语音时长，单位：秒。
 	AudioTime *uint64 `json:"AudioTime,omitnil,omitempty" name:"AudioTime"`
+}
+
+// Predefined struct for user
+type RegisterTRTCVoicePrintRequestParams struct {
+	// 业务方自定义的说话人唯一标识，同一 (AppId, SdkAppId, SpeakerId) 重复调用会覆盖旧声纹（软删旧记录 + 新建一行，返回新的 VoicePrintId）
+	SpeakerId *string `json:"SpeakerId,omitnil,omitempty" name:"SpeakerId"`
+
+	// 音频数据的 Base64 字符串。要求：16kHz/16bit/单声道 PCM 或 WAV；Base64 解码后大小 ≤ 2MB；PCM 裸数据时长 10s ≤ 时长 ≤ 45s（WAV 去掉 header 后按相同标准校验）
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// SdkAppId
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 音频格式，可选 pcm 或 wav，大小写不敏感，不传默认为 pcm
+	AudioFormat *string `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+}
+
+type RegisterTRTCVoicePrintRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务方自定义的说话人唯一标识，同一 (AppId, SdkAppId, SpeakerId) 重复调用会覆盖旧声纹（软删旧记录 + 新建一行，返回新的 VoicePrintId）
+	SpeakerId *string `json:"SpeakerId,omitnil,omitempty" name:"SpeakerId"`
+
+	// 音频数据的 Base64 字符串。要求：16kHz/16bit/单声道 PCM 或 WAV；Base64 解码后大小 ≤ 2MB；PCM 裸数据时长 10s ≤ 时长 ≤ 45s（WAV 去掉 header 后按相同标准校验）
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// SdkAppId
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 音频格式，可选 pcm 或 wav，大小写不敏感，不传默认为 pcm
+	AudioFormat *string `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+}
+
+func (r *RegisterTRTCVoicePrintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterTRTCVoicePrintRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpeakerId")
+	delete(f, "Data")
+	delete(f, "SdkAppId")
+	delete(f, "AudioFormat")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterTRTCVoicePrintRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RegisterTRTCVoicePrintResponseParams struct {
+	// 本次注册生成的声纹 ID，后续 Update/Delete/Verify 均以此为准
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 回显的业务方 SpeakerId
+	SpeakerId *string `json:"SpeakerId,omitnil,omitempty" name:"SpeakerId"`
+
+	// 本次注册音频中有效人声时长（秒）
+	EffectiveAudioDuration *float64 `json:"EffectiveAudioDuration,omitnil,omitempty" name:"EffectiveAudioDuration"`
+
+	// 音频信噪比（dB），由声纹服务端评估给出
+	SNR *float64 `json:"SNR,omitnil,omitempty" name:"SNR"`
+
+	// 结果描述，成功时为 voiceprint enrolled successfully
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RegisterTRTCVoicePrintResponse struct {
+	*tchttp.BaseResponse
+	Response *RegisterTRTCVoicePrintResponseParams `json:"Response"`
+}
+
+func (r *RegisterTRTCVoicePrintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterTRTCVoicePrintResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -6594,16 +7273,6 @@ type SdkAppIdTrtcMcuTranscodeTimeUsage struct {
 
 	// 带宽，单位：Mbps。
 	Flux *float64 `json:"Flux,omitnil,omitempty" name:"Flux"`
-}
-
-type SeriesInfo struct {
-	// 数据列
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Columns []*string `json:"Columns,omitnil,omitempty" name:"Columns"`
-
-	// 数据值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Values []*int64 `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type SeriesInfos struct {
@@ -8137,20 +8806,6 @@ type SubscribeStreamUserIds struct {
 	UnSubscribeVideoUserIds []*string `json:"UnSubscribeVideoUserIds,omitnil,omitempty" name:"UnSubscribeVideoUserIds"`
 }
 
-type TRTCDataResp struct {
-	// StatementID值，监控仪表盘下固定为0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatementID *int64 `json:"StatementID,omitnil,omitempty" name:"StatementID"`
-
-	// 查询结果数据，以Columns-Values形式返回。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Series []*SeriesInfo `json:"Series,omitnil,omitempty" name:"Series"`
-
-	// Total值，监控仪表盘功能下固定为1。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
-}
-
 type TRTCDataResult struct {
 	// StatementID值，监控仪表盘下固定为0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8163,6 +8818,24 @@ type TRTCDataResult struct {
 	// Total值，监控仪表盘功能下固定为1。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+}
+
+type TRTCVoicePrintItem struct {
+	// 声纹 ID，36 位 UUID（含连字符）。对 (AppId, SdkAppId) 维度内唯一。
+	// 示例值：59d83c76-8f4e-4a1b-9c2d-0e7f8a6b5c4d
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 业务方自定义的说话人标识，长度不超过 128 字节，由客户在注册声纹时传入。同一 SpeakerId 可对应多条声纹。
+	// 示例值：user_12345
+	SpeakerId *string `json:"SpeakerId,omitnil,omitempty" name:"SpeakerId"`
+
+	// 声纹注册时间，ISO8601 格式，UTC 时区。
+	// 示例值：2025-04-24T10:20:30Z
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 声纹最近一次更新时间，ISO8601 格式，UTC 时区。未被更新过时等于 CreateTime。
+	// 示例值：2025-04-24T10:20:30Z
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type TTSConfig struct {
@@ -8579,7 +9252,7 @@ type TranscriptionParams struct {
 }
 
 type TranscriptionUserInfoParams struct {
-	// 用户ID。
+	// <p>用户ID。</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
@@ -9043,6 +9716,93 @@ func (r *UpdateStreamIngestResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateTRTCVoicePrintRequestParams struct {
+	// 待更新的声纹 ID（由 RegisterTRTCVoicePrint 返回）。更新采用覆盖模式——只保留一条最新音频，VoicePrintId 保持不变。
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 新的音频数据的 Base64 字符串。要求与 RegisterTRTCVoicePrint一致：16kHz/16bit/单声道 PCM 或 WAV；Base64 解码后 ≤ 2MB；PCM 裸数据 10s ≤ 时长 ≤ 45s。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// SdkAppId
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 音频格式，可选 pcm 或 wav，大小写不敏感，不传默认为 pcm
+	AudioFormat *string `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+}
+
+type UpdateTRTCVoicePrintRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待更新的声纹 ID（由 RegisterTRTCVoicePrint 返回）。更新采用覆盖模式——只保留一条最新音频，VoicePrintId 保持不变。
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 新的音频数据的 Base64 字符串。要求与 RegisterTRTCVoicePrint一致：16kHz/16bit/单声道 PCM 或 WAV；Base64 解码后 ≤ 2MB；PCM 裸数据 10s ≤ 时长 ≤ 45s。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// SdkAppId
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 音频格式，可选 pcm 或 wav，大小写不敏感，不传默认为 pcm
+	AudioFormat *string `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+}
+
+func (r *UpdateTRTCVoicePrintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTRTCVoicePrintRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoicePrintId")
+	delete(f, "Data")
+	delete(f, "SdkAppId")
+	delete(f, "AudioFormat")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTRTCVoicePrintRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTRTCVoicePrintResponseParams struct {
+	// 声纹 ID（更新前后保持不变）
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 本次更新音频中有效人声时长（秒）
+	EffectiveAudioDuration *float64 `json:"EffectiveAudioDuration,omitnil,omitempty" name:"EffectiveAudioDuration"`
+
+	// 音频信噪比（dB），由声纹服务端评估给出
+	SNR *float64 `json:"SNR,omitnil,omitempty" name:"SNR"`
+
+	// 结果描述，成功时为 voiceprint updated successfully
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateTRTCVoicePrintResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTRTCVoicePrintResponseParams `json:"Response"`
+}
+
+func (r *UpdateTRTCVoicePrintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTRTCVoicePrintResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateVoicePrintRequestParams struct {
 	// 声纹信息ID
 	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
@@ -9164,6 +9924,96 @@ type UserMediaStream struct {
 
 	// 主辅路流类型，0为摄像头，1为屏幕分享，不填默认为0。
 	StreamType *uint64 `json:"StreamType,omitnil,omitempty" name:"StreamType"`
+}
+
+// Predefined struct for user
+type VerifyTRTCVoicePrintRequestParams struct {
+	// 待验证的目标声纹 ID（由 RegisterTRTCVoicePrint 返回）。按 (AppId, SdkAppId, VoicePrintId) 做数据隔离。
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 待验证音频数据的 Base64 字符串。要求：16kHz/16bit/单声道 PCM 或 WAV；Base64 解码后 ≤ 2MB；PCM 裸数据 10s ≤ 时长 ≤ 45s。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// SdkAppId
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 音频格式，可选 pcm 或 wav，大小写不敏感，不传默认为 pcm
+	AudioFormat *string `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+}
+
+type VerifyTRTCVoicePrintRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待验证的目标声纹 ID（由 RegisterTRTCVoicePrint 返回）。按 (AppId, SdkAppId, VoicePrintId) 做数据隔离。
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 待验证音频数据的 Base64 字符串。要求：16kHz/16bit/单声道 PCM 或 WAV；Base64 解码后 ≤ 2MB；PCM 裸数据 10s ≤ 时长 ≤ 45s。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// SdkAppId
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 音频格式，可选 pcm 或 wav，大小写不敏感，不传默认为 pcm
+	AudioFormat *string `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+}
+
+func (r *VerifyTRTCVoicePrintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyTRTCVoicePrintRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoicePrintId")
+	delete(f, "Data")
+	delete(f, "SdkAppId")
+	delete(f, "AudioFormat")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyTRTCVoicePrintRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyTRTCVoicePrintResponseParams struct {
+	// 被验证的目标声纹 ID
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 注册时写入的业务方 SpeakerId（以服务端记录为准）
+	SpeakerId *string `json:"SpeakerId,omitnil,omitempty" name:"SpeakerId"`
+
+	// 相似度分值（字符串形式，保留两位小数，范围约 0~100，越大越相似）
+	Score *string `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// 服务端阈值判决结果，0=不通过，1=通过（默认阈值 60 分，由服务端统一维护）
+	Decision *int64 `json:"Decision,omitnil,omitempty" name:"Decision"`
+
+	// 结果描述，成功时为 voiceprint verify success
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VerifyTRTCVoicePrintResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyTRTCVoicePrintResponseParams `json:"Response"`
+}
+
+func (r *VerifyTRTCVoicePrintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyTRTCVoicePrintResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VideoEncode struct {
@@ -9365,12 +10215,209 @@ func (r *VoiceCloneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type VoiceConversationConfig struct {
+	// <p>对话服务在TRTC房间使用的<a href="https://cloud.tencent.com/document/product/647/46351#userid">UserId</a>，注意这个userId不能与其他TRTC或者对话服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>对话服务加入TRTC房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算<a href="https://cloud.tencent.com/document/product/647/45910#UserSig">UserSig</a>的方案。</p>
+	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
+
+	// <p>对话服务订阅的主播名，订阅指定真实用户的音频，只能填写一个订阅主播。</p>
+	TargetUserId []*string `json:"TargetUserId,omitnil,omitempty" name:"TargetUserId"`
+
+	// <p>回推机器人参数。</p>
+	TTSPushRoomParams *TranscriptionUserInfoParams `json:"TTSPushRoomParams,omitnil,omitempty" name:"TTSPushRoomParams"`
+
+	// <p>参与对话的主播持续离开TRTC房间或切换成观众超过MaxIdleTime的时长，自动停止对话任务，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。</p><p>单位：秒</p>
+	MaxIdleTime *uint64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
+
+	// <p>用于过滤LLM返回内容，不播放括号中的内容。1：中文括号（）2：英文括号() 3：中文方括号【】4：英文方括号[] 5：英文花括号{} 。默认值为空，表示不进行过滤。 示例值：1取值范围：[1, 5]。S2S 模式不支持填写该参数。</p>
+	FilterBracketsContent []*uint64 `json:"FilterBracketsContent,omitnil,omitempty" name:"FilterBracketsContent"`
+
+	// <p>字幕显示模式。S2S 模式不支持填写该参数。</p><p>枚举值：</p><ul><li>0： 尽快显示</li><li>1： 句子级别实时显示</li></ul>
+	SubtitleMode *uint64 `json:"SubtitleMode,omitnil,omitempty" name:"SubtitleMode"`
+
+	// <p>控制新一轮对话的触发方式，默认为&quot;auto&quot;。S2S 模式不支持填写该参数。</p><p>枚举值：</p><ul><li>&quot;auto&quot;： 后台自动识别断句触发LLM(基于静音时长)</li></ul>
+	TurnDetectionMode *string `json:"TurnDetectionMode,omitnil,omitempty" name:"TurnDetectionMode"`
+}
+
+type VoiceConversationDialogConfig struct {
+	// <p>打断模式。</p><p>枚举值：</p><ul><li>0： 自动打断（ASR 出文本打断 TTS，配合InterruptSpeechDuration 使用，默认）</li><li>1： 手动打断（仅服务端/客户端接口 Interrupt 命令打断）</li><li>2： 关键词打断</li></ul>
+	InterruptMode *uint64 `json:"InterruptMode,omitnil,omitempty" name:"InterruptMode"`
+
+	// <p>自动打断的最小用户语音持续时长（毫秒），默认 200</p><p>单位：毫秒</p>
+	InterruptSpeechDuration *uint64 `json:"InterruptSpeechDuration,omitnil,omitempty" name:"InterruptSpeechDuration"`
+
+	// <p>预设的关键词，关键词打断，适用于需要用户明确表达意图才能打断的场景。最多支持128个关键词，InterruptMode 为2时生效，</p>
+	InterruptKeywords []*string `json:"InterruptKeywords,omitnil,omitempty" name:"InterruptKeywords"`
+
+	// <p>用户静音多久后 Bot 主动追问，范围 0~300，0 表示关闭（默认）。</p><p>单位：秒</p>
+	SilenceFollowUp *uint64 `json:"SilenceFollowUp,omitnil,omitempty" name:"SilenceFollowUp"`
+
+	// <p>主动追问的文本。</p>
+	SilenceFollowUpText *string `json:"SilenceFollowUpText,omitnil,omitempty" name:"SilenceFollowUpText"`
+
+	// <p>主播首次进房主动播报的欢迎语，主播退房后再次进房也会播报。</p>
+	WelcomeMessage *string `json:"WelcomeMessage,omitnil,omitempty" name:"WelcomeMessage"`
+}
+
+type VoiceConversationHistoryContent struct {
+	// <p>对话角色。</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>对话内容。</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type VoiceConversationHistoryMessage struct {
+	// <p>对话角色，如&quot;user&quot;、&quot;assistant&quot;、&quot;system&quot;等。</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>对话内容。</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type VoiceConversationInvokeLLM struct {
+	// <p>注入的内容。</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>优先级。如果不处于对话中则将注入的内容送给LLM，否则由优先级决定。</p><p>枚举值：</p><ul><li>0： 高优先级，打断当前对话，并清空等待队列将注入的内容送给LLM。</li><li>1： 中优先级，不会打断当前对话，清空等待队列将注入的内容排队。如果不处于对话中则将注入的内容排队。</li><li>2： 低优先级，丢弃注入的内容。</li></ul><p>默认值：0</p><p>InvokeLLM和InvokeTTS的任务队列是同一队列，最多支持一个Invoke事件排队。</p>
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type VoiceConversationInvokeTTS struct {
+	// <p>注入的内容。</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>优先级。如果不处于对话中则将注入的内容送给TTS，否则由优先级决定。</p><p>枚举值：</p><ul><li>0： 高优先级，打断当前对话，并清空等待队列将注入的内容送给TTS。</li><li>1： 中优先级，不会打断当前对话，清空等待队列将注入的内容排队。如果不处于对话中则将注入的内容排队。</li><li>2： 低优先级，丢弃注入的内容。</li></ul><p>默认值：0</p><p>InvokeLLM和InvokeTTS的任务队列是同一队列，最多支持一个Invoke事件排队。</p>
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type VoiceConversationLLMConfig struct {
+	// <p>LLM 协议类型，如openai（OpenAI 兼容协议）。</p>
+	LLMType *string `json:"LLMType,omitnil,omitempty" name:"LLMType"`
+
+	// <p>模型名，如 gpt-4o-mini</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>OpenAI 协议兼容的 endpoint。</p>
+	APIUrl *string `json:"APIUrl,omitnil,omitempty" name:"APIUrl"`
+
+	// <p>厂商 API Key。</p>
+	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+
+	// <p>系统提示词。</p>
+	SystemPrompt *string `json:"SystemPrompt,omitnil,omitempty" name:"SystemPrompt"`
+
+	// <p>LLM 调用失败后，使用此文本生成 TTS音频。</p>
+	FailureMessage *string `json:"FailureMessage,omitnil,omitempty" name:"FailureMessage"`
+
+	// <p>单次回复最大 Token 数，0=不限制，默认值为0。注意：如果模型输出token数量大于设置的MaxTokens的值，会截断回复内容。</p>
+	MaxTokens *uint64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
+
+	// <p>是否开启思考模式（需结合提供厂商具体使用）。注意：开启思考模式会占用输出token数。</p>
+	ThinkingMode *bool `json:"ThinkingMode,omitnil,omitempty" name:"ThinkingMode"`
+
+	// <p>LLM 中缓存的对话轮次数量，范围 0~50。建议值[10, 30]。注意：指定轮次上下文的总 token 数不能超过 LLM 支持的上限。</p>
+	MaxHistory *uint64 `json:"MaxHistory,omitnil,omitempty" name:"MaxHistory"`
+
+	// <p>MCP 工具调用最大轮次，范围 0~50，默认 10。</p>
+	MaxToolRound *uint64 `json:"MaxToolRound,omitnil,omitempty" name:"MaxToolRound"`
+
+	// <p>单次请求的超时事件（毫秒），范围 1000~60000，默认 10000。</p><p>单位：毫秒</p>
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>采样温度，范围 0.0~2.0，默认 1.0。</p>
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
+
+	// <p>采样概率，范围 0.0~1.0，默认 1.0。</p>
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// <p>Mcp Server参数。</p>
+	McpServer *VoiceConversationMcpServer `json:"McpServer,omitnil,omitempty" name:"McpServer"`
+
+	// <p>自定义 HTTP 请求头。</p>
+	CustomHeaders []*KeyValueItem `json:"CustomHeaders,omitnil,omitempty" name:"CustomHeaders"`
+
+	// <p>各厂商独有的扩展参数（如 DeepSeek 的<code>reasoning_effort</code>、混元的 <code>enable_enhancement</code> 等）。</p>
+	CustomFields []*KeyValueItem `json:"CustomFields,omitnil,omitempty" name:"CustomFields"`
+
+	// <p>初始历史消息，每项为 <code>{&quot;Role&quot;: &quot;user&quot;/&quot;assistant&quot;/&quot;system&quot;, &quot;Content&quot;: &quot;xxx&quot;}</code>这种格式。</p>
+	HistoryMessages []*VoiceConversationHistoryMessage `json:"HistoryMessages,omitnil,omitempty" name:"HistoryMessages"`
+}
+
+type VoiceConversationMcpServer struct {
+	// <p>mcp唯一标识符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>接入地址。</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>请求超时，单位ms，默认 5000。待确认范围。</p><p>单位：毫秒。</p>
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>自定义请求header，用于填写鉴权等信息。</p>
+	Headers []*KeyValueItem `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// <p>工具使用白名单。</p>
+	ToolList []*string `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+}
+
+type VoiceConversationS2SConfig struct {
+	// <p>S2S 厂商标识，例如&quot;tencent&quot;。</p>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>厂商专属参数，JSON 序列化后的字符串。</p>
+	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
+
+	// <p>主播首次进房主动播报的欢迎语，主播退房后再次进房也会播报。</p>
+	WelcomeMessage *string `json:"WelcomeMessage,omitnil,omitempty" name:"WelcomeMessage"`
+}
+
+type VoiceConversationSTTConfig struct {
+	// <p>ASR 提供方：trtc（腾讯自研）或第三方厂商名称（如 azure）。</p>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>ASR厂商专属参数，填写JSON 序列化后的字符串。</p>
+	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
+}
+
+type VoiceConversationTTSConfig struct {
+	// <p>TTS 提供厂商，例如trtc。</p>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>厂商专属参数，JSON 序列化后的字符串。</p>
+	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
+}
+
+type VoiceConversationVisionConfig struct {
+	// <p>是否启用视觉理解。</p>
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// <p>存储类型。</p><p>枚举值：</p><ul><li>0： 不存储。</li><li>1： 指定云存储，这种情况下CloudStorage参数必填。</li></ul><p>默认值：0</p>
+	StorageType *uint64 `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// <p>第三方云存储归档配置。配置后，后台将从 SDK 收到的 I 帧自动上传至指定云存储桶进行持久化保存。</p>
+	CloudStorage *CloudStorage `json:"CloudStorage,omitnil,omitempty" name:"CloudStorage"`
+}
+
 type VoicePrint struct {
 	// 默认为0，表示不启用声纹。1表示启用声纹，此时需要填写voiceprint id。
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// VoicePrint Mode为1时需要填写，目前仅支持填写一个声纹id
 	IdList []*string `json:"IdList,omitnil,omitempty" name:"IdList"`
+}
+
+type VoicePrintBatchDeleteResult struct {
+	// <p>本项对应的声纹 ID。成功项与失败项均会返回。<br>示例值：59d83c76-8f4e-4a1b-9c2d-0e7f8a6b5c4d</p>
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// <p>本项失败时的错误码，成功项为空。常见值：FailedOperation.VoicePrintNotFound（声纹不存在或已删除）、InvalidParameterValue.InvalidVoicePrintId（ID 格式非法）。<br>示例值：FailedOperation.VoicePrintNotFound</p>
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>本项失败时的错误描述，成功项为空。<br>示例值：voiceprint not found</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 
 type VoicePrintInfo struct {

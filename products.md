@@ -236,7 +236,7 @@
 | trocket | [消息队列 RocketMQ 版](https://cloud.tencent.com/document/product/1493) | [查看](https://cloud.tencent.com/document/product/1493/96042) | 2026-10-20 02:13:44 |
 | trp | [T-Sec-安心平台(RP)](https://cloud.tencent.com/document/product/1458) | [查看](https://cloud.tencent.com/document/product/1458/75040) | 2026-06-30 02:00:25 |
 | trro | [实时互动-工业能源版](https://cloud.tencent.com/document/product/1584) | [查看](https://cloud.tencent.com/document/product/1584/89839) | 2026-10-26 03:21:52 |
-| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | [查看](https://cloud.tencent.com/document/product/647/37085) | 2026-09-18 02:07:34 |
+| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | [查看](https://cloud.tencent.com/document/product/647/37085) | 2026-11-06 14:08:26 |
 | tse | [TSF-Polaris&ZK&网关](https://cloud.tencent.com/document/product/1364) | [查看](https://cloud.tencent.com/document/product/1364/54626) | 2026-11-03 02:53:31 |
 | tsf | [TSF-应用管理&Consul](https://cloud.tencent.com/document/product/649) | [查看](https://cloud.tencent.com/document/product/649/36044) | 2026-10-16 02:14:45 |
 | tsi | [腾讯同传系统](https://cloud.tencent.com/document/product/1399) | [查看](https://cloud.tencent.com/document/product/1399/107648) | 2025-11-19 03:16:27 |
