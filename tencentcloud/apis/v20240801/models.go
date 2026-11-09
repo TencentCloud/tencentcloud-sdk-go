@@ -46,39 +46,42 @@ type AgentAppMcpServerDTO struct {
 }
 
 type AgentAppMcpServerVO struct {
-	// 绑定ID
+	// <p>绑定ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 需要认证
+	// <p>需要认证</p>
 	NeedAuth *bool `json:"NeedAuth,omitnil,omitempty" name:"NeedAuth"`
 
-	// 凭据ID
+	// <p>凭据ID</p>
 	AgentCredentialID *string `json:"AgentCredentialID,omitnil,omitempty" name:"AgentCredentialID"`
 
-	// 凭据详情
+	// <p>凭据详情</p>
 	AgentCredentialVO *DescribeAgentCredentialResp `json:"AgentCredentialVO,omitnil,omitempty" name:"AgentCredentialVO"`
 
-	// mcp详情
+	// <p>mcp详情</p>
 	McpServerVO *DescribeMcpServerResponseVO `json:"McpServerVO,omitnil,omitempty" name:"McpServerVO"`
 
-	// 关联时间
+	// <p>关联时间</p>
 	RelateTime *string `json:"RelateTime,omitnil,omitempty" name:"RelateTime"`
 
-	// 应用为OAuth2认证时，sse模式请求mcp时的资源标识
+	// <p>应用为OAuth2认证时，sse模式请求mcp时的资源标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SSEResourceIdentifier *string `json:"SSEResourceIdentifier,omitnil,omitempty" name:"SSEResourceIdentifier"`
 
-	// 应用为OAuth2认证时，streamable模式请求mcp时的资源标识
+	// <p>应用为OAuth2认证时，streamable模式请求mcp时的资源标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamableResourceIdentifier *string `json:"StreamableResourceIdentifier,omitnil,omitempty" name:"StreamableResourceIdentifier"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentAppID *string `json:"AgentAppID,omitnil,omitempty" name:"AgentAppID"`
 
-	// mcp ID
+	// <p>mcp ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	McpServerID *string `json:"McpServerID,omitnil,omitempty" name:"McpServerID"`
+
+	// <p>应用</p>
+	AgentAppVO *DescribeAgentAppResp `json:"AgentAppVO,omitnil,omitempty" name:"AgentAppVO"`
 }
 
 type AgentAppModelServiceDTO struct {
@@ -169,6 +172,9 @@ type AgentAppServiceVO struct {
 
 	// <p>凭据详情</p>
 	AgentCredentialVO *DescribeAgentCredentialResp `json:"AgentCredentialVO,omitnil,omitempty" name:"AgentCredentialVO"`
+
+	// <p>应用</p>
+	AgentAppVO *DescribeAgentAppResp `json:"AgentAppVO,omitnil,omitempty" name:"AgentAppVO"`
 }
 
 type AgentCredentialApiKeyDTO struct {

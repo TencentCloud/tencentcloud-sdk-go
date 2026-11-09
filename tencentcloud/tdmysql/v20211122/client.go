@@ -2311,6 +2311,74 @@ func (c *Client) ModifyAutoRenewFlagWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyDBInstanceRequest() (request *ModifyDBInstanceRequest) {
+    request = &ModifyDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "ModifyDBInstance")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceResponse() (response *ModifyDBInstanceResponse) {
+    response = &ModifyDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBInstance
+// 本接口（ModifyDBInstance）提供通用变配实例功能，合并纵向变配（UpgradeInstance）和横向变配（ExpandInstance）的能力，支持CPU/内存/磁盘/节点数/可用区/存储类型的复合变更。支持DryRun预检查模式，可在不实际执行变配的情况下获取变配计划。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BILLINGERROR = "FailedOperation.BillingError"
+//  FAILEDOPERATION_CHECKSPECERROR = "FailedOperation.CheckSpecError"
+//  FAILEDOPERATION_UPGRADEINSTANCEERROR = "FailedOperation.UpgradeInstanceError"
+//  LIMITEXCEEDED_OUTOFSPECLIMITERROR = "LimitExceeded.OutOfSpecLimitError"
+//  OPERATIONDENIED_INSTANCEOPERATIONNOTALLOWEDERROR = "OperationDenied.InstanceOperationNotAllowedError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  OPERATIONDENIED_INSTANCETYPECHECKERROR = "OperationDenied.InstanceTypeCheckError"
+func (c *Client) ModifyDBInstance(request *ModifyDBInstanceRequest) (response *ModifyDBInstanceResponse, err error) {
+    return c.ModifyDBInstanceWithContext(context.Background(), request)
+}
+
+// ModifyDBInstance
+// 本接口（ModifyDBInstance）提供通用变配实例功能，合并纵向变配（UpgradeInstance）和横向变配（ExpandInstance）的能力，支持CPU/内存/磁盘/节点数/可用区/存储类型的复合变更。支持DryRun预检查模式，可在不实际执行变配的情况下获取变配计划。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BILLINGERROR = "FailedOperation.BillingError"
+//  FAILEDOPERATION_CHECKSPECERROR = "FailedOperation.CheckSpecError"
+//  FAILEDOPERATION_UPGRADEINSTANCEERROR = "FailedOperation.UpgradeInstanceError"
+//  LIMITEXCEEDED_OUTOFSPECLIMITERROR = "LimitExceeded.OutOfSpecLimitError"
+//  OPERATIONDENIED_INSTANCEOPERATIONNOTALLOWEDERROR = "OperationDenied.InstanceOperationNotAllowedError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  OPERATIONDENIED_INSTANCETYPECHECKERROR = "OperationDenied.InstanceTypeCheckError"
+func (c *Client) ModifyDBInstanceWithContext(ctx context.Context, request *ModifyDBInstanceRequest) (response *ModifyDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "ModifyDBInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecurityGroupsRequest) {
     request = &ModifyDBInstanceSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

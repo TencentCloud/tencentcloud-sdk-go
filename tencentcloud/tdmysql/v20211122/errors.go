@@ -44,6 +44,12 @@ const (
 	// FailedOperation.AuthNoStrategy
 	FAILEDOPERATION_AUTHNOSTRATEGY = "FailedOperation.AuthNoStrategy"
 
+	// 计费调用错误。
+	FAILEDOPERATION_BILLINGERROR = "FailedOperation.BillingError"
+
+	// FailedOperation.CheckSpecError
+	FAILEDOPERATION_CHECKSPECERROR = "FailedOperation.CheckSpecError"
+
 	// 当前实例版本不支持该接口。
 	FAILEDOPERATION_CHECKSUPPORTACTIONERROR = "FailedOperation.CheckSupportActionError"
 
@@ -133,6 +139,9 @@ const (
 
 	// 更新权限错误。
 	FAILEDOPERATION_UPDATEPRIVILEGESERROR = "FailedOperation.UpdatePrivilegesError"
+
+	// 实例纵向扩容失败。
+	FAILEDOPERATION_UPGRADEINSTANCEERROR = "FailedOperation.UpgradeInstanceError"
 
 	// FailedOperation.WanStatusAbnormal
 	FAILEDOPERATION_WANSTATUSABNORMAL = "FailedOperation.WanStatusAbnormal"
@@ -307,6 +316,9 @@ const (
 
 	// 实例状态错误。
 	OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+
+	// OperationDenied.InstanceTypeCheckError
+	OPERATIONDENIED_INSTANCETYPECHECKERROR = "OperationDenied.InstanceTypeCheckError"
 
 	// 单个实例每天最多进行手动备份的配额
 	OPERATIONDENIED_MANUALBACKUPQUOTAPERDAYEXCEEDEDERR = "OperationDenied.ManualBackupQuotaPerDayExceededErr"

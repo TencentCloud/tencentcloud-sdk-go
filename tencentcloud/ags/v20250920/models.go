@@ -2729,6 +2729,9 @@ type DescribePreCacheImageTaskRequestParams struct {
 
 	// <p>镜像预热ID，只能ID或三元组（Image、ImageDigest、ImageRegistrytype）二选一查询</p>
 	PreCacheImageId *string `json:"PreCacheImageId,omitnil,omitempty" name:"PreCacheImageId"`
+
+	// <p>镜像预热类型</p><p>枚举值：</p><ul><li>image： 镜像预热</li><li>image_volume： 镜像卷预热</li></ul><p>默认值：image</p>
+	PreCacheType *string `json:"PreCacheType,omitnil,omitempty" name:"PreCacheType"`
 }
 
 type DescribePreCacheImageTaskRequest struct {
@@ -2745,6 +2748,9 @@ type DescribePreCacheImageTaskRequest struct {
 
 	// <p>镜像预热ID，只能ID或三元组（Image、ImageDigest、ImageRegistrytype）二选一查询</p>
 	PreCacheImageId *string `json:"PreCacheImageId,omitnil,omitempty" name:"PreCacheImageId"`
+
+	// <p>镜像预热类型</p><p>枚举值：</p><ul><li>image： 镜像预热</li><li>image_volume： 镜像卷预热</li></ul><p>默认值：image</p>
+	PreCacheType *string `json:"PreCacheType,omitnil,omitempty" name:"PreCacheType"`
 }
 
 func (r *DescribePreCacheImageTaskRequest) ToJsonString() string {
@@ -2763,6 +2769,7 @@ func (r *DescribePreCacheImageTaskRequest) FromJsonString(s string) error {
 	delete(f, "ImageRegistryType")
 	delete(f, "ImageDigest")
 	delete(f, "PreCacheImageId")
+	delete(f, "PreCacheType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePreCacheImageTaskRequest has unknown keys!", "")
 	}
@@ -5024,6 +5031,9 @@ type ResourceConfiguration struct {
 	// <p>自定义磁盘大小</p><p>枚举值：</p><ul><li>1Gi： 1Gi</li><li>5Gi： 5Gi</li><li>10Gi： 10Gi</li><li>20Gi： 20Gi</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Storage *string `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// <p>关联的GPU资源组ID</p>
+	GPUResourceGroupId *string `json:"GPUResourceGroupId,omitnil,omitempty" name:"GPUResourceGroupId"`
 }
 
 // Predefined struct for user
@@ -5331,6 +5341,9 @@ type StartSandboxInstanceRequestParams struct {
 
 	// <p>沙箱元数据</p>
 	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// <p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果。</p>
+	StartMode *string `json:"StartMode,omitnil,omitempty" name:"StartMode"`
 }
 
 type StartSandboxInstanceRequest struct {
@@ -5365,6 +5378,9 @@ type StartSandboxInstanceRequest struct {
 
 	// <p>沙箱元数据</p>
 	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// <p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果。</p>
+	StartMode *string `json:"StartMode,omitnil,omitempty" name:"StartMode"`
 }
 
 func (r *StartSandboxInstanceRequest) ToJsonString() string {
@@ -5389,6 +5405,7 @@ func (r *StartSandboxInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CustomConfiguration")
 	delete(f, "AuthMode")
 	delete(f, "Metadata")
+	delete(f, "StartMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartSandboxInstanceRequest has unknown keys!", "")
 	}

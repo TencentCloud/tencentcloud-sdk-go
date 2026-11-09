@@ -2621,6 +2621,81 @@ type ModelSpec struct {
 }
 
 // Predefined struct for user
+type ModifyApiKeyBindingsRequestParams struct {
+	// <p>API 密钥 ID。</p>
+	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`
+
+	// <p>平台类型。取值：maas。</p>
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// <p>绑定类型。取值：all（全部模型和接入点）、model_custom_endpoint_custom（自定义模型+自定义接入点）。</p><p>枚举值：</p><ul><li>model_custom_endpoint_custom： 自定义模型+自定义接入点</li></ul>
+	BindType *string `json:"BindType,omitnil,omitempty" name:"BindType"`
+
+	// <p>修改后的apikey的模型或服务绑定列表</p>
+	Bindings []*BindingItem `json:"Bindings,omitnil,omitempty" name:"Bindings"`
+}
+
+type ModifyApiKeyBindingsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>API 密钥 ID。</p>
+	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`
+
+	// <p>平台类型。取值：maas。</p>
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// <p>绑定类型。取值：all（全部模型和接入点）、model_custom_endpoint_custom（自定义模型+自定义接入点）。</p><p>枚举值：</p><ul><li>model_custom_endpoint_custom： 自定义模型+自定义接入点</li></ul>
+	BindType *string `json:"BindType,omitnil,omitempty" name:"BindType"`
+
+	// <p>修改后的apikey的模型或服务绑定列表</p>
+	Bindings []*BindingItem `json:"Bindings,omitnil,omitempty" name:"Bindings"`
+}
+
+func (r *ModifyApiKeyBindingsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApiKeyBindingsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApiKeyId")
+	delete(f, "Platform")
+	delete(f, "BindType")
+	delete(f, "Bindings")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApiKeyBindingsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApiKeyBindingsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyApiKeyBindingsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyApiKeyBindingsResponseParams `json:"Response"`
+}
+
+func (r *ModifyApiKeyBindingsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApiKeyBindingsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyApiKeyInfoRequestParams struct {
 	// <p>API 密钥 ID。</p>
 	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`

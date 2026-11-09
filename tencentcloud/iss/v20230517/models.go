@@ -6491,6 +6491,108 @@ func (r *ListTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListVLPlanResultsRequestParams struct {
+	// <p>开始时间戳（秒），不早于 30 天前</p>
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// <p>结束时间戳（秒），不超过当前时间，时间范围不超过 30 天</p>
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
+
+	// <p>分析计划 ID，不传则查询所有计划的结果</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
+
+	// <p>通道 ID 列表，支持多值（英文逗号分隔），不传则查询所有通道的结果</p>
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// <p>页码，默认 1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，默认 20，最大 200</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>分析模式</p><p>枚举值：</p><ul><li>image： 图片模式</li><li>video： 视频模式</li></ul>
+	AnalysisMode *string `json:"AnalysisMode,omitnil,omitempty" name:"AnalysisMode"`
+}
+
+type ListVLPlanResultsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>开始时间戳（秒），不早于 30 天前</p>
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// <p>结束时间戳（秒），不超过当前时间，时间范围不超过 30 天</p>
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
+
+	// <p>分析计划 ID，不传则查询所有计划的结果</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
+
+	// <p>通道 ID 列表，支持多值（英文逗号分隔），不传则查询所有通道的结果</p>
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// <p>页码，默认 1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，默认 20，最大 200</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>分析模式</p><p>枚举值：</p><ul><li>image： 图片模式</li><li>video： 视频模式</li></ul>
+	AnalysisMode *string `json:"AnalysisMode,omitnil,omitempty" name:"AnalysisMode"`
+}
+
+func (r *ListVLPlanResultsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVLPlanResultsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Start")
+	delete(f, "End")
+	delete(f, "VLPlanId")
+	delete(f, "ChannelIds")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "AnalysisMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListVLPlanResultsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListVLPlanResultsResponseParams struct {
+	// <p>结果列表</p>
+	Data []*VLPlanResultInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>总数量</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListVLPlanResultsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListVLPlanResultsResponseParams `json:"Response"`
+}
+
+func (r *ListVLPlanResultsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVLPlanResultsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListVLPlansRequestParams struct {
 	// <p>计划名称，精确匹配</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -8588,6 +8690,50 @@ type VLPlanResultDetailInfo struct {
 
 	// <p>截图 URL 有效期（秒）</p>
 	ImageUrlExpire *int64 `json:"ImageUrlExpire,omitnil,omitempty" name:"ImageUrlExpire"`
+
+	// <p>创建时间，格式 2006-01-02 15:04:05</p>
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>更新时间，格式 2006-01-02 15:04:05</p>
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+}
+
+type VLPlanResultInfo struct {
+	// <p>分析结果 ID</p>
+	VLPlanResultId *string `json:"VLPlanResultId,omitnil,omitempty" name:"VLPlanResultId"`
+
+	// <p>所属分析计划 ID</p>
+	VLPlanId *string `json:"VLPlanId,omitnil,omitempty" name:"VLPlanId"`
+
+	// <p>计划名称</p>
+	VLPlanName *string `json:"VLPlanName,omitnil,omitempty" name:"VLPlanName"`
+
+	// <p>通道 ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>通道名称</p>
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+
+	// <p>分析模式：image=图片模式，video=视频模式（预留）</p>
+	AnalysisMode *string `json:"AnalysisMode,omitnil,omitempty" name:"AnalysisMode"`
+
+	// <p>分析时间戳（秒）</p>
+	VLResultTimestamp *int64 `json:"VLResultTimestamp,omitnil,omitempty" name:"VLResultTimestamp"`
+
+	// <p>截图时间戳</p>
+	SnapshotTimestamp *int64 `json:"SnapshotTimestamp,omitnil,omitempty" name:"SnapshotTimestamp"`
+
+	// <p>视频开始时间戳</p>
+	VideoStartTimestamp *int64 `json:"VideoStartTimestamp,omitnil,omitempty" name:"VideoStartTimestamp"`
+
+	// <p>视频结束时间戳</p>
+	VideoEndTimestamp *int64 `json:"VideoEndTimestamp,omitnil,omitempty" name:"VideoEndTimestamp"`
+
+	// <p>视频模式计费帧数</p>
+	BilledFrameCount *int64 `json:"BilledFrameCount,omitnil,omitempty" name:"BilledFrameCount"`
+
+	// <p>AI 分析结果内容（JSON 字符串）</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// <p>创建时间，格式 2006-01-02 15:04:05</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`

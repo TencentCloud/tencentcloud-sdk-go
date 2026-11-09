@@ -6055,10 +6055,10 @@ func (r *ModifyBackupVaultAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCopyPairAttributeRequestParams struct {
-	// <p>要修改属性的复制对id</p>
+	// <p>要修改属性的复制对ID</p>
 	CopyPairId *string `json:"CopyPairId,omitnil,omitempty" name:"CopyPairId"`
 
-	// <p>要修改的复制对类型，可选值：DISK、INSTANCE、CFS，默认 INSTANCE</p>
+	// <p>要修改的复制对类型，可选值：INSTANCE。</p><p>枚举值：</p><ul><li>INSTANCE： CVM复制对</li></ul>
 	CopyPairType *string `json:"CopyPairType,omitnil,omitempty" name:"CopyPairType"`
 
 	// <p>修改复制对名称（长度最大支持 64 个字符）</p>
@@ -6066,15 +6066,27 @@ type ModifyCopyPairAttributeRequestParams struct {
 
 	// <p>容灾端实例类型（仅容灾端CVM未创建时可修改）</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>容灾端实例VPC IP（仅容灾端CVM未创建时可修改）</p>
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitnil,omitempty" name:"PrivateIpAddress"`
+
+	// <p>是否使用默认IP，与PrivateIpAddress互斥，不能同时使用（仅容灾端CVM未创建时可修改）</p>
+	UseDefaultPrivateIp *bool `json:"UseDefaultPrivateIp,omitnil,omitempty" name:"UseDefaultPrivateIp"`
+
+	// <p>实例登录设置，需要修改的时候才传（仅容灾端CVM未创建时可修改）</p>
+	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// <p>是否自动生成密码，与LoginSettings互斥，不能同时使用（仅容灾端CVM未创建时可修改）</p>
+	UseDefaultPassword *bool `json:"UseDefaultPassword,omitnil,omitempty" name:"UseDefaultPassword"`
 }
 
 type ModifyCopyPairAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>要修改属性的复制对id</p>
+	// <p>要修改属性的复制对ID</p>
 	CopyPairId *string `json:"CopyPairId,omitnil,omitempty" name:"CopyPairId"`
 
-	// <p>要修改的复制对类型，可选值：DISK、INSTANCE、CFS，默认 INSTANCE</p>
+	// <p>要修改的复制对类型，可选值：INSTANCE。</p><p>枚举值：</p><ul><li>INSTANCE： CVM复制对</li></ul>
 	CopyPairType *string `json:"CopyPairType,omitnil,omitempty" name:"CopyPairType"`
 
 	// <p>修改复制对名称（长度最大支持 64 个字符）</p>
@@ -6082,6 +6094,18 @@ type ModifyCopyPairAttributeRequest struct {
 
 	// <p>容灾端实例类型（仅容灾端CVM未创建时可修改）</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>容灾端实例VPC IP（仅容灾端CVM未创建时可修改）</p>
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitnil,omitempty" name:"PrivateIpAddress"`
+
+	// <p>是否使用默认IP，与PrivateIpAddress互斥，不能同时使用（仅容灾端CVM未创建时可修改）</p>
+	UseDefaultPrivateIp *bool `json:"UseDefaultPrivateIp,omitnil,omitempty" name:"UseDefaultPrivateIp"`
+
+	// <p>实例登录设置，需要修改的时候才传（仅容灾端CVM未创建时可修改）</p>
+	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// <p>是否自动生成密码，与LoginSettings互斥，不能同时使用（仅容灾端CVM未创建时可修改）</p>
+	UseDefaultPassword *bool `json:"UseDefaultPassword,omitnil,omitempty" name:"UseDefaultPassword"`
 }
 
 func (r *ModifyCopyPairAttributeRequest) ToJsonString() string {
@@ -6100,6 +6124,10 @@ func (r *ModifyCopyPairAttributeRequest) FromJsonString(s string) error {
 	delete(f, "CopyPairType")
 	delete(f, "CopyPairName")
 	delete(f, "InstanceType")
+	delete(f, "PrivateIpAddress")
+	delete(f, "UseDefaultPrivateIp")
+	delete(f, "LoginSettings")
+	delete(f, "UseDefaultPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCopyPairAttributeRequest has unknown keys!", "")
 	}
@@ -7168,27 +7196,33 @@ func (r *RunCopyPairTasksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RunFailoverCopyPairsRequestParams struct {
-	// 复制对ID列表
+	// <p>复制对ID列表</p>
 	CopyPairIds []*string `json:"CopyPairIds,omitnil,omitempty" name:"CopyPairIds"`
 
-	// 复制对类型，枚举值：DISK / INSTANCE / CFS。
+	// <p>复制对类型，枚举值：INSTANCE。</p><p>枚举值：</p><ul><li>INSTANCE： CVM复制对</li></ul>
 	CopyPairType *string `json:"CopyPairType,omitnil,omitempty" name:"CopyPairType"`
 
-	// 切换类型，支持WAIT和NOW
+	// <p>切换类型，支持WAIT和NOW</p>
 	FailoverType *string `json:"FailoverType,omitnil,omitempty" name:"FailoverType"`
+
+	// <p>故障切换成功后是否自动关机生产端实例，默认为true</p>
+	StopSourceInstance *bool `json:"StopSourceInstance,omitnil,omitempty" name:"StopSourceInstance"`
 }
 
 type RunFailoverCopyPairsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 复制对ID列表
+	// <p>复制对ID列表</p>
 	CopyPairIds []*string `json:"CopyPairIds,omitnil,omitempty" name:"CopyPairIds"`
 
-	// 复制对类型，枚举值：DISK / INSTANCE / CFS。
+	// <p>复制对类型，枚举值：INSTANCE。</p><p>枚举值：</p><ul><li>INSTANCE： CVM复制对</li></ul>
 	CopyPairType *string `json:"CopyPairType,omitnil,omitempty" name:"CopyPairType"`
 
-	// 切换类型，支持WAIT和NOW
+	// <p>切换类型，支持WAIT和NOW</p>
 	FailoverType *string `json:"FailoverType,omitnil,omitempty" name:"FailoverType"`
+
+	// <p>故障切换成功后是否自动关机生产端实例，默认为true</p>
+	StopSourceInstance *bool `json:"StopSourceInstance,omitnil,omitempty" name:"StopSourceInstance"`
 }
 
 func (r *RunFailoverCopyPairsRequest) ToJsonString() string {
@@ -7206,6 +7240,7 @@ func (r *RunFailoverCopyPairsRequest) FromJsonString(s string) error {
 	delete(f, "CopyPairIds")
 	delete(f, "CopyPairType")
 	delete(f, "FailoverType")
+	delete(f, "StopSourceInstance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunFailoverCopyPairsRequest has unknown keys!", "")
 	}
@@ -7214,7 +7249,7 @@ func (r *RunFailoverCopyPairsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RunFailoverCopyPairsResponseParams struct {
-	// 故障切换任务ID
+	// <p>故障切换任务ID</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

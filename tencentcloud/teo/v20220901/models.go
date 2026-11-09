@@ -14671,6 +14671,108 @@ func (r *DescribeSharedCNAMEResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTimingFunctionAnalysisDataRequestParams struct {
+	// <p>站点 ID 集合，至少填入1个站点 ID。</p>
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// <p>开始时间。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间。查询时间范围（<code>EndTime</code> - <code>StartTime</code>）需小于等于 7 天。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>指标列表，取值有:</p><li>function_requestCount: 边缘函数请求数，为累计值；</li><li>function_cpuCostTime: 边缘函数执行的平均 CPU 耗时，单位为微秒；</li><li>function_wallClockTime: 边缘函数执行的平均墙上时钟耗时，单位为微秒。</li>
+	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
+
+	// <p>查询时间粒度，取值有：</p><li>min: 1分钟；</li><li>5min: 5分钟；</li><li>hour: 1小时；</li><li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
+	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// <p>过滤条件，Filters.Value 的集合数量上限为20，详细的过滤条件 Key 值如下：</p><li>domain：按照子域名进行过滤，示例值： www.example.com。</li><li>function-name：按照边缘函数名称进行过滤，示例值： test051301-zone-2r2fdoxxxx-130000000。</li><li>function-result：按照边缘函数执行结果进行过滤。对应 Value 的可选项如下：<br>   success：成功；<br>   fail：失败。</li>
+	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>数据归属地区，取值有：</p><li>overseas：全球（除中国大陆地区）数据；</li><li>mainland：中国大陆地区数据；</li><li>global：全球数据。</li>不填默认取值为 global。
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+}
+
+type DescribeTimingFunctionAnalysisDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>站点 ID 集合，至少填入1个站点 ID。</p>
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// <p>开始时间。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间。查询时间范围（<code>EndTime</code> - <code>StartTime</code>）需小于等于 7 天。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>指标列表，取值有:</p><li>function_requestCount: 边缘函数请求数，为累计值；</li><li>function_cpuCostTime: 边缘函数执行的平均 CPU 耗时，单位为微秒；</li><li>function_wallClockTime: 边缘函数执行的平均墙上时钟耗时，单位为微秒。</li>
+	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
+
+	// <p>查询时间粒度，取值有：</p><li>min: 1分钟；</li><li>5min: 5分钟；</li><li>hour: 1小时；</li><li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
+	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// <p>过滤条件，Filters.Value 的集合数量上限为20，详细的过滤条件 Key 值如下：</p><li>domain：按照子域名进行过滤，示例值： www.example.com。</li><li>function-name：按照边缘函数名称进行过滤，示例值： test051301-zone-2r2fdoxxxx-130000000。</li><li>function-result：按照边缘函数执行结果进行过滤。对应 Value 的可选项如下：<br>   success：成功；<br>   fail：失败。</li>
+	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>数据归属地区，取值有：</p><li>overseas：全球（除中国大陆地区）数据；</li><li>mainland：中国大陆地区数据；</li><li>global：全球数据。</li>不填默认取值为 global。
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+}
+
+func (r *DescribeTimingFunctionAnalysisDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimingFunctionAnalysisDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneIds")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricNames")
+	delete(f, "Interval")
+	delete(f, "Filters")
+	delete(f, "Area")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimingFunctionAnalysisDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTimingFunctionAnalysisDataResponseParams struct {
+	// <p>查询结果的总条数。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>时序数据列表。</p>
+	Data []*TimingDataRecord `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTimingFunctionAnalysisDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTimingFunctionAnalysisDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeTimingFunctionAnalysisDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimingFunctionAnalysisDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTimingL4DataRequestParams struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -15170,6 +15272,115 @@ func (r *DescribeTimingL7OriginPullDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTimingL7OriginPullDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopFunctionAnalysisDataRequestParams struct {
+	// <p>站点 ID 集合，至少填入1个站点 ID。</p>
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// <p>开始时间。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间。查询时间范围（<code>EndTime</code> - <code>StartTime</code>）需小于等于 7 天。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>查询的指标，取值有：</p><li>function_requestCount_functionResult: 按照执行结果的维度统计边缘函数的请求数；</li><li>function_requestCount_functionName: 按照函数名称的维度统计边缘函数的请求数；</li><li>function_requestCount_domain: 按照域名的维度统计边缘函数的请求数。</li>
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// <p>查询前多少个 top 数据，最大值为1000。不填默认为10，表示查询 top10 的数据。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件，Filters.Value 的集合数量上限为20，详细的过滤条件 Key 值如下：</p><li>domain：按照子域名进行过滤，示例值： www.example.com。</li><li>function-name：按照边缘函数名称进行过滤，示例值： test051301-zone-2r2fdoxxxx-130000000。</li><li>function-result：按照边缘函数执行结果进行过滤。对应 Value 的可选项如下：<br>   success：成功；<br>   fail：失败。</li>
+	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>查询时间粒度，取值有：</p><li>min: 1分钟；</li><li>5min: 5分钟；</li><li>hour: 1小时；</li><li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
+	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// <p>数据归属地区，取值有：</p><li>overseas：全球（除中国大陆地区）数据；</li><li>mainland：中国大陆地区数据；</li><li>global：全球数据。</li>不填默认取值为global。
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+}
+
+type DescribeTopFunctionAnalysisDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>站点 ID 集合，至少填入1个站点 ID。</p>
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// <p>开始时间。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间。查询时间范围（<code>EndTime</code> - <code>StartTime</code>）需小于等于 7 天。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>查询的指标，取值有：</p><li>function_requestCount_functionResult: 按照执行结果的维度统计边缘函数的请求数；</li><li>function_requestCount_functionName: 按照函数名称的维度统计边缘函数的请求数；</li><li>function_requestCount_domain: 按照域名的维度统计边缘函数的请求数。</li>
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// <p>查询前多少个 top 数据，最大值为1000。不填默认为10，表示查询 top10 的数据。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件，Filters.Value 的集合数量上限为20，详细的过滤条件 Key 值如下：</p><li>domain：按照子域名进行过滤，示例值： www.example.com。</li><li>function-name：按照边缘函数名称进行过滤，示例值： test051301-zone-2r2fdoxxxx-130000000。</li><li>function-result：按照边缘函数执行结果进行过滤。对应 Value 的可选项如下：<br>   success：成功；<br>   fail：失败。</li>
+	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>查询时间粒度，取值有：</p><li>min: 1分钟；</li><li>5min: 5分钟；</li><li>hour: 1小时；</li><li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
+	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// <p>数据归属地区，取值有：</p><li>overseas：全球（除中国大陆地区）数据；</li><li>mainland：中国大陆地区数据；</li><li>global：全球数据。</li>不填默认取值为global。
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+}
+
+func (r *DescribeTopFunctionAnalysisDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopFunctionAnalysisDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneIds")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricName")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Interval")
+	delete(f, "Area")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopFunctionAnalysisDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopFunctionAnalysisDataResponseParams struct {
+	// <p>查询结果的总条数。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>按照 MetricName 指定统计维度的前 topN 数据列表。</p>
+	Data []*TopDataRecord `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTopFunctionAnalysisDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTopFunctionAnalysisDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeTopFunctionAnalysisDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopFunctionAnalysisDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -10609,6 +10609,74 @@ func (c *Client) DescribeSharedCNAMEWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeTimingFunctionAnalysisDataRequest() (request *DescribeTimingFunctionAnalysisDataRequest) {
+    request = &DescribeTimingFunctionAnalysisDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeTimingFunctionAnalysisData")
+    
+    
+    return
+}
+
+func NewDescribeTimingFunctionAnalysisDataResponse() (response *DescribeTimingFunctionAnalysisDataResponse) {
+    response = &DescribeTimingFunctionAnalysisDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTimingFunctionAnalysisData
+// 本接口查询边缘函数分析的时序数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeTimingFunctionAnalysisData(request *DescribeTimingFunctionAnalysisDataRequest) (response *DescribeTimingFunctionAnalysisDataResponse, err error) {
+    return c.DescribeTimingFunctionAnalysisDataWithContext(context.Background(), request)
+}
+
+// DescribeTimingFunctionAnalysisData
+// 本接口查询边缘函数分析的时序数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeTimingFunctionAnalysisDataWithContext(ctx context.Context, request *DescribeTimingFunctionAnalysisDataRequest) (response *DescribeTimingFunctionAnalysisDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTimingFunctionAnalysisDataRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeTimingFunctionAnalysisData")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTimingFunctionAnalysisData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTimingFunctionAnalysisDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTimingL4DataRequest() (request *DescribeTimingL4DataRequest) {
     request = &DescribeTimingL4DataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10865,6 +10933,76 @@ func (c *Client) DescribeTimingL7OriginPullDataWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeTimingL7OriginPullDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTopFunctionAnalysisDataRequest() (request *DescribeTopFunctionAnalysisDataRequest) {
+    request = &DescribeTopFunctionAnalysisDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeTopFunctionAnalysisData")
+    
+    
+    return
+}
+
+func NewDescribeTopFunctionAnalysisDataResponse() (response *DescribeTopFunctionAnalysisDataResponse) {
+    response = &DescribeTopFunctionAnalysisDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTopFunctionAnalysisData
+// 本接口用于查询边缘函数按照指定维度的 topN 数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeTopFunctionAnalysisData(request *DescribeTopFunctionAnalysisDataRequest) (response *DescribeTopFunctionAnalysisDataResponse, err error) {
+    return c.DescribeTopFunctionAnalysisDataWithContext(context.Background(), request)
+}
+
+// DescribeTopFunctionAnalysisData
+// 本接口用于查询边缘函数按照指定维度的 topN 数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeTopFunctionAnalysisDataWithContext(ctx context.Context, request *DescribeTopFunctionAnalysisDataRequest) (response *DescribeTopFunctionAnalysisDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopFunctionAnalysisDataRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeTopFunctionAnalysisData")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopFunctionAnalysisData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopFunctionAnalysisDataResponse()
     err = c.Send(request, response)
     return
 }

@@ -1833,6 +1833,74 @@ func (c *Client) DescribeUsageRankListWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyApiKeyBindingsRequest() (request *ModifyApiKeyBindingsRequest) {
+    request = &ModifyApiKeyBindingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "ModifyApiKeyBindings")
+    
+    
+    return
+}
+
+func NewModifyApiKeyBindingsResponse() (response *ModifyApiKeyBindingsResponse) {
+    response = &ModifyApiKeyBindingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyApiKeyBindings
+// 更新 API 密钥绑定。
+//
+// 
+//
+// 更新 API 密钥的绑定关系和绑定类型。BindType 为 all 时 Bindings 必须为空，BindType含 custom 时 Bindings 为绑定列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyApiKeyBindings(request *ModifyApiKeyBindingsRequest) (response *ModifyApiKeyBindingsResponse, err error) {
+    return c.ModifyApiKeyBindingsWithContext(context.Background(), request)
+}
+
+// ModifyApiKeyBindings
+// 更新 API 密钥绑定。
+//
+// 
+//
+// 更新 API 密钥的绑定关系和绑定类型。BindType 为 all 时 Bindings 必须为空，BindType含 custom 时 Bindings 为绑定列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyApiKeyBindingsWithContext(ctx context.Context, request *ModifyApiKeyBindingsRequest) (response *ModifyApiKeyBindingsResponse, err error) {
+    if request == nil {
+        request = NewModifyApiKeyBindingsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "ModifyApiKeyBindings")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApiKeyBindings require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApiKeyBindingsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyApiKeyInfoRequest() (request *ModifyApiKeyInfoRequest) {
     request = &ModifyApiKeyInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

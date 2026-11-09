@@ -329,6 +329,9 @@ const (
 	// 无效的密钥值，长度或内容不符合规则
 	INVALIDPARAMETERVALUE_INVALIDSECRET = "InvalidParameterValue.InvalidSecret"
 
+	// 无效的开始时间
+	INVALIDPARAMETERVALUE_INVALIDSTARTTIME = "InvalidParameterValue.InvalidStartTime"
+
 	// 无效的开始或结束时间
 	INVALIDPARAMETERVALUE_INVALIDSTARTTIMEORENDTIME = "InvalidParameterValue.InvalidStartTimeOrEndTime"
 
@@ -407,6 +410,9 @@ const (
 	// 一个取回任务最多添加32个设备通道
 	INVALIDPARAMETERVALUE_RETRIEVETASKCHANNELSEXCEEDSRANGE = "InvalidParameterValue.RetrieveTaskChannelsExceedsRange"
 
+	// 开始时间和结束时间差值不能超过30天
+	INVALIDPARAMETERVALUE_STARTDATEANDENDDATEMUSTBELESSTHAN30DAYS = "InvalidParameterValue.StartDateAndEndDateMustBeLessThan30Days"
+
 	// 开始时间不能大于结束时间
 	INVALIDPARAMETERVALUE_STARTOVERENDTIME = "InvalidParameterValue.StartOverEndTime"
 
@@ -415,6 +421,9 @@ const (
 
 	// 开始时间不能大于等于结束时间
 	INVALIDPARAMETERVALUE_STARTTIMEGREATERTHANOREQUALENDTIME = "InvalidParameterValue.StartTimeGreaterThanOrEqualEndTime"
+
+	// 开始时间必须小于结束时间
+	INVALIDPARAMETERVALUE_STARTTIMEMUSTBELESSTHANENDTIME = "InvalidParameterValue.StartTimeMustBeLessThanEndTime"
 
 	// 开始时间不能为空
 	INVALIDPARAMETERVALUE_STARTTIMEZERO = "InvalidParameterValue.StartTimeZero"

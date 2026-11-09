@@ -851,7 +851,7 @@ func NewDescribeExtractDocAgentJobResponse() (response *DescribeExtractDocAgentJ
 }
 
 // DescribeExtractDocAgentJob
-// 模型参数更大，速度更慢。推荐场景：可以接受异步（超过30s返回），样本输入输出token大于2000，长文本类文档建议用异步模型。需要 SubmitExtractDocAgentJob（提交任务）、DescribeExtractDocAgentJob（查询任务）两个接口配套使用，计费发生在提交任务后。【备注：1.固定价格不限抽取字段数，2.自适应价格抽取字段大于10记两次费用，小于等于10记一次费用】
+// 模型参数更大，速度更慢。推荐场景：可以接受异步（超过30s返回），样本输入输出token大于2000，长文本类文档建议用异步模型。需要 SubmitExtractDocAgentJob（提交任务）、DescribeExtractDocAgentJob（查询任务）两个接口配套使用，计费发生在提交任务后。【备注：1.固定价格不限抽取字段数，2.自适应价格抽取字段大于10记两次费用，小于等于10记一次费用】。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -872,7 +872,7 @@ func (c *Client) DescribeExtractDocAgentJob(request *DescribeExtractDocAgentJobR
 }
 
 // DescribeExtractDocAgentJob
-// 模型参数更大，速度更慢。推荐场景：可以接受异步（超过30s返回），样本输入输出token大于2000，长文本类文档建议用异步模型。需要 SubmitExtractDocAgentJob（提交任务）、DescribeExtractDocAgentJob（查询任务）两个接口配套使用，计费发生在提交任务后。【备注：1.固定价格不限抽取字段数，2.自适应价格抽取字段大于10记两次费用，小于等于10记一次费用】
+// 模型参数更大，速度更慢。推荐场景：可以接受异步（超过30s返回），样本输入输出token大于2000，长文本类文档建议用异步模型。需要 SubmitExtractDocAgentJob（提交任务）、DescribeExtractDocAgentJob（查询任务）两个接口配套使用，计费发生在提交任务后。【备注：1.固定价格不限抽取字段数，2.自适应价格抽取字段大于10记两次费用，小于等于10记一次费用】。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

@@ -288,6 +288,30 @@ type AndroidInstanceLabelDetail struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
+type AndroidInstanceMCPToken struct {
+	// <p>内部 ID，格式 k_ + 16 位 hex</p>
+	TokenId *string `json:"TokenId,omitnil,omitempty" name:"TokenId"`
+
+	// <p>ROOT / USER（大小写敏感），默认 USER。ROOT 可访问该 AppId 下全部实例</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>备注名</p>
+	TokenName *string `json:"TokenName,omitnil,omitempty" name:"TokenName"`
+
+	// <p>USER 角色可访问的实例白名单</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowedInstanceIds []*string `json:"AllowedInstanceIds,omitnil,omitempty" name:"AllowedInstanceIds"`
+
+	// <p>创建时间</p><p>参数格式：ISO8601 字符串；</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>过期时间</p><p>参数格式：ISO8601 字符串；永不过期时为空串</p>
+	ExpiresTime *string `json:"ExpiresTime,omitnil,omitempty" name:"ExpiresTime"`
+
+	// <p>或 EXPIRED；EXPIRED 由 ExpiresTime 推导。已删除的不出现在列表里</p><p>枚举值：</p><ul><li>ACTIVE： 正常可用的</li><li>EXPIRED： 过期的</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 type AndroidInstanceProperty struct {
 	// 属性键
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -1182,12 +1206,33 @@ func (r *CreateAndroidInstanceLabelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAndroidInstanceMCPTokenRequestParams struct {
+	// <p>ROOT / USER（大小写敏感），默认 USER。ROOT 可访问该 AppId 下全部实例</p><p>枚举值：</p><ul><li>ROOT： 可访问该 AppId 下全部实例</li><li>USER： 可访问本角色实例白名单内的实例</li></ul><p>默认值：USER</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
+	// <p>有效期（秒）；0 或不传表示永不过期（负值等同不过期）</p>
+	ExpireSeconds *int64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+
+	// <p>备注名</p>
+	TokenName *string `json:"TokenName,omitnil,omitempty" name:"TokenName"`
+
+	// <p>USER 角色可访问的实例白名单</p>
+	AllowedInstanceIds []*string `json:"AllowedInstanceIds,omitnil,omitempty" name:"AllowedInstanceIds"`
 }
 
 type CreateAndroidInstanceMCPTokenRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>ROOT / USER（大小写敏感），默认 USER。ROOT 可访问该 AppId 下全部实例</p><p>枚举值：</p><ul><li>ROOT： 可访问该 AppId 下全部实例</li><li>USER： 可访问本角色实例白名单内的实例</li></ul><p>默认值：USER</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>有效期（秒）；0 或不传表示永不过期（负值等同不过期）</p>
+	ExpireSeconds *int64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+
+	// <p>备注名</p>
+	TokenName *string `json:"TokenName,omitnil,omitempty" name:"TokenName"`
+
+	// <p>USER 角色可访问的实例白名单</p>
+	AllowedInstanceIds []*string `json:"AllowedInstanceIds,omitnil,omitempty" name:"AllowedInstanceIds"`
 }
 
 func (r *CreateAndroidInstanceMCPTokenRequest) ToJsonString() string {
@@ -1202,7 +1247,10 @@ func (r *CreateAndroidInstanceMCPTokenRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Role")
+	delete(f, "ExpireSeconds")
+	delete(f, "TokenName")
+	delete(f, "AllowedInstanceIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstanceMCPTokenRequest has unknown keys!", "")
 	}
@@ -1211,6 +1259,12 @@ func (r *CreateAndroidInstanceMCPTokenRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAndroidInstanceMCPTokenResponseParams struct {
+	// <p>内部 ID，格式 k_ + 16 位 hex</p>
+	TokenId *string `json:"TokenId,omitnil,omitempty" name:"TokenId"`
+
+	// <p>明文 token，格式 mcpk_ + 48 位 hex。服务端只存 sha256，只返回这一次</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2285,12 +2339,15 @@ func (r *DeleteAndroidInstanceLabelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAndroidInstanceMCPTokenRequestParams struct {
-
+	// <p>内部 ID，格式 k_ + 16 位 hex</p>
+	TokenId *string `json:"TokenId,omitnil,omitempty" name:"TokenId"`
 }
 
 type DeleteAndroidInstanceMCPTokenRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>内部 ID，格式 k_ + 16 位 hex</p>
+	TokenId *string `json:"TokenId,omitnil,omitempty" name:"TokenId"`
 }
 
 func (r *DeleteAndroidInstanceMCPTokenRequest) ToJsonString() string {
@@ -2305,7 +2362,7 @@ func (r *DeleteAndroidInstanceMCPTokenRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TokenId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAndroidInstanceMCPTokenRequest has unknown keys!", "")
 	}
@@ -2730,12 +2787,21 @@ func (r *DescribeAndroidInstanceLabelsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAndroidInstanceMCPTokensRequestParams struct {
+	// <p>偏移量，默认为 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
+	// <p>本次请求单次返回数据条数，用于分页控制</p><p>取值范围：[0, 100]</p><p>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeAndroidInstanceMCPTokensRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>偏移量，默认为 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>本次请求单次返回数据条数，用于分页控制</p><p>取值范围：[0, 100]</p><p>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeAndroidInstanceMCPTokensRequest) ToJsonString() string {
@@ -2750,7 +2816,8 @@ func (r *DescribeAndroidInstanceMCPTokensRequest) FromJsonString(s string) error
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAndroidInstanceMCPTokensRequest has unknown keys!", "")
 	}
@@ -2759,6 +2826,13 @@ func (r *DescribeAndroidInstanceMCPTokensRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeAndroidInstanceMCPTokensResponseParams struct {
+	// <p>Token列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tokens []*AndroidInstanceMCPToken `json:"Tokens,omitnil,omitempty" name:"Tokens"`
+
+	// <p>Token总数</p><p>单位：个</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -5070,12 +5144,21 @@ func (r *RebootAndroidInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewAndroidInstanceMCPTokenRequestParams struct {
+	// <p>内部 ID，格式 k_ + 16 位 hex</p>
+	TokenId *string `json:"TokenId,omitnil,omitempty" name:"TokenId"`
 
+	// <p>有效期（秒），必须大于 0</p><p>单位：秒</p>
+	ExpireSeconds *int64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
 }
 
 type RenewAndroidInstanceMCPTokenRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>内部 ID，格式 k_ + 16 位 hex</p>
+	TokenId *string `json:"TokenId,omitnil,omitempty" name:"TokenId"`
+
+	// <p>有效期（秒），必须大于 0</p><p>单位：秒</p>
+	ExpireSeconds *int64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
 }
 
 func (r *RenewAndroidInstanceMCPTokenRequest) ToJsonString() string {
@@ -5090,7 +5173,8 @@ func (r *RenewAndroidInstanceMCPTokenRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TokenId")
+	delete(f, "ExpireSeconds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewAndroidInstanceMCPTokenRequest has unknown keys!", "")
 	}
@@ -5099,6 +5183,9 @@ func (r *RenewAndroidInstanceMCPTokenRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewAndroidInstanceMCPTokenResponseParams struct {
+	// <p>过期时间，ISO8601 字符串；token 永不过期时为空串</p>
+	ExpiresTime *string `json:"ExpiresTime,omitnil,omitempty" name:"ExpiresTime"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

@@ -2088,14 +2088,14 @@ type DeliverSummary struct {
 
 // Predefined struct for user
 type DescribeAutoBackupConfigRequestParams struct {
-	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+	// <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeAutoBackupConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+	// <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -2120,19 +2120,19 @@ func (r *DescribeAutoBackupConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAutoBackupConfigResponseParams struct {
-	// 该参数因兼容性问题暂时保留，请忽略。
+	// <p>该参数因兼容性问题暂时保留，请忽略。</p>
 	AutoBackupType *int64 `json:"AutoBackupType,omitnil,omitempty" name:"AutoBackupType"`
 
-	// 备份周期，默认为每天自动备份，Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
+	// <p>备份周期，默认为每天自动备份，Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。</p>
 	WeekDays []*string `json:"WeekDays,omitnil,omitempty" name:"WeekDays"`
 
-	// 备份任务发起时间段。
+	// <p>备份任务发起时间段。</p>
 	TimePeriod *string `json:"TimePeriod,omitnil,omitempty" name:"TimePeriod"`
 
-	// 全量备份文件保存天数。默认为7天。如需保存更多天数，请[提交工单](https://console.cloud.tencent.com/workorder/category)申请。
+	// <p>全量备份文件保存天数。默认为7天。如需保存更多天数，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>
 	BackupStorageDays *int64 `json:"BackupStorageDays,omitnil,omitempty" name:"BackupStorageDays"`
 
-	// 该参数不再使用，请忽略。
+	// <p>该参数不再使用，请忽略。</p>
 	BinlogStorageDays *int64 `json:"BinlogStorageDays,omitnil,omitempty" name:"BinlogStorageDays"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8506,38 +8506,38 @@ func (r *ModfiyInstancePasswordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAutoBackupConfigRequestParams struct {
-	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+	// <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。
+	// <p>设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。</p>
 	WeekDays []*string `json:"WeekDays,omitnil,omitempty" name:"WeekDays"`
 
-	// 备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
+	// <p>备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。</p>
 	TimePeriod *string `json:"TimePeriod,omitnil,omitempty" name:"TimePeriod"`
 
-	// 自动备份类型。目前仅能配置为：1 ，指定时备份。
+	// <p>自动备份类型。目前仅能配置为：1 ，指定时备份。</p>
 	AutoBackupType *int64 `json:"AutoBackupType,omitnil,omitempty" name:"AutoBackupType"`
 
-	// 全量备份文件保存天数。 仅支持设置为 7，单位：天。如需更长天数，请[提交工单](https://console.cloud.tencent.com/workorder/category)申请。
+	// <p>全量备份文件保存天数。 仅支持设置为 7，单位：天。如需更长天数，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>
 	BackupStorageDays *int64 `json:"BackupStorageDays,omitnil,omitempty" name:"BackupStorageDays"`
 }
 
 type ModifyAutoBackupConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+	// <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。
+	// <p>设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。</p>
 	WeekDays []*string `json:"WeekDays,omitnil,omitempty" name:"WeekDays"`
 
-	// 备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
+	// <p>备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。</p>
 	TimePeriod *string `json:"TimePeriod,omitnil,omitempty" name:"TimePeriod"`
 
-	// 自动备份类型。目前仅能配置为：1 ，指定时备份。
+	// <p>自动备份类型。目前仅能配置为：1 ，指定时备份。</p>
 	AutoBackupType *int64 `json:"AutoBackupType,omitnil,omitempty" name:"AutoBackupType"`
 
-	// 全量备份文件保存天数。 仅支持设置为 7，单位：天。如需更长天数，请[提交工单](https://console.cloud.tencent.com/workorder/category)申请。
+	// <p>全量备份文件保存天数。 仅支持设置为 7，单位：天。如需更长天数，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>
 	BackupStorageDays *int64 `json:"BackupStorageDays,omitnil,omitempty" name:"BackupStorageDays"`
 }
 
@@ -8566,16 +8566,16 @@ func (r *ModifyAutoBackupConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAutoBackupConfigResponseParams struct {
-	// 自动备份类型。目前仅能配置为：1 ，指定时备份。
+	// <p>自动备份类型。目前仅能配置为：1 ，指定时备份。</p>
 	AutoBackupType *int64 `json:"AutoBackupType,omitnil,omitempty" name:"AutoBackupType"`
 
-	// 自动备份周期。取值为：Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
+	// <p>自动备份周期。取值为：Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。</p>
 	WeekDays []*string `json:"WeekDays,omitnil,omitempty" name:"WeekDays"`
 
-	// 自动定时备份时间段。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
+	// <p>自动定时备份时间段。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。</p>
 	TimePeriod *string `json:"TimePeriod,omitnil,omitempty" name:"TimePeriod"`
 
-	// 全量备份文件保存天数,单位：天。
+	// <p>全量备份文件保存天数,单位：天。</p>
 	BackupStorageDays *int64 `json:"BackupStorageDays,omitnil,omitempty" name:"BackupStorageDays"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8954,6 +8954,12 @@ type ModifyInstanceAccountRequestParams struct {
 
 	// <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
 	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
+
+	// <p>账号维度的禁用命令配置。</p><ul><li>默认值：[]（空数组，即不禁用任何命令）</li><li>入参限制：仅支持配置以下指定的数据库命令（支持多选）<br>flushall, flushdb, keys, hgetall, eval, evalsha, script, scan, psetex, set, hmset, hset, lpush, rpush, sadd, zadd, del, mget, mset, bitop, exists, msetnx, blpop, brpop, rpoplpush, brpoplpush, smove, sunion, sinter, sdiff, sunionstore, sinterstore, sdiffstore, zunionstore, zinterstore, pfmerge, pfcount, pfadd。</li></ul><p>默认值：&quot;&quot;</p>
+	DisableCommands []*string `json:"DisableCommands,omitnil,omitempty" name:"DisableCommands"`
+
+	// <p>是否修改账号维度的禁用命令配置。仅在需要更新禁用命令列表时传入。</p><ul><li>true：修改（将根据传入的新命令列表进行覆盖更新）。</li><li>false：不修改（默认值）。</li></ul>
+	ModifyDisableCommands *bool `json:"ModifyDisableCommands,omitnil,omitempty" name:"ModifyDisableCommands"`
 }
 
 type ModifyInstanceAccountRequest struct {
@@ -8982,6 +8988,12 @@ type ModifyInstanceAccountRequest struct {
 
 	// <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
 	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
+
+	// <p>账号维度的禁用命令配置。</p><ul><li>默认值：[]（空数组，即不禁用任何命令）</li><li>入参限制：仅支持配置以下指定的数据库命令（支持多选）<br>flushall, flushdb, keys, hgetall, eval, evalsha, script, scan, psetex, set, hmset, hset, lpush, rpush, sadd, zadd, del, mget, mset, bitop, exists, msetnx, blpop, brpop, rpoplpush, brpoplpush, smove, sunion, sinter, sdiff, sunionstore, sinterstore, sdiffstore, zunionstore, zinterstore, pfmerge, pfcount, pfadd。</li></ul><p>默认值：&quot;&quot;</p>
+	DisableCommands []*string `json:"DisableCommands,omitnil,omitempty" name:"DisableCommands"`
+
+	// <p>是否修改账号维度的禁用命令配置。仅在需要更新禁用命令列表时传入。</p><ul><li>true：修改（将根据传入的新命令列表进行覆盖更新）。</li><li>false：不修改（默认值）。</li></ul>
+	ModifyDisableCommands *bool `json:"ModifyDisableCommands,omitnil,omitempty" name:"ModifyDisableCommands"`
 }
 
 func (r *ModifyInstanceAccountRequest) ToJsonString() string {
@@ -9004,6 +9016,8 @@ func (r *ModifyInstanceAccountRequest) FromJsonString(s string) error {
 	delete(f, "Privilege")
 	delete(f, "NoAuth")
 	delete(f, "EncryptPassword")
+	delete(f, "DisableCommands")
+	delete(f, "ModifyDisableCommands")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceAccountRequest has unknown keys!", "")
 	}

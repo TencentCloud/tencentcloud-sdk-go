@@ -1540,14 +1540,14 @@ type CustomsPaymentReceipt struct {
 
 // Predefined struct for user
 type DescribeExtractDocAgentJobRequestParams struct {
-	// 任务唯一ID。由服务端生成。
+	// <p>任务唯一ID。由服务端生成。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type DescribeExtractDocAgentJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务唯一ID。由服务端生成。
+	// <p>任务唯一ID。由服务端生成。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
@@ -1572,23 +1572,26 @@ func (r *DescribeExtractDocAgentJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExtractDocAgentJobResponseParams struct {
-	// 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+	// <p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 配置结构化文本信息。
+	// <p>配置结构化文本信息。AgentType为0按照这个结构返回</p>
 	StructuralList []*GroupInfo `json:"StructuralList,omitnil,omitempty" name:"StructuralList"`
 
-	// 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+	// <p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
 	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 
-	// 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+	// <p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
-	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	// <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
 	JobStatus *string `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
 
-	// 思考过程
+	// <p>思考过程</p>
 	ThoughtContent *string `json:"ThoughtContent,omitnil,omitempty" name:"ThoughtContent"`
+
+	// <p>定制的json结构字符串，主要用于快速定制输出的agent输出结构。推荐用于POC场景</p>
+	AgentResultJson *string `json:"AgentResultJson,omitnil,omitempty" name:"AgentResultJson"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -10092,6 +10095,9 @@ type SubmitExtractDocAgentJobRequestParams struct {
 
 	// <p>model_hunyuan:选择混元底座视觉大模型精调抽取任务  model_youtu：选择优图底座多模态大模型精调抽取任务</p>
 	ModelConfig *string `json:"ModelConfig,omitnil,omitempty" name:"ModelConfig"`
+
+	// <p>agent支持的类型枚举,不同类型输出结果不一样，默认为0</p><p>0:表示标准抽取Agent</p><p>1:表示合同协议分类+抽取+审核Agent</p>
+	AgentType *int64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 }
 
 type SubmitExtractDocAgentJobRequest struct {
@@ -10120,6 +10126,9 @@ type SubmitExtractDocAgentJobRequest struct {
 
 	// <p>model_hunyuan:选择混元底座视觉大模型精调抽取任务  model_youtu：选择优图底座多模态大模型精调抽取任务</p>
 	ModelConfig *string `json:"ModelConfig,omitnil,omitempty" name:"ModelConfig"`
+
+	// <p>agent支持的类型枚举,不同类型输出结果不一样，默认为0</p><p>0:表示标准抽取Agent</p><p>1:表示合同协议分类+抽取+审核Agent</p>
+	AgentType *int64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 }
 
 func (r *SubmitExtractDocAgentJobRequest) ToJsonString() string {
@@ -10142,6 +10151,7 @@ func (r *SubmitExtractDocAgentJobRequest) FromJsonString(s string) error {
 	delete(f, "FileStartPageNumber")
 	delete(f, "FileEndPageNumber")
 	delete(f, "ModelConfig")
+	delete(f, "AgentType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitExtractDocAgentJobRequest has unknown keys!", "")
 	}

@@ -1496,6 +1496,15 @@ func (r *CallMCPToolResponse) FromJsonString(s string) error {
 }
 
 type CallSource struct {
+	// <p>环境 UUID（来源于上报字段 channel_uuid）；公有云可为空，不能用 deployment_type 替代</p>
+	DeploymentUuid *string `json:"DeploymentUuid,omitnil,omitempty" name:"DeploymentUuid"`
+
+	// <p>空间 ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>空间名称；空间不存在或查询失败时为空</p>
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
 	// <p>调用主体 ID，含义由 subject_type 决定（如 app_id、kb_id 等）</p>
 	SubjectId *string `json:"SubjectId,omitnil,omitempty" name:"SubjectId"`
 
@@ -8013,7 +8022,7 @@ func (r *DescribeLatestReleaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMetricOverviewListRequestParams struct {
-	// <p>看板域，必填，决定返回哪个域的 KPI 数据</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）</td></tr></tbody></table>
+	// <p>看板域，必填，决定返回哪个域的 KPI 数据</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）（预留，暂不支持）</td></tr></tbody></table>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// <p>查询时间范围（Unix 秒）</p>
@@ -8024,12 +8033,15 @@ type DescribeMetricOverviewListRequestParams struct {
 
 	// <p>扩展过滤（resource_type=MODEL）。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：model_name（模型名）、user_id（用户ID）、space_id（空间ID）、resource_id/source_id（来源ID）、metric_source_type（METRIC_SOURCE_TYPE_* 枚举名或整数）</p>
 	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>空间 ID，用于服务端校验当前用户的空间权限；空间或应用视图需传入，企业视图可不传。VIEW_TYPE_SPACE 时应与 ViewScope.ScopeId 一致，VIEW_TYPE_APP 时须校验应用归属该空间；与 FilterList 的 space_id 同传须一致。服务端不得仅凭请求中的 SpaceId 授权</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 type DescribeMetricOverviewListRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>看板域，必填，决定返回哪个域的 KPI 数据</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）</td></tr></tbody></table>
+	// <p>看板域，必填，决定返回哪个域的 KPI 数据</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）（预留，暂不支持）</td></tr></tbody></table>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// <p>查询时间范围（Unix 秒）</p>
@@ -8040,6 +8052,9 @@ type DescribeMetricOverviewListRequest struct {
 
 	// <p>扩展过滤（resource_type=MODEL）。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：model_name（模型名）、user_id（用户ID）、space_id（空间ID）、resource_id/source_id（来源ID）、metric_source_type（METRIC_SOURCE_TYPE_* 枚举名或整数）</p>
 	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>空间 ID，用于服务端校验当前用户的空间权限；空间或应用视图需传入，企业视图可不传。VIEW_TYPE_SPACE 时应与 ViewScope.ScopeId 一致，VIEW_TYPE_APP 时须校验应用归属该空间；与 FilterList 的 space_id 同传须一致。服务端不得仅凭请求中的 SpaceId 授权</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 func (r *DescribeMetricOverviewListRequest) ToJsonString() string {
@@ -8058,6 +8073,7 @@ func (r *DescribeMetricOverviewListRequest) FromJsonString(s string) error {
 	delete(f, "TimeRange")
 	delete(f, "ViewScope")
 	delete(f, "FilterList")
+	delete(f, "SpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMetricOverviewListRequest has unknown keys!", "")
 	}
@@ -9532,6 +9548,9 @@ type DescribeUsageDetailListRequestParams struct {
 
 	// <p>每页数量，最大 100</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>空间 ID；空间或应用视图必传，由服务端校验空间权限</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 type DescribeUsageDetailListRequest struct {
@@ -9554,6 +9573,9 @@ type DescribeUsageDetailListRequest struct {
 
 	// <p>每页数量，最大 100</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>空间 ID；空间或应用视图必传，由服务端校验空间权限</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 func (r *DescribeUsageDetailListRequest) ToJsonString() string {
@@ -9574,6 +9596,7 @@ func (r *DescribeUsageDetailListRequest) FromJsonString(s string) error {
 	delete(f, "FilterList")
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
+	delete(f, "SpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsageDetailListRequest has unknown keys!", "")
 	}
@@ -9627,6 +9650,9 @@ type DescribeUsageSummaryListRequestParams struct {
 
 	// <p>每页数量，最大 100</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>空间 ID，空间或应用视图必传；服务端据登录态校验空间权限</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 type DescribeUsageSummaryListRequest struct {
@@ -9649,6 +9675,9 @@ type DescribeUsageSummaryListRequest struct {
 
 	// <p>每页数量，最大 100</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>空间 ID，空间或应用视图必传；服务端据登录态校验空间权限</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 func (r *DescribeUsageSummaryListRequest) ToJsonString() string {
@@ -9669,6 +9698,7 @@ func (r *DescribeUsageSummaryListRequest) FromJsonString(s string) error {
 	delete(f, "FilterList")
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
+	delete(f, "SpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsageSummaryListRequest has unknown keys!", "")
 	}
@@ -10329,6 +10359,26 @@ type DocUpdatePeriod struct {
 
 	// <p>更新周期（小时）</p>
 	PeriodHour *uint64 `json:"PeriodHour,omitnil,omitempty" name:"PeriodHour"`
+}
+
+type DocumentParseUsageDetail struct {
+	// <p>应用 ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>消耗资源数（PU）</p>
+	ConsumptionPu *float64 `json:"ConsumptionPu,omitnil,omitempty" name:"ConsumptionPu"`
+
+	// <p>文档 ID</p>
+	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
+
+	// <p>文档解析方式：离线文档解析、实时文档解析。上报值 OfflineUpload 对应离线文档解析；RealtimeUpload、RealTimeDocParse 对应实时文档解析</p>
+	DocUsageMethod *string `json:"DocUsageMethod,omitnil,omitempty" name:"DocUsageMethod"`
+
+	// <p>知识库 ID</p>
+	KbId *string `json:"KbId,omitnil,omitempty" name:"KbId"`
+
+	// <p>解析页数</p>
+	ParsedPageCount *string `json:"ParsedPageCount,omitnil,omitempty" name:"ParsedPageCount"`
 }
 
 type DuplexBilling struct {
@@ -11501,8 +11551,17 @@ type ModelStatus struct {
 }
 
 type ModelUsageDetail struct {
+	// <p>API Key 别名或脱敏值；禁止返回明文密钥</p>
+	ApiKeyDisplay *string `json:"ApiKeyDisplay,omitnil,omitempty" name:"ApiKeyDisplay"`
+
+	// <p>计费方式；非模型 API 或历史数据可为未指定；后付费不产生 PU</p>
+	BillingType *int64 `json:"BillingType,omitnil,omitempty" name:"BillingType"`
+
 	// <p>调用类型，来源于计费 scene_billing（与 filter.call_type 对应）</p>
 	CallType *string `json:"CallType,omitnil,omitempty" name:"CallType"`
+
+	// <p>本次调用消耗 PU 量</p>
+	ConsumptionPU *float64 `json:"ConsumptionPU,omitnil,omitempty" name:"ConsumptionPU"`
 
 	// <p>是否默认知识库，仅ResourceType=5（知识库容量）业务下有意义</p>
 	IsDefaultKB *bool `json:"IsDefaultKB,omitnil,omitempty" name:"IsDefaultKB"`
@@ -11512,14 +11571,14 @@ type ModelUsageDetail struct {
 
 	// <p>MODEL 域单次调用的消耗计量列表（权威字段）：按单位+label 分项列出每类计量。unit=TOKEN 时 label 区分 Token 子类别（input/output/avg_*/cache_*），label 为空表示 total_tokens；unit=PAGE_COUNT 表示模型消耗页数</p>
 	ResourceConsumptionList []*ResourceConsumption `json:"ResourceConsumptionList,omitnil,omitempty" name:"ResourceConsumptionList"`
-
-	// <p>本次调用消耗 PU 量</p>
-	ConsumptionPU *float64 `json:"ConsumptionPU,omitnil,omitempty" name:"ConsumptionPU"`
 }
 
 type ModelUsageSummary struct {
 	// <p>调用次数（业务调用维度的顶层计数）</p>
 	CallCount *float64 `json:"CallCount,omitnil,omitempty" name:"CallCount"`
+
+	// <p>模型消耗 PU 总量（聚合维度内的 PU 消耗之和）</p>
+	ConsumptionPU *float64 `json:"ConsumptionPU,omitnil,omitempty" name:"ConsumptionPU"`
 
 	// <p>是否默认知识库</p>
 	IsDefaultKB *bool `json:"IsDefaultKB,omitnil,omitempty" name:"IsDefaultKB"`
@@ -11529,9 +11588,6 @@ type ModelUsageSummary struct {
 
 	// <p>MODEL 域消耗计量列表（权威字段）：按单位+label 分项列出每类计量。unit=TOKEN 时 label 区分 Token 子类别（input/output/avg_*/cache_*），label 为空表示 total_tokens；unit=PAGE_COUNT 表示模型消耗页数</p>
 	ResourceConsumptionList []*ResourceConsumption `json:"ResourceConsumptionList,omitnil,omitempty" name:"ResourceConsumptionList"`
-
-	// <p>模型消耗 PU 总量（聚合维度内的 PU 消耗之和）</p>
-	ConsumptionPU *float64 `json:"ConsumptionPU,omitnil,omitempty" name:"ConsumptionPU"`
 }
 
 // Predefined struct for user
@@ -13613,13 +13669,13 @@ type PluginSummary struct {
 }
 
 type PluginUsageDetail struct {
-	// <p>插件名称</p>
+	// <p>连接器与工具名称</p>
 	PluginName *string `json:"PluginName,omitnil,omitempty" name:"PluginName"`
 
-	// <p>PLUGIN 域单次调用的消耗计量列表（权威字段）：按单位+label 分项列出每类计量。unit=TOKEN 时 label 区分 Token 子类别（input/output/avg_*），label 为空表示 total_tokens</p>
+	// <p>插件单次调用计量：TOKEN 总量用 total_tokens（兼容空 Label），输入/输出用 input/output；其余消耗量按 Unit 区分，PU 的 Label 为 total_pu</p>
 	ResourceConsumptionList []*ResourceConsumption `json:"ResourceConsumptionList,omitnil,omitempty" name:"ResourceConsumptionList"`
 
-	// <p>插件工具名（tool_name）</p>
+	// <p>工具名称</p>
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
 }
 
@@ -15768,6 +15824,9 @@ func (r *UnfavoriteSkillResponse) FromJsonString(s string) error {
 type UsageDetail struct {
 	// <p>调用来源</p>
 	CallSource *CallSource `json:"CallSource,omitnil,omitempty" name:"CallSource"`
+
+	// <p>MODEL 类型的文档解析明细</p>
+	DocumentParse *DocumentParseUsageDetail `json:"DocumentParse,omitnil,omitempty" name:"DocumentParse"`
 
 	// <p>计量 ID，用于对账/回溯</p>
 	DosageId *string `json:"DosageId,omitnil,omitempty" name:"DosageId"`

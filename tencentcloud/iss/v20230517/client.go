@@ -4933,6 +4933,66 @@ func (c *Client) ListTasksWithContext(ctx context.Context, request *ListTasksReq
     return
 }
 
+func NewListVLPlanResultsRequest() (request *ListVLPlanResultsRequest) {
+    request = &ListVLPlanResultsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ListVLPlanResults")
+    
+    
+    return
+}
+
+func NewListVLPlanResultsResponse() (response *ListVLPlanResultsResponse) {
+    response = &ListVLPlanResultsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListVLPlanResults
+// 获取视觉理解计划结果列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDENDTIME = "InvalidParameterValue.InvalidEndTime"
+//  INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = "InvalidParameterValue.InvalidPageNumber"
+//  INVALIDPARAMETERVALUE_INVALIDPAGESIZE = "InvalidParameterValue.InvalidPageSize"
+//  INVALIDPARAMETERVALUE_INVALIDSTARTTIME = "InvalidParameterValue.InvalidStartTime"
+//  INVALIDPARAMETERVALUE_STARTDATEANDENDDATEMUSTBELESSTHAN30DAYS = "InvalidParameterValue.StartDateAndEndDateMustBeLessThan30Days"
+//  INVALIDPARAMETERVALUE_STARTTIMEMUSTBELESSTHANENDTIME = "InvalidParameterValue.StartTimeMustBeLessThanEndTime"
+func (c *Client) ListVLPlanResults(request *ListVLPlanResultsRequest) (response *ListVLPlanResultsResponse, err error) {
+    return c.ListVLPlanResultsWithContext(context.Background(), request)
+}
+
+// ListVLPlanResults
+// 获取视觉理解计划结果列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDENDTIME = "InvalidParameterValue.InvalidEndTime"
+//  INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = "InvalidParameterValue.InvalidPageNumber"
+//  INVALIDPARAMETERVALUE_INVALIDPAGESIZE = "InvalidParameterValue.InvalidPageSize"
+//  INVALIDPARAMETERVALUE_INVALIDSTARTTIME = "InvalidParameterValue.InvalidStartTime"
+//  INVALIDPARAMETERVALUE_STARTDATEANDENDDATEMUSTBELESSTHAN30DAYS = "InvalidParameterValue.StartDateAndEndDateMustBeLessThan30Days"
+//  INVALIDPARAMETERVALUE_STARTTIMEMUSTBELESSTHANENDTIME = "InvalidParameterValue.StartTimeMustBeLessThanEndTime"
+func (c *Client) ListVLPlanResultsWithContext(ctx context.Context, request *ListVLPlanResultsRequest) (response *ListVLPlanResultsResponse, err error) {
+    if request == nil {
+        request = NewListVLPlanResultsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListVLPlanResults")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListVLPlanResults require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListVLPlanResultsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListVLPlansRequest() (request *ListVLPlansRequest) {
     request = &ListVLPlansRequest{
         BaseRequest: &tchttp.BaseRequest{},

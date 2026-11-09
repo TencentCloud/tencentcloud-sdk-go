@@ -3635,6 +3635,7 @@ func NewStartSandboxInstanceResponse() (response *StartSandboxInstanceResponse) 
 //  RESOURCENOTFOUND_SANDBOXTOOL = "ResourceNotFound.SandboxTool"
 //  RESOURCENOTFOUND_STORAGEMOUNT = "ResourceNotFound.StorageMount"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_IMAGEPREHEATING = "ResourceUnavailable.ImagePreheating"
 //  RESOURCEUNAVAILABLE_SANDBOXTOOL = "ResourceUnavailable.SandboxTool"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StartSandboxInstance(request *StartSandboxInstanceRequest) (response *StartSandboxInstanceResponse, err error) {
@@ -3666,6 +3667,7 @@ func (c *Client) StartSandboxInstance(request *StartSandboxInstanceRequest) (res
 //  RESOURCENOTFOUND_SANDBOXTOOL = "ResourceNotFound.SandboxTool"
 //  RESOURCENOTFOUND_STORAGEMOUNT = "ResourceNotFound.StorageMount"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_IMAGEPREHEATING = "ResourceUnavailable.ImagePreheating"
 //  RESOURCEUNAVAILABLE_SANDBOXTOOL = "ResourceUnavailable.SandboxTool"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StartSandboxInstanceWithContext(ctx context.Context, request *StartSandboxInstanceRequest) (response *StartSandboxInstanceResponse, err error) {
