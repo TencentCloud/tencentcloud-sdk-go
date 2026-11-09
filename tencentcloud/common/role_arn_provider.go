@@ -1,6 +1,7 @@
 package common
 
 import (
+	"net/http"
 	"strconv"
 	"time"
 
@@ -82,7 +83,7 @@ func (r *RoleArnProvider) GetCredential() (CredentialIface, error) {
 		providerEndpoint = endpoint
 	}
 	cpf.HttpProfile.Endpoint = providerEndpoint
-	cpf.HttpProfile.ReqMethod = "POST"
+	cpf.HttpProfile.ReqMethod = http.MethodPost
 
 	client := NewCommonClient(r.credential, region, cpf)
 	request := tchttp.NewCommonRequest(service, version, action)
@@ -92,19 +93,17 @@ func (r *RoleArnProvider) GetCredential() (CredentialIface, error) {
 		"RoleSessionName": r.roleSessionName,
 		"DurationSeconds": r.durationSeconds,
 	}
-	err := request.SetActionParameters(params)
-	if err != nil {
+	if err := request.SetActionParameters(params); err != nil {
 		return nil, err
 	}
 
 	response := tchttp.NewCommonResponse()
-	err = client.Send(request, response)
-	if err != nil {
+	if err := client.Send(request, response); err != nil {
 		return nil, err
 	}
 	rspSt := new(stsRsp)
 
-	if err = json.Unmarshal(response.GetBody(), rspSt); err != nil {
+	if err := json.Unmarshal(response.GetBody(), rspSt); err != nil {
 		return nil, tcerr.NewTencentCloudSDKError(creErr, err.Error(), "")
 	}
 

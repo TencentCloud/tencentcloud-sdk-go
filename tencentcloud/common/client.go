@@ -81,9 +81,9 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 		return c.sendWithoutSignature(request, response)
 	} else if c.profile.DisableRegionBreaker == true || c.rb == nil {
 		return c.sendWithSignature(request, response)
-	} else {
-		return c.sendWithRegionBreaker(request, response)
 	}
+
+	return c.sendWithRegionBreaker(request, response)
 }
 
 // completeRequest fills in any missing request parameters with default values
@@ -139,11 +139,11 @@ func (c *Client) sendWithRegionBreaker(request tchttp.Request, response tchttp.R
 	}()
 
 	ge, err := c.rb.beforeRequest()
-
 	if err == errOpenState {
 		newEndpoint := request.GetService() + "." + c.rb.backupEndpoint
 		request.SetDomain(newEndpoint)
 	}
+
 	err = c.sendWithSignature(request, response)
 	c.rb.afterRequest(ge, isBreakerSuccess(err))
 	return err
@@ -152,9 +152,9 @@ func (c *Client) sendWithRegionBreaker(request tchttp.Request, response tchttp.R
 func (c *Client) sendWithSignature(request tchttp.Request, response tchttp.Response) (err error) {
 	if c.signMethod == "HmacSHA1" || c.signMethod == "HmacSHA256" {
 		return c.sendWithSignatureV1(request, response)
-	} else {
-		return c.sendWithSignatureV3(request, response)
 	}
+
+	return c.sendWithSignatureV3(request, response)
 }
 
 func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Response) error {
@@ -176,7 +176,7 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 			headers["X-TC-Token"] = credToken
 		}
 	}
-	if request.GetHttpMethod() == "GET" {
+	if request.GetHttpMethod() == http.MethodGet {
 		headers["Content-Type"] = "application/x-www-form-urlencoded"
 	} else {
 		headers["Content-Type"] = "application/json"
@@ -215,11 +215,11 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 	// build canonical request string
 	httpRequestMethod := request.GetHttpMethod()
 	canonicalQueryString := ""
-	if httpRequestMethod == "GET" {
-		err := tchttp.ConstructParams(request)
-		if err != nil {
+	if httpRequestMethod == http.MethodGet {
+		if err := tchttp.ConstructParams(request); err != nil {
 			return err
 		}
+
 		params := make(map[string]string)
 		for key, value := range request.GetParams() {
 			params[key] = value
@@ -233,7 +233,7 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 		canonicalQueryString = tchttp.GetUrlQueriesEncoded(params)
 	}
 	requestPayload := ""
-	if httpRequestMethod == "POST" {
+	if httpRequestMethod == http.MethodPost {
 		if isOctetStream {
 			// todo Conversion comparison between string and []byte affects performance much
 			requestPayload = string(octetStreamBody)
@@ -249,11 +249,11 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 		headers["X-TC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
 	}
 
-	url := request.GetScheme() + "://" + request.GetDomain() + request.GetPath()
+	urlStr := request.GetScheme() + "://" + request.GetDomain() + request.GetPath()
 	if canonicalQueryString != "" {
-		url = url + "?" + canonicalQueryString
+		urlStr = urlStr + "?" + canonicalQueryString
 	}
-	httpRequest, err := http.NewRequest(httpRequestMethod, url, strings.NewReader(requestPayload))
+	httpRequest, err := http.NewRequest(httpRequestMethod, urlStr, strings.NewReader(requestPayload))
 	if err != nil {
 		return err
 	}
@@ -276,20 +276,21 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Response) (err error) {
 	// TODO: not an elegant way, it should be done in common params, but finally it need to refactor
 	request.GetParams()["Language"] = c.profile.Language
-	err = tchttp.ConstructParams(request)
-	if err != nil {
+	if err = tchttp.ConstructParams(request); err != nil {
 		return err
 	}
-	err = signRequest(request, c.credential, c.signMethod)
-	if err != nil {
+
+	if err = signRequest(request, c.credential, c.signMethod); err != nil {
 		return err
 	}
+
 	httpRequest, err := http.NewRequest(request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
 	if err != nil {
 		return err
 	}
+
 	httpRequest = httpRequest.WithContext(request.GetContext())
-	if request.GetHttpMethod() == "POST" {
+	if request.GetHttpMethod() == http.MethodPost {
 		httpRequest.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	}
 
@@ -305,8 +306,8 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 	if err != nil {
 		return err
 	}
-	err = tchttp.ParseFromHttpResponse(httpResponse, response)
-	return err
+
+	return tchttp.ParseFromHttpResponse(httpResponse, response)
 }
 
 func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Response) (err error) {
@@ -506,13 +507,13 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	// --- End Signature Version 3 Signing Process ---
 
 	// Construct the full URL.
-	url := request.GetScheme() + "://" + request.GetDomain() + request.GetPath()
+	urlStr := request.GetScheme() + "://" + request.GetDomain() + request.GetPath()
 	if canonicalQueryString != "" {
-		url = url + "?" + canonicalQueryString
+		urlStr = urlStr + "?" + canonicalQueryString
 	}
 
 	// Create the HTTP request.
-	httpRequest, err := http.NewRequest(httpRequestMethod, url, strings.NewReader(requestPayload))
+	httpRequest, err := http.NewRequest(httpRequestMethod, urlStr, strings.NewReader(requestPayload))
 	if err != nil {
 		return err
 	}
@@ -554,11 +555,10 @@ func (c *Client) sendHttp(request *http.Request) (response *http.Response, err e
 	}
 
 	response, err = c.httpClient.Do(request)
-
 	if c.debug && response != nil {
 		dumpBody := true
 		switch response.Header.Get("Content-Type") {
-		case "text/event-stream", "application/octet-stream":
+		case "text/event-stream", octetStream:
 			dumpBody = false
 		}
 

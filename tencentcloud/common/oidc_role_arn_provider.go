@@ -133,19 +133,17 @@ func (r *OIDCRoleArnProvider) GetCredential() (CredentialIface, error) {
 		"RoleSessionName":  r.roleSessionName,
 		"DurationSeconds":  r.durationSeconds,
 	}
-	err := request.SetActionParameters(params)
-	if err != nil {
+	if err := request.SetActionParameters(params); err != nil {
 		return nil, err
 	}
 
 	response := tchttp.NewCommonResponse()
-	err = client.Send(request, response)
-	if err != nil {
+	if err := client.Send(request, response); err != nil {
 		return nil, err
 	}
 	rspSt := new(oidcStsRsp)
 
-	if err = json.Unmarshal(response.GetBody(), rspSt); err != nil {
+	if err := json.Unmarshal(response.GetBody(), rspSt); err != nil {
 		return nil, tcerr.NewTencentCloudSDKError(creErr, err.Error(), "")
 	}
 
