@@ -3954,6 +3954,75 @@ type GetSchemaRsp struct {
 }
 
 // Predefined struct for user
+type GetSessionStatusRequestParams struct {
+	// <p>工作空间 ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>待查询的会话列表（支持传多个，传一条即单条查询）</p>
+	Items []*SessionStatusQueryItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type GetSessionStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间 ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>待查询的会话列表（支持传多个，传一条即单条查询）</p>
+	Items []*SessionStatusQueryItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+func (r *GetSessionStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetSessionStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "Items")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSessionStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetSessionStatusResponseParams struct {
+	// <p>返回结果</p>
+	Data *GetSessionStatusRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetSessionStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *GetSessionStatusResponseParams `json:"Response"`
+}
+
+func (r *GetSessionStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetSessionStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSessionStatusRsp struct {
+	// 结果列表，与请求 Items 顺序一致
+	Items []*SessionStatusItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
 type GetTableRequestParams struct {
 	// <p>数据目录名</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
@@ -8361,6 +8430,99 @@ type RangePartitioning struct {
 }
 
 // Predefined struct for user
+type ReadProductJsonRequestParams struct {
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>沙盒runtimeId</p>
+	RuntimeId *string `json:"RuntimeId,omitnil,omitempty" name:"RuntimeId"`
+
+	// <p>沙盒sessionId</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type ReadProductJsonRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>沙盒runtimeId</p>
+	RuntimeId *string `json:"RuntimeId,omitnil,omitempty" name:"RuntimeId"`
+
+	// <p>沙盒sessionId</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+func (r *ReadProductJsonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReadProductJsonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "RuntimeId")
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReadProductJsonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReadProductJsonResponseParams struct {
+	// <p>返回对象实体</p>
+	Data *ReadProductJsonRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReadProductJsonResponse struct {
+	*tchttp.BaseResponse
+	Response *ReadProductJsonResponseParams `json:"Response"`
+}
+
+func (r *ReadProductJsonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReadProductJsonResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReadProductJsonRsp struct {
+	// <p>文件路径</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>文件大小</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// <p>文件内容</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>请求状态码 0-成功，其他-异常</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultCode *int64 `json:"ResultCode,omitnil,omitempty" name:"ResultCode"`
+
+	// <p>返回结果提示信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
+// Predefined struct for user
 type RemoveConsoleUsersRequestParams struct {
 	// <p>必填，待移除的用户 UIN 列表，单次最多10个</p>
 	UserUins []*string `json:"UserUins,omitnil,omitempty" name:"UserUins"`
@@ -9174,6 +9336,25 @@ type SearchResult struct {
 	// <p>资产元数据来源。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。仅catalog类资产（CATALOG/SCHEMA/TABLE/VIEW/MODEL/VOLUME/FUNCTION/TABLE_COLUMN）返回该字段，非catalog类资产该字段为空字符串。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+}
+
+type SessionStatusItem struct {
+	// 对话 Session ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 沙箱 Runtime ID
+	RuntimeId *string `json:"RuntimeId,omitnil,omitempty" name:"RuntimeId"`
+
+	// 任务运行状态: planning/working/pending/completed/failed
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+}
+
+type SessionStatusQueryItem struct {
+	// 沙箱 Runtime ID
+	RuntimeId *string `json:"RuntimeId,omitnil,omitempty" name:"RuntimeId"`
+
+	// 对话 Session ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 type SingleFieldPartitioning struct {

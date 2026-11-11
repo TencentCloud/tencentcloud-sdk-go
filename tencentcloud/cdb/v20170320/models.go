@@ -2850,6 +2850,9 @@ type CreateCloneInstanceRequestParams struct {
 
 	// <p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
 	FourthZone *string `json:"FourthZone,omitnil,omitempty" name:"FourthZone"`
+
+	// <p>是否使用最新小版本号进行克隆。</p><p>枚举值：</p><ul><li>1： 是</li><li>0： 否</li></ul><p>默认值：0</p><p>默认和源实例的小版本号对齐</p>
+	UseLatestMinorVersion *int64 `json:"UseLatestMinorVersion,omitnil,omitempty" name:"UseLatestMinorVersion"`
 }
 
 type CreateCloneInstanceRequest struct {
@@ -2941,6 +2944,9 @@ type CreateCloneInstanceRequest struct {
 
 	// <p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
 	FourthZone *string `json:"FourthZone,omitnil,omitempty" name:"FourthZone"`
+
+	// <p>是否使用最新小版本号进行克隆。</p><p>枚举值：</p><ul><li>1： 是</li><li>0： 否</li></ul><p>默认值：0</p><p>默认和源实例的小版本号对齐</p>
+	UseLatestMinorVersion *int64 `json:"UseLatestMinorVersion,omitnil,omitempty" name:"UseLatestMinorVersion"`
 }
 
 func (r *CreateCloneInstanceRequest) ToJsonString() string {
@@ -2984,6 +2990,7 @@ func (r *CreateCloneInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MasterZone")
 	delete(f, "Zone")
 	delete(f, "FourthZone")
+	delete(f, "UseLatestMinorVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloneInstanceRequest has unknown keys!", "")
 	}
@@ -7177,14 +7184,14 @@ func (r *DescribeCpuExpandHistoryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBFeaturesRequestParams struct {
-	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// <p>实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeDBFeaturesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// <p>实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -7209,32 +7216,31 @@ func (r *DescribeDBFeaturesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBFeaturesResponseParams struct {
-	// 是否支持数据库审计功能。
+	// <p>是否支持数据库审计功能。</p>
 	IsSupportAudit *bool `json:"IsSupportAudit,omitnil,omitempty" name:"IsSupportAudit"`
 
-	// 开启审计是否需要升级内核版本。
+	// <p>开启审计是否需要升级内核版本。</p>
 	AuditNeedUpgrade *bool `json:"AuditNeedUpgrade,omitnil,omitempty" name:"AuditNeedUpgrade"`
 
-	// 是否支持数据库加密功能。
+	// <p>是否支持数据库加密功能。</p>
 	IsSupportEncryption *bool `json:"IsSupportEncryption,omitnil,omitempty" name:"IsSupportEncryption"`
 
-	// 开启加密是否需要升级内核版本。
+	// <p>开启加密是否需要升级内核版本。</p>
 	EncryptionNeedUpgrade *bool `json:"EncryptionNeedUpgrade,omitnil,omitempty" name:"EncryptionNeedUpgrade"`
 
-	// 是否为异地只读实例。
+	// <p>是否为异地只读实例。</p>
 	IsRemoteRo *bool `json:"IsRemoteRo,omitnil,omitempty" name:"IsRemoteRo"`
 
-	// 主实例所在地域。
-	// 说明：此参数可能返回空值，您可忽略此出参返回值。如需获取实例所在地域详情，您可调用 [查询实例列表](https://cloud.tencent.com/document/product/236/15872) 接口查询。
+	// <p>主实例所在地域。<br>说明：此参数可能返回空值，您可忽略此出参返回值。如需获取实例所在地域详情，您可调用 <a href="https://cloud.tencent.com/document/product/236/15872">查询实例列表</a> 接口查询。</p>
 	MasterRegion *string `json:"MasterRegion,omitnil,omitempty" name:"MasterRegion"`
 
-	// 是否支持小版本升级。
+	// <p>是否支持小版本升级。</p>
 	IsSupportUpdateSubVersion *bool `json:"IsSupportUpdateSubVersion,omitnil,omitempty" name:"IsSupportUpdateSubVersion"`
 
-	// 当前内核版本。
+	// <p>当前内核版本。</p>
 	CurrentSubVersion *string `json:"CurrentSubVersion,omitnil,omitempty" name:"CurrentSubVersion"`
 
-	// 可供升级的内核版本。
+	// <p>可供升级的内核版本。</p>
 	TargetSubVersion *string `json:"TargetSubVersion,omitnil,omitempty" name:"TargetSubVersion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16224,24 +16230,22 @@ type RoGroup struct {
 }
 
 type RoGroupAttr struct {
-	// RO 组名称。
+	// <p>RO 组名称。</p>
 	RoGroupName *string `json:"RoGroupName,omitnil,omitempty" name:"RoGroupName"`
 
-	// RO 实例最大延迟阈值。单位为秒，最小值为 1。范围：[1,10000]，整数。
-	// 注意：RO 组必须设置了开启实例延迟剔除策略，该值才有效。
+	// <p>RO 实例最大延迟阈值。单位为秒，最小值为 1。范围：[1,10000]，整数。<br>注意：RO 组必须设置了开启实例延迟剔除策略，该值才有效。</p>
 	RoMaxDelayTime *int64 `json:"RoMaxDelayTime,omitnil,omitempty" name:"RoMaxDelayTime"`
 
-	// 是否开启实例延迟剔除。支持的值包括：1 - 开启；0 - 不开启。注意，若设置开启实例延迟剔除，则必须设置延迟阈值（RoMaxDelayTime）参数。
+	// <p>是否开启实例延迟剔除。支持的值包括：1 - 开启；0 - 不开启。注意，若设置开启实例延迟剔除，则必须设置延迟阈值（RoMaxDelayTime）参数。</p>
 	RoOfflineDelay *int64 `json:"RoOfflineDelay,omitnil,omitempty" name:"RoOfflineDelay"`
 
-	// 最少保留实例数。可设置为小于或等于该 RO 组下 RO 实例个数的任意值。默认值为1。
-	// 注意：若设置值大于 RO 实例数量将不做剔除；若设置为 0，所有实例延迟超限都会被剔除。
+	// <p>最少保留实例数。可设置为小于或等于该 RO 组下 RO 实例个数的任意值。默认值为1。<br>注意：若设置值大于 RO 实例数量将不做剔除；若设置为 0，所有实例延迟超限都会被剔除。</p>
 	MinRoInGroup *int64 `json:"MinRoInGroup,omitnil,omitempty" name:"MinRoInGroup"`
 
-	// 权重模式。支持值包括："system" - 系统自动分配； "custom" - 用户自定义设置。注意，若设置 "custom" 模式，则必须设置 RO 实例权重配置（RoWeightValues）参数。
+	// <p>权重模式。支持值包括：&quot;system&quot; - 系统自动分配； &quot;custom&quot; - 用户自定义设置。注意，若设置 &quot;custom&quot; 模式，则必须设置 RO 实例权重配置（RoWeightValues）参数。</p>
 	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
 
-	// 延迟复制时间。单位：秒，范围：1 - 259200秒，不传此参数表示不开启实例延迟复制。
+	// <p>延迟复制时间。单位：秒，范围：1 - 259200秒，不传此参数表示不开启实例延迟复制。</p>
 	ReplicationDelayTime *int64 `json:"ReplicationDelayTime,omitnil,omitempty" name:"ReplicationDelayTime"`
 }
 

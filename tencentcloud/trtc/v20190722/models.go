@@ -6440,6 +6440,98 @@ func (r *ModifyCloudSliceTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyCloudTranscriptionRequestParams struct {
+	// <p>TRTC的SdkAppId，和转录的房间所对应的SdkAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>转录任务的唯一Id，在启动转录成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。</p>
+	SequenceNumber *uint64 `json:"SequenceNumber,omitnil,omitempty" name:"SequenceNumber"`
+
+	// <p>转录订阅用户信息，包括白名单和黑名单。</p>
+	SubscribeUserInfo *TranscriptionSubscribeParam `json:"SubscribeUserInfo,omitnil,omitempty" name:"SubscribeUserInfo"`
+
+	// <p>转录服务翻译使用的参数。</p>
+	TranslationParam *TranslationParam `json:"TranslationParam,omitnil,omitempty" name:"TranslationParam"`
+
+	// <p>转录服务TTS使用的参数。</p>
+	TTSParam []*TTSParam `json:"TTSParam,omitnil,omitempty" name:"TTSParam"`
+}
+
+type ModifyCloudTranscriptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TRTC的SdkAppId，和转录的房间所对应的SdkAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>转录任务的唯一Id，在启动转录成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。</p>
+	SequenceNumber *uint64 `json:"SequenceNumber,omitnil,omitempty" name:"SequenceNumber"`
+
+	// <p>转录订阅用户信息，包括白名单和黑名单。</p>
+	SubscribeUserInfo *TranscriptionSubscribeParam `json:"SubscribeUserInfo,omitnil,omitempty" name:"SubscribeUserInfo"`
+
+	// <p>转录服务翻译使用的参数。</p>
+	TranslationParam *TranslationParam `json:"TranslationParam,omitnil,omitempty" name:"TranslationParam"`
+
+	// <p>转录服务TTS使用的参数。</p>
+	TTSParam []*TTSParam `json:"TTSParam,omitnil,omitempty" name:"TTSParam"`
+}
+
+func (r *ModifyCloudTranscriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudTranscriptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	delete(f, "SequenceNumber")
+	delete(f, "SubscribeUserInfo")
+	delete(f, "TranslationParam")
+	delete(f, "TTSParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudTranscriptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCloudTranscriptionResponseParams struct {
+	// <p>转录服务分配的任务 ID。任务 ID 是对一次转录生命周期过程的唯一标识，结束转录时会失去意义。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCloudTranscriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCloudTranscriptionResponseParams `json:"Response"`
+}
+
+func (r *ModifyCloudTranscriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudTranscriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyPictureRequestParams struct {
 	// 图片id
 	PictureId *uint64 `json:"PictureId,omitnil,omitempty" name:"PictureId"`
@@ -9249,6 +9341,14 @@ type TranscriptionParams struct {
 
 	// 语义断句检测
 	TurnDetection *TurnDetection `json:"TurnDetection,omitnil,omitempty" name:"TurnDetection"`
+}
+
+type TranscriptionSubscribeParam struct {
+	// <p>转录用户白名单，为空或不填表示转录所有主播音频，填具体值表示转录指定主播音频。 使用黑白名单时，同一个用户同时在黑白名单时，以黑名单为主。</p>
+	SubscribeList []*TranscriptionUserInfoParams `json:"SubscribeList,omitnil,omitempty" name:"SubscribeList"`
+
+	// <p>转录用户黑名单，为空或不填表示无黑名单，填具体值表示不转录指定主播音频。 同一个用户同时在黑白名单时，以黑名单为主。</p>
+	UnSubscribeList []*TranscriptionUserInfoParams `json:"UnSubscribeList,omitnil,omitempty" name:"UnSubscribeList"`
 }
 
 type TranscriptionUserInfoParams struct {

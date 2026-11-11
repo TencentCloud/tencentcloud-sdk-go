@@ -406,9 +406,13 @@ type ApmApplicationConfigView struct {
 	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
 
 	// <p>是否开启JNDI注入检测</p>
+	//
+	// Deprecated: IsJndiInjectionAnalysis is deprecated.
 	IsJndiInjectionAnalysis *int64 `json:"IsJndiInjectionAnalysis,omitnil,omitempty" name:"IsJndiInjectionAnalysis"`
 
 	// <p>是否开启JNI注入检测</p>
+	//
+	// Deprecated: IsJniInjectionAnalysis is deprecated.
 	IsJniInjectionAnalysis *int64 `json:"IsJniInjectionAnalysis,omitnil,omitempty" name:"IsJniInjectionAnalysis"`
 
 	// <p>是否开启Webshell后门检测</p>
@@ -458,6 +462,12 @@ type ApmApplicationConfigView struct {
 
 	// <p>是否使用探针默认熔断阈值</p>
 	UseDefaultFuseConfig *bool `json:"UseDefaultFuseConfig,omitnil,omitempty" name:"UseDefaultFuseConfig"`
+
+	// <p>是否开启JNDI注入检测</p>
+	IsJNDIInjectionAnalysis *string `json:"IsJNDIInjectionAnalysis,omitnil,omitempty" name:"IsJNDIInjectionAnalysis"`
+
+	// <p>是否开启JNI注入检测</p>
+	IsJNIInjectionAnalysis *string `json:"IsJNIInjectionAnalysis,omitnil,omitempty" name:"IsJNIInjectionAnalysis"`
 }
 
 type ApmAssociation struct {
@@ -820,13 +830,19 @@ type AutoProfilingConfig struct {
 }
 
 type CVMMeta struct {
-	// 地域
+	// <p>地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例ID
+	// <p>业务系统ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: InstanceID is deprecated.
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>业务系统ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type ChartData struct {
@@ -834,6 +850,8 @@ type ChartData struct {
 	Series []*Series `json:"Series,omitnil,omitempty" name:"Series"`
 
 	// <p>接口参数列表</p>
+	//
+	// Deprecated: YAxis is deprecated.
 	YAxis []*YAxis `json:"YAxis,omitnil,omitempty" name:"YAxis"`
 }
 
@@ -5151,10 +5169,14 @@ type ServiceDetail struct {
 
 	// <p>用户appid</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: AppID is deprecated.
 	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 
 	// <p>主账号uin</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: CreateUIN is deprecated.
 	CreateUIN *string `json:"CreateUIN,omitnil,omitempty" name:"CreateUIN"`
 
 	// <p>应用名</p>
@@ -5187,6 +5209,12 @@ type ServiceDetail struct {
 	// <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p><p>单位：ms</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
+
+	// <p>用户appid</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>主账号uin</p>
+	CreateUin *string `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 }
 
 type ServiceRelation struct {
@@ -5452,84 +5480,89 @@ type TopologyEdgeNew struct {
 }
 
 type TopologyNode struct {
-	// 错误率
+	// <p>错误率</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrRate *float64 `json:"ErrRate,omitnil,omitempty" name:"ErrRate"`
 
-	// 节点类型
+	// <p>节点类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// 节点名
+	// <p>节点名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 节点权重
+	// <p>节点权重</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *float64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 节点颜色
+	// <p>节点颜色</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
 
-	// 响应时间
+	// <p>响应时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 吞吐量
+	// <p>吞吐量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qps *float64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 节点类型
+	// <p>节点类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 节点ID
+	// <p>节点ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 节点大小
+	// <p>节点大小</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 节点是否为组件类型
+	// <p>节点是否为组件类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsModule *bool `json:"IsModule,omitnil,omitempty" name:"IsModule"`
 
-	// 节点位置信息
+	// <p>节点位置信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Position *Position `json:"Position,omitnil,omitempty" name:"Position"`
 
-	// 节点标签
+	// <p>节点标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 节点是否可以下钻
+	// <p>节点是否可以下钻</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanDrillDown *bool `json:"CanDrillDown,omitnil,omitempty" name:"CanDrillDown"`
 
-	// 资源层信息
+	// <p>资源层信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *Resource `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// 拓扑节点视图名字
+	// <p>拓扑节点视图名字</p>
 	NodeView *string `json:"NodeView,omitnil,omitempty" name:"NodeView"`
 
-	// MQ 消费者视角的响应时间 ms
+	// <p>MQ 消费者视角的响应时间 ms</p>
 	ConsumerDuration *float64 `json:"ConsumerDuration,omitnil,omitempty" name:"ConsumerDuration"`
 
-	// MQ 消费者视角的错误率 %
+	// <p>MQ 消费者视角的错误率 %</p>
 	ConsumerErrRate *float64 `json:"ConsumerErrRate,omitnil,omitempty" name:"ConsumerErrRate"`
 
-	// MQ 消费者视角的吞吐量
+	// <p>MQ 消费者视角的吞吐量</p>
 	ConsumerQps *float64 `json:"ConsumerQps,omitnil,omitempty" name:"ConsumerQps"`
 
-	// 应用 ID
+	// <p>应用 ID</p>
+	//
+	// Deprecated: ServiceId is deprecated.
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 调用次数
+	// <p>调用次数</p>
 	ReqCnt *int64 `json:"ReqCnt,omitnil,omitempty" name:"ReqCnt"`
 
-	// 消息队列消费者视角的调用次数
+	// <p>消息队列消费者视角的调用次数</p>
 	ConsumerReqCnt *int64 `json:"ConsumerReqCnt,omitnil,omitempty" name:"ConsumerReqCnt"`
+
+	// <p>应用 ID</p>
+	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
 }
 
 type TopologyNodeStats struct {

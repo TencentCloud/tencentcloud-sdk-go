@@ -1331,6 +1331,60 @@ func (c *Client) CreateAuditTemplateWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateAvatarEditingLiveRequest() (request *CreateAvatarEditingLiveRequest) {
+    request = &CreateAvatarEditingLiveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateAvatarEditingLive")
+    
+    
+    return
+}
+
+func NewCreateAvatarEditingLiveResponse() (response *CreateAvatarEditingLiveResponse) {
+    response = &CreateAvatarEditingLiveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAvatarEditingLive
+// 调用该接口，用于创建数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAvatarEditingLive(request *CreateAvatarEditingLiveRequest) (response *CreateAvatarEditingLiveResponse, err error) {
+    return c.CreateAvatarEditingLiveWithContext(context.Background(), request)
+}
+
+// CreateAvatarEditingLive
+// 调用该接口，用于创建数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAvatarEditingLiveWithContext(ctx context.Context, request *CreateAvatarEditingLiveRequest) (response *CreateAvatarEditingLiveResponse, err error) {
+    if request == nil {
+        request = NewCreateAvatarEditingLiveRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CreateAvatarEditingLive")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAvatarEditingLive require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAvatarEditingLiveResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCasterRequest() (request *CreateCasterRequest) {
     request = &CreateCasterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7655,6 +7709,58 @@ func (c *Client) DescribeAuditTemplatesWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeAuditTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAvatarEditingLiveRequest() (request *DescribeAvatarEditingLiveRequest) {
+    request = &DescribeAvatarEditingLiveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeAvatarEditingLive")
+    
+    
+    return
+}
+
+func NewDescribeAvatarEditingLiveResponse() (response *DescribeAvatarEditingLiveResponse) {
+    response = &DescribeAvatarEditingLiveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAvatarEditingLive
+// 调用该接口，查询数字人直播间信息列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAvatarEditingLive(request *DescribeAvatarEditingLiveRequest) (response *DescribeAvatarEditingLiveResponse, err error) {
+    return c.DescribeAvatarEditingLiveWithContext(context.Background(), request)
+}
+
+// DescribeAvatarEditingLive
+// 调用该接口，查询数字人直播间信息列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAvatarEditingLiveWithContext(ctx context.Context, request *DescribeAvatarEditingLiveRequest) (response *DescribeAvatarEditingLiveResponse, err error) {
+    if request == nil {
+        request = NewDescribeAvatarEditingLiveRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeAvatarEditingLive")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAvatarEditingLive require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAvatarEditingLiveResponse()
     err = c.Send(request, response)
     return
 }
@@ -18963,6 +19069,86 @@ func (c *Client) StartLiveStreamMonitorWithContext(ctx context.Context, request 
     return
 }
 
+func NewStopAvatarEditingLiveRequest() (request *StopAvatarEditingLiveRequest) {
+    request = &StopAvatarEditingLiveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "StopAvatarEditingLive")
+    
+    
+    return
+}
+
+func NewStopAvatarEditingLiveResponse() (response *StopAvatarEditingLiveResponse) {
+    response = &StopAvatarEditingLiveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopAvatarEditingLive
+// 调用该接口，用于停止数字人直播间。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_INPUTSTREAMMIXTYPENOTACCESSIBLE = "FailedOperation.InputStreamMixTypeNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) StopAvatarEditingLive(request *StopAvatarEditingLiveRequest) (response *StopAvatarEditingLiveResponse, err error) {
+    return c.StopAvatarEditingLiveWithContext(context.Background(), request)
+}
+
+// StopAvatarEditingLive
+// 调用该接口，用于停止数字人直播间。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_INPUTSTREAMMIXTYPENOTACCESSIBLE = "FailedOperation.InputStreamMixTypeNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) StopAvatarEditingLiveWithContext(ctx context.Context, request *StopAvatarEditingLiveRequest) (response *StopAvatarEditingLiveResponse, err error) {
+    if request == nil {
+        request = NewStopAvatarEditingLiveRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "StopAvatarEditingLive")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopAvatarEditingLive require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopAvatarEditingLiveResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopCasterPgmRequest() (request *StopCasterPgmRequest) {
     request = &StopCasterPgmRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -19547,6 +19733,74 @@ func (c *Client) StopScreenshotTaskWithContext(ctx context.Context, request *Sto
     request.SetContext(ctx)
     
     response = NewStopScreenshotTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSwitchAvatarEditingSceneRequest() (request *SwitchAvatarEditingSceneRequest) {
+    request = &SwitchAvatarEditingSceneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "SwitchAvatarEditingScene")
+    
+    
+    return
+}
+
+func NewSwitchAvatarEditingSceneResponse() (response *SwitchAvatarEditingSceneResponse) {
+    response = &SwitchAvatarEditingSceneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SwitchAvatarEditingScene
+// 调用该接口，用于临时驱动数字人播报。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SwitchAvatarEditingScene(request *SwitchAvatarEditingSceneRequest) (response *SwitchAvatarEditingSceneResponse, err error) {
+    return c.SwitchAvatarEditingSceneWithContext(context.Background(), request)
+}
+
+// SwitchAvatarEditingScene
+// 调用该接口，用于临时驱动数字人播报。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SwitchAvatarEditingSceneWithContext(ctx context.Context, request *SwitchAvatarEditingSceneRequest) (response *SwitchAvatarEditingSceneResponse, err error) {
+    if request == nil {
+        request = NewSwitchAvatarEditingSceneRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "SwitchAvatarEditingScene")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchAvatarEditingScene require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchAvatarEditingSceneResponse()
     err = c.Send(request, response)
     return
 }

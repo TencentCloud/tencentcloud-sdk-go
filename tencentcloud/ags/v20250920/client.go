@@ -1827,6 +1827,70 @@ func (c *Client) DescribeDeploymentListWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeEventCenterEventsRequest() (request *DescribeEventCenterEventsRequest) {
+    request = &DescribeEventCenterEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "DescribeEventCenterEvents")
+    
+    
+    return
+}
+
+func NewDescribeEventCenterEventsResponse() (response *DescribeEventCenterEventsResponse) {
+    response = &DescribeEventCenterEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEventCenterEvents
+// 本接口用于查询当前账号在指定地域的事件列表，支持按事件来源、资源对象、事件类型、事件级别及时间范围等条件筛选，并支持分页和时间排序。默认查询最近 1 小时的事件，支持查询最近 7 天内的事件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
+//  INVALIDPARAMETERVALUE_TIMERANGE = "InvalidParameterValue.TimeRange"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEventCenterEvents(request *DescribeEventCenterEventsRequest) (response *DescribeEventCenterEventsResponse, err error) {
+    return c.DescribeEventCenterEventsWithContext(context.Background(), request)
+}
+
+// DescribeEventCenterEvents
+// 本接口用于查询当前账号在指定地域的事件列表，支持按事件来源、资源对象、事件类型、事件级别及时间范围等条件筛选，并支持分页和时间排序。默认查询最近 1 小时的事件，支持查询最近 7 天内的事件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
+//  INVALIDPARAMETERVALUE_TIMERANGE = "InvalidParameterValue.TimeRange"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEventCenterEventsWithContext(ctx context.Context, request *DescribeEventCenterEventsRequest) (response *DescribeEventCenterEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEventCenterEventsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "DescribeEventCenterEvents")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEventCenterEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEventCenterEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEventsRequest() (request *DescribeEventsRequest) {
     request = &DescribeEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},

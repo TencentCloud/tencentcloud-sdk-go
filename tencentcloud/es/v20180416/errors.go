@@ -185,11 +185,17 @@ const (
 	// 实例版本EsVersion的取值和预期不符。
 	INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
 
+	// 索引字段上限取值非法
+	INVALIDPARAMETER_INVALIDFIELDLIMIT = "InvalidParameter.InvalidFieldLimit"
+
 	// 创建的索引元数据JSON IndexMetaJson的取值和预期不符。
 	INVALIDPARAMETER_INVALIDINDEXMETAJSON = "InvalidParameter.InvalidIndexMetaJson"
 
 	// 索引名IndexName的取值和预期不符。
 	INVALIDPARAMETER_INVALIDINDEXNAME = "InvalidParameter.InvalidIndexName"
+
+	// 批量索引名列表非法
+	INVALIDPARAMETER_INVALIDINDEXNAMES = "InvalidParameter.InvalidIndexNames"
 
 	// 索引自治字段IndexOptionsField的取值和预期不符。
 	INVALIDPARAMETER_INVALIDINDEXOPTIONSFIELD = "InvalidParameter.InvalidIndexOptionsField"

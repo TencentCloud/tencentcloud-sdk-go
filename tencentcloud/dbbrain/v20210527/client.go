@@ -6209,6 +6209,86 @@ func (c *Client) DescribeSlowLogsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeSqlExplainV2Request() (request *DescribeSqlExplainV2Request) {
+    request = &DescribeSqlExplainV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeSqlExplainV2")
+    
+    
+    return
+}
+
+func NewDescribeSqlExplainV2Response() (response *DescribeSqlExplainV2Response) {
+    response = &DescribeSqlExplainV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSqlExplainV2
+// 查询指定 SELECT SQL 在实例上的执行计划，常用于慢 SQL 分析、SQL 优化等场景。仅支持 SELECT 类语句
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSqlExplainV2(request *DescribeSqlExplainV2Request) (response *DescribeSqlExplainV2Response, err error) {
+    return c.DescribeSqlExplainV2WithContext(context.Background(), request)
+}
+
+// DescribeSqlExplainV2
+// 查询指定 SELECT SQL 在实例上的执行计划，常用于慢 SQL 分析、SQL 优化等场景。仅支持 SELECT 类语句
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSqlExplainV2WithContext(ctx context.Context, request *DescribeSqlExplainV2Request) (response *DescribeSqlExplainV2Response, err error) {
+    if request == nil {
+        request = NewDescribeSqlExplainV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeSqlExplainV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSqlExplainV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSqlExplainV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSqlFiltersRequest() (request *DescribeSqlFiltersRequest) {
     request = &DescribeSqlFiltersRequest{
         BaseRequest: &tchttp.BaseRequest{},

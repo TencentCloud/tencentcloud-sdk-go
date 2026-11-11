@@ -2568,6 +2568,83 @@ func (r *CreateAuditTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAvatarEditingLiveRequestParams struct {
+	// <p>通道ID，这里是待编辑的直播流的源ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>各种编辑场景的参考图</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>支持的编辑类型</p><p>枚举值：</p><ul><li>style_transfer： 整体风格迁移</li><li>virtual_tryon： 虚拟试穿</li><li>subject_replacement： 主体替换</li><li>background_replacement： 背景替换</li></ul><p>默认值：style_transfer</p>
+	EditingType *string `json:"EditingType,omitnil,omitempty" name:"EditingType"`
+}
+
+type CreateAvatarEditingLiveRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>通道ID，这里是待编辑的直播流的源ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>各种编辑场景的参考图</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>支持的编辑类型</p><p>枚举值：</p><ul><li>style_transfer： 整体风格迁移</li><li>virtual_tryon： 虚拟试穿</li><li>subject_replacement： 主体替换</li><li>background_replacement： 背景替换</li></ul><p>默认值：style_transfer</p>
+	EditingType *string `json:"EditingType,omitnil,omitempty" name:"EditingType"`
+}
+
+func (r *CreateAvatarEditingLiveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAvatarEditingLiveRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "ImageUrl")
+	delete(f, "EditingType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAvatarEditingLiveRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAvatarEditingLiveResponseParams struct {
+	// <p>实时编辑会话ID</p>
+	LiveId *string `json:"LiveId,omitnil,omitempty" name:"LiveId"`
+
+	// <p>实时编辑会话的状态</p><p>枚举值：</p><ul><li>waiting： 等待中</li><li>on_live： 直播中</li><li>ending： 结束中</li><li>ended： 已结束</li><li>prepared： 准备中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>通道ID，这里是待编辑的直播流的源ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAvatarEditingLiveResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAvatarEditingLiveResponseParams `json:"Response"`
+}
+
+func (r *CreateAvatarEditingLiveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAvatarEditingLiveResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCasterInputPushUrlRequestParams struct {
 	// 导播台ID
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
@@ -9384,6 +9461,87 @@ func (r *DescribeAuditTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAuditTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAvatarEditingLiveRequestParams struct {
+	// <p>通道ID，通常是待编辑的直播流的源ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type DescribeAvatarEditingLiveRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>通道ID，通常是待编辑的直播流的源ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *DescribeAvatarEditingLiveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvatarEditingLiveRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAvatarEditingLiveRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAvatarEditingLiveResponseParams struct {
+	// <p>通道ID，通常是待编辑的直播流的源ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>实时编辑会话ID</p>
+	LiveId *string `json:"LiveId,omitnil,omitempty" name:"LiveId"`
+
+	// <p>实时编辑会话的状态</p><p>枚举值：</p><ul><li>waiting： 等待中</li><li>on_live： 直播中</li><li>ending： 结束中</li><li>ended： 已结束</li><li>prepared： 准备中</li><li>not_exist： 不存在</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>内部模块会话状态</p>
+	Phase *string `json:"Phase,omitnil,omitempty" name:"Phase"`
+
+	// <p>输出Mode</p>
+	CallMode *string `json:"CallMode,omitnil,omitempty" name:"CallMode"`
+
+	// <p>创建时间</p>
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>开播时刻</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间，如果还没结束则该值为0</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>跟踪ID，用于查日志</p>
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAvatarEditingLiveResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAvatarEditingLiveResponseParams `json:"Response"`
+}
+
+func (r *DescribeAvatarEditingLiveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvatarEditingLiveResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -23933,6 +24091,66 @@ func (r *StartLiveStreamMonitorResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type StopAvatarEditingLiveRequestParams struct {
+	// <p>通道ID，通常是待编辑的直播流的源ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type StopAvatarEditingLiveRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>通道ID，通常是待编辑的直播流的源ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *StopAvatarEditingLiveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopAvatarEditingLiveRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopAvatarEditingLiveRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopAvatarEditingLiveResponseParams struct {
+	// <p>通道ID，通常是待编辑的直播流的源ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>实时编辑会话ID</p>
+	LiveId *string `json:"LiveId,omitnil,omitempty" name:"LiveId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopAvatarEditingLiveResponse struct {
+	*tchttp.BaseResponse
+	Response *StopAvatarEditingLiveResponseParams `json:"Response"`
+}
+
+func (r *StopAvatarEditingLiveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopAvatarEditingLiveResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StopCasterPgmRequestParams struct {
 	// 导播台ID。
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
@@ -24479,6 +24697,80 @@ type StreamOnlineInfo struct {
 	// 0 - 无延播，
 	// 1 - 有延播。
 	PushToDelay *int64 `json:"PushToDelay,omitnil,omitempty" name:"PushToDelay"`
+}
+
+// Predefined struct for user
+type SwitchAvatarEditingSceneRequestParams struct {
+	// <p>通道ID，通常是待编辑的直播流的源ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>支持的编辑类型</p><p>枚举值：</p><ul><li>style_transfer： 整体风格迁移</li><li>virtual_tryon： 虚拟试穿</li><li>subject_replacement： 主体替换</li><li>background_replacement： 背景替换</li></ul>
+	EditingType *string `json:"EditingType,omitnil,omitempty" name:"EditingType"`
+
+	// <p>各种编辑场景的参考图</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+}
+
+type SwitchAvatarEditingSceneRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>通道ID，通常是待编辑的直播流的源ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>支持的编辑类型</p><p>枚举值：</p><ul><li>style_transfer： 整体风格迁移</li><li>virtual_tryon： 虚拟试穿</li><li>subject_replacement： 主体替换</li><li>background_replacement： 背景替换</li></ul>
+	EditingType *string `json:"EditingType,omitnil,omitempty" name:"EditingType"`
+
+	// <p>各种编辑场景的参考图</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+}
+
+func (r *SwitchAvatarEditingSceneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchAvatarEditingSceneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "EditingType")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchAvatarEditingSceneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchAvatarEditingSceneResponseParams struct {
+	// <p>通道ID，通常是待编辑的直播流的源ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>实时编辑会话ID</p>
+	LiveId *string `json:"LiveId,omitnil,omitempty" name:"LiveId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SwitchAvatarEditingSceneResponse struct {
+	*tchttp.BaseResponse
+	Response *SwitchAvatarEditingSceneResponseParams `json:"Response"`
+}
+
+func (r *SwitchAvatarEditingSceneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchAvatarEditingSceneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

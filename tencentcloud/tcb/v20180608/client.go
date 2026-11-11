@@ -4689,19 +4689,33 @@ func NewDescribePlatformEnvUsageResponse() (response *DescribePlatformEnvUsageRe
 }
 
 // DescribePlatformEnvUsage
-// 查询平台版环境资源用量
+// 查询指定平台版（云开发）环境的资源使用情况。支持指定查询时间范围（起始/结束日期），按资源类型返回各资源指标的用量及用量明细（按天）。
 //
-// 
+// 用量信息包含：
 //
-// 指定查询范围，按资源类型返回各资源指标的用量及用量明细(按天)
+// 资源点用量（Credits）：该指标/资源折算后的计费资源点数；
 //
-// 用量信息包含资源点用量，原始用量值（如流量、调用次数、容量等），原始用量单位等
+// 原始用量值（UsageValue）：如流量、调用次数、容量等实际用量；
 //
-// 
+// 原始用量单位（UsageUnit）：如次、Byte、MB、GBs、核秒、QPS 等；
 //
-// 影响范围：只读查询、不改变资源
+// 按天用量明细（DailyUsageList）：包含每天日期、当日用量值及当日资源点。
 //
-// 使用场景：控制台用量页/API 查询平台版环境用量
+// 影响范围 只读查询，不改变任何资源状态。
+//
+// 使用场景 控制台「用量」页面 / 开放 API 查询平台版环境用量。
+//
+// **数据实时性说明** 本接口返回的是已结算用量，并非秒级实时监控数据，各指标的更新粒度与数据延迟如下：
+//
+// 存储容量类指标（如 Capacity、EnvAllocatedCapacity、Storage）按"自然日"统计，通常在次日凌晨完成前一日核算后才刷新；查询当日的值往往还未最终结算或显示为预估/0，需次日才能查询到完整数据。
+//
+// 计算与调用类指标（如 Invocation、ReadRequests、WriteRequests、MemoryUse、Ccu、CPU、Mem 等）按小时聚合，隔天进行计算落库；查询范围的汇总值可能包含当日实时累计，而按天明细只包含已结算的历史完整日。
+//
+// 流量类指标（如 Flux、Outflow、CDN/CI 流量等）中，云存储、CDN 流量多按天结算，云函数外网出流量按小时，均存在最多约 1 天的对账延迟。
+//
+// 资源点（Credits）不是独立实时计数，而是由原始用量按 CreditsScale 换算而来，折算随底层原始指标一起更新；免费额度内的消耗通常显示为 0。
+//
+// 按天用量明细（DailyUsageList）只返回已结算的完整日数据，当前进行中的当日一般不会完整出现在列表中；而指标层级的汇总字段 UsageValue 可能已包含当日实时累计，二者统计口径不同，不能简单相加比对。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4714,19 +4728,33 @@ func (c *Client) DescribePlatformEnvUsage(request *DescribePlatformEnvUsageReque
 }
 
 // DescribePlatformEnvUsage
-// 查询平台版环境资源用量
+// 查询指定平台版（云开发）环境的资源使用情况。支持指定查询时间范围（起始/结束日期），按资源类型返回各资源指标的用量及用量明细（按天）。
 //
-// 
+// 用量信息包含：
 //
-// 指定查询范围，按资源类型返回各资源指标的用量及用量明细(按天)
+// 资源点用量（Credits）：该指标/资源折算后的计费资源点数；
 //
-// 用量信息包含资源点用量，原始用量值（如流量、调用次数、容量等），原始用量单位等
+// 原始用量值（UsageValue）：如流量、调用次数、容量等实际用量；
 //
-// 
+// 原始用量单位（UsageUnit）：如次、Byte、MB、GBs、核秒、QPS 等；
 //
-// 影响范围：只读查询、不改变资源
+// 按天用量明细（DailyUsageList）：包含每天日期、当日用量值及当日资源点。
 //
-// 使用场景：控制台用量页/API 查询平台版环境用量
+// 影响范围 只读查询，不改变任何资源状态。
+//
+// 使用场景 控制台「用量」页面 / 开放 API 查询平台版环境用量。
+//
+// **数据实时性说明** 本接口返回的是已结算用量，并非秒级实时监控数据，各指标的更新粒度与数据延迟如下：
+//
+// 存储容量类指标（如 Capacity、EnvAllocatedCapacity、Storage）按"自然日"统计，通常在次日凌晨完成前一日核算后才刷新；查询当日的值往往还未最终结算或显示为预估/0，需次日才能查询到完整数据。
+//
+// 计算与调用类指标（如 Invocation、ReadRequests、WriteRequests、MemoryUse、Ccu、CPU、Mem 等）按小时聚合，隔天进行计算落库；查询范围的汇总值可能包含当日实时累计，而按天明细只包含已结算的历史完整日。
+//
+// 流量类指标（如 Flux、Outflow、CDN/CI 流量等）中，云存储、CDN 流量多按天结算，云函数外网出流量按小时，均存在最多约 1 天的对账延迟。
+//
+// 资源点（Credits）不是独立实时计数，而是由原始用量按 CreditsScale 换算而来，折算随底层原始指标一起更新；免费额度内的消耗通常显示为 0。
+//
+// 按天用量明细（DailyUsageList）只返回已结算的完整日数据，当前进行中的当日一般不会完整出现在列表中；而指标层级的汇总字段 UsageValue 可能已包含当日实时累计，二者统计口径不同，不能简单相加比对。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6034,6 +6062,7 @@ func NewListFunctionsResponse() (response *ListFunctionsResponse) {
 // 该接口根据传入的查询参数返回相关函数信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_FUNCTION = "InternalError.Function"
 //  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
@@ -6050,6 +6079,7 @@ func (c *Client) ListFunctions(request *ListFunctionsRequest) (response *ListFun
 // 该接口根据传入的查询参数返回相关函数信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_FUNCTION = "InternalError.Function"
 //  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
@@ -8108,6 +8138,7 @@ func NewUpdateFunctionCodeResponse() (response *UpdateFunctionCodeResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
 //  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
 //  FAILEDOPERATION_UPDATEFUNCTIONCODE = "FailedOperation.UpdateFunctionCode"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -8125,6 +8156,7 @@ func (c *Client) UpdateFunctionCode(request *UpdateFunctionCodeRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
 //  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
 //  FAILEDOPERATION_UPDATEFUNCTIONCODE = "FailedOperation.UpdateFunctionCode"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -8173,6 +8205,7 @@ func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigura
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UpdateFunctionConfiguration(request *UpdateFunctionConfigurationRequest) (response *UpdateFunctionConfigurationResponse, err error) {
     return c.UpdateFunctionConfigurationWithContext(context.Background(), request)
@@ -8183,6 +8216,7 @@ func (c *Client) UpdateFunctionConfiguration(request *UpdateFunctionConfiguratio
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UpdateFunctionConfigurationWithContext(ctx context.Context, request *UpdateFunctionConfigurationRequest) (response *UpdateFunctionConfigurationResponse, err error) {
     if request == nil {

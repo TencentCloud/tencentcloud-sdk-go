@@ -2293,6 +2293,64 @@ func (c *Client) GetSchemaWithContext(ctx context.Context, request *GetSchemaReq
     return
 }
 
+func NewGetSessionStatusRequest() (request *GetSessionStatusRequest) {
+    request = &GetSessionStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "GetSessionStatus")
+    
+    
+    return
+}
+
+func NewGetSessionStatusResponse() (response *GetSessionStatusResponse) {
+    response = &GetSessionStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetSessionStatus
+// 查询会话任务运行状态（支持批量）
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) GetSessionStatus(request *GetSessionStatusRequest) (response *GetSessionStatusResponse, err error) {
+    return c.GetSessionStatusWithContext(context.Background(), request)
+}
+
+// GetSessionStatus
+// 查询会话任务运行状态（支持批量）
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) GetSessionStatusWithContext(ctx context.Context, request *GetSessionStatusRequest) (response *GetSessionStatusResponse, err error) {
+    if request == nil {
+        request = NewGetSessionStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "GetSessionStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetSessionStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetSessionStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetTableRequest() (request *GetTableRequest) {
     request = &GetTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4351,6 +4409,64 @@ func (c *Client) ListWorkspacesWithContext(ctx context.Context, request *ListWor
     request.SetContext(ctx)
     
     response = NewListWorkspacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReadProductJsonRequest() (request *ReadProductJsonRequest) {
+    request = &ReadProductJsonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ReadProductJson")
+    
+    
+    return
+}
+
+func NewReadProductJsonResponse() (response *ReadProductJsonResponse) {
+    response = &ReadProductJsonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReadProductJson
+// databuddy 产物获取接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) ReadProductJson(request *ReadProductJsonRequest) (response *ReadProductJsonResponse, err error) {
+    return c.ReadProductJsonWithContext(context.Background(), request)
+}
+
+// ReadProductJson
+// databuddy 产物获取接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_UGRUSERNOTEXIST = "InvalidParameter.UGRUserNotExist"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXIST = "InvalidParameterValue.GroupNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDGROUPID = "InvalidParameterValue.InvalidGroupId"
+//  UNSUPPORTEDOPERATION_DELETESYSTEMGROUPFAIL = "UnsupportedOperation.DeleteSystemGroupFail"
+//  UNSUPPORTEDOPERATION_UPDATESYSTEMGROUPFAIL = "UnsupportedOperation.UpdateSystemGroupFail"
+func (c *Client) ReadProductJsonWithContext(ctx context.Context, request *ReadProductJsonRequest) (response *ReadProductJsonResponse, err error) {
+    if request == nil {
+        request = NewReadProductJsonRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ReadProductJson")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReadProductJson require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReadProductJsonResponse()
     err = c.Send(request, response)
     return
 }

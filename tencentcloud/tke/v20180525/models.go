@@ -22858,12 +22858,39 @@ func (r *RollbackClusterReleaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RotateClusterTokenRequestParams struct {
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
+	// <p>集群类型，枚举类型：TKEServerless、TKE，为对应集群类型。默认TKE</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// <p>执行操作，枚举类型：CreateNewToken、RevokeOldToken、RecoverOldToken。<br>CreateNewToken：创建新的token并使之生效，注意默认最多有两个token同时生效，需要多个token生效，Force必须为true。<br>RevokeOldToken：删除老的token并使之失效，此时ClusterToken是必传。<br>RecoverOldToken：恢复老的token并使之生效，此时ClusterToken是必传，必须有对应的RevokeOldToken任务且任务成功才可以调用。</p>
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// <p>集群token，只有Operation为RevokeOldToken和RecoverOldToken时需要传入。</p>
+	ClusterToken *string `json:"ClusterToken,omitnil,omitempty" name:"ClusterToken"`
+
+	// <p>默认false，只有Operation为CreateNewToken时需要，设置为true时，才可以超过两个token。</p>
+	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
 }
 
 type RotateClusterTokenRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群类型，枚举类型：TKEServerless、TKE，为对应集群类型。默认TKE</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// <p>执行操作，枚举类型：CreateNewToken、RevokeOldToken、RecoverOldToken。<br>CreateNewToken：创建新的token并使之生效，注意默认最多有两个token同时生效，需要多个token生效，Force必须为true。<br>RevokeOldToken：删除老的token并使之失效，此时ClusterToken是必传。<br>RecoverOldToken：恢复老的token并使之生效，此时ClusterToken是必传，必须有对应的RevokeOldToken任务且任务成功才可以调用。</p>
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// <p>集群token，只有Operation为RevokeOldToken和RecoverOldToken时需要传入。</p>
+	ClusterToken *string `json:"ClusterToken,omitnil,omitempty" name:"ClusterToken"`
+
+	// <p>默认false，只有Operation为CreateNewToken时需要，设置为true时，才可以超过两个token。</p>
+	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
 }
 
 func (r *RotateClusterTokenRequest) ToJsonString() string {
@@ -22878,7 +22905,11 @@ func (r *RotateClusterTokenRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterId")
+	delete(f, "ClusterType")
+	delete(f, "Operation")
+	delete(f, "ClusterToken")
+	delete(f, "Force")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RotateClusterTokenRequest has unknown keys!", "")
 	}

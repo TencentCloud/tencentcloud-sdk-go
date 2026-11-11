@@ -4925,6 +4925,88 @@ func (c *Client) ModifyCloudSliceTaskWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyCloudTranscriptionRequest() (request *ModifyCloudTranscriptionRequest) {
+    request = &ModifyCloudTranscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "ModifyCloudTranscription")
+    
+    
+    return
+}
+
+func NewModifyCloudTranscriptionResponse() (response *ModifyCloudTranscriptionResponse) {
+    response = &ModifyCloudTranscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCloudTranscription
+// 成功开启转录后，可以使用此接口来更新转录任务。仅在转录任务进行时有效，转录退出后更新将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CTUNSUPPORTMETHOD = "FailedOperation.CTUnsupportMethod"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CTINTERNALERROR = "InternalError.CTInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCloudTranscription(request *ModifyCloudTranscriptionRequest) (response *ModifyCloudTranscriptionResponse, err error) {
+    return c.ModifyCloudTranscriptionWithContext(context.Background(), request)
+}
+
+// ModifyCloudTranscription
+// 成功开启转录后，可以使用此接口来更新转录任务。仅在转录任务进行时有效，转录退出后更新将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CTUNSUPPORTMETHOD = "FailedOperation.CTUnsupportMethod"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CTINTERNALERROR = "InternalError.CTInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCloudTranscriptionWithContext(ctx context.Context, request *ModifyCloudTranscriptionRequest) (response *ModifyCloudTranscriptionResponse, err error) {
+    if request == nil {
+        request = NewModifyCloudTranscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "ModifyCloudTranscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCloudTranscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCloudTranscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPictureRequest() (request *ModifyPictureRequest) {
     request = &ModifyPictureRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1232,6 +1232,9 @@ const (
 	// 指定的CDC已存在本地网关。
 	UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = "UnsupportedOperation.LocalGatewayAlreadyExists"
 
+	// 同地域对等连接不支持该参数
+	UNSUPPORTEDOPERATION_LOCALVPCPEERNOTSUPPORTPARAM = "UnsupportedOperation.LocalVpcPeerNotSupportParam"
+
 	// 资源被锁定。
 	UNSUPPORTEDOPERATION_LOCKEDRESOURCES = "UnsupportedOperation.LockedResources"
 

@@ -319,16 +319,16 @@ type ChargePrepaid struct {
 }
 
 type ChcDeployExtraConfig struct {
-	// minos类型。是使用腾讯云的minios，还是客户自己的minios。
+	// <p>MiniOS类型。是使用腾讯云的MiniOS，还是客户私有的MiniOS。</p><p>枚举值：</p><ul><li>public： 腾讯云的MiniOS。</li><li>private： 客户私有的MiniOS。</li></ul>
 	MiniOsType *string `json:"MiniOsType,omitnil,omitempty" name:"MiniOsType"`
 
-	// 服务器的架构和启动方式。取值为x86_legacy, arm_uefi。
+	// <p>服务器的架构和启动方式。</p><p>枚举值：</p><ul><li>x86_legacy： X86架构、Legacy启动模式。</li><li>x86_uefi： X86架构、UEFI启动模式。</li><li>arm_uefi： ARM架构，UEFI启动模式。</li></ul>
 	BootType *string `json:"BootType,omitnil,omitempty" name:"BootType"`
 
-	// PXE使用的引导文件。默认为pxelinux.0。
+	// <p>PXE使用的引导文件。默认为pxelinux.0。</p>
 	BootFile *string `json:"BootFile,omitnil,omitempty" name:"BootFile"`
 
-	// tftp服务器的ip地址。
+	// <p>TFTP服务器的IP地址。</p>
 	NextServerAddress *string `json:"NextServerAddress,omitnil,omitempty" name:"NextServerAddress"`
 }
 
@@ -467,45 +467,51 @@ type ChcHostDeniedActions struct {
 
 // Predefined struct for user
 type ConfigureChcAssistVpcRequestParams struct {
-	// CHC物理服务器的实例Id。
+	// <p>CHC物理服务器ID。</p>
 	ChcIds []*string `json:"ChcIds,omitnil,omitempty" name:"ChcIds"`
 
-	// 带外网络信息。
+	// <p>带外网络信息。</p>
 	BmcVirtualPrivateCloud *VirtualPrivateCloud `json:"BmcVirtualPrivateCloud,omitnil,omitempty" name:"BmcVirtualPrivateCloud"`
 
-	// 带外网络的安全组列表
+	// <p>带外网络的安全组列表。</p>
 	BmcSecurityGroupIds []*string `json:"BmcSecurityGroupIds,omitnil,omitempty" name:"BmcSecurityGroupIds"`
 
-	// 部署网络信息。
+	// <p>部署网络信息。</p>
 	DeployVirtualPrivateCloud *VirtualPrivateCloud `json:"DeployVirtualPrivateCloud,omitnil,omitempty" name:"DeployVirtualPrivateCloud"`
 
-	// 部署网络的安全组列表
+	// <p>部署网络的安全组列表。</p>
 	DeploySecurityGroupIds []*string `json:"DeploySecurityGroupIds,omitnil,omitempty" name:"DeploySecurityGroupIds"`
 
-	// 部署网络的附加参数，用于指定minios类型、bios引导模式等
+	// <p>部署网络的附加参数，用于指定DHCP选项、bios引导模式等配置。</p>
 	ChcDeployExtraConfig *ChcDeployExtraConfig `json:"ChcDeployExtraConfig,omitnil,omitempty" name:"ChcDeployExtraConfig"`
+
+	// <p>是否跳过带外检查。</p><p>默认值：false</p>
+	SkipBmcCheck *bool `json:"SkipBmcCheck,omitnil,omitempty" name:"SkipBmcCheck"`
 }
 
 type ConfigureChcAssistVpcRequest struct {
 	*tchttp.BaseRequest
 	
-	// CHC物理服务器的实例Id。
+	// <p>CHC物理服务器ID。</p>
 	ChcIds []*string `json:"ChcIds,omitnil,omitempty" name:"ChcIds"`
 
-	// 带外网络信息。
+	// <p>带外网络信息。</p>
 	BmcVirtualPrivateCloud *VirtualPrivateCloud `json:"BmcVirtualPrivateCloud,omitnil,omitempty" name:"BmcVirtualPrivateCloud"`
 
-	// 带外网络的安全组列表
+	// <p>带外网络的安全组列表。</p>
 	BmcSecurityGroupIds []*string `json:"BmcSecurityGroupIds,omitnil,omitempty" name:"BmcSecurityGroupIds"`
 
-	// 部署网络信息。
+	// <p>部署网络信息。</p>
 	DeployVirtualPrivateCloud *VirtualPrivateCloud `json:"DeployVirtualPrivateCloud,omitnil,omitempty" name:"DeployVirtualPrivateCloud"`
 
-	// 部署网络的安全组列表
+	// <p>部署网络的安全组列表。</p>
 	DeploySecurityGroupIds []*string `json:"DeploySecurityGroupIds,omitnil,omitempty" name:"DeploySecurityGroupIds"`
 
-	// 部署网络的附加参数，用于指定minios类型、bios引导模式等
+	// <p>部署网络的附加参数，用于指定DHCP选项、bios引导模式等配置。</p>
 	ChcDeployExtraConfig *ChcDeployExtraConfig `json:"ChcDeployExtraConfig,omitnil,omitempty" name:"ChcDeployExtraConfig"`
+
+	// <p>是否跳过带外检查。</p><p>默认值：false</p>
+	SkipBmcCheck *bool `json:"SkipBmcCheck,omitnil,omitempty" name:"SkipBmcCheck"`
 }
 
 func (r *ConfigureChcAssistVpcRequest) ToJsonString() string {
@@ -526,6 +532,7 @@ func (r *ConfigureChcAssistVpcRequest) FromJsonString(s string) error {
 	delete(f, "DeployVirtualPrivateCloud")
 	delete(f, "DeploySecurityGroupIds")
 	delete(f, "ChcDeployExtraConfig")
+	delete(f, "SkipBmcCheck")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConfigureChcAssistVpcRequest has unknown keys!", "")
 	}

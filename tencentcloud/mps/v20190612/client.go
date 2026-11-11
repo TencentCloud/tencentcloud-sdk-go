@@ -1607,6 +1607,56 @@ func (c *Client) CreateMediaEvaluationWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateModelChatTaskRequest() (request *CreateModelChatTaskRequest) {
+    request = &CreateModelChatTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateModelChatTask")
+    
+    
+    return
+}
+
+func NewCreateModelChatTaskResponse() (response *CreateModelChatTaskResponse) {
+    response = &CreateModelChatTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateModelChatTask
+// 提交异步多模态理解任务，返回 TaskId
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateModelChatTask(request *CreateModelChatTaskRequest) (response *CreateModelChatTaskResponse, err error) {
+    return c.CreateModelChatTaskWithContext(context.Background(), request)
+}
+
+// CreateModelChatTask
+// 提交异步多模态理解任务，返回 TaskId
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateModelChatTaskWithContext(ctx context.Context, request *CreateModelChatTaskRequest) (response *CreateModelChatTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateModelChatTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateModelChatTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateModelChatTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateModelChatTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePersonSampleRequest() (request *CreatePersonSampleRequest) {
     request = &CreatePersonSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6783,6 +6833,56 @@ func (c *Client) DescribeMediaMetaDataWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeMediaMetaDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeModelChatTaskRequest() (request *DescribeModelChatTaskRequest) {
+    request = &DescribeModelChatTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeModelChatTask")
+    
+    
+    return
+}
+
+func NewDescribeModelChatTaskResponse() (response *DescribeModelChatTaskResponse) {
+    response = &DescribeModelChatTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModelChatTask
+// 按 TaskId 查询多模态理解任务结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeModelChatTask(request *DescribeModelChatTaskRequest) (response *DescribeModelChatTaskResponse, err error) {
+    return c.DescribeModelChatTaskWithContext(context.Background(), request)
+}
+
+// DescribeModelChatTask
+// 按 TaskId 查询多模态理解任务结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeModelChatTaskWithContext(ctx context.Context, request *DescribeModelChatTaskRequest) (response *DescribeModelChatTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelChatTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeModelChatTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelChatTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelChatTaskResponse()
     err = c.Send(request, response)
     return
 }

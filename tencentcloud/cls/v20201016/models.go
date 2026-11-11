@@ -16748,8 +16748,11 @@ type DlcTableInfo struct {
 }
 
 type DynamicIndex struct {
-	// 键值索引自动配置开关
+	// <p>键值索引自动配置开关</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>索引的分词符，其中的每个字符代表一个分词符；<br>仅支持英文符号、\n\t\r及转义符\；<br>注意：\n\t\r本身已被转义，直接使用双引号包裹即可作为入参，无需再次转义。使用API Explorer进行调试时请使用JSON参数输入方式，以避免\n\t\r被重复转义</p>
+	Tokenizer *string `json:"Tokenizer,omitnil,omitempty" name:"Tokenizer"`
 }
 
 type EBPFCollectFilters struct {

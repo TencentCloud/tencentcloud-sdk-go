@@ -8625,7 +8625,7 @@ type CreateProcedureTemplateRequestParams struct {
 	// <p>视频处理类型任务参数。</p>
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitnil,omitempty" name:"MediaProcessTask"`
 
-	// <p>AI 内容审核类型任务参数 *。<br><font color="red">*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
+	// <p>AI 内容审核类型任务参数 *。<font color="red">*该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitnil,omitempty" name:"AiContentReviewTask"`
 
 	// <p>AI 内容分析类型任务参数。</p>
@@ -8661,7 +8661,7 @@ type CreateProcedureTemplateRequest struct {
 	// <p>视频处理类型任务参数。</p>
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitnil,omitempty" name:"MediaProcessTask"`
 
-	// <p>AI 内容审核类型任务参数 *。<br><font color="red">*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
+	// <p>AI 内容审核类型任务参数 *。<font color="red">*该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitnil,omitempty" name:"AiContentReviewTask"`
 
 	// <p>AI 内容分析类型任务参数。</p>

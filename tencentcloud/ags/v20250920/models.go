@@ -2522,6 +2522,117 @@ func (r *DescribeDeploymentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEventCenterEventsRequestParams struct {
+	// <p>事件筛选条件，用于按事件来源、对象、类型、级别及工具等信息查询事件。</p><p>入参限制：最多支持 12 个筛选条件，同名筛选条件不可重复；每个条件支持 1～20 个值，每个值非空且不超过 256 字节。</p><p>支持的筛选字段：Source、ObjectType、ObjectId、EventType、EventLevel、Reason、EventId、ToolId、ToolType、Message。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>查询开始时间，包含该时间点。</p><p>参数格式：RFC3339 格式，例如 2026-10-23T13:28:00Z。</p><p>入参限制：必须早于 EndTime，且不能早于当前时间前 7 天。</p><p>默认值：不传时默认为 EndTime 前 1 小时。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，不包含该时间点。</p><p>参数格式：RFC3339 格式，例如 2026-10-23T14:28:00Z。</p><p>入参限制：必须晚于 StartTime，不应晚于当前时间。</p><p>默认值：不传时默认为当前时间。</p><p>查询范围为 [StartTime, EndTime)。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>分页偏移量。</p><p>取值范围：[0, 10000]</p><p>默认值：0</p><p>Raw 模式按去重后的事件分页，Aggregate 模式按聚合结果分页。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单次返回的最大结果条数。</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>事件结果的时间排序方向。</p><p>枚举值：</p><ul><li>Asc： 按时间升序排列，较早的事件在前。</li><li>Desc： 按时间降序排列，较新的事件在前。默认值。</li></ul><p>默认值：Desc</p><p>Raw 模式按事件发生时间排序；Aggregate 模式按聚合结果最近发生时间排序。</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>事件查询模式。</p><p>枚举值：</p><ul><li>Raw： 明细模式，返回去重后的事件明细。默认值。</li><li>Aggregate： 聚合模式，返回聚合结果及事件数量、首次和最近发生时间；生命周期事件仍逐条展示。</li></ul><p>默认值：Raw</p><p>Raw 返回去重后的事件明细；Aggregate 返回聚合结果。</p>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+}
+
+type DescribeEventCenterEventsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>事件筛选条件，用于按事件来源、对象、类型、级别及工具等信息查询事件。</p><p>入参限制：最多支持 12 个筛选条件，同名筛选条件不可重复；每个条件支持 1～20 个值，每个值非空且不超过 256 字节。</p><p>支持的筛选字段：Source、ObjectType、ObjectId、EventType、EventLevel、Reason、EventId、ToolId、ToolType、Message。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>查询开始时间，包含该时间点。</p><p>参数格式：RFC3339 格式，例如 2026-10-23T13:28:00Z。</p><p>入参限制：必须早于 EndTime，且不能早于当前时间前 7 天。</p><p>默认值：不传时默认为 EndTime 前 1 小时。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，不包含该时间点。</p><p>参数格式：RFC3339 格式，例如 2026-10-23T14:28:00Z。</p><p>入参限制：必须晚于 StartTime，不应晚于当前时间。</p><p>默认值：不传时默认为当前时间。</p><p>查询范围为 [StartTime, EndTime)。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>分页偏移量。</p><p>取值范围：[0, 10000]</p><p>默认值：0</p><p>Raw 模式按去重后的事件分页，Aggregate 模式按聚合结果分页。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单次返回的最大结果条数。</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>事件结果的时间排序方向。</p><p>枚举值：</p><ul><li>Asc： 按时间升序排列，较早的事件在前。</li><li>Desc： 按时间降序排列，较新的事件在前。默认值。</li></ul><p>默认值：Desc</p><p>Raw 模式按事件发生时间排序；Aggregate 模式按聚合结果最近发生时间排序。</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>事件查询模式。</p><p>枚举值：</p><ul><li>Raw： 明细模式，返回去重后的事件明细。默认值。</li><li>Aggregate： 聚合模式，返回聚合结果及事件数量、首次和最近发生时间；生命周期事件仍逐条展示。</li></ul><p>默认值：Raw</p><p>Raw 返回去重后的事件明细；Aggregate 返回聚合结果。</p>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+}
+
+func (r *DescribeEventCenterEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventCenterEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "Mode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEventCenterEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEventCenterEventsResponseParams struct {
+	// <p>本次查询返回的事件明细或聚合结果列表。无匹配结果时返回空数组。</p>
+	Events []*EventItem `json:"Events,omitnil,omitempty" name:"Events"`
+
+	// <p>符合查询条件的结果总数，不受 Offset 和 Limit 影响。Raw 模式为去重后的事件总数，Aggregate 模式为聚合结果总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>本次查询实际使用的开始时间，RFC3339 格式，包含该时间点。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>本次查询实际使用的结束时间，RFC3339 格式，不包含该时间点。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>本次查询实际使用的模式。</p><p>枚举值：</p><ul><li>Raw： 明细模式。</li><li>Aggregate： 聚合模式。</li></ul>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEventCenterEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEventCenterEventsResponseParams `json:"Response"`
+}
+
+func (r *DescribeEventCenterEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventCenterEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEventsRequestParams struct {
 	// <p>会话所属空间 ID。</p>
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
@@ -4159,6 +4270,47 @@ type EventInfo struct {
 	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 }
 
+type EventItem struct {
+	// <p>事件唯一标识，用于区分事件及识别重复投递。聚合模式下为该聚合结果代表事件的标识。</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// <p>事件来源。</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>事件关联的对象类型。</p>
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// <p>事件关联的对象 ID。</p>
+	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
+
+	// <p>事件级别。Normal 表示正常事件，Warning 表示告警事件。</p>
+	EventLevel *string `json:"EventLevel,omitnil,omitempty" name:"EventLevel"`
+
+	// <p>事件类型。</p>
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// <p>事件原因标识，无原因信息时不返回。例如 Manual 表示通过停止接口主动停止，包括人工、脚本或 SDK 调用，不代表一定由人工操作。</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// <p>事件的说明文本。建议使用 EventType 和 Reason 判断事件类型及原因，不依赖说明文本进行业务判断。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>事件扩展信息，以 JSON 字符串返回。当前 Sandbox 事件包含 ToolId、ToolType，以及可选的 ToolName。调用方需解析 JSON 字符串后读取扩展字段。</p>
+	Extensions *string `json:"Extensions,omitnil,omitempty" name:"Extensions"`
+
+	// <p>事件发生时间，RFC3339 格式。仅 Raw 模式返回。</p>
+	OccurredAt *string `json:"OccurredAt,omitnil,omitempty" name:"OccurredAt"`
+
+	// <p>当前查询范围内，该聚合结果包含的去重事件数。仅 Aggregate 模式返回。当前生命周期事件逐条展示，该值为 1。</p>
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// <p>当前查询范围内，该聚合结果中最早的事件发生时间，RFC3339 格式。仅 Aggregate 模式返回，不代表该对象历史上的首次事件时间。</p>
+	FirstOccurredAt *string `json:"FirstOccurredAt,omitnil,omitempty" name:"FirstOccurredAt"`
+
+	// <p>当前查询范围内，该聚合结果中最近的事件发生时间，RFC3339 格式。仅 Aggregate 模式返回，不代表该对象此后不会再发生事件。</p>
+	LastOccurredAt *string `json:"LastOccurredAt,omitnil,omitempty" name:"LastOccurredAt"`
+}
+
 type EventPartInfo struct {
 	// 文本内容，最大长度 8192 字符。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5342,7 +5494,7 @@ type StartSandboxInstanceRequestParams struct {
 	// <p>沙箱元数据</p>
 	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
-	// <p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果。</p>
+	// <p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果，当前仅支持WAA沙箱和GPU沙箱。</p>
 	StartMode *string `json:"StartMode,omitnil,omitempty" name:"StartMode"`
 }
 
@@ -5379,7 +5531,7 @@ type StartSandboxInstanceRequest struct {
 	// <p>沙箱元数据</p>
 	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
-	// <p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果。</p>
+	// <p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果，当前仅支持WAA沙箱和GPU沙箱。</p>
 	StartMode *string `json:"StartMode,omitnil,omitempty" name:"StartMode"`
 }
 

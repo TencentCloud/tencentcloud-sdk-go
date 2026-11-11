@@ -3194,6 +3194,14 @@ type AudioEnhanceConfig struct {
 	// <p>音频增强编辑。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioEnhanceEdit *AudioEnhanceEditConfig `json:"AudioEnhanceEdit,omitnil,omitempty" name:"AudioEnhanceEdit"`
+
+	// <p>音频超分配置。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioSR *AudioSRConfig `json:"AudioSR,omitnil,omitempty" name:"AudioSR"`
+
+	// <p>空间音频配置。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpatialAudio *SpatialAudioConfig `json:"SpatialAudio,omitnil,omitempty" name:"SpatialAudio"`
 }
 
 type AudioEnhanceEditConfig struct {
@@ -3202,6 +3210,18 @@ type AudioEnhanceEditConfig struct {
 
 	// <p>音频编辑类型</p><p>枚举值：</p><ul><li>restore： 修复</li></ul><p>开关开启时，必须显式指定枚举值</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type AudioSRConfig struct {
+	// <p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>音频超分类型</p><p>枚举值：</p><ul><li>premium_hd： 臻品高清版</li><li>premium_master： 臻品母带版</li></ul><p>默认值：premium_hd</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>目标采样率</p><p>枚举值：</p><ul><li>44100： 44.1kHz</li><li>48000： 48kHz</li><li>64000： 64kHz</li><li>88200： 88.2kHz</li><li>96000： 96kHz</li><li>192000： 192kHz</li></ul><p>默认值：48000</p><p>其中 192kHz 仅臻品母带版才可以使用</p>
+	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type AudioSeparateConfig struct {
@@ -3921,16 +3941,16 @@ type ClipRangeInfo struct {
 }
 
 type CloneViralAIGC struct {
-	// <p>视频时长</p><p>取值范围：[4, 15]</p>
+	// <p>视频时长</p><p>取值范围：[4, 30]</p><p>指定时取值范围随档位不同：flash 为 2-15, pro 为 4-30。</p>
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// <p>宽高比。旗舰版支持 16:9/4:3/1:1/3:4/9:16/21:9/adaptive，标准版支持16:9/1:1/9:16</p>
+	// <p>宽高比。可选 9:16、16:9、3:4、4:3、1:1、21:9、adaptive（自适应参考视频，flash 档不支持）。</p>
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
 
-	// <p>分辨率。支持720p（默认）/1080p/2k/4k</p>
+	// <p>分辨率。支持720p（默认）/1080p</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// <p>模式。flagship（高级版，默认）、standard（标准版）、depthcrafter(深度提取)</p>
+	// <p>模式。可选 pro（专业版）、 flash（高级版，默认）</p>
 	ModelTier *string `json:"ModelTier,omitnil,omitempty" name:"ModelTier"`
 
 	// <p>深度估计结果是否含音频， 默认不含</p>
@@ -5603,7 +5623,7 @@ type CreateAigcImageTaskRequestParams struct {
 	// <p>用于传入模型要求的额外参数。</p>
 	ExtraParameters *AigcImageExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
 
-	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 </p><ol><li>Hunyuan 3.0，支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。</li><li>Qwen 0925，支持自由设置分辨率宽高，合法总像素范围 [512x512=261632, 2048x2048=4194304]。</li></ol><p>示例： {"size":"1024x1024"}。</p>
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 </p><ol><li>Hunyuan 3.0，支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。</li><li>Qwen 0925，支持自由设置分辨率宽高，合法总像素范围 [512x512=261632, 2048x2048=4194304]。</li><li>Hunyuan 3.5-preivew, 支持多轮编辑，可通过携带previous_task_id的方式来继续编辑图片。</li></ol><p>示例： {"size":"1024x1024"}， {"previous_task_id":"4-AigcVideo-56349234"}。</p>
 	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
 
 	// <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
@@ -5643,7 +5663,7 @@ type CreateAigcImageTaskRequest struct {
 	// <p>用于传入模型要求的额外参数。</p>
 	ExtraParameters *AigcImageExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
 
-	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 </p><ol><li>Hunyuan 3.0，支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。</li><li>Qwen 0925，支持自由设置分辨率宽高，合法总像素范围 [512x512=261632, 2048x2048=4194304]。</li></ol><p>示例： {"size":"1024x1024"}。</p>
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 </p><ol><li>Hunyuan 3.0，支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。</li><li>Qwen 0925，支持自由设置分辨率宽高，合法总像素范围 [512x512=261632, 2048x2048=4194304]。</li><li>Hunyuan 3.5-preivew, 支持多轮编辑，可通过携带previous_task_id的方式来继续编辑图片。</li></ol><p>示例： {"size":"1024x1024"}， {"previous_task_id":"4-AigcVideo-56349234"}。</p>
 	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
 
 	// <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
@@ -6851,6 +6871,80 @@ func (r *CreateMediaEvaluationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateMediaEvaluationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateModelChatTaskRequestParams struct {
+	// <p>模型标识</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>对话消息数组</p>
+	Messages []*ModelChatMessageItem `json:"Messages,omitnil,omitempty" name:"Messages"`
+
+	// <p>回调通知配置</p>
+	TaskNotifyConfig *ModelChatTaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
+}
+
+type CreateModelChatTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型标识</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>对话消息数组</p>
+	Messages []*ModelChatMessageItem `json:"Messages,omitnil,omitempty" name:"Messages"`
+
+	// <p>回调通知配置</p>
+	TaskNotifyConfig *ModelChatTaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
+}
+
+func (r *CreateModelChatTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelChatTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Model")
+	delete(f, "Messages")
+	delete(f, "TaskNotifyConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelChatTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateModelChatTaskResponseParams struct {
+	// <p>错误描述</p>
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateModelChatTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateModelChatTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateModelChatTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelChatTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13765,6 +13859,84 @@ func (r *DescribeMediaMetaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeModelChatTaskRequestParams struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeModelChatTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeModelChatTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelChatTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelChatTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelChatTaskResponseParams struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>响应生成时间</p>
+	Created *int64 `json:"Created,omitnil,omitempty" name:"Created"`
+
+	// <p>错误描述</p>
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>响应 ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>响应对象类型标识</p>
+	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
+
+	// <p>模型名称</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>候选回复数组</p>
+	Choices []*ModelChatCompletionChoice `json:"Choices,omitnil,omitempty" name:"Choices"`
+
+	// <p>token 用量统计</p>
+	Usage *ModelChatCompletionUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelChatTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelChatTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelChatTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelChatTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeOutput struct {
 	// <p>输出Id。</p>
 	OutputId *string `json:"OutputId,omitnil,omitempty" name:"OutputId"`
@@ -19536,38 +19708,38 @@ type ExtractBlindWatermarkConfig struct {
 
 // Predefined struct for user
 type ExtractBlindWatermarkRequestParams struct {
-	// 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-abseq：ab序列版权数字水印；</li>
+	// <p>数字水印类型，可选值：</p><li>blind-basic：基础版权数字水印；</li><li>blind-abseq：ab序列版权数字水印；</li><li>blind-vega：vega数字水印；</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 媒体处理的文件输入信息。
+	// <p>媒体处理的文件输入信息。</p>
 	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 
-	// 任务的事件通知信息，不填代表不获取事件通知。
+	// <p>任务的事件通知信息，不填代表不获取事件通知。</p>
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
-	// 提取数字水印任务配置
+	// <p>提取数字水印任务配置</p>
 	ExtractBlindWatermarkConfig *ExtractBlindWatermarkTaskConfig `json:"ExtractBlindWatermarkConfig,omitnil,omitempty" name:"ExtractBlindWatermarkConfig"`
 
-	// 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
+	// <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type ExtractBlindWatermarkRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-abseq：ab序列版权数字水印；</li>
+	// <p>数字水印类型，可选值：</p><li>blind-basic：基础版权数字水印；</li><li>blind-abseq：ab序列版权数字水印；</li><li>blind-vega：vega数字水印；</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 媒体处理的文件输入信息。
+	// <p>媒体处理的文件输入信息。</p>
 	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 
-	// 任务的事件通知信息，不填代表不获取事件通知。
+	// <p>任务的事件通知信息，不填代表不获取事件通知。</p>
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
-	// 提取数字水印任务配置
+	// <p>提取数字水印任务配置</p>
 	ExtractBlindWatermarkConfig *ExtractBlindWatermarkTaskConfig `json:"ExtractBlindWatermarkConfig,omitnil,omitempty" name:"ExtractBlindWatermarkConfig"`
 
-	// 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
+	// <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
@@ -19596,7 +19768,7 @@ func (r *ExtractBlindWatermarkRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExtractBlindWatermarkResponseParams struct {
-	// 任务 ID。
+	// <p>任务 ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22333,46 +22505,50 @@ type MediaUsageItem struct {
 }
 
 type MediaVideoStreamItem struct {
-	// 视频流的码率，单位：bps。
+	// <p>视频流的码率，单位：bps。</p>
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
-	// 视频流的高度，单位：px。
+	// <p>视频流的高度，单位：px。</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 视频流的宽度，单位：px。
+	// <p>视频流的宽度，单位：px。</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 视频流的编码格式，例如 h264。
+	// <p>视频流的编码格式，例如 h264。</p>
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 帧率，单位：hz。
+	// <p>帧率，单位：hz。</p>
 	Fps *int64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
-	// 色彩空间。
+	// <p>色彩空间。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColorPrimaries *string `json:"ColorPrimaries,omitnil,omitempty" name:"ColorPrimaries"`
 
-	// 色彩空间。
+	// <p>色彩空间。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColorSpace *string `json:"ColorSpace,omitnil,omitempty" name:"ColorSpace"`
 
-	// 色彩空间。
+	// <p>色彩空间。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColorTransfer *string `json:"ColorTransfer,omitnil,omitempty" name:"ColorTransfer"`
 
-	// HDR类型。
+	// <p>HDR类型。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HdrType *string `json:"HdrType,omitnil,omitempty" name:"HdrType"`
 
-	// 视频Codecs。
+	// <p>视频Codecs。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codecs *string `json:"Codecs,omitnil,omitempty" name:"Codecs"`
 
-	// 帧率分子部分
+	// <p>视频时长。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>帧率分子部分</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FpsNumerator *int64 `json:"FpsNumerator,omitnil,omitempty" name:"FpsNumerator"`
 
-	// 帧率分母部分
+	// <p>帧率分母部分</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FpsDenominator *int64 `json:"FpsDenominator,omitnil,omitempty" name:"FpsDenominator"`
 }
@@ -22383,6 +22559,119 @@ type Metadata struct {
 
 	// Value。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type ModelChatCompletionChoice struct {
+	// <p>候选回复在候选数组中的索引</p>
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// <p>结束原因</p>
+	FinishReason *string `json:"FinishReason,omitnil,omitempty" name:"FinishReason"`
+
+	// <p>模型回复消息体</p>
+	Message *ModelChatResponseMessage `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
+type ModelChatCompletionUsage struct {
+	// <p>输入 token 数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PromptTokens *int64 `json:"PromptTokens,omitnil,omitempty" name:"PromptTokens"`
+
+	// <p>输出 token 数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompletionTokens *int64 `json:"CompletionTokens,omitnil,omitempty" name:"CompletionTokens"`
+
+	// <p>总 token 数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+}
+
+type ModelChatContentPart struct {
+	// <p>内容类型</p><p>枚举值：</p><ul><li>text： 文本内容</li><li>input_image： 图片输入</li><li>input_video： 视频输入</li><li>input_audio： 音频输入</li><li>input_file： 文件输入</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>文本消息</p><p>Type=text 时必填</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>图片输入</p><p>Type=input_image 时必填</p>
+	InputImage *ModelChatInputImage `json:"InputImage,omitnil,omitempty" name:"InputImage"`
+
+	// <p>视频输入</p><p>Type=input_video 时必填</p>
+	InputVideo *ModelChatInputVideo `json:"InputVideo,omitnil,omitempty" name:"InputVideo"`
+
+	// <p>音频输入</p><p>Type=input_audio 时必填</p>
+	InputAudio *ModelChatInputAudio `json:"InputAudio,omitnil,omitempty" name:"InputAudio"`
+
+	// <p>文件输入</p><p>Type=input_file 时必填</p>
+	InputFile *ModelChatInputFile `json:"InputFile,omitnil,omitempty" name:"InputFile"`
+}
+
+type ModelChatDataInputInfo struct {
+	// <p>Base64输入</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type ModelChatInputAudio struct {
+	// <p>媒体文件输入</p>
+	InputInfo *ModelChatMediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// <p>音频格式</p>
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
+type ModelChatInputFile struct {
+	// <p>媒体文件输入</p>
+	InputInfo *ModelChatMediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// <p>文件名</p>
+	Filename *string `json:"Filename,omitnil,omitempty" name:"Filename"`
+}
+
+type ModelChatInputImage struct {
+	// <p>媒体文件输入</p>
+	InputInfo *ModelChatMediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+}
+
+type ModelChatInputVideo struct {
+	// <p>媒体文件输入</p>
+	InputInfo *ModelChatMediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+}
+
+type ModelChatMediaInputInfo struct {
+	// <p>输入类型</p><p>枚举值：</p><ul><li>URL： Url输入</li><li>DATA： Base64输入</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>URL输入配置</p>
+	UrlInputInfo *ModelChatUrlInputInfo `json:"UrlInputInfo,omitnil,omitempty" name:"UrlInputInfo"`
+
+	// <p>Base64输入配置</p>
+	DataInputInfo *ModelChatDataInputInfo `json:"DataInputInfo,omitnil,omitempty" name:"DataInputInfo"`
+}
+
+type ModelChatMessageItem struct {
+	// <p>角色</p><p>枚举值：</p><ul><li>system： 系统消息</li><li>user： 用户消息</li><li>assistant： 模型消息</li></ul>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>输入内容</p>
+	Content []*ModelChatContentPart `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type ModelChatResponseMessage struct {
+	// <p>角色标识</p><p>枚举值：</p><ul><li>assistant： 模型消息</li><li>user： 用户消息</li><li>system： 系统消息</li></ul>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>模型生成的识别文本</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type ModelChatTaskNotifyConfig struct {
+	// <p>回调 URL</p>
+	NotifyUrl *string `json:"NotifyUrl,omitnil,omitempty" name:"NotifyUrl"`
+}
+
+type ModelChatUrlInputInfo struct {
+	// <p>Url输入</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 // Predefined struct for user
@@ -29650,6 +29939,15 @@ type SourceTag struct {
 
 	// sourcetag的value，支持1-200位的字母、数字下划线、中划线、英文句号、百分号（%）
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type SpatialAudioConfig struct {
+	// <p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>空间音频类型</p><p>枚举值：</p><ul><li>premium_immersive： 臻品全景声</li></ul><p>默认值：premium_immersive</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type Speakers struct {

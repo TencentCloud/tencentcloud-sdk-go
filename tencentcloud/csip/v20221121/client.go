@@ -1459,6 +1459,66 @@ func (c *Client) CreateAllAssetsExportJobWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateAssetBaselineRiskExportJobRequest() (request *CreateAssetBaselineRiskExportJobRequest) {
+    request = &CreateAssetBaselineRiskExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateAssetBaselineRiskExportJob")
+    
+    
+    return
+}
+
+func NewCreateAssetBaselineRiskExportJobResponse() (response *CreateAssetBaselineRiskExportJobResponse) {
+    response = &CreateAssetBaselineRiskExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAssetBaselineRiskExportJob
+// 创建资产基线风险导出任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAssetBaselineRiskExportJob(request *CreateAssetBaselineRiskExportJobRequest) (response *CreateAssetBaselineRiskExportJobResponse, err error) {
+    return c.CreateAssetBaselineRiskExportJobWithContext(context.Background(), request)
+}
+
+// CreateAssetBaselineRiskExportJob
+// 创建资产基线风险导出任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAssetBaselineRiskExportJobWithContext(ctx context.Context, request *CreateAssetBaselineRiskExportJobRequest) (response *CreateAssetBaselineRiskExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateAssetBaselineRiskExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateAssetBaselineRiskExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAssetBaselineRiskExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAssetBaselineRiskExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAssetComponentListExportJobRequest() (request *CreateAssetComponentListExportJobRequest) {
     request = &CreateAssetComponentListExportJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8107,6 +8167,66 @@ func (c *Client) DeleteAssetTagWithContext(ctx context.Context, request *DeleteA
     return
 }
 
+func NewDeleteBaselineIgnorePolicyRequest() (request *DeleteBaselineIgnorePolicyRequest) {
+    request = &DeleteBaselineIgnorePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteBaselineIgnorePolicy")
+    
+    
+    return
+}
+
+func NewDeleteBaselineIgnorePolicyResponse() (response *DeleteBaselineIgnorePolicyResponse) {
+    response = &DeleteBaselineIgnorePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBaselineIgnorePolicy
+// 删除基线忽略策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteBaselineIgnorePolicy(request *DeleteBaselineIgnorePolicyRequest) (response *DeleteBaselineIgnorePolicyResponse, err error) {
+    return c.DeleteBaselineIgnorePolicyWithContext(context.Background(), request)
+}
+
+// DeleteBaselineIgnorePolicy
+// 删除基线忽略策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteBaselineIgnorePolicyWithContext(ctx context.Context, request *DeleteBaselineIgnorePolicyRequest) (response *DeleteBaselineIgnorePolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteBaselineIgnorePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteBaselineIgnorePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBaselineIgnorePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBaselineIgnorePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBaselineSelfDefinedPolicyListRequest() (request *DeleteBaselineSelfDefinedPolicyListRequest) {
     request = &DeleteBaselineSelfDefinedPolicyListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13093,6 +13213,68 @@ func (c *Client) DescribeAlertListWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeAssetBaselineRiskListRequest() (request *DescribeAssetBaselineRiskListRequest) {
+    request = &DescribeAssetBaselineRiskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeAssetBaselineRiskList")
+    
+    
+    return
+}
+
+func NewDescribeAssetBaselineRiskListResponse() (response *DescribeAssetBaselineRiskListResponse) {
+    response = &DescribeAssetBaselineRiskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAssetBaselineRiskList
+// 获取资产风险列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetBaselineRiskList(request *DescribeAssetBaselineRiskListRequest) (response *DescribeAssetBaselineRiskListResponse, err error) {
+    return c.DescribeAssetBaselineRiskListWithContext(context.Background(), request)
+}
+
+// DescribeAssetBaselineRiskList
+// 获取资产风险列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetBaselineRiskListWithContext(ctx context.Context, request *DescribeAssetBaselineRiskListRequest) (response *DescribeAssetBaselineRiskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetBaselineRiskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeAssetBaselineRiskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetBaselineRiskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetBaselineRiskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetComponentListRequest() (request *DescribeAssetComponentListRequest) {
     request = &DescribeAssetComponentListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14959,6 +15141,70 @@ func (c *Client) DescribeBaselineFixRecordListWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeBaselineFixRecordListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineIgnorePolicyListRequest() (request *DescribeBaselineIgnorePolicyListRequest) {
+    request = &DescribeBaselineIgnorePolicyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeBaselineIgnorePolicyList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineIgnorePolicyListResponse() (response *DescribeBaselineIgnorePolicyListResponse) {
+    response = &DescribeBaselineIgnorePolicyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBaselineIgnorePolicyList
+// 获取基线忽略策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeBaselineIgnorePolicyList(request *DescribeBaselineIgnorePolicyListRequest) (response *DescribeBaselineIgnorePolicyListResponse, err error) {
+    return c.DescribeBaselineIgnorePolicyListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineIgnorePolicyList
+// 获取基线忽略策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeBaselineIgnorePolicyListWithContext(ctx context.Context, request *DescribeBaselineIgnorePolicyListRequest) (response *DescribeBaselineIgnorePolicyListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineIgnorePolicyListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeBaselineIgnorePolicyList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineIgnorePolicyList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineIgnorePolicyListResponse()
     err = c.Send(request, response)
     return
 }
@@ -18211,6 +18457,58 @@ func (c *Client) DescribeClusterAssetsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeClusterAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterBaselineRiskPolicyListRequest() (request *DescribeClusterBaselineRiskPolicyListRequest) {
+    request = &DescribeClusterBaselineRiskPolicyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeClusterBaselineRiskPolicyList")
+    
+    
+    return
+}
+
+func NewDescribeClusterBaselineRiskPolicyListResponse() (response *DescribeClusterBaselineRiskPolicyListResponse) {
+    response = &DescribeClusterBaselineRiskPolicyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterBaselineRiskPolicyList
+// 获取集群风险策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeClusterBaselineRiskPolicyList(request *DescribeClusterBaselineRiskPolicyListRequest) (response *DescribeClusterBaselineRiskPolicyListResponse, err error) {
+    return c.DescribeClusterBaselineRiskPolicyListWithContext(context.Background(), request)
+}
+
+// DescribeClusterBaselineRiskPolicyList
+// 获取集群风险策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeClusterBaselineRiskPolicyListWithContext(ctx context.Context, request *DescribeClusterBaselineRiskPolicyListRequest) (response *DescribeClusterBaselineRiskPolicyListResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterBaselineRiskPolicyListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeClusterBaselineRiskPolicyList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterBaselineRiskPolicyList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterBaselineRiskPolicyListResponse()
     err = c.Send(request, response)
     return
 }
@@ -21983,6 +22281,68 @@ func (c *Client) DescribeDspmAccessTopologyIpsWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeDspmAccessTopologyIpsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAccessTopologySummaryRequest() (request *DescribeDspmAccessTopologySummaryRequest) {
+    request = &DescribeDspmAccessTopologySummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAccessTopologySummary")
+    
+    
+    return
+}
+
+func NewDescribeDspmAccessTopologySummaryResponse() (response *DescribeDspmAccessTopologySummaryResponse) {
+    response = &DescribeDspmAccessTopologySummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAccessTopologySummary
+// 查询数据库访问拓扑（库级/表级）的概览卡片数据，包含来源IP数、访问账号数、被访问库数/表数、近7天与近30天访问次数。
+//
+// 数据由后台预聚合产生，查询侧无聚合开销；出参 LastCalcTime 为数据最后计算时间，可据此判断数据新鲜度。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAccessTopologySummary(request *DescribeDspmAccessTopologySummaryRequest) (response *DescribeDspmAccessTopologySummaryResponse, err error) {
+    return c.DescribeDspmAccessTopologySummaryWithContext(context.Background(), request)
+}
+
+// DescribeDspmAccessTopologySummary
+// 查询数据库访问拓扑（库级/表级）的概览卡片数据，包含来源IP数、访问账号数、被访问库数/表数、近7天与近30天访问次数。
+//
+// 数据由后台预聚合产生，查询侧无聚合开销；出参 LastCalcTime 为数据最后计算时间，可据此判断数据新鲜度。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAccessTopologySummaryWithContext(ctx context.Context, request *DescribeDspmAccessTopologySummaryRequest) (response *DescribeDspmAccessTopologySummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAccessTopologySummaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAccessTopologySummary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAccessTopologySummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAccessTopologySummaryResponse()
     err = c.Send(request, response)
     return
 }
@@ -27917,6 +28277,60 @@ func (c *Client) DescribeHostVulOverviewWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeHostVulRiskEventListRequest() (request *DescribeHostVulRiskEventListRequest) {
+    request = &DescribeHostVulRiskEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeHostVulRiskEventList")
+    
+    
+    return
+}
+
+func NewDescribeHostVulRiskEventListResponse() (response *DescribeHostVulRiskEventListResponse) {
+    response = &DescribeHostVulRiskEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHostVulRiskEventList
+// 查询主机漏洞风险事件列表，按风险记录维度返回漏洞基础信息、实例信息、风险状态和最近扫描时间。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeHostVulRiskEventList(request *DescribeHostVulRiskEventListRequest) (response *DescribeHostVulRiskEventListResponse, err error) {
+    return c.DescribeHostVulRiskEventListWithContext(context.Background(), request)
+}
+
+// DescribeHostVulRiskEventList
+// 查询主机漏洞风险事件列表，按风险记录维度返回漏洞基础信息、实例信息、风险状态和最近扫描时间。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeHostVulRiskEventListWithContext(ctx context.Context, request *DescribeHostVulRiskEventListRequest) (response *DescribeHostVulRiskEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostVulRiskEventListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeHostVulRiskEventList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostVulRiskEventList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostVulRiskEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHostVulRiskListRequest() (request *DescribeHostVulRiskListRequest) {
     request = &DescribeHostVulRiskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -27967,6 +28381,60 @@ func (c *Client) DescribeHostVulRiskListWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeHostVulRiskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostVulScanStatusRequest() (request *DescribeHostVulScanStatusRequest) {
+    request = &DescribeHostVulScanStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeHostVulScanStatus")
+    
+    
+    return
+}
+
+func NewDescribeHostVulScanStatusResponse() (response *DescribeHostVulScanStatusResponse) {
+    response = &DescribeHostVulScanStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHostVulScanStatus
+// 查询主机漏洞扫描状态，用于判断是否扫描过漏洞、首次漏洞扫描是否失败，以及首次扫描完成后的可修复漏洞状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeHostVulScanStatus(request *DescribeHostVulScanStatusRequest) (response *DescribeHostVulScanStatusResponse, err error) {
+    return c.DescribeHostVulScanStatusWithContext(context.Background(), request)
+}
+
+// DescribeHostVulScanStatus
+// 查询主机漏洞扫描状态，用于判断是否扫描过漏洞、首次漏洞扫描是否失败，以及首次扫描完成后的可修复漏洞状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeHostVulScanStatusWithContext(ctx context.Context, request *DescribeHostVulScanStatusRequest) (response *DescribeHostVulScanStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostVulScanStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeHostVulScanStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostVulScanStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostVulScanStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -40873,6 +41341,68 @@ func (c *Client) ModifyBanModeWithContext(ctx context.Context, request *ModifyBa
     return
 }
 
+func NewModifyBaselineIgnorePolicyRequest() (request *ModifyBaselineIgnorePolicyRequest) {
+    request = &ModifyBaselineIgnorePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyBaselineIgnorePolicy")
+    
+    
+    return
+}
+
+func NewModifyBaselineIgnorePolicyResponse() (response *ModifyBaselineIgnorePolicyResponse) {
+    response = &ModifyBaselineIgnorePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBaselineIgnorePolicy
+// 修改基线忽略策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyBaselineIgnorePolicy(request *ModifyBaselineIgnorePolicyRequest) (response *ModifyBaselineIgnorePolicyResponse, err error) {
+    return c.ModifyBaselineIgnorePolicyWithContext(context.Background(), request)
+}
+
+// ModifyBaselineIgnorePolicy
+// 修改基线忽略策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyBaselineIgnorePolicyWithContext(ctx context.Context, request *ModifyBaselineIgnorePolicyRequest) (response *ModifyBaselineIgnorePolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyBaselineIgnorePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyBaselineIgnorePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBaselineIgnorePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBaselineIgnorePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyBaselinePolicyRequest() (request *ModifyBaselinePolicyRequest) {
     request = &ModifyBaselinePolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -41551,6 +42081,58 @@ func (c *Client) ModifyCSIPRaspLicenseUnBindsWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewModifyCSIPRaspLicenseUnBindsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterAuditLogStatusRequest() (request *ModifyClusterAuditLogStatusRequest) {
+    request = &ModifyClusterAuditLogStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyClusterAuditLogStatus")
+    
+    
+    return
+}
+
+func NewModifyClusterAuditLogStatusResponse() (response *ModifyClusterAuditLogStatusResponse) {
+    response = &ModifyClusterAuditLogStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterAuditLogStatus
+// 修改集群审计日志状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyClusterAuditLogStatus(request *ModifyClusterAuditLogStatusRequest) (response *ModifyClusterAuditLogStatusResponse, err error) {
+    return c.ModifyClusterAuditLogStatusWithContext(context.Background(), request)
+}
+
+// ModifyClusterAuditLogStatus
+// 修改集群审计日志状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyClusterAuditLogStatusWithContext(ctx context.Context, request *ModifyClusterAuditLogStatusRequest) (response *ModifyClusterAuditLogStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterAuditLogStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyClusterAuditLogStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterAuditLogStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterAuditLogStatusResponse()
     err = c.Send(request, response)
     return
 }

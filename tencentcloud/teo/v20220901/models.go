@@ -24690,85 +24690,67 @@ type PartialModule struct {
 }
 
 type Plan struct {
-	// 套餐类型。取值有：
-	// <li>plan-trial: 试用版套餐；</li>
-	// <li>plan-personal: 个人版套餐；</li>
-	// <li>plan-basic: 基础版套餐；</li>
-	// <li>plan-standard: 标准版套餐；</li>
-	// <li>plan-enterprise-v2: 企业版套餐；</li>
-	// <li>plan-enterprise-model-a: 企业版 Model A 套餐。</li>
-	// <li>plan-enterprise: 旧企业版套餐。</li>
+	// <p>套餐类型。取值有：</p><li>plan-trial: 试用版套餐；</li><li>plan-personal: 个人版套餐；</li><li>plan-basic: 基础版套餐；</li><li>plan-standard: 标准版套餐；</li><li>plan-enterprise-v2: 企业版套餐；</li><li>plan-enterprise-model-a: 企业版 Model A 套餐；</li><li>plan-enterprise: 旧企业版套餐；</li><li>plan-makers-pro: Makers 专业版套餐；</li><li>plan-makers-business: Makers 商业版套餐；</li><p>枚举值：</p><ul><li>plan-trial： 试用版套餐</li><li>plan-personal： 个人版套餐</li><li>plan-basic： 基础版套餐</li><li>plan-standard： 标准版套餐</li><li>plan-enterprise-v2： 企业版套餐</li><li>plan-enterprise-model-a： 企业版 Model A 套餐</li><li>plan-enterprise： 旧企业版套餐</li><li>plan-makers-pro： Makers 专业版套餐</li><li>plan-makers-business： Makers 商业版套餐</li></ul>
 	PlanType *string `json:"PlanType,omitnil,omitempty" name:"PlanType"`
 
-	// 套餐 ID。形如 edgeone-2y041pblwaxe。
+	// <p>套餐 ID。形如 edgeone-2y041pblwaxe。</p>
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
-	// 服务区域，取值有：
-	// <li>mainland: 中国大陆；</li>
-	// <li>overseas: 全球（不包括中国大陆）；</li>
-	// <li>global: 全球（包括中国大陆）。</li>
+	// <p>服务区域，取值有：</p><li>mainland: 中国大陆；</li><li>overseas: 全球（不包括中国大陆）；</li><li>global: 全球（包括中国大陆）。</li>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 自动续费开关。取值有：
-	// <li>true: 已开启自动续费；</li>
-	// <li>false: 未开启自动续费。</li>
+	// <p>自动续费开关。取值有：</p><li>true: 已开启自动续费；</li><li>false: 未开启自动续费。</li>
 	AutoRenewal *bool `json:"AutoRenewal,omitnil,omitempty" name:"AutoRenewal"`
 
-	// 套餐状态，取值有：
-	// <li>normal：正常状态；</li>
-	// <li>expiring-soon：即将到期状态；</li>
-	// <li>expired：到期状态；</li>
-	// <li>isolated：隔离状态；</li>
-	// <li>overdue-isolated：欠费隔离状态。</li>
+	// <p>套餐状态，取值有：</p><li>normal：正常状态；</li><li>expiring-soon：即将到期状态；</li><li>expired：到期状态；</li><li>isolated：隔离状态；</li><li>overdue-isolated：欠费隔离状态。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 付费类型，取值有：
-	// <li>0: 后付费；</li>
-	// <li>1: 预付费。</li>
+	// <p>付费类型，取值有：</p><li>0: 后付费；</li><li>1: 预付费。</li>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 套餐绑定的站点信息，包括站点id和站点名称，站点状态。
+	// <p>套餐绑定的站点信息，包括站点id和站点名称，站点状态。</p>
 	ZonesInfo []*ZoneInfo `json:"ZonesInfo,omitnil,omitempty" name:"ZonesInfo"`
 
-	// 套餐内智能加速请求数规格，单位：次。
+	// <p>套餐内智能加速请求数规格，单位：次。</p>
 	SmartRequestCapacity *int64 `json:"SmartRequestCapacity,omitnil,omitempty" name:"SmartRequestCapacity"`
 
-	// 套餐内VAU规格，单位：个。
+	// <p>套餐内VAU规格，单位：个。</p>
 	VAUCapacity *int64 `json:"VAUCapacity,omitnil,omitempty" name:"VAUCapacity"`
 
-	// 套餐内内容加速流量规格，单位：字节。
+	// <p>套餐内内容加速流量规格，单位：字节。</p>
 	AccTrafficCapacity *int64 `json:"AccTrafficCapacity,omitnil,omitempty" name:"AccTrafficCapacity"`
 
-	// 套餐内智能加速流量规格，单位：字节。
+	// <p>套餐内客户端认证流量规格，单位：字节。</p>
+	ClientAuthTrafficCapacity *int64 `json:"ClientAuthTrafficCapacity,omitnil,omitempty" name:"ClientAuthTrafficCapacity"`
+
+	// <p>套餐内智能加速流量规格，单位：字节。</p>
 	SmartTrafficCapacity *int64 `json:"SmartTrafficCapacity,omitnil,omitempty" name:"SmartTrafficCapacity"`
 
-	// 套餐内DDoS防护流量规格，单位：字节。
+	// <p>套餐内DDoS防护流量规格，单位：字节。</p>
 	DDoSTrafficCapacity *int64 `json:"DDoSTrafficCapacity,omitnil,omitempty" name:"DDoSTrafficCapacity"`
 
-	// 套餐内安全流量规格，单位：字节。
+	// <p>套餐内安全流量规格，单位：字节。</p>
 	SecTrafficCapacity *int64 `json:"SecTrafficCapacity,omitnil,omitempty" name:"SecTrafficCapacity"`
 
-	// 套餐内安全请求数规格，单位：次。
+	// <p>套餐内安全请求数规格，单位：次。</p>
 	SecRequestCapacity *int64 `json:"SecRequestCapacity,omitnil,omitempty" name:"SecRequestCapacity"`
 
-	// 套餐内四层加速流量规格，单位：字节。
+	// <p>套餐内四层加速流量规格，单位：字节。</p>
 	L4TrafficCapacity *int64 `json:"L4TrafficCapacity,omitnil,omitempty" name:"L4TrafficCapacity"`
 
-	// 套餐内中国大陆网络优化流量规格，单位：字节。
+	// <p>套餐内中国大陆网络优化流量规格，单位：字节。</p>
 	CrossMLCTrafficCapacity *int64 `json:"CrossMLCTrafficCapacity,omitnil,omitempty" name:"CrossMLCTrafficCapacity"`
 
-	// 套餐是否允许绑定新站点，取值有：
-	// <li>true: 允许绑定新站点；</li>
-	// <li>false: 不允许绑定新站点。</li>
+	// <p>套餐是否允许绑定新站点，取值有：</p><li>true: 允许绑定新站点；</li><li>false: 不允许绑定新站点。</li>
 	Bindable *string `json:"Bindable,omitnil,omitempty" name:"Bindable"`
 
-	// 套餐生效时间。
+	// <p>套餐生效时间。</p>
 	EnabledTime *string `json:"EnabledTime,omitnil,omitempty" name:"EnabledTime"`
 
-	// 套餐过期时间。
+	// <p>套餐过期时间。</p>
 	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
-	// 套餐所支持的功能，取值有：<li>ContentAcceleration：内容加速功能；</li><li>SmartAcceleration：智能加速功能；</li><li>L4：四层加速功能；</li><li>Waf：高级 Web 防护；</li><li>QUIC：QUIC功能；</li><li>CrossMLC：中国大陆网络优化功能；</li><li>ProcessMedia：媒体处理功能；</li><li>L4DDoS：四层DDoS防护功能；</li>L7DDoS功能只会出现以下所有规格中的一项<li>L7DDoS.CM30G；七层DDoS防护功能-中国大陆30G保底带宽规格；</li><li>L7DDoS.CM60G；七层DDoS防护功能-中国大陆60G保底带宽规格；</li><li>L7DDoS.CM100G；七层DDoS防护功能-中国大陆100G保底带宽规格；</li><li>L7DDoS.Anycast300G；七层DDoS防护功能-中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.AnycastUnlimited；七层DDoS防护功能-中国大陆以外Anycast无上限全力防护规格；</li><li>L7DDoS.CM30G_Anycast300G；七层DDoS防护功能-中国大陆30G保底带宽规格，中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.CM60G_Anycast300G；七层DDoS防护功能-中国大陆60G保底带宽规格，中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.CM100G_Anycast300G；七层DDoS防护功能-中国大陆100G保底带宽规格，中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.CM30G_AnycastUnlimited；七层DDoS防护功能-中国大陆30G保底带宽规格，中国大陆以外Anycast无上限全力防护规格；</li><li>L7DDoS.CM60G_AnycastUnlimited；七层DDoS防护功能-中国大陆60G保底带宽规格，中国大陆以外Anycast无上限全力防护规格；</li><li>L7DDoS.CM100G_AnycastUnlimited；七层DDoS防护功能-中国大陆100G保底带宽规格，中国大陆以外Anycast无上限全力防护规格；</li>
+	// <p>套餐所支持的功能，取值有：<li>ContentAcceleration：内容加速功能；</li><li>SmartAcceleration：智能加速功能；</li><li>L4：四层加速功能；</li><li>Waf：高级 Web 防护；</li><li>QUIC：QUIC功能；</li><li>CrossMLC：中国大陆网络优化功能；</li><li>ProcessMedia：媒体处理功能；</li><li>L4DDoS：四层DDoS防护功能；</li>L7DDoS功能只会出现以下所有规格中的一项<li>L7DDoS.CM30G；七层DDoS防护功能-中国大陆30G保底带宽规格；</li><li>L7DDoS.CM60G；七层DDoS防护功能-中国大陆60G保底带宽规格；</li><li>L7DDoS.CM100G；七层DDoS防护功能-中国大陆100G保底带宽规格；</li><li>L7DDoS.Anycast300G；七层DDoS防护功能-中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.AnycastUnlimited；七层DDoS防护功能-中国大陆以外Anycast无上限全力防护规格；</li><li>L7DDoS.CM30G_Anycast300G；七层DDoS防护功能-中国大陆30G保底带宽规格，中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.CM60G_Anycast300G；七层DDoS防护功能-中国大陆60G保底带宽规格，中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.CM100G_Anycast300G；七层DDoS防护功能-中国大陆100G保底带宽规格，中国大陆以外Anycast300G保底带宽规格；</li><li>L7DDoS.CM30G_AnycastUnlimited；七层DDoS防护功能-中国大陆30G保底带宽规格，中国大陆以外Anycast无上限全力防护规格；</li><li>L7DDoS.CM60G_AnycastUnlimited；七层DDoS防护功能-中国大陆60G保底带宽规格，中国大陆以外Anycast无上限全力防护规格；</li><li>L7DDoS.CM100G_AnycastUnlimited；七层DDoS防护功能-中国大陆100G保底带宽规格，中国大陆以外Anycast无上限全力防护规格；</li></p>
 	Features []*string `json:"Features,omitnil,omitempty" name:"Features"`
 }
 

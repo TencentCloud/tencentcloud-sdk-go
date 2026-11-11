@@ -3737,6 +3737,66 @@ func (c *Client) DescribeMaintenanceWindowWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeModulesRequest() (request *DescribeModulesRequest) {
+    request = &DescribeModulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeModules")
+    
+    
+    return
+}
+
+func NewDescribeModulesResponse() (response *DescribeModulesResponse) {
+    response = &DescribeModulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModules
+// 本接口（DescribeModules）用于查询实例的扩展模块信息，包括模块的支持状态（是否支持）、启用状态（是否已启用）等信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) DescribeModules(request *DescribeModulesRequest) (response *DescribeModulesResponse, err error) {
+    return c.DescribeModulesWithContext(context.Background(), request)
+}
+
+// DescribeModules
+// 本接口（DescribeModules）用于查询实例的扩展模块信息，包括模块的支持状态（是否支持）、启用状态（是否已启用）等信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) DescribeModulesWithContext(ctx context.Context, request *DescribeModulesRequest) (response *DescribeModulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeModulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "redis", APIVersion, "DescribeModules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeParamTemplateInfoRequest() (request *DescribeParamTemplateInfoRequest) {
     request = &DescribeParamTemplateInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6541,6 +6601,68 @@ func (c *Client) ModifyMaintenanceWindowWithContext(ctx context.Context, request
     return
 }
 
+func NewModifyModuleRequest() (request *ModifyModuleRequest) {
+    request = &ModifyModuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyModule")
+    
+    
+    return
+}
+
+func NewModifyModuleResponse() (response *ModifyModuleResponse) {
+    response = &ModifyModuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyModule
+// 本接口（ModifyModule）用于修改实例扩展模块的启用状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) ModifyModule(request *ModifyModuleRequest) (response *ModifyModuleResponse, err error) {
+    return c.ModifyModuleWithContext(context.Background(), request)
+}
+
+// ModifyModule
+// 本接口（ModifyModule）用于修改实例扩展模块的启用状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) ModifyModuleWithContext(ctx context.Context, request *ModifyModuleRequest) (response *ModifyModuleResponse, err error) {
+    if request == nil {
+        request = NewModifyModuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "redis", APIVersion, "ModifyModule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyModuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNetworkConfigRequest() (request *ModifyNetworkConfigRequest) {
     request = &ModifyNetworkConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6737,6 +6859,136 @@ func (c *Client) ModifyReplicationGroupWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifySSLEncryptionModeRequest() (request *ModifySSLEncryptionModeRequest) {
+    request = &ModifySSLEncryptionModeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "ModifySSLEncryptionMode")
+    
+    
+    return
+}
+
+func NewModifySSLEncryptionModeResponse() (response *ModifySSLEncryptionModeResponse) {
+    response = &ModifySSLEncryptionModeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySSLEncryptionMode
+// 本接口（ModifySSLEncryptionMode）用于更改SSL加密模式
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+//  UNSUPPORTEDOPERATION_LIMITPROXYVERSION = "UnsupportedOperation.LimitProxyVersion"
+func (c *Client) ModifySSLEncryptionMode(request *ModifySSLEncryptionModeRequest) (response *ModifySSLEncryptionModeResponse, err error) {
+    return c.ModifySSLEncryptionModeWithContext(context.Background(), request)
+}
+
+// ModifySSLEncryptionMode
+// 本接口（ModifySSLEncryptionMode）用于更改SSL加密模式
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+//  UNSUPPORTEDOPERATION_LIMITPROXYVERSION = "UnsupportedOperation.LimitProxyVersion"
+func (c *Client) ModifySSLEncryptionModeWithContext(ctx context.Context, request *ModifySSLEncryptionModeRequest) (response *ModifySSLEncryptionModeResponse, err error) {
+    if request == nil {
+        request = NewModifySSLEncryptionModeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "redis", APIVersion, "ModifySSLEncryptionMode")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySSLEncryptionMode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySSLEncryptionModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyValkeyModuleRequest() (request *ModifyValkeyModuleRequest) {
+    request = &ModifyValkeyModuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyValkeyModule")
+    
+    
+    return
+}
+
+func NewModifyValkeyModuleResponse() (response *ModifyValkeyModuleResponse) {
+    response = &ModifyValkeyModuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyValkeyModule
+// 本接口（ModifyValkeyModule）用于修改Valkey实例扩展模块的启用状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) ModifyValkeyModule(request *ModifyValkeyModuleRequest) (response *ModifyValkeyModuleResponse, err error) {
+    return c.ModifyValkeyModuleWithContext(context.Background(), request)
+}
+
+// ModifyValkeyModule
+// 本接口（ModifyValkeyModule）用于修改Valkey实例扩展模块的启用状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) ModifyValkeyModuleWithContext(ctx context.Context, request *ModifyValkeyModuleRequest) (response *ModifyValkeyModuleResponse, err error) {
+    if request == nil {
+        request = NewModifyValkeyModuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "redis", APIVersion, "ModifyValkeyModule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyValkeyModule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyValkeyModuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOpenLogRequest() (request *OpenLogRequest) {
     request = &OpenLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6761,11 +7013,12 @@ func NewOpenLogResponse() (response *OpenLogResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
-//  INTERNALERROR_CAMAUTHOSSRESPONSERETURNCODEERROR = "InternalError.CamAuthOssResponseReturnCodeError"
-//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
-//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 func (c *Client) OpenLog(request *OpenLogRequest) (response *OpenLogResponse, err error) {
     return c.OpenLogWithContext(context.Background(), request)
 }
@@ -6775,11 +7028,12 @@ func (c *Client) OpenLog(request *OpenLogRequest) (response *OpenLogResponse, er
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
-//  INTERNALERROR_CAMAUTHOSSRESPONSERETURNCODEERROR = "InternalError.CamAuthOssResponseReturnCodeError"
-//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
-//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 func (c *Client) OpenLogWithContext(ctx context.Context, request *OpenLogRequest) (response *OpenLogResponse, err error) {
     if request == nil {
         request = NewOpenLogRequest()
@@ -7509,6 +7763,74 @@ func (c *Client) SwitchProxyWithContext(ctx context.Context, request *SwitchProx
     request.SetContext(ctx)
     
     response = NewSwitchProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateSSLCertRequest() (request *UpdateSSLCertRequest) {
+    request = &UpdateSSLCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "UpdateSSLCert")
+    
+    
+    return
+}
+
+func NewUpdateSSLCertResponse() (response *UpdateSSLCertResponse) {
+    response = &UpdateSSLCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateSSLCert
+// 本接口（UpdateSSLCert）用于更新SSL密钥信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+//  UNSUPPORTEDOPERATION_LIMITPROXYVERSION = "UnsupportedOperation.LimitProxyVersion"
+func (c *Client) UpdateSSLCert(request *UpdateSSLCertRequest) (response *UpdateSSLCertResponse, err error) {
+    return c.UpdateSSLCertWithContext(context.Background(), request)
+}
+
+// UpdateSSLCert
+// 本接口（UpdateSSLCert）用于更新SSL密钥信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+//  UNSUPPORTEDOPERATION_LIMITPROXYVERSION = "UnsupportedOperation.LimitProxyVersion"
+func (c *Client) UpdateSSLCertWithContext(ctx context.Context, request *UpdateSSLCertRequest) (response *UpdateSSLCertResponse, err error) {
+    if request == nil {
+        request = NewUpdateSSLCertRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "redis", APIVersion, "UpdateSSLCert")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateSSLCert require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateSSLCertResponse()
     err = c.Send(request, response)
     return
 }

@@ -245,62 +245,70 @@ type BackupDetail struct {
 }
 
 type BackupGroup struct {
-	// 备份组ID。
+	// <p>备份组ID。</p>
 	BackupGroupId *string `json:"BackupGroupId,omitnil,omitempty" name:"BackupGroupId"`
 
-	// 备份组创建进度。
+	// <p>备份组创建进度。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
-	// 备份和云盘绑定关系
+	// <p>备份和云盘绑定关系</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupBindDisk []*ApplyDisk `json:"BackupBindDisk,omitnil,omitempty" name:"BackupBindDisk"`
 
-	// 备份组名称。
+	// <p>备份组名称。</p>
 	BackupGroupName *string `json:"BackupGroupName,omitnil,omitempty" name:"BackupGroupName"`
 
-	// 备份组状态。NORMAL: 正常；CREATING: 创建中；ROLLBACKING: 回滚中
+	// <p>备份组状态。NORMAL: 正常；CREATING: 创建中；ROLLBACKING: 回滚中</p>
 	BackupGroupState *string `json:"BackupGroupState,omitnil,omitempty" name:"BackupGroupState"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 用户AppId。
+	// <p>用户AppId。</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 是否为永久备份组。
+	// <p>是否为永久备份组。</p>
 	IsPermanent *bool `json:"IsPermanent,omitnil,omitempty" name:"IsPermanent"`
 
-	// 备份组的到期时间。如果为永久备份组，则取值为null。
+	// <p>备份组的到期时间。如果为永久备份组，则取值为null。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadlineTime *string `json:"DeadlineTime,omitnil,omitempty" name:"DeadlineTime"`
 
-	// 创建备份组的实例ID。
+	// <p>创建备份组的实例ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 创建备份组时刻实例的详情。
+	// <p>创建备份组时刻实例的详情。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceDetails *string `json:"InstanceDetails,omitnil,omitempty" name:"InstanceDetails"`
 
-	// 创建人名称。
+	// <p>创建人名称。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 主账号uin。
+	// <p>主账号uin。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountUin *string `json:"AccountUin,omitnil,omitempty" name:"AccountUin"`
 
-	// 创建备份的子账号uin。
+	// <p>创建备份的子账号uin。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 
-	// 创建当前备份的定期备份策略ID，为null则为手动创建的备份。
+	// <p>创建当前备份的定期备份策略ID，为null则为手动创建的备份。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoBackupPolicyId *string `json:"AutoBackupPolicyId,omitnil,omitempty" name:"AutoBackupPolicyId"`
+
+	// <p>开始时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type BackupGroupDeniedAction struct {
@@ -457,9 +465,17 @@ type BackupInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudResourceId *string `json:"CloudResourceId,omitnil,omitempty" name:"CloudResourceId"`
 
-	// <p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+	// <p>产品存储类型。CFS 资源返回文件系统存储类型；非 CFS 资源无存储类型，返回资源类型标识。</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li><li>CVM_AGENT： CVM 资源（非 CFS 资源时返回）</li><li>COS_AGENT： COS 资源（非 CFS 资源时返回）</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+
+	// <p>备份完成量</p><p>单位：MB</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupCompletedSize *int64 `json:"BackupCompletedSize,omitnil,omitempty" name:"BackupCompletedSize"`
+
+	// <p>备份完成量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupCompletedSizeFormatted *string `json:"BackupCompletedSizeFormatted,omitnil,omitempty" name:"BackupCompletedSizeFormatted"`
 }
 
 type BackupInstance struct {
@@ -5634,7 +5650,7 @@ type FileBackupOverview struct {
 }
 
 type FileInfo struct {
-	// 文件名称
+	// 完整路径：浏览路径 + "/" + 名称（浏览根目录时为 "/名称"）
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 文件大小，单位是Bytes
@@ -6686,7 +6702,7 @@ type PlanInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableObjectTags *bool `json:"EnableObjectTags,omitnil,omitempty" name:"EnableObjectTags"`
 
-	// <p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+	// <p>产品存储类型。CFS 资源返回文件系统存储类型；非 CFS 资源无存储类型，返回资源类型标识。</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li><li>CVM_AGENT： CVM 资源（非 CFS 资源时返回）</li><li>COS_AGENT： COS 资源（非 CFS 资源时返回）</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
@@ -6838,7 +6854,7 @@ type ProtectInstance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupSize *int64 `json:"BackupSize,omitnil,omitempty" name:"BackupSize"`
 
-	// <p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+	// <p>产品存储类型。CFS 资源返回文件系统存储类型；非 CFS 资源无存储类型，返回资源类型标识。</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li><li>CVM_AGENT： CVM 资源（非 CFS 资源时返回）</li><li>COS_AGENT： COS 资源（非 CFS 资源时返回）</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
@@ -7069,65 +7085,77 @@ type ResourceProtectStat struct {
 }
 
 type RestoreTask struct {
-	// 恢复任务 ID
+	// <p>恢复任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 关联备份点 ID
+	// <p>关联备份点 ID</p>
 	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
-	// 源实例 ID
+	// <p>源实例 ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 目标实例 ID
+	// <p>目标实例 ID</p>
 	TargetResourceId *string `json:"TargetResourceId,omitnil,omitempty" name:"TargetResourceId"`
 
-	// 恢复路径列表
+	// <p>恢复路径列表</p>
 	RestorePaths []*string `json:"RestorePaths,omitnil,omitempty" name:"RestorePaths"`
 
-	// 目标恢复位置
+	// <p>目标恢复位置</p>
 	TargetLocation *string `json:"TargetLocation,omitnil,omitempty" name:"TargetLocation"`
 
-	// 任务状态
+	// <p>任务状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 需恢复文件总数
+	// <p>需恢复文件总数</p>
 	TotalFileCount *int64 `json:"TotalFileCount,omitnil,omitempty" name:"TotalFileCount"`
 
-	// 需恢复数据总量（字节）
+	// <p>需恢复数据总量（字节）</p>
 	TotalSize *int64 `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
 
-	// 需恢复数据总量（格式化，如 "1.5 GB"）
+	// <p>需恢复数据总量（格式化：1024 进制，保留两位小数，单位 B/KiB/MiB/GiB/TiB/PiB，如 &quot;1.50 GiB&quot;）</p>
 	TotalSizeFormatted *string `json:"TotalSizeFormatted,omitnil,omitempty" name:"TotalSizeFormatted"`
 
-	// 已恢复文件数
+	// <p>已恢复文件数</p>
 	RestoreFileCount *int64 `json:"RestoreFileCount,omitnil,omitempty" name:"RestoreFileCount"`
 
-	// 已恢复数据量（字节）
+	// <p>已恢复数据量（字节）</p>
 	RestoreSize *int64 `json:"RestoreSize,omitnil,omitempty" name:"RestoreSize"`
 
-	// 已恢复数据量（格式化）
+	// <p>已恢复数据量（格式化，口径同 TotalSizeFormatted，如 &quot;512.00 MiB&quot;）</p>
 	RestoreSizeFormatted *string `json:"RestoreSizeFormatted,omitnil,omitempty" name:"RestoreSizeFormatted"`
 
-	// 恢复进度（0-100）
+	// <p>恢复进度（0-100）</p>
 	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	// 关联 Job ID
+	// <p>关联 Job ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 任务开始时间（ISO 格式）
+	// <p>任务开始时间（ISO 格式）</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 任务结束时间
+	// <p>任务结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 任务创建时间
+	// <p>任务创建时间</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 恢复任务失败原因
+	// <p>恢复任务失败原因</p>
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 
-	// 冲突处理策略：skip-跳过/overwrite-覆盖/newer-保留最新版本/if_changed-内容变化时覆盖
+	// <p>冲突处理策略：skip-跳过/overwrite-覆盖/newer-保留最新版本/if_changed-内容变化时覆盖</p>
 	ConflictStrategy *string `json:"ConflictStrategy,omitnil,omitempty" name:"ConflictStrategy"`
+
+	// <p>是否为原路径恢复</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsOriginalPath *bool `json:"IsOriginalPath,omitnil,omitempty" name:"IsOriginalPath"`
+
+	// <p>源端腾讯云资源ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudResourceId *string `json:"CloudResourceId,omitnil,omitempty" name:"CloudResourceId"`
+
+	// <p>目标端腾讯云资源ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetCloudResourceId *string `json:"TargetCloudResourceId,omitnil,omitempty" name:"TargetCloudResourceId"`
 }
 
 // Predefined struct for user

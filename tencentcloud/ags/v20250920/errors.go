@@ -161,6 +161,9 @@ const (
 	// InvalidParameterValue.DescriptorType
 	INVALIDPARAMETERVALUE_DESCRIPTORTYPE = "InvalidParameterValue.DescriptorType"
 
+	// 筛选条件的名称、取值、数量或总长度不符合要求。
+	INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
+
 	// 镜像地址无效
 	INVALIDPARAMETERVALUE_IMAGE = "InvalidParameterValue.Image"
 
@@ -170,11 +173,17 @@ const (
 	// InstanceIds 参数格式错误或 ID 列表超过最大数量限制
 	INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
 
+	// 单次返回条数 Limit 不合法。
+	INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+
 	// InvalidParameterValue.MCPSourceType
 	INVALIDPARAMETERVALUE_MCPSOURCETYPE = "InvalidParameterValue.MCPSourceType"
 
 	// MountOption部分参数填写错误
 	INVALIDPARAMETERVALUE_MOUNTOPTION = "InvalidParameterValue.MountOption"
+
+	// 分页偏移量 Offset 不合法，必须大于或等于 0，且不能超过允许的最大偏移量。
+	INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
 
 	// Offset must be at most 10000
 	INVALIDPARAMETERVALUE_OFFSETTOOLARGE = "InvalidParameterValue.OffsetTooLarge"
@@ -202,6 +211,9 @@ const (
 
 	// 子网ID格式错误
 	INVALIDPARAMETERVALUE_SUBNETID = "InvalidParameterValue.SubnetId"
+
+	// 查询时间范围不合法或超出可查询期限。
+	INVALIDPARAMETERVALUE_TIMERANGE = "InvalidParameterValue.TimeRange"
 
 	// 超时时间格式错误或超过最大限制
 	INVALIDPARAMETERVALUE_TIMEOUT = "InvalidParameterValue.Timeout"

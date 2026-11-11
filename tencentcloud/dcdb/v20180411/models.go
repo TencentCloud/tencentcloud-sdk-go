@@ -8177,6 +8177,12 @@ type UpgradeDedicatedDCDBInstanceRequestParams struct {
 
 	// <p>多个分片同时发起扩容，并发切换中的切换时间间隔，即当前分片切换开始时间和下一个分片的切换开始时间间隔，不传默认为1。</p><p>取值范围：[1, 180]</p><p>单位：秒</p>
 	SwitchInterval *int64 `json:"SwitchInterval,omitnil,omitempty" name:"SwitchInterval"`
+
+	// <p>主节点所在机器，类似svr-xxx</p>
+	MasterHostId *string `json:"MasterHostId,omitnil,omitempty" name:"MasterHostId"`
+
+	// <p>备节点所在机器，类似[svr-xxx1,svr-xxx2]</p>
+	SlaveHostIds []*string `json:"SlaveHostIds,omitnil,omitempty" name:"SlaveHostIds"`
 }
 
 type UpgradeDedicatedDCDBInstanceRequest struct {
@@ -8208,6 +8214,12 @@ type UpgradeDedicatedDCDBInstanceRequest struct {
 
 	// <p>多个分片同时发起扩容，并发切换中的切换时间间隔，即当前分片切换开始时间和下一个分片的切换开始时间间隔，不传默认为1。</p><p>取值范围：[1, 180]</p><p>单位：秒</p>
 	SwitchInterval *int64 `json:"SwitchInterval,omitnil,omitempty" name:"SwitchInterval"`
+
+	// <p>主节点所在机器，类似svr-xxx</p>
+	MasterHostId *string `json:"MasterHostId,omitnil,omitempty" name:"MasterHostId"`
+
+	// <p>备节点所在机器，类似[svr-xxx1,svr-xxx2]</p>
+	SlaveHostIds []*string `json:"SlaveHostIds,omitnil,omitempty" name:"SlaveHostIds"`
 }
 
 func (r *UpgradeDedicatedDCDBInstanceRequest) ToJsonString() string {
@@ -8231,6 +8243,8 @@ func (r *UpgradeDedicatedDCDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SwitchStartTime")
 	delete(f, "SwitchEndTime")
 	delete(f, "SwitchInterval")
+	delete(f, "MasterHostId")
+	delete(f, "SlaveHostIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDedicatedDCDBInstanceRequest has unknown keys!", "")
 	}

@@ -8458,6 +8458,113 @@ func (r *DescribeSlowLogsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSqlExplainV2RequestParams struct {
+	// <p>服务产品类型。取值：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、dcdb（TDSQL MySQL 版）、mariadb（TDSQL MariaDB 版）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>待分析的 SQL 语句。仅支持单条 SELECT 语句；若以 EXPLAIN 开头会自动剥离 EXPLAIN 前缀后分析。最大 4096 字符。</p>
+	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
+
+	// <p>实例 ID。MySQL: cdb-xxxxxxx，TDSQL-C: cynosdbmysql-ins-xxxxxxx，MariaDB: tdsql-xxxxx，TDSQL-MySQL： '集群id&amp;分片id',如果TDSQL-MySQL数据库类型同时传入了集群id则instanceId字段只需要传入分片id。最大 64 字符。与 ClusterId 至少需传入其一。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>数据库名。可选；为空时按当前 SQL 上下文执行。最大 64 字符。</p>
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// <p>集群 ID。仅 TDSQL-MySQL时使用，与 InstanceId 至少需传入其一。最大 64 字符。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>是否输出可视化执行树</p><p>默认值：false</p>
+	Visual *bool `json:"Visual,omitnil,omitempty" name:"Visual"`
+}
+
+type DescribeSqlExplainV2Request struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务产品类型。取值：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、dcdb（TDSQL MySQL 版）、mariadb（TDSQL MariaDB 版）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>待分析的 SQL 语句。仅支持单条 SELECT 语句；若以 EXPLAIN 开头会自动剥离 EXPLAIN 前缀后分析。最大 4096 字符。</p>
+	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
+
+	// <p>实例 ID。MySQL: cdb-xxxxxxx，TDSQL-C: cynosdbmysql-ins-xxxxxxx，MariaDB: tdsql-xxxxx，TDSQL-MySQL： '集群id&amp;分片id',如果TDSQL-MySQL数据库类型同时传入了集群id则instanceId字段只需要传入分片id。最大 64 字符。与 ClusterId 至少需传入其一。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>数据库名。可选；为空时按当前 SQL 上下文执行。最大 64 字符。</p>
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// <p>集群 ID。仅 TDSQL-MySQL时使用，与 InstanceId 至少需传入其一。最大 64 字符。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>是否输出可视化执行树</p><p>默认值：false</p>
+	Visual *bool `json:"Visual,omitnil,omitempty" name:"Visual"`
+}
+
+func (r *DescribeSqlExplainV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSqlExplainV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "SqlText")
+	delete(f, "InstanceId")
+	delete(f, "Schema")
+	delete(f, "ClusterId")
+	delete(f, "Visual")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSqlExplainV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSqlExplainV2ResponseParams struct {
+	// <p>数据库名，回显请求中的 Schema。</p>
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// <p>SQL 文本，回显请求中的 SqlText。</p>
+	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
+
+	// <p>SQL 涉及的表名列表。</p>
+	Tables []*SqlExplainTableRefV2 `json:"Tables,omitnil,omitempty" name:"Tables"`
+
+	// <p>执行计划详细信息。由数据库 EXPLAIN 输出透传，内容为 JSON 字符串，包含 Meta（列定义）与 Data（执行计划行）两部分；Format=JSON 时为 EXPLAIN FORMAT=JSON 的原始结果。</p>
+	Explain *SqlExplainResultV2 `json:"Explain,omitnil,omitempty" name:"Explain"`
+
+	// <p>执行计划字段说明列表。仅当请求 Visual=true 或走 SqlTemplateKey 路径时返回，用于前端展示字段中文释义。</p>
+	FieldDesc []*SqlExplainFieldDescV2 `json:"FieldDesc,omitnil,omitempty" name:"FieldDesc"`
+
+	// <p>可视化执行计划树，当Visual=true时返回</p>
+	VisualExplain *string `json:"VisualExplain,omitnil,omitempty" name:"VisualExplain"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSqlExplainV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeSqlExplainV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeSqlExplainV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSqlExplainV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSqlFiltersRequestParams struct {
 	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -11570,6 +11677,34 @@ type SqlCostDistribution struct {
 
 	// 耗时占比。单位（%）
 	Ratio *float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+}
+
+type SqlExplainFieldDescV2 struct {
+	// <p>字段英文名，与 Explain / VisualExplain 中出现的字段一致，例如 access_type、key、rows。</p>
+	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
+
+	// <p>字段中文释义。</p>
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+}
+
+type SqlExplainResultV2 struct {
+	// <p>EXPLAIN 列名顺序，与 Data 中每一行的字段一一对应。</p>
+	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
+
+	// <p>执行计划行列表。</p>
+	Data []*SqlExplainRowV2 `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type SqlExplainRowV2 struct {
+
+}
+
+type SqlExplainTableRefV2 struct {
+	// <p>表名。</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>表所在的数据库名。</p>
+	TableSchema *string `json:"TableSchema,omitnil,omitempty" name:"TableSchema"`
 }
 
 type SqlServerSpaceObjectItem struct {
