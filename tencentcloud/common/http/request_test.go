@@ -1,6 +1,9 @@
 package common
 
-import "testing"
+import (
+	"strconv"
+	"testing"
+)
 
 func TestBaseRequest_Header(t *testing.T) {
 	r := &BaseRequest{}
@@ -31,5 +34,19 @@ func TestBaseRequest_Header(t *testing.T) {
 
 	if r.GetHeader()[traceKey] != traceVal {
 		t.Fatal("SetHeader(nil) MUST not overwrite existing header (for backward compatibility)")
+	}
+}
+
+func TestRandomNonce(t *testing.T) {
+	seen := make(map[string]struct{}, 100)
+	for i := 0; i < 100; i++ {
+		nonce := randomNonce()
+		if _, err := strconv.ParseInt(nonce, 10, 64); err != nil {
+			t.Fatalf("nonce %q is not a valid non-negative int64: %v", nonce, err)
+		}
+		if _, ok := seen[nonce]; ok {
+			t.Fatalf("duplicate nonce generated: %q", nonce)
+		}
+		seen[nonce] = struct{}{}
 	}
 }
