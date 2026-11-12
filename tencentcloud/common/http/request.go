@@ -2,6 +2,8 @@ package common
 
 import (
 	"context"
+	crand "crypto/rand"
+	"encoding/binary"
 	"io"
 	//"log"
 	"math/rand"
@@ -264,11 +266,25 @@ func CompleteCommonParams(request Request, region string, requestClient string) 
 	}
 	params["Action"] = request.GetAction()
 	params["Timestamp"] = strconv.FormatInt(time.Now().Unix(), 10)
-	params["Nonce"] = strconv.Itoa(rand.Int())
+	params["Nonce"] = randomNonce()
 	params["RequestClient"] = "SDK_GO_1.3.212"
 	if requestClient != "" {
 		params["RequestClient"] += ": " + requestClient
 	}
+}
+
+// randomNonce returns a cryptographically secure random nonce in decimal form.
+// Nonce participates in request signing and is used to prevent replay attacks,
+// so it must not be generated from a predictable PRNG such as math/rand.
+func randomNonce() string {
+	var buf [8]byte
+	if _, err := crand.Read(buf[:]); err != nil {
+		// crypto/rand should never fail; fall back to the previous generator so
+		// the request can still be sent rather than aborting.
+		return strconv.Itoa(rand.Int())
+	}
+	// Keep the same value range as rand.Int(): a non-negative int64.
+	return strconv.FormatUint(binary.BigEndian.Uint64(buf[:])&(1<<63-1), 10)
 }
 
 func ConstructParams(req Request) (err error) {

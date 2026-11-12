@@ -1,5 +1,8 @@
 # Changelog
 
+### [Unreleased]
+- fix: 请求 Nonce 改用 crypto/rand 生成，移除 math/rand 弱随机数
+
 ### [v1.1.0] - 2025-07-29
 - fix: 自动补全 Request 对象的初始化
 
