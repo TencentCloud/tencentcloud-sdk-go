@@ -6539,6 +6539,78 @@ func (c *Client) DescribeDeviceBindGatewayWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeDeviceCloudStoragePackagesRequest() (request *DescribeDeviceCloudStoragePackagesRequest) {
+    request = &DescribeDeviceCloudStoragePackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDeviceCloudStoragePackages")
+    
+    
+    return
+}
+
+func NewDescribeDeviceCloudStoragePackagesResponse() (response *DescribeDeviceCloudStoragePackagesResponse) {
+    response = &DescribeDeviceCloudStoragePackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceCloudStoragePackages
+// 查询设备云存套餐
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEVICEHASNOTBINDGATEWAY = "InvalidParameterValue.DeviceHasNotBindGateway"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeviceCloudStoragePackages(request *DescribeDeviceCloudStoragePackagesRequest) (response *DescribeDeviceCloudStoragePackagesResponse, err error) {
+    return c.DescribeDeviceCloudStoragePackagesWithContext(context.Background(), request)
+}
+
+// DescribeDeviceCloudStoragePackages
+// 查询设备云存套餐
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEVICEHASNOTBINDGATEWAY = "InvalidParameterValue.DeviceHasNotBindGateway"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeviceCloudStoragePackagesWithContext(ctx context.Context, request *DescribeDeviceCloudStoragePackagesRequest) (response *DescribeDeviceCloudStoragePackagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceCloudStoragePackagesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeDeviceCloudStoragePackages")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceCloudStoragePackages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceCloudStoragePackagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceDataRequest() (request *DescribeDeviceDataRequest) {
     request = &DescribeDeviceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

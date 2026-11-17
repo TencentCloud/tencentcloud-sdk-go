@@ -202,6 +202,18 @@ type AlarmNotifyHistory struct {
 	// <p>该条通知实际执行的接收人/组明细。一条元素对应通知模板里的一条渠道发送规则</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiverGroups []*ReceiverGroup `json:"ReceiverGroups,omitnil,omitempty" name:"ReceiverGroups"`
+
+	// <p>发送时的告警历史 ID，用于从通知历史跳到对应告警历史。非分级告警与告警 ID 相同；分级告警为“告警 ID_发生时间的 32 进制_告警级别”。</p>
+	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
+
+	// <p>发送时的告警内容，不含产品名前缀，按请求语言返回。用于列表「告警历史」的展示文案。</p>
+	AlarmName *string `json:"AlarmName,omitnil,omitempty" name:"AlarmName"`
+
+	// <p>发送时的告警状态。控制台「告警状态」请使用 TriggerStatus。无数据、失效通知不返回该字段。</p><p>枚举值：</p><ul><li>ALARM： 未恢复</li><li>OK： 已恢复</li></ul>
+	AlarmStatus *string `json:"AlarmStatus,omitnil,omitempty" name:"AlarmStatus"`
+
+	// <p>通知类型，无数据、失效通知不返回该字段。</p><p>枚举值：</p><ul><li>Recovery： 恢复</li><li>FirstTrigger： 首次触发</li><li>ContinueTrigger： 持续触发</li></ul>
+	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 }
 
 type ArtifactInfo struct {
@@ -320,6 +332,15 @@ type ChannelContent struct {
 	// <p>该渠道实际发送的消息正文，由 Ark 按写时捕获的内容还原</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>短信：SUCCESS / FAIL。电话：ANSWERED / UNANSWERED / ABNORMAL</p><p>枚举值：</p><ul><li>SUCCESS： 短信已送达</li><li>FAIL： 短信送达失败</li><li>ANSWERED： 电话已接听</li><li>UNANSWERED： 电话未接听</li><li>ABNORMAL： 电话拨打异常</li></ul>
+	DeliverStatus *string `json:"DeliverStatus,omitnil,omitempty" name:"DeliverStatus"`
+
+	// <p>原始时间字符串，不做时区转换。短信是收到时间；电话只在接听时有值</p><p>参数格式：短信为 YYYY-MM-DD hh:mm:ss，例如 2026-08-05 18:04:46。电话为 Unix 秒级时间戳的数字字符串，仅接听时有值，例如 1717824258。空字符串表示没有时间。</p>
+	DeliverTime *string `json:"DeliverTime,omitnil,omitempty" name:"DeliverTime"`
+
+	// <p>短信回执的运营商错误码，原样透传。成功为 DELIVRD。失败为运营商原始码，如 EXPIRED、UNDELIV、MK:0001、MK:0012、24、29。电话为空。</p>
+	DeliverErrMsg *string `json:"DeliverErrMsg,omitnil,omitempty" name:"DeliverErrMsg"`
 }
 
 type ChannelsReceivers struct {

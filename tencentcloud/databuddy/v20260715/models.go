@@ -393,6 +393,23 @@ type Audit struct {
 	LastModifierName *string `json:"LastModifierName,omitnil,omitempty" name:"LastModifierName"`
 }
 
+type AutoMlConf struct {
+	// 评估指标：acc/auc/f1/mse/mae/rmse
+	EvaluationMetric *string `json:"EvaluationMetric,omitnil,omitempty" name:"EvaluationMetric"`
+
+	// 搜索空间列表
+	SearchSpace []*string `json:"SearchSpace,omitnil,omitempty" name:"SearchSpace"`
+
+	// 最大运行时间（分钟），默认60
+	MaxRuntimeMinutes *int64 `json:"MaxRuntimeMinutes,omitnil,omitempty" name:"MaxRuntimeMinutes"`
+
+	// 最大运行次数，默认100
+	MaxRunCount *int64 `json:"MaxRunCount,omitnil,omitempty" name:"MaxRunCount"`
+
+	// 最大运行并发，默认1，最大100
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil,omitempty" name:"MaxConcurrency"`
+}
+
 type BucketPartitioning struct {
 	// 分桶字段
 	FiledNames []*string `json:"FiledNames,omitnil,omitempty" name:"FiledNames"`
@@ -824,6 +841,124 @@ func (r *CreateConsoleGroupResponse) FromJsonString(s string) error {
 type CreateConsoleGroupRsp struct {
 	// 创建成功的用户组 ID
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+}
+
+// Predefined struct for user
+type CreateExperimentRequestParams struct {
+	// <p>工作空间ID（必填），可通过 ListWorkspaces 接口获取</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>实验名称（必填），同一工作空间内唯一</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>实验类型（必填），取值：MACHINE_LEARNING（机器学习）/ CLASSIFICATION（分类）/ REGRESSION（回归）/ FORECASTING（时间序列预测）/ AGENT（智能体）。传入其他值将返回 InvalidParameter.ExperimentTypeInvalid</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>实验描述（可选），建议长度不超过 1024 字符</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Studio目录树文件夹节点ID，即实验所在的目录节点，可通过 ListFiles 接口获取</p>
+	StudioId *string `json:"StudioId,omitnil,omitempty" name:"StudioId"`
+
+	// <p>实验标签列表（可选），key/value 均为字符串</p>
+	Tags []*ExperimentTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>AutoML配置（可选，仅 Type 为 CLASSIFICATION/REGRESSION/FORECASTING 时需要），包含评估指标、搜索空间、最大运行时间/次数/并发等</p>
+	AutoMlConf *AutoMlConf `json:"AutoMlConf,omitnil,omitempty" name:"AutoMlConf"`
+
+	// <p>训练数据配置（可选，仅 AutoML 类型实验需要），指定训练数据表（Catalog.Schema.Table 三段式）与目标标签列</p>
+	TrainingData *TrainingData `json:"TrainingData,omitnil,omitempty" name:"TrainingData"`
+
+	// <p>计算资源组ID（可选），指定实验运行所使用的计算资源，可通过 ListComputeResourceOptions 接口获取</p>
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+}
+
+type CreateExperimentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间ID（必填），可通过 ListWorkspaces 接口获取</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>实验名称（必填），同一工作空间内唯一</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>实验类型（必填），取值：MACHINE_LEARNING（机器学习）/ CLASSIFICATION（分类）/ REGRESSION（回归）/ FORECASTING（时间序列预测）/ AGENT（智能体）。传入其他值将返回 InvalidParameter.ExperimentTypeInvalid</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>实验描述（可选），建议长度不超过 1024 字符</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Studio目录树文件夹节点ID，即实验所在的目录节点，可通过 ListFiles 接口获取</p>
+	StudioId *string `json:"StudioId,omitnil,omitempty" name:"StudioId"`
+
+	// <p>实验标签列表（可选），key/value 均为字符串</p>
+	Tags []*ExperimentTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>AutoML配置（可选，仅 Type 为 CLASSIFICATION/REGRESSION/FORECASTING 时需要），包含评估指标、搜索空间、最大运行时间/次数/并发等</p>
+	AutoMlConf *AutoMlConf `json:"AutoMlConf,omitnil,omitempty" name:"AutoMlConf"`
+
+	// <p>训练数据配置（可选，仅 AutoML 类型实验需要），指定训练数据表（Catalog.Schema.Table 三段式）与目标标签列</p>
+	TrainingData *TrainingData `json:"TrainingData,omitnil,omitempty" name:"TrainingData"`
+
+	// <p>计算资源组ID（可选），指定实验运行所使用的计算资源，可通过 ListComputeResourceOptions 接口获取</p>
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+}
+
+func (r *CreateExperimentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExperimentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Description")
+	delete(f, "StudioId")
+	delete(f, "Tags")
+	delete(f, "AutoMlConf")
+	delete(f, "TrainingData")
+	delete(f, "ResourceGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExperimentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateExperimentResponseParams struct {
+	// <p>返回结果</p>
+	Data *CreateExperimentRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateExperimentResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateExperimentResponseParams `json:"Response"`
+}
+
+func (r *CreateExperimentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExperimentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateExperimentRsp struct {
+	// 创建的实验ID
+	ExperimentId *string `json:"ExperimentId,omitnil,omitempty" name:"ExperimentId"`
 }
 
 // Predefined struct for user
@@ -2898,6 +3033,28 @@ type DictItem struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type ExperimentTag struct {
+	// 标签键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type FeatureLookup struct {
+	// 特征表全名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 关联键
+	LookupKey []*string `json:"LookupKey,omitnil,omitempty" name:"LookupKey"`
+
+	// 时间戳关联键
+	TimestampLookupKey *string `json:"TimestampLookupKey,omitnil,omitempty" name:"TimestampLookupKey"`
+
+	// 特征列名列表
+	FeatureNames []*string `json:"FeatureNames,omitnil,omitempty" name:"FeatureNames"`
+}
+
 type FeatureTable struct {
 	// 表名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -3438,6 +3595,93 @@ type GetCatalogRsp struct {
 	// catalog详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Catalog *Catalog `json:"Catalog,omitnil,omitempty" name:"Catalog"`
+}
+
+// Predefined struct for user
+type GetFileContentRequestParams struct {
+	// <p>工作空间ID，必填，最大长度64</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>文件ID，FileId/FilePath 二选一，最大长度128；非空时优先生效</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+}
+
+type GetFileContentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间ID，必填，最大长度64</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>文件ID，FileId/FilePath 二选一，最大长度128；非空时优先生效</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+}
+
+func (r *GetFileContentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFileContentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	delete(f, "FileId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFileContentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFileContentResponseParams struct {
+	// <p>文件内容查询结果</p>
+	Data *GetFileContentRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetFileContentResponse struct {
+	*tchttp.BaseResponse
+	Response *GetFileContentResponseParams `json:"Response"`
+}
+
+func (r *GetFileContentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFileContentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFileContentRsp struct {
+	// 文件ID；按 FilePath 查询时回显解析结果，便于调用方缓存
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 文件名，不含路径
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件全路径
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// 文件类型，参考 ListEntityTypeMetas 返回值为准
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 文件大小，字节
+	FileSize *string `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 文件内容，base64 编码
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 内容编码方式，当前固定 base64
+	ContentEncoding *string `json:"ContentEncoding,omitnil,omitempty" name:"ContentEncoding"`
 }
 
 // Predefined struct for user
@@ -5224,6 +5468,17 @@ func (r *KillWorkflowRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Label struct {
+	// 列名
+	ColumnName *string `json:"ColumnName,omitnil,omitempty" name:"ColumnName"`
+
+	// 缺失值填充
+	MissingValueImputation *string `json:"MissingValueImputation,omitnil,omitempty" name:"MissingValueImputation"`
+
+	// 数据格式
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
 type LabelBrief struct {
 	// 标签名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5258,6 +5513,9 @@ type ListCatalogNamesRequestParams struct {
 
 	// <p>数据目录来源筛选，取值参考CatalogSourceEnum(METALAKE/CONNECTION/SETATS)</p>
 	CatalogSources []*string `json:"CatalogSources,omitnil,omitempty" name:"CatalogSources"`
+
+	// 数据源连接ID，可选。传入后仅返回该数据源下的 catalog/database；不传则不做过滤，返回全部数据。
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 }
 
 type ListCatalogNamesRequest struct {
@@ -5277,6 +5535,9 @@ type ListCatalogNamesRequest struct {
 
 	// <p>数据目录来源筛选，取值参考CatalogSourceEnum(METALAKE/CONNECTION/SETATS)</p>
 	CatalogSources []*string `json:"CatalogSources,omitnil,omitempty" name:"CatalogSources"`
+
+	// 数据源连接ID，可选。传入后仅返回该数据源下的 catalog/database；不传则不做过滤，返回全部数据。
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 }
 
 func (r *ListCatalogNamesRequest) ToJsonString() string {
@@ -5296,6 +5557,7 @@ func (r *ListCatalogNamesRequest) FromJsonString(s string) error {
 	delete(f, "PageToken")
 	delete(f, "Types")
 	delete(f, "CatalogSources")
+	delete(f, "ConnectionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListCatalogNamesRequest has unknown keys!", "")
 	}
@@ -5360,6 +5622,9 @@ type ListCatalogsRequestParams struct {
 
 	// 数据目录来源筛选（融合版新增字段），取值参考 CatalogSourceEnum。空数组或不传→只查tclake；["METALAKE"]→只查tclake；["CONNECTION"]→只查分析版ana_catalog；["METALAKE","CONNECTION"]→合并返回
 	CatalogSources []*string `json:"CatalogSources,omitnil,omitempty" name:"CatalogSources"`
+
+	// 数据源连接ID，可选。传入后仅返回该数据源下的 catalog/database；不传则不做过滤，返回全部数据。
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 }
 
 type ListCatalogsRequest struct {
@@ -5385,6 +5650,9 @@ type ListCatalogsRequest struct {
 
 	// 数据目录来源筛选（融合版新增字段），取值参考 CatalogSourceEnum。空数组或不传→只查tclake；["METALAKE"]→只查tclake；["CONNECTION"]→只查分析版ana_catalog；["METALAKE","CONNECTION"]→合并返回
 	CatalogSources []*string `json:"CatalogSources,omitnil,omitempty" name:"CatalogSources"`
+
+	// 数据源连接ID，可选。传入后仅返回该数据源下的 catalog/database；不传则不做过滤，返回全部数据。
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 }
 
 func (r *ListCatalogsRequest) ToJsonString() string {
@@ -5406,6 +5674,7 @@ func (r *ListCatalogsRequest) FromJsonString(s string) error {
 	delete(f, "CurrentWorkspaceOnly")
 	delete(f, "FetchOption")
 	delete(f, "CatalogSources")
+	delete(f, "ConnectionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListCatalogsRequest has unknown keys!", "")
 	}
@@ -8190,6 +8459,10 @@ type MetaOwner struct {
 	// 数据目录来源，取值参考 CatalogSourceEnum：METALAKE / CONNECTION / SETATS。ListMetaOwners 走新参数 Catalogs 查询时，按入参回填；走旧参数 FullNames 查询时，按请求顶层 CatalogSource 回填（默认 METALAKE）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CatalogSource *string `json:"CatalogSource,omitnil,omitempty" name:"CatalogSource"`
+
+	// 数据源连接ID，与入参 Catalogs[].ConnectionId 对应。CatalogSource=CONNECTION 时返回该连接ID，用于区分同名目录的归属；METALAKE / SETATS 来源为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
 }
 
 type ModelInfo struct {
@@ -8309,6 +8582,14 @@ type NameIdentifier struct {
 
 	// <p>TCLAKE Catalog取值：（注册中0，待测试1，连接成功2，连接失败3，删除中4，已删除5）<br>SETATS Catalog取值：（Creating=30, Available=31, Deleted=32, Scaling=33, Isolated=34, Failed=35，未知=0）</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 数据源连接ID（仅 CONNECTION 来源时返回）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectionId *string `json:"ConnectionId,omitnil,omitempty" name:"ConnectionId"`
+
+	// 数据源连接名称（仅CatalogSource=CONNECTION）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectionName *string `json:"ConnectionName,omitnil,omitempty" name:"ConnectionName"`
 }
 
 type OrderBy struct {
@@ -9763,6 +10044,47 @@ type TaskTypeProperty struct {
 	// <p>属性值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PropertyValue *string `json:"PropertyValue,omitnil,omitempty" name:"PropertyValue"`
+}
+
+type TrainingData struct {
+	// Catalog名称
+	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
+
+	// Schema名称
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// Table名称
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// 目标标签列
+	TargetLabel *Label `json:"TargetLabel,omitnil,omitempty" name:"TargetLabel"`
+
+	// 忽略的列
+	DiscardedLabels []*Label `json:"DiscardedLabels,omitnil,omitempty" name:"DiscardedLabels"`
+
+	// 预测列
+	PredictionLabel *Label `json:"PredictionLabel,omitnil,omitempty" name:"PredictionLabel"`
+
+	// 时间间隔单位
+	EvaluationInterval *string `json:"EvaluationInterval,omitnil,omitempty" name:"EvaluationInterval"`
+
+	// 时序步长
+	ForecastHorizon *int64 `json:"ForecastHorizon,omitnil,omitempty" name:"ForecastHorizon"`
+
+	// 结果集Catalog名称
+	StorageCatalog *string `json:"StorageCatalog,omitnil,omitempty" name:"StorageCatalog"`
+
+	// 结果集Schema名称
+	StorageSchema *string `json:"StorageSchema,omitnil,omitempty" name:"StorageSchema"`
+
+	// 结果集Table名称
+	StorageTable *string `json:"StorageTable,omitnil,omitempty" name:"StorageTable"`
+
+	// 选中的列
+	SelectedLabels []*Label `json:"SelectedLabels,omitnil,omitempty" name:"SelectedLabels"`
+
+	// 特征查找配置
+	FeatureLookup []*FeatureLookup `json:"FeatureLookup,omitnil,omitempty" name:"FeatureLookup"`
 }
 
 type TruncatePartitioning struct {

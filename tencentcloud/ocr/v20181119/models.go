@@ -278,10 +278,10 @@ type AnswerElement struct {
 	// <p>答案是否正确</p>
 	IsCorrect *bool `json:"IsCorrect,omitnil,omitempty" name:"IsCorrect"`
 
-	// <p>答案分析结果</p>
+	// <p>【批改 API 专属特性】<br>当ModelType= yuanbao_correction_model，该字段返回空。通过ResultList. AnswerAnalysis返回题目维度答案解析<br>当ModelType= youtu_correction_model，返回答案维度答案解析</p>
 	AnswerAnalysis *string `json:"AnswerAnalysis,omitnil,omitempty" name:"AnswerAnalysis"`
 
-	// <p>返回正确答案内容</p>
+	// <p>返回正确答案内容。为提升速度算式批改场景默认不输出正确答案</p>
 	RightAnswer *string `json:"RightAnswer,omitnil,omitempty" name:"RightAnswer"`
 }
 
@@ -438,6 +438,128 @@ func (r *ArithmeticOCRResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ArithmeticOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AuditMaterialAgentRequestParams struct {
+	// <p>资料审核Agent类型，不同类型包含不同的输入、输出参数，提供不同的审核能力。</p><p>枚举值：</p><ul><li>StorePicAudit： 商户照片审核</li></ul>
+	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
+
+	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// <p>商户照片分类是否输出具体场景标签。注：开启后耗时会增加。 支持该入参的资料审核Agent类型：StorePicAudit</p>
+	NeedSceneType *bool `json:"NeedSceneType,omitnil,omitempty" name:"NeedSceneType"`
+
+	// <p>商户名称信息，辅助判断具体场景标签。注：仅SceneType配置为true时支持。  支持该出参的资料审核Agent类型：StorePicAudit</p>
+	StoreInfoHint *string `json:"StoreInfoHint,omitnil,omitempty" name:"StoreInfoHint"`
+
+	// <p>水印提示排除类型，选择出参“水印提示”排除掉的水印类型，不传的话即代表任意水印都会提示。<br>PhoneCam：手机相机水印<br>WatermarkCam：水印相机水印</p>
+	IgnoreWatermarkCategories []*string `json:"IgnoreWatermarkCategories,omitnil,omitempty" name:"IgnoreWatermarkCategories"`
+}
+
+type AuditMaterialAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>资料审核Agent类型，不同类型包含不同的输入、输出参数，提供不同的审核能力。</p><p>枚举值：</p><ul><li>StorePicAudit： 商户照片审核</li></ul>
+	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
+
+	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// <p>商户照片分类是否输出具体场景标签。注：开启后耗时会增加。 支持该入参的资料审核Agent类型：StorePicAudit</p>
+	NeedSceneType *bool `json:"NeedSceneType,omitnil,omitempty" name:"NeedSceneType"`
+
+	// <p>商户名称信息，辅助判断具体场景标签。注：仅SceneType配置为true时支持。  支持该出参的资料审核Agent类型：StorePicAudit</p>
+	StoreInfoHint *string `json:"StoreInfoHint,omitnil,omitempty" name:"StoreInfoHint"`
+
+	// <p>水印提示排除类型，选择出参“水印提示”排除掉的水印类型，不传的话即代表任意水印都会提示。<br>PhoneCam：手机相机水印<br>WatermarkCam：水印相机水印</p>
+	IgnoreWatermarkCategories []*string `json:"IgnoreWatermarkCategories,omitnil,omitempty" name:"IgnoreWatermarkCategories"`
+}
+
+func (r *AuditMaterialAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AuditMaterialAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentType")
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "NeedSceneType")
+	delete(f, "StoreInfoHint")
+	delete(f, "IgnoreWatermarkCategories")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AuditMaterialAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AuditMaterialAgentResponseParams struct {
+	// <p>商户照片类型  支持该出参的资料审核Agent类型：StorePicAudit</p>
+	StoreLabel []*string `json:"StoreLabel,omitnil,omitempty" name:"StoreLabel"`
+
+	// <p>商户照片分类具体场景标签，输出3个最匹配的场景， 注：仅SceneType配置为true时支持。  支持该出参的资料审核Agent类型：StorePicAudit</p>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// <p>商户门头名称  支持该出参的资料审核Agent类型：StorePicAudit</p>
+	StoreInfo []*StoreInfo `json:"StoreInfo,omitnil,omitempty" name:"StoreInfo"`
+
+	// <p>图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负  支持该出参的资料审核Agent类型：StorePicAudit</p>
+	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
+
+	// <p>区域篡改提示</p>
+	Tamper *SceneWarnInfo `json:"Tamper,omitnil,omitempty" name:"Tamper"`
+
+	// <p>AIGC合成提示</p>
+	Synthesis *SceneWarnInfo `json:"Synthesis,omitnil,omitempty" name:"Synthesis"`
+
+	// <p>屏幕翻拍提示</p>
+	RemakeScreen *SceneWarnInfo `json:"RemakeScreen,omitnil,omitempty" name:"RemakeScreen"`
+
+	// <p>截图提示</p>
+	Screenshot *SceneWarnInfo `json:"Screenshot,omitnil,omitempty" name:"Screenshot"`
+
+	// <p>文字水印提示</p>
+	TextWatermark *SceneWarnInfo `json:"TextWatermark,omitnil,omitempty" name:"TextWatermark"`
+
+	// <p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
+	WatermarkContent *string `json:"WatermarkContent,omitnil,omitempty" name:"WatermarkContent"`
+
+	// <p>模板图片提示</p>
+	Template *SceneWarnInfo `json:"Template,omitnil,omitempty" name:"Template"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AuditMaterialAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *AuditMaterialAgentResponseParams `json:"Response"`
+}
+
+func (r *AuditMaterialAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AuditMaterialAgentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1662,6 +1784,15 @@ type DescribeMarkEssayAgentJobResponseParams struct {
 	// <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
 	JobStatus *string `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
 
+	// <p>支持题目结构化、批改场景的结构。AgentType为1、2都按照这个结构返回</p>
+	QuestionInfo []*QuestionInfo `json:"QuestionInfo,omitnil,omitempty" name:"QuestionInfo"`
+
+	// <p>定制的json结构字符串，主要用于快速定制输出的agent输出结构。推荐用于POC场景</p>
+	AgentResultJson *string `json:"AgentResultJson,omitnil,omitempty" name:"AgentResultJson"`
+
+	// <p>扩展字段</p>
+	ThoughtContent *string `json:"ThoughtContent,omitnil,omitempty" name:"ThoughtContent"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1804,6 +1935,8 @@ type DescribeQuestionMarkAgentJobResponseParams struct {
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
 	// <p>试题批改信息  （该字段后续废弃，使用QuestionInfo兼容多页批改场景）</p>
+	//
+	// Deprecated: MarkInfos is deprecated.
 	MarkInfos []*MarkInfo `json:"MarkInfos,omitnil,omitempty" name:"MarkInfos"`
 
 	// <p>试题批改信息。</p>
@@ -6999,16 +7132,16 @@ func (r *PermitOCRResponse) FromJsonString(s string) error {
 }
 
 type Polygon struct {
-	// 左上顶点坐标
+	// <p>左上顶点坐标</p>
 	LeftTop *Coord `json:"LeftTop,omitnil,omitempty" name:"LeftTop"`
 
-	// 右上顶点坐标
+	// <p>右上顶点坐标</p>
 	RightTop *Coord `json:"RightTop,omitnil,omitempty" name:"RightTop"`
 
-	// 右下顶点坐标
+	// <p>右下顶点坐标</p>
 	RightBottom *Coord `json:"RightBottom,omitnil,omitempty" name:"RightBottom"`
 
-	// 左下顶点坐标
+	// <p>左下顶点坐标</p>
 	LeftBottom *Coord `json:"LeftBottom,omitnil,omitempty" name:"LeftBottom"`
 }
 
@@ -7307,11 +7440,17 @@ type QuestionInfo struct {
 	// <p>输入图片宽度</p><p>单位：px</p>
 	OrgWidth *int64 `json:"OrgWidth,omitnil,omitempty" name:"OrgWidth"`
 
-	// <p>预处理后的图片base64编码</p>
+	// <p>废弃字段</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
 	// <p>预处理后的图片URL,如果开启了图像切边矫正，后续的坐标都是基于当前图片返回的坐标</p>
 	ReturnImageUrl *string `json:"ReturnImageUrl,omitnil,omitempty" name:"ReturnImageUrl"`
+
+	// <p>【批改 API 专属特性】图片类型预判别（常规作业 / 非作业图片 / 无作答痕迹），仅 ModelType = yuanbao_correction_model 时生效。其他模型类型不支持该能力。</p>
+	ClassName *string `json:"ClassName,omitnil,omitempty" name:"ClassName"`
+
+	// <p>文档所在页</p>
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
 }
 
 // Predefined struct for user
@@ -9317,10 +9456,10 @@ type ResultList struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Coord []*Polygon `json:"Coord,omitnil,omitempty" name:"Coord"`
 
-	// <p>多坐标返回，显示坐标所在页</p><p>默认值：[]</p>
+	// <p>单题跨栏/跨页场景下：配合CoordPageIndex一起使用，支持多坐标显示在不同页，按顺序对齐</p><p>默认值：[]</p>
 	CoordPageIndex []*int64 `json:"CoordPageIndex,omitnil,omitempty" name:"CoordPageIndex"`
 
-	// <p>返回正确答案内容</p>
+	// <p>【批改 API 专属特性】返回步骤批改场景下的正确答案内容</p>
 	RightAnswer *string `json:"RightAnswer,omitnil,omitempty" name:"RightAnswer"`
 
 	// <p>学科（如语文、数学、英语）</p>
@@ -9328,6 +9467,12 @@ type ResultList struct {
 
 	// <p>返回题目的知识点内容</p>
 	KnowledgePoints []*string `json:"KnowledgePoints,omitnil,omitempty" name:"KnowledgePoints"`
+
+	// <p>【批改 API 专属特性】<br>当ModelType= yuanbao_correction_model，通过该字段返回题目维度的答案解析<br>当ModelType= youtu_correction_model，该字段返回空，通过AnswerElement. AnswerAnalysis返回答案维度答案解析</p>
+	AnswerAnalysis *string `json:"AnswerAnalysis,omitnil,omitempty" name:"AnswerAnalysis"`
+
+	// <p>年级：小学/初中/高中</p>
+	Grade *string `json:"Grade,omitnil,omitempty" name:"Grade"`
 }
 
 // Predefined struct for user
@@ -10098,6 +10243,9 @@ type SubmitExtractDocAgentJobRequestParams struct {
 
 	// <p>agent支持的类型枚举,不同类型输出结果不一样，默认为0</p><p>0:表示标准抽取Agent</p><p>1:表示合同协议分类+抽取+审核Agent</p>
 	AgentType *int64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
+
+	// <p>输出配置扩展，当key对应为1表示开启配置开关。</p>
+	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
 }
 
 type SubmitExtractDocAgentJobRequest struct {
@@ -10129,6 +10277,9 @@ type SubmitExtractDocAgentJobRequest struct {
 
 	// <p>agent支持的类型枚举,不同类型输出结果不一样，默认为0</p><p>0:表示标准抽取Agent</p><p>1:表示合同协议分类+抽取+审核Agent</p>
 	AgentType *int64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
+
+	// <p>输出配置扩展，当key对应为1表示开启配置开关。</p>
+	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
 }
 
 func (r *SubmitExtractDocAgentJobRequest) ToJsonString() string {
@@ -10152,6 +10303,7 @@ func (r *SubmitExtractDocAgentJobRequest) FromJsonString(s string) error {
 	delete(f, "FileEndPageNumber")
 	delete(f, "ModelConfig")
 	delete(f, "AgentType")
+	delete(f, "QuestionConfigMap")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitExtractDocAgentJobRequest has unknown keys!", "")
 	}
@@ -10192,10 +10344,18 @@ type SubmitMarkEssayAgentJobRequestParams struct {
 	ImageUrlList []*string `json:"ImageUrlList,omitnil,omitempty" name:"ImageUrlList"`
 
 	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。 示例值：1</p>
+	//
+	// Deprecated: PdfPageNumber is deprecated.
 	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
 	// <p>批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句</p>
 	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
+
+	// <p>agent支持的类型枚举,不同类型输出结果不一样，默认为0</p><p>0:表示中英文作文批改Agent</p><p>1:表示教辅试卷题库拆录Agent(支持拆录含解析与答案的教辅（解析、答案可与正文分置首尾，或与试题混排）、多页成套标准答案试卷及带有手写批注痕迹的试题)</p>
+	AgentType *int64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
+
+	// <p>需要识别的页码范围（目前只有AgentType=1支持），单次调用最多支持100页。  参数格式：1-10   示例值：1-2</p>
+	PageRange *string `json:"PageRange,omitnil,omitempty" name:"PageRange"`
 }
 
 type SubmitMarkEssayAgentJobRequest struct {
@@ -10212,6 +10372,12 @@ type SubmitMarkEssayAgentJobRequest struct {
 
 	// <p>批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句</p>
 	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
+
+	// <p>agent支持的类型枚举,不同类型输出结果不一样，默认为0</p><p>0:表示中英文作文批改Agent</p><p>1:表示教辅试卷题库拆录Agent(支持拆录含解析与答案的教辅（解析、答案可与正文分置首尾，或与试题混排）、多页成套标准答案试卷及带有手写批注痕迹的试题)</p>
+	AgentType *int64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
+
+	// <p>需要识别的页码范围（目前只有AgentType=1支持），单次调用最多支持100页。  参数格式：1-10   示例值：1-2</p>
+	PageRange *string `json:"PageRange,omitnil,omitempty" name:"PageRange"`
 }
 
 func (r *SubmitMarkEssayAgentJobRequest) ToJsonString() string {
@@ -10230,6 +10396,8 @@ func (r *SubmitMarkEssayAgentJobRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrlList")
 	delete(f, "PdfPageNumber")
 	delete(f, "QuestionConfigMap")
+	delete(f, "AgentType")
+	delete(f, "PageRange")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitMarkEssayAgentJobRequest has unknown keys!", "")
 	}
@@ -10388,10 +10556,12 @@ type SubmitQuestionMarkAgentJobRequestParams struct {
 	// Deprecated: EnableDeepThink is deprecated.
 	EnableDeepThink *bool `json:"EnableDeepThink,omitnil,omitempty" name:"EnableDeepThink"`
 
-	// <p>题目信息输出配置，当key对应为true表示开启配置开关。<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；<br>当key为DisableAnswerAnalysis value为true表示不输出答案解析；<br>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；</p>
+	// <p>题目信息输出配置（默认快速模式只输出题目外层题目边框坐标、批改答案、手写答案坐标、答案分析、正确答案）</p><p>当key为QuickGradingEnabled value为false表示关闭快速模式（速度会变慢），新增输出手写作答、题干、插图坐标<br>当key为StepCorrection value为true表示启用步骤级批改（速度会变慢）；</p>
 	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
 
 	// <p>【废弃字段】</p>
+	//
+	// Deprecated: ReferenceAnswer is deprecated.
 	ReferenceAnswer *string `json:"ReferenceAnswer,omitnil,omitempty" name:"ReferenceAnswer"`
 
 	// <p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入含正确解析试卷，最多1张</li><li>当AssistMarkType为0时，ImageBase64List.N/ImageUrlList.N图片会执行多图同时批改逻辑（解决单题跨页场景）</li></ol>
@@ -10408,6 +10578,9 @@ type SubmitQuestionMarkAgentJobRequestParams struct {
 
 	// <p>是否开启切边、弯曲矫正、方向矫正，开启则批改之前先做图片前处理，图片url地址返回在查询接口的QuestionInfo-&gt; ReturnImageUrl中,默认为false不开启</p>
 	EnableImageCrop *bool `json:"EnableImageCrop,omitnil,omitempty" name:"EnableImageCrop"`
+
+	// <p>批改模型选择</p><p>枚举值：</p><ul><li>yuanbao_correction_model： 快速批改模型平均耗时8s。针对单题跨栏、多栏（≥2栏）排版及子题数超过 30 道的复杂算式场景，耗时约为快速批改模式的 2 倍+。</li><li>youtu_correction_model： 深度批改模型平均耗时12-30s。全场景支持,精度更高。</li></ul><p>默认值：yuanbao_correction_model</p>
+	ModelType *string `json:"ModelType,omitnil,omitempty" name:"ModelType"`
 }
 
 type SubmitQuestionMarkAgentJobRequest struct {
@@ -10428,7 +10601,7 @@ type SubmitQuestionMarkAgentJobRequest struct {
 	// <p>默认false 表示关闭深度思考  true 表示打开深度思考，更深层次推理分析，速度更慢</p>
 	EnableDeepThink *bool `json:"EnableDeepThink,omitnil,omitempty" name:"EnableDeepThink"`
 
-	// <p>题目信息输出配置，当key对应为true表示开启配置开关。<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；<br>当key为DisableAnswerAnalysis value为true表示不输出答案解析；<br>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；</p>
+	// <p>题目信息输出配置（默认快速模式只输出题目外层题目边框坐标、批改答案、手写答案坐标、答案分析、正确答案）</p><p>当key为QuickGradingEnabled value为false表示关闭快速模式（速度会变慢），新增输出手写作答、题干、插图坐标<br>当key为StepCorrection value为true表示启用步骤级批改（速度会变慢）；</p>
 	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
 
 	// <p>【废弃字段】</p>
@@ -10448,6 +10621,9 @@ type SubmitQuestionMarkAgentJobRequest struct {
 
 	// <p>是否开启切边、弯曲矫正、方向矫正，开启则批改之前先做图片前处理，图片url地址返回在查询接口的QuestionInfo-&gt; ReturnImageUrl中,默认为false不开启</p>
 	EnableImageCrop *bool `json:"EnableImageCrop,omitnil,omitempty" name:"EnableImageCrop"`
+
+	// <p>批改模型选择</p><p>枚举值：</p><ul><li>yuanbao_correction_model： 快速批改模型平均耗时8s。针对单题跨栏、多栏（≥2栏）排版及子题数超过 30 道的复杂算式场景，耗时约为快速批改模式的 2 倍+。</li><li>youtu_correction_model： 深度批改模型平均耗时12-30s。全场景支持,精度更高。</li></ul><p>默认值：yuanbao_correction_model</p>
+	ModelType *string `json:"ModelType,omitnil,omitempty" name:"ModelType"`
 }
 
 func (r *SubmitQuestionMarkAgentJobRequest) ToJsonString() string {
@@ -10474,6 +10650,7 @@ func (r *SubmitQuestionMarkAgentJobRequest) FromJsonString(s string) error {
 	delete(f, "AssistMarkType")
 	delete(f, "AnswerAssistMap")
 	delete(f, "EnableImageCrop")
+	delete(f, "ModelType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitQuestionMarkAgentJobRequest has unknown keys!", "")
 	}
@@ -10485,13 +10662,19 @@ type SubmitQuestionMarkAgentJobResponseParams struct {
 	// <p>任务唯一ID。由服务端生成.</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// <p>切题题目边框坐标列表 （如果BoolSingleQuestion为true则返回空）</p>
+	// <p>【废弃字段】</p>
+	//
+	// Deprecated: QuestionInfo is deprecated.
 	QuestionInfo []*QuestionInfo `json:"QuestionInfo,omitnil,omitempty" name:"QuestionInfo"`
 
-	// <p>题目切题数量，作为计费题目数总量</p>
+	// <p>【废弃字段】</p>
+	//
+	// Deprecated: QuestionCount is deprecated.
 	QuestionCount *string `json:"QuestionCount,omitnil,omitempty" name:"QuestionCount"`
 
 	// <p>【废弃字段】</p>
+	//
+	// Deprecated: OriginalImageUrl is deprecated.
 	OriginalImageUrl *string `json:"OriginalImageUrl,omitnil,omitempty" name:"OriginalImageUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

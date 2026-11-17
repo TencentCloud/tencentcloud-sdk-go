@@ -20,6 +20,26 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type Account struct {
+	// <p>实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>账号名称。</p>
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// <p>账号描述信息。</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>读写权限策略。</p><p>枚举值：</p><ul><li>r： 只读。</li><li>rw： 读写。</li></ul>
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
+
+	// <p>只读路由策略。</p><p>枚举值：</p><ul><li>master： 主节点。</li><li>replication： 从节点。</li></ul>
+	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
+
+	// <p>子账号状态。</p><p>枚举值：</p><ul><li>1： 账号变更中。</li><li>2： 账号有效。</li><li>4： 账号已删除。</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 // Predefined struct for user
 type AssociateSecurityGroupsRequestParams struct {
 	// 数据库引擎名称：keewidb。
@@ -391,6 +411,98 @@ func (r *CreateBackupManuallyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateInstanceAccountRequestParams struct {
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>自定义的访问数据库的账号名称。</p><ul><li>仅由字母、数字、下划线、中划线组成。</li><li>长度不能大于32位。</li></ul>
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// <p>设置自定义账号的密码。密码复杂度要求如下：</p><ul><li>字符个数为[8,64]。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的两种。</li><li>不能以&quot;/&quot;开头。</li></ul>
+	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
+
+	// <p>指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。 </p><p>枚举值：</p><ul><li>master： 主节点</li><li>replication： 副本节点</li></ul>
+	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
+
+	// <p>账户读写权限，支持选择只读与读写权限。</p><p>枚举值：</p><ul><li>rw： 读写</li><li>r： 只读</li></ul>
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
+
+	// <p>账号备注描述信息，长度为[0,64] 字节，支持中文。</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type CreateInstanceAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>自定义的访问数据库的账号名称。</p><ul><li>仅由字母、数字、下划线、中划线组成。</li><li>长度不能大于32位。</li></ul>
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// <p>设置自定义账号的密码。密码复杂度要求如下：</p><ul><li>字符个数为[8,64]。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的两种。</li><li>不能以&quot;/&quot;开头。</li></ul>
+	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
+
+	// <p>指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。 </p><p>枚举值：</p><ul><li>master： 主节点</li><li>replication： 副本节点</li></ul>
+	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
+
+	// <p>账户读写权限，支持选择只读与读写权限。</p><p>枚举值：</p><ul><li>rw： 读写</li><li>r： 只读</li></ul>
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
+
+	// <p>账号备注描述信息，长度为[0,64] 字节，支持中文。</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *CreateInstanceAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstanceAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AccountName")
+	delete(f, "AccountPassword")
+	delete(f, "ReadonlyPolicy")
+	delete(f, "Privilege")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInstanceAccountResponseParams struct {
+	// <p>任务ID。</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateInstanceAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateInstanceAccountResponseParams `json:"Response"`
+}
+
+func (r *CreateInstanceAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstanceAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateInstancesRequestParams struct {
 	// <p>实例版本类型。</p><p>枚举值：</p><ul><li>11： 存储版标准架构。</li><li>12： 存储版集群架构。</li><li>13： 极速版标准架构。</li><li>14： 极速版集群架构。</li></ul>
 	TypeId *uint64 `json:"TypeId,omitnil,omitempty" name:"TypeId"`
@@ -617,6 +729,70 @@ func (r *CreateInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteInstanceAccountRequestParams struct {
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>指定需删除的账号名称。</p>
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+}
+
+type DeleteInstanceAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>指定需删除的账号名称。</p>
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+}
+
+func (r *DeleteInstanceAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInstanceAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AccountName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteInstanceAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteInstanceAccountResponseParams struct {
+	// <p>任务ID。</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteInstanceAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteInstanceAccountResponseParams `json:"Response"`
+}
+
+func (r *DeleteInstanceAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInstanceAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAutoBackupConfigRequestParams struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -818,6 +994,80 @@ func (r *DescribeDBSecurityGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDBSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceAccountRequestParams struct {
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>分页大小。</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量。</p><p>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeInstanceAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>分页大小。</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量。</p><p>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeInstanceAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceAccountResponseParams struct {
+	// <p>账号详细信息。</p>
+	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
+
+	// <p>账号个数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceAccountResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2939,6 +3189,98 @@ func (r *ModifyDBInstanceSecurityGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDBInstanceSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceAccountRequestParams struct {
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>指定需修改的账号。</p><ul><li>root：指在创建 KeeWiDB 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。</li><li>自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。</li></ul>
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// <p>指定所修改账号访问的密码。</p>
+	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
+
+	// <p>账号描述信息</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>指定所修改账号读写请求路由的策略。</p><p>枚举值：</p><ul><li>master： 表示读写请求路由至主节点。</li><li>replication： 表示读写请求路由至从节点。</li></ul>
+	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
+
+	// <p>指定所修改账号的读写权限。</p><p>枚举值：</p><ul><li>rw： 读写。</li><li>r： 只读。</li></ul>
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
+}
+
+type ModifyInstanceAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>指定需修改的账号。</p><ul><li>root：指在创建 KeeWiDB 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。</li><li>自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。</li></ul>
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// <p>指定所修改账号访问的密码。</p>
+	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
+
+	// <p>账号描述信息</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>指定所修改账号读写请求路由的策略。</p><p>枚举值：</p><ul><li>master： 表示读写请求路由至主节点。</li><li>replication： 表示读写请求路由至从节点。</li></ul>
+	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
+
+	// <p>指定所修改账号的读写权限。</p><p>枚举值：</p><ul><li>rw： 读写。</li><li>r： 只读。</li></ul>
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
+}
+
+func (r *ModifyInstanceAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AccountName")
+	delete(f, "AccountPassword")
+	delete(f, "Remark")
+	delete(f, "ReadonlyPolicy")
+	delete(f, "Privilege")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceAccountResponseParams struct {
+	// <p>任务ID。</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceAccountResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

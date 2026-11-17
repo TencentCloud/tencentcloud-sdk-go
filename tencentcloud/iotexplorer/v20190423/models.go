@@ -8699,6 +8699,87 @@ func (r *DescribeDeviceBindGatewayResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDeviceCloudStoragePackagesRequestParams struct {
+	// <p>产品id</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>通道id</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>云存类别</p><p>枚举值：</p><ul><li>video： 视频云存</li><li>image： 图片云存</li></ul>
+	MediaType *string `json:"MediaType,omitnil,omitempty" name:"MediaType"`
+}
+
+type DescribeDeviceCloudStoragePackagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品id</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>通道id</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>云存类别</p><p>枚举值：</p><ul><li>video： 视频云存</li><li>image： 图片云存</li></ul>
+	MediaType *string `json:"MediaType,omitnil,omitempty" name:"MediaType"`
+}
+
+func (r *DescribeDeviceCloudStoragePackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceCloudStoragePackagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ChannelId")
+	delete(f, "MediaType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceCloudStoragePackagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceCloudStoragePackagesResponseParams struct {
+	// <p>套餐包相关数据</p>
+	Packages []*NewCloudStoragePackage `json:"Packages,omitnil,omitempty" name:"Packages"`
+
+	// <p>套餐总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceCloudStoragePackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceCloudStoragePackagesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceCloudStoragePackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceCloudStoragePackagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDeviceDataHistoryRequestParams struct {
 	// 区间开始时间（Unix 时间戳，毫秒级）
 	MinTime *uint64 `json:"MinTime,omitnil,omitempty" name:"MinTime"`
@@ -19742,6 +19823,47 @@ func (r *ModifyTopicRuleResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyTopicRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type NewCloudStoragePackage struct {
+	// <p>资源id</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>媒体类型</p><p>枚举值：</p><ul><li>image： 图片套餐</li><li>video： 视频套餐</li></ul>
+	MediaType *string `json:"MediaType,omitnil,omitempty" name:"MediaType"`
+
+	// <p>存储天数</p><p>枚举值：</p><ul><li>3： 存储3天</li><li>7： 存储7天</li><li>15： 存储15天</li><li>30： 存储30天</li></ul>
+	RetentionDays *uint64 `json:"RetentionDays,omitnil,omitempty" name:"RetentionDays"`
+
+	// <p>录制模式</p><p>枚举值：</p><ul><li>low_power：  2小时/日</li><li>event：  8小时/日</li><li>full_time：  24小时/日</li></ul>
+	RecordingMode *string `json:"RecordingMode,omitnil,omitempty" name:"RecordingMode"`
+
+	// <p>码率</p><p>枚举值：</p><ul><li>0.5m： 0.5Mbps</li><li>1m： 1Mbps</li><li>1.5m： 1.5Mbps</li><li>2m： 2Mbps</li></ul>
+	Bitrate *string `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
+
+	// <p>开始时间</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>过期时间</p>
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>套餐状态</p><p>枚举值：</p><ul><li>active： 生效中</li><li>queued： 排队中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>启停状态</p><p>枚举值：</p><ul><li>0： 停用</li><li>1： 启用</li></ul>
+	ReportEnabled *uint64 `json:"ReportEnabled,omitnil,omitempty" name:"ReportEnabled"`
+
+	// <p>订单id</p>
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+
+	// <p>大订单号</p>
+	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
+
+	// <p>卡有效期类型</p><p>枚举值：</p><ul><li>monthly_card： 月卡</li><li>annual_card： 年卡</li></ul>
+	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
+
+	// <p>图片档位</p><p>枚举值：</p><ul><li>300： 300张/日</li><li>1000： 1000张/日</li></ul>
+	ImageCapacity *string `json:"ImageCapacity,omitnil,omitempty" name:"ImageCapacity"`
 }
 
 // Predefined struct for user

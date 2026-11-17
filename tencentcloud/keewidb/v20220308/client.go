@@ -353,6 +353,62 @@ func (c *Client) CreateBackupManuallyWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateInstanceAccountRequest() (request *CreateInstanceAccountRequest) {
+    request = &CreateInstanceAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("keewidb", APIVersion, "CreateInstanceAccount")
+    
+    
+    return
+}
+
+func NewCreateInstanceAccountResponse() (response *CreateInstanceAccountResponse) {
+    response = &CreateInstanceAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateInstanceAccount
+// 本接口（CreateInstanceAccount）用于自定义访问实例的账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) CreateInstanceAccount(request *CreateInstanceAccountRequest) (response *CreateInstanceAccountResponse, err error) {
+    return c.CreateInstanceAccountWithContext(context.Background(), request)
+}
+
+// CreateInstanceAccount
+// 本接口（CreateInstanceAccount）用于自定义访问实例的账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) CreateInstanceAccountWithContext(ctx context.Context, request *CreateInstanceAccountRequest) (response *CreateInstanceAccountResponse, err error) {
+    if request == nil {
+        request = NewCreateInstanceAccountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "CreateInstanceAccount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInstanceAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInstanceAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateInstancesRequest() (request *CreateInstancesRequest) {
     request = &CreateInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -417,6 +473,62 @@ func (c *Client) CreateInstancesWithContext(ctx context.Context, request *Create
     request.SetContext(ctx)
     
     response = NewCreateInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteInstanceAccountRequest() (request *DeleteInstanceAccountRequest) {
+    request = &DeleteInstanceAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("keewidb", APIVersion, "DeleteInstanceAccount")
+    
+    
+    return
+}
+
+func NewDeleteInstanceAccountResponse() (response *DeleteInstanceAccountResponse) {
+    response = &DeleteInstanceAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteInstanceAccount
+// 本接口（DeleteInstanceAccount）用于删除实例自定义账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) DeleteInstanceAccount(request *DeleteInstanceAccountRequest) (response *DeleteInstanceAccountResponse, err error) {
+    return c.DeleteInstanceAccountWithContext(context.Background(), request)
+}
+
+// DeleteInstanceAccount
+// 本接口（DeleteInstanceAccount）用于删除实例自定义账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) DeleteInstanceAccountWithContext(ctx context.Context, request *DeleteInstanceAccountRequest) (response *DeleteInstanceAccountResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstanceAccountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DeleteInstanceAccount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInstanceAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteInstanceAccountResponse()
     err = c.Send(request, response)
     return
 }
@@ -609,6 +721,60 @@ func (c *Client) DescribeDBSecurityGroupsWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeDBSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceAccountRequest() (request *DescribeInstanceAccountRequest) {
+    request = &DescribeInstanceAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("keewidb", APIVersion, "DescribeInstanceAccount")
+    
+    
+    return
+}
+
+func NewDescribeInstanceAccountResponse() (response *DescribeInstanceAccountResponse) {
+    response = &DescribeInstanceAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceAccount
+// 本接口（DescribeInstanceAccount）用于查看实例账号信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) DescribeInstanceAccount(request *DescribeInstanceAccountRequest) (response *DescribeInstanceAccountResponse, err error) {
+    return c.DescribeInstanceAccountWithContext(context.Background(), request)
+}
+
+// DescribeInstanceAccount
+// 本接口（DescribeInstanceAccount）用于查看实例账号信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) DescribeInstanceAccountWithContext(ctx context.Context, request *DescribeInstanceAccountRequest) (response *DescribeInstanceAccountResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceAccountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "DescribeInstanceAccount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceAccountResponse()
     err = c.Send(request, response)
     return
 }
@@ -1943,6 +2109,64 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     request.SetContext(ctx)
     
     response = NewModifyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceAccountRequest() (request *ModifyInstanceAccountRequest) {
+    request = &ModifyInstanceAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("keewidb", APIVersion, "ModifyInstanceAccount")
+    
+    
+    return
+}
+
+func NewModifyInstanceAccountResponse() (response *ModifyInstanceAccountResponse) {
+    response = &ModifyInstanceAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceAccount
+// 本接口（ModifyInstanceAccount）用于修改实例账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+func (c *Client) ModifyInstanceAccount(request *ModifyInstanceAccountRequest) (response *ModifyInstanceAccountResponse, err error) {
+    return c.ModifyInstanceAccountWithContext(context.Background(), request)
+}
+
+// ModifyInstanceAccount
+// 本接口（ModifyInstanceAccount）用于修改实例账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+func (c *Client) ModifyInstanceAccountWithContext(ctx context.Context, request *ModifyInstanceAccountRequest) (response *ModifyInstanceAccountResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceAccountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "keewidb", APIVersion, "ModifyInstanceAccount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceAccountResponse()
     err = c.Send(request, response)
     return
 }

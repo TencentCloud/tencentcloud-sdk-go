@@ -81,7 +81,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cngw v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.212
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.213
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -163,6 +163,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lke v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lkeap v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/makers v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mall v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mariadb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/market v0.0.0
@@ -431,6 +432,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lke => ../tencentcloud/lke
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lkeap => ../tencentcloud/lkeap
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode => ../tencentcloud/lowcode
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/makers => ../tencentcloud/makers
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mall => ../tencentcloud/mall
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mariadb => ../tencentcloud/mariadb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/market => ../tencentcloud/market

@@ -909,6 +909,60 @@ func (c *Client) InitializeCloudRunResourceWithContext(ctx context.Context, requ
     return
 }
 
+func NewModifyStableIPStatusRequest() (request *ModifyStableIPStatusRequest) {
+    request = &ModifyStableIPStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "ModifyStableIPStatus")
+    
+    
+    return
+}
+
+func NewModifyStableIPStatusResponse() (response *ModifyStableIPStatusResponse) {
+    response = &ModifyStableIPStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyStableIPStatus
+// 本接口 ModifyStableIPStatus 用于修改固定 IP 状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyStableIPStatus(request *ModifyStableIPStatusRequest) (response *ModifyStableIPStatusResponse, err error) {
+    return c.ModifyStableIPStatusWithContext(context.Background(), request)
+}
+
+// ModifyStableIPStatus
+// 本接口 ModifyStableIPStatus 用于修改固定 IP 状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyStableIPStatusWithContext(ctx context.Context, request *ModifyStableIPStatusRequest) (response *ModifyStableIPStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyStableIPStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "ModifyStableIPStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStableIPStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStableIPStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOperateServerManageRequest() (request *OperateServerManageRequest) {
     request = &OperateServerManageRequest{
         BaseRequest: &tchttp.BaseRequest{},

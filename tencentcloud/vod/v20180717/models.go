@@ -2938,6 +2938,14 @@ type AigcVideoTaskUsage struct {
 	TotalSeconds *int64 `json:"TotalSeconds,omitnil,omitempty" name:"TotalSeconds"`
 }
 
+type AigcWhitelistModel struct {
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本</p>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+}
+
 type AnimatedGraphicTaskInput struct {
 	// 视频转动图模板 ID
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -13577,6 +13585,82 @@ func (r *DescribeAigcUsageDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAigcUsageDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcWhitelistRequestParams struct {
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>AIGC任务类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li></ul>
+	AigcType *string `json:"AigcType,omitnil,omitempty" name:"AigcType"`
+}
+
+type DescribeAigcWhitelistRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>AIGC任务类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li></ul>
+	AigcType *string `json:"AigcType,omitnil,omitempty" name:"AigcType"`
+}
+
+func (r *DescribeAigcWhitelistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcWhitelistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "AigcType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcWhitelistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcWhitelistResponseParams struct {
+	// <p>AIGC任务类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li></ul>
+	AigcType *string `json:"AigcType,omitnil,omitempty" name:"AigcType"`
+
+	// <p>模型白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只有允许调用ModelWhitelist中列出的模型</li><li>OFF： 关闭，允许调用所有模型</li></ul>
+	ModelWhitelistSwitch *string `json:"ModelWhitelistSwitch,omitnil,omitempty" name:"ModelWhitelistSwitch"`
+
+	// <p>模型白名单列表</p>
+	ModelWhitelist []*AigcWhitelistModel `json:"ModelWhitelist,omitnil,omitempty" name:"ModelWhitelist"`
+
+	// <p>IP白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只允许IpWhitelist中列出的IP段进行调用</li><li>OFF： 关闭，允许所有IP进行调用</li></ul>
+	IpWhitelistSwitch *string `json:"IpWhitelistSwitch,omitnil,omitempty" name:"IpWhitelistSwitch"`
+
+	// <p>IP白名单的CIDR列表</p>
+	IpWhitelist []*string `json:"IpWhitelist,omitnil,omitempty" name:"IpWhitelist"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcWhitelistResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcWhitelistResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcWhitelistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcWhitelistResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -33029,6 +33113,95 @@ type SemanticsSearchResult struct {
 }
 
 // Predefined struct for user
+type SetAigcWhitelistRequestParams struct {
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>AIGC任务类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li></ul>
+	AigcType *string `json:"AigcType,omitnil,omitempty" name:"AigcType"`
+
+	// <p>模型白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只有允许调用ModelWhitelist中列出的模型</li><li>OFF： 关闭，允许调用所有模型</li></ul>
+	ModelWhitelistSwitch *string `json:"ModelWhitelistSwitch,omitnil,omitempty" name:"ModelWhitelistSwitch"`
+
+	// <p>IP白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只允许IpWhitelist中列出的IP段进行调用</li><li>OFF： 关闭，允许所有IP进行调用</li></ul>
+	IpWhitelistSwitch *string `json:"IpWhitelistSwitch,omitnil,omitempty" name:"IpWhitelistSwitch"`
+
+	// <p>模型白名单列表</p>
+	ModelWhitelist []*AigcWhitelistModel `json:"ModelWhitelist,omitnil,omitempty" name:"ModelWhitelist"`
+
+	// <p>IP白名单的CIDR列表</p>
+	IpWhitelist []*string `json:"IpWhitelist,omitnil,omitempty" name:"IpWhitelist"`
+}
+
+type SetAigcWhitelistRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>AIGC任务类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li></ul>
+	AigcType *string `json:"AigcType,omitnil,omitempty" name:"AigcType"`
+
+	// <p>模型白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只有允许调用ModelWhitelist中列出的模型</li><li>OFF： 关闭，允许调用所有模型</li></ul>
+	ModelWhitelistSwitch *string `json:"ModelWhitelistSwitch,omitnil,omitempty" name:"ModelWhitelistSwitch"`
+
+	// <p>IP白名单开关</p><p>枚举值：</p><ul><li>ON： 打开，只允许IpWhitelist中列出的IP段进行调用</li><li>OFF： 关闭，允许所有IP进行调用</li></ul>
+	IpWhitelistSwitch *string `json:"IpWhitelistSwitch,omitnil,omitempty" name:"IpWhitelistSwitch"`
+
+	// <p>模型白名单列表</p>
+	ModelWhitelist []*AigcWhitelistModel `json:"ModelWhitelist,omitnil,omitempty" name:"ModelWhitelist"`
+
+	// <p>IP白名单的CIDR列表</p>
+	IpWhitelist []*string `json:"IpWhitelist,omitnil,omitempty" name:"IpWhitelist"`
+}
+
+func (r *SetAigcWhitelistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetAigcWhitelistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "AigcType")
+	delete(f, "ModelWhitelistSwitch")
+	delete(f, "IpWhitelistSwitch")
+	delete(f, "ModelWhitelist")
+	delete(f, "IpWhitelist")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetAigcWhitelistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetAigcWhitelistResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetAigcWhitelistResponse struct {
+	*tchttp.BaseResponse
+	Response *SetAigcWhitelistResponseParams `json:"Response"`
+}
+
+func (r *SetAigcWhitelistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetAigcWhitelistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SetCLSPushTargetRequestParams struct {
 	// 域名。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -33718,20 +33891,10 @@ type SplitMediaTaskSegmentInfo struct {
 }
 
 type StatDataItem struct {
-	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
-	// <li>表示小时级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日0点到1点的统计数据。</li>
-	// <li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>
+	// <p>数据所在时间区间的开始时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。</p><li>表示小时级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日0点到1点的统计数据。</li><li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// 数据大小。
-	// <li>存储空间的数据，单位是字节。</li>
-	// <li>转码时长的数据，单位是秒。</li>
-	// <li>流量数据，单位是字节。</li>
-	// <li>带宽数据，单位是比特每秒。</li>
-	// <li>直播剪辑数据，单位是秒。</li>
-	// <li>轮播数据，单位是秒。</li>
-	// <li>子应用数量数据，单位是个。</li>
-	// <li>日志服务用量数据，单位是条。</li>
+	// <p>数据大小。</p><li>存储空间的数据，单位是字节。</li><li>转码时长的数据，单位是秒。</li><li>流量数据，单位是字节。</li><li>带宽数据，单位是比特每秒。</li><li>直播剪辑数据，单位是秒。</li><li>轮播数据，单位是秒。</li><li>子应用数量数据，单位是个。</li><li>日志服务用量数据，单位是条。</li>
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

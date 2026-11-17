@@ -6127,6 +6127,12 @@ type CreateS3RechargeRequestParams struct {
 
 	// <p>s3导入任务类型.</p><p>枚举值：</p><ul><li>1： 一次性导入任务</li><li>2： 持续性导入任务</li></ul><p>默认值：1</p>
 	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>是否启用SQS。</p><p>默认值：false</p><p>仅允许 TaskType=2是为true。</p>
+	SQSEnabled *bool `json:"SQSEnabled,omitnil,omitempty" name:"SQSEnabled"`
+
+	// <p>SQS队列URL。SqsEnabled=true 时必填非空标准队列 URL；默认空字符串，不隐式开启 SQS，关闭时不生效。</p>
+	SQSUrl *string `json:"SQSUrl,omitnil,omitempty" name:"SQSUrl"`
 }
 
 type CreateS3RechargeRequest struct {
@@ -6167,6 +6173,12 @@ type CreateS3RechargeRequest struct {
 
 	// <p>s3导入任务类型.</p><p>枚举值：</p><ul><li>1： 一次性导入任务</li><li>2： 持续性导入任务</li></ul><p>默认值：1</p>
 	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>是否启用SQS。</p><p>默认值：false</p><p>仅允许 TaskType=2是为true。</p>
+	SQSEnabled *bool `json:"SQSEnabled,omitnil,omitempty" name:"SQSEnabled"`
+
+	// <p>SQS队列URL。SqsEnabled=true 时必填非空标准队列 URL；默认空字符串，不隐式开启 SQS，关闭时不生效。</p>
+	SQSUrl *string `json:"SQSUrl,omitnil,omitempty" name:"SQSUrl"`
 }
 
 func (r *CreateS3RechargeRequest) ToJsonString() string {
@@ -6193,6 +6205,8 @@ func (r *CreateS3RechargeRequest) FromJsonString(s string) error {
 	delete(f, "Compress")
 	delete(f, "ExtractRuleInfo")
 	delete(f, "TaskType")
+	delete(f, "SQSEnabled")
+	delete(f, "SQSUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateS3RechargeRequest has unknown keys!", "")
 	}
@@ -7411,6 +7425,9 @@ type DataTransformTaskInfo struct {
 
 	// <p>环境变量</p>
 	EnvInfos []*EnvInfo `json:"EnvInfos,omitnil,omitempty" name:"EnvInfos"`
+
+	// <p>前置加工任务源主题、目标主题说明</p>
+	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
 }
 
 // Predefined struct for user
@@ -22523,6 +22540,12 @@ type ModifyS3RechargeRequestParams struct {
 
 	// <p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
 	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil,omitempty" name:"ExtractRuleInfo"`
+
+	// <p>是否启用SQS。不传保持原配置； 开启开关仅对增量数据生效。</p>
+	SQSEnabled *bool `json:"SQSEnabled,omitnil,omitempty" name:"SQSEnabled"`
+
+	// <p>SQS队列URL。开启开关后仅对增量数据生效。</p>
+	SQSUrl *string `json:"SQSUrl,omitnil,omitempty" name:"SQSUrl"`
 }
 
 type ModifyS3RechargeRequest struct {
@@ -22569,6 +22592,12 @@ type ModifyS3RechargeRequest struct {
 
 	// <p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
 	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitnil,omitempty" name:"ExtractRuleInfo"`
+
+	// <p>是否启用SQS。不传保持原配置； 开启开关仅对增量数据生效。</p>
+	SQSEnabled *bool `json:"SQSEnabled,omitnil,omitempty" name:"SQSEnabled"`
+
+	// <p>SQS队列URL。开启开关后仅对增量数据生效。</p>
+	SQSUrl *string `json:"SQSUrl,omitnil,omitempty" name:"SQSUrl"`
 }
 
 func (r *ModifyS3RechargeRequest) ToJsonString() string {
@@ -22597,6 +22626,8 @@ func (r *ModifyS3RechargeRequest) FromJsonString(s string) error {
 	delete(f, "Prefix")
 	delete(f, "Compress")
 	delete(f, "ExtractRuleInfo")
+	delete(f, "SQSEnabled")
+	delete(f, "SQSUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyS3RechargeRequest has unknown keys!", "")
 	}
@@ -25123,6 +25154,12 @@ type S3RechargeInfo struct {
 
 	// <p>更新时间</p><p>单位：秒</p><p>秒级时间戳</p>
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>是否启用SQS。</p>
+	SQSEnabled *bool `json:"SQSEnabled,omitnil,omitempty" name:"SQSEnabled"`
+
+	// <p>SQS队列URL。</p>
+	SQSUrl *string `json:"SQSUrl,omitnil,omitempty" name:"SQSUrl"`
 }
 
 type ScheduledSqlResouceInfo struct {

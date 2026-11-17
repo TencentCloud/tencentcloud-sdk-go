@@ -345,6 +345,70 @@ func (c *Client) CreateConsoleGroupWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateExperimentRequest() (request *CreateExperimentRequest) {
+    request = &CreateExperimentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "CreateExperiment")
+    
+    
+    return
+}
+
+func NewCreateExperimentResponse() (response *CreateExperimentResponse) {
+    response = &CreateExperimentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateExperiment
+// 创建实验。实验是 MLflow 训练跟踪的容器，用于承载训练运行记录与已记录模型。支持 MACHINE_LEARNING/CLASSIFICATION/REGRESSION/FORECASTING/AGENT 五种类型；AutoML 类型（分类/回归/时序预测）需同时传入 AutoMlConf 与 TrainingData。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_HEADERINVALID = "AuthFailure.HeaderInvalid"
+//  AUTHFAILURE_JWTTOKENINVALID = "AuthFailure.JwtTokenInvalid"
+//  FAILEDOPERATION_MLFLOWFAILEDOPERATION = "FailedOperation.MlflowFailedOperation"
+//  INTERNALERROR_MLFLOWINTERNALERROR = "InternalError.MlflowInternalError"
+//  INTERNALERROR_MLFLOWSERVERNOTFOUND = "InternalError.MlflowServerNotFound"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_EXPERIMENTTYPEINVALID = "InvalidParameter.ExperimentTypeInvalid"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) CreateExperiment(request *CreateExperimentRequest) (response *CreateExperimentResponse, err error) {
+    return c.CreateExperimentWithContext(context.Background(), request)
+}
+
+// CreateExperiment
+// 创建实验。实验是 MLflow 训练跟踪的容器，用于承载训练运行记录与已记录模型。支持 MACHINE_LEARNING/CLASSIFICATION/REGRESSION/FORECASTING/AGENT 五种类型；AutoML 类型（分类/回归/时序预测）需同时传入 AutoMlConf 与 TrainingData。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_HEADERINVALID = "AuthFailure.HeaderInvalid"
+//  AUTHFAILURE_JWTTOKENINVALID = "AuthFailure.JwtTokenInvalid"
+//  FAILEDOPERATION_MLFLOWFAILEDOPERATION = "FailedOperation.MlflowFailedOperation"
+//  INTERNALERROR_MLFLOWINTERNALERROR = "InternalError.MlflowInternalError"
+//  INTERNALERROR_MLFLOWSERVERNOTFOUND = "InternalError.MlflowServerNotFound"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_EXPERIMENTTYPEINVALID = "InvalidParameter.ExperimentTypeInvalid"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) CreateExperimentWithContext(ctx context.Context, request *CreateExperimentRequest) (response *CreateExperimentResponse, err error) {
+    if request == nil {
+        request = NewCreateExperimentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "CreateExperiment")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExperiment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateExperimentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFileRequest() (request *CreateFileRequest) {
     request = &CreateFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -382,12 +446,14 @@ func NewCreateFileResponse() (response *CreateFileResponse) {
 // 5. 需带文件内容创建时通过 Storage 传入（大文件走 COS 中转，小文件放 Storage.Content）。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DUPLICATEANACATALOG = "FailedOperation.DuplicateAnaCatalog"
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  AUTHFAILURE_HEADERINVALID = "AuthFailure.HeaderInvalid"
+//  AUTHFAILURE_JWTTOKENINVALID = "AuthFailure.JwtTokenInvalid"
+//  FAILEDOPERATION_MLFLOWFAILEDOPERATION = "FailedOperation.MlflowFailedOperation"
+//  INTERNALERROR_MLFLOWINTERNALERROR = "InternalError.MlflowInternalError"
+//  INTERNALERROR_MLFLOWSERVERNOTFOUND = "InternalError.MlflowServerNotFound"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_EXPERIMENTTYPEINVALID = "InvalidParameter.ExperimentTypeInvalid"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
-//  RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 func (c *Client) CreateFile(request *CreateFileRequest) (response *CreateFileResponse, err error) {
     return c.CreateFileWithContext(context.Background(), request)
 }
@@ -410,12 +476,14 @@ func (c *Client) CreateFile(request *CreateFileRequest) (response *CreateFileRes
 // 5. 需带文件内容创建时通过 Storage 传入（大文件走 COS 中转，小文件放 Storage.Content）。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DUPLICATEANACATALOG = "FailedOperation.DuplicateAnaCatalog"
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  AUTHFAILURE_HEADERINVALID = "AuthFailure.HeaderInvalid"
+//  AUTHFAILURE_JWTTOKENINVALID = "AuthFailure.JwtTokenInvalid"
+//  FAILEDOPERATION_MLFLOWFAILEDOPERATION = "FailedOperation.MlflowFailedOperation"
+//  INTERNALERROR_MLFLOWINTERNALERROR = "InternalError.MlflowInternalError"
+//  INTERNALERROR_MLFLOWSERVERNOTFOUND = "InternalError.MlflowServerNotFound"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_EXPERIMENTTYPEINVALID = "InvalidParameter.ExperimentTypeInvalid"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
-//  RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 func (c *Client) CreateFileWithContext(ctx context.Context, request *CreateFileRequest) (response *CreateFileResponse, err error) {
     if request == nil {
         request = NewCreateFileRequest()
@@ -456,12 +524,14 @@ func NewCreateFolderResponse() (response *CreateFolderResponse) {
 // 创建文件夹
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DUPLICATEANACATALOG = "FailedOperation.DuplicateAnaCatalog"
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  AUTHFAILURE_HEADERINVALID = "AuthFailure.HeaderInvalid"
+//  AUTHFAILURE_JWTTOKENINVALID = "AuthFailure.JwtTokenInvalid"
+//  FAILEDOPERATION_MLFLOWFAILEDOPERATION = "FailedOperation.MlflowFailedOperation"
+//  INTERNALERROR_MLFLOWINTERNALERROR = "InternalError.MlflowInternalError"
+//  INTERNALERROR_MLFLOWSERVERNOTFOUND = "InternalError.MlflowServerNotFound"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_EXPERIMENTTYPEINVALID = "InvalidParameter.ExperimentTypeInvalid"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
-//  RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
     return c.CreateFolderWithContext(context.Background(), request)
 }
@@ -470,12 +540,14 @@ func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFol
 // 创建文件夹
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DUPLICATEANACATALOG = "FailedOperation.DuplicateAnaCatalog"
-//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
-//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  AUTHFAILURE_HEADERINVALID = "AuthFailure.HeaderInvalid"
+//  AUTHFAILURE_JWTTOKENINVALID = "AuthFailure.JwtTokenInvalid"
+//  FAILEDOPERATION_MLFLOWFAILEDOPERATION = "FailedOperation.MlflowFailedOperation"
+//  INTERNALERROR_MLFLOWINTERNALERROR = "InternalError.MlflowInternalError"
+//  INTERNALERROR_MLFLOWSERVERNOTFOUND = "InternalError.MlflowServerNotFound"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_EXPERIMENTTYPEINVALID = "InvalidParameter.ExperimentTypeInvalid"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  LIMITEXCEEDED_SETATSCATALOGLIMITEXCEEDED = "LimitExceeded.SetatsCatalogLimitExceeded"
-//  RESOURCEINUSE_CATALOGALREADYEXISTS = "ResourceInUse.CatalogAlreadyExists"
 func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
     if request == nil {
         request = NewCreateFolderRequest()
@@ -2007,6 +2079,62 @@ func (c *Client) GetFileWithContext(ctx context.Context, request *GetFileRequest
     return
 }
 
+func NewGetFileContentRequest() (request *GetFileContentRequest) {
+    request = &GetFileContentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "GetFileContent")
+    
+    
+    return
+}
+
+func NewGetFileContentResponse() (response *GetFileContentResponse) {
+    response = &GetFileContentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetFileContent
+// 获取文件内容。第一期：支持 FileId 定位
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FILEPATH = "InvalidParameterValue.FilePath"
+//  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
+//  RESOURCENOTFOUND_FILE = "ResourceNotFound.File"
+//  UNAUTHORIZEDOPERATION_FILE = "UnauthorizedOperation.File"
+func (c *Client) GetFileContent(request *GetFileContentRequest) (response *GetFileContentResponse, err error) {
+    return c.GetFileContentWithContext(context.Background(), request)
+}
+
+// GetFileContent
+// 获取文件内容。第一期：支持 FileId 定位
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FILEPATH = "InvalidParameterValue.FilePath"
+//  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
+//  RESOURCENOTFOUND_FILE = "ResourceNotFound.File"
+//  UNAUTHORIZEDOPERATION_FILE = "UnauthorizedOperation.File"
+func (c *Client) GetFileContentWithContext(ctx context.Context, request *GetFileContentRequest) (response *GetFileContentResponse, err error) {
+    if request == nil {
+        request = NewGetFileContentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "GetFileContent")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFileContent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetFileContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetFolderRequest() (request *GetFolderRequest) {
     request = &GetFolderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2030,8 +2158,10 @@ func NewGetFolderResponse() (response *GetFolderResponse) {
 // 获取文件夹详情
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  INVALIDPARAMETERVALUE_FILEPATH = "InvalidParameterValue.FilePath"
+//  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
+//  RESOURCENOTFOUND_FILE = "ResourceNotFound.File"
+//  UNAUTHORIZEDOPERATION_FILE = "UnauthorizedOperation.File"
 func (c *Client) GetFolder(request *GetFolderRequest) (response *GetFolderResponse, err error) {
     return c.GetFolderWithContext(context.Background(), request)
 }
@@ -2040,8 +2170,10 @@ func (c *Client) GetFolder(request *GetFolderRequest) (response *GetFolderRespon
 // 获取文件夹详情
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  INVALIDPARAMETERVALUE_FILEPATH = "InvalidParameterValue.FilePath"
+//  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
+//  RESOURCENOTFOUND_FILE = "ResourceNotFound.File"
+//  UNAUTHORIZEDOPERATION_FILE = "UnauthorizedOperation.File"
 func (c *Client) GetFolderWithContext(ctx context.Context, request *GetFolderRequest) (response *GetFolderResponse, err error) {
     if request == nil {
         request = NewGetFolderRequest()
@@ -2088,8 +2220,10 @@ func NewGetLocationResponse() (response *GetLocationResponse) {
 // 错误码：MetaLakeNotFound - 存储位置不存在
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  INVALIDPARAMETERVALUE_FILEPATH = "InvalidParameterValue.FilePath"
+//  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
+//  RESOURCENOTFOUND_FILE = "ResourceNotFound.File"
+//  UNAUTHORIZEDOPERATION_FILE = "UnauthorizedOperation.File"
 func (c *Client) GetLocation(request *GetLocationRequest) (response *GetLocationResponse, err error) {
     return c.GetLocationWithContext(context.Background(), request)
 }
@@ -2104,8 +2238,10 @@ func (c *Client) GetLocation(request *GetLocationRequest) (response *GetLocation
 // 错误码：MetaLakeNotFound - 存储位置不存在
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  INVALIDPARAMETERVALUE_FILEPATH = "InvalidParameterValue.FilePath"
+//  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
+//  RESOURCENOTFOUND_FILE = "ResourceNotFound.File"
+//  UNAUTHORIZEDOPERATION_FILE = "UnauthorizedOperation.File"
 func (c *Client) GetLocationWithContext(ctx context.Context, request *GetLocationRequest) (response *GetLocationResponse, err error) {
     if request == nil {
         request = NewGetLocationRequest()

@@ -5436,6 +5436,57 @@ func (r *DescribeDatabaseACLResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEnvAccessControlRequestParams struct {
+
+}
+
+type DescribeEnvAccessControlRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeEnvAccessControlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvAccessControlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvAccessControlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnvAccessControlResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEnvAccessControlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEnvAccessControlResponseParams `json:"Response"`
+}
+
+func (r *DescribeEnvAccessControlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvAccessControlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEnvAccountCircleRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -10057,6 +10108,57 @@ func (r *ModifyDatabaseACLResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyEnvAccessControlRequestParams struct {
+
+}
+
+type ModifyEnvAccessControlRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ModifyEnvAccessControlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEnvAccessControlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEnvAccessControlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEnvAccessControlResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyEnvAccessControlResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyEnvAccessControlResponseParams `json:"Response"`
+}
+
+func (r *ModifyEnvAccessControlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEnvAccessControlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyEnvExtraRequestParams struct {
 	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -10318,56 +10420,56 @@ func (r *ModifyHTTPServiceRouteResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLoginConfigRequestParams struct {
-	// 环境 ID，用于指定需要修改登录策略的云开发环境。
+	// <p>环境 ID，用于指定需要修改登录策略的云开发环境。</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 手机号短信登录开关。设置为 true 开启手机号短信登录，允许用户使用手机号和短信验证码进行登录和注册；设置为 false 关闭手机号短信登录。
+	// <p>手机号短信登录开关。设置为 true 开启手机号短信登录，允许用户使用手机号和短信验证码进行登录和注册；设置为 false 关闭手机号短信登录。</p>
 	PhoneNumberLogin *bool `json:"PhoneNumberLogin,omitnil,omitempty" name:"PhoneNumberLogin"`
 
-	// 邮箱登录开关。设置为 true 开启邮箱登录，允许用户使用邮箱和密码进行登录和注册；设置为 false 关闭邮箱登录。
+	// <p>邮箱登录开关。设置为 true 开启邮箱登录，允许用户使用邮箱和密码进行登录和注册；设置为 false 关闭邮箱登录。</p>
 	EmailLogin *bool `json:"EmailLogin,omitnil,omitempty" name:"EmailLogin"`
 
-	// 用户名密码登录开关。设置为 true 开启用户名密码登录，允许用户使用用户名和密码进行登录和注册；设置为 false 关闭用户名密码登录。
+	// <p>用户名密码登录开关。设置为 true 开启用户名密码登录，允许用户使用用户名和密码进行登录和注册；设置为 false 关闭用户名密码登录。</p>
 	UserNameLogin *bool `json:"UserNameLogin,omitnil,omitempty" name:"UserNameLogin"`
 
-	// 匿名登录开关。设置为 true 开启匿名登录，允许用户无需注册即可以匿名身份访问应用；设置为 false 关闭匿名登录。
+	// <p>匿名登录开关。设置为 true 开启匿名登录，允许用户无需注册即可以匿名身份访问应用；设置为 false 关闭匿名登录。</p>
 	AnonymousLogin *bool `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
 
-	// 短信验证码发送配置，用于设置短信验证码的发送通道类型和日发送限额。不传则不修改当前配置。
+	// <p>短信验证码发送配置，用于设置短信验证码的发送通道类型和日发送限额。不传则不修改当前配置。</p>
 	SmsVerificationConfig *VerificationConfig `json:"SmsVerificationConfig,omitnil,omitempty" name:"SmsVerificationConfig"`
 
-	// MFA 多因子认证登录配置，用于设置多因子认证开关及验证方式（短信、邮箱、TOTP、强制绑定手机号）。不传则不修改当前配置。
+	// <p>MFA 多因子认证登录配置，用于设置多因子认证开关及验证方式（短信、邮箱、TOTP、强制绑定手机号）。不传则不修改当前配置。</p>
 	MfaConfig *MFALoginConfig `json:"MfaConfig,omitnil,omitempty" name:"MfaConfig"`
 
-	// 密码更新策略配置，用于设置首次登录强制修改密码和定期强制修改密码策略。不传则不修改当前配置。
+	// <p>密码更新策略配置，用于设置首次登录强制修改密码和定期强制修改密码策略。不传则不修改当前配置。</p>
 	PwdUpdateStrategy *PasswordUpdateLoginConfig `json:"PwdUpdateStrategy,omitnil,omitempty" name:"PwdUpdateStrategy"`
 }
 
 type ModifyLoginConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 环境 ID，用于指定需要修改登录策略的云开发环境。
+	// <p>环境 ID，用于指定需要修改登录策略的云开发环境。</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 手机号短信登录开关。设置为 true 开启手机号短信登录，允许用户使用手机号和短信验证码进行登录和注册；设置为 false 关闭手机号短信登录。
+	// <p>手机号短信登录开关。设置为 true 开启手机号短信登录，允许用户使用手机号和短信验证码进行登录和注册；设置为 false 关闭手机号短信登录。</p>
 	PhoneNumberLogin *bool `json:"PhoneNumberLogin,omitnil,omitempty" name:"PhoneNumberLogin"`
 
-	// 邮箱登录开关。设置为 true 开启邮箱登录，允许用户使用邮箱和密码进行登录和注册；设置为 false 关闭邮箱登录。
+	// <p>邮箱登录开关。设置为 true 开启邮箱登录，允许用户使用邮箱和密码进行登录和注册；设置为 false 关闭邮箱登录。</p>
 	EmailLogin *bool `json:"EmailLogin,omitnil,omitempty" name:"EmailLogin"`
 
-	// 用户名密码登录开关。设置为 true 开启用户名密码登录，允许用户使用用户名和密码进行登录和注册；设置为 false 关闭用户名密码登录。
+	// <p>用户名密码登录开关。设置为 true 开启用户名密码登录，允许用户使用用户名和密码进行登录和注册；设置为 false 关闭用户名密码登录。</p>
 	UserNameLogin *bool `json:"UserNameLogin,omitnil,omitempty" name:"UserNameLogin"`
 
-	// 匿名登录开关。设置为 true 开启匿名登录，允许用户无需注册即可以匿名身份访问应用；设置为 false 关闭匿名登录。
+	// <p>匿名登录开关。设置为 true 开启匿名登录，允许用户无需注册即可以匿名身份访问应用；设置为 false 关闭匿名登录。</p>
 	AnonymousLogin *bool `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
 
-	// 短信验证码发送配置，用于设置短信验证码的发送通道类型和日发送限额。不传则不修改当前配置。
+	// <p>短信验证码发送配置，用于设置短信验证码的发送通道类型和日发送限额。不传则不修改当前配置。</p>
 	SmsVerificationConfig *VerificationConfig `json:"SmsVerificationConfig,omitnil,omitempty" name:"SmsVerificationConfig"`
 
-	// MFA 多因子认证登录配置，用于设置多因子认证开关及验证方式（短信、邮箱、TOTP、强制绑定手机号）。不传则不修改当前配置。
+	// <p>MFA 多因子认证登录配置，用于设置多因子认证开关及验证方式（短信、邮箱、TOTP、强制绑定手机号）。不传则不修改当前配置。</p>
 	MfaConfig *MFALoginConfig `json:"MfaConfig,omitnil,omitempty" name:"MfaConfig"`
 
-	// 密码更新策略配置，用于设置首次登录强制修改密码和定期强制修改密码策略。不传则不修改当前配置。
+	// <p>密码更新策略配置，用于设置首次登录强制修改密码和定期强制修改密码策略。不传则不修改当前配置。</p>
 	PwdUpdateStrategy *PasswordUpdateLoginConfig `json:"PwdUpdateStrategy,omitnil,omitempty" name:"PwdUpdateStrategy"`
 }
 

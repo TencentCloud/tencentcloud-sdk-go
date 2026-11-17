@@ -39703,20 +39703,26 @@ func (r *DescribeExposureTrendRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExposureTrendResponseParams struct {
-	// 暴露周期趋势数量统计信息
+	// <p>暴露周期趋势数量统计信息</p>
 	ExposeTrendList []*ExposeTrendItem `json:"ExposeTrendList,omitnil,omitempty" name:"ExposeTrendList"`
 
-	// 暴露周期新增数量统计
+	// <p>暴露周期新增数量统计</p>
 	ExposeIncrement *uint64 `json:"ExposeIncrement,omitnil,omitempty" name:"ExposeIncrement"`
 
-	// 近1天（24h）完全开放数量
+	// <p>近1天（24h）完全开放数量</p>
 	OpenCount *uint64 `json:"OpenCount,omitnil,omitempty" name:"OpenCount"`
 
-	// 近1天（24h）受限访问数量
+	// <p>近1天（24h）受限访问数量</p>
 	AclCount *uint64 `json:"AclCount,omitnil,omitempty" name:"AclCount"`
 
-	// 近1天（24h）无法访问数量
+	// <p>近1天（24h）无法访问数量</p>
 	CloseCount *uint64 `json:"CloseCount,omitnil,omitempty" name:"CloseCount"`
+
+	// <p>互联网边界总数</p>
+	ExposeTotalCount *uint64 `json:"ExposeTotalCount,omitnil,omitempty" name:"ExposeTotalCount"`
+
+	// <p>待处理边界数量</p>
+	ToGovernRiskCount *uint64 `json:"ToGovernRiskCount,omitnil,omitempty" name:"ToGovernRiskCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -60356,7 +60362,7 @@ type LoginWhitePlace struct {
 }
 
 type LoginWhitePlaceInput struct {
-	// <p>国家ID，当前仅支持国内：1</p>
+	// <p>国家ID，当前仅支持境内：1</p>
 	CountryId *int64 `json:"CountryId,omitnil,omitempty" name:"CountryId"`
 
 	// <p>省份ID；99999 表示全部省份</p>
@@ -77533,6 +77539,9 @@ type UserItem struct {
 
 	// <p>配额共享方账号</p>
 	ShareFromUser *string `json:"ShareFromUser,omitnil,omitempty" name:"ShareFromUser"`
+
+	// <p>是否试用订单</p>
+	IsTrialOrder *uint64 `json:"IsTrialOrder,omitnil,omitempty" name:"IsTrialOrder"`
 }
 
 type VPRExplainDimension struct {

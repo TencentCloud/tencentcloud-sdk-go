@@ -636,6 +636,7 @@ func NewCreateCloudNativeAPIGatewayResponse() (response *CreateCloudNativeAPIGat
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
@@ -668,6 +669,7 @@ func (c *Client) CreateCloudNativeAPIGateway(request *CreateCloudNativeAPIGatewa
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
 //  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
@@ -11981,9 +11983,10 @@ func NewModifyNetworkAccessStrategyResponse() (response *ModifyNetworkAccessStra
 }
 
 // ModifyNetworkAccessStrategy
-// 修改云原生API网关实例Kong访问策略，支持白名单或者黑名单。
+// 修改云原生API网关实例Kong访问策略，支持白名单或者黑名单。 支持 AccessControlSource=reference 引用实例基础配置，与自定义 CIDR 互斥。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  INTERNALERROR = "InternalError"
@@ -11991,6 +11994,7 @@ func NewModifyNetworkAccessStrategyResponse() (response *ModifyNetworkAccessStra
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
 //  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 //  RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
@@ -12001,9 +12005,10 @@ func (c *Client) ModifyNetworkAccessStrategy(request *ModifyNetworkAccessStrateg
 }
 
 // ModifyNetworkAccessStrategy
-// 修改云原生API网关实例Kong访问策略，支持白名单或者黑名单。
+// 修改云原生API网关实例Kong访问策略，支持白名单或者黑名单。 支持 AccessControlSource=reference 引用实例基础配置，与自定义 CIDR 互斥。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  INTERNALERROR = "InternalError"
@@ -12011,6 +12016,7 @@ func (c *Client) ModifyNetworkAccessStrategy(request *ModifyNetworkAccessStrateg
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
 //  MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 //  RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"

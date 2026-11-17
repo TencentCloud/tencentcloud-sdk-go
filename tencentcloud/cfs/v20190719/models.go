@@ -5092,6 +5092,9 @@ type SnapshotInfo struct {
 	// <p>实际快照时间，反映快照对应文件系统某个时刻的数据。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotTime *string `json:"SnapshotTime,omitnil,omitempty" name:"SnapshotTime"`
+
+	// <p>快照完成时间</p>
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 }
 
 type SnapshotOperateLog struct {

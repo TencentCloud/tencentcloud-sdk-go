@@ -1268,6 +1268,9 @@ type ResourceInfo struct {
 
 	// <p>集群角色，0-未加入集群 1-主 2-从</p>
 	ClusterRole *int64 `json:"ClusterRole,omitnil,omitempty" name:"ClusterRole"`
+
+	// <p>同步状态</p>
+	SyncStatus *string `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
 }
 
 type SgUnit struct {

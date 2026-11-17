@@ -126,6 +126,28 @@ type AgentAdvancedConfig struct {
 	MaxReasoningRound *uint64 `json:"MaxReasoningRound,omitnil,omitempty" name:"MaxReasoningRound"`
 }
 
+type AgentBuiltinTool struct {
+	// <p>内置工具基础配置</p>
+	Config *AgentBuiltinToolConfig `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// <p>工具展示名称</p>
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// <p>工具描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>计费标识</p><p>枚举值：</p><ul><li>0： 免费</li><li>1： 限时免费</li><li>2： 官方收费</li></ul>
+	BillingType *int64 `json:"BillingType,omitnil,omitempty" name:"BillingType"`
+}
+
+type AgentBuiltinToolConfig struct {
+	// <p>工具名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>是否禁用该内置工具</p>
+	Disabled *bool `json:"Disabled,omitnil,omitempty" name:"Disabled"`
+}
+
 type AgentCollaborationConfig struct {
 	// 协同方式。枚举值: 1:自由转交：Agent之间可自由传递任务, 2:工作流编排：基于预定义流程的协同, 3:Plan-and-Execute：规划与执行分离的协同模式
 	AgentCollaborationMode *int64 `json:"AgentCollaborationMode,omitnil,omitempty" name:"AgentCollaborationMode"`
@@ -164,6 +186,22 @@ type AgentDetail struct {
 
 	// <p>调用方执行的 Function Tool 列表</p><p>入参限制：仅在 C 端用户态 Agent 场景可用，B 端配置态 Agent 忽略该字段与</p>
 	ExternalToolList []*AgentExternalToolConfig `json:"ExternalToolList,omitnil,omitempty" name:"ExternalToolList"`
+
+	// <p>子 Agent 执行来源</p><p>枚举值：</p><ul><li>0： 应用内子 Agent</li><li>1： 引用已发布的应用</li></ul>
+	ProviderType *int64 `json:"ProviderType,omitnil,omitempty" name:"ProviderType"`
+
+	// <p>引用应用的ID</p>
+	ReferenceAppId *string `json:"ReferenceAppId,omitnil,omitempty" name:"ReferenceAppId"`
+
+	// <p>引用应用状态，ProviderType=1 时有效</p><p>枚举值：</p><ul><li>0： 来源应用可用</li><li>1： 来源应用不可用</li><li>2： 无权限</li><li>3： 嵌套引用: 来源应用线上生效配置中已含应用类子 Agent</li></ul>
+	ReferenceAppStatus *int64 `json:"ReferenceAppStatus,omitnil,omitempty" name:"ReferenceAppStatus"`
+
+	// <p>引用应用详情，ProviderType=1 时返回</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReferenceApp *ReferenceAppDetail `json:"ReferenceApp,omitnil,omitempty" name:"ReferenceApp"`
+
+	// <p>内置工具列表</p>
+	BuiltinToolList []*AgentBuiltinTool `json:"BuiltinToolList,omitnil,omitempty" name:"BuiltinToolList"`
 }
 
 type AgentExternalToolConfig struct {
@@ -414,6 +452,15 @@ type AgentSpec struct {
 
 	// <p>调用方执行的 Function Tool 列表</p><p>入参限制：仅在 C 端用户态 Agent 场景可用，B 端配置态 Agent  忽略该字段与</p>
 	ExternalToolList []*AgentExternalToolConfig `json:"ExternalToolList,omitnil,omitempty" name:"ExternalToolList"`
+
+	// <p>子 Agent执行来源</p><p>枚举值：</p><ul><li>0： 应用内子 Agent</li><li>1： 引用已发布的应用</li></ul>
+	ProviderType *int64 `json:"ProviderType,omitnil,omitempty" name:"ProviderType"`
+
+	// <p>引用应用的Id</p>
+	ReferenceAppId *string `json:"ReferenceAppId,omitnil,omitempty" name:"ReferenceAppId"`
+
+	// <p>内置工具信息</p>
+	BuiltinToolList []*AgentBuiltinToolConfig `json:"BuiltinToolList,omitnil,omitempty" name:"BuiltinToolList"`
 }
 
 type AgentSummary struct {
@@ -425,6 +472,12 @@ type AgentSummary struct {
 
 	// <p>高级设置;scope=0 时返回</p>
 	AdvancedConfig *AgentAdvancedConfig `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+
+	// <p>子 Agent 执行来源</p><p>枚举值：</p><ul><li>0： 应用内子 Agent</li><li>1： 引用已发布的应用</li></ul>
+	ProviderType *int64 `json:"ProviderType,omitnil,omitempty" name:"ProviderType"`
+
+	// <p>引用应用状态，ProviderType=1 时有效</p><p>枚举值：</p><ul><li>0： 来源应用可用</li><li>1： 来源应用不可用</li><li>2： 无权限</li><li>3： 嵌套引用: 来源应用线上生效配置中已含应用类子 Agent</li></ul>
+	ReferenceAppStatus *int64 `json:"ReferenceAppStatus,omitnil,omitempty" name:"ReferenceAppStatus"`
 }
 
 type AgentSystemVariable struct {
@@ -546,20 +599,17 @@ type AgentUserInputValue struct {
 }
 
 type ApiKeyAuthConfig struct {
-	// 密钥位置 HEADER/QUERY
-	// 
-	// 枚举值:
-	// | uint | 描述 |
-	// | --- | --- |
-	// | 0 | Header鉴权 |
-	// | 1 | Query鉴权 |
+	// <p>密钥位置 HEADER/QUERY</p><p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | Header鉴权 |<br>| 1 | Query鉴权 |</p>
 	KeyLocation *int64 `json:"KeyLocation,omitnil,omitempty" name:"KeyLocation"`
 
-	// 密钥参数名
+	// <p>密钥参数名</p>
 	KeyParamName *string `json:"KeyParamName,omitnil,omitempty" name:"KeyParamName"`
 
-	// 密钥参数值
+	// <p>密钥参数值</p>
 	KeyParamValue *string `json:"KeyParamValue,omitnil,omitempty" name:"KeyParamValue"`
+
+	// <p>密钥值用途，未指定按允许工具调用处理</p><p>枚举值：</p><ul><li>1： 允许用于工具调用</li><li>2： 仅用于连接测试和获取工具列表</li></ul>
+	KeyValueUsage *int64 `json:"KeyValueUsage,omitnil,omitempty" name:"KeyValueUsage"`
 }
 
 type ApiPluginConfig struct {
@@ -1417,6 +1467,17 @@ type BillingAttribute struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type ByteCapacity struct {
+	// <p>最大容量</p>
+	MaxCapacity *string `json:"MaxCapacity,omitnil,omitempty" name:"MaxCapacity"`
+
+	// <p>超量失效容量</p>
+	ExceededInvalidCapacity *string `json:"ExceededInvalidCapacity,omitnil,omitempty" name:"ExceededInvalidCapacity"`
+
+	// <p>已使用容量</p>
+	UsedCapacity *string `json:"UsedCapacity,omitnil,omitempty" name:"UsedCapacity"`
+}
+
 // Predefined struct for user
 type CallMCPToolRequestParams struct {
 	// <p>能力边界：一次请求只能调该 plugin 上的工具</p>
@@ -1657,6 +1718,17 @@ type ChannelSpec struct {
 	// <p>是否调试态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDebug *bool `json:"IsDebug,omitnil,omitempty" name:"IsDebug"`
+}
+
+type CharacterSize struct {
+	// <p>最大字符数</p>
+	MaxCharSize *string `json:"MaxCharSize,omitnil,omitempty" name:"MaxCharSize"`
+
+	// <p>超量字符数</p>
+	OverCharSize *string `json:"OverCharSize,omitnil,omitempty" name:"OverCharSize"`
+
+	// <p>已用字符数</p>
+	UsedCharSize *string `json:"UsedCharSize,omitnil,omitempty" name:"UsedCharSize"`
 }
 
 // Predefined struct for user
@@ -1968,6 +2040,10 @@ type ConversationContent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnterpriseCharts *string `json:"EnterpriseCharts,omitnil,omitempty" name:"EnterpriseCharts"`
 
+	// <p>文件信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	File *ConversationFileInfo `json:"File,omitnil,omitempty" name:"File"`
+
 	// <p>选项卡列表</p>
 	OptionCardList []*string `json:"OptionCardList,omitnil,omitempty" name:"OptionCardList"`
 
@@ -1977,6 +2053,10 @@ type ConversationContent struct {
 	// <p>选项卡模式 枚举值: 0-OPTION_MODE_SINGLE(单选), 1-OPTION_MODE_MULTI(多选)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OptionMode *int64 `json:"OptionMode,omitnil,omitempty" name:"OptionMode"`
+
+	// <p>问卷信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Questionnaire *ConversationQuestionnaire `json:"Questionnaire,omitnil,omitempty" name:"Questionnaire"`
 
 	// <p>引用角标信息列表</p>
 	QuoteInfoList []*ConversationQuoteInfo `json:"QuoteInfoList,omitnil,omitempty" name:"QuoteInfoList"`
@@ -1999,6 +2079,14 @@ type ConversationContent struct {
 
 	// <p>智能体任务列表</p>
 	Tasks []*ConversationAgentTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// <p>Widget 信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Widget *ConversationWidget `json:"Widget,omitnil,omitempty" name:"Widget"`
+
+	// <p>Widget 动作信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WidgetAction *ConversationWidgetAction `json:"WidgetAction,omitnil,omitempty" name:"WidgetAction"`
 
 	// <p>工作流输入参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2100,6 +2188,10 @@ type ConversationMessage struct {
 	// <p>会话 ID</p>
 	ConversationId *string `json:"ConversationId,omitnil,omitempty" name:"ConversationId"`
 
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *ConversationMessageExtraInfo `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
+
 	// <p>消息图标</p>
 	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
 
@@ -2132,6 +2224,133 @@ type ConversationMessage struct {
 
 	// <p>类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type ConversationMessageExtraInfo struct {
+	// <p>智能体图标</p>
+	AgentIcon *string `json:"AgentIcon,omitnil,omitempty" name:"AgentIcon"`
+
+	// <p>智能体名称</p>
+	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
+
+	// <p>消息处理耗时</p>
+	Elapsed *string `json:"Elapsed,omitnil,omitempty" name:"Elapsed"`
+
+	// <p>父消息 ID</p>
+	ParentMessageId *string `json:"ParentMessageId,omitnil,omitempty" name:"ParentMessageId"`
+
+	// <p>关联记录 ID</p>
+	RelatedRecordId *string `json:"RelatedRecordId,omitnil,omitempty" name:"RelatedRecordId"`
+
+	// <p>消息处理开始时间戳（毫秒）</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>工具图标</p>
+	ToolIcon *string `json:"ToolIcon,omitnil,omitempty" name:"ToolIcon"`
+
+	// <p>工具名称</p>
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// <p>Trace ID</p>
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
+
+	// <p>是否可以反馈</p>
+	CanFeedback *bool `json:"CanFeedback,omitnil,omitempty" name:"CanFeedback"`
+
+	// <p>是否可以点赞点踩</p>
+	CanRate *bool `json:"CanRate,omitnil,omitempty" name:"CanRate"`
+
+	// <p>消息处理开始时间戳（毫秒）</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>是否已读</p>
+	HasRead *bool `json:"HasRead,omitnil,omitempty" name:"HasRead"`
+
+	// <p>是否大模型生成</p>
+	IsModelGenerated *bool `json:"IsModelGenerated,omitnil,omitempty" name:"IsModelGenerated"`
+
+	// <p>用户反馈标签列表</p>
+	ReasonList []*string `json:"ReasonList,omitnil,omitempty" name:"ReasonList"`
+
+	// <p>回复方式</p>
+	ReplyMethod *int64 `json:"ReplyMethod,omitnil,omitempty" name:"ReplyMethod"`
+
+	// <p>用户打分</p>
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// <p>子 Agent 运行 Id</p>
+	SubAgentRunId *string `json:"SubAgentRunId,omitnil,omitempty" name:"SubAgentRunId"`
+
+	// <p>是否是子 Agent 的消息</p>
+	IsSubAgent *bool `json:"IsSubAgent,omitnil,omitempty" name:"IsSubAgent"`
+
+	// <p>子 Agent 线程 ID</p>
+	SubAgentThreadId *string `json:"SubAgentThreadId,omitnil,omitempty" name:"SubAgentThreadId"`
+
+	// <p>是否是 Agent Team 模式下的 teammate 成员</p>
+	IsTeammate *bool `json:"IsTeammate,omitnil,omitempty" name:"IsTeammate"`
+
+	// <p>Agent Team 模式下的 teammate 名称</p>
+	TeammateName *string `json:"TeammateName,omitnil,omitempty" name:"TeammateName"`
+
+	// <p>工作流节点名称</p>
+	WorkflowNodeName *string `json:"WorkflowNodeName,omitnil,omitempty" name:"WorkflowNodeName"`
+}
+
+type ConversationQuestion struct {
+	// <p>问题序号</p>
+	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// <p>问题内容</p>
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	// <p>是否必答</p>
+	Required *bool `json:"Required,omitnil,omitempty" name:"Required"`
+
+	// <p>问题类型 枚举值: 0-QUESTION_TYPE_UNSPECIFIED(未指定), 1-QUESTION_TYPE_SINGLE(单选), 2-QUESTION_TYPE_MULTIPLE(多选)</p>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>选项列表</p>
+	OptionList []*ConversationQuestionOption `json:"OptionList,omitnil,omitempty" name:"OptionList"`
+
+	// <p>选项列表</p>
+	Options []*ConversationQuestionOption `json:"Options,omitnil,omitempty" name:"Options"`
+}
+
+type ConversationQuestionAnswer struct {
+	// <p>问题内容</p>
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	// <p>已选择的选项标签列表</p>
+	SelectedLabelList []*string `json:"SelectedLabelList,omitnil,omitempty" name:"SelectedLabelList"`
+
+	// <p>已选择的选项标签列表</p>
+	SelectedLabels []*string `json:"SelectedLabels,omitnil,omitempty" name:"SelectedLabels"`
+}
+
+type ConversationQuestionOption struct {
+	// <p>选项描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>选项标签</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+}
+
+type ConversationQuestionnaire struct {
+	// <p>问卷标题</p>
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// <p>答案列表</p>
+	AnswerList []*ConversationQuestionAnswer `json:"AnswerList,omitnil,omitempty" name:"AnswerList"`
+
+	// <p>答案列表</p>
+	Answers []*ConversationQuestionAnswer `json:"Answers,omitnil,omitempty" name:"Answers"`
+
+	// <p>问题列表</p>
+	QuestionList []*ConversationQuestion `json:"QuestionList,omitnil,omitempty" name:"QuestionList"`
+
+	// <p>问题列表</p>
+	Questions []*ConversationQuestion `json:"Questions,omitnil,omitempty" name:"Questions"`
 }
 
 type ConversationQuoteInfo struct {
@@ -2235,6 +2454,20 @@ type ConversationWidget struct {
 
 	// <p>widget 视图数据</p>
 	View *string `json:"View,omitnil,omitempty" name:"View"`
+
+	// <p>组件 ID</p>
+	WidgetId *string `json:"WidgetId,omitnil,omitempty" name:"WidgetId"`
+
+	// <p>组件运行 ID</p>
+	WidgetRunId *string `json:"WidgetRunId,omitnil,omitempty" name:"WidgetRunId"`
+}
+
+type ConversationWidgetAction struct {
+	// <p>动作类型，非枚举类型，用户自定义</p>
+	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// <p>动作载荷</p>
+	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
 
 	// <p>组件 ID</p>
 	WidgetId *string `json:"WidgetId,omitnil,omitempty" name:"WidgetId"`
@@ -10839,6 +11072,18 @@ type KBCapacity struct {
 
 	// <p>已用字符数</p>
 	UsedCharSize *string `json:"UsedCharSize,omitnil,omitempty" name:"UsedCharSize"`
+
+	// <p>字符数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CharacterSize *CharacterSize `json:"CharacterSize,omitnil,omitempty" name:"CharacterSize"`
+
+	// <p>容量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ByteCapacity *ByteCapacity `json:"ByteCapacity,omitnil,omitempty" name:"ByteCapacity"`
+
+	// <p>知识库容量状态</p><p>枚举值：</p><ul><li>1： 正常</li><li>2： 超量但可用（pu 抵扣）</li><li>3： 超量不可用</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CapacityStatus *int64 `json:"CapacityStatus,omitnil,omitempty" name:"CapacityStatus"`
 }
 
 type KBCategory struct {
@@ -12561,6 +12806,95 @@ func (r *ModifyLabelResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyMessageRecordFeedbackRequestParams struct {
+	// <p>需要反馈的消息记录ID</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>消息记录所属应用的授权AppKey</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// <p>反馈分值</p><p>枚举值：</p><ul><li>0： 取消点赞或点踩</li><li>1： 点赞</li><li>2： 点踩</li></ul>
+	Score *uint64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// <p>反馈的原因列表</p>
+	ReasonList []*string `json:"ReasonList,omitnil,omitempty" name:"ReasonList"`
+
+	// <p>反馈的补充内容</p>
+	FeedbackContent *string `json:"FeedbackContent,omitnil,omitempty" name:"FeedbackContent"`
+
+	// <p>消息记录所属的应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+type ModifyMessageRecordFeedbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>需要反馈的消息记录ID</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>消息记录所属应用的授权AppKey</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// <p>反馈分值</p><p>枚举值：</p><ul><li>0： 取消点赞或点踩</li><li>1： 点赞</li><li>2： 点踩</li></ul>
+	Score *uint64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// <p>反馈的原因列表</p>
+	ReasonList []*string `json:"ReasonList,omitnil,omitempty" name:"ReasonList"`
+
+	// <p>反馈的补充内容</p>
+	FeedbackContent *string `json:"FeedbackContent,omitnil,omitempty" name:"FeedbackContent"`
+
+	// <p>消息记录所属的应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+func (r *ModifyMessageRecordFeedbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMessageRecordFeedbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RecordId")
+	delete(f, "AppKey")
+	delete(f, "Score")
+	delete(f, "ReasonList")
+	delete(f, "FeedbackContent")
+	delete(f, "AppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMessageRecordFeedbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMessageRecordFeedbackResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMessageRecordFeedbackResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMessageRecordFeedbackResponseParams `json:"Response"`
+}
+
+func (r *ModifyMessageRecordFeedbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMessageRecordFeedbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyMsgRecordCategoryRequestParams struct {
 	// <p>应用 ID</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -13985,6 +14319,26 @@ func (r *ReadMCPResourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ReferenceAppDetail struct {
+	// <p>来源应用当前名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>来源应用模式</p><p>枚举值：</p><ul><li>1： 标准模式</li><li>2： Multi-Agent模式</li><li>3： 单工作流模式</li><li>4： Claw模式</li></ul>
+	AppMode *int64 `json:"AppMode,omitnil,omitempty" name:"AppMode"`
+
+	// <p>主 Agent 名称</p>
+	MainAgentName *string `json:"MainAgentName,omitnil,omitempty" name:"MainAgentName"`
+
+	// <p>子 Agent 名称列表</p>
+	SubAgentNameList []*string `json:"SubAgentNameList,omitnil,omitempty" name:"SubAgentNameList"`
+
+	// <p>来源应用创建人</p>
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// <p>来源应用修改时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
 type ReleaseRecord struct {
 	// 是否可导出
 	CanExport *bool `json:"CanExport,omitnil,omitempty" name:"CanExport"`
@@ -14321,6 +14675,12 @@ type ResourcePackageInfo struct {
 
 	// <p>资源包状态</p><p>枚举值：</p><ul><li>1： 正常</li><li>3： 已到期</li><li>4： 即将到期</li></ul>
 	ResourceStatus *uint64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
+
+	// <p>云盘容量</p><p>单位：GB</p>
+	CloudDiskCapacity *float64 `json:"CloudDiskCapacity,omitnil,omitempty" name:"CloudDiskCapacity"`
+
+	// <p>云盘用量</p><p>单位：GB</p>
+	CloudDiskUsage *float64 `json:"CloudDiskUsage,omitnil,omitempty" name:"CloudDiskUsage"`
 }
 
 type ResponseParam struct {

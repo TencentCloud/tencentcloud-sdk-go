@@ -1113,32 +1113,31 @@ type CertInfo struct {
 }
 
 type CertificateInput struct {
-	// 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证。
-	// 默认为 UNIDIRECTIONAL。
+	// <p>认证类型，取值：<code>UNIDIRECTIONAL</code>：单向认证；<code>MUTUAL</code>：双向认证。 此参数是否必填取决于调用场景： - 创建监听器或转发规则：需要通过 Certificate 配置证书时，此参数必填；复用已有域名证书的转发规则无需传入。 - 修改监听器或域名属性：通过 Certificate 更新证书时，此参数必填；不修改证书时，无需传入整个 Certificate。 - 批量替换证书（ReplaceCertForLoadBalancers）：此参数无需传入，接口仅替换证书，不修改认证类型。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 单向认证</li><li>MUTUAL： 双向认证</li></ul>
 	SSLMode *string `json:"SSLMode,omitnil,omitempty" name:"SSLMode"`
 
-	// 双向认证时，是否开启客户端认证，ON:开启，OPTIONAL:自适应，默认ON。
+	// <p>双向认证时，是否开启客户端认证，ON:开启，OPTIONAL:自适应，默认ON。</p>
 	SSLVerifyClient *string `json:"SSLVerifyClient,omitnil,omitempty" name:"SSLVerifyClient"`
 
-	// 服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent（服务端证书内容），CertKey（服务端证书密钥），CertName（服务端证书名称）。
+	// <p>服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent（服务端证书内容），CertKey（服务端证书密钥），CertName（服务端证书名称）。</p>
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
-	// 客户端证书的 ID，当监听器采用双向认证，即 SSLMode=MUTUAL 时，如果不填写此项则必须上传客户端证书，包括 CertCaContent，CertCaName。
+	// <p>客户端证书的 ID，当监听器采用双向认证，即 SSLMode=MUTUAL 时，如果不填写此项则必须上传客户端证书，包括 CertCaContent，CertCaName。</p>
 	CertCaId *string `json:"CertCaId,omitnil,omitempty" name:"CertCaId"`
 
-	// 上传服务端证书的名称，如果没有 CertId，则此项必传。
+	// <p>上传服务端证书的名称，如果没有 CertId，则此项必传。</p>
 	CertName *string `json:"CertName,omitnil,omitempty" name:"CertName"`
 
-	// 上传服务端证书的 key，如果没有 CertId，则此项必传。
+	// <p>上传服务端证书的 key，如果没有 CertId，则此项必传。</p>
 	CertKey *string `json:"CertKey,omitnil,omitempty" name:"CertKey"`
 
-	// 上传服务端证书的内容，如果没有 CertId，则此项必传。
+	// <p>上传服务端证书的内容，如果没有 CertId，则此项必传。</p>
 	CertContent *string `json:"CertContent,omitnil,omitempty" name:"CertContent"`
 
-	// 上传客户端 CA 证书的名称，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。
+	// <p>上传客户端 CA 证书的名称，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。</p>
 	CertCaName *string `json:"CertCaName,omitnil,omitempty" name:"CertCaName"`
 
-	// 上传客户端证书的内容，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。
+	// <p>上传客户端证书的内容，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。</p>
 	CertCaContent *string `json:"CertCaContent,omitnil,omitempty" name:"CertCaContent"`
 }
 
@@ -16284,7 +16283,7 @@ type StickyConfig struct {
 	// <p>是否开启粘连路由</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
-	// <p>会话粘性的超时时间（秒），取值范围 180–86400。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[180, 21600]</p><p>单位：秒</p><p>默认值：1800</p>
+	// <p>会话粘性的超时时间（秒），取值范围 180–21600。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[180, 21600]</p><p>单位：秒</p><p>默认值：1800</p>
 	TimeoutSeconds *uint64 `json:"TimeoutSeconds,omitnil,omitempty" name:"TimeoutSeconds"`
 }
 

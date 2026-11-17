@@ -10188,24 +10188,20 @@ func (r *DescribeRollbackTaskDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSSLStatusRequestParams struct {
-	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
-	// 说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。<br>说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 只读组 ID。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
-	// 说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。
+	// <p>只读组 ID。可通过 <a href="https://cloud.tencent.com/document/api/236/40939">DescribeRoGroups</a> 接口获取。<br>说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。</p>
 	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 }
 
 type DescribeSSLStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
-	// 说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。<br>说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 只读组 ID。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
-	// 说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。
+	// <p>只读组 ID。可通过 <a href="https://cloud.tencent.com/document/api/236/40939">DescribeRoGroups</a> 接口获取。<br>说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。</p>
 	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 }
 
@@ -10231,10 +10227,10 @@ func (r *DescribeSSLStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSSLStatusResponseParams struct {
-	// 是否开通 SSL 。ON 代表开通 ，OFF 代表未开通。
+	// <p>是否开通 SSL 。ON 代表开通 ，OFF 代表未开通。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 证书下载链接。
+	// <p>证书下载链接。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15284,20 +15280,20 @@ func (r *OpenDBInstanceGTIDResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OpenSSLRequestParams struct {
-	// 实例 ID。只读组 ID 为空时必填。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+	// <p>实例 ID。只读组 ID 为空时必填。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 只读组 ID。实例 ID 为空时必填。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
+	// <p>只读组 ID。实例 ID 为空时必填。可通过 <a href="https://cloud.tencent.com/document/api/236/40939">DescribeRoGroups</a> 接口获取。</p>
 	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 }
 
 type OpenSSLRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。只读组 ID 为空时必填。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+	// <p>实例 ID。只读组 ID 为空时必填。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 只读组 ID。实例 ID 为空时必填。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
+	// <p>只读组 ID。实例 ID 为空时必填。可通过 <a href="https://cloud.tencent.com/document/api/236/40939">DescribeRoGroups</a> 接口获取。</p>
 	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 }
 
@@ -15323,7 +15319,7 @@ func (r *OpenSSLRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OpenSSLResponseParams struct {
-	// 异步请求 ID。
+	// <p>异步请求 ID。</p>
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

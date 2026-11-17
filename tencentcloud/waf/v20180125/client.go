@@ -7049,6 +7049,70 @@ func (c *Client) DescribeLLMContentSecCheckWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeLLMHourBillDetailRequest() (request *DescribeLLMHourBillDetailRequest) {
+    request = &DescribeLLMHourBillDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeLLMHourBillDetail")
+    
+    
+    return
+}
+
+func NewDescribeLLMHourBillDetailResponse() (response *DescribeLLMHourBillDetailResponse) {
+    response = &DescribeLLMHourBillDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLLMHourBillDetail
+// 查询单实例、单日的按小时账单明细，包含账单预估总额、分项费用、分时趋势和分时明细
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMHourBillDetail(request *DescribeLLMHourBillDetailRequest) (response *DescribeLLMHourBillDetailResponse, err error) {
+    return c.DescribeLLMHourBillDetailWithContext(context.Background(), request)
+}
+
+// DescribeLLMHourBillDetail
+// 查询单实例、单日的按小时账单明细，包含账单预估总额、分项费用、分时趋势和分时明细
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMHourBillDetailWithContext(ctx context.Context, request *DescribeLLMHourBillDetailRequest) (response *DescribeLLMHourBillDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeLLMHourBillDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeLLMHourBillDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLLMHourBillDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLLMHourBillDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLLMKeywordLibraryRequest() (request *DescribeLLMKeywordLibraryRequest) {
     request = &DescribeLLMKeywordLibraryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7301,6 +7365,70 @@ func (c *Client) DescribeLLMWafProtectRulesWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeLLMWafProtectRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLLMWafToolCallRulesRequest() (request *DescribeLLMWafToolCallRulesRequest) {
+    request = &DescribeLLMWafToolCallRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeLLMWafToolCallRules")
+    
+    
+    return
+}
+
+func NewDescribeLLMWafToolCallRulesResponse() (response *DescribeLLMWafToolCallRulesResponse) {
+    response = &DescribeLLMWafToolCallRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLLMWafToolCallRules
+// 查询 Tool Call 规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMWafToolCallRules(request *DescribeLLMWafToolCallRulesRequest) (response *DescribeLLMWafToolCallRulesResponse, err error) {
+    return c.DescribeLLMWafToolCallRulesWithContext(context.Background(), request)
+}
+
+// DescribeLLMWafToolCallRules
+// 查询 Tool Call 规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMWafToolCallRulesWithContext(ctx context.Context, request *DescribeLLMWafToolCallRulesRequest) (response *DescribeLLMWafToolCallRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLLMWafToolCallRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeLLMWafToolCallRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLLMWafToolCallRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLLMWafToolCallRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -13449,6 +13577,60 @@ func (c *Client) ModifyLLMKeywordLibraryWithContext(ctx context.Context, request
     return
 }
 
+func NewModifyLLMSdkAccessRequest() (request *ModifyLLMSdkAccessRequest) {
+    request = &ModifyLLMSdkAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyLLMSdkAccess")
+    
+    
+    return
+}
+
+func NewModifyLLMSdkAccessResponse() (response *ModifyLLMSdkAccessResponse) {
+    response = &ModifyLLMSdkAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLLMSdkAccess
+// llmwaf-sdk边界接入配置接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLLMSdkAccess(request *ModifyLLMSdkAccessRequest) (response *ModifyLLMSdkAccessResponse, err error) {
+    return c.ModifyLLMSdkAccessWithContext(context.Background(), request)
+}
+
+// ModifyLLMSdkAccess
+// llmwaf-sdk边界接入配置接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLLMSdkAccessWithContext(ctx context.Context, request *ModifyLLMSdkAccessRequest) (response *ModifyLLMSdkAccessResponse, err error) {
+    if request == nil {
+        request = NewModifyLLMSdkAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyLLMSdkAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLLMSdkAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLLMSdkAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLLMStatusRequest() (request *ModifyLLMStatusRequest) {
     request = &ModifyLLMStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13619,6 +13801,64 @@ func (c *Client) ModifyLLMWafProtectRuleWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyLLMWafProtectRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLLMWafToolCallRuleRequest() (request *ModifyLLMWafToolCallRuleRequest) {
+    request = &ModifyLLMWafToolCallRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyLLMWafToolCallRule")
+    
+    
+    return
+}
+
+func NewModifyLLMWafToolCallRuleResponse() (response *ModifyLLMWafToolCallRuleResponse) {
+    response = &ModifyLLMWafToolCallRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLLMWafToolCallRule
+// 修改 Tool Call 规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) ModifyLLMWafToolCallRule(request *ModifyLLMWafToolCallRuleRequest) (response *ModifyLLMWafToolCallRuleResponse, err error) {
+    return c.ModifyLLMWafToolCallRuleWithContext(context.Background(), request)
+}
+
+// ModifyLLMWafToolCallRule
+// 修改 Tool Call 规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) ModifyLLMWafToolCallRuleWithContext(ctx context.Context, request *ModifyLLMWafToolCallRuleRequest) (response *ModifyLLMWafToolCallRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyLLMWafToolCallRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyLLMWafToolCallRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLLMWafToolCallRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLLMWafToolCallRuleResponse()
     err = c.Send(request, response)
     return
 }

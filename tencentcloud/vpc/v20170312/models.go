@@ -669,176 +669,118 @@ type AlgType struct {
 
 // Predefined struct for user
 type AllocateAddressesRequestParams struct {
-	// EIP数量。可申请的数量限制参考：[EIP 配额限制](https://cloud.tencent.com/document/product/1199/41648)。默认值：1。
+	// <p>EIP数量。可申请的数量限制参考：<a href="https://cloud.tencent.com/document/product/1199/41648">EIP 配额限制</a>。默认值：1。</p>
 	AddressCount *int64 `json:"AddressCount,omitnil,omitempty" name:"AddressCount"`
 
-	// EIP线路类型。各种线路类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
-	// <ul style="margin:0"><li>BGP：常规 BGP 线路</li>
-	// <li>已开通静态单线IP白名单的用户，可选值：<ul><li>CMCC：中国移动</li>
-	// <li>CTCC：中国电信</li>
-	// <li>CUCC：中国联通</li></ul></li>注意：仅部分地域支持静态单线IP。</ul>
+	// <p>EIP线路类型。各种线路类型详情可参考：<a href="https://cloud.tencent.com/document/product/1199/41646">EIP 的 IP 地址类型</a>。默认值：BGP。</p><ul style="margin:0"><li>BGP：常规 BGP 线路</li><li>已开通静态单线IP白名单的用户，可选值：<ul><li>CMCC：中国移动</li><li>CTCC：中国电信</li><li>CUCC：中国联通</li></ul></li>注意：仅部分地域支持静态单线IP。</ul>
 	InternetServiceProvider *string `json:"InternetServiceProvider,omitnil,omitempty" name:"InternetServiceProvider"`
 
-	// EIP计费方式。
-	// <ul style="margin:0"><li>标准账户类型，可选值：<ul><li>BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费</li>
-	// <li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li>
-	// <li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li>
-	// <li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
-	// <li>传统账户类型，无需传递此参数，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
+	// <p>EIP计费方式。</p><ul style="margin:0"><li>标准账户类型，可选值：<ul><li>BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费</li><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li><li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li><li>传统账户类型，无需传递此参数，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
-	// IP 资源计费模式，当前仅支持原生 IP。
-	// <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul><li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li><li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li></ul></li></ul>
+	// <p>IP 资源计费模式，当前仅支持原生 IP。</p><ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul><li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li><li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li></ul></li></ul>
 	IPChargeType *string `json:"IPChargeType,omitnil,omitempty" name:"IPChargeType"`
 
-	// EIP出带宽上限，单位：Mbps。
-	// <ul style="margin:0"><li>标准账户类型EIP出带宽上限，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps</li>
-	// <li>BANDWIDTH_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li>
-	// <li>BANDWIDTH_PREPAID_BY_MONTH：1 Mbps 至 200 Mbps</li>
-	// <li>TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li></ul>默认值：1 Mbps。</li>
-	// <li>传统账户类型无需传递此参数，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
+	// <p>EIP出带宽上限，单位：Mbps。</p><ul style="margin:0"><li>标准账户类型EIP出带宽上限，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps</li><li>BANDWIDTH_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li><li>BANDWIDTH_PREPAID_BY_MONTH：1 Mbps 至 200 Mbps</li><li>TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 200 Mbps</li></ul>默认值：1 Mbps。</li><li>传统账户类型无需传递此参数，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递
+	// <p>包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递</p>
 	AddressChargePrepaid *AddressChargePrepaid `json:"AddressChargePrepaid,omitnil,omitempty" name:"AddressChargePrepaid"`
 
-	// EIP类型。各种EIP类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：EIP。
-	// <li>EIP：弹性公网 IP。 </li>
-	// <li>AnycastEIP：加速 IP，已开通 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)白名单的用户可选。仅部分地域支持加速IP，详情可见Anycast公网加速[购买指南](https://cloud.tencent.com/document/product/644/12617)。</li>
-	// <li>HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
-	// <li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP。</li>
-	// <li>ResidentialEIP：原生 IP。仅部分地域支持原生IP。</li>
-	// 关于弹性公网 IP 支持的 IP 类型，请见[产品概述](https://cloud.tencent.com/document/product/1199/41646)。
+	// <p>EIP类型。各种EIP类型详情可参考：<a href="https://cloud.tencent.com/document/product/1199/41646">EIP 的 IP 地址类型</a>。默认值：EIP。</p><li>EIP：弹性公网 IP。 </li><li>AnycastEIP：加速 IP，已开通 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)白名单的用户可选。仅部分地域支持加速IP，详情可见Anycast公网加速[购买指南](https://cloud.tencent.com/document/product/644/12617)。</li><li>HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li><li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP。</li><li>ResidentialEIP：原生 IP。仅部分地域支持原生IP。</li>关于弹性公网 IP 支持的 IP 类型，请见[产品概述](https://cloud.tencent.com/document/product/1199/41646)。
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 
-	// Anycast发布域。
-	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
+	// <p>Anycast发布域。</p><ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
 	AnycastZone *string `json:"AnycastZone,omitnil,omitempty" name:"AnycastZone"`
 
-	// 指定IP地址申请EIP，每个账户每个月只有三次配额
+	// <p>指定IP地址申请EIP，每个账户每个月只有三次配额</p>
 	VipCluster []*string `json:"VipCluster,omitnil,omitempty" name:"VipCluster"`
 
-	// <b>[已废弃]</b> AnycastEIP不再区分是否负载均衡。原参数说明如下：
-	// AnycastEIP是否用于绑定负载均衡。
-	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>TRUE：AnycastEIP可绑定对象为负载均衡</li>
-	// <li>FALSE：AnycastEIP可绑定对象为云服务器、NAT网关、高可用虚拟IP等</li></ul>默认值：FALSE。</li></ul>
+	// <p><b>[已废弃]</b> AnycastEIP不再区分是否负载均衡。原参数说明如下：<br>AnycastEIP是否用于绑定负载均衡。</p><ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>TRUE：AnycastEIP可绑定对象为负载均衡</li><li>FALSE：AnycastEIP可绑定对象为云服务器、NAT网关、高可用虚拟IP等</li></ul>默认值：FALSE。</li></ul>
 	//
 	// Deprecated: ApplicableForCLB is deprecated.
 	ApplicableForCLB *bool `json:"ApplicableForCLB,omitnil,omitempty" name:"ApplicableForCLB"`
 
-	// 需要关联的标签列表。
+	// <p>需要关联的标签列表。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// BGP带宽包唯一ID参数。设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费
+	// <p>BGP带宽包唯一ID参数。设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费</p>
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名
+	// <p>EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名</p>
 	AddressName *string `json:"AddressName,omitnil,omitempty" name:"AddressName"`
 
-	// CDC唯一ID
+	// <p>CDC唯一ID</p>
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
-	// 是否使用独占资源池，默认值：True
-	// - True：表示使用独占资源池
-	// - False：表示使用共享资源池
-	// 
-	// 说明：如需使用独占资源池，请 提交工单(https://console.cloud.tencent.com/workorder/category) 咨询，具体费用请咨询商务经理。
+	// <p>是否使用独占资源池，默认值：True</p><ul><li>True：表示使用独占资源池</li><li>False：表示使用共享资源池</li></ul><p>说明：如需使用独占资源池，请 提交工单(https://console.cloud.tencent.com/workorder/category) 咨询，具体费用请咨询商务经理。</p>
 	IsDedicatedAddressPool *bool `json:"IsDedicatedAddressPool,omitnil,omitempty" name:"IsDedicatedAddressPool"`
 
-	// 网络出口，当前仅支持精品BGP、静态单线，这2种IP 地址类型的指定出口传入，默认值：center_egress1，其它可选值：center_egress2、center_egress3
+	// <p>网络出口，当前仅支持精品BGP、静态单线，这2种IP 地址类型的指定出口传入，默认值：center_egress1，其它可选值：center_egress2、center_egress3</p>
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 
-	// 高防包ID， 申请高防IP时，该字段必传。
+	// <p>高防包ID， 申请高防IP时，该字段必传。</p>
 	AntiDDoSPackageId *string `json:"AntiDDoSPackageId,omitnil,omitempty" name:"AntiDDoSPackageId"`
 
-	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	// <p>保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
 
 type AllocateAddressesRequest struct {
 	*tchttp.BaseRequest
 	
-	// EIP数量。可申请的数量限制参考：[EIP 配额限制](https://cloud.tencent.com/document/product/1199/41648)。默认值：1。
+	// <p>EIP数量。可申请的数量限制参考：<a href="https://cloud.tencent.com/document/product/1199/41648">EIP 配额限制</a>。默认值：1。</p>
 	AddressCount *int64 `json:"AddressCount,omitnil,omitempty" name:"AddressCount"`
 
-	// EIP线路类型。各种线路类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
-	// <ul style="margin:0"><li>BGP：常规 BGP 线路</li>
-	// <li>已开通静态单线IP白名单的用户，可选值：<ul><li>CMCC：中国移动</li>
-	// <li>CTCC：中国电信</li>
-	// <li>CUCC：中国联通</li></ul></li>注意：仅部分地域支持静态单线IP。</ul>
+	// <p>EIP线路类型。各种线路类型详情可参考：<a href="https://cloud.tencent.com/document/product/1199/41646">EIP 的 IP 地址类型</a>。默认值：BGP。</p><ul style="margin:0"><li>BGP：常规 BGP 线路</li><li>已开通静态单线IP白名单的用户，可选值：<ul><li>CMCC：中国移动</li><li>CTCC：中国电信</li><li>CUCC：中国联通</li></ul></li>注意：仅部分地域支持静态单线IP。</ul>
 	InternetServiceProvider *string `json:"InternetServiceProvider,omitnil,omitempty" name:"InternetServiceProvider"`
 
-	// EIP计费方式。
-	// <ul style="margin:0"><li>标准账户类型，可选值：<ul><li>BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费</li>
-	// <li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li>
-	// <li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li>
-	// <li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
-	// <li>传统账户类型，无需传递此参数，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
+	// <p>EIP计费方式。</p><ul style="margin:0"><li>标准账户类型，可选值：<ul><li>BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费</li><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li><li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li><li>传统账户类型，无需传递此参数，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
-	// IP 资源计费模式，当前仅支持原生 IP。
-	// <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul><li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li><li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li></ul></li></ul>
+	// <p>IP 资源计费模式，当前仅支持原生 IP。</p><ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul><li>IP_POSTPAID_BY_HOUR：IP资源按小时后付费</li><li>IP_PREPAID_BY_MONTH：IP资源包月预付费</li></ul></li></ul>
 	IPChargeType *string `json:"IPChargeType,omitnil,omitempty" name:"IPChargeType"`
 
-	// EIP出带宽上限，单位：Mbps。
-	// <ul style="margin:0"><li>标准账户类型EIP出带宽上限，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps</li>
-	// <li>BANDWIDTH_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li>
-	// <li>BANDWIDTH_PREPAID_BY_MONTH：1 Mbps 至 200 Mbps</li>
-	// <li>TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li></ul>默认值：1 Mbps。</li>
-	// <li>传统账户类型无需传递此参数，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
+	// <p>EIP出带宽上限，单位：Mbps。</p><ul style="margin:0"><li>标准账户类型EIP出带宽上限，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 2000 Mbps</li><li>BANDWIDTH_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li><li>BANDWIDTH_PREPAID_BY_MONTH：1 Mbps 至 200 Mbps</li><li>TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 200 Mbps</li></ul>默认值：1 Mbps。</li><li>传统账户类型无需传递此参数，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递
+	// <p>包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递</p>
 	AddressChargePrepaid *AddressChargePrepaid `json:"AddressChargePrepaid,omitnil,omitempty" name:"AddressChargePrepaid"`
 
-	// EIP类型。各种EIP类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：EIP。
-	// <li>EIP：弹性公网 IP。 </li>
-	// <li>AnycastEIP：加速 IP，已开通 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)白名单的用户可选。仅部分地域支持加速IP，详情可见Anycast公网加速[购买指南](https://cloud.tencent.com/document/product/644/12617)。</li>
-	// <li>HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li>
-	// <li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP。</li>
-	// <li>ResidentialEIP：原生 IP。仅部分地域支持原生IP。</li>
-	// 关于弹性公网 IP 支持的 IP 类型，请见[产品概述](https://cloud.tencent.com/document/product/1199/41646)。
+	// <p>EIP类型。各种EIP类型详情可参考：<a href="https://cloud.tencent.com/document/product/1199/41646">EIP 的 IP 地址类型</a>。默认值：EIP。</p><li>EIP：弹性公网 IP。 </li><li>AnycastEIP：加速 IP，已开通 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)白名单的用户可选。仅部分地域支持加速IP，详情可见Anycast公网加速[购买指南](https://cloud.tencent.com/document/product/644/12617)。</li><li>HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。</li><li>AntiDDoSEIP：高防 IP。仅部分地域支持高防IP。</li><li>ResidentialEIP：原生 IP。仅部分地域支持原生IP。</li>关于弹性公网 IP 支持的 IP 类型，请见[产品概述](https://cloud.tencent.com/document/product/1199/41646)。
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 
-	// Anycast发布域。
-	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
+	// <p>Anycast发布域。</p><ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
 	AnycastZone *string `json:"AnycastZone,omitnil,omitempty" name:"AnycastZone"`
 
-	// 指定IP地址申请EIP，每个账户每个月只有三次配额
+	// <p>指定IP地址申请EIP，每个账户每个月只有三次配额</p>
 	VipCluster []*string `json:"VipCluster,omitnil,omitempty" name:"VipCluster"`
 
-	// <b>[已废弃]</b> AnycastEIP不再区分是否负载均衡。原参数说明如下：
-	// AnycastEIP是否用于绑定负载均衡。
-	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>TRUE：AnycastEIP可绑定对象为负载均衡</li>
-	// <li>FALSE：AnycastEIP可绑定对象为云服务器、NAT网关、高可用虚拟IP等</li></ul>默认值：FALSE。</li></ul>
+	// <p><b>[已废弃]</b> AnycastEIP不再区分是否负载均衡。原参数说明如下：<br>AnycastEIP是否用于绑定负载均衡。</p><ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>TRUE：AnycastEIP可绑定对象为负载均衡</li><li>FALSE：AnycastEIP可绑定对象为云服务器、NAT网关、高可用虚拟IP等</li></ul>默认值：FALSE。</li></ul>
 	ApplicableForCLB *bool `json:"ApplicableForCLB,omitnil,omitempty" name:"ApplicableForCLB"`
 
-	// 需要关联的标签列表。
+	// <p>需要关联的标签列表。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// BGP带宽包唯一ID参数。设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费
+	// <p>BGP带宽包唯一ID参数。设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费</p>
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名
+	// <p>EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名</p>
 	AddressName *string `json:"AddressName,omitnil,omitempty" name:"AddressName"`
 
-	// CDC唯一ID
+	// <p>CDC唯一ID</p>
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
-	// 是否使用独占资源池，默认值：True
-	// - True：表示使用独占资源池
-	// - False：表示使用共享资源池
-	// 
-	// 说明：如需使用独占资源池，请 提交工单(https://console.cloud.tencent.com/workorder/category) 咨询，具体费用请咨询商务经理。
+	// <p>是否使用独占资源池，默认值：True</p><ul><li>True：表示使用独占资源池</li><li>False：表示使用共享资源池</li></ul><p>说明：如需使用独占资源池，请 提交工单(https://console.cloud.tencent.com/workorder/category) 咨询，具体费用请咨询商务经理。</p>
 	IsDedicatedAddressPool *bool `json:"IsDedicatedAddressPool,omitnil,omitempty" name:"IsDedicatedAddressPool"`
 
-	// 网络出口，当前仅支持精品BGP、静态单线，这2种IP 地址类型的指定出口传入，默认值：center_egress1，其它可选值：center_egress2、center_egress3
+	// <p>网络出口，当前仅支持精品BGP、静态单线，这2种IP 地址类型的指定出口传入，默认值：center_egress1，其它可选值：center_egress2、center_egress3</p>
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 
-	// 高防包ID， 申请高防IP时，该字段必传。
+	// <p>高防包ID， 申请高防IP时，该字段必传。</p>
 	AntiDDoSPackageId *string `json:"AntiDDoSPackageId,omitnil,omitempty" name:"AntiDDoSPackageId"`
 
-	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	// <p>保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
 
@@ -880,10 +822,10 @@ func (r *AllocateAddressesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AllocateAddressesResponseParams struct {
-	// 申请到的 EIP 的唯一 ID 列表。
+	// <p>申请到的 EIP 的唯一 ID 列表。</p>
 	AddressSet []*string `json:"AddressSet,omitnil,omitempty" name:"AddressSet"`
 
-	// 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+	// <p>异步任务TaskId。可以使用<a href="https://cloud.tencent.com/document/api/215/36271">DescribeTaskResult</a>接口查询任务状态。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -908,130 +850,62 @@ func (r *AllocateAddressesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AllocateIPv6AddressesRequestParams struct {
-	// EIP名称，用于申请EIP时用户自定义该EIP的个性化名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"_"，不能包含空格。
-	// 默认值：未命名
+	// <p>EIP名称，用于申请EIP时用户自定义该EIP的个性化名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符&quot;-&quot;和下划线&quot;_&quot;，不能包含空格。<br>默认值：未命名</p>
 	AddressName *string `json:"AddressName,omitnil,omitempty" name:"AddressName"`
 
-	// 弹性公网IPv6类型，可选值：
-	// 
-	// - EIPv6：弹性公网IPv6
-	// - HighQualityEIPv6：精品BGP线路弹性公网IPv6
-	// 注意：弹性公网IPv6产品需开白才能使用，其中精品BGP线路仅在中国香港支持。
-	// 
-	// 默认值：EIPv6
+	// <p>弹性公网IPv6类型，可选值：</p><ul><li>EIPv6：弹性公网IPv6</li><li>HighQualityEIPv6：精品BGP线路弹性公网IPv6<br>注意：弹性公网IPv6产品需开白才能使用，其中精品BGP线路仅在中国香港支持。</li></ul><p>默认值：EIPv6</p>
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 
-	// 申请的弹性公网IPv6数量。单次最多可以申请20个弹性公网IPv6实例，总配额请参见[弹性公网 IPv6 配额说明](https://cloud.tencent.com/document/product/1142/38369)。
-	// 
-	// 默认值：1
+	// <p>申请的弹性公网IPv6数量。单次最多可以申请20个弹性公网IPv6实例，总配额请参见<a href="https://cloud.tencent.com/document/product/1142/38369">弹性公网 IPv6 配额说明</a>。</p><p>默认值：1</p>
 	AddressCount *int64 `json:"AddressCount,omitnil,omitempty" name:"AddressCount"`
 
-	// 弹性公网IPv6计费方式，可选值：
-	// 
-	// - BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费
-	// - TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费
-	// 
-	// 默认值：TRAFFIC_POSTPAID_BY_HOUR
+	// <p>弹性公网IPv6计费方式，可选值：</p><ul><li>BANDWIDTH_PACKAGE：<a href="https://cloud.tencent.com/document/product/684/15255">共享带宽包</a>付费</li><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul><p>默认值：TRAFFIC_POSTPAID_BY_HOUR</p>
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
-	// 弹性公网IPv6线路类型，默认值：BGP。
-	// 
-	// 已开通静态单线IP白名单的用户，可选值：
-	// - CMCC：中国移动
-	// - CTCC：中国电信
-	// - CUCC：中国联通
-	// 注意：仅部分地域支持静态单线IP。具体请以控制台购买页展示为准。
+	// <p>弹性公网IPv6线路类型，默认值：BGP。</p><p>已开通静态单线IP白名单的用户，可选值：</p><ul><li>CMCC：中国移动</li><li>CTCC：中国电信</li><li>CUCC：中国联通<br>注意：仅部分地域支持静态单线IP。具体请以控制台购买页展示为准。</li></ul>
 	InternetServiceProvider *string `json:"InternetServiceProvider,omitnil,omitempty" name:"InternetServiceProvider"`
 
-	// 弹性公网IPv6带宽上限，单位：Mbps。
-	// 
-	// 可选值范围取决于EIP计费方式：
-	// 
-	// - BANDWIDTH_PACKAGE（共享带宽包付费）：1 Mbps 至 2000 Mbps
-	// - TRAFFIC_POSTPAID_BY_HOUR（流量按小时后付费）：1 Mbps 至 100 Mbps
-	// 
-	// 默认值：1
+	// <p>弹性公网IPv6带宽上限，单位：Mbps。</p><p>可选值范围取决于EIP计费方式：</p><ul><li>BANDWIDTH_PACKAGE（共享带宽包付费）：1 Mbps 至 2000 Mbps</li><li>TRAFFIC_POSTPAID_BY_HOUR（流量按小时后付费）：1 Mbps 至 200 Mbps</li></ul><p>默认值：1</p>
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 带宽包唯一ID参数。可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
-	// 设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费。
+	// <p>带宽包唯一ID参数。可以使用<a href="https://cloud.tencent.com/document/product/215/19209">DescribeBandwidthPackages</a>接口查询BandwidthPackageId。<br>设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费。</p>
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 需要关联的标签列表。
+	// <p>需要关联的标签列表。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 弹性公网IPv6网络出口，可选值：
-	// 
-	// - CENTER_EGRESS_1：中心出口一
-	// - CENTER_EGRESS_2：中心出口二
-	// 注意：不同地域支持的线路类型、网络出口略有差异，请以控制台展示为准。
-	// 
-	// 默认值：CENTER_EGRESS_1
+	// <p>弹性公网IPv6网络出口，可选值：</p><ul><li>CENTER_EGRESS_1：中心出口一</li><li>CENTER_EGRESS_2：中心出口二<br>注意：不同地域支持的线路类型、网络出口略有差异，请以控制台展示为准。</li></ul><p>默认值：CENTER_EGRESS_1</p>
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 }
 
 type AllocateIPv6AddressesRequest struct {
 	*tchttp.BaseRequest
 	
-	// EIP名称，用于申请EIP时用户自定义该EIP的个性化名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"_"，不能包含空格。
-	// 默认值：未命名
+	// <p>EIP名称，用于申请EIP时用户自定义该EIP的个性化名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符&quot;-&quot;和下划线&quot;_&quot;，不能包含空格。<br>默认值：未命名</p>
 	AddressName *string `json:"AddressName,omitnil,omitempty" name:"AddressName"`
 
-	// 弹性公网IPv6类型，可选值：
-	// 
-	// - EIPv6：弹性公网IPv6
-	// - HighQualityEIPv6：精品BGP线路弹性公网IPv6
-	// 注意：弹性公网IPv6产品需开白才能使用，其中精品BGP线路仅在中国香港支持。
-	// 
-	// 默认值：EIPv6
+	// <p>弹性公网IPv6类型，可选值：</p><ul><li>EIPv6：弹性公网IPv6</li><li>HighQualityEIPv6：精品BGP线路弹性公网IPv6<br>注意：弹性公网IPv6产品需开白才能使用，其中精品BGP线路仅在中国香港支持。</li></ul><p>默认值：EIPv6</p>
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 
-	// 申请的弹性公网IPv6数量。单次最多可以申请20个弹性公网IPv6实例，总配额请参见[弹性公网 IPv6 配额说明](https://cloud.tencent.com/document/product/1142/38369)。
-	// 
-	// 默认值：1
+	// <p>申请的弹性公网IPv6数量。单次最多可以申请20个弹性公网IPv6实例，总配额请参见<a href="https://cloud.tencent.com/document/product/1142/38369">弹性公网 IPv6 配额说明</a>。</p><p>默认值：1</p>
 	AddressCount *int64 `json:"AddressCount,omitnil,omitempty" name:"AddressCount"`
 
-	// 弹性公网IPv6计费方式，可选值：
-	// 
-	// - BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费
-	// - TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费
-	// 
-	// 默认值：TRAFFIC_POSTPAID_BY_HOUR
+	// <p>弹性公网IPv6计费方式，可选值：</p><ul><li>BANDWIDTH_PACKAGE：<a href="https://cloud.tencent.com/document/product/684/15255">共享带宽包</a>付费</li><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul><p>默认值：TRAFFIC_POSTPAID_BY_HOUR</p>
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
-	// 弹性公网IPv6线路类型，默认值：BGP。
-	// 
-	// 已开通静态单线IP白名单的用户，可选值：
-	// - CMCC：中国移动
-	// - CTCC：中国电信
-	// - CUCC：中国联通
-	// 注意：仅部分地域支持静态单线IP。具体请以控制台购买页展示为准。
+	// <p>弹性公网IPv6线路类型，默认值：BGP。</p><p>已开通静态单线IP白名单的用户，可选值：</p><ul><li>CMCC：中国移动</li><li>CTCC：中国电信</li><li>CUCC：中国联通<br>注意：仅部分地域支持静态单线IP。具体请以控制台购买页展示为准。</li></ul>
 	InternetServiceProvider *string `json:"InternetServiceProvider,omitnil,omitempty" name:"InternetServiceProvider"`
 
-	// 弹性公网IPv6带宽上限，单位：Mbps。
-	// 
-	// 可选值范围取决于EIP计费方式：
-	// 
-	// - BANDWIDTH_PACKAGE（共享带宽包付费）：1 Mbps 至 2000 Mbps
-	// - TRAFFIC_POSTPAID_BY_HOUR（流量按小时后付费）：1 Mbps 至 100 Mbps
-	// 
-	// 默认值：1
+	// <p>弹性公网IPv6带宽上限，单位：Mbps。</p><p>可选值范围取决于EIP计费方式：</p><ul><li>BANDWIDTH_PACKAGE（共享带宽包付费）：1 Mbps 至 2000 Mbps</li><li>TRAFFIC_POSTPAID_BY_HOUR（流量按小时后付费）：1 Mbps 至 200 Mbps</li></ul><p>默认值：1</p>
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 带宽包唯一ID参数。可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
-	// 设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费。
+	// <p>带宽包唯一ID参数。可以使用<a href="https://cloud.tencent.com/document/product/215/19209">DescribeBandwidthPackages</a>接口查询BandwidthPackageId。<br>设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费。</p>
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 需要关联的标签列表。
+	// <p>需要关联的标签列表。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 弹性公网IPv6网络出口，可选值：
-	// 
-	// - CENTER_EGRESS_1：中心出口一
-	// - CENTER_EGRESS_2：中心出口二
-	// 注意：不同地域支持的线路类型、网络出口略有差异，请以控制台展示为准。
-	// 
-	// 默认值：CENTER_EGRESS_1
+	// <p>弹性公网IPv6网络出口，可选值：</p><ul><li>CENTER_EGRESS_1：中心出口一</li><li>CENTER_EGRESS_2：中心出口二<br>注意：不同地域支持的线路类型、网络出口略有差异，请以控制台展示为准。</li></ul><p>默认值：CENTER_EGRESS_1</p>
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 }
 
@@ -1064,10 +938,10 @@ func (r *AllocateIPv6AddressesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AllocateIPv6AddressesResponseParams struct {
-	// 申请到的弹性公网 IPv6 地址的唯一 ID 列表。
+	// <p>申请到的弹性公网 IPv6 地址的唯一 ID 列表。</p>
 	AddressSet []*string `json:"AddressSet,omitnil,omitempty" name:"AddressSet"`
 
-	// 异步任务TaskId，可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+	// <p>异步任务TaskId，可以使用<a href="https://cloud.tencent.com/document/api/215/36271">DescribeTaskResult</a>接口查询任务状态。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

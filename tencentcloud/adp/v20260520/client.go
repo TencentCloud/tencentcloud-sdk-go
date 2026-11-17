@@ -5765,6 +5765,58 @@ func (c *Client) ModifyLabelWithContext(ctx context.Context, request *ModifyLabe
     return
 }
 
+func NewModifyMessageRecordFeedbackRequest() (request *ModifyMessageRecordFeedbackRequest) {
+    request = &ModifyMessageRecordFeedbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifyMessageRecordFeedback")
+    
+    
+    return
+}
+
+func NewModifyMessageRecordFeedbackResponse() (response *ModifyMessageRecordFeedbackResponse) {
+    response = &ModifyMessageRecordFeedbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMessageRecordFeedback
+// 修改消息记录反馈
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyMessageRecordFeedback(request *ModifyMessageRecordFeedbackRequest) (response *ModifyMessageRecordFeedbackResponse, err error) {
+    return c.ModifyMessageRecordFeedbackWithContext(context.Background(), request)
+}
+
+// ModifyMessageRecordFeedback
+// 修改消息记录反馈
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyMessageRecordFeedbackWithContext(ctx context.Context, request *ModifyMessageRecordFeedbackRequest) (response *ModifyMessageRecordFeedbackResponse, err error) {
+    if request == nil {
+        request = NewModifyMessageRecordFeedbackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyMessageRecordFeedback")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMessageRecordFeedback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMessageRecordFeedbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMsgRecordCategoryRequest() (request *ModifyMsgRecordCategoryRequest) {
     request = &ModifyMsgRecordCategoryRequest{
         BaseRequest: &tchttp.BaseRequest{},

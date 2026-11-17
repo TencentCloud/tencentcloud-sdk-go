@@ -2053,6 +2053,108 @@ func (r *DescribeTokenPlanListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTokenPlanPersonalPackageRequestParams struct {
+	// <p>产品类型。取值：personal（个人版）、personal-hunyuan（个人版混元）。</p>
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+}
+
+type DescribeTokenPlanPersonalPackageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品类型。取值：personal（个人版）、personal-hunyuan（个人版混元）。</p>
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+}
+
+func (r *DescribeTokenPlanPersonalPackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTokenPlanPersonalPackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenPlanPersonalPackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTokenPlanPersonalPackageResponseParams struct {
+	// <p>产品类型。</p>
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+
+	// <p>套餐状态。取值：active（生效中）、processing（处理中）、failed（创建失败）、isolated（隔离/欠费）、destroyed（已销毁）、used_up（额度用尽）、stopped（已停止）、unpurchased（未购买）。</p>
+	PackageStatus *string `json:"PackageStatus,omitnil,omitempty" name:"PackageStatus"`
+
+	// <p>计费资源ID</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>总额度。</p>
+	TotalCredits *string `json:"TotalCredits,omitnil,omitempty" name:"TotalCredits"`
+
+	// <p>已使用额度。</p>
+	TotalUsed *string `json:"TotalUsed,omitnil,omitempty" name:"TotalUsed"`
+
+	// <p>单周期额度。</p>
+	CycleCredits *string `json:"CycleCredits,omitnil,omitempty" name:"CycleCredits"`
+
+	// <p>总周期数。</p>
+	TotalCycles *int64 `json:"TotalCycles,omitnil,omitempty" name:"TotalCycles"`
+
+	// <p>当前周期序号。</p>
+	CurrentCycle *int64 `json:"CurrentCycle,omitnil,omitempty" name:"CurrentCycle"`
+
+	// <p>剩余周期数。</p>
+	RemainCycles *int64 `json:"RemainCycles,omitnil,omitempty" name:"RemainCycles"`
+
+	// <p>套餐生效时间，ISO 8601 格式。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>套餐过期时间，ISO 8601 格式。</p>
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>当前周期到期日，ISO 8601 格式。</p>
+	PeriodEndDate *string `json:"PeriodEndDate,omitnil,omitempty" name:"PeriodEndDate"`
+
+	// <p>自动续费标识。取值：0（未开启）、1（已开启）。</p>
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// <p>输出token数</p><p>单位：tokens</p>
+	OutputToken *int64 `json:"OutputToken,omitnil,omitempty" name:"OutputToken"`
+
+	// <p>输入token数</p><p>单位：token</p>
+	InputToken *int64 `json:"InputToken,omitnil,omitempty" name:"InputToken"`
+
+	// <p>缓存命中token数</p><p>单位：token</p>
+	CacheToken *int64 `json:"CacheToken,omitnil,omitempty" name:"CacheToken"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTokenPlanPersonalPackageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTokenPlanPersonalPackageResponseParams `json:"Response"`
+}
+
+func (r *DescribeTokenPlanPersonalPackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTokenPlanPersonalPackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTokenPlanRequestParams struct {
 	// 套餐 ID。可通过 DescribeTokenPlanList 接口获取。
 	TeamId *string `json:"TeamId,omitnil,omitempty" name:"TeamId"`

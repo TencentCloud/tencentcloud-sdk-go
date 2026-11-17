@@ -437,6 +437,9 @@ const (
 	// 时间间隔不能小于10分钟
 	INVALIDPARAMETERVALUE_TIMELESSTHANTENMINUTES = "InvalidParameterValue.TimeLessThanTenMinutes"
 
+	// 查询时间范围超出限制
+	INVALIDPARAMETERVALUE_TIMERANGEEXCEEDSLIMIT = "InvalidParameterValue.TimeRangeExceedsLimit"
+
 	// 描述字段过长
 	INVALIDPARAMETERVALUE_TOOLONGDESCRIBE = "InvalidParameterValue.TooLongDescribe"
 

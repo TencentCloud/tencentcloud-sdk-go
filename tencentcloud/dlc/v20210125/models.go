@@ -18283,6 +18283,77 @@ func (r *DescribePartitionDetailResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePartitionMonitorOverviewRequestParams struct {
+	// <p>资源分区编码</p>
+	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
+
+	// <p>资源组（队列）名称，可选。不传时返回 partition 维度指标（含 pending_workloads / admission_wait_seconds / top_queue_by_cpu 排队卡片、<em>_limit_business 计费口径已使用量、</em><em>quota_total 配额、postpay_month_consumed_total 当月已消耗）；传入时切换为 queue 维度：仅返回 queue</em> 前缀指标（queue_<em><em>limit_business 计费口径已使用量 / queue</em></em>_admitted Kueue 对照口径 / queue_pending_workloads / queue_admission_wait_seconds）+ 该队列的配额指标（cpu_quota_total / memory_quota_total / gpu_quota_total / vram_quota_total，数值来自队列的 resource_usage 而非分区 resource_config）+ postpay_month_consumed_total</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>指标 key 过滤列表，为空则返回全部指标</p>
+	MetricKeys []*string `json:"MetricKeys,omitnil,omitempty" name:"MetricKeys"`
+}
+
+type DescribePartitionMonitorOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>资源分区编码</p>
+	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
+
+	// <p>资源组（队列）名称，可选。不传时返回 partition 维度指标（含 pending_workloads / admission_wait_seconds / top_queue_by_cpu 排队卡片、<em>_limit_business 计费口径已使用量、</em><em>quota_total 配额、postpay_month_consumed_total 当月已消耗）；传入时切换为 queue 维度：仅返回 queue</em> 前缀指标（queue_<em><em>limit_business 计费口径已使用量 / queue</em></em>_admitted Kueue 对照口径 / queue_pending_workloads / queue_admission_wait_seconds）+ 该队列的配额指标（cpu_quota_total / memory_quota_total / gpu_quota_total / vram_quota_total，数值来自队列的 resource_usage 而非分区 resource_config）+ postpay_month_consumed_total</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>指标 key 过滤列表，为空则返回全部指标</p>
+	MetricKeys []*string `json:"MetricKeys,omitnil,omitempty" name:"MetricKeys"`
+}
+
+func (r *DescribePartitionMonitorOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePartitionMonitorOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PartitionCode")
+	delete(f, "QueueName")
+	delete(f, "MetricKeys")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePartitionMonitorOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePartitionMonitorOverviewResponseParams struct {
+	// <p>监控指标列表</p>
+	Metrics []*MetricValue `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePartitionMonitorOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePartitionMonitorOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribePartitionMonitorOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePartitionMonitorOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePartitionQueuesRequestParams struct {
 	// 分区编码
 	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
@@ -31977,6 +32048,44 @@ type MetricItem struct {
 
 	// <p>指标值（字符串形式）</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type MetricLabels struct {
+	// <p>GPU 卡型简称，取值如 T4 / A10 / V100 / L20 / H20。来自 TKE GPU Exporter 暴露的 gpu_info.name，由查询层归一（name=&quot;Tesla T4&quot; → GpuType=&quot;T4&quot;）；未识别的卡型保留原始 name 值</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GpuType *string `json:"GpuType,omitnil,omitempty" name:"GpuType"`
+
+	// <p>队列编码 code（多队列时序查询时，每个 series 携带所属队列 code，与 GpuType 组合区分曲线；展示别名见 QueueAlias）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>队列展示别名（多队列时序查询时每个 series 携带，前端图例展示用；队列不存在或 alias 为空时回落为队列 code）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
+
+	// <p>计费项资源类型（CPU / HM_CPU）。Overview 路径的 CPU / 内存类指标按计费项资源类型拆分 series 时携带；时序路径当前不输出该字段（预留对齐 MetricLabels 定义）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+}
+
+type MetricValue struct {
+	// <p>指标键名，如 cpu_allocation、cpu_quota_total 等</p>
+	MetricKey *string `json:"MetricKey,omitnil,omitempty" name:"MetricKey"`
+
+	// <p>指标当前值，可能为 null（PromQL 返回空数据集时），前端按 null 视作&quot;无数据&quot;处理</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// <p>指标单位，如 core、card、GB</p>
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// <p>资源类型：cpu / gpu / memory / vram / kueue / consumption</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>维度标签。单 series 指标（CPU / 内存 / Kueue 等）不出现此字段；多 series 指标（GPU 类按卡型拆分）每条 MetricValue 携带不同的 Labels 区分维度。前端按 (MetricKey, Labels) 二元组识别每条记录</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels *MetricLabels `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 type MetricsData struct {

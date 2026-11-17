@@ -1713,6 +1713,72 @@ func (c *Client) DescribeTokenPlanListWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeTokenPlanPersonalPackageRequest() (request *DescribeTokenPlanPersonalPackageRequest) {
+    request = &DescribeTokenPlanPersonalPackageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "DescribeTokenPlanPersonalPackage")
+    
+    
+    return
+}
+
+func NewDescribeTokenPlanPersonalPackageResponse() (response *DescribeTokenPlanPersonalPackageResponse) {
+    response = &DescribeTokenPlanPersonalPackageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTokenPlanPersonalPackage
+// 查询个人版套餐详情。
+//
+// 
+//
+// 查询指定产品类型的个人版 Token Plan 套餐状态、额度及续费信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeTokenPlanPersonalPackage(request *DescribeTokenPlanPersonalPackageRequest) (response *DescribeTokenPlanPersonalPackageResponse, err error) {
+    return c.DescribeTokenPlanPersonalPackageWithContext(context.Background(), request)
+}
+
+// DescribeTokenPlanPersonalPackage
+// 查询个人版套餐详情。
+//
+// 
+//
+// 查询指定产品类型的个人版 Token Plan 套餐状态、额度及续费信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeTokenPlanPersonalPackageWithContext(ctx context.Context, request *DescribeTokenPlanPersonalPackageRequest) (response *DescribeTokenPlanPersonalPackageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTokenPlanPersonalPackageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "DescribeTokenPlanPersonalPackage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTokenPlanPersonalPackage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTokenPlanPersonalPackageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUsageRankListRequest() (request *DescribeUsageRankListRequest) {
     request = &DescribeUsageRankListRequest{
         BaseRequest: &tchttp.BaseRequest{},

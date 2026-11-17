@@ -8527,10 +8527,10 @@ type TelCdrInfo struct {
 }
 
 type TimeRange struct {
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 

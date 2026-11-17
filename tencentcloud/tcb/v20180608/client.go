@@ -1502,6 +1502,7 @@ func NewCreateStaticStoreResponse() (response *CreateStaticStoreResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE_STATICSTORE = "ResourceInUse.StaticStore"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateStaticStore(request *CreateStaticStoreRequest) (response *CreateStaticStoreResponse, err error) {
     return c.CreateStaticStoreWithContext(context.Background(), request)
@@ -1513,6 +1514,7 @@ func (c *Client) CreateStaticStore(request *CreateStaticStoreRequest) (response 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE_STATICSTORE = "ResourceInUse.StaticStore"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateStaticStoreWithContext(ctx context.Context, request *CreateStaticStoreRequest) (response *CreateStaticStoreResponse, err error) {
     if request == nil {
@@ -3569,6 +3571,74 @@ func (c *Client) DescribeDatabaseACLWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeDatabaseACLResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEnvAccessControlRequest() (request *DescribeEnvAccessControlRequest) {
+    request = &DescribeEnvAccessControlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvAccessControl")
+    
+    
+    return
+}
+
+func NewDescribeEnvAccessControlResponse() (response *DescribeEnvAccessControlResponse) {
+    response = &DescribeEnvAccessControlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEnvAccessControl
+// 查询云开发域名访问限制配置，返回指定环境下公网、VPC、办公网三种来源的当前访问策略
+//
+// （1）可以通过控制台调用查询域名访问控制。响应  Current 返回各来源（PUBLIC/VPC/WOA）当前生效的配置
+//
+// （2）不产生写副作用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTAUTHTOKEN = "FailedOperation.DecryptAuthToken"
+//  FAILEDOPERATION_QUERYACCESSCONTROL = "FailedOperation.QueryAccessControl"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+func (c *Client) DescribeEnvAccessControl(request *DescribeEnvAccessControlRequest) (response *DescribeEnvAccessControlResponse, err error) {
+    return c.DescribeEnvAccessControlWithContext(context.Background(), request)
+}
+
+// DescribeEnvAccessControl
+// 查询云开发域名访问限制配置，返回指定环境下公网、VPC、办公网三种来源的当前访问策略
+//
+// （1）可以通过控制台调用查询域名访问控制。响应  Current 返回各来源（PUBLIC/VPC/WOA）当前生效的配置
+//
+// （2）不产生写副作用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTAUTHTOKEN = "FailedOperation.DecryptAuthToken"
+//  FAILEDOPERATION_QUERYACCESSCONTROL = "FailedOperation.QueryAccessControl"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+func (c *Client) DescribeEnvAccessControlWithContext(ctx context.Context, request *DescribeEnvAccessControlRequest) (response *DescribeEnvAccessControlResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvAccessControlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEnvAccessControl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvAccessControl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEnvAccessControlResponse()
     err = c.Send(request, response)
     return
 }
@@ -6555,6 +6625,100 @@ func (c *Client) ModifyEnvWithContext(ctx context.Context, request *ModifyEnvReq
     return
 }
 
+func NewModifyEnvAccessControlRequest() (request *ModifyEnvAccessControlRequest) {
+    request = &ModifyEnvAccessControlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyEnvAccessControl")
+    
+    
+    return
+}
+
+func NewModifyEnvAccessControlResponse() (response *ModifyEnvAccessControlResponse) {
+    response = &ModifyEnvAccessControlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyEnvAccessControl
+// 云开发域名访问限制配置
+//
+// （1）影响指定环境下域名来源访问策略，包含公网与 VPC 白名单
+//
+// （2）关闭公网访问后，云开发提供的默认域名在公网访问场景下返回403
+//
+// （3）可以通过配置 VPC 白名单指定放通特定 VPC 来源的请求
+//
+// （4）可以通过云开发控制台调用修改访问配置，修改后可通过查询接口核对生效配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHECKFEATUREPERMISSION = "FailedOperation.CheckFeaturePermission"
+//  FAILEDOPERATION_QUERYVPC = "FailedOperation.QueryVPC"
+//  FAILEDOPERATION_SAVEAUTHTOKEN = "FailedOperation.SaveAuthToken"
+//  FAILEDOPERATION_SAVEVPCWHITELIST = "FailedOperation.SaveVPCWhiteList"
+//  FAILEDOPERATION_UPDATEACCESSCONTROL = "FailedOperation.UpdateAccessControl"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACCESSSOURCE = "InvalidParameter.AccessSource"
+//  INVALIDPARAMETER_AUTHTOKEN = "InvalidParameter.AuthToken"
+//  INVALIDPARAMETER_VPCWHITELIST = "InvalidParameter.VPCWhiteList"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  OPERATIONDENIED_FREEPACKAGEDENIED = "OperationDenied.FreePackageDenied"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+//  RESOURCENOTFOUND_VPC = "ResourceNotFound.VPC"
+//  UNAUTHORIZEDOPERATION_VPCNOTOWNED = "UnauthorizedOperation.VPCNotOwned"
+func (c *Client) ModifyEnvAccessControl(request *ModifyEnvAccessControlRequest) (response *ModifyEnvAccessControlResponse, err error) {
+    return c.ModifyEnvAccessControlWithContext(context.Background(), request)
+}
+
+// ModifyEnvAccessControl
+// 云开发域名访问限制配置
+//
+// （1）影响指定环境下域名来源访问策略，包含公网与 VPC 白名单
+//
+// （2）关闭公网访问后，云开发提供的默认域名在公网访问场景下返回403
+//
+// （3）可以通过配置 VPC 白名单指定放通特定 VPC 来源的请求
+//
+// （4）可以通过云开发控制台调用修改访问配置，修改后可通过查询接口核对生效配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHECKFEATUREPERMISSION = "FailedOperation.CheckFeaturePermission"
+//  FAILEDOPERATION_QUERYVPC = "FailedOperation.QueryVPC"
+//  FAILEDOPERATION_SAVEAUTHTOKEN = "FailedOperation.SaveAuthToken"
+//  FAILEDOPERATION_SAVEVPCWHITELIST = "FailedOperation.SaveVPCWhiteList"
+//  FAILEDOPERATION_UPDATEACCESSCONTROL = "FailedOperation.UpdateAccessControl"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACCESSSOURCE = "InvalidParameter.AccessSource"
+//  INVALIDPARAMETER_AUTHTOKEN = "InvalidParameter.AuthToken"
+//  INVALIDPARAMETER_VPCWHITELIST = "InvalidParameter.VPCWhiteList"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  OPERATIONDENIED_FREEPACKAGEDENIED = "OperationDenied.FreePackageDenied"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+//  RESOURCENOTFOUND_VPC = "ResourceNotFound.VPC"
+//  UNAUTHORIZEDOPERATION_VPCNOTOWNED = "UnauthorizedOperation.VPCNotOwned"
+func (c *Client) ModifyEnvAccessControlWithContext(ctx context.Context, request *ModifyEnvAccessControlRequest) (response *ModifyEnvAccessControlResponse, err error) {
+    if request == nil {
+        request = NewModifyEnvAccessControlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyEnvAccessControl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEnvAccessControl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEnvAccessControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEnvExtraRequest() (request *ModifyEnvExtraRequest) {
     request = &ModifyEnvExtraRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6578,11 +6742,21 @@ func NewModifyEnvExtraResponse() (response *ModifyEnvExtraResponse) {
 // 修改环境额外配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKFEATUREPERMISSION = "FailedOperation.CheckFeaturePermission"
+//  FAILEDOPERATION_QUERYVPC = "FailedOperation.QueryVPC"
+//  FAILEDOPERATION_SAVEAUTHTOKEN = "FailedOperation.SaveAuthToken"
+//  FAILEDOPERATION_SAVEVPCWHITELIST = "FailedOperation.SaveVPCWhiteList"
+//  FAILEDOPERATION_UPDATEACCESSCONTROL = "FailedOperation.UpdateAccessControl"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INVALIDPARAMETER_ACCESSSOURCE = "InvalidParameter.AccessSource"
+//  INVALIDPARAMETER_AUTHTOKEN = "InvalidParameter.AuthToken"
+//  INVALIDPARAMETER_VPCWHITELIST = "InvalidParameter.VPCWhiteList"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  OPERATIONDENIED_FREEPACKAGEDENIED = "OperationDenied.FreePackageDenied"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+//  RESOURCENOTFOUND_VPC = "ResourceNotFound.VPC"
+//  UNAUTHORIZEDOPERATION_VPCNOTOWNED = "UnauthorizedOperation.VPCNotOwned"
 func (c *Client) ModifyEnvExtra(request *ModifyEnvExtraRequest) (response *ModifyEnvExtraResponse, err error) {
     return c.ModifyEnvExtraWithContext(context.Background(), request)
 }
@@ -6591,11 +6765,21 @@ func (c *Client) ModifyEnvExtra(request *ModifyEnvExtraRequest) (response *Modif
 // 修改环境额外配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKFEATUREPERMISSION = "FailedOperation.CheckFeaturePermission"
+//  FAILEDOPERATION_QUERYVPC = "FailedOperation.QueryVPC"
+//  FAILEDOPERATION_SAVEAUTHTOKEN = "FailedOperation.SaveAuthToken"
+//  FAILEDOPERATION_SAVEVPCWHITELIST = "FailedOperation.SaveVPCWhiteList"
+//  FAILEDOPERATION_UPDATEACCESSCONTROL = "FailedOperation.UpdateAccessControl"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INVALIDPARAMETER_ACCESSSOURCE = "InvalidParameter.AccessSource"
+//  INVALIDPARAMETER_AUTHTOKEN = "InvalidParameter.AuthToken"
+//  INVALIDPARAMETER_VPCWHITELIST = "InvalidParameter.VPCWhiteList"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  OPERATIONDENIED_FREEPACKAGEDENIED = "OperationDenied.FreePackageDenied"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+//  RESOURCENOTFOUND_VPC = "ResourceNotFound.VPC"
+//  UNAUTHORIZEDOPERATION_VPCNOTOWNED = "UnauthorizedOperation.VPCNotOwned"
 func (c *Client) ModifyEnvExtraWithContext(ctx context.Context, request *ModifyEnvExtraRequest) (response *ModifyEnvExtraResponse, err error) {
     if request == nil {
         request = NewModifyEnvExtraRequest()

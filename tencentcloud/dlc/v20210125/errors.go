@@ -137,6 +137,12 @@ const (
 	// 实例变配失败。
 	FAILEDOPERATION_MODIFYINSTANCEFAILED = "FailedOperation.ModifyInstanceFailed"
 
+	// 资源包监控功能未启用
+	FAILEDOPERATION_MONITORDISABLED = "FailedOperation.MonitorDisabled"
+
+	// 查询失败
+	FAILEDOPERATION_MONITORPROMETHEUSQUERYFAILED = "FailedOperation.MonitorPrometheusQueryFailed"
+
 	// The  datasource vpc has been bound to the engine
 	FAILEDOPERATION_NETWORKCONNECTIONEXIST = "FailedOperation.NetworkConnectionExist"
 
@@ -763,6 +769,12 @@ const (
 
 	// 作业不存在。
 	RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+
+	// ResourceNotFound.MonitorPartition
+	RESOURCENOTFOUND_MONITORPARTITION = "ResourceNotFound.MonitorPartition"
+
+	// 资源包不存在或状态非有效
+	RESOURCENOTFOUND_MONITORQUEUE = "ResourceNotFound.MonitorQueue"
 
 	// 该网络连接不存在
 	RESOURCENOTFOUND_NETWORKCONNECTIONNOTFOUND = "ResourceNotFound.NetworkConnectionNotFound"

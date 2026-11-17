@@ -404,23 +404,26 @@ type CreateDataSourceRequestParams struct {
 	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
-	// 数据源名称
+	// <p>数据源名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数据源类型英文名
+	// <p>数据源类型英文名</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 数据源权限，取值有RW RO
+	// <p>数据源权限，取值有RW RO</p>
 	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
 
-	// 存储实例ID
+	// <p>存储实例ID</p>
 	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
 
-	// 数据源挂载配置
+	// <p>数据源挂载配置</p>
 	MountConfigure *MountConfigureInfo `json:"MountConfigure,omitnil,omitempty" name:"MountConfigure"`
 
-	// 标签配置
+	// <p>标签配置</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>挂载数据源时默认填充的容器内路径</p>
+	ContainerPath *string `json:"ContainerPath,omitnil,omitempty" name:"ContainerPath"`
 }
 
 type CreateDataSourceRequest struct {
@@ -429,23 +432,26 @@ type CreateDataSourceRequest struct {
 	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
-	// 数据源名称
+	// <p>数据源名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数据源类型英文名
+	// <p>数据源类型英文名</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 数据源权限，取值有RW RO
+	// <p>数据源权限，取值有RW RO</p>
 	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
 
-	// 存储实例ID
+	// <p>存储实例ID</p>
 	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
 
-	// 数据源挂载配置
+	// <p>数据源挂载配置</p>
 	MountConfigure *MountConfigureInfo `json:"MountConfigure,omitnil,omitempty" name:"MountConfigure"`
 
-	// 标签配置
+	// <p>标签配置</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>挂载数据源时默认填充的容器内路径</p>
+	ContainerPath *string `json:"ContainerPath,omitnil,omitempty" name:"ContainerPath"`
 }
 
 func (r *CreateDataSourceRequest) ToJsonString() string {
@@ -467,6 +473,7 @@ func (r *CreateDataSourceRequest) FromJsonString(s string) error {
 	delete(f, "StorageId")
 	delete(f, "MountConfigure")
 	delete(f, "Tags")
+	delete(f, "ContainerPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataSourceRequest has unknown keys!", "")
 	}
@@ -475,7 +482,7 @@ func (r *CreateDataSourceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDataSourceResponseParams struct {
-	// 数据源ID
+	// <p>数据源ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1340,6 +1347,9 @@ type CreateNotebookImageRequestParams struct {
 
 	// <p>是否保存到镜像中心</p>
 	RegisterToImageCenter *bool `json:"RegisterToImageCenter,omitnil,omitempty" name:"RegisterToImageCenter"`
+
+	// <p>是否忽略无法被冻结的进程</p>
+	IgnoreUnfreezableProcesses *bool `json:"IgnoreUnfreezableProcesses,omitnil,omitempty" name:"IgnoreUnfreezableProcesses"`
 }
 
 type CreateNotebookImageRequest struct {
@@ -1359,6 +1369,9 @@ type CreateNotebookImageRequest struct {
 
 	// <p>是否保存到镜像中心</p>
 	RegisterToImageCenter *bool `json:"RegisterToImageCenter,omitnil,omitempty" name:"RegisterToImageCenter"`
+
+	// <p>是否忽略无法被冻结的进程</p>
+	IgnoreUnfreezableProcesses *bool `json:"IgnoreUnfreezableProcesses,omitnil,omitempty" name:"IgnoreUnfreezableProcesses"`
 }
 
 func (r *CreateNotebookImageRequest) ToJsonString() string {
@@ -1378,6 +1391,7 @@ func (r *CreateNotebookImageRequest) FromJsonString(s string) error {
 	delete(f, "TiProjectId")
 	delete(f, "Kernels")
 	delete(f, "RegisterToImageCenter")
+	delete(f, "IgnoreUnfreezableProcesses")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookImageRequest has unknown keys!", "")
 	}
@@ -2041,7 +2055,7 @@ func (r *CreateTrainingModelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTrainingTaskRequestParams struct {
-	// <p>训练任务名称，不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
+	// <p>训练任务名称，不超过256个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>计费模式，eg：PREPAID 包年包月（资源组）;<br>POSTPAID_BY_HOUR 按量计费</p>
@@ -2080,7 +2094,7 @@ type CreateTrainingTaskRequestParams struct {
 	// <p>训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD</p>
 	TrainingMode *string `json:"TrainingMode,omitnil,omitempty" name:"TrainingMode"`
 
-	// <p>数据配置，依赖DataSource字段，数量不超过10个</p>
+	// <p>数据配置，数量不超过10个</p>
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
 
 	// <p>VPC Id</p>
@@ -2135,7 +2149,7 @@ type CreateTrainingTaskRequestParams struct {
 type CreateTrainingTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>训练任务名称，不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
+	// <p>训练任务名称，不超过256个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>计费模式，eg：PREPAID 包年包月（资源组）;<br>POSTPAID_BY_HOUR 按量计费</p>
@@ -2174,7 +2188,7 @@ type CreateTrainingTaskRequest struct {
 	// <p>训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD</p>
 	TrainingMode *string `json:"TrainingMode,omitnil,omitempty" name:"TrainingMode"`
 
-	// <p>数据配置，依赖DataSource字段，数量不超过10个</p>
+	// <p>数据配置，数量不超过10个</p>
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
 
 	// <p>VPC Id</p>
@@ -2338,11 +2352,11 @@ type DataConfig struct {
 	// <p>映射路径</p>
 	MappingPath *string `json:"MappingPath,omitnil,omitempty" name:"MappingPath"`
 
-	// <p>存储用途<br>可选值为 BUILTIN_CODE, BUILTIN_DATA, BUILTIN_MODEL, USER_DATA, USER_CODE, USER_MODEL, OUTPUT, OTHER</p>
+	// <p>存储用途，用于标识该数据配置中数据的使用场景。</p><p>枚举值：</p><ul><li>BUILTIN_CODE： 内置代码</li><li>BUILTIN_DATA： 内置数据</li><li>BUILTIN_MODEL： 内置模型</li><li>USER_DATA： 用户数据</li><li>USER_CODE： 用户代码</li><li>USER_MODEL： 用户模型</li><li>OUTPUT： 训练输出</li><li>DEFAULT： 其他</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceUsage *string `json:"DataSourceUsage,omitnil,omitempty" name:"DataSourceUsage"`
 
-	// <p>DATASET、COS、CFS、CFSTurbo、GooseFSx、HDFS、WEDATA_HDFS</p>
+	// <p>存储类型，各取值对应的数据结构见下方枚举值说明。</p><p>枚举值：</p><ul><li>DATASET： 数据集，填 DataSetSource</li><li>COS： COS 对象存储，填 COSSource；仅 Train 支持</li><li>COSFS： COS 挂载（COSFS），填 COSSource</li><li>CFS： CFS 文件存储，填 CFSSource</li><li>CFSTurbo： CFSTurbo 文件存储，填 CFSSource；兼容历史字段 CFSTurboSource；仅 Train 支持</li><li>GooseFS： GooseFS 实例，填 GooseFSSource</li><li>GooseFSx： GooseFSx 实例，填 GooseFSSource</li><li>HDFS： HDFS 存储，填 HDFSSource；仅 Train 支持</li><li>LOCAL_DISK： 本地磁盘，填 LocalDiskSource</li><li>HOST_PATH： 宿主机路径，填 HostPathSource</li><li>PUBLIC_DATA_SOURCE： 公有云数据源，填 PublicDataSource</li><li>CLOUD_PREMIUM： 高性能云硬盘（CBS），填 CBSSource，需指定 VolumeSizeInGB；仅 Notebook 支持</li><li>CLOUD_SSD： SSD 云硬盘（CBS），填 CBSSource，需指定 VolumeSizeInGB；仅 Notebook 支持</li><li>FREE： 免费云硬盘（CBS），填 CBSSource；仅 Notebook 支持</li><li>CFS_TURBO： CFSTurbo 文件存储，填 CFSSource；仅 Notebook 支持</li><li>BUILTIN_DATASET： 平台内置数据集，填 DataSetSource</li><li>PRELOAD_FILE： 预加载文件，填 PreloadFileSource</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 
@@ -2459,6 +2473,9 @@ type DataSourceInfo struct {
 	// <p>额外配置,对应存储实例的额外配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraConf *StorageExtraConf `json:"ExtraConf,omitnil,omitempty" name:"ExtraConf"`
+
+	// <p>挂载数据源时默认填充的容器内路径</p>
+	ContainerPath *string `json:"ContainerPath,omitnil,omitempty" name:"ContainerPath"`
 }
 
 type DatasetGroup struct {
@@ -6885,26 +6902,26 @@ func (r *DescribeTrainingTaskPodsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTrainingTaskRequestParams struct {
-	// 训练任务ID
+	// <p>训练任务ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
-	// 训练任务实例ID
+	// <p>训练任务实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeTrainingTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 训练任务ID
+	// <p>训练任务ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
-	// 训练任务实例ID
+	// <p>训练任务实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -6931,7 +6948,7 @@ func (r *DescribeTrainingTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTrainingTaskResponseParams struct {
-	// 训练任务详情
+	// <p>训练任务详情</p>
 	TrainingTaskDetail *TrainingTaskDetail `json:"TrainingTaskDetail,omitnil,omitempty" name:"TrainingTaskDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7694,6 +7711,9 @@ type GooseFS struct {
 
 	// <p>客户端的挂载参数，逗号分隔的参数名</p>
 	MountOptions *string `json:"MountOptions,omitnil,omitempty" name:"MountOptions"`
+
+	// <p>GooseFS FUSE，支持用户自定义配置，输入格式为“空格”分隔的参数名</p>
+	FuseOptions *string `json:"FuseOptions,omitnil,omitempty" name:"FuseOptions"`
 }
 
 type GooseFSx struct {
@@ -10014,6 +10034,9 @@ type NotebookSetItem struct {
 
 	// <p>操作者信息</p>
 	LatestOperatorInfo *OperatorInfo `json:"LatestOperatorInfo,omitnil,omitempty" name:"LatestOperatorInfo"`
+
+	// <p>预付费专用资源组</p>
+	ResourceGroupInstanceId *string `json:"ResourceGroupInstanceId,omitnil,omitempty" name:"ResourceGroupInstanceId"`
 }
 
 type NumOrPercent struct {
@@ -10169,31 +10192,31 @@ type Pod struct {
 }
 
 type PodInfo struct {
-	// pod名
+	// <p>pod名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// pod的IP
+	// <p>pod的IP</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
 
-	// pod状态。eg：SUBMITTING提交中、PENDING排队中、RUNNING运行中、SUCCEEDED已完成、FAILED异常、TERMINATING停止中、TERMINATED已停止
+	// <p>pod状态</p><p>枚举值：</p><ul><li>PENDING： 排队中</li><li>RUNNING： 运行中</li><li>SUCCEEDED： 已完成</li><li>FAILED： 异常</li><li>TERMINATING： 停止中</li><li>TERMINATED： 已停止</li><li>UNKNOWN： 未知</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// pod启动时间
+	// <p>pod启动时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// pod结束时间
+	// <p>pod结束时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// pod资源配置
+	// <p>pod资源配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceConfigInfo *ResourceConfigInfo `json:"ResourceConfigInfo,omitnil,omitempty" name:"ResourceConfigInfo"`
 
-	// Pod所属任务的SubUin信息
+	// <p>Pod所属任务的SubUin信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 }
@@ -11467,7 +11490,7 @@ type SmartRouterComponent struct {
 	// <p>组件状态：CREATING 创建中 / CREATE_FAILED 创建失败 / Normal 正常运行中 / Stopped 已停止 / Stopping 停止中 / Abnormal 异常 / Pending 启动中 / Waiting 就绪中</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// <p>资源规格（查询时回显用户创建/修改时的资源选择）。公有云场景展示：ChargeType / Zone / ResourceSupplyAttribute；内网版场景展示：QueueId</p>
+	// <p>资源规格（查询时回显用户创建/修改时的资源选择）。公有云场景展示：ChargeType / Zone / ResourceSupplyAttribute / ResourceGroupSWType；内网版场景展示：QueueId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceSpec *SmartRouterResourceSpec `json:"ResourceSpec,omitnil,omitempty" name:"ResourceSpec"`
 
@@ -12174,7 +12197,7 @@ type TrainingTaskDetail struct {
 	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// <p>训练框架名称，eg：SPARK、PYSARK、TENSORFLOW、PYTORCH</p>
+	// <p>训练框架名称，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameworkName *string `json:"FrameworkName,omitnil,omitempty" name:"FrameworkName"`
 
@@ -12293,7 +12316,7 @@ type TrainingTaskDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// <p>任务状态</p><p>枚举值：</p><ul><li>SUBMITTING： 排队中</li><li>STARTING： 启动中</li><li>RUNNING： 运行中</li><li>STOPPING： 停止中</li><li>STOPPED： 已停止</li><li>FAILED： 异常</li><li>SUCCEED： 已完成</li><li>SUBMIT_FAILED： 提交失败</li></ul>
+	// <p>任务状态</p><p>枚举值：</p><ul><li>SUBMITTING： 提交中</li><li>PENDING： 排队中</li><li>STARTING： 启动中</li><li>RUNNING： 运行中</li><li>STOPPING： 停止中</li><li>STOPPED： 已停止</li><li>SUCCEED： 已完成</li><li>FAILED： 异常</li><li>SUBMIT_FAILED： 提交失败</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// <p>回调地址</p>
@@ -12419,17 +12442,20 @@ type UpdateDataSourceRequestParams struct {
 	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
-	// 数据源ID
+	// <p>数据源ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 数据源名称
+	// <p>数据源名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数据源权限，取值有RW RO
+	// <p>数据源权限，取值有RW RO</p>
 	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
 
-	// 数据源挂载配置
+	// <p>数据源挂载配置</p>
 	MountConfigure *MountConfigureInfo `json:"MountConfigure,omitnil,omitempty" name:"MountConfigure"`
+
+	// <p>挂载数据源时默认填充的容器内路径</p>
+	ContainerPath *string `json:"ContainerPath,omitnil,omitempty" name:"ContainerPath"`
 }
 
 type UpdateDataSourceRequest struct {
@@ -12438,17 +12464,20 @@ type UpdateDataSourceRequest struct {
 	// <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
-	// 数据源ID
+	// <p>数据源ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 数据源名称
+	// <p>数据源名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数据源权限，取值有RW RO
+	// <p>数据源权限，取值有RW RO</p>
 	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
 
-	// 数据源挂载配置
+	// <p>数据源挂载配置</p>
 	MountConfigure *MountConfigureInfo `json:"MountConfigure,omitnil,omitempty" name:"MountConfigure"`
+
+	// <p>挂载数据源时默认填充的容器内路径</p>
+	ContainerPath *string `json:"ContainerPath,omitnil,omitempty" name:"ContainerPath"`
 }
 
 func (r *UpdateDataSourceRequest) ToJsonString() string {
@@ -12468,6 +12497,7 @@ func (r *UpdateDataSourceRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Permission")
 	delete(f, "MountConfigure")
+	delete(f, "ContainerPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDataSourceRequest has unknown keys!", "")
 	}

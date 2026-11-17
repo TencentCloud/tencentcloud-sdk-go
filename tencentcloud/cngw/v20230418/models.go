@@ -8444,6 +8444,16 @@ type KongRoutePreview struct {
 
 	// <p>路由来源</p>
 	RouteSource *string `json:"RouteSource,omitnil,omitempty" name:"RouteSource"`
+
+	// <p>用户绑定的业务标签（路由/服务标签分组能力，不含 Kong 内部 tag）。未绑定时字段为空数组或不返回。关联需求：路由/服务标签分组管理</p>
+	Tags []*KongUserTagKV `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>超时时间，单位ms</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>路由超时配置的来源。</p>
+	TimeoutSource *string `json:"TimeoutSource,omitnil,omitempty" name:"TimeoutSource"`
 }
 
 type KongServicePreview struct {
@@ -8496,31 +8506,34 @@ type KongServiceWithRoutes struct {
 }
 
 type KongTarget struct {
-	// 目标主机地址
+	// <p>目标主机地址</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 端口
+	// <p>端口</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 权重
+	// <p>权重</p>
 	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// CVM实例ID
+	// <p>CVM实例ID</p>
 	CvmInstanceId *string `json:"CvmInstanceId,omitnil,omitempty" name:"CvmInstanceId"`
 
-	// CVM实例名称
+	// <p>CVM实例名称</p>
 	CvmInstanceName *string `json:"CvmInstanceName,omitnil,omitempty" name:"CvmInstanceName"`
 
-	// 健康状态
+	// <p>健康状态</p>
 	Health *string `json:"Health,omitnil,omitempty" name:"Health"`
 
-	// Target的来源
+	// <p>Target ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>Target的来源</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// target标签
+	// <p>target标签</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -8594,6 +8607,17 @@ type KongUpstreamInfo struct {
 	// 服务后端类型是IPList时提供
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*KongTarget `json:"Targets,omitnil,omitempty" name:"Targets"`
+}
+
+type KongUserTagKV struct {
+	// <p>标签 ID</p>
+	TagId *uint64 `json:"TagId,omitnil,omitempty" name:"TagId"`
+
+	// <p>标签 Key</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>标签 Value</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type ListCloudNativeAPIGatewayLLMModelAPI struct {

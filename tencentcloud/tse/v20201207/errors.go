@@ -122,6 +122,9 @@ const (
 	// 无效的参数值。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 
+	// InvalidParameterValue.Malformed
+	INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+
 	// 无效的名称。
 	INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 

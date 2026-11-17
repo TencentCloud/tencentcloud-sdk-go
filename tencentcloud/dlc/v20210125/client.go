@@ -11089,6 +11089,64 @@ func (c *Client) DescribePartitionDetailWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribePartitionMonitorOverviewRequest() (request *DescribePartitionMonitorOverviewRequest) {
+    request = &DescribePartitionMonitorOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribePartitionMonitorOverview")
+    
+    
+    return
+}
+
+func NewDescribePartitionMonitorOverviewResponse() (response *DescribePartitionMonitorOverviewResponse) {
+    response = &DescribePartitionMonitorOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePartitionMonitorOverview
+// 查询指定资源分区的监控实时概览。指标命名规则 [queue_ 前缀]_<资源>_<K8s/Kueue 概念>[_business 后缀]：_business 后缀 = 计费口径（仅 ray-head/ray-worker 业务容器 limits，配额扣减与展示默认用）；无后缀 = K8s 实事口径（全部容器，对照排查用）。GPU 类指标按 GPU 卡型拆分多条 MetricValue（Labels.GpuType 区分）；gpu_limit_business 在 Prometheus 空集（无作业）时按分区配额卡型逐卡型补 value=0。分区维度额外含排队卡片指标（pending_workloads / admission_wait_seconds / top_queue_by_cpu 资源占用最高的队列，detail 表口径：按队列聚合活跃 Pod 的 cpu_limit 取 Top1，作业结束即归零，队列名见 Labels.QueueName（已截去 namespace 前缀与 -lq 后缀）；Kueue 预留口径对照见 top_queue_by_cpu_reserved）与按量月消耗卡片（postpay_month_consumed_total）。携带 QueueName 时切换为资源组维度，指标集双向隔离（详见 QueueName 参数说明）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MONITORDISABLED = "FailedOperation.MonitorDisabled"
+//  FAILEDOPERATION_MONITORPROMETHEUSQUERYFAILED = "FailedOperation.MonitorPrometheusQueryFailed"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_MONITORPARTITION = "ResourceNotFound.MonitorPartition"
+//  RESOURCENOTFOUND_MONITORQUEUE = "ResourceNotFound.MonitorQueue"
+func (c *Client) DescribePartitionMonitorOverview(request *DescribePartitionMonitorOverviewRequest) (response *DescribePartitionMonitorOverviewResponse, err error) {
+    return c.DescribePartitionMonitorOverviewWithContext(context.Background(), request)
+}
+
+// DescribePartitionMonitorOverview
+// 查询指定资源分区的监控实时概览。指标命名规则 [queue_ 前缀]_<资源>_<K8s/Kueue 概念>[_business 后缀]：_business 后缀 = 计费口径（仅 ray-head/ray-worker 业务容器 limits，配额扣减与展示默认用）；无后缀 = K8s 实事口径（全部容器，对照排查用）。GPU 类指标按 GPU 卡型拆分多条 MetricValue（Labels.GpuType 区分）；gpu_limit_business 在 Prometheus 空集（无作业）时按分区配额卡型逐卡型补 value=0。分区维度额外含排队卡片指标（pending_workloads / admission_wait_seconds / top_queue_by_cpu 资源占用最高的队列，detail 表口径：按队列聚合活跃 Pod 的 cpu_limit 取 Top1，作业结束即归零，队列名见 Labels.QueueName（已截去 namespace 前缀与 -lq 后缀）；Kueue 预留口径对照见 top_queue_by_cpu_reserved）与按量月消耗卡片（postpay_month_consumed_total）。携带 QueueName 时切换为资源组维度，指标集双向隔离（详见 QueueName 参数说明）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MONITORDISABLED = "FailedOperation.MonitorDisabled"
+//  FAILEDOPERATION_MONITORPROMETHEUSQUERYFAILED = "FailedOperation.MonitorPrometheusQueryFailed"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_MONITORPARTITION = "ResourceNotFound.MonitorPartition"
+//  RESOURCENOTFOUND_MONITORQUEUE = "ResourceNotFound.MonitorQueue"
+func (c *Client) DescribePartitionMonitorOverviewWithContext(ctx context.Context, request *DescribePartitionMonitorOverviewRequest) (response *DescribePartitionMonitorOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribePartitionMonitorOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribePartitionMonitorOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePartitionMonitorOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePartitionMonitorOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePartitionQueuesRequest() (request *DescribePartitionQueuesRequest) {
     request = &DescribePartitionQueuesRequest{
         BaseRequest: &tchttp.BaseRequest{},

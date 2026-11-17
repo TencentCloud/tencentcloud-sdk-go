@@ -35,6 +35,9 @@ const (
 	// AllocateId 对应环境已释放，不可再次使用
 	FAILEDOPERATION_ALLOCATEIDRELEASED = "FailedOperation.AllocateIdReleased"
 
+	// 套餐功能权限校验调用失败
+	FAILEDOPERATION_CHECKFEATUREPERMISSION = "FailedOperation.CheckFeaturePermission"
+
 	// FailedOperation.CreateTable
 	FAILEDOPERATION_CREATETABLE = "FailedOperation.CreateTable"
 
@@ -52,6 +55,9 @@ const (
 
 	// 数据库sql解析异常
 	FAILEDOPERATION_DATABASESQLSYNTAXERROR = "FailedOperation.DatabaseSqlSyntaxError"
+
+	// 读取/解密 WOA AuthToken 失败
+	FAILEDOPERATION_DECRYPTAUTHTOKEN = "FailedOperation.DecryptAuthToken"
 
 	// 函数不在可删除的稳态
 	FAILEDOPERATION_DELETEFUNCTION = "FailedOperation.DeleteFunction"
@@ -119,8 +125,20 @@ const (
 	// 操作失败，后台依赖平台错误。
 	FAILEDOPERATION_PLATFORMERROR = "FailedOperation.PlatformError"
 
+	// 查询访问来源控制配置失败
+	FAILEDOPERATION_QUERYACCESSCONTROL = "FailedOperation.QueryAccessControl"
+
 	// 查询异常
 	FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+
+	// 查询 VPC 信息失败(地域/账号信息/vpcoss 异常)
+	FAILEDOPERATION_QUERYVPC = "FailedOperation.QueryVPC"
+
+	// 保存 WOA AuthToken 失败(含加密失败)
+	FAILEDOPERATION_SAVEAUTHTOKEN = "FailedOperation.SaveAuthToken"
+
+	// 保存 VPC 白名单失败
+	FAILEDOPERATION_SAVEVPCWHITELIST = "FailedOperation.SaveVPCWhiteList"
 
 	// 查询语句解析错误
 	FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
@@ -139,6 +157,9 @@ const (
 
 	// 更新数据失败
 	FAILEDOPERATION_UPDATE = "FailedOperation.Update"
+
+	// 更新访问来源控制开关失败
+	FAILEDOPERATION_UPDATEACCESSCONTROL = "FailedOperation.UpdateAccessControl"
 
 	// 当前函数状态无法更新代码，请在状态为正常时更新。
 	FAILEDOPERATION_UPDATEFUNCTIONCODE = "FailedOperation.UpdateFunctionCode"
@@ -164,8 +185,14 @@ const (
 	// 参数格式或类型错误，如 Uin、EnvId、Domain 缺失或非法。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 来源配置不合法：Sources 为空/超限、SourceType 非法或重复、Action 非法
+	INVALIDPARAMETER_ACCESSSOURCE = "InvalidParameter.AccessSource"
+
 	// 接口名非法。
 	INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
+
+	// WOA 鉴权配置不合法：WOAAuth 非法、强制鉴权缺少 AuthToken、AuthToken 超长
+	INVALIDPARAMETER_AUTHTOKEN = "InvalidParameter.AuthToken"
 
 	// 证书验证失败
 	INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
@@ -196,6 +223,9 @@ const (
 
 	// 服务不存在。
 	INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+
+	// VPC 白名单不合法：Action/UniqVpcId/Region 非法、条数超限、非 vpc 来源携带白名单
+	INVALIDPARAMETER_VPCWHITELIST = "InvalidParameter.VPCWhiteList"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -311,6 +341,9 @@ const (
 	// 环境下日志资源已存在，无需重新开通日志资源
 	RESOURCEINUSE_LOGEXIST = "ResourceInUse.LogExist"
 
+	// 当前环境已有开通中的静态托管，暂时无法开通。
+	RESOURCEINUSE_STATICSTORE = "ResourceInUse.StaticStore"
+
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
@@ -371,6 +404,9 @@ const (
 	// 用户不存在。
 	RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
 
+	// VPC 在指定地域下不存在
+	RESOURCENOTFOUND_VPC = "ResourceNotFound.VPC"
+
 	// 请求参数中的云托管版本未找到
 	RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
 
@@ -409,6 +445,9 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// VPC 不属于当前账号
+	UNAUTHORIZEDOPERATION_VPCNOTOWNED = "UnauthorizedOperation.VPCNotOwned"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"

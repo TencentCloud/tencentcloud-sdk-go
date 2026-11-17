@@ -1642,6 +1642,9 @@ type CloudNativeAPIGatewayNode struct {
 
 	// 是否默认权重
 	IsDefaultWeight *bool `json:"IsDefaultWeight,omitnil,omitempty" name:"IsDefaultWeight"`
+
+	// 节点类型
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 }
 
 type CloudNativeAPIGatewayNodeConfig struct {
@@ -3404,113 +3407,105 @@ func (r *CreateCloudNativeAPIGatewayPublicNetworkResponse) FromJsonString(s stri
 
 // Predefined struct for user
 type CreateCloudNativeAPIGatewayRequestParams struct {
-	// 云原生API网关名字, 最多支持60个字符。
+	// <p>云原生API网关名字, 最多支持60个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 云原生API网关类型, 目前只支持kong。
+	// <p>云原生API网关类型, 目前只支持kong。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 云原生API网关版本。参考值：
-	// - 2.4.1
-	// - 2.5.1
+	// <p>云原生API网关版本。参考值：</p><ul><li>2.4.1</li><li>2.5.1</li></ul>
 	GatewayVersion *string `json:"GatewayVersion,omitnil,omitempty" name:"GatewayVersion"`
 
-	// 云原生API网关节点配置。
+	// <p>云原生API网关节点配置。</p>
 	NodeConfig *CloudNativeAPIGatewayNodeConfig `json:"NodeConfig,omitnil,omitempty" name:"NodeConfig"`
 
-	// 云原生API网关vpc配置。
+	// <p>云原生API网关vpc配置。</p>
 	VpcConfig *CloudNativeAPIGatewayVpcConfig `json:"VpcConfig,omitnil,omitempty" name:"VpcConfig"`
 
-	// 云原生API网关描述信息, 最多支持120个字符。
+	// <p>云原生API网关描述信息, 最多支持120个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*InstanceTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否开启 CLS 日志。默认值：fasle
+	// <p>是否开启 CLS 日志。默认值：fasle</p>
 	EnableCls *bool `json:"EnableCls,omitnil,omitempty" name:"EnableCls"`
 
-	// 产品版本。参考值：
-	// - TRIAL：开发版
-	// - STANDARD：标准版 （默认值）
-	// - PROFESSIONAL：专业版
+	// <p>产品版本</p><p>枚举值：</p><ul><li>STANDARD： 标准版</li><li>PROFESSIONAL： 专业版</li></ul>
 	FeatureVersion *string `json:"FeatureVersion,omitnil,omitempty" name:"FeatureVersion"`
 
-	// 公网出流量带宽，[1,2048]Mbps
+	// <p>公网出流量带宽，[1,2048]Mbps</p>
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 实例实际的地域信息，默认值：ap-guangzhou
+	// <p>实例实际的地域信息，默认值：ap-guangzhou</p>
 	EngineRegion *string `json:"EngineRegion,omitnil,omitempty" name:"EngineRegion"`
 
-	// ingress Class名称
+	// <p>ingress Class名称</p>
 	IngressClassName *string `json:"IngressClassName,omitnil,omitempty" name:"IngressClassName"`
 
-	// 付费类型。参考值：
-	// 0：后付费（默认值）
-	// 1：预付费（接口暂不支持创建预付费实例）
+	// <p>付费类型。参考值：<br>0：后付费（默认值）<br>1：预付费（接口暂不支持创建预付费实例）</p>
 	TradeType *int64 `json:"TradeType,omitnil,omitempty" name:"TradeType"`
 
-	// 公网相关配置
+	// <p>公网相关配置</p>
 	InternetConfig *InternetConfig `json:"InternetConfig,omitnil,omitempty" name:"InternetConfig"`
 
-	// 关联的prometheus ID
+	// <p>关联的prometheus ID</p>
 	PromId *string `json:"PromId,omitnil,omitempty" name:"PromId"`
+
+	// <p>是否开启HTTP 80 端口的访问</p>
+	EnableHttpPort *bool `json:"EnableHttpPort,omitnil,omitempty" name:"EnableHttpPort"`
 }
 
 type CreateCloudNativeAPIGatewayRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云原生API网关名字, 最多支持60个字符。
+	// <p>云原生API网关名字, 最多支持60个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 云原生API网关类型, 目前只支持kong。
+	// <p>云原生API网关类型, 目前只支持kong。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 云原生API网关版本。参考值：
-	// - 2.4.1
-	// - 2.5.1
+	// <p>云原生API网关版本。参考值：</p><ul><li>2.4.1</li><li>2.5.1</li></ul>
 	GatewayVersion *string `json:"GatewayVersion,omitnil,omitempty" name:"GatewayVersion"`
 
-	// 云原生API网关节点配置。
+	// <p>云原生API网关节点配置。</p>
 	NodeConfig *CloudNativeAPIGatewayNodeConfig `json:"NodeConfig,omitnil,omitempty" name:"NodeConfig"`
 
-	// 云原生API网关vpc配置。
+	// <p>云原生API网关vpc配置。</p>
 	VpcConfig *CloudNativeAPIGatewayVpcConfig `json:"VpcConfig,omitnil,omitempty" name:"VpcConfig"`
 
-	// 云原生API网关描述信息, 最多支持120个字符。
+	// <p>云原生API网关描述信息, 最多支持120个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*InstanceTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否开启 CLS 日志。默认值：fasle
+	// <p>是否开启 CLS 日志。默认值：fasle</p>
 	EnableCls *bool `json:"EnableCls,omitnil,omitempty" name:"EnableCls"`
 
-	// 产品版本。参考值：
-	// - TRIAL：开发版
-	// - STANDARD：标准版 （默认值）
-	// - PROFESSIONAL：专业版
+	// <p>产品版本</p><p>枚举值：</p><ul><li>STANDARD： 标准版</li><li>PROFESSIONAL： 专业版</li></ul>
 	FeatureVersion *string `json:"FeatureVersion,omitnil,omitempty" name:"FeatureVersion"`
 
-	// 公网出流量带宽，[1,2048]Mbps
+	// <p>公网出流量带宽，[1,2048]Mbps</p>
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 实例实际的地域信息，默认值：ap-guangzhou
+	// <p>实例实际的地域信息，默认值：ap-guangzhou</p>
 	EngineRegion *string `json:"EngineRegion,omitnil,omitempty" name:"EngineRegion"`
 
-	// ingress Class名称
+	// <p>ingress Class名称</p>
 	IngressClassName *string `json:"IngressClassName,omitnil,omitempty" name:"IngressClassName"`
 
-	// 付费类型。参考值：
-	// 0：后付费（默认值）
-	// 1：预付费（接口暂不支持创建预付费实例）
+	// <p>付费类型。参考值：<br>0：后付费（默认值）<br>1：预付费（接口暂不支持创建预付费实例）</p>
 	TradeType *int64 `json:"TradeType,omitnil,omitempty" name:"TradeType"`
 
-	// 公网相关配置
+	// <p>公网相关配置</p>
 	InternetConfig *InternetConfig `json:"InternetConfig,omitnil,omitempty" name:"InternetConfig"`
 
-	// 关联的prometheus ID
+	// <p>关联的prometheus ID</p>
 	PromId *string `json:"PromId,omitnil,omitempty" name:"PromId"`
+
+	// <p>是否开启HTTP 80 端口的访问</p>
+	EnableHttpPort *bool `json:"EnableHttpPort,omitnil,omitempty" name:"EnableHttpPort"`
 }
 
 func (r *CreateCloudNativeAPIGatewayRequest) ToJsonString() string {
@@ -3540,6 +3535,7 @@ func (r *CreateCloudNativeAPIGatewayRequest) FromJsonString(s string) error {
 	delete(f, "TradeType")
 	delete(f, "InternetConfig")
 	delete(f, "PromId")
+	delete(f, "EnableHttpPort")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayRequest has unknown keys!", "")
 	}
@@ -3548,7 +3544,7 @@ func (r *CreateCloudNativeAPIGatewayRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudNativeAPIGatewayResponseParams struct {
-	// 创建云原生API网关实例响应结果。
+	// <p>创建云原生API网关实例响应结果。</p>
 	Result *CreateCloudNativeAPIGatewayResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3654,149 +3650,119 @@ func (r *CreateCloudNativeAPIGatewayRouteRateLimitResponse) FromJsonString(s str
 
 // Predefined struct for user
 type CreateCloudNativeAPIGatewayRouteRequestParams struct {
-	// 网关ID
+	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 所属服务的ID
+	// <p>所属服务的ID</p>
 	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
 
-	// 路由的名字，实例级别唯一，可以不提供
+	// <p>路由的名字，实例级别唯一，可以不提供</p>
 	RouteName *string `json:"RouteName,omitnil,omitempty" name:"RouteName"`
 
-	// 路由的方法，其中方法可选值：
-	// - GET
-	// - POST
-	// - DELETE
-	// - PUT
-	// - OPTIONS
-	// - PATCH
-	// - HEAD
-	// - ANY
-	// - TRACE
-	// - COPY
-	// - MOVE
-	// - PROPFIND
-	// - PROPPATCH
-	// - MKCOL
-	// - LOCK
-	// - UNLOCK
+	// <p>路由的方法，其中方法可选值：</p><ul><li>GET</li><li>POST</li><li>DELETE</li><li>PUT</li><li>OPTIONS</li><li>PATCH</li><li>HEAD</li><li>ANY</li><li>TRACE</li><li>COPY</li><li>MOVE</li><li>PROPFIND</li><li>PROPPATCH</li><li>MKCOL</li><li>LOCK</li><li>UNLOCK</li></ul>
 	Methods []*string `json:"Methods,omitnil,omitempty" name:"Methods"`
 
-	// 路由的域名
+	// <p>路由的域名</p>
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
-	// 路由的路径
+	// <p>路由的路径</p>
 	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
 
-	// 路由的协议，可选
-	// - https
-	// - http
+	// <p>路由的协议，可选</p><ul><li>https</li><li>http</li></ul>
 	Protocols []*string `json:"Protocols,omitnil,omitempty" name:"Protocols"`
 
-	// 转发到后端时是否保留Host
+	// <p>转发到后端时是否保留Host</p>
 	PreserveHost *bool `json:"PreserveHost,omitnil,omitempty" name:"PreserveHost"`
 
-	// https重定向状态码
+	// <p>https重定向状态码</p>
 	HttpsRedirectStatusCode *int64 `json:"HttpsRedirectStatusCode,omitnil,omitempty" name:"HttpsRedirectStatusCode"`
 
-	// 转发到后端时是否StripPath
+	// <p>转发到后端时是否StripPath</p>
 	StripPath *bool `json:"StripPath,omitnil,omitempty" name:"StripPath"`
 
-	// 是否开启强制HTTPS
+	// <p>是否开启强制HTTPS</p>
 	//
 	// Deprecated: ForceHttps is deprecated.
 	ForceHttps *bool `json:"ForceHttps,omitnil,omitempty" name:"ForceHttps"`
 
-	// 四层匹配的目的端口
+	// <p>四层匹配的目的端口</p>
 	DestinationPorts []*uint64 `json:"DestinationPorts,omitnil,omitempty" name:"DestinationPorts"`
 
-	// 路由的Headers
+	// <p>路由的Headers</p>
 	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 是否缓存请求body，默认true
+	// <p>是否缓存请求body，默认true</p>
 	RequestBuffering *bool `json:"RequestBuffering,omitnil,omitempty" name:"RequestBuffering"`
 
-	// 是否缓存响应body，默认true
+	// <p>是否缓存响应body，默认true</p>
 	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
 
-	// 正则优先级
+	// <p>正则优先级</p>
 	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
 
-	// queryString参数
+	// <p>queryString参数</p>
 	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
+
+	// <p>路由级超时时间，单位ms</p>
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 type CreateCloudNativeAPIGatewayRouteRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网关ID
+	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 所属服务的ID
+	// <p>所属服务的ID</p>
 	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
 
-	// 路由的名字，实例级别唯一，可以不提供
+	// <p>路由的名字，实例级别唯一，可以不提供</p>
 	RouteName *string `json:"RouteName,omitnil,omitempty" name:"RouteName"`
 
-	// 路由的方法，其中方法可选值：
-	// - GET
-	// - POST
-	// - DELETE
-	// - PUT
-	// - OPTIONS
-	// - PATCH
-	// - HEAD
-	// - ANY
-	// - TRACE
-	// - COPY
-	// - MOVE
-	// - PROPFIND
-	// - PROPPATCH
-	// - MKCOL
-	// - LOCK
-	// - UNLOCK
+	// <p>路由的方法，其中方法可选值：</p><ul><li>GET</li><li>POST</li><li>DELETE</li><li>PUT</li><li>OPTIONS</li><li>PATCH</li><li>HEAD</li><li>ANY</li><li>TRACE</li><li>COPY</li><li>MOVE</li><li>PROPFIND</li><li>PROPPATCH</li><li>MKCOL</li><li>LOCK</li><li>UNLOCK</li></ul>
 	Methods []*string `json:"Methods,omitnil,omitempty" name:"Methods"`
 
-	// 路由的域名
+	// <p>路由的域名</p>
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
-	// 路由的路径
+	// <p>路由的路径</p>
 	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
 
-	// 路由的协议，可选
-	// - https
-	// - http
+	// <p>路由的协议，可选</p><ul><li>https</li><li>http</li></ul>
 	Protocols []*string `json:"Protocols,omitnil,omitempty" name:"Protocols"`
 
-	// 转发到后端时是否保留Host
+	// <p>转发到后端时是否保留Host</p>
 	PreserveHost *bool `json:"PreserveHost,omitnil,omitempty" name:"PreserveHost"`
 
-	// https重定向状态码
+	// <p>https重定向状态码</p>
 	HttpsRedirectStatusCode *int64 `json:"HttpsRedirectStatusCode,omitnil,omitempty" name:"HttpsRedirectStatusCode"`
 
-	// 转发到后端时是否StripPath
+	// <p>转发到后端时是否StripPath</p>
 	StripPath *bool `json:"StripPath,omitnil,omitempty" name:"StripPath"`
 
-	// 是否开启强制HTTPS
+	// <p>是否开启强制HTTPS</p>
 	ForceHttps *bool `json:"ForceHttps,omitnil,omitempty" name:"ForceHttps"`
 
-	// 四层匹配的目的端口
+	// <p>四层匹配的目的端口</p>
 	DestinationPorts []*uint64 `json:"DestinationPorts,omitnil,omitempty" name:"DestinationPorts"`
 
-	// 路由的Headers
+	// <p>路由的Headers</p>
 	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 是否缓存请求body，默认true
+	// <p>是否缓存请求body，默认true</p>
 	RequestBuffering *bool `json:"RequestBuffering,omitnil,omitempty" name:"RequestBuffering"`
 
-	// 是否缓存响应body，默认true
+	// <p>是否缓存响应body，默认true</p>
 	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
 
-	// 正则优先级
+	// <p>正则优先级</p>
 	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
 
-	// queryString参数
+	// <p>queryString参数</p>
 	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
+
+	// <p>路由级超时时间，单位ms</p>
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 func (r *CreateCloudNativeAPIGatewayRouteRequest) ToJsonString() string {
@@ -3828,6 +3794,7 @@ func (r *CreateCloudNativeAPIGatewayRouteRequest) FromJsonString(s string) error
 	delete(f, "ResponseBuffering")
 	delete(f, "RegexPriority")
 	delete(f, "QueryStringParameters")
+	delete(f, "Timeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayRouteRequest has unknown keys!", "")
 	}
@@ -10632,6 +10599,9 @@ type DescribeCloudNativeAPIGatewayResult struct {
 
 	// <p>强制跳转HTTPS开关</p>
 	ForceHTTPSRedirect *bool `json:"ForceHTTPSRedirect,omitnil,omitempty" name:"ForceHTTPSRedirect"`
+
+	// <p>内网IP地址列表</p>
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitnil,omitempty" name:"PrivateIpAddresses"`
 }
 
 // Predefined struct for user
@@ -10731,6 +10701,12 @@ type DescribeCloudNativeAPIGatewayRoutesRequestParams struct {
 
 	// <p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序</li><li>ASC： 升序</li></ul>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>按标签 ID 过滤路由（AND 语义，需同时命中所有传入的 tag），最多 10 个。关联需求：路由/服务标签分组管理</p>
+	TagIds []*int64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+
+	// <p>按标签 K:V 过滤路由（AND 语义，前端下拉直传场景），最多 10 个。与 TagIds 同时传时取交集</p>
+	TagFilters []*TagKVFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 type DescribeCloudNativeAPIGatewayRoutesRequest struct {
@@ -10765,6 +10741,12 @@ type DescribeCloudNativeAPIGatewayRoutesRequest struct {
 
 	// <p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序</li><li>ASC： 升序</li></ul>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>按标签 ID 过滤路由（AND 语义，需同时命中所有传入的 tag），最多 10 个。关联需求：路由/服务标签分组管理</p>
+	TagIds []*int64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+
+	// <p>按标签 K:V 过滤路由（AND 语义，前端下拉直传场景），最多 10 个。与 TagIds 同时传时取交集</p>
+	TagFilters []*TagKVFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 func (r *DescribeCloudNativeAPIGatewayRoutesRequest) ToJsonString() string {
@@ -10789,6 +10771,8 @@ func (r *DescribeCloudNativeAPIGatewayRoutesRequest) FromJsonString(s string) er
 	delete(f, "GrayRoutesFirst")
 	delete(f, "OrderField")
 	delete(f, "OrderType")
+	delete(f, "TagIds")
+	delete(f, "TagFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayRoutesRequest has unknown keys!", "")
 	}
@@ -15313,6 +15297,16 @@ type KongRoutePreview struct {
 
 	// <p>路由来源</p>
 	RouteSource *string `json:"RouteSource,omitnil,omitempty" name:"RouteSource"`
+
+	// <p>用户绑定的业务标签（路由/服务标签分组能力，不含 Kong 内部 tag）。未绑定时字段为空数组或不返回。关联需求：路由/服务标签分组管理</p>
+	Tags []*KongUserTagKV `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>超时时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>路由超时配置的来源。</p>
+	TimeoutSource *string `json:"TimeoutSource,omitnil,omitempty" name:"TimeoutSource"`
 }
 
 type KongServiceDetail struct {
@@ -15448,31 +15442,34 @@ type KongServices struct {
 }
 
 type KongTarget struct {
-	// Host
+	// <p>Host</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 端口
+	// <p>端口</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 权重
+	// <p>权重</p>
 	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 健康状态
-	Health *string `json:"Health,omitnil,omitempty" name:"Health"`
-
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// Target的来源
-	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
-
-	// CVM实例ID
+	// <p>CVM实例ID</p>
 	CvmInstanceId *string `json:"CvmInstanceId,omitnil,omitempty" name:"CvmInstanceId"`
 
-	// CVM实例名称
+	// <p>CVM实例名称</p>
 	CvmInstanceName *string `json:"CvmInstanceName,omitnil,omitempty" name:"CvmInstanceName"`
 
-	// target标签
+	// <p>健康状态</p>
+	Health *string `json:"Health,omitnil,omitempty" name:"Health"`
+
+	// <p>Target ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>Target的来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>target标签</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -15562,6 +15559,17 @@ type KongUpstreamPreview struct {
 
 	// 后端配置
 	Target []*KongTarget `json:"Target,omitnil,omitempty" name:"Target"`
+}
+
+type KongUserTagKV struct {
+	// <p>标签 ID</p>
+	TagId *uint64 `json:"TagId,omitnil,omitempty" name:"TagId"`
+
+	// <p>标签 Key</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>标签 Value</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type Label struct {
@@ -16960,6 +16968,9 @@ type ModifyCloudNativeAPIGatewayRouteRequestParams struct {
 
 	// <p>querysring参数</p>
 	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
+
+	// <p>路由级超时时间，单位ms</p>
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 type ModifyCloudNativeAPIGatewayRouteRequest struct {
@@ -17018,6 +17029,9 @@ type ModifyCloudNativeAPIGatewayRouteRequest struct {
 
 	// <p>querysring参数</p>
 	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
+
+	// <p>路由级超时时间，单位ms</p>
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 func (r *ModifyCloudNativeAPIGatewayRouteRequest) ToJsonString() string {
@@ -17050,6 +17064,7 @@ func (r *ModifyCloudNativeAPIGatewayRouteRequest) FromJsonString(s string) error
 	delete(f, "ResponseBuffering")
 	delete(f, "RegexPriority")
 	delete(f, "QueryStringParameters")
+	delete(f, "Timeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudNativeAPIGatewayRouteRequest has unknown keys!", "")
 	}
@@ -18053,43 +18068,51 @@ func (r *ModifyNativeGatewayServiceSourceResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ModifyNetworkAccessStrategyRequestParams struct {
-	// 云原生API网关实例ID。
+	// <p>云原生API网关实例ID。</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 分组id
+	// <p>分组id</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 网络类型： 
-	// - Open 公网
-	// - Internal 内网	（暂不支持）
+	// <p>网络类型： </p><ul><li>Open 公网</li><li>Internal 内网    （暂不支持）</li></ul>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// ip地址
+	// <p>ip地址</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 访问控制策略
+	// <p>访问控制策略</p>
 	AccessControl *NetworkAccessControl `json:"AccessControl,omitnil,omitempty" name:"AccessControl"`
+
+	// <p>GlobalConfig / Custom；不传默认 Custom</p>
+	AccessControlSource *string `json:"AccessControlSource,omitnil,omitempty" name:"AccessControlSource"`
+
+	// <p>全局配置ID</p>
+	GlobalConfigId *string `json:"GlobalConfigId,omitnil,omitempty" name:"GlobalConfigId"`
 }
 
 type ModifyNetworkAccessStrategyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云原生API网关实例ID。
+	// <p>云原生API网关实例ID。</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 分组id
+	// <p>分组id</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 网络类型： 
-	// - Open 公网
-	// - Internal 内网	（暂不支持）
+	// <p>网络类型： </p><ul><li>Open 公网</li><li>Internal 内网    （暂不支持）</li></ul>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// ip地址
+	// <p>ip地址</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 访问控制策略
+	// <p>访问控制策略</p>
 	AccessControl *NetworkAccessControl `json:"AccessControl,omitnil,omitempty" name:"AccessControl"`
+
+	// <p>GlobalConfig / Custom；不传默认 Custom</p>
+	AccessControlSource *string `json:"AccessControlSource,omitnil,omitempty" name:"AccessControlSource"`
+
+	// <p>全局配置ID</p>
+	GlobalConfigId *string `json:"GlobalConfigId,omitnil,omitempty" name:"GlobalConfigId"`
 }
 
 func (r *ModifyNetworkAccessStrategyRequest) ToJsonString() string {
@@ -18109,6 +18132,8 @@ func (r *ModifyNetworkAccessStrategyRequest) FromJsonString(s string) error {
 	delete(f, "NetworkType")
 	delete(f, "Vip")
 	delete(f, "AccessControl")
+	delete(f, "AccessControlSource")
+	delete(f, "GlobalConfigId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNetworkAccessStrategyRequest has unknown keys!", "")
 	}
@@ -19287,6 +19312,14 @@ type TSEGatewaySelector struct {
 	// 网关服务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Services []*string `json:"Services,omitnil,omitempty" name:"Services"`
+}
+
+type TagKVFilter struct {
+	// <p>标签 Key，长度 1~64</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>标签 Value，长度 1~128</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type TrafficGray struct {

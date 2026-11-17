@@ -19606,6 +19606,9 @@ type DialTrendPoint struct {
 
 	// <p>平均时延，单位毫秒</p>
 	AvgDuration *float64 `json:"AvgDuration,omitnil,omitempty" name:"AvgDuration"`
+
+	// <p>聚合桶时间。与旧字段 Time 同源，保留 Time 及其格式；按查询服务运行时区输出。</p><p>参数格式：RFC3339，带数值时区偏移，例如 2026-10-01T00:00:00+08:00。</p>
+	Datetime *string `json:"Datetime,omitnil,omitempty" name:"Datetime"`
 }
 
 type EventFrame struct {
@@ -22919,6 +22922,9 @@ type UsageTimePoint struct {
 
 	// <p>上报量</p>
 	ReportVolume *int64 `json:"ReportVolume,omitnil,omitempty" name:"ReportVolume"`
+
+	// <p>聚合桶时间。与旧字段 Time 同源，保留 Time 及其格式；按查询服务运行时区输出。</p><p>参数格式：RFC3339，带数值时区偏移，例如 2026-10-01T00:00:00+08:00。</p>
+	Datetime *string `json:"Datetime,omitnil,omitempty" name:"Datetime"`
 }
 
 type Whitelist struct {

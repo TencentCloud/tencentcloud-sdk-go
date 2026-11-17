@@ -196,6 +196,7 @@ import (
 	lkev20231130 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lke/v20231130"
 	lkeapv20240522 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lkeap/v20240522"
 	lowcodev20210108 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode/v20210108"
+	makersv20261113 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/makers/v20261113"
 	mallv20230518 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mall/v20230518"
 	mariadbv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mariadb/v20170312"
 	marketv20191010 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/market/v20191010"
@@ -2608,6 +2609,19 @@ func TestLowcodev20210108Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init lowcode_v20210108 client: %v", err)
+    }
+}
+
+func TestMakersv20261113Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := makersv20261113.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init makers_v20261113 client: %v", err)
     }
 }
 

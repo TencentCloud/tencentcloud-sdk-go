@@ -266,9 +266,11 @@ func NewCreateBackupGroupResponse() (response *CreateBackupGroupResponse) {
 // 创建备份组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRADERESOURCEDELIVERYFAILED = "FailedOperation.TradeResourceDeliveryFailed"
 //  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_NOTHAVEPAYMENTRIGHT = "InvalidParameter.NotHavePaymentRight"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  INVALIDPARAMETERVALUE_INVALIDVALUE = "InvalidParameterValue.InvalidValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -277,6 +279,7 @@ func NewCreateBackupGroupResponse() (response *CreateBackupGroupResponse) {
 //  RESOURCEUNAVAILABLE_BACKUPCREATING = "ResourceUnavailable.BackupCreating"
 //  RESOURCEUNAVAILABLE_SNAPSHOTCREATING = "ResourceUnavailable.SnapshotCreating"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_HASNOSTRATEGY = "UnauthorizedOperation.HasNoStrategy"
 //  UNSUPPORTEDOPERATION_STATEERROR = "UnsupportedOperation.StateError"
 func (c *Client) CreateBackupGroup(request *CreateBackupGroupRequest) (response *CreateBackupGroupResponse, err error) {
     return c.CreateBackupGroupWithContext(context.Background(), request)
@@ -286,9 +289,11 @@ func (c *Client) CreateBackupGroup(request *CreateBackupGroupRequest) (response 
 // 创建备份组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRADERESOURCEDELIVERYFAILED = "FailedOperation.TradeResourceDeliveryFailed"
 //  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_NOTHAVEPAYMENTRIGHT = "InvalidParameter.NotHavePaymentRight"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  INVALIDPARAMETERVALUE_INVALIDVALUE = "InvalidParameterValue.InvalidValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -297,6 +302,7 @@ func (c *Client) CreateBackupGroup(request *CreateBackupGroupRequest) (response 
 //  RESOURCEUNAVAILABLE_BACKUPCREATING = "ResourceUnavailable.BackupCreating"
 //  RESOURCEUNAVAILABLE_SNAPSHOTCREATING = "ResourceUnavailable.SnapshotCreating"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_HASNOSTRATEGY = "UnauthorizedOperation.HasNoStrategy"
 //  UNSUPPORTEDOPERATION_STATEERROR = "UnsupportedOperation.StateError"
 func (c *Client) CreateBackupGroupWithContext(ctx context.Context, request *CreateBackupGroupRequest) (response *CreateBackupGroupResponse, err error) {
     if request == nil {
@@ -599,6 +605,7 @@ func NewCreateFileBackupResponse() (response *CreateFileBackupResponse) {
 //  INTERNALERROR_CVMQUERYFAILED = "InternalError.CvmQueryFailed"
 //  INTERNALERROR_INITREPOSITORYFAILED = "InternalError.InitRepositoryFailed"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INVALIDPARAMETER_EXCLUDEPATHCONFLICT = "InvalidParameter.ExcludePathConflict"
 //  INVALIDPARAMETER_PATHNESTED = "InvalidParameter.PathNested"
 //  INVALIDPARAMETERVALUE_VAULTSTATEERROR = "InvalidParameterValue.VaultStateError"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -633,6 +640,7 @@ func (c *Client) CreateFileBackup(request *CreateFileBackupRequest) (response *C
 //  INTERNALERROR_CVMQUERYFAILED = "InternalError.CvmQueryFailed"
 //  INTERNALERROR_INITREPOSITORYFAILED = "InternalError.InitRepositoryFailed"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INVALIDPARAMETER_EXCLUDEPATHCONFLICT = "InvalidParameter.ExcludePathConflict"
 //  INVALIDPARAMETER_PATHNESTED = "InvalidParameter.PathNested"
 //  INVALIDPARAMETERVALUE_VAULTSTATEERROR = "InvalidParameterValue.VaultStateError"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"

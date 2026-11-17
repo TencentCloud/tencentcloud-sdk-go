@@ -1761,6 +1761,9 @@ type DBInfo struct {
 
 	// <p>tdsql的分片id。如节点类型为set必填。</p>
 	SetId *string `json:"SetId,omitnil,omitempty" name:"SetId"`
+
+	// <p>MongoDB专用。分片标识（如&quot;shard01&quot;），仅NodeType=cluster时生效，用于区分分片集群中不同的mongod节点</p>
+	Shard *string `json:"Shard,omitnil,omitempty" name:"Shard"`
 }
 
 type DBItem struct {
@@ -5687,6 +5690,9 @@ type ModifyMigrateRateLimitRequestParams struct {
 	// <p>迁移全量导出的 Rps 限制、需要大于 0</p>
 	DumpRps *int64 `json:"DumpRps,omitnil,omitempty" name:"DumpRps"`
 
+	// <p>全量导出Bps，单位MB/s，MongoDB专用，上限80</p>
+	DumpBps *int64 `json:"DumpBps,omitnil,omitempty" name:"DumpBps"`
+
 	// <p>迁移任务全量导入线程数、有效值为 1-16</p>
 	LoadThread *int64 `json:"LoadThread,omitnil,omitempty" name:"LoadThread"`
 
@@ -5695,6 +5701,18 @@ type ModifyMigrateRateLimitRequestParams struct {
 
 	// <p>全量导入Rps限制</p>
 	LoadRps *int64 `json:"LoadRps,omitnil,omitempty" name:"LoadRps"`
+
+	// <p>导入BPS，单位MB/s。目前仅对redis生效，表示目标库单分片流量限制大小</p>
+	LoadBps *int64 `json:"LoadBps,omitnil,omitempty" name:"LoadBps"`
+
+	// <p>目标库分片数，目前仅对redis生效</p>
+	DstShardCount *int64 `json:"DstShardCount,omitnil,omitempty" name:"DstShardCount"`
+
+	// <p>增量导入Rps，MongoDB专用，上限30000</p>
+	SinkerRps *int64 `json:"SinkerRps,omitnil,omitempty" name:"SinkerRps"`
+
+	// <p>增量导入Bps，单位MB/s，MongoDB专用，上限120</p>
+	SinkerBps *int64 `json:"SinkerBps,omitnil,omitempty" name:"SinkerBps"`
 }
 
 type ModifyMigrateRateLimitRequest struct {
@@ -5709,6 +5727,9 @@ type ModifyMigrateRateLimitRequest struct {
 	// <p>迁移全量导出的 Rps 限制、需要大于 0</p>
 	DumpRps *int64 `json:"DumpRps,omitnil,omitempty" name:"DumpRps"`
 
+	// <p>全量导出Bps，单位MB/s，MongoDB专用，上限80</p>
+	DumpBps *int64 `json:"DumpBps,omitnil,omitempty" name:"DumpBps"`
+
 	// <p>迁移任务全量导入线程数、有效值为 1-16</p>
 	LoadThread *int64 `json:"LoadThread,omitnil,omitempty" name:"LoadThread"`
 
@@ -5717,6 +5738,18 @@ type ModifyMigrateRateLimitRequest struct {
 
 	// <p>全量导入Rps限制</p>
 	LoadRps *int64 `json:"LoadRps,omitnil,omitempty" name:"LoadRps"`
+
+	// <p>导入BPS，单位MB/s。目前仅对redis生效，表示目标库单分片流量限制大小</p>
+	LoadBps *int64 `json:"LoadBps,omitnil,omitempty" name:"LoadBps"`
+
+	// <p>目标库分片数，目前仅对redis生效</p>
+	DstShardCount *int64 `json:"DstShardCount,omitnil,omitempty" name:"DstShardCount"`
+
+	// <p>增量导入Rps，MongoDB专用，上限30000</p>
+	SinkerRps *int64 `json:"SinkerRps,omitnil,omitempty" name:"SinkerRps"`
+
+	// <p>增量导入Bps，单位MB/s，MongoDB专用，上限120</p>
+	SinkerBps *int64 `json:"SinkerBps,omitnil,omitempty" name:"SinkerBps"`
 }
 
 func (r *ModifyMigrateRateLimitRequest) ToJsonString() string {
@@ -5734,9 +5767,14 @@ func (r *ModifyMigrateRateLimitRequest) FromJsonString(s string) error {
 	delete(f, "JobId")
 	delete(f, "DumpThread")
 	delete(f, "DumpRps")
+	delete(f, "DumpBps")
 	delete(f, "LoadThread")
 	delete(f, "SinkerThread")
 	delete(f, "LoadRps")
+	delete(f, "LoadBps")
+	delete(f, "DstShardCount")
+	delete(f, "SinkerRps")
+	delete(f, "SinkerBps")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMigrateRateLimitRequest has unknown keys!", "")
 	}
@@ -6740,7 +6778,7 @@ type RateLimit struct {
 	// <p>全量导出线程数，如果不设置或设置为0则表示保持当前值，最大值为16</p>
 	DumpThread *int64 `json:"DumpThread,omitnil,omitempty" name:"DumpThread"`
 
-	// <p>全量导出Rps，如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
+	// <p>全量导出Rps，如果不设置或设置为0则表示保持当前值，最大值为50000000。支持mysql系相关链路、mongodb链路。</p>
 	DumpRps *int64 `json:"DumpRps,omitnil,omitempty" name:"DumpRps"`
 
 	// <p>全量导入线程数，如果不设置或设置为0则表示保持当前值，最大值为16</p>
@@ -6751,41 +6789,80 @@ type RateLimit struct {
 
 	// <p>增量导入线程数，如果不设置或设置为0则表示保持当前值，最大值为128</p>
 	SinkerThread *int64 `json:"SinkerThread,omitnil,omitempty" name:"SinkerThread"`
+
+	// <p>全量导入Bps（暂时只有redis产品生效），单位MB/s</p>
+	LoadBps *int64 `json:"LoadBps,omitnil,omitempty" name:"LoadBps"`
+
+	// <p>目标库分片数，目前暂时只有redis用</p>
+	DstShardCount *int64 `json:"DstShardCount,omitnil,omitempty" name:"DstShardCount"`
+
+	// <p>全量导出Bps（pg链路及MongoDB链路使用。MongoDB上限80），单位MB/s</p>
+	DumpBps *int64 `json:"DumpBps,omitnil,omitempty" name:"DumpBps"`
+
+	// <p>增量导入RPS限制，MongoDB专用。上限30000</p>
+	SinkerRps *int64 `json:"SinkerRps,omitnil,omitempty" name:"SinkerRps"`
+
+	// <p>增量导入BPS限制，单位MB/s，MongoDB专用。上限120</p>
+	SinkerBps *int64 `json:"SinkerBps,omitnil,omitempty" name:"SinkerBps"`
 }
 
 type RateLimitOption struct {
-	// 当前生效的全量导出线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
+	// <p>当前生效的全量导出线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16</p>
 	CurrentDumpThread *int64 `json:"CurrentDumpThread,omitnil,omitempty" name:"CurrentDumpThread"`
 
-	// 默认的全量导出线程数，该字段仅在出参有意义
+	// <p>默认的全量导出线程数，该字段仅在出参有意义</p>
 	DefaultDumpThread *int64 `json:"DefaultDumpThread,omitnil,omitempty" name:"DefaultDumpThread"`
 
-	// 当前生效的全量导出Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000
+	// <p>当前生效的全量导出Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
 	CurrentDumpRps *int64 `json:"CurrentDumpRps,omitnil,omitempty" name:"CurrentDumpRps"`
 
-	// 默认的全量导出Rps，该字段仅在出参有意义
+	// <p>默认的全量导出Rps，该字段仅在出参有意义</p>
 	DefaultDumpRps *int64 `json:"DefaultDumpRps,omitnil,omitempty" name:"DefaultDumpRps"`
 
-	// 当前生效的全量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
+	// <p>当前生效的全量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16</p>
 	CurrentLoadThread *int64 `json:"CurrentLoadThread,omitnil,omitempty" name:"CurrentLoadThread"`
 
-	// 默认的全量导入线程数，该字段仅在出参有意义
+	// <p>默认的全量导入线程数，该字段仅在出参有意义</p>
 	DefaultLoadThread *int64 `json:"DefaultLoadThread,omitnil,omitempty" name:"DefaultLoadThread"`
 
-	// 当前生效的全量导入Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000	
+	// <p>当前生效的全量导入Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
 	CurrentLoadRps *int64 `json:"CurrentLoadRps,omitnil,omitempty" name:"CurrentLoadRps"`
 
-	// 默认的全量导入Rps，该字段仅在出参有意义	
+	// <p>默认的全量导入Rps，该字段仅在出参有意义</p>
 	DefaultLoadRps *int64 `json:"DefaultLoadRps,omitnil,omitempty" name:"DefaultLoadRps"`
 
-	// 当前生效的增量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为128
+	// <p>当前生效的增量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为128</p>
 	CurrentSinkerThread *int64 `json:"CurrentSinkerThread,omitnil,omitempty" name:"CurrentSinkerThread"`
 
-	// 默认的增量导入线程数，该字段仅在出参有意义
+	// <p>默认的增量导入线程数，该字段仅在出参有意义</p>
 	DefaultSinkerThread *int64 `json:"DefaultSinkerThread,omitnil,omitempty" name:"DefaultSinkerThread"`
 
-	// enum:"no"/"yes"、no表示用户未设置过限速、yes表示设置过限速，该字段仅在出参有意义
+	// <p>enum:&quot;no&quot;/&quot;yes&quot;、no表示用户未设置过限速、yes表示设置过限速，该字段仅在出参有意义</p>
 	HasUserSetRateLimit *string `json:"HasUserSetRateLimit,omitnil,omitempty" name:"HasUserSetRateLimit"`
+
+	// <p>默认的全量导出BPS，目前仅支持mongodb链路，单位MB/s</p>
+	DefaultDumpBps *int64 `json:"DefaultDumpBps,omitnil,omitempty" name:"DefaultDumpBps"`
+
+	// <p>增量导入RPS，目前仅支持mongodb链路</p>
+	CurrentSinkerRps *int64 `json:"CurrentSinkerRps,omitnil,omitempty" name:"CurrentSinkerRps"`
+
+	// <p>默认的增量导入RPS，目前仅支持mongodb链路</p>
+	DefaultSinkerRps *int64 `json:"DefaultSinkerRps,omitnil,omitempty" name:"DefaultSinkerRps"`
+
+	// <p>当前导入BPS，暂时只有redis在用，单位MB/s</p>
+	CurrentLoadBps *int64 `json:"CurrentLoadBps,omitnil,omitempty" name:"CurrentLoadBps"`
+
+	// <p>目标库分片数，暂时只有redis在用</p>
+	CurrentDstShardCount *int64 `json:"CurrentDstShardCount,omitnil,omitempty" name:"CurrentDstShardCount"`
+
+	// <p>全量导出BPS，目前仅支持mongodb链路，单位MB/s</p>
+	CurrentDumpBps *int64 `json:"CurrentDumpBps,omitnil,omitempty" name:"CurrentDumpBps"`
+
+	// <p>增量导入BPS，目前仅支持mongodb链路，单位MB/s</p>
+	CurrentSinkerBps *int64 `json:"CurrentSinkerBps,omitnil,omitempty" name:"CurrentSinkerBps"`
+
+	// <p>默认的增量导入BPS，目前仅支持mongodb链路，单位MB/s</p>
+	DefaultSinkerBps *int64 `json:"DefaultSinkerBps,omitnil,omitempty" name:"DefaultSinkerBps"`
 }
 
 // Predefined struct for user

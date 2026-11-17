@@ -5157,6 +5157,74 @@ func (c *Client) ListVideoDownloadTaskWithContext(ctx context.Context, request *
     return
 }
 
+func NewListVideoSnapshotResultRequest() (request *ListVideoSnapshotResultRequest) {
+    request = &ListVideoSnapshotResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ListVideoSnapshotResult")
+    
+    
+    return
+}
+
+func NewListVideoSnapshotResultResponse() (response *ListVideoSnapshotResultResponse) {
+    response = &ListVideoSnapshotResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListVideoSnapshotResult
+// 获取截图结果列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
+//  INVALIDPARAMETERVALUE_INVALIDCONFIGID = "InvalidParameterValue.InvalidConfigId"
+//  INVALIDPARAMETERVALUE_PAGESIZEEXCEEDLIMIT = "InvalidParameterValue.PageSizeExceedLimit"
+//  INVALIDPARAMETERVALUE_STARTOVERENDTIME = "InvalidParameterValue.StartOverEndTime"
+//  INVALIDPARAMETERVALUE_STARTOVERNOWTIME = "InvalidParameterValue.StartOverNowTime"
+//  INVALIDPARAMETERVALUE_TIMERANGEEXCEEDSLIMIT = "InvalidParameterValue.TimeRangeExceedsLimit"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDIMAGEURLEXPIRETIME = "InvalidParameterValue.UnsupportedImageUrlExpireTime"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDSNAPSHOTTYPE = "InvalidParameterValue.UnsupportedSnapshotType"
+//  UNSUPPORTEDOPERATION_IMAGEDOMAINNOTEXIST = "UnsupportedOperation.ImageDomainNotExist"
+func (c *Client) ListVideoSnapshotResult(request *ListVideoSnapshotResultRequest) (response *ListVideoSnapshotResultResponse, err error) {
+    return c.ListVideoSnapshotResultWithContext(context.Background(), request)
+}
+
+// ListVideoSnapshotResult
+// 获取截图结果列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
+//  INVALIDPARAMETERVALUE_INVALIDCONFIGID = "InvalidParameterValue.InvalidConfigId"
+//  INVALIDPARAMETERVALUE_PAGESIZEEXCEEDLIMIT = "InvalidParameterValue.PageSizeExceedLimit"
+//  INVALIDPARAMETERVALUE_STARTOVERENDTIME = "InvalidParameterValue.StartOverEndTime"
+//  INVALIDPARAMETERVALUE_STARTOVERNOWTIME = "InvalidParameterValue.StartOverNowTime"
+//  INVALIDPARAMETERVALUE_TIMERANGEEXCEEDSLIMIT = "InvalidParameterValue.TimeRangeExceedsLimit"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDIMAGEURLEXPIRETIME = "InvalidParameterValue.UnsupportedImageUrlExpireTime"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDSNAPSHOTTYPE = "InvalidParameterValue.UnsupportedSnapshotType"
+//  UNSUPPORTEDOPERATION_IMAGEDOMAINNOTEXIST = "UnsupportedOperation.ImageDomainNotExist"
+func (c *Client) ListVideoSnapshotResultWithContext(ctx context.Context, request *ListVideoSnapshotResultRequest) (response *ListVideoSnapshotResultResponse, err error) {
+    if request == nil {
+        request = NewListVideoSnapshotResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iss", APIVersion, "ListVideoSnapshotResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListVideoSnapshotResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListVideoSnapshotResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListVideoSnapshotTemplateRequest() (request *ListVideoSnapshotTemplateRequest) {
     request = &ListVideoSnapshotTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},

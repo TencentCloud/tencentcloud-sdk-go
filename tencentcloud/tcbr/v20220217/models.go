@@ -1656,6 +1656,70 @@ type LogServiceInfo struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
+// Predefined struct for user
+type ModifyStableIPStatusRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// ON: 开启固定 IP；OFF: 关闭固定 IP
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyStableIPStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// ON: 开启固定 IP；OFF: 关闭固定 IP
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyStableIPStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStableIPStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStableIPStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStableIPStatusResponseParams struct {
+	// 任务 ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyStableIPStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStableIPStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyStableIPStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStableIPStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ObjectKV struct {
 	// 键值对Key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`

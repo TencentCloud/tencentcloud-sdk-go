@@ -7074,42 +7074,38 @@ func (r *PublishMessageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RegisterCaCertificateRequestParams struct {
-	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	// <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// CA证书内容，自签CA可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 签发自签CA
+	// <p>CA证书内容</p>
 	CaCertificate *string `json:"CaCertificate,omitnil,omitempty" name:"CaCertificate"`
 
-	// 验证证书内容，可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 手动注册CA证书章节
+	// <p>验证证书内容</p>
 	VerificationCertificate *string `json:"VerificationCertificate,omitnil,omitempty" name:"VerificationCertificate"`
 
-	// 证书格式，不传默认PEM格式，当前仅支持PEM格式
+	// <p>证书格式，不传默认PEM格式，当前仅支持PEM格式</p>
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
-	// 证书状态，不传默认ACTIVE状态
-	//     ACTIVE：激活
-	//     INACTIVE：未激活
+	// <p>证书状态，不传默认ACTIVE状态<br>    ACTIVE：激活<br>    INACTIVE：未激活</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type RegisterCaCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	// <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// CA证书内容，自签CA可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 签发自签CA
+	// <p>CA证书内容</p>
 	CaCertificate *string `json:"CaCertificate,omitnil,omitempty" name:"CaCertificate"`
 
-	// 验证证书内容，可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 手动注册CA证书章节
+	// <p>验证证书内容</p>
 	VerificationCertificate *string `json:"VerificationCertificate,omitnil,omitempty" name:"VerificationCertificate"`
 
-	// 证书格式，不传默认PEM格式，当前仅支持PEM格式
+	// <p>证书格式，不传默认PEM格式，当前仅支持PEM格式</p>
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
-	// 证书状态，不传默认ACTIVE状态
-	//     ACTIVE：激活
-	//     INACTIVE：未激活
+	// <p>证书状态，不传默认ACTIVE状态<br>    ACTIVE：激活<br>    INACTIVE：未激活</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -7138,10 +7134,10 @@ func (r *RegisterCaCertificateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RegisterCaCertificateResponseParams struct {
-	// mqtt实例ID
+	// <p>mqtt实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// ca 证书的序列号
+	// <p>ca 证书的序列号</p>
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

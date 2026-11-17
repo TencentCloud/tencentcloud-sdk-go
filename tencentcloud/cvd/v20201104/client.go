@@ -1580,6 +1580,7 @@ func NewDescribeUsageResponse() (response *DescribeUsageResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_USERKEYWORD = "InvalidParameter.UserKeyword"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_USERKEYWORD = "InvalidParameterValue.UserKeyword"
 func (c *Client) DescribeUsage(request *DescribeUsageRequest) (response *DescribeUsageResponse, err error) {
     return c.DescribeUsageWithContext(context.Background(), request)
 }
@@ -1594,6 +1595,7 @@ func (c *Client) DescribeUsage(request *DescribeUsageRequest) (response *Describ
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_USERKEYWORD = "InvalidParameter.UserKeyword"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_USERKEYWORD = "InvalidParameterValue.UserKeyword"
 func (c *Client) DescribeUsageWithContext(ctx context.Context, request *DescribeUsageRequest) (response *DescribeUsageResponse, err error) {
     if request == nil {
         request = NewDescribeUsageRequest()

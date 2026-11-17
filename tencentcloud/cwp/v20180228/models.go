@@ -20845,10 +20845,10 @@ func (r *DescribeMachineSnapshotResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMachinesRequestParams struct {
-	// <p>机器所属专区类型<br>CVM 云服务器<br>BM 黑石<br>ECM 边缘计算<br>LH 轻量应用服务器<br>Other 混合云专区</p>
+	// <p>机器所属专区类型<br>CVM 云服务器<br>BM 黑石<br>ECM 边缘计算<br>LH 轻量应用服务器<br>Other 混合云专区<br>ALL 全部机器类型</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// <p>机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others</p>
+	// <p>机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others ，全部地域使用：all-regions</p>
 	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 
 	// <p>返回数量，默认为10，最大值为100。</p>
@@ -20870,10 +20870,10 @@ type DescribeMachinesRequestParams struct {
 type DescribeMachinesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>机器所属专区类型<br>CVM 云服务器<br>BM 黑石<br>ECM 边缘计算<br>LH 轻量应用服务器<br>Other 混合云专区</p>
+	// <p>机器所属专区类型<br>CVM 云服务器<br>BM 黑石<br>ECM 边缘计算<br>LH 轻量应用服务器<br>Other 混合云专区<br>ALL 全部机器类型</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// <p>机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others</p>
+	// <p>机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others ，全部地域使用：all-regions</p>
 	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 
 	// <p>返回数量，默认为10，最大值为100。</p>

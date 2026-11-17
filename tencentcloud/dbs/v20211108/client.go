@@ -223,6 +223,76 @@ func (c *Client) CreateConnectTestJobWithContext(ctx context.Context, request *C
     return
 }
 
+func NewDeleteBackupPlanRequest() (request *DeleteBackupPlanRequest) {
+    request = &DeleteBackupPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbs", APIVersion, "DeleteBackupPlan")
+    
+    
+    return
+}
+
+func NewDeleteBackupPlanResponse() (response *DeleteBackupPlanResponse) {
+    response = &DeleteBackupPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBackupPlan
+// 删除备份计划。
+//
+// 
+//
+// 仅已下线的备份计划支持删除，删除后不可恢复。已隔离（isolated）的备份计划请先调用 DestroyBackupPlanByUser 完成下线，再进行删除。调用接口后，若通过 DescribeBackupPlans 接口查询不到对应的备份计划，则表示删除成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteBackupPlan(request *DeleteBackupPlanRequest) (response *DeleteBackupPlanResponse, err error) {
+    return c.DeleteBackupPlanWithContext(context.Background(), request)
+}
+
+// DeleteBackupPlan
+// 删除备份计划。
+//
+// 
+//
+// 仅已下线的备份计划支持删除，删除后不可恢复。已隔离（isolated）的备份计划请先调用 DestroyBackupPlanByUser 完成下线，再进行删除。调用接口后，若通过 DescribeBackupPlans 接口查询不到对应的备份计划，则表示删除成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteBackupPlanWithContext(ctx context.Context, request *DeleteBackupPlanRequest) (response *DeleteBackupPlanResponse, err error) {
+    if request == nil {
+        request = NewDeleteBackupPlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbs", APIVersion, "DeleteBackupPlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBackupPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBackupPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupCheckJobRequest() (request *DescribeBackupCheckJobRequest) {
     request = &DescribeBackupCheckJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -269,6 +339,72 @@ func (c *Client) DescribeBackupCheckJobWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeBackupCheckJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBackupPlanDetailRequest() (request *DescribeBackupPlanDetailRequest) {
+    request = &DescribeBackupPlanDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbs", APIVersion, "DescribeBackupPlanDetail")
+    
+    
+    return
+}
+
+func NewDescribeBackupPlanDetailResponse() (response *DescribeBackupPlanDetailResponse) {
+    response = &DescribeBackupPlanDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBackupPlanDetail
+// 查询备份计划详情。
+//
+// 返回备份计划的基本信息、源库信息、备份对象、备份策略、备份进度和付费信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeBackupPlanDetail(request *DescribeBackupPlanDetailRequest) (response *DescribeBackupPlanDetailResponse, err error) {
+    return c.DescribeBackupPlanDetailWithContext(context.Background(), request)
+}
+
+// DescribeBackupPlanDetail
+// 查询备份计划详情。
+//
+// 返回备份计划的基本信息、源库信息、备份对象、备份策略、备份进度和付费信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeBackupPlanDetailWithContext(ctx context.Context, request *DescribeBackupPlanDetailRequest) (response *DescribeBackupPlanDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupPlanDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbs", APIVersion, "DescribeBackupPlanDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupPlanDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupPlanDetailResponse()
     err = c.Send(request, response)
     return
 }
@@ -381,6 +517,402 @@ func (c *Client) DescribeConnectTestResultWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeFullBackupSetDetailRequest() (request *DescribeFullBackupSetDetailRequest) {
+    request = &DescribeFullBackupSetDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbs", APIVersion, "DescribeFullBackupSetDetail")
+    
+    
+    return
+}
+
+func NewDescribeFullBackupSetDetailResponse() (response *DescribeFullBackupSetDetailResponse) {
+    response = &DescribeFullBackupSetDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFullBackupSetDetail
+// 查询全量备份集详情。
+//
+// 
+//
+// 返回全量备份集的基本信息、源库信息、备份对象、备份进度和加密信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALDATABASEACCESSERROR = "InternalError.InternalDatabaseAccessError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeFullBackupSetDetail(request *DescribeFullBackupSetDetailRequest) (response *DescribeFullBackupSetDetailResponse, err error) {
+    return c.DescribeFullBackupSetDetailWithContext(context.Background(), request)
+}
+
+// DescribeFullBackupSetDetail
+// 查询全量备份集详情。
+//
+// 
+//
+// 返回全量备份集的基本信息、源库信息、备份对象、备份进度和加密信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALDATABASEACCESSERROR = "InternalError.InternalDatabaseAccessError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeFullBackupSetDetailWithContext(ctx context.Context, request *DescribeFullBackupSetDetailRequest) (response *DescribeFullBackupSetDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeFullBackupSetDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbs", APIVersion, "DescribeFullBackupSetDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFullBackupSetDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFullBackupSetDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIncrementBackupSetFilesRequest() (request *DescribeIncrementBackupSetFilesRequest) {
+    request = &DescribeIncrementBackupSetFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbs", APIVersion, "DescribeIncrementBackupSetFiles")
+    
+    
+    return
+}
+
+func NewDescribeIncrementBackupSetFilesResponse() (response *DescribeIncrementBackupSetFilesResponse) {
+    response = &DescribeIncrementBackupSetFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIncrementBackupSetFiles
+// 查询增量备份集文件列表。
+//
+// 
+//
+// 文件按最后修改时间倒序返回，支持分页。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALDATABASEACCESSERROR = "InternalError.InternalDatabaseAccessError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeIncrementBackupSetFiles(request *DescribeIncrementBackupSetFilesRequest) (response *DescribeIncrementBackupSetFilesResponse, err error) {
+    return c.DescribeIncrementBackupSetFilesWithContext(context.Background(), request)
+}
+
+// DescribeIncrementBackupSetFiles
+// 查询增量备份集文件列表。
+//
+// 
+//
+// 文件按最后修改时间倒序返回，支持分页。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALDATABASEACCESSERROR = "InternalError.InternalDatabaseAccessError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeIncrementBackupSetFilesWithContext(ctx context.Context, request *DescribeIncrementBackupSetFilesRequest) (response *DescribeIncrementBackupSetFilesResponse, err error) {
+    if request == nil {
+        request = NewDescribeIncrementBackupSetFilesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbs", APIVersion, "DescribeIncrementBackupSetFiles")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIncrementBackupSetFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIncrementBackupSetFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIncrementBackupSetsRequest() (request *DescribeIncrementBackupSetsRequest) {
+    request = &DescribeIncrementBackupSetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbs", APIVersion, "DescribeIncrementBackupSets")
+    
+    
+    return
+}
+
+func NewDescribeIncrementBackupSetsResponse() (response *DescribeIncrementBackupSetsResponse) {
+    response = &DescribeIncrementBackupSetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIncrementBackupSets
+// 本接口（DescribeIncrementBackupSets）用于查询增量备份集列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+func (c *Client) DescribeIncrementBackupSets(request *DescribeIncrementBackupSetsRequest) (response *DescribeIncrementBackupSetsResponse, err error) {
+    return c.DescribeIncrementBackupSetsWithContext(context.Background(), request)
+}
+
+// DescribeIncrementBackupSets
+// 本接口（DescribeIncrementBackupSets）用于查询增量备份集列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+func (c *Client) DescribeIncrementBackupSetsWithContext(ctx context.Context, request *DescribeIncrementBackupSetsRequest) (response *DescribeIncrementBackupSetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeIncrementBackupSetsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbs", APIVersion, "DescribeIncrementBackupSets")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIncrementBackupSets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIncrementBackupSetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDestroyBackupPlanByUserRequest() (request *DestroyBackupPlanByUserRequest) {
+    request = &DestroyBackupPlanByUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbs", APIVersion, "DestroyBackupPlanByUser")
+    
+    
+    return
+}
+
+func NewDestroyBackupPlanByUserResponse() (response *DestroyBackupPlanByUserResponse) {
+    response = &DestroyBackupPlanByUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DestroyBackupPlanByUser
+// 立即下线已隔离的备份计划。
+//
+// 
+//
+// 下线后备份计划不可恢复。调用接口后，若通过 DescribeBackupPlanDetail 接口查询到备份计划状态为 offlined，则表示下线成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DestroyBackupPlanByUser(request *DestroyBackupPlanByUserRequest) (response *DestroyBackupPlanByUserResponse, err error) {
+    return c.DestroyBackupPlanByUserWithContext(context.Background(), request)
+}
+
+// DestroyBackupPlanByUser
+// 立即下线已隔离的备份计划。
+//
+// 
+//
+// 下线后备份计划不可恢复。调用接口后，若通过 DescribeBackupPlanDetail 接口查询到备份计划状态为 offlined，则表示下线成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DestroyBackupPlanByUserWithContext(ctx context.Context, request *DestroyBackupPlanByUserRequest) (response *DestroyBackupPlanByUserResponse, err error) {
+    if request == nil {
+        request = NewDestroyBackupPlanByUserRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbs", APIVersion, "DestroyBackupPlanByUser")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyBackupPlanByUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyBackupPlanByUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBackupPlanSourceInfoRequest() (request *ModifyBackupPlanSourceInfoRequest) {
+    request = &ModifyBackupPlanSourceInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbs", APIVersion, "ModifyBackupPlanSourceInfo")
+    
+    
+    return
+}
+
+func NewModifyBackupPlanSourceInfoResponse() (response *ModifyBackupPlanSourceInfoResponse) {
+    response = &ModifyBackupPlanSourceInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBackupPlanSourceInfo
+// 本接口（ModifyBackupPlanSourceInfo）用于修改备份计划的源实例信息、备份对象信息等。注意，调用该接口后，原有备份计划任务将立即停止，您可以在修改完源信息后重新启动备份任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BIZINVALIDPARAMETERERROR = "InvalidParameter.BizInvalidParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) ModifyBackupPlanSourceInfo(request *ModifyBackupPlanSourceInfoRequest) (response *ModifyBackupPlanSourceInfoResponse, err error) {
+    return c.ModifyBackupPlanSourceInfoWithContext(context.Background(), request)
+}
+
+// ModifyBackupPlanSourceInfo
+// 本接口（ModifyBackupPlanSourceInfo）用于修改备份计划的源实例信息、备份对象信息等。注意，调用该接口后，原有备份计划任务将立即停止，您可以在修改完源信息后重新启动备份任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BIZINVALIDPARAMETERERROR = "InvalidParameter.BizInvalidParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) ModifyBackupPlanSourceInfoWithContext(ctx context.Context, request *ModifyBackupPlanSourceInfoRequest) (response *ModifyBackupPlanSourceInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyBackupPlanSourceInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbs", APIVersion, "ModifyBackupPlanSourceInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBackupPlanSourceInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBackupPlanSourceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResumeBackupPlanRequest() (request *ResumeBackupPlanRequest) {
+    request = &ResumeBackupPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbs", APIVersion, "ResumeBackupPlan")
+    
+    
+    return
+}
+
+func NewResumeBackupPlanResponse() (response *ResumeBackupPlanResponse) {
+    response = &ResumeBackupPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResumeBackupPlan
+// 恢复已暂停的备份计划。
+//
+// 
+//
+// 仅已暂停的备份计划支持恢复。调用接口后，若通过 DescribeBackupPlanDetail 接口查询到备份计划状态为 running，则表示恢复成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ResumeBackupPlan(request *ResumeBackupPlanRequest) (response *ResumeBackupPlanResponse, err error) {
+    return c.ResumeBackupPlanWithContext(context.Background(), request)
+}
+
+// ResumeBackupPlan
+// 恢复已暂停的备份计划。
+//
+// 
+//
+// 仅已暂停的备份计划支持恢复。调用接口后，若通过 DescribeBackupPlanDetail 接口查询到备份计划状态为 running，则表示恢复成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ResumeBackupPlanWithContext(ctx context.Context, request *ResumeBackupPlanRequest) (response *ResumeBackupPlanResponse, err error) {
+    if request == nil {
+        request = NewResumeBackupPlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbs", APIVersion, "ResumeBackupPlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeBackupPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResumeBackupPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartBackupCheckJobRequest() (request *StartBackupCheckJobRequest) {
     request = &StartBackupCheckJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -481,6 +1013,76 @@ func (c *Client) StartBackupPlanWithContext(ctx context.Context, request *StartB
     request.SetContext(ctx)
     
     response = NewStartBackupPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopBackupPlanRequest() (request *StopBackupPlanRequest) {
+    request = &StopBackupPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbs", APIVersion, "StopBackupPlan")
+    
+    
+    return
+}
+
+func NewStopBackupPlanResponse() (response *StopBackupPlanResponse) {
+    response = &StopBackupPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopBackupPlan
+// 暂停备份计划。
+//
+// 
+//
+// 仅运行中的备份计划支持暂停。调用接口后，若通过 DescribeBackupPlanDetail 接口查询到备份计划状态为 paused，则表示暂停成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) StopBackupPlan(request *StopBackupPlanRequest) (response *StopBackupPlanResponse, err error) {
+    return c.StopBackupPlanWithContext(context.Background(), request)
+}
+
+// StopBackupPlan
+// 暂停备份计划。
+//
+// 
+//
+// 仅运行中的备份计划支持暂停。调用接口后，若通过 DescribeBackupPlanDetail 接口查询到备份计划状态为 paused，则表示暂停成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) StopBackupPlanWithContext(ctx context.Context, request *StopBackupPlanRequest) (response *StopBackupPlanResponse, err error) {
+    if request == nil {
+        request = NewStopBackupPlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbs", APIVersion, "StopBackupPlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopBackupPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopBackupPlanResponse()
     err = c.Send(request, response)
     return
 }

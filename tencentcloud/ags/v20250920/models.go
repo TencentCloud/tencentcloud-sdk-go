@@ -499,6 +499,20 @@ type CloudAuditLog struct {
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 }
 
+type CloudFileSourceInput struct {
+	// <p>通用文件来源类型，区分大小写。</p><p>枚举值：</p><ul><li>FILE： 创建 Plugin 文件版本，必须填写 SizeBytes，SHA256 可选；随后通过预签名 PUT 链接上传原始文件。</li><li>VERSION： 仅 UpdateRegistryRecord 支持，复用同一 Skill 或 Plugin Record 的 READY 文件版本，仅填写 SourceVersionId。</li></ul><p>Registry 不做 Plugin 文件内容格式或语义校验，由运行端解析加载。VERSION 不继承来源版本的 Metadata 和 SupportedHarnessVersions。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>待上传 Plugin 文件的原始字节数。FILE 时必填，VERSION 时禁止填写。</p><p>取值范围：[1, 54525952]</p><p>单位：字节</p><p>上限 52 MiB，服务端校验实际上传文件的字节数；不推断文件格式。</p>
+	SizeBytes *int64 `json:"SizeBytes,omitnil,omitempty" name:"SizeBytes"`
+
+	// <p>期望的文件 SHA-256 摘要。FILE 时可选，VERSION 时禁止填写。</p><p>参数格式：64 位小写十六进制字符串。</p><p>提供时服务端计算实际文件摘要并比对；省略时仍计算摘要并在 READY 版本的 ContentSHA256 中返回。</p>
+	SHA256 *string `json:"SHA256,omitnil,omitempty" name:"SHA256"`
+
+	// <p>用于复用文件内容的来源 Version ID。</p><p>参数格式：rv- 前缀的 Version ID。</p><p>入参限制：VERSION 时必填，FILE 时禁止填写。只能在 UpdateRegistryRecord 中引用同一 Record 下未删除、内容 READY 且存在可用制品的 Skill 或 Plugin 文件版本。</p><p>只复用文件，不继承来源版本的 Metadata 和 SupportedHarnessVersions；不能跨 Record 或跨 Registry 复用。</p>
+	SourceVersionId *string `json:"SourceVersionId,omitnil,omitempty" name:"SourceVersionId"`
+}
+
 type CloudFilter struct {
 	// <p>过滤字段名。DescribeRegistryList 支持 <code>name</code> / <code>search</code>（模糊搜索）与 <code>archived</code> / <code>status</code>（true / false / all）；DescribeRegistryRecordList 支持 <code>name</code> / <code>search</code>（模糊）、<code>descriptor-type</code>、<code>lifecycle-status</code>（精确）。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -548,18 +562,6 @@ type CloudRecord struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LifecycleStatus *string `json:"LifecycleStatus,omitnil,omitempty" name:"LifecycleStatus"`
 
-	// <p>所属租户 AppId。</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
-
-	// <p>创建者主账号 UIN。</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
-
-	// <p>创建者子账号 UIN；主账号直接创建时为空。</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatorSubAccountUin *string `json:"CreatorSubAccountUin,omitnil,omitempty" name:"CreatorSubAccountUin"`
-
 	// <p>创建时间，ISO 8601 UTC。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
@@ -568,11 +570,23 @@ type CloudRecord struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// <p>Record 下未删除 Version 数量。</p>
+	// <p>所属租户 AppId。</p><p>普通模式返回，MARKETPLACE 模式不返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>创建者主账号 UIN。</p><p>普通模式返回，MARKETPLACE 模式不返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
+
+	// <p>创建者子账号 UIN；主账号直接创建时为空。</p><p>普通模式返回，MARKETPLACE 模式不返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorSubAccountUin *string `json:"CreatorSubAccountUin,omitnil,omitempty" name:"CreatorSubAccountUin"`
+
+	// <p>Record 下未删除 Version 数量。</p><p>MARKETPLACE 模式仅统计市场可读版本。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionCount *int64 `json:"VersionCount,omitnil,omitempty" name:"VersionCount"`
 
-	// <p>Record 下所有 Label Name（含未绑定 Label），包括系统 Label（stable / latest）和自定义 Label。仅名称，不含 VersionId、更新时间或操作者。</p>
+	// <p>Record 下所有 Label Name（含未绑定 Label），包括系统 Label（stable / latest）和自定义 Label。仅名称，不含 VersionId、更新时间或操作者。</p><p>MARKETPLACE 模式仅统计市场可读版本。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelSet []*string `json:"LabelSet,omitnil,omitempty" name:"LabelSet"`
 }
@@ -992,6 +1006,9 @@ type CreatePreCacheImageTaskRequestParams struct {
 
 	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// <p>镜像预热类型</p><p>枚举值：</p><ul><li>image： 镜像预热</li><li>image_volume： 镜像卷预热</li></ul><p>默认值：image</p>
+	PreCacheType *string `json:"PreCacheType,omitnil,omitempty" name:"PreCacheType"`
 }
 
 type CreatePreCacheImageTaskRequest struct {
@@ -1002,6 +1019,9 @@ type CreatePreCacheImageTaskRequest struct {
 
 	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// <p>镜像预热类型</p><p>枚举值：</p><ul><li>image： 镜像预热</li><li>image_volume： 镜像卷预热</li></ul><p>默认值：image</p>
+	PreCacheType *string `json:"PreCacheType,omitnil,omitempty" name:"PreCacheType"`
 }
 
 func (r *CreatePreCacheImageTaskRequest) ToJsonString() string {
@@ -1018,6 +1038,7 @@ func (r *CreatePreCacheImageTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Image")
 	delete(f, "ImageRegistryType")
+	delete(f, "PreCacheType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePreCacheImageTaskRequest has unknown keys!", "")
 	}
@@ -1066,7 +1087,7 @@ type CreateRegistryRecordRequestParams struct {
 	// <p>Record 名称，长度 1..255，同一租户、Registry 内按规范化 Name 唯一（大小写不敏感）；软删除后允许复用。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>协议描述符类型。MCP / A2A / AGUI / CUSTOM / AGENT_SKILLS。Record 创建后不可修改。</p>
+	// <p>资产类型。取值包括 MCP、A2A、AGUI、CUSTOM、AGENT_SKILLS 和 PLUGIN。Record 创建后不可修改。PLUGIN 按通用文件资产保存，由运行端解析和加载。</p>
 	DescriptorType *string `json:"DescriptorType,omitnil,omitempty" name:"DescriptorType"`
 
 	// <p>Record 描述，最大 4096 字符，可选，默认空。</p>
@@ -1086,6 +1107,15 @@ type CreateRegistryRecordRequestParams struct {
 
 	// <p>DescriptorType=CUSTOM 时必填，其他类型禁止。内容必须是 JSON object 字符串；服务端解析后写入 CloudRecordVersion.Descriptors，Version 的 SourceType 固定为 MANUAL、SourceConfig 固定为空对象。</p>
 	CustomDescriptors *string `json:"CustomDescriptors,omitnil,omitempty" name:"CustomDescriptors"`
+
+	// <p>Plugin 通用文件来源。DescriptorType=PLUGIN 时必填，其他类型禁止。</p><p>入参限制：Create 仅支持 Type=FILE；声明 SizeBytes 为 1..54525952 字节，可选 SHA256 为 64 位小写十六进制摘要。</p><p>Registry 保存原始文件，不校验插件内容格式或语义；由运行端解析和加载。Skill 继续使用原 SkillSource。</p>
+	FileSource *CloudFileSourceInput `json:"FileSource,omitnil,omitempty" name:"FileSource"`
+
+	// <p>本版本支持的 HarnessVersionReference 对象列表；每项包含 HarnessEngine 和 HarnessEngineVersion，原样使用 DescribeHarnessEngineList 返回的选项。</p><p>入参限制：两个字段均必填，各为 1 至 128 字符的精确值，区分大小写，不含空白、通配符或版本范围；最多 128 项，按引擎与版本二元组去重。不接受旧字符串数组、null、缺少字段或额外字段。</p><p>省略或空数组表示未声明，不继承前一版本，不代表支持所有 Harness。兼容性按同一对象的引擎与版本共同判断。修改兼容声明需创建新 Version，文件资产可通过 FileSource.Type=VERSION 复用制品。</p>
+	SupportedHarnessVersions []*HarnessVersionReference `json:"SupportedHarnessVersions,omitnil,omitempty" name:"SupportedHarnessVersions"`
+
+	// <p>版本元数据的 Name/Value 对象数组。</p><p>参数格式：每项仅包含必填的 Name、Value 两个字符串字段。Name 非空、小写且数组内唯一，不自动转换；重复 Name 即使 Value 相同也返回 InvalidParameter。Value 允许空字符串，保留大小写；不接受嵌套对象、数组或非字符串值。</p><p>默认值：空数组 []。创建新版本时省略或 [] 均为空，不继承；null、JSON 字符串和原生对象非法。响应按 Name 升序返回，旧 SQL NULL 归一为 []。服务内部使用 map[string]string，数据库 JSON 列保存对象。publisher 表示发布者展示名称；metadata.&lt;key&gt; 按完整小写名称精确筛选，规则不变。</p>
+	Metadata []*MetadataEntry `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 type CreateRegistryRecordRequest struct {
@@ -1097,7 +1127,7 @@ type CreateRegistryRecordRequest struct {
 	// <p>Record 名称，长度 1..255，同一租户、Registry 内按规范化 Name 唯一（大小写不敏感）；软删除后允许复用。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>协议描述符类型。MCP / A2A / AGUI / CUSTOM / AGENT_SKILLS。Record 创建后不可修改。</p>
+	// <p>资产类型。取值包括 MCP、A2A、AGUI、CUSTOM、AGENT_SKILLS 和 PLUGIN。Record 创建后不可修改。PLUGIN 按通用文件资产保存，由运行端解析和加载。</p>
 	DescriptorType *string `json:"DescriptorType,omitnil,omitempty" name:"DescriptorType"`
 
 	// <p>Record 描述，最大 4096 字符，可选，默认空。</p>
@@ -1117,6 +1147,15 @@ type CreateRegistryRecordRequest struct {
 
 	// <p>DescriptorType=CUSTOM 时必填，其他类型禁止。内容必须是 JSON object 字符串；服务端解析后写入 CloudRecordVersion.Descriptors，Version 的 SourceType 固定为 MANUAL、SourceConfig 固定为空对象。</p>
 	CustomDescriptors *string `json:"CustomDescriptors,omitnil,omitempty" name:"CustomDescriptors"`
+
+	// <p>Plugin 通用文件来源。DescriptorType=PLUGIN 时必填，其他类型禁止。</p><p>入参限制：Create 仅支持 Type=FILE；声明 SizeBytes 为 1..54525952 字节，可选 SHA256 为 64 位小写十六进制摘要。</p><p>Registry 保存原始文件，不校验插件内容格式或语义；由运行端解析和加载。Skill 继续使用原 SkillSource。</p>
+	FileSource *CloudFileSourceInput `json:"FileSource,omitnil,omitempty" name:"FileSource"`
+
+	// <p>本版本支持的 HarnessVersionReference 对象列表；每项包含 HarnessEngine 和 HarnessEngineVersion，原样使用 DescribeHarnessEngineList 返回的选项。</p><p>入参限制：两个字段均必填，各为 1 至 128 字符的精确值，区分大小写，不含空白、通配符或版本范围；最多 128 项，按引擎与版本二元组去重。不接受旧字符串数组、null、缺少字段或额外字段。</p><p>省略或空数组表示未声明，不继承前一版本，不代表支持所有 Harness。兼容性按同一对象的引擎与版本共同判断。修改兼容声明需创建新 Version，文件资产可通过 FileSource.Type=VERSION 复用制品。</p>
+	SupportedHarnessVersions []*HarnessVersionReference `json:"SupportedHarnessVersions,omitnil,omitempty" name:"SupportedHarnessVersions"`
+
+	// <p>版本元数据的 Name/Value 对象数组。</p><p>参数格式：每项仅包含必填的 Name、Value 两个字符串字段。Name 非空、小写且数组内唯一，不自动转换；重复 Name 即使 Value 相同也返回 InvalidParameter。Value 允许空字符串，保留大小写；不接受嵌套对象、数组或非字符串值。</p><p>默认值：空数组 []。创建新版本时省略或 [] 均为空，不继承；null、JSON 字符串和原生对象非法。响应按 Name 升序返回，旧 SQL NULL 归一为 []。服务内部使用 map[string]string，数据库 JSON 列保存对象。publisher 表示发布者展示名称；metadata.&lt;key&gt; 按完整小写名称精确筛选，规则不变。</p>
+	Metadata []*MetadataEntry `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 func (r *CreateRegistryRecordRequest) ToJsonString() string {
@@ -1140,6 +1179,9 @@ func (r *CreateRegistryRecordRequest) FromJsonString(s string) error {
 	delete(f, "AgentSource")
 	delete(f, "SkillSource")
 	delete(f, "CustomDescriptors")
+	delete(f, "FileSource")
+	delete(f, "SupportedHarnessVersions")
+	delete(f, "Metadata")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRegistryRecordRequest has unknown keys!", "")
 	}
@@ -1158,15 +1200,15 @@ type CreateRegistryRecordResponseParams struct {
 	// <p>本次创建的 Revision 1 Version 详情。</p>
 	Version *CloudRecordVersion `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// <p>SkillSource.Type=TAR_PACKAGE 时返回：TAR 包上传预签名 URL。</p>
+	// <p>文件上传预签名 URL。使用文件上传方式创建 Skill 或 Plugin 版本时返回；Plugin 文件使用 application/octet-stream 上传。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UploadURL *string `json:"UploadURL,omitnil,omitempty" name:"UploadURL"`
 
-	// <p>SkillSource.Type=TAR_PACKAGE 时返回：UploadURL 过期时间，ISO 8601 UTC。</p>
+	// <p>文件上传链接的过期时间，使用文件上传方式创建 Skill 或 Plugin 版本时返回。</p><p>参数格式：ISO 8601 UTC，例如 2026-10-21T15:30:08Z。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// <p>SkillSource.Type=TAR_PACKAGE 时返回：Version 内容当前状态（UPLOADING 等）。</p>
+	// <p>文件版本的内容状态，使用文件上传方式创建 Skill 或 Plugin 版本时返回。创建上传会话后通常为 UPLOADING；文件处理完成后为 READY，失败为 FAILED。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentStatus *string `json:"ContentStatus,omitnil,omitempty" name:"ContentStatus"`
 
@@ -1852,6 +1894,60 @@ func (r *DeleteDeploymentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDeploymentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGPUResourceGroupRequestParams struct {
+	// 待删除的 GPU 资源组 ID，必填、非空，最多 64 字节。资源组必须属于当前租户，且已清空有效 GPU 实例、占用绑定和关联沙箱工具。
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+}
+
+type DeleteGPUResourceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除的 GPU 资源组 ID，必填、非空，最多 64 字节。资源组必须属于当前租户，且已清空有效 GPU 实例、占用绑定和关联沙箱工具。
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+}
+
+func (r *DeleteGPUResourceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGPUResourceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGPUResourceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGPUResourceGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGPUResourceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGPUResourceGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteGPUResourceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGPUResourceGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2744,6 +2840,270 @@ func (r *DescribeEventsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeGPUResourceGroupsRequestParams struct {
+	// 过滤条件，最多 10 项，Name 不可重复，每项 Values 为 1–10 个值。不同 Name 为 AND、同一 Values 为 OR。支持 resource-group-id（精确 ID）、resource-group-name（精确名称）、resource-group-name-like（普通文本子串，% 和 _ 不作为通配符）、gpu-type、gpu-num、cpu、memory。ID/GPUType 最多 64 字节，名称最多 128 字节；gpu-num 为正整数字符串，cpu/memory 为正数字符串，单位核/GiB。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页偏移量，默认为 0，必须大于等于 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页条数，省略或传 0 时取 100；非零取值范围 1–500。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeGPUResourceGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件，最多 10 项，Name 不可重复，每项 Values 为 1–10 个值。不同 Name 为 AND、同一 Values 为 OR。支持 resource-group-id（精确 ID）、resource-group-name（精确名称）、resource-group-name-like（普通文本子串，% 和 _ 不作为通配符）、gpu-type、gpu-num、cpu、memory。ID/GPUType 最多 64 字节，名称最多 128 字节；gpu-num 为正整数字符串，cpu/memory 为正数字符串，单位核/GiB。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页偏移量，默认为 0，必须大于等于 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页条数，省略或传 0 时取 100；非零取值范围 1–500。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeGPUResourceGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGPUResourceGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGPUResourceGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGPUResourceGroupsResponseParams struct {
+	// 匹配的资源组列表；无匹配时为 []。
+	ResourceGroups []*GPUResourceGroup `json:"ResourceGroups,omitnil,omitempty" name:"ResourceGroups"`
+
+	// 匹配的资源组总数，分页前计算。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGPUResourceGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGPUResourceGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeGPUResourceGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGPUResourceGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGPUResourceSpecsRequestParams struct {
+	// <p>GPU 类型标识，例如 5090d；指定时必须同时提供 CPU、Memory、GPUNum。</p>
+	GPUType *string `json:"GPUType,omitnil,omitempty" name:"GPUType"`
+
+	// <p>CPU 核数，必须为正数；与 GPUType、Memory、GPUNum 同时提供。</p>
+	CPU *uint64 `json:"CPU,omitnil,omitempty" name:"CPU"`
+
+	// <p>主机内存 GiB，必须为正数；与 GPUType、CPU、GPUNum 同时提供。</p>
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// <p>单台 GPU 卡数，必须为正整数；与 GPUType、CPU、Memory 同时提供。</p>
+	GPUNum *uint64 `json:"GPUNum,omitnil,omitempty" name:"GPUNum"`
+
+	// <p>分页偏移量，默认为 0，必须大于等于 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页条数，省略或传 0 时取 100；非零取值范围 1–500。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeGPUResourceSpecsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>GPU 类型标识，例如 5090d；指定时必须同时提供 CPU、Memory、GPUNum。</p>
+	GPUType *string `json:"GPUType,omitnil,omitempty" name:"GPUType"`
+
+	// <p>CPU 核数，必须为正数；与 GPUType、Memory、GPUNum 同时提供。</p>
+	CPU *uint64 `json:"CPU,omitnil,omitempty" name:"CPU"`
+
+	// <p>主机内存 GiB，必须为正数；与 GPUType、CPU、GPUNum 同时提供。</p>
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// <p>单台 GPU 卡数，必须为正整数；与 GPUType、CPU、Memory 同时提供。</p>
+	GPUNum *uint64 `json:"GPUNum,omitnil,omitempty" name:"GPUNum"`
+
+	// <p>分页偏移量，默认为 0，必须大于等于 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页条数，省略或传 0 时取 100；非零取值范围 1–500。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeGPUResourceSpecsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGPUResourceSpecsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GPUType")
+	delete(f, "CPU")
+	delete(f, "Memory")
+	delete(f, "GPUNum")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGPUResourceSpecsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGPUResourceSpecsResponseParams struct {
+	// <p>可售规格与额度列表；无可售规格时为 []。</p>
+	GPUResourceSpecSet []*GPUResourceSpec `json:"GPUResourceSpecSet,omitnil,omitempty" name:"GPUResourceSpecSet"`
+
+	// <p>筛选后、分页前的总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGPUResourceSpecsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGPUResourceSpecsResponseParams `json:"Response"`
+}
+
+func (r *DescribeGPUResourceSpecsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGPUResourceSpecsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGPUResourcesRequestParams struct {
+	// <p>按资源组 ID 过滤，可省略，最多 64 字节。</p>
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// <p>按GPU资源 ID 过滤，最多 500 个，每个为非空字符串且最多 64 字节；值之间为 OR，与其他条件为 AND。</p>
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// <p>按GPU状态过滤，可省略。大小写敏感：Delivering、Active、Isolated、Destroying。</p>
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>按占用状态过滤，可省略。大小写敏感：Idle、Allocating、InUse、Returning、Unavailable。</p>
+	AllocationState *string `json:"AllocationState,omitnil,omitempty" name:"AllocationState"`
+
+	// <p>分页偏移量，默认为 0，必须大于等于 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页条数，省略或传 0 时取 100；非零取值范围 1–500。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeGPUResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>按资源组 ID 过滤，可省略，最多 64 字节。</p>
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// <p>按GPU资源 ID 过滤，最多 500 个，每个为非空字符串且最多 64 字节；值之间为 OR，与其他条件为 AND。</p>
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// <p>按GPU状态过滤，可省略。大小写敏感：Delivering、Active、Isolated、Destroying。</p>
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>按占用状态过滤，可省略。大小写敏感：Idle、Allocating、InUse、Returning、Unavailable。</p>
+	AllocationState *string `json:"AllocationState,omitnil,omitempty" name:"AllocationState"`
+
+	// <p>分页偏移量，默认为 0，必须大于等于 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页条数，省略或传 0 时取 100；非零取值范围 1–500。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeGPUResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGPUResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceGroupId")
+	delete(f, "ResourceIds")
+	delete(f, "State")
+	delete(f, "AllocationState")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGPUResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGPUResourcesResponseParams struct {
+	// <p>GPU 资源列表；每台一条，无匹配时为 []。</p>
+	Resources []*GPUResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// <p>筛选后、分页前的总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGPUResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGPUResourcesResponseParams `json:"Response"`
+}
+
+func (r *DescribeGPUResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGPUResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePreCacheImageListRequestParams struct {
 	// <p>查询过滤条件。支持 Image, ImageDigest, ImageRegistryType, Status, SourceType；不同 Filter 之间为 AND，同一 Filter 的 Values 之间为 OR。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -3214,7 +3574,7 @@ func (r *DescribeRegistryListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegistryRecordListRequestParams struct {
-	// <p>父 Registry ID。</p>
+	// <p>RegistryId 必填。大写常量 MARKETPLACE 表示服务端主 YAML marketplace.registry_ids 配置的工具市场；真实 reg-xxx 表示具体 Registry。省略、空字符串、null 或其他大小写均拒绝。市场读取要求已认证身份，只返回配置来源内未删除、已审批的可读版本，文件还须 READY 和有效制品；不回退私有目录。</p>
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
 	// <p>分页起始偏移，默认 0。</p>
@@ -3230,7 +3590,7 @@ type DescribeRegistryRecordListRequestParams struct {
 type DescribeRegistryRecordListRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>父 Registry ID。</p>
+	// <p>RegistryId 必填。大写常量 MARKETPLACE 表示服务端主 YAML marketplace.registry_ids 配置的工具市场；真实 reg-xxx 表示具体 Registry。省略、空字符串、null 或其他大小写均拒绝。市场读取要求已认证身份，只返回配置来源内未删除、已审批的可读版本，文件还须 READY 和有效制品；不回退私有目录。</p>
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
 	// <p>分页起始偏移，默认 0。</p>
@@ -3295,7 +3655,7 @@ func (r *DescribeRegistryRecordListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegistryRecordRequestParams struct {
-	// <p>父 Registry ID。</p>
+	// <p>RegistryId 必填。大写常量 MARKETPLACE 表示服务端主 YAML marketplace.registry_ids 配置的工具市场；真实 reg-xxx 表示具体 Registry。省略、空字符串、null 或其他大小写均拒绝。市场读取要求已认证身份，只返回配置来源内未删除、已审批的可读版本，文件还须 READY 和有效制品；不回退私有目录。</p>
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
 	// <p>Record ID。</p>
@@ -3311,7 +3671,7 @@ type DescribeRegistryRecordRequestParams struct {
 type DescribeRegistryRecordRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>父 Registry ID。</p>
+	// <p>RegistryId 必填。大写常量 MARKETPLACE 表示服务端主 YAML marketplace.registry_ids 配置的工具市场；真实 reg-xxx 表示具体 Registry。省略、空字符串、null 或其他大小写均拒绝。市场读取要求已认证身份，只返回配置来源内未删除、已审批的可读版本，文件还须 READY 和有效制品；不回退私有目录。</p>
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
 	// <p>Record ID。</p>
@@ -4341,6 +4701,121 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+type GPUResource struct {
+	// <p>GPU 资源 ID，与沙箱 InstanceId、底层 VM ID 不同。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>所属 GPU 资源组 ID。</p>
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// <p>GPU资源状态，大小写敏感：Delivering（准备中）、Active（已生效）、Isolated（已隔离）、Destroying（释放中）。不返回 Destroyed 和补偿完成的 Failed。</p>
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>占用状态，大小写敏感：Idle（可领取）、Allocating（领取中）、InUse（使用中）、Returning（归还中）、Unavailable（暂不可用）。不能根据 InstanceId 是否存在判断是否空闲。</p>
+	AllocationState *string `json:"AllocationState,omitnil,omitempty" name:"AllocationState"`
+
+	// <p>已绑定的最终 AGS 沙箱实例 ID；尚未绑定或未占用时可能不返回。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>生效时间，未生效时可能不返回。</p>
+	ActiveAt *string `json:"ActiveAt,omitnil,omitempty" name:"ActiveAt"`
+
+	// <p>到期时间，未生效时可能不返回。</p>
+	ExpireAt *string `json:"ExpireAt,omitnil,omitempty" name:"ExpireAt"`
+
+	// <p>续费标记：0 不自动续费，1 自动续费，2 不再续费。</p>
+	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// <p>安全的状态原因标识；空串表示无额外原因，PhysicalUnavailable 表示物理状态不可用，BindingPending 表示绑定身份尚待确认。未知值应作状态确认中处理。</p>
+	StatusReason *string `json:"StatusReason,omitnil,omitempty" name:"StatusReason"`
+}
+
+type GPUResourceGroup struct {
+	// GPU 资源组 ID。
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 资源组名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 资源组固定规格；已下架规格的已购组仍可查询。
+	Spec *GPUResourceGroupSpec `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// 当前资源统计。
+	Statistics *GPUResourceGroupStatistics `json:"Statistics,omitnil,omitempty" name:"Statistics"`
+}
+
+type GPUResourceGroupSpec struct {
+	// <p>GPU 类型标识，例如 5090d。</p>
+	GPUType *string `json:"GPUType,omitnil,omitempty" name:"GPUType"`
+
+	// <p>GPU 类型展示名称；为空时使用 GPUType 展示。</p>
+	GPUTypeAlias *string `json:"GPUTypeAlias,omitnil,omitempty" name:"GPUTypeAlias"`
+
+	// <p>单台实例全部 GPU 的总显存，单位 GiB；不需要再乘 GPUNum。0 表示展示元数据未维护。</p>
+	GPUMemoryGiB *uint64 `json:"GPUMemoryGiB,omitnil,omitempty" name:"GPUMemoryGiB"`
+
+	// <p>单台实例 CPU 核数。</p>
+	CPU *uint64 `json:"CPU,omitnil,omitempty" name:"CPU"`
+
+	// <p>单台实例主机内存，单位 GiB；不是 GPU 显存。</p>
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// <p>单台实例的 GPU 卡数。</p>
+	GPUNum *uint64 `json:"GPUNum,omitnil,omitempty" name:"GPUNum"`
+}
+
+type GPUResourceGroupStatistics struct {
+	// <p>组内当前资源总数，单位台；不含已销毁和补偿完成的失败资源。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>Active、无占用且物理状态当前可领取的资源数量，单位台。</p>
+	AvailableCount *int64 `json:"AvailableCount,omitnil,omitempty" name:"AvailableCount"`
+
+	// <p>仍被占用或绑定的资源数量，含领取中、使用中及归还未完成，单位台。</p>
+	AllocatedCount *int64 `json:"AllocatedCount,omitnil,omitempty" name:"AllocatedCount"`
+
+	// <p>资源状态计数，四项之和等于本组 TotalCount。</p>
+	StateCounts *GPUResourceStateCount `json:"StateCounts,omitnil,omitempty" name:"StateCounts"`
+}
+
+type GPUResourceSpec struct {
+	// <p>GPU 类型标识，例如 5090d。</p>
+	GPUType *string `json:"GPUType,omitnil,omitempty" name:"GPUType"`
+
+	// <p>GPU 类型展示名称；为空时使用 GPUType 展示。</p>
+	GPUTypeAlias *string `json:"GPUTypeAlias,omitnil,omitempty" name:"GPUTypeAlias"`
+
+	// <p>单台实例全部 GPU 的总显存，单位 GiB；不需要再乘 GPUNum。0 表示展示元数据未维护。</p>
+	GPUMemoryGiB *uint64 `json:"GPUMemoryGiB,omitnil,omitempty" name:"GPUMemoryGiB"`
+
+	// <p>单台实例 CPU 核数。</p>
+	CPU *uint64 `json:"CPU,omitnil,omitempty" name:"CPU"`
+
+	// <p>单台实例主机内存，单位 GiB；不是 GPU 显存。</p>
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// <p>单台实例的 GPU 卡数。</p>
+	GPUNum *uint64 `json:"GPUNum,omitnil,omitempty" name:"GPUNum"`
+
+	// <p>当前可购买数量，单位台，不是卡数；0 表示确认无额度，null 表示额度未知。实际购买时仍会重新校验。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailableCount *uint64 `json:"AvailableCount,omitnil,omitempty" name:"AvailableCount"`
+}
+
+type GPUResourceStateCount struct {
+	// <p>准备中的资源数量，单位台。</p>
+	Delivering *int64 `json:"Delivering,omitnil,omitempty" name:"Delivering"`
+
+	// <p>已生效的资源数量，单位台；不等于当前可领取数量。</p>
+	Active *int64 `json:"Active,omitnil,omitempty" name:"Active"`
+
+	// <p>已隔离的资源数量，单位台。</p>
+	Isolated *int64 `json:"Isolated,omitnil,omitempty" name:"Isolated"`
+
+	// <p>正在释放的资源数量，单位台。</p>
+	Destroying *int64 `json:"Destroying,omitnil,omitempty" name:"Destroying"`
+}
+
 // Predefined struct for user
 type GetSkillPackageDownloadURLRequestParams struct {
 	// <p>父 Registry ID。</p>
@@ -4664,6 +5139,67 @@ func (r *ModifyDeploymentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDeploymentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGPUResourceGroupRequestParams struct {
+	// GPU 资源组 ID，必填、非空，最多 64 字节。
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 新的资源组名称；去除首尾空白后不能为空，最多 128 字节，UTF-8 中文通常占 3 字节。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type ModifyGPUResourceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// GPU 资源组 ID，必填、非空，最多 64 字节。
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 新的资源组名称；去除首尾空白后不能为空，最多 128 字节，UTF-8 中文通常占 3 字节。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *ModifyGPUResourceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGPUResourceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceGroupId")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGPUResourceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGPUResourceGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyGPUResourceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGPUResourceGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyGPUResourceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGPUResourceGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5093,6 +5629,9 @@ type QuotaResourceInfo struct {
 
 	// <p>内存配额或当前用量</p><p>单位：GiB</p>
 	MemoryGiB *float64 `json:"MemoryGiB,omitnil,omitempty" name:"MemoryGiB"`
+
+	// <p>最大镜像预热并发处理数量</p><p>单位：个</p>
+	PreCacheImageConcurrency *int64 `json:"PreCacheImageConcurrency,omitnil,omitempty" name:"PreCacheImageConcurrency"`
 }
 
 // Predefined struct for user
@@ -5827,6 +6366,15 @@ type UpdateRegistryRecordRequestParams struct {
 
 	// <p>Record 更新模式：Label 变更列表，最多 32 条，同一次请求中 Label Name 不可重复。</p>
 	LabelMutations []*CloudRecordLabelMutation `json:"LabelMutations,omitnil,omitempty" name:"LabelMutations"`
+
+	// <p>Skill 或 Plugin 后续版本的文件来源。PLUGIN 可使用 FILE 上传新文件，或使用 VERSION 复用同一 Record 的 READY 制品；Skill 仅通过 VERSION 复用现有文件。与其他内容来源互斥。</p><p>VERSION 只提交 Type、SourceVersionId；Metadata 和 SupportedHarnessVersions 由本次请求单独声明，不继承来源版本。</p>
+	FileSource *CloudFileSourceInput `json:"FileSource,omitnil,omitempty" name:"FileSource"`
+
+	// <p>资产版本支持的 Harness 引擎与具体版本列表。每个元素同时包含 HarnessEngine 和 HarnessEngineVersion，取值原样使用 DescribeHarnessEngineList 返回的选项。</p><p>入参限制：最多 128 个元素；两个字段均必填，长度 1～128，区分大小写，不允许空白、通配符或版本范围。按完整配对去重；不接受字符串数组或 null。</p><p>省略或空数组表示未声明兼容性，不表示兼容全部。仅随新 Version 写入，后续修改需创建新 Version。筛选时 supported_harness_engine 与 supported_harness_version 必须同时传入，并在同一元素中精确匹配。</p>
+	SupportedHarnessVersions []*HarnessVersionReference `json:"SupportedHarnessVersions,omitnil,omitempty" name:"SupportedHarnessVersions"`
+
+	// <p>版本元数据的 Name/Value 对象数组。</p><p>参数格式：每项仅包含必填的 Name、Value 两个字符串字段。Name 非空、小写且数组内唯一，不自动转换；重复 Name 即使 Value 相同也返回 InvalidParameter。Value 允许空字符串，保留大小写；不接受嵌套对象、数组或非字符串值。</p><p>默认值：空数组 []。创建新版本时省略或 [] 均为空，不继承；null、JSON 字符串和原生对象非法。响应按 Name 升序返回，旧 SQL NULL 归一为 []。服务内部使用 map[string]string，数据库 JSON 列保存对象。publisher 表示发布者展示名称；metadata.&lt;key&gt; 按完整小写名称精确筛选，规则不变。</p>
+	Metadata []*MetadataEntry `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 type UpdateRegistryRecordRequest struct {
@@ -5861,6 +6409,15 @@ type UpdateRegistryRecordRequest struct {
 
 	// <p>Record 更新模式：Label 变更列表，最多 32 条，同一次请求中 Label Name 不可重复。</p>
 	LabelMutations []*CloudRecordLabelMutation `json:"LabelMutations,omitnil,omitempty" name:"LabelMutations"`
+
+	// <p>Skill 或 Plugin 后续版本的文件来源。PLUGIN 可使用 FILE 上传新文件，或使用 VERSION 复用同一 Record 的 READY 制品；Skill 仅通过 VERSION 复用现有文件。与其他内容来源互斥。</p><p>VERSION 只提交 Type、SourceVersionId；Metadata 和 SupportedHarnessVersions 由本次请求单独声明，不继承来源版本。</p>
+	FileSource *CloudFileSourceInput `json:"FileSource,omitnil,omitempty" name:"FileSource"`
+
+	// <p>资产版本支持的 Harness 引擎与具体版本列表。每个元素同时包含 HarnessEngine 和 HarnessEngineVersion，取值原样使用 DescribeHarnessEngineList 返回的选项。</p><p>入参限制：最多 128 个元素；两个字段均必填，长度 1～128，区分大小写，不允许空白、通配符或版本范围。按完整配对去重；不接受字符串数组或 null。</p><p>省略或空数组表示未声明兼容性，不表示兼容全部。仅随新 Version 写入，后续修改需创建新 Version。筛选时 supported_harness_engine 与 supported_harness_version 必须同时传入，并在同一元素中精确匹配。</p>
+	SupportedHarnessVersions []*HarnessVersionReference `json:"SupportedHarnessVersions,omitnil,omitempty" name:"SupportedHarnessVersions"`
+
+	// <p>版本元数据的 Name/Value 对象数组。</p><p>参数格式：每项仅包含必填的 Name、Value 两个字符串字段。Name 非空、小写且数组内唯一，不自动转换；重复 Name 即使 Value 相同也返回 InvalidParameter。Value 允许空字符串，保留大小写；不接受嵌套对象、数组或非字符串值。</p><p>默认值：空数组 []。创建新版本时省略或 [] 均为空，不继承；null、JSON 字符串和原生对象非法。响应按 Name 升序返回，旧 SQL NULL 归一为 []。服务内部使用 map[string]string，数据库 JSON 列保存对象。publisher 表示发布者展示名称；metadata.&lt;key&gt; 按完整小写名称精确筛选，规则不变。</p>
+	Metadata []*MetadataEntry `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 func (r *UpdateRegistryRecordRequest) ToJsonString() string {
@@ -5885,6 +6442,9 @@ func (r *UpdateRegistryRecordRequest) FromJsonString(s string) error {
 	delete(f, "SkillSource")
 	delete(f, "CustomDescriptors")
 	delete(f, "LabelMutations")
+	delete(f, "FileSource")
+	delete(f, "SupportedHarnessVersions")
+	delete(f, "Metadata")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRegistryRecordRequest has unknown keys!", "")
 	}

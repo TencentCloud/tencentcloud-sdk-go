@@ -38,6 +38,9 @@ const (
 	// 计费相关 - 计费参数无效。
 	FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
 
+	// 计费相关 - 计费平台拒绝开通
+	FAILEDOPERATION_CHARGEREJECTED = "FailedOperation.ChargeRejected"
+
 	// CLS调用失败
 	FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
 

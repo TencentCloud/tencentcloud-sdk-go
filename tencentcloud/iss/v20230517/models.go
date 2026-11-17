@@ -6882,6 +6882,126 @@ func (r *ListVideoDownloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListVideoSnapshotResultData struct {
+	// <p>截图信息列表</p>
+	List []*VideoSnapshotInfo `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>页码</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数目</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+// Predefined struct for user
+type ListVideoSnapshotResultRequestParams struct {
+	// <p>开始时间</p><p>单位：秒</p>
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// <p>结束时间</p><p>单位：秒</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>截图配置Id</p>
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// <p>通道Id</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>图片URL有效期，单位：秒</p><p>取值范围：[60, 86400]</p><p>默认值：600</p>
+	ImageUrlExpires *int64 `json:"ImageUrlExpires,omitnil,omitempty" name:"ImageUrlExpires"`
+
+	// <p>页码</p><p>默认值：1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数目</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListVideoSnapshotResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>开始时间</p><p>单位：秒</p>
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// <p>结束时间</p><p>单位：秒</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>截图配置Id</p>
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// <p>通道Id</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>图片URL有效期，单位：秒</p><p>取值范围：[60, 86400]</p><p>默认值：600</p>
+	ImageUrlExpires *int64 `json:"ImageUrlExpires,omitnil,omitempty" name:"ImageUrlExpires"`
+
+	// <p>页码</p><p>默认值：1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数目</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListVideoSnapshotResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVideoSnapshotResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "ConfigId")
+	delete(f, "ChannelId")
+	delete(f, "Type")
+	delete(f, "ImageUrlExpires")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListVideoSnapshotResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListVideoSnapshotResultResponseParams struct {
+	// <p>截图结果列表</p>
+	Data *ListVideoSnapshotResultData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListVideoSnapshotResultResponse struct {
+	*tchttp.BaseResponse
+	Response *ListVideoSnapshotResultResponseParams `json:"Response"`
+}
+
+func (r *ListVideoSnapshotResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVideoSnapshotResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListVideoSnapshotTemplateData struct {
 	// <p>总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
@@ -8893,6 +9013,38 @@ type VideoSnapshotConfigInfo struct {
 
 	// <p>最近一次更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type VideoSnapshotInfo struct {
+	// <p>图片Id</p>
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// <p>截图配置Id</p>
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// <p>截图配置名称</p>
+	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
+
+	// <p>通道Id</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>通道名称</p>
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+
+	// <p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>图片Url</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>图片Url有效期</p>
+	ImageUrlExpires *int64 `json:"ImageUrlExpires,omitnil,omitempty" name:"ImageUrlExpires"`
+
+	// <p>截图时间点</p>
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// <p>图片大小</p><p>单位：字节</p>
+	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 }
 
 type VideoSnapshotTemplateInfo struct {

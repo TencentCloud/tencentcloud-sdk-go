@@ -16017,6 +16017,9 @@ type PrometheusClusterAgentBasic struct {
 	// <p>是否采集全部指标</p><p>枚举值：</p><ul><li>false： 不采集</li><li>true： 采集</li></ul><p>默认值：false</p>
 	CollectAll *bool `json:"CollectAll,omitnil,omitempty" name:"CollectAll"`
 
+	// <p>私有连接的 IP</p>
+	PrivateLinkIP *string `json:"PrivateLinkIP,omitnil,omitempty" name:"PrivateLinkIP"`
+
 	// <p>是否开启默认预聚合规则</p>
 	OpenDefaultRecord *bool `json:"OpenDefaultRecord,omitnil,omitempty" name:"OpenDefaultRecord"`
 }

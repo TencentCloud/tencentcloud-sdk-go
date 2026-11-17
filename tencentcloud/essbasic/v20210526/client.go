@@ -11083,7 +11083,7 @@ func NewModifyFlowDeadlineResponse() (response *ModifyFlowDeadlineResponse) {
 //
 // 5. 延长签署方截止时间时，新的签署截止日期应晚于当前日期和已设定的截止日期。若为有序合同，还需早于或等于下一签署人的截止日期，且早于签署流程整体的截止日期。
 //
-// 6. <font  color="red">不支持操作合同组合同</font>。
+// 6. <font  color="red">不支持操作合同组，支持合同组里边的各个子合同单独修改</font>。
 //
 // 
 //
@@ -11132,7 +11132,7 @@ func (c *Client) ModifyFlowDeadline(request *ModifyFlowDeadlineRequest) (respons
 //
 // 5. 延长签署方截止时间时，新的签署截止日期应晚于当前日期和已设定的截止日期。若为有序合同，还需早于或等于下一签署人的截止日期，且早于签署流程整体的截止日期。
 //
-// 6. <font  color="red">不支持操作合同组合同</font>。
+// 6. <font  color="red">不支持操作合同组，支持合同组里边的各个子合同单独修改</font>。
 //
 // 
 //
