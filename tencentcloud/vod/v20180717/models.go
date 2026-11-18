@@ -2426,6 +2426,9 @@ type AigcImageTaskInputFileInfo struct {
 
 	// <p><strong>仅当 ModelName 为 OG 时有效</strong>。图片类型。</p><p>枚举值：</p><ul><li>mask： 图片蒙版。</li></ul>
 	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+
+	// <p>自定义 Id，一般用于在 Prompt 中引用参考图片。</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type AigcImageTaskOutput struct {

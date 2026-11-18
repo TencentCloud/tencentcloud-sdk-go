@@ -1604,6 +1604,15 @@ type DescribeAlarmNotifyHistoriesRequestParams struct {
 
 	// <p>详情页展示所需id</p>
 	NotifyId *string `json:"NotifyId,omitnil,omitempty" name:"NotifyId"`
+
+	// <p>通知渠道多选。按渠道过滤通知历史，多个取值之间为或关系。</p>
+	ChannelNames []*string `json:"ChannelNames,omitnil,omitempty" name:"ChannelNames"`
+
+	// <p>告警策略多选。按策略 ID 精确过滤通知历史，多个 ID 之间为或关系。</p>
+	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
+
+	// <p>字符串数组。每项为告警策略 ID，形如 policy- 开头。</p>
+	NoticeIds []*string `json:"NoticeIds,omitnil,omitempty" name:"NoticeIds"`
 }
 
 type DescribeAlarmNotifyHistoriesRequest struct {
@@ -1632,6 +1641,15 @@ type DescribeAlarmNotifyHistoriesRequest struct {
 
 	// <p>详情页展示所需id</p>
 	NotifyId *string `json:"NotifyId,omitnil,omitempty" name:"NotifyId"`
+
+	// <p>通知渠道多选。按渠道过滤通知历史，多个取值之间为或关系。</p>
+	ChannelNames []*string `json:"ChannelNames,omitnil,omitempty" name:"ChannelNames"`
+
+	// <p>告警策略多选。按策略 ID 精确过滤通知历史，多个 ID 之间为或关系。</p>
+	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
+
+	// <p>字符串数组。每项为告警策略 ID，形如 policy- 开头。</p>
+	NoticeIds []*string `json:"NoticeIds,omitnil,omitempty" name:"NoticeIds"`
 }
 
 func (r *DescribeAlarmNotifyHistoriesRequest) ToJsonString() string {
@@ -1654,6 +1672,9 @@ func (r *DescribeAlarmNotifyHistoriesRequest) FromJsonString(s string) error {
 	delete(f, "ModelName")
 	delete(f, "PolicyId")
 	delete(f, "NotifyId")
+	delete(f, "ChannelNames")
+	delete(f, "PolicyIds")
+	delete(f, "NoticeIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmNotifyHistoriesRequest has unknown keys!", "")
 	}

@@ -5638,6 +5638,9 @@ type CynosdbClusterDetail struct {
 
 	// <p>自动扩容开启状态</p><p>枚举值：</p><ul><li>yes： 已开启</li><li>no： 关闭</li></ul><p>默认值：no</p>
 	StorageAutoExpand *string `json:"StorageAutoExpand,omitnil,omitempty" name:"StorageAutoExpand"`
+
+	// <p>是否在秒级回档链路中</p>
+	IsInInstantRollbackChain *bool `json:"IsInInstantRollbackChain,omitnil,omitempty" name:"IsInInstantRollbackChain"`
 }
 
 type CynosdbErrorLogItem struct {

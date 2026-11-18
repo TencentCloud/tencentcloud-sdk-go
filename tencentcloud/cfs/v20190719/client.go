@@ -253,6 +253,66 @@ func (c *Client) CreateAccessCertWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateAutoDeletePolicyRequest() (request *CreateAutoDeletePolicyRequest) {
+    request = &CreateAutoDeletePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "CreateAutoDeletePolicy")
+    
+    
+    return
+}
+
+func NewCreateAutoDeletePolicyResponse() (response *CreateAutoDeletePolicyResponse) {
+    response = &CreateAutoDeletePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAutoDeletePolicy
+// 为指定 CFS 文件系统创建一条数据自动删除策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTODELETEPOLICYALREADYEXIST = "FailedOperation.AutoDeletePolicyAlreadyExist"
+//  INVALIDPARAMETER_AUTODELETEPATHINVALID = "InvalidParameter.AutoDeletePathInvalid"
+//  INVALIDPARAMETER_AUTODELETEPATHPREFIXINVALID = "InvalidParameter.AutoDeletePathPrefixInvalid"
+//  INVALIDPARAMETERVALUE_AUTODELETEPATHCOUNTEXCEED = "InvalidParameterValue.AutoDeletePathCountExceed"
+//  INVALIDPARAMETERVALUE_AUTODELETEPATHNESTED = "InvalidParameterValue.AutoDeletePathNested"
+//  UNSUPPORTEDOPERATION_AUTODELETEFSTYPENOTSUPPORTED = "UnsupportedOperation.AutoDeleteFsTypeNotSupported"
+func (c *Client) CreateAutoDeletePolicy(request *CreateAutoDeletePolicyRequest) (response *CreateAutoDeletePolicyResponse, err error) {
+    return c.CreateAutoDeletePolicyWithContext(context.Background(), request)
+}
+
+// CreateAutoDeletePolicy
+// 为指定 CFS 文件系统创建一条数据自动删除策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTODELETEPOLICYALREADYEXIST = "FailedOperation.AutoDeletePolicyAlreadyExist"
+//  INVALIDPARAMETER_AUTODELETEPATHINVALID = "InvalidParameter.AutoDeletePathInvalid"
+//  INVALIDPARAMETER_AUTODELETEPATHPREFIXINVALID = "InvalidParameter.AutoDeletePathPrefixInvalid"
+//  INVALIDPARAMETERVALUE_AUTODELETEPATHCOUNTEXCEED = "InvalidParameterValue.AutoDeletePathCountExceed"
+//  INVALIDPARAMETERVALUE_AUTODELETEPATHNESTED = "InvalidParameterValue.AutoDeletePathNested"
+//  UNSUPPORTEDOPERATION_AUTODELETEFSTYPENOTSUPPORTED = "UnsupportedOperation.AutoDeleteFsTypeNotSupported"
+func (c *Client) CreateAutoDeletePolicyWithContext(ctx context.Context, request *CreateAutoDeletePolicyRequest) (response *CreateAutoDeletePolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateAutoDeletePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateAutoDeletePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAutoDeletePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAutoDeletePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAutoSnapshotPolicyRequest() (request *CreateAutoSnapshotPolicyRequest) {
     request = &CreateAutoSnapshotPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1153,6 +1213,58 @@ func (c *Client) CreateMigrationTaskWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewDeleteAutoDeletePolicyRequest() (request *DeleteAutoDeletePolicyRequest) {
+    request = &DeleteAutoDeletePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DeleteAutoDeletePolicy")
+    
+    
+    return
+}
+
+func NewDeleteAutoDeletePolicyResponse() (response *DeleteAutoDeletePolicyResponse) {
+    response = &DeleteAutoDeletePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAutoDeletePolicy
+// 删除指定自动删除策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTODELETEPOLICYPROCESSING = "FailedOperation.AutoDeletePolicyProcessing"
+//  RESOURCENOTFOUND_AUTODELETEPOLICYNOTEXIST = "ResourceNotFound.AutoDeletePolicyNotExist"
+func (c *Client) DeleteAutoDeletePolicy(request *DeleteAutoDeletePolicyRequest) (response *DeleteAutoDeletePolicyResponse, err error) {
+    return c.DeleteAutoDeletePolicyWithContext(context.Background(), request)
+}
+
+// DeleteAutoDeletePolicy
+// 删除指定自动删除策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTODELETEPOLICYPROCESSING = "FailedOperation.AutoDeletePolicyProcessing"
+//  RESOURCENOTFOUND_AUTODELETEPOLICYNOTEXIST = "ResourceNotFound.AutoDeletePolicyNotExist"
+func (c *Client) DeleteAutoDeletePolicyWithContext(ctx context.Context, request *DeleteAutoDeletePolicyRequest) (response *DeleteAutoDeletePolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteAutoDeletePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteAutoDeletePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAutoDeletePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAutoDeletePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAutoSnapshotPolicyRequest() (request *DeleteAutoSnapshotPolicyRequest) {
     request = &DeleteAutoSnapshotPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1821,6 +1933,56 @@ func (c *Client) DeleteUserQuotaWithContext(ctx context.Context, request *Delete
     request.SetContext(ctx)
     
     response = NewDeleteUserQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAutoDeletePoliciesRequest() (request *DescribeAutoDeletePoliciesRequest) {
+    request = &DescribeAutoDeletePoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DescribeAutoDeletePolicies")
+    
+    
+    return
+}
+
+func NewDescribeAutoDeletePoliciesResponse() (response *DescribeAutoDeletePoliciesResponse) {
+    response = &DescribeAutoDeletePoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAutoDeletePolicies
+// 查询数据自动删除策略列表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAutoDeletePolicies(request *DescribeAutoDeletePoliciesRequest) (response *DescribeAutoDeletePoliciesResponse, err error) {
+    return c.DescribeAutoDeletePoliciesWithContext(context.Background(), request)
+}
+
+// DescribeAutoDeletePolicies
+// 查询数据自动删除策略列表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAutoDeletePoliciesWithContext(ctx context.Context, request *DescribeAutoDeletePoliciesRequest) (response *DescribeAutoDeletePoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoDeletePoliciesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeAutoDeletePolicies")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoDeletePolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutoDeletePoliciesResponse()
     err = c.Send(request, response)
     return
 }
@@ -3001,6 +3163,70 @@ func (c *Client) DoDirectoryOperationWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDoDirectoryOperationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAutoDeletePolicyRequest() (request *ModifyAutoDeletePolicyRequest) {
+    request = &ModifyAutoDeletePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "ModifyAutoDeletePolicy")
+    
+    
+    return
+}
+
+func NewModifyAutoDeletePolicyResponse() (response *ModifyAutoDeletePolicyResponse) {
+    response = &ModifyAutoDeletePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAutoDeletePolicy
+// 修改自动删除策略名称或清理路径
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTODELETEPOLICYDISABLED = "FailedOperation.AutoDeletePolicyDisabled"
+//  FAILEDOPERATION_AUTODELETEPOLICYENABLED = "FailedOperation.AutoDeletePolicyEnabled"
+//  FAILEDOPERATION_AUTODELETEPOLICYPROCESSING = "FailedOperation.AutoDeletePolicyProcessing"
+//  INVALIDPARAMETER_AUTODELETEPATHINVALID = "InvalidParameter.AutoDeletePathInvalid"
+//  INVALIDPARAMETER_AUTODELETEPATHPREFIXINVALID = "InvalidParameter.AutoDeletePathPrefixInvalid"
+//  INVALIDPARAMETERVALUE_AUTODELETEPATHCOUNTEXCEED = "InvalidParameterValue.AutoDeletePathCountExceed"
+//  INVALIDPARAMETERVALUE_AUTODELETEPATHNESTED = "InvalidParameterValue.AutoDeletePathNested"
+//  RESOURCENOTFOUND_AUTODELETEPOLICYNOTEXIST = "ResourceNotFound.AutoDeletePolicyNotExist"
+func (c *Client) ModifyAutoDeletePolicy(request *ModifyAutoDeletePolicyRequest) (response *ModifyAutoDeletePolicyResponse, err error) {
+    return c.ModifyAutoDeletePolicyWithContext(context.Background(), request)
+}
+
+// ModifyAutoDeletePolicy
+// 修改自动删除策略名称或清理路径
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTODELETEPOLICYDISABLED = "FailedOperation.AutoDeletePolicyDisabled"
+//  FAILEDOPERATION_AUTODELETEPOLICYENABLED = "FailedOperation.AutoDeletePolicyEnabled"
+//  FAILEDOPERATION_AUTODELETEPOLICYPROCESSING = "FailedOperation.AutoDeletePolicyProcessing"
+//  INVALIDPARAMETER_AUTODELETEPATHINVALID = "InvalidParameter.AutoDeletePathInvalid"
+//  INVALIDPARAMETER_AUTODELETEPATHPREFIXINVALID = "InvalidParameter.AutoDeletePathPrefixInvalid"
+//  INVALIDPARAMETERVALUE_AUTODELETEPATHCOUNTEXCEED = "InvalidParameterValue.AutoDeletePathCountExceed"
+//  INVALIDPARAMETERVALUE_AUTODELETEPATHNESTED = "InvalidParameterValue.AutoDeletePathNested"
+//  RESOURCENOTFOUND_AUTODELETEPOLICYNOTEXIST = "ResourceNotFound.AutoDeletePolicyNotExist"
+func (c *Client) ModifyAutoDeletePolicyWithContext(ctx context.Context, request *ModifyAutoDeletePolicyRequest) (response *ModifyAutoDeletePolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoDeletePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "ModifyAutoDeletePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAutoDeletePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAutoDeletePolicyResponse()
     err = c.Send(request, response)
     return
 }

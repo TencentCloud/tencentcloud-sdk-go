@@ -3372,57 +3372,69 @@ func (r *DescribeJobSavepointResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobSubmissionLogRequestParams struct {
-	// 作业ID，例如：cql-6v1jkxrn
+	// <p>作业ID，例如：cql-6v1jkxrn</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 起始时间，unix时间戳，毫秒级，例如：1611754219108
+	// <p>起始时间，unix时间戳，毫秒级，例如：1611754219108</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，unix时间戳，毫秒级，例如：1611754219108
+	// <p>结束时间，unix时间戳，毫秒级，例如：1611754219108</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 作业运行的实例ID, 例如：1,2,3。默认为0，表示未选中任何实例，搜索该时间段内最近的一个实例的日志
+	// <p>作业运行的实例ID, 例如：1,2,3。默认为0，表示未选中任何实例，搜索该时间段内最近的一个实例的日志</p>
 	RunningOrderId *int64 `json:"RunningOrderId,omitnil,omitempty" name:"RunningOrderId"`
 
-	// 日志搜索的关键词，默认为空
+	// <p>日志搜索的关键词，默认为空</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 日志搜索的游标，可透传上次返回的值，默认为空
+	// <p>日志搜索的游标，可透传上次返回的值，默认为空</p>
 	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
 
-	// 时间戳排序规则，asc - 升序，desc - 降序。默认为升序
+	// <p>时间戳排序规则，asc - 升序，desc - 降序。默认为升序</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 搜索的日志条数上限值，最大为100
+	// <p>搜索的日志条数上限值，最大为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeJobSubmissionLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业ID，例如：cql-6v1jkxrn
+	// <p>作业ID，例如：cql-6v1jkxrn</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 起始时间，unix时间戳，毫秒级，例如：1611754219108
+	// <p>起始时间，unix时间戳，毫秒级，例如：1611754219108</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，unix时间戳，毫秒级，例如：1611754219108
+	// <p>结束时间，unix时间戳，毫秒级，例如：1611754219108</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 作业运行的实例ID, 例如：1,2,3。默认为0，表示未选中任何实例，搜索该时间段内最近的一个实例的日志
+	// <p>作业运行的实例ID, 例如：1,2,3。默认为0，表示未选中任何实例，搜索该时间段内最近的一个实例的日志</p>
 	RunningOrderId *int64 `json:"RunningOrderId,omitnil,omitempty" name:"RunningOrderId"`
 
-	// 日志搜索的关键词，默认为空
+	// <p>日志搜索的关键词，默认为空</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 日志搜索的游标，可透传上次返回的值，默认为空
+	// <p>日志搜索的游标，可透传上次返回的值，默认为空</p>
 	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
 
-	// 时间戳排序规则，asc - 升序，desc - 降序。默认为升序
+	// <p>时间戳排序规则，asc - 升序，desc - 降序。默认为升序</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 搜索的日志条数上限值，最大为100
+	// <p>搜索的日志条数上限值，最大为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeJobSubmissionLogRequest) ToJsonString() string {
@@ -3445,6 +3457,8 @@ func (r *DescribeJobSubmissionLogRequest) FromJsonString(s string) error {
 	delete(f, "Cursor")
 	delete(f, "OrderType")
 	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobSubmissionLogRequest has unknown keys!", "")
 	}
@@ -3453,27 +3467,30 @@ func (r *DescribeJobSubmissionLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobSubmissionLogResponseParams struct {
-	// 日志搜索的游标，需要搜索更多时透传这个值
+	// <p>日志搜索的游标，需要搜索更多时透传这个值</p>
 	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
 
-	// 是否返回了所有的日志记录
+	// <p>是否返回了所有的日志记录</p>
 	ListOver *bool `json:"ListOver,omitnil,omitempty" name:"ListOver"`
 
-	// 作业启动的requestId
+	// <p>作业启动的requestId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobRequestId *string `json:"JobRequestId,omitnil,omitempty" name:"JobRequestId"`
 
-	// 该时间段内符合关键字的所有的作业实例列表
+	// <p>该时间段内符合关键字的所有的作业实例列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobInstanceList []*JobInstanceForSubmissionLog `json:"JobInstanceList,omitnil,omitempty" name:"JobInstanceList"`
 
-	// 废弃，请使用LogContentList
+	// <p>废弃，请使用LogContentList</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogList []*string `json:"LogList,omitnil,omitempty" name:"LogList"`
 
-	// 日志列表
+	// <p>日志列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogContentList []*LogContent `json:"LogContentList,omitnil,omitempty" name:"LogContentList"`
+
+	// <p>分页偏移</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

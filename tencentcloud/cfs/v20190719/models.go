@@ -85,6 +85,35 @@ func (r *ApplyPathLifecyclePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AutoDeletePolicy struct {
+	// <p>策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>文件系统Id</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>自动清理策略名称</p>
+	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
+
+	// <p>待清理的路径</p>
+	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
+
+	// <p>自动清理策略状态</p><p>枚举值：</p><ul><li>enabling： 启用中</li><li>enabled： 已启用</li><li>disabling： 禁用中</li><li>disabed： 已禁用</li><li>deleting： 删除中</li><li>failed： 失败</li><li>creating： 创建中</li><li>updating： 修改中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>清理策略创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>策略更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>策略所属地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>错误信息</p>
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+}
+
 type AutoScaleUpRule struct {
 	// 自动扩容策略开启，关闭
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
@@ -358,6 +387,77 @@ func (r *CreateAccessCertResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAccessCertResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAutoDeletePolicyRequestParams struct {
+	// <p>文件系统 ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>自动清理策略名称</p>
+	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
+
+	// <p>自动清理策略路径列表</p>
+	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
+}
+
+type CreateAutoDeletePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件系统 ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>自动清理策略名称</p>
+	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
+
+	// <p>自动清理策略路径列表</p>
+	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
+}
+
+func (r *CreateAutoDeletePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAutoDeletePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "PolicyName")
+	delete(f, "Paths")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoDeletePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAutoDeletePolicyResponseParams struct {
+	// <p>自动清理策略ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAutoDeletePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAutoDeletePolicyResponseParams `json:"Response"`
+}
+
+func (r *CreateAutoDeletePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAutoDeletePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1680,6 +1780,67 @@ type DataRetrievalTaskInfo struct {
 }
 
 // Predefined struct for user
+type DeleteAutoDeletePolicyRequestParams struct {
+	// <p>文件系统 ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>自动清理策略ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+}
+
+type DeleteAutoDeletePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件系统 ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>自动清理策略ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+}
+
+func (r *DeleteAutoDeletePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAutoDeletePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "PolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAutoDeletePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAutoDeletePolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAutoDeletePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAutoDeletePolicyResponseParams `json:"Response"`
+}
+
+func (r *DeleteAutoDeletePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAutoDeletePolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAutoSnapshotPolicyRequestParams struct {
 	// 快照策略ID，查询快照策略接口获取,[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208)
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
@@ -2278,6 +2439,80 @@ func (r *DeleteUserQuotaResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteUserQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoDeletePoliciesRequestParams struct {
+	// <p>文件系统 ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>分页偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页大小</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeAutoDeletePoliciesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件系统 ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>分页偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页大小</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAutoDeletePoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoDeletePoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoDeletePoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoDeletePoliciesResponseParams struct {
+	// <p>自动清理策略列表</p>
+	Policies []*AutoDeletePolicy `json:"Policies,omitnil,omitempty" name:"Policies"`
+
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAutoDeletePoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAutoDeletePoliciesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAutoDeletePoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoDeletePoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4235,6 +4470,88 @@ type MigrationTaskInfo struct {
 
 	// <p>数据源服务商</p><p>枚举值：</p><ul><li>COS： 腾讯云COS</li><li>OSS： 阿里云OSS</li><li>OBS： 华为云OBS</li><li>BOS： 百度云BOS</li><li>TOS： 火山引擎TOS</li></ul>
 	SrcService *string `json:"SrcService,omitnil,omitempty" name:"SrcService"`
+}
+
+// Predefined struct for user
+type ModifyAutoDeletePolicyRequestParams struct {
+	// <p>文件系统 ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>自动清理策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>自动清理路径列表</p>
+	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
+
+	// <p>自动清理策略名称</p>
+	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
+
+	// <p>策略状态</p><p>枚举值：</p><ul><li>enabled： 启用</li><li>disabled： 禁用</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyAutoDeletePolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件系统 ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>自动清理策略 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// <p>自动清理路径列表</p>
+	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
+
+	// <p>自动清理策略名称</p>
+	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
+
+	// <p>策略状态</p><p>枚举值：</p><ul><li>enabled： 启用</li><li>disabled： 禁用</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyAutoDeletePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAutoDeletePolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "PolicyId")
+	delete(f, "Paths")
+	delete(f, "PolicyName")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoDeletePolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAutoDeletePolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAutoDeletePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAutoDeletePolicyResponseParams `json:"Response"`
+}
+
+func (r *ModifyAutoDeletePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAutoDeletePolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

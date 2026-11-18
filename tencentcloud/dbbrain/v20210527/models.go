@@ -5695,7 +5695,7 @@ type DescribeHealthScoreRequestParams struct {
 	// <p>获取健康得分的时间，时间格式如：2019-09-10 12:13:14。</p>
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
+	// <p>服务产品类型，支持值包括：&quot;mysql&quot; - 云数据库 MySQL，&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;dcdb&quot; - 云数据库 TDSQL MySQL，&quot;mariadb&quot; - 云数据库 MariaDB，&quot;tdstore&quot; - 云数据库 TDSQL TDStore 版，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;sqlserver&quot; - 云数据库 SQL Server，&quot;postgres&quot; - 云数据库 PostgreSQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -5708,7 +5708,7 @@ type DescribeHealthScoreRequest struct {
 	// <p>获取健康得分的时间，时间格式如：2019-09-10 12:13:14。</p>
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
+	// <p>服务产品类型，支持值包括：&quot;mysql&quot; - 云数据库 MySQL，&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;dcdb&quot; - 云数据库 TDSQL MySQL，&quot;mariadb&quot; - 云数据库 MariaDB，&quot;tdstore&quot; - 云数据库 TDSQL TDStore 版，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;sqlserver&quot; - 云数据库 SQL Server，&quot;postgres&quot; - 云数据库 PostgreSQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -5997,6 +5997,61 @@ func (r *DescribeIndexRecommendInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIndexRecommendInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInterfaceEncryptKeyV2RequestParams struct {
+
+}
+
+type DescribeInterfaceEncryptKeyV2Request struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeInterfaceEncryptKeyV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInterfaceEncryptKeyV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInterfaceEncryptKeyV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInterfaceEncryptKeyV2ResponseParams struct {
+	// <p>RSA 公钥，Base64 编码格式，用于前端加密敏感数据。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicKey *string `json:"PublicKey,omitnil,omitempty" name:"PublicKey"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInterfaceEncryptKeyV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeInterfaceEncryptKeyV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeInterfaceEncryptKeyV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInterfaceEncryptKeyV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

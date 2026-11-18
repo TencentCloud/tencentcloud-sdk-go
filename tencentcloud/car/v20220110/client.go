@@ -109,6 +109,70 @@ func (c *Client) ApplyConcurrentWithContext(ctx context.Context, request *ApplyC
     return
 }
 
+func NewCreateMCPTokenRequest() (request *CreateMCPTokenRequest) {
+    request = &CreateMCPTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("car", APIVersion, "CreateMCPToken")
+    
+    
+    return
+}
+
+func NewCreateMCPTokenResponse() (response *CreateMCPTokenResponse) {
+    response = &CreateMCPTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMCPToken
+// 创建 MCP Token（签发令牌）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_MCPTOKEN = "LimitExceeded.MCPToken"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) CreateMCPToken(request *CreateMCPTokenRequest) (response *CreateMCPTokenResponse, err error) {
+    return c.CreateMCPTokenWithContext(context.Background(), request)
+}
+
+// CreateMCPToken
+// 创建 MCP Token（签发令牌）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_MCPTOKEN = "LimitExceeded.MCPToken"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) CreateMCPTokenWithContext(ctx context.Context, request *CreateMCPTokenRequest) (response *CreateMCPTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateMCPTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "car", APIVersion, "CreateMCPToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMCPToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMCPTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSessionRequest() (request *CreateSessionRequest) {
     request = &CreateSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -261,6 +325,62 @@ func (c *Client) DescribeConcurrentCountWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeMCPTokensRequest() (request *DescribeMCPTokensRequest) {
+    request = &DescribeMCPTokensRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("car", APIVersion, "DescribeMCPTokens")
+    
+    
+    return
+}
+
+func NewDescribeMCPTokensResponse() (response *DescribeMCPTokensResponse) {
+    response = &DescribeMCPTokensResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMCPTokens
+// 查询 MCP Token 列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMCPTokens(request *DescribeMCPTokensRequest) (response *DescribeMCPTokensResponse, err error) {
+    return c.DescribeMCPTokensWithContext(context.Background(), request)
+}
+
+// DescribeMCPTokens
+// 查询 MCP Token 列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMCPTokensWithContext(ctx context.Context, request *DescribeMCPTokensRequest) (response *DescribeMCPTokensResponse, err error) {
+    if request == nil {
+        request = NewDescribeMCPTokensRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "car", APIVersion, "DescribeMCPTokens")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMCPTokens require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMCPTokensResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroySessionRequest() (request *DestroySessionRequest) {
     request = &DestroySessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -315,6 +435,72 @@ func (c *Client) DestroySessionWithContext(ctx context.Context, request *Destroy
     request.SetContext(ctx)
     
     response = NewDestroySessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRenewMCPTokenRequest() (request *RenewMCPTokenRequest) {
+    request = &RenewMCPTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("car", APIVersion, "RenewMCPToken")
+    
+    
+    return
+}
+
+func NewRenewMCPTokenResponse() (response *RenewMCPTokenResponse) {
+    response = &RenewMCPTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RenewMCPToken
+// 续期 MCP Token（续期令牌）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewMCPToken(request *RenewMCPTokenRequest) (response *RenewMCPTokenResponse, err error) {
+    return c.RenewMCPTokenWithContext(context.Background(), request)
+}
+
+// RenewMCPToken
+// 续期 MCP Token（续期令牌）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewMCPTokenWithContext(ctx context.Context, request *RenewMCPTokenRequest) (response *RenewMCPTokenResponse, err error) {
+    if request == nil {
+        request = NewRenewMCPTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "car", APIVersion, "RenewMCPToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewMCPToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewMCPTokenResponse()
     err = c.Send(request, response)
     return
 }

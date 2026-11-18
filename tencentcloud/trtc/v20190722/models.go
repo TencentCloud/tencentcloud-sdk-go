@@ -5579,6 +5579,12 @@ type Input struct {
 
 	// <p>声网拉流进房参数</p>
 	AgoraParam *AgoraParam `json:"AgoraParam,omitnil,omitempty" name:"AgoraParam"`
+
+	// <p>网易云信(NERTC)频道拉流参数</p>
+	NeteaseParam *NeteaseParam `json:"NeteaseParam,omitnil,omitempty" name:"NeteaseParam"`
+
+	// <p>火山(Volc)房间拉流参数</p>
+	VolcParam *VolcParam `json:"VolcParam,omitnil,omitempty" name:"VolcParam"`
 }
 
 type InvokeLLM struct {
@@ -6710,6 +6716,20 @@ func (r *ModifyVoiceConversationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyVoiceConversationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type NeteaseParam struct {
+	// <p>网易云信应用 AppKey</p><p>登陆云信侧控制台或联系云信获取</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// <p>频道名。</p><p>非空字符串,需要和生成token使用的Channel完全一致。</p>
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// <p>用于拉流端进房安全签名</p><p>生成方式详见文档：https://doc.yunxin.163.com/nertc/server-apis/TcxNDAxMTI?platform=server#%E8%8E%B7%E5%8F%96-token，每次请求审核需要重新生成新的token。</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>分配进房拉流的用户ID。</p><p>和生成Token时所用 Uid 完全一致。</p>
+	Uid *uint64 `json:"Uid,omitnil,omitempty" name:"Uid"`
 }
 
 type OneSdkAppIdTranscodeTimeUsagesInfo struct {
@@ -10544,6 +10564,26 @@ type VoicePrintInfo struct {
 
 	// 请求毫秒时间戳
 	ReqTimestamp *uint64 `json:"ReqTimestamp,omitnil,omitempty" name:"ReqTimestamp"`
+}
+
+type VolcParam struct {
+	// <p>火山引擎 AppID。</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>房间号。</p>
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>进房 Token。</p><p>需要开启鉴权，生成 Token时，注意RoomId 、UserId 需要对应上。详见：https://www.volcengine.com/docs/6348/70121</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>分配给拉流端的UserId。</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>订阅用户名单。</p><p>当前名单列表为空时，默认为全订阅；当名单列表有用户id,则只会订阅列表中用户。</p>
+	TrustedUserIdList *string `json:"TrustedUserIdList,omitnil,omitempty" name:"TrustedUserIdList"`
+
+	// <p>不订阅用户名单</p>
+	UntrustedUserIdList *string `json:"UntrustedUserIdList,omitnil,omitempty" name:"UntrustedUserIdList"`
 }
 
 type WaterMark struct {

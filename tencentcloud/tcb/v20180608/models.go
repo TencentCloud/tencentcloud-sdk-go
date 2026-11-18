@@ -87,6 +87,23 @@ type AIModelStatus struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
+type AccessSourceSetting struct {
+	// <p>来源类型</p><p>枚举值：</p><ul><li>PUBLIC： 公网请求</li><li>VPC： VPC 请求</li><li>WOA： 办公网请求</li></ul>
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// <p>来源请求状态</p><p>枚举值：</p><ul><li>OPEN： 放通</li><li>CLOSE： 拦截</li></ul>
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// <p>是否开启 WOA 鉴权</p><p>枚举值：</p><ul><li>FORCE_AUTH： 强制鉴权</li><li>NO_AUTH： 不鉴权</li></ul><p>默认值：NO_AUTH</p><p>仅 SourceType = WOA 且 Action= OPEN 时生效</p>
+	WOAAuth *string `json:"WOAAuth,omitnil,omitempty" name:"WOAAuth"`
+
+	// <p>WOA 鉴权需要的 Token</p><p>仅 Source Type=WOA 且 WOAAuth = FORCE_AUTH 时必填</p>
+	AuthToken *string `json:"AuthToken,omitnil,omitempty" name:"AuthToken"`
+
+	// <p>VPC 白名单信息</p><p>仅 SourceType = VPC 时有效; 不传表示不修改</p>
+	VPCWhiteList *VPCWhiteListConfig `json:"VPCWhiteList,omitnil,omitempty" name:"VPCWhiteList"`
+}
+
 // Predefined struct for user
 type AddProviderRequestParams struct {
 	// 云开发环境 ID，用于唯一标识当前操作所属的云开发环境。
@@ -5437,12 +5454,15 @@ func (r *DescribeDatabaseACLResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEnvAccessControlRequestParams struct {
-
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
 type DescribeEnvAccessControlRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
 func (r *DescribeEnvAccessControlRequest) ToJsonString() string {
@@ -5457,7 +5477,7 @@ func (r *DescribeEnvAccessControlRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "EnvId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvAccessControlRequest has unknown keys!", "")
 	}
@@ -5466,6 +5486,9 @@ func (r *DescribeEnvAccessControlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEnvAccessControlResponseParams struct {
+	// <p>修改之后，当前的生效的配置</p>
+	Current []*AccessSourceSetting `json:"Current,omitnil,omitempty" name:"Current"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -10109,12 +10132,21 @@ func (r *ModifyDatabaseACLResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyEnvAccessControlRequestParams struct {
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
+	// <p>本次要设置的来源集合</p><p>入参限制：SourceType = PUBLIC 时，标识操作公网开关<br>SourceType = VPC 时，通过配置 VPCWhiteList，开启/关闭 VPC 白名单<br>SourceType = WOA 时，通过配置 WOAAuth，开启/关闭鉴权校验，开启鉴权时，AuthToken 字段为填</p>
+	Sources []*AccessSourceSetting `json:"Sources,omitnil,omitempty" name:"Sources"`
 }
 
 type ModifyEnvAccessControlRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>本次要设置的来源集合</p><p>入参限制：SourceType = PUBLIC 时，标识操作公网开关<br>SourceType = VPC 时，通过配置 VPCWhiteList，开启/关闭 VPC 白名单<br>SourceType = WOA 时，通过配置 WOAAuth，开启/关闭鉴权校验，开启鉴权时，AuthToken 字段为填</p>
+	Sources []*AccessSourceSetting `json:"Sources,omitnil,omitempty" name:"Sources"`
 }
 
 func (r *ModifyEnvAccessControlRequest) ToJsonString() string {
@@ -10129,7 +10161,8 @@ func (r *ModifyEnvAccessControlRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "EnvId")
+	delete(f, "Sources")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEnvAccessControlRequest has unknown keys!", "")
 	}
@@ -10138,6 +10171,12 @@ func (r *ModifyEnvAccessControlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyEnvAccessControlResponseParams struct {
+	// <p>本次请求影响的权限数量</p>
+	AffectedRows *int64 `json:"AffectedRows,omitnil,omitempty" name:"AffectedRows"`
+
+	// <p>修改之后，当前的生效的配置</p><p>SourceType = PUBLIC 表示公网链路访问配置<br>SourceType = VPC 表示 VPC 链路访问配置<br>SourceType = WOA 表示办公网链路访问配置</p>
+	Current []*AccessSourceSetting `json:"Current,omitnil,omitempty" name:"Current"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -13580,6 +13619,22 @@ type User struct {
 
 	// 用户描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type VPCInfo struct {
+	// <p>VPC 唯一 ID</p><p>参数格式：vpc-xxxxx</p>
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// <p>VPC 所在地域</p><p>参数格式：ap-xxxx</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+type VPCWhiteListConfig struct {
+	// <p>VPC 白名单配置状态</p><p>枚举值：</p><ul><li>OPEN： 开启白名单，VPCs 必填，覆盖写入</li><li>CLOSE： 关闭白名单，VPCs 填入时，覆盖写入</li></ul>
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// <p>VPC 信息</p>
+	VPCs []*VPCInfo `json:"VPCs,omitnil,omitempty" name:"VPCs"`
 }
 
 type ValueDetail struct {

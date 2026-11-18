@@ -4347,6 +4347,78 @@ func (c *Client) DescribeIndexRecommendInfoWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeInterfaceEncryptKeyV2Request() (request *DescribeInterfaceEncryptKeyV2Request) {
+    request = &DescribeInterfaceEncryptKeyV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeInterfaceEncryptKeyV2")
+    
+    
+    return
+}
+
+func NewDescribeInterfaceEncryptKeyV2Response() (response *DescribeInterfaceEncryptKeyV2Response) {
+    response = &DescribeInterfaceEncryptKeyV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInterfaceEncryptKeyV2
+// 查询接口加密 RSA 公钥，前端用于加密敏感数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeInterfaceEncryptKeyV2(request *DescribeInterfaceEncryptKeyV2Request) (response *DescribeInterfaceEncryptKeyV2Response, err error) {
+    return c.DescribeInterfaceEncryptKeyV2WithContext(context.Background(), request)
+}
+
+// DescribeInterfaceEncryptKeyV2
+// 查询接口加密 RSA 公钥，前端用于加密敏感数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeInterfaceEncryptKeyV2WithContext(ctx context.Context, request *DescribeInterfaceEncryptKeyV2Request) (response *DescribeInterfaceEncryptKeyV2Response, err error) {
+    if request == nil {
+        request = NewDescribeInterfaceEncryptKeyV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeInterfaceEncryptKeyV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInterfaceEncryptKeyV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInterfaceEncryptKeyV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMailProfileRequest() (request *DescribeMailProfileRequest) {
     request = &DescribeMailProfileRequest{
         BaseRequest: &tchttp.BaseRequest{},

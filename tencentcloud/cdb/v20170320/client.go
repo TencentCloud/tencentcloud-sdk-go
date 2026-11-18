@@ -10401,7 +10401,9 @@ func NewOpenAuditServiceResponse() (response *OpenAuditServiceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEAUDITFAILERROR = "FailedOperation.CreateAuditFailError"
+//  FAILEDOPERATION_CREATEBILLINGERROR = "FailedOperation.CreateBillingError"
 //  FAILEDOPERATION_INSTANCEQUERYERROR = "FailedOperation.InstanceQueryError"
+//  FAILEDOPERATION_QUERYINSTANCEERROR = "FailedOperation.QueryInstanceError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -10411,7 +10413,9 @@ func NewOpenAuditServiceResponse() (response *OpenAuditServiceResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_AUDITSTATUSERROR = "OperationDenied.AuditStatusError"
 //  OPERATIONDENIED_AUDITTASKCONFLICTERROR = "OperationDenied.AuditTaskConflictError"
+//  OPERATIONDENIED_INSTANCELOGSTATUSERROR = "OperationDenied.InstanceLogStatusError"
 //  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 //  OPERATIONDENIED_UNSUPPORTOPENAUDITERROR = "OperationDenied.UnsupportOpenAuditError"
 //  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) OpenAuditService(request *OpenAuditServiceRequest) (response *OpenAuditServiceResponse, err error) {
@@ -10423,7 +10427,9 @@ func (c *Client) OpenAuditService(request *OpenAuditServiceRequest) (response *O
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEAUDITFAILERROR = "FailedOperation.CreateAuditFailError"
+//  FAILEDOPERATION_CREATEBILLINGERROR = "FailedOperation.CreateBillingError"
 //  FAILEDOPERATION_INSTANCEQUERYERROR = "FailedOperation.InstanceQueryError"
+//  FAILEDOPERATION_QUERYINSTANCEERROR = "FailedOperation.QueryInstanceError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -10433,7 +10439,9 @@ func (c *Client) OpenAuditService(request *OpenAuditServiceRequest) (response *O
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_AUDITSTATUSERROR = "OperationDenied.AuditStatusError"
 //  OPERATIONDENIED_AUDITTASKCONFLICTERROR = "OperationDenied.AuditTaskConflictError"
+//  OPERATIONDENIED_INSTANCELOGSTATUSERROR = "OperationDenied.InstanceLogStatusError"
 //  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 //  OPERATIONDENIED_UNSUPPORTOPENAUDITERROR = "OperationDenied.UnsupportOpenAuditError"
 //  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) OpenAuditServiceWithContext(ctx context.Context, request *OpenAuditServiceRequest) (response *OpenAuditServiceResponse, err error) {
