@@ -1,70 +1,10 @@
-# Release v1.3.214
-
-## 应用云渲染(car) 版本：2022-01-10
-
-### 第 11 次发布
-
-发布时间：2026-11-19 01:15:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateMCPToken](https://cloud.tencent.com/document/api/1547/141104)
-* [DescribeMCPTokens](https://cloud.tencent.com/document/api/1547/141103)
-* [RenewMCPToken](https://cloud.tencent.com/document/api/1547/141102)
-
-
-
-## 文件存储(cfs) 版本：2019-07-19
-
-### 第 61 次发布
-
-发布时间：2026-11-19 01:20:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAutoDeletePolicy](https://cloud.tencent.com/document/api/582/141110)
-* [DeleteAutoDeletePolicy](https://cloud.tencent.com/document/api/582/141109)
-* [DescribeAutoDeletePolicies](https://cloud.tencent.com/document/api/582/141108)
-* [ModifyAutoDeletePolicy](https://cloud.tencent.com/document/api/582/141107)
-
-新增数据结构：
-
-* [AutoDeletePolicy](https://cloud.tencent.com/document/api/582/38175#AutoDeletePolicy)
-
-
+# Release v1.3.215
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-### 第 203 次发布
+### 第 204 次发布
 
-发布时间：2026-11-19 01:43:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CynosdbClusterDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbClusterDetail)
-
-	* 新增成员：IsInInstantRollbackChain
-
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
-
-### 第 71 次发布
-
-发布时间：2026-11-19 01:47:29
+发布时间：2026-11-20 01:48:04
 
 本次发布包含了以下内容：
 
@@ -72,19 +12,74 @@
 
 新增接口：
 
-* [DescribeInterfaceEncryptKeyV2](https://cloud.tencent.com/document/api/1130/141112)
+* [CreateProxyEndPoints](https://cloud.tencent.com/document/api/1003/141140)
+
+新增数据结构：
+
+* [ProxyEndPointItem](https://cloud.tencent.com/document/api/1003/48097#ProxyEndPointItem)
 
 
 
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+## 大数据智能体工作台DataBuddy(databuddy) 版本：2026-07-15
+
+### 第 19 次发布
+
+发布时间：2026-11-20 01:50:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ListScheduledTasks](https://cloud.tencent.com/document/api/1835/141142)
+
+新增数据结构：
+
+* [ListScheduledTasksRsp](https://cloud.tencent.com/document/api/1835/138006#ListScheduledTasksRsp)
+* [ScheduledTaskDetail](https://cloud.tencent.com/document/api/1835/138006#ScheduledTaskDetail)
+
+修改数据结构：
+
+* [FetchOption](https://cloud.tencent.com/document/api/1835/138006#FetchOption)
+
+	* 新增成员：FetchTableFilesInfo
 
 
 
-## 腾讯云可观测平台(monitor) 版本：2023-06-16
 
-### 第 16 次发布
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-发布时间：2026-11-19 02:27:46
+### 第 330 次发布
+
+发布时间：2026-11-20 02:06:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [EmbedSignComponentLimit](https://cloud.tencent.com/document/api/1323/70369#EmbedSignComponentLimit)
+
+修改数据结构：
+
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1323/70369#CreateFlowOption)
+
+	* 新增成员：SignComponentLimits
+
+* [FlowGroupOptions](https://cloud.tencent.com/document/api/1323/70369#FlowGroupOptions)
+
+	* 新增成员：SignComponentLimits, HideOperationSteps
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 279 次发布
+
+发布时间：2026-11-20 02:08:27
 
 本次发布包含了以下内容：
 
@@ -92,9 +87,49 @@
 
 修改接口：
 
-* [DescribeAlarmNotifyHistories](https://cloud.tencent.com/document/api/248/118735)
+* [CreateChannelSubOrganizationActive](https://cloud.tencent.com/document/api/1420/111476)
 
-	* 新增入参：ChannelNames, PolicyIds, NoticeIds
+	* 新增入参：Unbind
+
+
+新增数据结构：
+
+* [EmbedSignComponentLimit](https://cloud.tencent.com/document/api/1420/61525#EmbedSignComponentLimit)
+
+修改数据结构：
+
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
+
+	* 新增成员：SignComponentLimits
+
+* [FlowGroupOptions](https://cloud.tencent.com/document/api/1420/61525#FlowGroupOptions)
+
+	* 新增成员：SignComponentLimits, HideOperationSteps
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2023-06-16
+
+### 第 17 次发布
+
+发布时间：2026-11-20 02:33:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TriggerAIWorkbenchTask](https://cloud.tencent.com/document/api/248/136929)
+
+	* 新增入参：SessionId, Content, IdempotencyKey
+
+	* 新增出参：SessionId, RunId
 
 
 
@@ -103,32 +138,11 @@
 
 
 
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
+## 文字识别(ocr) 版本：2018-11-19
 
-### 第 97 次发布
+### 第 282 次发布
 
-发布时间：2026-11-19 02:31:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeJobSubmissionLog](https://cloud.tencent.com/document/api/849/95069)
-
-	* 新增入参：Offset, Filters
-
-	* 新增出参：Offset
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 180 次发布
-
-发布时间：2026-11-19 02:45:48
+发布时间：2026-11-20 02:38:46
 
 本次发布包含了以下内容：
 
@@ -136,71 +150,68 @@
 
 修改接口：
 
-* [DescribeEnvAccessControl](https://cloud.tencent.com/document/api/876/141033)
+* [MultimodalDocParse](https://cloud.tencent.com/document/api/866/133224)
 
-	* 新增入参：EnvId
+	* 新增入参：EnableTableCellCoord
 
-	* 新增出参：Current
+* [SubmitMultimodalDocParseJob](https://cloud.tencent.com/document/api/866/139312)
 
-* [ModifyEnvAccessControl](https://cloud.tencent.com/document/api/876/141032)
-
-	* 新增入参：EnvId, Sources
-
-	* 新增出参：AffectedRows, Current
+	* 新增入参：EnableTableCellCoord
 
 
-新增数据结构：
 
-* [AccessSourceSetting](https://cloud.tencent.com/document/api/876/34822#AccessSourceSetting)
-* [VPCInfo](https://cloud.tencent.com/document/api/876/34822#VPCInfo)
-* [VPCWhiteListConfig](https://cloud.tencent.com/document/api/876/34822#VPCWhiteListConfig)
+
+## 凭据管理系统(ssm) 版本：2019-09-23
+
+### 第 21 次发布
+
+发布时间：2026-11-20 02:50:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetSecretValue](https://cloud.tencent.com/document/api/1140/40522)
+
+	* 新增入参：VersionStage
+
+	* <font color="#dd0000">**修改入参**：</font>VersionId
+
+* [PutSecretValue](https://cloud.tencent.com/document/api/1140/40518)
+
+	* 新增入参：VersionStage
+
+	* <font color="#dd0000">**修改入参**：</font>VersionId
+
+* [UpdateSecret](https://cloud.tencent.com/document/api/1140/40515)
+
+	* 新增入参：VersionStage
+
+
+修改数据结构：
+
+* [VersionInfo](https://cloud.tencent.com/document/api/1140/40530#VersionInfo)
+
+	* 新增成员：VersionStages
+
 
 
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
-### 第 157 次发布
+### 第 158 次发布
 
-发布时间：2026-11-19 03:02:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [NeteaseParam](https://cloud.tencent.com/document/api/647/44055#NeteaseParam)
-* [VolcParam](https://cloud.tencent.com/document/api/647/44055#VolcParam)
-
-修改数据结构：
-
-* [Input](https://cloud.tencent.com/document/api/647/44055#Input)
-
-	* 新增成员：NeteaseParam, VolcParam
-
-
-
-
-## 云点播(vod) 版本：2024-07-18
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 297 次发布
-
-发布时间：2026-11-19 03:08:20
+发布时间：2026-11-20 03:10:50
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [AigcImageTaskInputFileInfo](https://cloud.tencent.com/document/api/266/31773#AigcImageTaskInputFileInfo)
-
-	* 新增成员：Id
-
+* [DescribeFinanceCloudRoomUsage](https://cloud.tencent.com/document/api/647/141145)
 
 
 

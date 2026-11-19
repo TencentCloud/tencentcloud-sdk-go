@@ -3142,6 +3142,9 @@ type FetchOption struct {
 
 	// <p>是否返回字段关联的字典维度信息，默认不传，不返回</p>
 	FetchDimensions *bool `json:"FetchDimensions,omitnil,omitempty" name:"FetchDimensions"`
+
+	// <p>是否获取tclake表的snapshots文件信息（文件大小、文件数量、最后修改时间）<br>各接口默认行为不同：</p><ul><li>GetTable：不传或未设置时默认获取（true），显式传 false 时跳过</li><li>GetTables：不传或未设置时默认不获取（false），显式传 true 时获取；获取会显著增加接口耗时</li></ul>
+	FetchTableFilesInfo *bool `json:"FetchTableFilesInfo,omitnil,omitempty" name:"FetchTableFilesInfo"`
 }
 
 type FieldInfo struct {
@@ -6610,6 +6613,82 @@ type ListPartitioning struct {
 }
 
 // Predefined struct for user
+type ListScheduledTasksRequestParams struct {
+	// <p>工作空间 ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+type ListScheduledTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间 ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+func (r *ListScheduledTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListScheduledTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListScheduledTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListScheduledTasksResponseParams struct {
+	// 定时任务列表分页结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ListScheduledTasksRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListScheduledTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *ListScheduledTasksResponseParams `json:"Response"`
+}
+
+func (r *ListScheduledTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListScheduledTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListScheduledTasksRsp struct {
+	// <p>当前页任务列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*ScheduledTaskDetail `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// <p>符合筛选条件的任务总数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>当前页码（从 1 开始）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>实际生效的每页数量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+// Predefined struct for user
 type ListSchemaNamesRequestParams struct {
 	// <p>数据目录名，必填</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
@@ -9315,6 +9394,62 @@ type ScheduleBizEnumBrief struct {
 	// 枚举项统计数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type ScheduledTaskDetail struct {
+	// <p>定时任务唯一标识</p>
+	ScheduledTaskId *string `json:"ScheduledTaskId,omitnil,omitempty" name:"ScheduledTaskId"`
+
+	// <p>任务名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>任务提示词</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>六段 cron 表达式</p>
+	Schedule *string `json:"Schedule,omitnil,omitempty" name:"Schedule"`
+
+	// <p>任务状态：1=ACTIVE，2=PAUSED</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>会话类型：1=数据分析，2=数据工程</p>
+	SessionType *int64 `json:"SessionType,omitnil,omitempty" name:"SessionType"`
+
+	// <p>分析空间 ID</p>
+	AnalysisSpaceId *string `json:"AnalysisSpaceId,omitnil,omitempty" name:"AnalysisSpaceId"`
+
+	// <p>工作空间 ID</p>
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// <p>创建人 UIN</p>
+	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// <p>创建时间，毫秒级 Unix 时间戳字符串</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>最近修改时间，毫秒级 Unix 时间戳字符串</p>
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// <p>生效开始时间，上海时区本地零点的毫秒时间戳字符串；0 表示不传</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>生效结束时间，上海时区本地零点的毫秒时间戳字符串；0 表示不传</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>技能 ID 列表</p>
+	SkillIds *string `json:"SkillIds,omitnil,omitempty" name:"SkillIds"`
+
+	// <p>模型 ID</p>
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// <p>调度类型：1=每天，2=间隔，3=单次</p>
+	ScheduleType *int64 `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
+
+	// <p>最近修改人 UIN</p>
+	UpdateUserUin *string `json:"UpdateUserUin,omitnil,omitempty" name:"UpdateUserUin"`
+
+	// <p>mcpId列表（逗号分隔）</p>
+	MCPIds *string `json:"MCPIds,omitnil,omitempty" name:"MCPIds"`
 }
 
 type ScheduledTimeConfig struct {

@@ -2441,6 +2441,66 @@ func (c *Client) DescribeCloudTranscriptionWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeFinanceCloudRoomUsageRequest() (request *DescribeFinanceCloudRoomUsageRequest) {
+    request = &DescribeFinanceCloudRoomUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeFinanceCloudRoomUsage")
+    
+    
+    return
+}
+
+func NewDescribeFinanceCloudRoomUsageResponse() (response *DescribeFinanceCloudRoomUsageResponse) {
+    response = &DescribeFinanceCloudRoomUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFinanceCloudRoomUsage
+// 本接口（DescribeFinanceCloudRoomUsage）用于查询金融云 TRTC 房间维度用量。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_SDKAPPIDNOTEXIST = "FailedOperation.SdkAppIdNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_FREQOVERLIMIT = "OperationDenied.FreqOverLimit"
+func (c *Client) DescribeFinanceCloudRoomUsage(request *DescribeFinanceCloudRoomUsageRequest) (response *DescribeFinanceCloudRoomUsageResponse, err error) {
+    return c.DescribeFinanceCloudRoomUsageWithContext(context.Background(), request)
+}
+
+// DescribeFinanceCloudRoomUsage
+// 本接口（DescribeFinanceCloudRoomUsage）用于查询金融云 TRTC 房间维度用量。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_SDKAPPIDNOTEXIST = "FailedOperation.SdkAppIdNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_FREQOVERLIMIT = "OperationDenied.FreqOverLimit"
+func (c *Client) DescribeFinanceCloudRoomUsageWithContext(ctx context.Context, request *DescribeFinanceCloudRoomUsageRequest) (response *DescribeFinanceCloudRoomUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeFinanceCloudRoomUsageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeFinanceCloudRoomUsage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFinanceCloudRoomUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFinanceCloudRoomUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveStreamModerationRequest() (request *DescribeLiveStreamModerationRequest) {
     request = &DescribeLiveStreamModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -4324,6 +4324,15 @@ func (r *TriggerAIWorkbenchSREDigitalTwinTaskResponse) FromJsonString(s string) 
 type TriggerAIWorkbenchTaskRequestParams struct {
 	// <p>任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>session会话ID</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>输入内容</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>幂等键，调用方保证同一事件重试时携带同一 key</p>
+	IdempotencyKey *string `json:"IdempotencyKey,omitnil,omitempty" name:"IdempotencyKey"`
 }
 
 type TriggerAIWorkbenchTaskRequest struct {
@@ -4331,6 +4340,15 @@ type TriggerAIWorkbenchTaskRequest struct {
 	
 	// <p>任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>session会话ID</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>输入内容</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>幂等键，调用方保证同一事件重试时携带同一 key</p>
+	IdempotencyKey *string `json:"IdempotencyKey,omitnil,omitempty" name:"IdempotencyKey"`
 }
 
 func (r *TriggerAIWorkbenchTaskRequest) ToJsonString() string {
@@ -4346,6 +4364,9 @@ func (r *TriggerAIWorkbenchTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TaskId")
+	delete(f, "SessionId")
+	delete(f, "Content")
+	delete(f, "IdempotencyKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TriggerAIWorkbenchTaskRequest has unknown keys!", "")
 	}
@@ -4357,6 +4378,14 @@ type TriggerAIWorkbenchTaskResponseParams struct {
 	// <p>执行 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+
+	// <p>会话 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>运行 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunId *string `json:"RunId,omitnil,omitempty" name:"RunId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

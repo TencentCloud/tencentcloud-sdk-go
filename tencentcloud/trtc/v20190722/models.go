@@ -3008,6 +3008,74 @@ func (r *DescribeCloudTranscriptionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFinanceCloudRoomUsageRequestParams struct {
+	// <p>与房间对应的 TRTC SdkAppId，必须是金融云应用。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>查询开始时间，格式为 YYYY-MM-DD HH:MM，精确到分钟级。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，格式为 YYYY-MM-DD HH:MM，单次查询不超过 24 小时。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeFinanceCloudRoomUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>与房间对应的 TRTC SdkAppId，必须是金融云应用。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>查询开始时间，格式为 YYYY-MM-DD HH:MM，精确到分钟级。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，格式为 YYYY-MM-DD HH:MM，单次查询不超过 24 小时。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeFinanceCloudRoomUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFinanceCloudRoomUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFinanceCloudRoomUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFinanceCloudRoomUsageResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFinanceCloudRoomUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFinanceCloudRoomUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeFinanceCloudRoomUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFinanceCloudRoomUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLiveStreamModerationRequestParams struct {
 	// <p>TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`

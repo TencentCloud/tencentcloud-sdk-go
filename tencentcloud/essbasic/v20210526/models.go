@@ -3024,67 +3024,45 @@ func (r *ChannelCreatePrepareFlowGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreatePrepareFlowRequestParams struct {
-	// 资源类型，取值有：
-	// <ul><li> **1**：模板</li>
-	// <li> **2**：文件（默认值）</li>
-	// <li> **3**：草稿</li>
-	// </ul>
+	// <p>资源类型，取值有：</p><ul><li> **1**：模板</li><li> **2**：文件（默认值）</li><li> **3**：草稿</li></ul>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 要创建的合同信息
+	// <p>要创建的合同信息</p>
 	FlowInfo *BaseFlowInfo `json:"FlowInfo,omitnil,omitempty" name:"FlowInfo"`
 
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 资源id，与ResourceType相对应，取值范围：
-	// <ul>
-	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
-	// <li>模板Id（通过控制台创建模板后获取模板Id）</li>
-	// <li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li>
-	// </ul>
-	// 注意：需要同时设置 ResourceType 参数指定资源类型
+	// <p>资源id，与ResourceType相对应，取值范围：</p><ul><li>文件Id（通过UploadFiles获取文件资源Id）</li><li>模板Id（通过控制台创建模板后获取模板Id）</li><li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li></ul>注意：需要同时设置 ResourceType 参数指定资源类型
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
+	// <p>合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑</p>
 	FlowOption *CreateFlowOption `json:"FlowOption,omitnil,omitempty" name:"FlowOption"`
 
-	// 已废弃，请用FlowInfo.Approvers
+	// <p>已废弃，请用FlowInfo.Approvers</p>
 	//
 	// Deprecated: FlowApproverList is deprecated.
 	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitnil,omitempty" name:"FlowApproverList"`
 
-	// 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
-	// 注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
+	// <p>合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接<br>注: <code>该参数必须是一个待发起审核的合同id，并且还未审核通过</code></p>
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
+	// <p>该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL</p>
 	//
 	// Deprecated: NeedPreview is deprecated.
 	NeedPreview *bool `json:"NeedPreview,omitnil,omitempty" name:"NeedPreview"`
 
-	// 企业机构信息，不用传
+	// <p>企业机构信息，不用传</p>
 	//
 	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 
-	// 操作人（用户）信息，不用传
+	// <p>操作人（用户）信息，不用传</p>
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// <font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
-	// 签署控件的配置信息，用在嵌入式发起的页面配置，包括
-	// 
-	// - 签署控件 是否默认展示日期.
+	// <p><font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font><br>签署控件的配置信息，用在嵌入式发起的页面配置，包括</p><ul><li>签署控件 是否默认展示日期.</li></ul>
 	//
 	// Deprecated: SignComponentConfig is deprecated.
 	SignComponentConfig *SignComponentConfig `json:"SignComponentConfig,omitnil,omitempty" name:"SignComponentConfig"`
@@ -3093,59 +3071,37 @@ type ChannelCreatePrepareFlowRequestParams struct {
 type ChannelCreatePrepareFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源类型，取值有：
-	// <ul><li> **1**：模板</li>
-	// <li> **2**：文件（默认值）</li>
-	// <li> **3**：草稿</li>
-	// </ul>
+	// <p>资源类型，取值有：</p><ul><li> **1**：模板</li><li> **2**：文件（默认值）</li><li> **3**：草稿</li></ul>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 要创建的合同信息
+	// <p>要创建的合同信息</p>
 	FlowInfo *BaseFlowInfo `json:"FlowInfo,omitnil,omitempty" name:"FlowInfo"`
 
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 资源id，与ResourceType相对应，取值范围：
-	// <ul>
-	// <li>文件Id（通过UploadFiles获取文件资源Id）</li>
-	// <li>模板Id（通过控制台创建模板后获取模板Id）</li>
-	// <li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li>
-	// </ul>
-	// 注意：需要同时设置 ResourceType 参数指定资源类型
+	// <p>资源id，与ResourceType相对应，取值范围：</p><ul><li>文件Id（通过UploadFiles获取文件资源Id）</li><li>模板Id（通过控制台创建模板后获取模板Id）</li><li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li></ul>注意：需要同时设置 ResourceType 参数指定资源类型
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
+	// <p>合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑</p>
 	FlowOption *CreateFlowOption `json:"FlowOption,omitnil,omitempty" name:"FlowOption"`
 
-	// 已废弃，请用FlowInfo.Approvers
+	// <p>已废弃，请用FlowInfo.Approvers</p>
 	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitnil,omitempty" name:"FlowApproverList"`
 
-	// 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
-	// 注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
+	// <p>合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接<br>注: <code>该参数必须是一个待发起审核的合同id，并且还未审核通过</code></p>
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
+	// <p>该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL</p>
 	NeedPreview *bool `json:"NeedPreview,omitnil,omitempty" name:"NeedPreview"`
 
-	// 企业机构信息，不用传
+	// <p>企业机构信息，不用传</p>
 	Organization *OrganizationInfo `json:"Organization,omitnil,omitempty" name:"Organization"`
 
-	// 操作人（用户）信息，不用传
+	// <p>操作人（用户）信息，不用传</p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// <font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
-	// 签署控件的配置信息，用在嵌入式发起的页面配置，包括
-	// 
-	// - 签署控件 是否默认展示日期.
+	// <p><font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font><br>签署控件的配置信息，用在嵌入式发起的页面配置，包括</p><ul><li>签署控件 是否默认展示日期.</li></ul>
 	SignComponentConfig *SignComponentConfig `json:"SignComponentConfig,omitnil,omitempty" name:"SignComponentConfig"`
 }
 
@@ -3180,16 +3136,16 @@ func (r *ChannelCreatePrepareFlowRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreatePrepareFlowResponseParams struct {
-	// 发起的合同嵌入链接， 可以直接点击进入进行合同发起， 有效期为5分钟
+	// <p>发起的合同嵌入链接， 可以直接点击进入进行合同发起， 有效期为5分钟</p>
 	PrepareFlowUrl *string `json:"PrepareFlowUrl,omitnil,omitempty" name:"PrepareFlowUrl"`
 
-	// 合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果， 有效期为5分钟
+	// <p>合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果， 有效期为5分钟</p>
 	PreviewFlowUrl *string `json:"PreviewFlowUrl,omitnil,omitempty" name:"PreviewFlowUrl"`
 
-	// 发起的合同临时Id， 只有当点击进入链接，成功发起合同后， 此Id才有效
+	// <p>发起的合同临时Id， 只有当点击进入链接，成功发起合同后， 此Id才有效</p>
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 临时的草稿id（还未实际保存草稿），用户可以记录此字段对应后续页面保存的草稿，若在页面上未保存草稿，则此字段无效。
+	// <p>临时的草稿id（还未实际保存草稿），用户可以记录此字段对应后续页面保存的草稿，若在页面上未保存草稿，则此字段无效。</p>
 	DraftId *string `json:"DraftId,omitnil,omitempty" name:"DraftId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6511,49 +6467,33 @@ func (r *CreateChannelOrganizationInfoChangeUrlResponse) FromJsonString(s string
 
 // Predefined struct for user
 type CreateChannelSubOrganizationActiveRequestParams struct {
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。
+	// <p>要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。</p>
 	SubOrganizationOpenIds []*string `json:"SubOrganizationOpenIds,omitnil,omitempty" name:"SubOrganizationOpenIds"`
 
-	// 操作类型，可以选择如下：
-	// 
-	// **false**：（默认）激活子客企业
-	// **true**：续期子客企业
+	// <p>操作类型，可以选择如下：</p><p><strong>false</strong>：（默认）激活子客企业<br><strong>true</strong>：续期子客企业</p>
 	Renew *bool `json:"Renew,omitnil,omitempty" name:"Renew"`
+
+	// <p>是否解绑子企业</p><p>枚举值：</p><ul><li>false： 否</li><li>true： 是：解绑后，份额将会返还，但是该子企业无法再次被激活</li></ul><p>默认值：false</p>
+	Unbind *bool `json:"Unbind,omitnil,omitempty" name:"Unbind"`
 }
 
 type CreateChannelSubOrganizationActiveRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。
+	// <p>要进行激活或者续期的子客企业OrganizationOpenId列表，请确保所有列出的子客企业均已完成认证。</p>
 	SubOrganizationOpenIds []*string `json:"SubOrganizationOpenIds,omitnil,omitempty" name:"SubOrganizationOpenIds"`
 
-	// 操作类型，可以选择如下：
-	// 
-	// **false**：（默认）激活子客企业
-	// **true**：续期子客企业
+	// <p>操作类型，可以选择如下：</p><p><strong>false</strong>：（默认）激活子客企业<br><strong>true</strong>：续期子客企业</p>
 	Renew *bool `json:"Renew,omitnil,omitempty" name:"Renew"`
+
+	// <p>是否解绑子企业</p><p>枚举值：</p><ul><li>false： 否</li><li>true： 是：解绑后，份额将会返还，但是该子企业无法再次被激活</li></ul><p>默认值：false</p>
+	Unbind *bool `json:"Unbind,omitnil,omitempty" name:"Unbind"`
 }
 
 func (r *CreateChannelSubOrganizationActiveRequest) ToJsonString() string {
@@ -6571,6 +6511,7 @@ func (r *CreateChannelSubOrganizationActiveRequest) FromJsonString(s string) err
 	delete(f, "Agent")
 	delete(f, "SubOrganizationOpenIds")
 	delete(f, "Renew")
+	delete(f, "Unbind")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChannelSubOrganizationActiveRequest has unknown keys!", "")
 	}
@@ -7454,7 +7395,7 @@ type CreateFlowOption struct {
 	// <p>发起成功之后是否签署合同，仅当前经办人作为签署人时生效</p><ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul>
 	SignAfterStart *bool `json:"SignAfterStart,omitnil,omitempty" name:"SignAfterStart"`
 
-	// <p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>1 : 选择文件及签署方</li><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
+	// <p>隐藏操作步骤: 具体类型如下</p><ul><li>1 : 选择文件及签署方</li><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
 	HideOperationSteps []*uint64 `json:"HideOperationSteps,omitnil,omitempty" name:"HideOperationSteps"`
 
 	// <p>本企业简称，注：仅对新版页面生效</p>
@@ -7483,6 +7424,9 @@ type CreateFlowOption struct {
 
 	// <p>若指定了合同抄送人，此参数用来控制操作人能否在嵌入式页面看见或编辑（修改、增加、删除）抄送人信息。</p><p>枚举值：</p><ul><li>0： 不可见不可编辑</li><li>1： 可见不可编辑</li><li>2： 可见可编辑</li></ul><p>默认值：0</p>
 	CcInfoVisibility *int64 `json:"CcInfoVisibility,omitnil,omitempty" name:"CcInfoVisibility"`
+
+	// <p><br>在调用<a href="https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow">创建发起流程web页面</a>创建合同时,可通过此参数限制在界面上拖拽签署控件后，可选那几种印章类型或签名类型。</p><p>注：仅在<strong>嵌入式文件</strong>发起场景下生效。</p>
+	SignComponentLimits []*EmbedSignComponentLimit `json:"SignComponentLimits,omitnil,omitempty" name:"SignComponentLimits"`
 }
 
 // Predefined struct for user
@@ -9979,6 +9923,14 @@ type DynamicSignOption struct {
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 }
 
+type EmbedSignComponentLimit struct {
+	// <p>控件类型，支持以下类型</p><ul><li>SIGN_SEAL : 印章控件</li><li>SIGN_PAGING_SEAL : 骑缝章控件</li><li>SIGN_SIGNATURE : 用户签名控件</li><li>SIGN_PAGING_SIGNATURE : 用户签名骑缝控件</li></ul>
+	ComponentType *string `json:"ComponentType,omitnil,omitempty" name:"ComponentType"`
+
+	// <p>签署控件类型的值，用于限制签署时印章或者签名的选择范围</p><p>1.当 ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时，可指定印章类型。具体场景与规则说明如下：</p><p>指定印章类型:可传入以下枚举值来限制印章类型</p><ul><li> <b>OFFICIAL</b> :  企业公章</li><li> <b>CONTRACT</b> : 合同专用章</li><li> <b>FINANCE</b> : 财务专用章</li><li> <b>PERSONNEL</b> : 人事专用章</li><li> <b>OTHER</b> : 其他</li></ul><p>2.当ComponentType 是 SIGN_SIGNATURE 或者 SIGN_PAGING_SIGNATURE 时可传入以下类型（支持多个）</p><ul><li>HANDWRITE : 需要实时手写的手写签名</li><li>OCR_ESIGN : OCR印章（智慧手写签名）</li><li>IMG_ESIGN : 图片印章</li><li>ESIGN : 个人印章</li><li>SYSTEM_ESIGN : 系统印章</li></ul><br>
+	ComponentValue []*string `json:"ComponentValue,omitnil,omitempty" name:"ComponentValue"`
+}
+
 type EmbedUrlOption struct {
 	// 合同详情预览，允许展示控件信息
 	// <ul>
@@ -10488,6 +10440,12 @@ type FlowGroupOptions struct {
 
 	// <p>发起成功后是否预览合同 true-展示预览按钮 false-否(默认)</p>
 	PreviewAfterStart *bool `json:"PreviewAfterStart,omitnil,omitempty" name:"PreviewAfterStart"`
+
+	// <p><br>在调用<a href="https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlowGroup">获取发起合同组嵌入链接</a>创建合同时,可通过此参数限制在界面上拖拽签署控件后，可选那几种印章类型或签名类型。</p><p>注：仅在<strong>嵌入式文件</strong>发起场景下生效。</p>
+	SignComponentLimits []*EmbedSignComponentLimit `json:"SignComponentLimits,omitnil,omitempty" name:"SignComponentLimits"`
+
+	// <p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
+	HideOperationSteps []*uint64 `json:"HideOperationSteps,omitnil,omitempty" name:"HideOperationSteps"`
 }
 
 type FlowGroupUrlInfo struct {

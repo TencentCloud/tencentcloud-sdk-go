@@ -5241,6 +5241,9 @@ type CreateFlowOption struct {
 
 	// <p>若指定了合同抄送人，此参数用来控制操作人能否在嵌入式页面看见或编辑（修改、增加、删除）抄送人信息。</p><p>枚举值：</p><ul><li>0： 不可见不可编辑</li><li>1： 可见不可编辑</li><li>2： 可见可编辑</li></ul><p>默认值：0</p>
 	CcInfoVisibility *int64 `json:"CcInfoVisibility,omitnil,omitempty" name:"CcInfoVisibility"`
+
+	// <p><br>在调用<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreatePrepareFlow">创建发起流程web页面</a>创建合同时,可通过此参数限制在界面上拖拽签署控件后，可选那几种印章类型或签名类型。</p><p>注：仅在<strong>嵌入式文件</strong>发起场景下生效。</p>
+	SignComponentLimits []*EmbedSignComponentLimit `json:"SignComponentLimits,omitnil,omitempty" name:"SignComponentLimits"`
 }
 
 // Predefined struct for user
@@ -14966,6 +14969,14 @@ type DynamicSignOption struct {
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 }
 
+type EmbedSignComponentLimit struct {
+	// <p>控件类型，支持以下类型</p><ul><li>SIGN_SEAL : 印章控件</li><li>SIGN_PAGING_SEAL : 骑缝章控件</li><li>SIGN_SIGNATURE : 用户签名控件</li><li>SIGN_PAGING_SIGNATURE : 用户签名骑缝控件</li></ul>
+	ComponentType *string `json:"ComponentType,omitnil,omitempty" name:"ComponentType"`
+
+	// <p>签署控件类型的值，用于限制签署时印章或者签名的选择范围</p><p>1.当 ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时，可指定印章类型。具体场景与规则说明如下：</p><p>指定印章类型:可传入以下枚举值来限制印章类型</p><ul><li> <b>OFFICIAL</b> :  企业公章</li><li> <b>CONTRACT</b> : 合同专用章</li><li> <b>FINANCE</b> : 财务专用章</li><li> <b>PERSONNEL</b> : 人事专用章</li><li> <b>OTHER</b> : 其他</li></ul><p>2.当ComponentType 是 SIGN_SIGNATURE 或者 SIGN_PAGING_SIGNATURE 时可传入以下类型（支持多个）</p><ul><li>HANDWRITE : 需要实时手写的手写签名</li><li>OCR_ESIGN : OCR印章（智慧手写签名）</li><li>IMG_ESIGN : 图片印章</li><li>ESIGN : 个人印章</li><li>SYSTEM_ESIGN : 系统印章</li></ul><br>
+	ComponentValue []*string `json:"ComponentValue,omitnil,omitempty" name:"ComponentValue"`
+}
+
 type EmbedUrlOption struct {
 	// 合同详情预览，允许展示控件信息
 	// <ul>
@@ -15930,6 +15941,12 @@ type FlowGroupOptions struct {
 
 	// <p>发起成功后是否预览合同 true-展示预览按钮 false-否(默认)</p>
 	PreviewAfterStart *bool `json:"PreviewAfterStart,omitnil,omitempty" name:"PreviewAfterStart"`
+
+	// <p><br>在调用<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreatePrepareFlowGroup">获取发起合同组嵌入链接</a>创建合同时,可通过此参数限制在界面上拖拽签署控件后，可选那几种印章类型或签名类型。</p><p>注：仅在<strong>嵌入式文件</strong>发起场景下生效。</p>
+	SignComponentLimits []*EmbedSignComponentLimit `json:"SignComponentLimits,omitnil,omitempty" name:"SignComponentLimits"`
+
+	// <p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
+	HideOperationSteps []*uint64 `json:"HideOperationSteps,omitnil,omitempty" name:"HideOperationSteps"`
 }
 
 type FlowGroupUrlInfo struct {

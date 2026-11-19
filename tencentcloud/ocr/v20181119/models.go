@@ -6562,6 +6562,9 @@ type MultimodalDocParseRequestParams struct {
 
 	// <p>任务类型</p><p>枚举值：</p><ul><li>0： 文档解析</li><li>1： 图片OCR识别</li><li>2： 切片文字识别</li><li>3： 切片表格识别</li><li>4： 切片代码识别</li></ul><p>默认值：0</p>
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>是否输出单元格坐标。开启后，耗时会稍有增加。<br>默认值：false</p>
+	EnableTableCellCoord *bool `json:"EnableTableCellCoord,omitnil,omitempty" name:"EnableTableCellCoord"`
 }
 
 type MultimodalDocParseRequest struct {
@@ -6584,6 +6587,9 @@ type MultimodalDocParseRequest struct {
 
 	// <p>任务类型</p><p>枚举值：</p><ul><li>0： 文档解析</li><li>1： 图片OCR识别</li><li>2： 切片文字识别</li><li>3： 切片表格识别</li><li>4： 切片代码识别</li></ul><p>默认值：0</p>
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>是否输出单元格坐标。开启后，耗时会稍有增加。<br>默认值：false</p>
+	EnableTableCellCoord *bool `json:"EnableTableCellCoord,omitnil,omitempty" name:"EnableTableCellCoord"`
 }
 
 func (r *MultimodalDocParseRequest) ToJsonString() string {
@@ -6604,6 +6610,7 @@ func (r *MultimodalDocParseRequest) FromJsonString(s string) error {
 	delete(f, "EnableSubImg")
 	delete(f, "PageRange")
 	delete(f, "TaskType")
+	delete(f, "EnableTableCellCoord")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MultimodalDocParseRequest has unknown keys!", "")
 	}
@@ -10454,6 +10461,9 @@ type SubmitMultimodalDocParseJobRequestParams struct {
 
 	// <p>任务类型，默认为 0。取值：</p><ul><li>0：默认</li><li>1：Free OCR</li><li>2：OCR</li><li>3：表格识别</li><li>4：代码识别</li></ul>
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>是否输出单元格坐标。开启后，耗时会稍有增加。<br>默认值：false</p>
+	EnableTableCellCoord *bool `json:"EnableTableCellCoord,omitnil,omitempty" name:"EnableTableCellCoord"`
 }
 
 type SubmitMultimodalDocParseJobRequest struct {
@@ -10482,6 +10492,9 @@ type SubmitMultimodalDocParseJobRequest struct {
 
 	// <p>任务类型，默认为 0。取值：</p><ul><li>0：默认</li><li>1：Free OCR</li><li>2：OCR</li><li>3：表格识别</li><li>4：代码识别</li></ul>
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>是否输出单元格坐标。开启后，耗时会稍有增加。<br>默认值：false</p>
+	EnableTableCellCoord *bool `json:"EnableTableCellCoord,omitnil,omitempty" name:"EnableTableCellCoord"`
 }
 
 func (r *SubmitMultimodalDocParseJobRequest) ToJsonString() string {
@@ -10504,6 +10517,7 @@ func (r *SubmitMultimodalDocParseJobRequest) FromJsonString(s string) error {
 	delete(f, "FileStartPageNumber")
 	delete(f, "FileEndPageNumber")
 	delete(f, "TaskType")
+	delete(f, "EnableTableCellCoord")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitMultimodalDocParseJobRequest has unknown keys!", "")
 	}

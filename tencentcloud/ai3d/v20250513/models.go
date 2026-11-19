@@ -789,7 +789,7 @@ type SubmitHunyuan3DPartJobRequestParams struct {
 	// <p>组件生成模型版本，默认为1.5</p><p>枚举值：</p><ul><li>1.5： 1.5模型</li></ul><p>默认值：1.5</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
+	// <p>模型组件分割数据；</p><p>格式如：{"MeshName_part_1":{"face_ids":[1,2,3..],"color":"#FF805C"}}</p><p>其中，face_ids 是整型数组，表示切片的一组面片ID, color是颜色。</p>
 	PartSegmentationInfo *string `json:"PartSegmentationInfo,omitnil,omitempty" name:"PartSegmentationInfo"`
 
 	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
@@ -808,7 +808,7 @@ type SubmitHunyuan3DPartJobRequest struct {
 	// <p>组件生成模型版本，默认为1.5</p><p>枚举值：</p><ul><li>1.5： 1.5模型</li></ul><p>默认值：1.5</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
+	// <p>模型组件分割数据；</p><p>格式如：{"MeshName_part_1":{"face_ids":[1,2,3..],"color":"#FF805C"}}</p><p>其中，face_ids 是整型数组，表示切片的一组面片ID, color是颜色。</p>
 	PartSegmentationInfo *string `json:"PartSegmentationInfo,omitnil,omitempty" name:"PartSegmentationInfo"`
 
 	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>

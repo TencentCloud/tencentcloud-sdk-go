@@ -3643,6 +3643,64 @@ func (c *Client) ListModelsWithContext(ctx context.Context, request *ListModelsR
     return
 }
 
+func NewListScheduledTasksRequest() (request *ListScheduledTasksRequest) {
+    request = &ListScheduledTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListScheduledTasks")
+    
+    
+    return
+}
+
+func NewListScheduledTasksResponse() (response *ListScheduledTasksResponse) {
+    response = &ListScheduledTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListScheduledTasks
+// 分页查询工作空间下的定时任务列表；支持按 SessionType、AnalysisSpaceId、TaskName 过滤。返回内容包含任务的完整详情，含 SkillIds 与 MCPIds。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListScheduledTasks(request *ListScheduledTasksRequest) (response *ListScheduledTasksResponse, err error) {
+    return c.ListScheduledTasksWithContext(context.Background(), request)
+}
+
+// ListScheduledTasks
+// 分页查询工作空间下的定时任务列表；支持按 SessionType、AnalysisSpaceId、TaskName 过滤。返回内容包含任务的完整详情，含 SkillIds 与 MCPIds。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BIZEXCEPTION = "InternalError.BizException"
+//  INTERNALERROR_FAILEDOPERATION = "InternalError.FailedOperation"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  RESOURCENOTFOUND_CATALOGNOTFOUND = "ResourceNotFound.CatalogNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
+func (c *Client) ListScheduledTasksWithContext(ctx context.Context, request *ListScheduledTasksRequest) (response *ListScheduledTasksResponse, err error) {
+    if request == nil {
+        request = NewListScheduledTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListScheduledTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListScheduledTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListScheduledTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListSchemaNamesRequest() (request *ListSchemaNamesRequest) {
     request = &ListSchemaNamesRequest{
         BaseRequest: &tchttp.BaseRequest{},

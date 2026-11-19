@@ -10613,65 +10613,31 @@ type ResourceConf struct {
 }
 
 type ResourceConfigInfo struct {
-	// 角色，eg：PS、WORKER、DRIVER、EXECUTOR
+	// <p>角色，eg：PS、WORKER、DRIVER、EXECUTOR</p>
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// cpu核数，使用资源组时需配置。单位：1/1000，即1000=1核
+	// <p>cpu核数，使用资源组时需配置。单位：1/1000，即1000=1核</p>
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存，使用资源组时需配置。单位为MB
+	// <p>内存，使用资源组时需配置。单位为MB</p>
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// gpu卡类型，使用资源组时需配置
+	// <p>gpu卡类型，使用资源组时需配置</p>
 	GpuType *string `json:"GpuType,omitnil,omitempty" name:"GpuType"`
 
-	// gpu卡数，使用资源组时需配置。单位：1/100，即100=1卡
+	// <p>gpu卡数，使用资源组时需配置。单位：1/100，即100=1卡</p>
 	Gpu *uint64 `json:"Gpu,omitnil,omitempty" name:"Gpu"`
 
-	// 算力规格ID
-	// 计算规格 (for后付费)，可选值如下：
-	// TI.S.LARGE.POST: 4C8G 
-	// TI.S.2XLARGE16.POST:  8C16G 
-	// TI.S.2XLARGE32.POST:  8C32G 
-	// TI.S.4XLARGE32.POST:  16C32G
-	// TI.S.4XLARGE64.POST:  16C64G
-	// TI.S.6XLARGE48.POST:  24C48G
-	// TI.S.6XLARGE96.POST:  24C96G
-	// TI.S.8XLARGE64.POST:  32C64G
-	// TI.S.8XLARGE128.POST : 32C128G
-	// TI.GN10.2XLARGE40.POST: 8C40G V100*1 
-	// TI.GN10.5XLARGE80.POST:  18C80G V100*2 
-	// TI.GN10.10XLARGE160.POST :  32C160G V100*4
-	// TI.GN10.20XLARGE320.POST :  72C320G V100*8
-	// TI.GN7.8XLARGE128.POST: 32C128G T4*1 
-	// TI.GN7.10XLARGE160.POST: 40C160G T4*2 
-	// TI.GN7.20XLARGE320.POST: 80C32
+	// <p>算力规格ID<br>计算规格 (for后付费)，可选值如下：<br>TI.S.LARGE.POST: 4C8G<br>TI.S.2XLARGE16.POST:  8C16G<br>TI.S.2XLARGE32.POST:  8C32G<br>TI.S.4XLARGE32.POST:  16C32G<br>TI.S.4XLARGE64.POST:  16C64G<br>TI.S.6XLARGE48.POST:  24C48G<br>TI.S.6XLARGE96.POST:  24C96G<br>TI.S.8XLARGE64.POST:  32C64G<br>TI.S.8XLARGE128.POST : 32C128G<br>TI.GN10.2XLARGE40.POST: 8C40G V100<em>1<br>TI.GN10.5XLARGE80.POST:  18C80G V100</em>2<br>TI.GN10.10XLARGE160.POST :  32C160G V100<em>4<br>TI.GN10.20XLARGE320.POST :  72C320G V100</em>8<br>TI.GN7.8XLARGE128.POST: 32C128G T4<em>1<br>TI.GN7.10XLARGE160.POST: 40C160G T4</em>2<br>TI.GN7.20XLARGE320.POST: 80C32</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 计算节点数
+	// <p>计算节点数</p>
 	InstanceNum *uint64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
-	// 算力规格名称
-	// 计算规格 (for后付费)，可选值如下：
-	// 4C8G 
-	// 8C16G 
-	// 8C32G 
-	// 16C32G
-	// 6C64G
-	// 24C48G
-	// 24C96G
-	// 32C64G
-	// 32C128G
-	// 8C40G V100*1 
-	// 8C80G V100*2 
-	// 32C160G V100*4
-	// 72C320G V100*8
-	// 32C128G T4*1 
-	// 40C160G T4*2 
-	// 80C32
+	// <p>算力规格名称<br>计算规格 (for后付费)，可选值如下：<br>4C8G<br>8C16G<br>8C32G<br>16C32G<br>6C64G<br>24C48G<br>24C96G<br>32C64G<br>32C128G<br>8C40G V100<em>1<br>8C80G V100</em>2<br>32C160G V100<em>4<br>72C320G V100</em>8<br>32C128G T4<em>1<br>40C160G T4</em>2<br>80C32</p>
 	InstanceTypeAlias *string `json:"InstanceTypeAlias,omitnil,omitempty" name:"InstanceTypeAlias"`
 
-	// RDMA配置
+	// <p>RDMA配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RDMAConfig *RDMAConfig `json:"RDMAConfig,omitnil,omitempty" name:"RDMAConfig"`
 }

@@ -2651,6 +2651,76 @@ func (c *Client) CreateProxyEndPointWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateProxyEndPointsRequest() (request *CreateProxyEndPointsRequest) {
+    request = &CreateProxyEndPointsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CreateProxyEndPoints")
+    
+    
+    return
+}
+
+func NewCreateProxyEndPointsResponse() (response *CreateProxyEndPointsResponse) {
+    response = &CreateProxyEndPointsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateProxyEndPoints
+// 本接口（CreateProxyEndPoints）用于批量创建数据库代理连接点。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateProxyEndPoints(request *CreateProxyEndPointsRequest) (response *CreateProxyEndPointsResponse, err error) {
+    return c.CreateProxyEndPointsWithContext(context.Background(), request)
+}
+
+// CreateProxyEndPoints
+// 本接口（CreateProxyEndPoints）用于批量创建数据库代理连接点。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateProxyEndPointsWithContext(ctx context.Context, request *CreateProxyEndPointsRequest) (response *CreateProxyEndPointsResponse, err error) {
+    if request == nil {
+        request = NewCreateProxyEndPointsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateProxyEndPoints")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProxyEndPoints require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateProxyEndPointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateResourcePackageRequest() (request *CreateResourcePackageRequest) {
     request = &CreateResourcePackageRequest{
         BaseRequest: &tchttp.BaseRequest{},
