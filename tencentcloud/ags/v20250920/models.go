@@ -1000,6 +1000,91 @@ func (r *CreateDeploymentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePreCacheImageCleanupPolicyRequestParams struct {
+	// <p>策略名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>闲置过期时间</p><p>参数格式：正数 m/h/d</p>
+	IdleTTL *string `json:"IdleTTL,omitnil,omitempty" name:"IdleTTL"`
+
+	// <p>镜像仓库地址</p><p>入参限制：精准匹配，不传或空串表示不限，最多 255 字符</p>
+	RegistryHost *string `json:"RegistryHost,omitnil,omitempty" name:"RegistryHost"`
+
+	// <p>镜像仓库名</p><p>入参限制：正则匹配，最多 256 字符，编译后指令数不超过 128，账号全部启用策略合计不超过 1280；不传或空串表示全部 Repo</p>
+	RepoPattern *string `json:"RepoPattern,omitnil,omitempty" name:"RepoPattern"`
+
+	// <p>策略启用配置</p><p>枚举值：</p><ul><li>true： 启用策略</li><li>false： 禁用策略</li></ul><p>默认值：true</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type CreatePreCacheImageCleanupPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>策略名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>闲置过期时间</p><p>参数格式：正数 m/h/d</p>
+	IdleTTL *string `json:"IdleTTL,omitnil,omitempty" name:"IdleTTL"`
+
+	// <p>镜像仓库地址</p><p>入参限制：精准匹配，不传或空串表示不限，最多 255 字符</p>
+	RegistryHost *string `json:"RegistryHost,omitnil,omitempty" name:"RegistryHost"`
+
+	// <p>镜像仓库名</p><p>入参限制：正则匹配，最多 256 字符，编译后指令数不超过 128，账号全部启用策略合计不超过 1280；不传或空串表示全部 Repo</p>
+	RepoPattern *string `json:"RepoPattern,omitnil,omitempty" name:"RepoPattern"`
+
+	// <p>策略启用配置</p><p>枚举值：</p><ul><li>true： 启用策略</li><li>false： 禁用策略</li></ul><p>默认值：true</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+func (r *CreatePreCacheImageCleanupPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePreCacheImageCleanupPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "IdleTTL")
+	delete(f, "RegistryHost")
+	delete(f, "RepoPattern")
+	delete(f, "Enabled")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePreCacheImageCleanupPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePreCacheImageCleanupPolicyResponseParams struct {
+	// <p>清理策略详情</p>
+	CleanupPolicy *PreCacheImageCleanupPolicy `json:"CleanupPolicy,omitnil,omitempty" name:"CleanupPolicy"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePreCacheImageCleanupPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePreCacheImageCleanupPolicyResponseParams `json:"Response"`
+}
+
+func (r *CreatePreCacheImageCleanupPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePreCacheImageCleanupPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePreCacheImageTaskRequestParams struct {
 	// <p>镜像地址。仅支持 repository:tag、repository@sha256:&lt;64 位摘要&gt; 或 repository:tag@sha256:&lt;64 位摘要&gt;。</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
@@ -1948,6 +2033,60 @@ func (r *DeleteGPUResourceGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteGPUResourceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePreCacheImageCleanupPolicyRequestParams struct {
+	// <p>清理策略ID</p>
+	CleanupPolicyId *string `json:"CleanupPolicyId,omitnil,omitempty" name:"CleanupPolicyId"`
+}
+
+type DeletePreCacheImageCleanupPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>清理策略ID</p>
+	CleanupPolicyId *string `json:"CleanupPolicyId,omitnil,omitempty" name:"CleanupPolicyId"`
+}
+
+func (r *DeletePreCacheImageCleanupPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePreCacheImageCleanupPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CleanupPolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePreCacheImageCleanupPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePreCacheImageCleanupPolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePreCacheImageCleanupPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePreCacheImageCleanupPolicyResponseParams `json:"Response"`
+}
+
+func (r *DeletePreCacheImageCleanupPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePreCacheImageCleanupPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3100,6 +3239,87 @@ func (r *DescribeGPUResourcesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeGPUResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePreCacheImageCleanupPolicyListRequestParams struct {
+	// <p>策略 ID 列表</p><p>入参限制：最多 100 个，每个 1～64 字符；指定时 Offset、Limit、Filters 不生效，不存在或已删除的 ID 被忽略</p>
+	CleanupPolicyIds []*string `json:"CleanupPolicyIds,omitnil,omitempty" name:"CleanupPolicyIds"`
+
+	// <p>过滤器</p><p>入参限制：Filter={Name:String,Values:String[]}；最多 10 个 Filter，每个 Filter 的 Name 和 Values 必填，Values 最多 10 个、每个最多 255 字符</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移值</p><p>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量限制</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribePreCacheImageCleanupPolicyListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>策略 ID 列表</p><p>入参限制：最多 100 个，每个 1～64 字符；指定时 Offset、Limit、Filters 不生效，不存在或已删除的 ID 被忽略</p>
+	CleanupPolicyIds []*string `json:"CleanupPolicyIds,omitnil,omitempty" name:"CleanupPolicyIds"`
+
+	// <p>过滤器</p><p>入参限制：Filter={Name:String,Values:String[]}；最多 10 个 Filter，每个 Filter 的 Name 和 Values 必填，Values 最多 10 个、每个最多 255 字符</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移值</p><p>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量限制</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribePreCacheImageCleanupPolicyListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePreCacheImageCleanupPolicyListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CleanupPolicyIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePreCacheImageCleanupPolicyListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePreCacheImageCleanupPolicyListResponseParams struct {
+	// <p>清理策略集合</p>
+	CleanupPolicySet []*PreCacheImageCleanupPolicy `json:"CleanupPolicySet,omitnil,omitempty" name:"CleanupPolicySet"`
+
+	// <p>返回策略数</p><p>单位：个</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePreCacheImageCleanupPolicyListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePreCacheImageCleanupPolicyListResponseParams `json:"Response"`
+}
+
+func (r *DescribePreCacheImageCleanupPolicyListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePreCacheImageCleanupPolicyListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5493,6 +5713,32 @@ type PreCacheImage struct {
 	LastUsedTime *string `json:"LastUsedTime,omitnil,omitempty" name:"LastUsedTime"`
 }
 
+type PreCacheImageCleanupPolicy struct {
+	// <p>自动清理策略ID</p>
+	CleanupPolicyId *string `json:"CleanupPolicyId,omitnil,omitempty" name:"CleanupPolicyId"`
+
+	// <p>自动清理策略名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>策略启用配置</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>镜像仓库地址</p><p>精准匹配，空串表示不限域名</p>
+	RegistryHost *string `json:"RegistryHost,omitnil,omitempty" name:"RegistryHost"`
+
+	// <p>镜像仓库名</p><p>正则匹配，匹配 命名空间/仓库 完整路径，非锚定子串匹配，语法与 TCR 预热触发器一致；空串表示全部 Repo</p>
+	RepoPattern *string `json:"RepoPattern,omitnil,omitempty" name:"RepoPattern"`
+
+	// <p>闲置过期清理时间</p><p>规范化正数时长，例如 7d</p>
+	IdleTTL *string `json:"IdleTTL,omitnil,omitempty" name:"IdleTTL"`
+
+	// <p>策略创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>策略最近更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
 // Predefined struct for user
 type PreviewRegistryRecordRequestParams struct {
 	// <p>父 Registry ID。</p>
@@ -6033,6 +6279,9 @@ type StartSandboxInstanceRequestParams struct {
 	// <p>沙箱元数据</p>
 	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
+	// <p>启动沙箱实例时追加挂载规则，仅支持 volume、cfs、cos、image</p>
+	StorageMounts []*StorageMount `json:"StorageMounts,omitnil,omitempty" name:"StorageMounts"`
+
 	// <p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果，当前仅支持WAA沙箱和GPU沙箱。</p>
 	StartMode *string `json:"StartMode,omitnil,omitempty" name:"StartMode"`
 }
@@ -6070,6 +6319,9 @@ type StartSandboxInstanceRequest struct {
 	// <p>沙箱元数据</p>
 	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
+	// <p>启动沙箱实例时追加挂载规则，仅支持 volume、cfs、cos、image</p>
+	StorageMounts []*StorageMount `json:"StorageMounts,omitnil,omitempty" name:"StorageMounts"`
+
 	// <p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果，当前仅支持WAA沙箱和GPU沙箱。</p>
 	StartMode *string `json:"StartMode,omitnil,omitempty" name:"StartMode"`
 }
@@ -6096,6 +6348,7 @@ func (r *StartSandboxInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CustomConfiguration")
 	delete(f, "AuthMode")
 	delete(f, "Metadata")
+	delete(f, "StorageMounts")
 	delete(f, "StartMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartSandboxInstanceRequest has unknown keys!", "")
@@ -6333,6 +6586,98 @@ type Tag struct {
 
 	// 标签值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type UpdatePreCacheImageCleanupPolicyRequestParams struct {
+	// <p>清理策略ID</p>
+	CleanupPolicyId *string `json:"CleanupPolicyId,omitnil,omitempty" name:"CleanupPolicyId"`
+
+	// <p>清理策略名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>镜像仓库地址</p><p>入参限制：精准匹配，不传或空串表示不限，最多 255 字符</p>
+	RegistryHost *string `json:"RegistryHost,omitnil,omitempty" name:"RegistryHost"`
+
+	// <p>镜像仓库名</p><p>入参限制：正则匹配，最多 256 字符，编译后指令数不超过 128，账号全部启用策略合计不超过 1280。不传或空串表示全部 Repo。</p>
+	RepoPattern *string `json:"RepoPattern,omitnil,omitempty" name:"RepoPattern"`
+
+	// <p>闲置过期时间</p><p>参数格式：正数 m/h/d</p>
+	IdleTTL *string `json:"IdleTTL,omitnil,omitempty" name:"IdleTTL"`
+
+	// <p>策略启用配置</p><p>枚举值：</p><ul><li>true： 启用策略</li><li>false： 禁用策略</li></ul><p>默认值：true</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type UpdatePreCacheImageCleanupPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>清理策略ID</p>
+	CleanupPolicyId *string `json:"CleanupPolicyId,omitnil,omitempty" name:"CleanupPolicyId"`
+
+	// <p>清理策略名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>镜像仓库地址</p><p>入参限制：精准匹配，不传或空串表示不限，最多 255 字符</p>
+	RegistryHost *string `json:"RegistryHost,omitnil,omitempty" name:"RegistryHost"`
+
+	// <p>镜像仓库名</p><p>入参限制：正则匹配，最多 256 字符，编译后指令数不超过 128，账号全部启用策略合计不超过 1280。不传或空串表示全部 Repo。</p>
+	RepoPattern *string `json:"RepoPattern,omitnil,omitempty" name:"RepoPattern"`
+
+	// <p>闲置过期时间</p><p>参数格式：正数 m/h/d</p>
+	IdleTTL *string `json:"IdleTTL,omitnil,omitempty" name:"IdleTTL"`
+
+	// <p>策略启用配置</p><p>枚举值：</p><ul><li>true： 启用策略</li><li>false： 禁用策略</li></ul><p>默认值：true</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+func (r *UpdatePreCacheImageCleanupPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePreCacheImageCleanupPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CleanupPolicyId")
+	delete(f, "Name")
+	delete(f, "RegistryHost")
+	delete(f, "RepoPattern")
+	delete(f, "IdleTTL")
+	delete(f, "Enabled")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdatePreCacheImageCleanupPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePreCacheImageCleanupPolicyResponseParams struct {
+	// <p>清理策略详情</p>
+	CleanupPolicy *PreCacheImageCleanupPolicy `json:"CleanupPolicy,omitnil,omitempty" name:"CleanupPolicy"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdatePreCacheImageCleanupPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdatePreCacheImageCleanupPolicyResponseParams `json:"Response"`
+}
+
+func (r *UpdatePreCacheImageCleanupPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePreCacheImageCleanupPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

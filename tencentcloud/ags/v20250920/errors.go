@@ -233,6 +233,9 @@ const (
 	// LimitExceeded.Deployment
 	LIMITEXCEEDED_DEPLOYMENT = "LimitExceeded.Deployment"
 
+	// 账号未删除策略数（含未启用策略）已达上限，默认 30 条
+	LIMITEXCEEDED_PRECACHEIMAGECLEANUPPOLICY = "LimitExceeded.PreCacheImageCleanupPolicy"
+
 	// LimitExceeded.RecordLabelCount
 	LIMITEXCEEDED_RECORDLABELCOUNT = "LimitExceeded.RecordLabelCount"
 
